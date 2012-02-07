@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>BIXBITE FRAMEWORK</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="Language Interpreter and cross-platform application framework" />
+	<meta name=viewport content="width=device-width, target-densitydpi=device-dpi, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	
+	<link rel="stylesheet" href="css/default.css" />
+	<script type="text/javascript" src="js/swfobject.js"></script>
+</head>
+
+<body>
+	
+	<div id="flash"></div>
+	
+	<script type="text/javascript">
+		
+		var flashvars 	= { };
+		var params 		= { menu:"false", scale:"noScale", allowFullscreen:"true", allowScriptAccess:"always" };
+		var attributes 	= { id:"bixbite", name:"bixbite" };
+		
+		swfobject.embedSWF("bixbite.swf", "flash", "100%", "100%", "10.3.0", "expressInstall.swf", flashvars, params, attributes);
+		
+	</script>
+	
+</body>
+</html>
