@@ -45,8 +45,6 @@ package org.bixbite.framework.core
 		
 		public function View() 
 		{
-			trace("construct", getSize(this));
-			
 			this.mouseEnabled = false;
 			
 			if (Object(this).constructor == View)
@@ -67,7 +65,6 @@ package org.bixbite.framework.core
 		
 		private function addedToStage(e:Event):void 
 		{
-			trace("created", getSize(this));
 			create();
 		}
 		
@@ -78,21 +75,12 @@ package org.bixbite.framework.core
 			destroy();
 		}
 		
-		public function init():void 
-		{
-			//abstract
-		}
+		//abstract methods
+		public function init():void {}
+		public function create():void {}
+		public function destroy():void {}
 		
-		public function create():void 
-		{
-			//abstract
-		}
-		
-		public function destroy():void 
-		{
-			//abstract
-		}
-		
+		//signal mechanism
 		public function addSignal(type:String, callback:Function):void
 		{
 			sAdd(this, type, callback);
@@ -107,12 +95,6 @@ package org.bixbite.framework.core
 		{
 			sExe(target, type, params);
 		}
-		
-		/*public function setPosition(x:Number = 0, y:Number = 0):void
-		{
-			this.x = x;
-			this.y = y;
-		}*/
 		
 		//read only
 		public function get gl():IGraphicsFactory { return _gl; }
