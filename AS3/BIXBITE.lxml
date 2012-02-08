@@ -10,9 +10,17 @@
   <MXPIncludeASI>false</MXPIncludeASI>
   <Flex_IgnoreClasses>
     <string>src\main.as</string>
+    <string>src\testview.as</string>
+    <string>src\controller\testcontroller.as</string>
+    <string>src\model\testmodel.as</string>
+    <string>src\view\testview.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\main.as</string>
+    <string>src\testview.as</string>
+    <string>src\controller\testcontroller.as</string>
+    <string>src\model\testmodel.as</string>
+    <string>src\view\testview.as</string>
   </CS3_IgnoreClasses>
   <CS3_PreviewType>None</CS3_PreviewType>
 </SWCProject>
