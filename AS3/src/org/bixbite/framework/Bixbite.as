@@ -25,14 +25,13 @@ package org.bixbite.framework
 		
 		/**
 		 * 
-		 * @param	stage
 		 * @param	graphicsFactory
 		 * @param	assetsLoader
 		 */
 		public function init(graphicsFactory:IGraphicsFactory = null, assetsLoader:IAssetsLoader = null):void
 		{
-			this.gl 	= graphicsFactory;
-			this.assets = assetsLoader;
+			_gl 	= graphicsFactory;
+			_assets = assetsLoader;
 		}
 		
 		/**
@@ -41,11 +40,21 @@ package org.bixbite.framework
 		 * @param	type
 		 * @param	callback
 		 */
-		public function receiveSignal(caller:IActor, type:String, callback:Function):void
+		public function attachSignal(caller:IActor, type:String, callback:Function):void
 		{
 			if (!signals[type])
 				signals[type] = new Signal();
 			Signal(signals[type]).add(caller, callback);
+		}
+		
+		/**
+		 * 
+		 * @param	caller
+		 * @param	type
+		 */
+		public function detachSignal(caller:IActor, type:String):void
+		{
+			Signal(signals[type]).remove(caller);
 		}
 		
 		/**
@@ -58,8 +67,6 @@ package org.bixbite.framework
 		{
 			if (signals[type])
 				Signal(signals[type]).dispatchTo(target, params);
-			else
-				trace("signal", type, " is not registered");
 		}
 		
 		/**
@@ -71,8 +78,6 @@ package org.bixbite.framework
 		{
 			if (signals[type])
 				Signal(signals[type]).dispatch(params);
-			else
-				trace("signal", type, " is not registered");
 		}
 		
 		/**
@@ -80,11 +85,9 @@ package org.bixbite.framework
 		 */
 		static public function get instance():Bixbite { return _instance; }
 		
-		public function get gl():IGraphicsFactory { return _gl; }
-		public function set gl(value:IGraphicsFactory):void { _gl = value; }
-		
+		//read only
+		public function get gl():IGraphicsFactory { return _gl; }		
 		public function get assets():IAssetsLoader { return _assets; }
-		public function set assets(value:IAssetsLoader):void { _assets = value; }
 	}
 
 }

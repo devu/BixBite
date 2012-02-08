@@ -32,7 +32,6 @@ package org.bixbite.framework.core
 	
 	public class View extends Sprite implements IActor, IView
 	{
-		private var _gl				:IGraphicsFactory;
 		private var bixbite			:Bixbite;
 		
 		private var _name			:String;
@@ -45,7 +44,6 @@ package org.bixbite.framework.core
 				throw new IllegalOperationError("Abstract Class: should be subclassed");
 				
 			bixbite = Bixbite.instance;
-			_gl = bixbite.gl;
 			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
@@ -71,23 +69,49 @@ package org.bixbite.framework.core
 		public function destroy():void {}
 		
 		//signal mechanism
-		public function receiveSignal(type:String, callback:Function):void
+		
+		/**
+		 * 
+		 * @param	type
+		 * @param	callback
+		 */
+		public function attachSignal(type:String, callback:Function):void
 		{
-			bixbite.receiveSignal(this, type, callback);
+			bixbite.attachSignal(this, type, callback);
 		}
 		
+		/**
+		 * 
+		 * @param	type
+		 */
+		public function detachSignal(type:String):void
+		{
+			bixbite.detachSignal(this, type);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @param	params
+		 */
 		public function sendSignal(type:String, params:IValueObject = null):void
 		{
 			bixbite.sendSignal(type, params);
 		}
 		
+		/**
+		 * 
+		 * @param	target
+		 * @param	type
+		 * @param	params
+		 */
 		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
 		{
 			bixbite.sendSignalTo(target, type, params);
 		}
 		
 		//read only
-		public function get gl():IGraphicsFactory { return _gl; }
+		public function get gl():IGraphicsFactory { return bixbite.gl; }
 		
 	}
 

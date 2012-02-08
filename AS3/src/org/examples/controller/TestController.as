@@ -1,10 +1,11 @@
-package examples.controller
+package org.examples.controller
 {
-	import examples.signals.ValueObject;
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
 	import flash.utils.getTimer;
+	
 	import org.bixbite.framework.core.Controller;
+	import org.examples.signals.ValueObject;
 	
 	/**
 	 * ...
@@ -33,6 +34,7 @@ package examples.controller
 			vo.time = getTimer();
 			//and notify our Model
 			sendSignal("doSomething", vo);
+			detachSignal("doSomething");
 		}
 		
 	}

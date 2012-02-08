@@ -25,7 +25,7 @@
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\BIXBITE\AS3\src\examples\SignalTest.as</path-element>
+    <path-element>E:\xampp\htdocs\BIXBITE\AS3\src\org\examples\SignalTest.as</path-element>
   </file-specs>
   <default-background-color>#000000</default-background-color>
   <default-frame-rate>30</default-frame-rate>

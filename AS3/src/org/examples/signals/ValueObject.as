@@ -1,4 +1,4 @@
-package examples.signals 
+package org.examples.signals 
 {
 	import org.bixbite.framework.interfaces.IValueObject;
 	

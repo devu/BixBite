@@ -40,9 +40,18 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	callback
 		 */
-		public function receiveSignal(type:String, callback:Function):void
+		public function attachSignal(type:String, callback:Function):void
 		{
-			bixbite.receiveSignal(this, type, callback);
+			bixbite.attachSignal(this, type, callback);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 */
+		public function detachSignal(type:String):void
+		{
+			bixbite.detachSignal(this, type);
 		}
 		
 		/**

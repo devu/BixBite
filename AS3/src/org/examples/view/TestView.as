@@ -1,4 +1,4 @@
-package examples.view 
+package org.examples.view 
 {
 	import org.bixbite.framework.core.View;
 	import org.bixbite.framework.interfaces.IValueObject;
@@ -17,11 +17,13 @@ package examples.view
 		
 		override public function init():void
 		{
-			receiveSignal("updateView", onUpdateView);
+			attachSignal("updateView", onUpdateView);
 		}
 		
 		private function onUpdateView(s:IValueObject):void 
 		{
+			// detachSignal("updateView");
+			
 			this.x = Math.random() * 800;
 			this.y = Math.random() * 800;
 			
@@ -29,16 +31,6 @@ package examples.view
 			graphics.beginFill(0xFF0000, 1);
 			graphics.drawRect(0, 0, 10, 10);
 		}
-		/*
-		override public function create():void
-		{
-			
-		}
-		
-		override public function destroy():void
-		{
-			
-		}*/
 		
 	}
 

@@ -1,4 +1,4 @@
-package examples.model 
+package org.examples.model 
 {
 	import org.bixbite.framework.core.Model;
 	import org.bixbite.framework.interfaces.IValueObject;
@@ -18,15 +18,17 @@ package examples.model
 		override public function init():void
 		{
 			//still not so sure about addSignal instead addSlot or something...
-			receiveSignal("doSomething", onControllerDown);
+			attachSignal("doSomething", letMeDoSomething);
 		}
 		
-		private function onControllerDown(s:IValueObject):void 
+		private function letMeDoSomething(s:IValueObject):void 
 		{
 			//trace(" - > hello I am a model ->");
+			//detachSignal("doSomething");
 			
 			//do some business logic calulations, get some data etc and then:
 			sendSignal("updateView");
+			
 			//notify our TopView and pass ove value object
 			sendSignal("showResults", s);
 		}
