@@ -14,7 +14,7 @@ package org.bixbite.framework
 	{
 		public function Application(graphicsFactory:IGraphicsFactory = null, assetsLoader:IAssetsLoader = null) 
 		{
-			Bixbite.instance.init(stage, graphicsFactory, assetsLoader);
+			Bixbite.instance.init(graphicsFactory, assetsLoader);
 		}
 		
 		override public function create():void 

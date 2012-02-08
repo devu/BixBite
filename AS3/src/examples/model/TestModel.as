@@ -18,7 +18,7 @@ package examples.model
 		override public function init():void
 		{
 			//still not so sure about addSignal instead addSlot or something...
-			addSignal("doSomething", onControllerDown);
+			receiveSignal("doSomething", onControllerDown);
 		}
 		
 		private function onControllerDown(s:IValueObject):void 

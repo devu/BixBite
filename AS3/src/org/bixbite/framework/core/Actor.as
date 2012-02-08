@@ -14,11 +14,6 @@ package org.bixbite.framework.core
 		private var bixbite		:Bixbite;
 		private var _name		:String;
 		
-		private var sIn			:Function;
-		private var sExe		:Function;
-		private var sOut		:Function;
-		private var sNote		:Function;
-		
 		/**
 		 * 
 		 */
@@ -29,19 +24,15 @@ package org.bixbite.framework.core
 				
 			bixbite = Bixbite.instance;
 			
-			this.sOut 	= bixbite.sendSignal;
-			this.sExe 	= bixbite.sendSignalTo;
-			this.sIn 	= bixbite.addSignal;
-			
 			init();
 		}
 		
 		/**
-		 * 
+		 * //abstract
 		 */
 		public function init():void 
 		{
-			//abstract
+			
 		}
 		
 		/**
@@ -49,9 +40,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	callback
 		 */
-		public function addSignal(type:String, callback:Function):void
+		public function receiveSignal(type:String, callback:Function):void
 		{
-			sIn(this, type, callback);
+			bixbite.receiveSignal(this, type, callback);
 		}
 		
 		/**
@@ -61,7 +52,7 @@ package org.bixbite.framework.core
 		 */
 		public function sendSignal(type:String, params:IValueObject = null):void
 		{
-			sOut(type, params);
+			bixbite.sendSignal(type, params);
 		}
 		
 		/**
@@ -72,7 +63,7 @@ package org.bixbite.framework.core
 		 */
 		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
 		{
-			sExe(target, type, params);
+			bixbite.sendSignalTo(target, type, params);
 		}
 		
 		/**

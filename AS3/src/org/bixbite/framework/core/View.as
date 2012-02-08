@@ -3,14 +3,12 @@ package org.bixbite.framework.core
 	import flash.display.Sprite;
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
-	import flash.sampler.getSize;
 	
 	import org.bixbite.framework.Bixbite;
 	import org.bixbite.framework.interfaces.IActor;
 	import org.bixbite.framework.interfaces.IGraphicsFactory;
 	import org.bixbite.framework.interfaces.IValueObject;
 	import org.bixbite.framework.interfaces.IView;
-	
 	
 	/**
 	 * ...
@@ -39,10 +37,6 @@ package org.bixbite.framework.core
 		
 		private var _name			:String;
 		
-		private var sAdd			:Function;
-		private var sExe			:Function;
-		private var sOut			:Function;
-		
 		public function View() 
 		{
 			this.mouseEnabled = false;
@@ -52,10 +46,6 @@ package org.bixbite.framework.core
 				
 			bixbite = Bixbite.instance;
 			_gl = bixbite.gl;
-			
-			this.sOut 	= bixbite.sendSignal;
-			this.sExe 	= bixbite.sendSignalTo;
-			this.sAdd 	= bixbite.addSignal;
 			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
@@ -81,19 +71,19 @@ package org.bixbite.framework.core
 		public function destroy():void {}
 		
 		//signal mechanism
-		public function addSignal(type:String, callback:Function):void
+		public function receiveSignal(type:String, callback:Function):void
 		{
-			sAdd(this, type, callback);
+			bixbite.receiveSignal(this, type, callback);
 		}
 		
 		public function sendSignal(type:String, params:IValueObject = null):void
 		{
-			sOut(type, params);
+			bixbite.sendSignal(type, params);
 		}
 		
 		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
 		{
-			sExe(target, type, params);
+			bixbite.sendSignalTo(target, type, params);
 		}
 		
 		//read only

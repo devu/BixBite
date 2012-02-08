@@ -18,14 +18,20 @@ package examples
 		
 		public function SignalTest():void
 		{
+			//2.4kb footprint of framework itself
 			
+			// If you have use for those factories, pass it here using DI will nicelly integrates with MVC
+			// Graphics factory will be available from any view
+			// Asset loader from any Model
+			// ***
+			// super(new GraphicsFactor(), new AssetLoader());
 		}
 		
 		override public function init():void 
 		{
-			addSignal("showResults", onShowResults);
+			receiveSignal("showResults", onShowResults);
 			
-			trace("MEM USAGE", getSize(this)); //492
+			trace("MEM USAGE", getSize(this)); //480
 		}
 		
 		private function onShowResults(s:ValueObject):void
@@ -45,8 +51,8 @@ package examples
 			for (var i:int = 0; i < 1000; i++)
 				addChild(new TestView());
 			
-			trace("MEM USAGE", getSize(this)); //492 yeap, we creating and reusing DRY!
-			trace("done in", getTimer() - start ); // for 1k views lag is only 22ms (100k 2504ms)
+			trace("MEM USAGE", getSize(this)); //480 yeap, we creating and reusing, DRY!
+			trace("done in", getTimer() - start ); // for 1k views lag is only 21ms (100k 2411ms)
 			
 		}
 		

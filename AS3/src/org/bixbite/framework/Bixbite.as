@@ -10,18 +10,17 @@ package org.bixbite.framework
 	 * @author Daniel Wasilewski
 	 */
 	public class Bixbite implements IBixbite
-	{
+	{	
 		private static var _instance:Bixbite = new Bixbite();
 		
 		private var _assets	:IAssetsLoader;
 		private var _gl		:IGraphicsFactory;
 		
-		private var stage	:Stage;
 		private var signals	:Dictionary = new Dictionary();
 		
 		public function Bixbite()
 		{
-			_instance = this;
+			
 		}
 		
 		/**
@@ -30,9 +29,8 @@ package org.bixbite.framework
 		 * @param	graphicsFactory
 		 * @param	assetsLoader
 		 */
-		public function init(stage:Stage, graphicsFactory:IGraphicsFactory = null, assetsLoader:IAssetsLoader = null):void
+		public function init(graphicsFactory:IGraphicsFactory = null, assetsLoader:IAssetsLoader = null):void
 		{
-			this.stage 	= stage;
 			this.gl 	= graphicsFactory;
 			this.assets = assetsLoader;
 		}
@@ -43,7 +41,7 @@ package org.bixbite.framework
 		 * @param	type
 		 * @param	callback
 		 */
-		public function addSignal(caller:IActor, type:String, callback:Function):void
+		public function receiveSignal(caller:IActor, type:String, callback:Function):void
 		{
 			if (!signals[type])
 				signals[type] = new Signal();

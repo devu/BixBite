@@ -7,7 +7,7 @@ package org.bixbite.framework.interfaces
 	 */
 	public interface IActor 
 	{
-		function addSignal(type:String, callback:Function):void;
+		function receiveSignal(type:String, callback:Function):void;
 		function sendSignal(type:String, params:IValueObject = null):void;
 		function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void;
 		
