@@ -1,10 +1,7 @@
 package org.bixbite.framework 
 {
-	import org.bixbite.framework.Bixbite;
 	import org.bixbite.framework.core.View;
 	import org.bixbite.framework.interfaces.IApplication;
-	import org.bixbite.framework.interfaces.IAssetsLoader;
-	import org.bixbite.framework.interfaces.IGraphicsFactory;
 	
 	/**
 	 * ...
@@ -12,9 +9,9 @@ package org.bixbite.framework
 	 */
 	public class Application extends View implements IApplication
 	{
-		public function Application(graphicsFactory:IGraphicsFactory = null, assetsLoader:IAssetsLoader = null) 
+		public function Application() 
 		{
-			Bixbite.instance.init(graphicsFactory, assetsLoader);
+			
 		}
 		
 		override public function create():void 

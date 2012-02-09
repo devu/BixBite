@@ -42,7 +42,7 @@ package org.bixbite.framework.core
 		 */
 		public function attachSignal(type:String, callback:Function):void
 		{
-			bixbite.attachSignal(this, type, callback);
+			bixbite.addSlot(this, type, callback);
 		}
 		
 		/**
@@ -51,7 +51,7 @@ package org.bixbite.framework.core
 		 */
 		public function detachSignal(type:String):void
 		{
-			bixbite.detachSignal(this, type);
+			bixbite.removeSlot(this, type);
 		}
 		
 		/**

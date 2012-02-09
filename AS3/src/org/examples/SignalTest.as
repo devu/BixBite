@@ -17,13 +17,12 @@ package org.examples
 		
 		public function SignalTest():void
 		{
-			// Optional
-			// super(new GraphicsFactor(), new AssetLoader());
+			
 		}
 		
 		override public function init():void 
 		{
-			attachSignal("showResults", onShowResults);
+			addSlot("showResults", onShowResults);
 		}
 		
 		private function onShowResults(s:ValueObject):void

@@ -1,8 +1,6 @@
 package org.bixbite.framework.core 
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.framework.Bixbite;
-	import org.bixbite.framework.interfaces.IAssetsLoader;
 	import org.bixbite.framework.interfaces.IModel;
 	
 	/**
@@ -25,20 +23,11 @@ package org.bixbite.framework.core
 	
 	public class Model extends Actor implements IModel
 	{
-		private var _assets:IAssetsLoader;
-		
 		public function Model() 
 		{
 			if (Object(this).constructor == Model)
 				throw new IllegalOperationError("Abstract Class: should be subclassed");
-				
-			_assets = Bixbite.instance.assets;
 		}
-		
-		/**
-		 * Getters / Setters
-		 */
-		public function get assets():IAssetsLoader { return _assets; }
 	}
 
 }

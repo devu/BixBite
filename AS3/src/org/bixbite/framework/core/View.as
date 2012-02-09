@@ -3,12 +3,11 @@ package org.bixbite.framework.core
 	import flash.display.Sprite;
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
-	
 	import org.bixbite.framework.Bixbite;
 	import org.bixbite.framework.interfaces.IActor;
-	import org.bixbite.framework.interfaces.IGraphicsFactory;
 	import org.bixbite.framework.interfaces.IValueObject;
 	import org.bixbite.framework.interfaces.IView;
+	
 	
 	/**
 	 * ...
@@ -75,18 +74,18 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	callback
 		 */
-		public function attachSignal(type:String, callback:Function):void
+		public function addSlot(type:String, callback:Function):void
 		{
-			bixbite.attachSignal(this, type, callback);
+			bixbite.addSlot(this, type, callback);
 		}
 		
 		/**
 		 * 
 		 * @param	type
 		 */
-		public function detachSignal(type:String):void
+		public function removeSlot(type:String):void
 		{
-			bixbite.detachSignal(this, type);
+			bixbite.removeSlot(this, type);
 		}
 		
 		/**
@@ -109,10 +108,6 @@ package org.bixbite.framework.core
 		{
 			bixbite.sendSignalTo(target, type, params);
 		}
-		
-		//read only
-		public function get gl():IGraphicsFactory { return bixbite.gl; }
-		
 	}
 
 }

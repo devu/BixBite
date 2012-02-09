@@ -17,7 +17,7 @@ package org.examples.view
 		
 		override public function init():void
 		{
-			attachSignal("updateView", onUpdateView);
+			addSlot("updateView", onUpdateView);
 		}
 		
 		private function onUpdateView(s:IValueObject):void 
