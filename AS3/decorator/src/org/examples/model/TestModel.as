@@ -24,7 +24,7 @@ package org.examples.model
 		private function letMeDoSomething(s:IValueObject):void 
 		{
 			//trace(" - > hello I am a model ->");
-			//removeSignal("doSomething");
+			//detachSignal("doSomething");
 			
 			//do some business logic calulations, get some data etc and then:
 			sendSignal("updateView");

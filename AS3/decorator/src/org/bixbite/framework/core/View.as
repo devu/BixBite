@@ -1,5 +1,7 @@
 package org.bixbite.framework.core 
 {
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
@@ -29,94 +31,66 @@ package org.bixbite.framework.core
 	 * Furthermore making things easier to work with in very systematic manier. Following Template Pattern will provides and executes set of abstract methods so you don't have to repeat yourself all the time.
 	 * */
 	
-	public class View extends Sprite implements IActor, IView
+	public class View extends Actor implements IView
 	{
 		private var bixbite			:Bixbite;
 		
 		private var _name			:String;
+		private var _content		:DisplayObjectContainer;
 		
-		public function View() 
+		public function View(content:DisplayObjectContainer = null) 
 		{
-			this.mouseEnabled = false;
-			
 			if (Object(this).constructor == View)
 				throw new IllegalOperationError("Abstract Class: should be subclassed");
 				
 			bixbite = Bixbite.instance;
 			
-			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
-			addEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
+			_content = (content) ? content : new Sprite();
 			
-			init();
+			addSlot("addToStage", addedToStage);
+			addSlot("removeFromStage", removedFromStage);
 		}
 		
-		private function addedToStage(e:Event):void 
+		private function addedToStage(s:IValueObject):void 
 		{
+			removeSlot("addToStage");
 			create();
 		}
 		
-		private function removedFromStage(e:Event):void 
+		private function removedFromStage(s:IValueObject):void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
-			removeEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
+			removeSlot("removeFromStage");
 			destroy();
 		}
 		
+		public function addView(child:IView):DisplayObject
+		{
+			bixbite.sendSignalTo(child, "addToStage");
+			return content.addChild(child.content);
+		}
+		
+		public function addChild(child:DisplayObject):DisplayObject
+		{
+			return content.addChild(child);
+		}
+		
+		public function removeView(child:IView):DisplayObject
+		{
+			bixbite.sendSignalTo(child, "removeFromStage");
+			return content.removeChild(child.content);
+		}
+		
+		public function removeChild(child:DisplayObject):DisplayObject
+		{
+			return content.removeChild(child);
+		}
+		
 		//abstract methods
-		public function init():void {}
 		public function create():void {}
 		public function destroy():void {}
 		
-		//signal mechanism
-		
-		/**
-		 * 
-		 * @param	type
-		 * @param	callback
-		 */
-		public function addSlot(type:String, callback:Function, weakKeys:Boolean = false):void
-		{
-			bixbite.addSlot(this, type, callback, weakKeys);
-		}
-		
-		/**
-		 * 
-		 * @param	type
-		 */
-		public function removeSlot(type:String):void
-		{
-			bixbite.removeSlot(this, type);
-		}
-		
-		/**
-		 * 
-		 * @param	type
-		 */
-		public function destroySlot(type:String):void
-		{
-			bixbite.destroySlot(type);
-		}
-		
-		/**
-		 * 
-		 * @param	type
-		 * @param	params
-		 */
-		public function sendSignal(type:String, params:IValueObject = null):void
-		{
-			bixbite.sendSignal(type, params);
-		}
-		
-		/**
-		 * 
-		 * @param	target
-		 * @param	type
-		 * @param	params
-		 */
-		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
-		{
-			bixbite.sendSignalTo(target, type, params);
-		}
+		public function get content():DisplayObjectContainer { return _content; }
+		public function set content(value:DisplayObjectContainer):void { _content = value; }
 	}
 
 }

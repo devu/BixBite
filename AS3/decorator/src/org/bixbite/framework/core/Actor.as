@@ -60,7 +60,7 @@ package org.bixbite.framework.core
 		 */
 		public function destroySlot(type:String):void
 		{
-			bixbite.destroySlot(type);
+			bixbite.removeSlot(this, type);
 		}
 		
 		/**

@@ -8,33 +8,31 @@ package org.bixbite.framework.core
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class Signal
+	public class Slot extends Dictionary
 	{
-		private var list:Dictionary = new Dictionary();
-		
-		public function Signal()
+		public function Slot(weakKeys:Boolean = false)
 		{
-		
+			super(weakKeys);
 		}
 		
 		public function add(caller:IActor, callback:Function):void
 		{
-			list[caller] = callback;
+			this[caller] = callback;
 		}
 		
 		public function remove(caller:IActor):void
 		{
-			delete list[caller];
+			delete this[caller];
 		}
 		
 		public function dispatch(params:IValueObject = null):void
 		{
-			for each (var f:Function in list) f(params);
+			for each (var f:Function in this) f(params);
 		}
 		
 		public function dispatchTo(target:IActor, params:IValueObject = null):void
 		{
-			if (list[target]) list[target](params);
+			if (this[target]) this[target](params);
 		}
 	
 	}

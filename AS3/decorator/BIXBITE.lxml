@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FlexBinPath>.\bin\BIXBITE.swc</FlexBinPath>
+  <FlashBinPath>.\bin\BIXBITE.flash.swc</FlashBinPath>
+  <FlexIncludeASI>false</FlexIncludeASI>
+  <MakeCS3>false</MakeCS3>
+  <MakeMXI>false</MakeMXI>
+  <IntegrateAsDoc>true</IntegrateAsDoc>
+  <LaunchAEM>false</LaunchAEM>
+  <MXPIncludeASI>false</MXPIncludeASI>
+  <Flex_IgnoreClasses>
+    <string>src\main.as</string>
+    <string>src\testview.as</string>
+    <string>src\controller\testcontroller.as</string>
+    <string>src\model\testmodel.as</string>
+    <string>src\view\testview.as</string>
+  </Flex_IgnoreClasses>
+  <CS3_IgnoreClasses>
+    <string>src\main.as</string>
+    <string>src\testview.as</string>
+    <string>src\controller\testcontroller.as</string>
+    <string>src\model\testmodel.as</string>
+    <string>src\view\testview.as</string>
+  </CS3_IgnoreClasses>
+  <CS3_PreviewType>None</CS3_PreviewType>
+</SWCProject>
