@@ -19,6 +19,7 @@
     <string>src\org\examples\signals\valueobject.as</string>
     <string>src\org\examples\view\testview.as</string>
     <string>src\org\examples\signaltest.as</string>
+    <string>src\org\examples\controller\testcontroller.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\main.as</string>
@@ -31,6 +32,7 @@
     <string>src\org\examples\signals\valueobject.as</string>
     <string>src\org\examples\view\testview.as</string>
     <string>src\org\examples\signaltest.as</string>
+    <string>src\org\examples\controller\testcontrollerbeta.as</string>
   </CS3_IgnoreClasses>
   <CS3_PreviewType>None</CS3_PreviewType>
 </SWCProject>

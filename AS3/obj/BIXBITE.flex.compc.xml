@@ -36,6 +36,5 @@
     <class>org.bixbite.framework.core.View</class>
     <class>org.bixbite.framework.core.ViewContainer</class>
     <class>org.bixbite.namespaces.BIXBITE</class>
-    <class>org.examples.controller.TestController</class>
   </include-classes>
 </flex-config>
