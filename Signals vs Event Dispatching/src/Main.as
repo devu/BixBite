@@ -1,4 +1,5 @@
-﻿package {
+﻿package 
+{
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -7,13 +8,14 @@
 	import flash.text.TextFieldAutoSize;
 	import flash.utils.getTimer;
 	import org.bixbite.framework.core.Application;
+	import org.bixbite.framework.core.Slot;
 	import org.bixbite.framework.interfaces.IValueObject;
 	import org.osflash.signals.DeluxeSignal;
 	import org.osflash.signals.Signal;
 	
 	/**
 	 * ...
-	 * @author Ross
+	 * @author Ross, modified by Daniel Wasilewski
 	 */
 	public class Main extends Sprite 
 	{
@@ -57,28 +59,54 @@
 			
 			time = getTimer();
 			deluxeSignal.add(deluxeSignalHandler);
-			for (i = 0; i < loops; i++) testSignals();
+			for (i = 0; i < loops; i++) signal.dispatch();
 			out((getTimer() - time) + " - RP Signal");
 			
 			tare();
 			
 			time = getTimer();
-			for (i = 0; i < loops; i++) testDeluxeSignals();
+			for (i = 0; i < loops; i++) deluxeSignal.dispatch();
 			out((getTimer() - time) + " - RP Deluxe Signal: ");
 			
 			tare();
 			
 			time = getTimer();
 			eventDispatcher.addEventListener(eventType, eventHandler);
-			for (i = 0; i < loops; i++) testEvents();
+			for (i = 0; i < loops; i++) eventDispatcher.dispatchEvent(event);
 			out((getTimer() - time) + " - Event: ");
 			
 			tare();
 			
 			bixbite.addSlot(signalType, bixbiteSignalHandler);
 			time = getTimer();
-			for (i = 0; i < loops; i++) testBixbite();
-			out((getTimer() - time) + " - Bixbite: ");
+			for (i = 0; i < loops; i++) bixbite.sendSignal(signalType);
+			out((getTimer() - time) + " - Bixbite send: ");
+			
+			tare();
+			
+			time = getTimer();
+			for (i = 0; i < loops; i++) bixbite.sendSignalTo(bixbite, signalType); 
+			out((getTimer() - time) + " - Bixbite sendTo: ");
+			
+			tare();
+			
+			var ref:Slot = bixbite.sendSignal(signalType);
+			time = getTimer();
+			for (i = 0; i < loops; i++) ref.dispatch();
+			out((getTimer() - time) + " - Bixbite send Ref: ");
+			
+			tare();
+			
+			var f:Function = bixbite.sendSignalTo(bixbite, signalType); 
+			time = getTimer();
+			for (i = 0; i < loops; i++) f();
+			out((getTimer() - time) + " - Bixbite sendTo Ref: ");
+			
+			tare()
+			
+			time = getTimer();
+			for (i = 0; i < loops; i++) callbackHandler();
+			out((getTimer() - time) + " - Callback: ");
 		}
 		
 		private function tare():void 
@@ -86,35 +114,11 @@
 			for (var i:uint = 0; i < loops; i++) { }
 		}
 		
-		private function testSignals():void 
-		{
-			signal.add(signalHandler);
-			signal.dispatch();
-			signal.removeAll();
-		}
-		
 		private function signalHandler():void {}
-		
-		private function testDeluxeSignals():void 
-		{
-			deluxeSignal.dispatch();
-		}
-		
 		private function deluxeSignalHandler():void {}
-		
-		private function testEvents():void 
-		{
-			eventDispatcher.dispatchEvent(event);
-		}
-		
 		private function eventHandler(e:Event):void { }
-		
-		private function testBixbite():void 
-		{
-			bixbite.sendSignal(signalType);
-		}
-		
-		private function bixbiteSignalHandler(s:IValueObject):void { }
+		private function bixbiteSignalHandler(s:IValueObject = null):void { }
+		private function callbackHandler():void {}
 		
 		protected function out(str:*):void 
 		{
