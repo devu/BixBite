@@ -50,14 +50,16 @@ package org.bixbite.framework.core
 			
 		}
 		
-		public function addView(child:IView):DisplayObject 
+		public function addView(child:IView):IView 
 		{
-			return addChild(child.content);
+			addChild(child.content);
+			return child;
 		}
 		
-		public function removeView(child:IView):DisplayObject
+		public function removeView(child:IView):IView
 		{
-			return removeChild(child.content);
+			removeChild(child.content)
+			return child;
 		}
 		
 		/**

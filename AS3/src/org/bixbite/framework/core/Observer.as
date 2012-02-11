@@ -14,6 +14,7 @@ package org.bixbite.framework.core
 		private static var _instance:Observer = new Observer();
 		
 		private var slots	:Dictionary = new Dictionary();
+		private var shortRef:Function;
 		
 		public function Observer()
 		{
@@ -28,8 +29,7 @@ package org.bixbite.framework.core
 		 */
 		public function addSlot(caller:IActor, type:String, callback:Function, weakKeys:Boolean = false):void
 		{
-			if (!slots[type])
-				slots[type] = new Slot(weakKeys);
+			if (!slots[type]) slots[type] = new Slot(weakKeys);
 			Slot(slots[type]).add(caller, callback);
 		}
 		
@@ -58,10 +58,10 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:IValueObject = null):void
+		public function sendSignal(type:String, params:IValueObject = null):Slot
 		{
-			if (slots[type])
-				Slot(slots[type]).dispatch(params);
+			if (slots[type]) Slot(slots[type]).dispatch(params);
+			return slots[type];
 		}
 		
 		/**
@@ -70,10 +70,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
+		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):Function
 		{
-			if (slots[type])
-				Slot(slots[type]).dispatchTo(target, params);
+			return Slot(slots[type]).dispatchTo(target, params);
 		}
 		
 		/**

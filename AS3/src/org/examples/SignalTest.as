@@ -1,16 +1,13 @@
 package org.examples 
 {
-	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.sampler.getSize;
 	import flash.system.System;
 	import flash.utils.getTimer;
-	import org.examples.controller.TestControllerBeta;
-	
 	import org.bixbite.framework.core.Application;
-	
 	import org.examples.controller.TestController;
+	import org.examples.controller.TestControllerBeta;
 	import org.examples.model.TestModel;
-	import org.examples.signals.ValueObject;
 	import org.examples.view.TestView;
 	
 	/**
@@ -25,18 +22,18 @@ package org.examples
 			
 			// One to many 'TestView' case scenario
 			
-			// With drawings
+			// With view drawings
 			// iterations 	STARTUP		TEST	FREE MEM		TOTAL MEM
 			// 1.000		13			3		6.540 	kb		4.700 	kb
 			// 10.000		111			27		10.892 	kb		9.048 	kb
 			// 100.000		1421		280		55.956 	kb		54.036 	kb
 			
-			// Just signals (view is not on the stage)
+			// Just signals (view is not on the disply list)
 			// iterations 	STARTUP		TEST	FREE MEM		TOTAL MEM
 			// 1.000		10			0		6.412 	kb		4.600 	kb
 			// 10.000		76			3		10.384 	kb		8.620 	kb
 			// 100.000		1068		31		53.908 	kb		52.068 	kb
-			// 1.000.000	35192		309		509.704 kb		506.876 kb
+			// 1.000.000	35192		310		509.704 kb		506.876 kb
 			
 			// 1 signal sent to 3.700,000 views per second!
 			
@@ -45,12 +42,13 @@ package org.examples
 			// Just signals (view is not on the stage)
 			// STARTUP 		- 2ms
 			// FREE MEM 	- 6.148 	kb
-			// FREE MEM 	- 4.316  	kb
+			// TOTAL MEM 	- 4.316  	kb
 			
-			// iterations 	TEST	NO PARAM(just notification)
-			// 1.000		5		4
-			// 10.000		47		47
-			// 100.000		475		470
+			// iterations 	SEND	SEND TO 	SEND(ref)	SEND TO (ref) - raw callback speed
+			// 1.000		0		0			
+			// 10.000		10		10			10			10
+			// 100.000		150		120			60			20
+			// 1.000.000	1470	1140		650			200
 			
 			// one signal sent N number of times, only one view listening
 			
@@ -64,6 +62,7 @@ package org.examples
 			
 			// as you can see, it is very scalable, number of signals * number of recievers
 			// 100.000 is acceptable but 30ms might result with visible GUI LAG since this is average render time cycle
+			// for sure you don't need to keep it running all the time
 			
 			// - to compare to Event System.
 			// Events in one-to-many are much much slower (around 8x)
@@ -74,6 +73,11 @@ package org.examples
 		
 		override public function init():void
 		{
+			stage.addEventListener("doSomethingDirect", onDoSomethingHandler);
+		}
+		
+		private function onDoSomethingHandler(e:Event):void 
+		{
 			
 		}
 		
@@ -81,17 +85,18 @@ package org.examples
 		{
 			var start:int = getTimer();
 			
-			new TestModel();
-			
 			//one-to-many
+			new TestModel();
 			new TestController(stage);
-			for (var i:int = 0; i < 1000; i++) addView(new TestView());
+			for (var i:int = 0; i < 1000000; i++) addView(new TestView());
 			
 			//many-to-one
-			//new TestControllerBeta(stage);
-			//new TestView()
+			//new TestModel();
+			//var v:TestView = new TestView();
+			//new TestControllerBeta(stage, v);
 			
 			//many-to-many
+			//new TestModel();
 			//new TestControllerBeta(stage);
 			//for (var i:int = 0; i < 100; i++) new TestView();
 			

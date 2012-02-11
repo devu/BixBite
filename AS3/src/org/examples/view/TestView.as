@@ -15,7 +15,7 @@ package org.examples.view
 		
 		public function TestView() 
 		{
-			//Call it Dependency Injection if you like
+			//Call it Dependency Injection if you like :)
 			
 			//This simple view become a leaf view, you can't add anything into it but its content might be any kind of DisplayObject
 			//var myContent:Shape = new Shape();
@@ -29,12 +29,25 @@ package org.examples.view
 			//var myContent:MovieClip = new MovieClip();
 			//myContent.gotoAndStop(2);
 			
+			//you can obiously pass references via constructor as well
+			
 			content = shape = new Shape();
+		}
+		
+		public function callMe(s:IValueObject = null):void
+		{
+			
 		}
 		
 		override public function init():void
 		{
 			addSlot("updateView", onUpdateView);
+			addSlot("doSomethingDirect", onDoSomethingDirect);
+		}
+		
+		private function onDoSomethingDirect(s:IValueObject = null):void 
+		{
+			
 		}
 		
 		private function onUpdateView(s:IValueObject):void

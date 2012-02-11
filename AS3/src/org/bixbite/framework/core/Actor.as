@@ -10,8 +10,8 @@ package org.bixbite.framework.core
 	 */
 	public class Actor implements IActor
 	{
-		private var observer	:Observer;
-		private var _name		:String;
+		private var observer		:Observer;
+		private var _name			:String;
 		
 		/**
 		 * 
@@ -64,9 +64,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:IValueObject = null):void
+		public function sendSignal(type:String, params:IValueObject = null):Slot
 		{
-			observer.sendSignal(type, params);
+			return observer.sendSignal(type, params);
 		}
 		
 		/**
@@ -75,9 +75,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):void
+		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):Function
 		{
-			observer.sendSignalTo(target, type, params);
+			return observer.sendSignalTo(target, type, params);
 		}
 		
 		/**

@@ -30,9 +30,10 @@ package org.bixbite.framework.core
 			for each (var f:Function in this) f(params);
 		}
 		
-		public function dispatchTo(target:IActor, params:IValueObject = null):void
+		public function dispatchTo(target:IActor, params:IValueObject = null):Function
 		{
 			if (this[target]) this[target](params);
+			return this[target]
 		}
 	
 	}

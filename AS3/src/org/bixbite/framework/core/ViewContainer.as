@@ -27,10 +27,11 @@ package org.bixbite.framework.core
 				throw new IllegalOperationError("Abstract Class: should be subclassed");
 		}
 		
-		public function addView(child:IView):DisplayObject
+		public function addView(child:IView):IView
 		{
 			sendSignalTo(child, "addToStage");
-			return _content.addChild(child.content);
+			_content.addChild(child.content);
+			return child;
 		}
 		
 		public function addChild(child:DisplayObject):DisplayObject
@@ -38,10 +39,11 @@ package org.bixbite.framework.core
 			return _content.addChild(child);
 		}
 		
-		public function removeView(child:IView):DisplayObject
+		public function removeView(child:IView):IView
 		{
 			sendSignalTo(child, "removeFromStage");
-			return _content.removeChild(child.content);
+			_content.removeChild(child.content);
+			return child
 		}
 		
 		public function removeChild(child:DisplayObject):DisplayObject
