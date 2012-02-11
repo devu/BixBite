@@ -95,9 +95,19 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:IValueObject = null):void
+		public function sendSignal(type:String, params:IValueObject = null):Slot
 		{
-			observer.sendSignal(type, params);
+			return observer.sendSignal(type, params);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):Function
+		{
+			return observer.sendSignalTo(target, type, params);
 		}
 		
 	}
