@@ -88,7 +88,7 @@ package org.examples
 			//one-to-many
 			new TestModel();
 			new TestController(stage);
-			for (var i:int = 0; i < 1000000; i++) addView(new TestView());
+			for (var i:int = 0; i < 10000; i++) addView(new TestView());
 			
 			//many-to-one
 			//new TestModel();
