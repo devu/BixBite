@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\BIXBITE\.\bin\BIXBITE.swc</output>
+  <output>E:\xampp\htdocs\BIXBITE\AS3\.\bin\BIXBITE.swc</output>
   <use-network>true</use-network>
   <target-player>11.0</target-player>
   <warnings>true</warnings>
@@ -17,25 +17,25 @@
     <use-resource-bundle-metadata>true</use-resource-bundle-metadata>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path>
-      <path-element>e:\xampp\htdocs\bixbite\src</path-element>
+      <path-element>e:\xampp\htdocs\bixbite\as3\src</path-element>
     </source-path>
   </compiler>
   <include-classes>
-    <class>org.bixbite.framework.Application</class>
-    <class>org.bixbite.framework.Bixbite</class>
     <class>org.bixbite.framework.interfaces.IApplication</class>
-    <class>org.bixbite.framework.interfaces.IBixbite</class>
     <class>org.bixbite.framework.interfaces.IController</class>
-    <class>org.bixbite.framework.interfaces.IView</class>
     <class>org.bixbite.framework.interfaces.IModel</class>
-    <class>org.bixbite.framework.interfaces.IActor</class>
     <class>org.bixbite.framework.interfaces.IValueObject</class>
-    <class>org.bixbite.framework.interfaces.IAssetsLoader</class>
-    <class>org.bixbite.framework.interfaces.IGraphicsFactory</class>
+    <class>org.bixbite.framework.interfaces.IActor</class>
+    <class>org.bixbite.framework.interfaces.IView</class>
     <class>org.bixbite.framework.core.Controller</class>
-    <class>org.bixbite.framework.core.View</class>
-    <class>org.bixbite.framework.core.Model</class>
     <class>org.bixbite.framework.core.Actor</class>
-    <class>org.bixbite.framework.core.Signal</class>
+    <class>org.bixbite.framework.core.Model</class>
+    <class>org.bixbite.framework.core.Slot</class>
+    <class>org.bixbite.framework.core.Observer</class>
+    <class>org.bixbite.framework.core.Application</class>
+    <class>org.bixbite.framework.core.View</class>
+    <class>org.bixbite.framework.core.ViewContainer</class>
+    <class>org.bixbite.namespaces.BIXBITE</class>
+    <class>org.examples.controller.TestController</class>
   </include-classes>
 </flex-config>

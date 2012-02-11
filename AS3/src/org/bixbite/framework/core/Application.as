@@ -6,6 +6,7 @@ package org.bixbite.framework.core
 	import org.bixbite.framework.core.Observer;
 	import org.bixbite.framework.interfaces.IActor;
 	import org.bixbite.framework.interfaces.IApplication;
+	import org.bixbite.framework.interfaces.IValueObject;
 	import org.bixbite.framework.interfaces.IView;
 	
 	/**
@@ -76,6 +77,25 @@ package org.bixbite.framework.core
 		public function removeSlot(type:String):void
 		{
 			observer.removeSlot(this, type);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 */
+		public function destroySlot(type:String):void
+		{
+			observer.destroySlot(type);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignal(type:String, params:IValueObject = null):void
+		{
+			observer.sendSignal(type, params);
 		}
 		
 	}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>BIXBITE FRAMEWORK</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="Language Interpreter and cross-platform application framework" />
+	<meta name=viewport content="width=device-width, target-densitydpi=device-dpi, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	
+	<link rel="stylesheet" href="css/default.css" />
+	<script type="text/javascript" src="js/swfobject.js"></script>
+	<script type="text/javascript" src="js/bixbite.js"></script>
+</head>
+
+<body>
+	
+	<div id="flash"></div>
+	
+	<script type="text/javascript">
+		
+		var application = new Application();
+		
+		application.addSlot("showResults", onResults );
+		
+		function onResults(signal){
+			console.log(":)");
+		}
+		
+		application.sendSignal("showResults");
+		
+	</script>
+	
+</body>
+</html>

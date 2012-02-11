@@ -19,6 +19,7 @@ package org.examples.model
 		{
 			//still not so sure about addSignal instead addSlot or something...
 			addSlot("doSomething", letMeDoSomething);
+			addSlot("doSomething", letMeDoSomethingElse);
 		}
 		
 		private function letMeDoSomething(s:IValueObject):void 
@@ -27,6 +28,11 @@ package org.examples.model
 			
 			//do some business logic calulations, get some data etc and then:
 			sendSignal("updateView");
+		}
+		
+		private function letMeDoSomethingElse(s:IValueObject):void 
+		{
+			trace("model is doing something else");
 		}
 		
 	}

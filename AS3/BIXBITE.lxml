@@ -14,6 +14,11 @@
     <string>src\controller\testcontroller.as</string>
     <string>src\model\testmodel.as</string>
     <string>src\view\testview.as</string>
+    <string>src\org\examples\controller\testcontrollerbeta.as</string>
+    <string>src\org\examples\model\testmodel.as</string>
+    <string>src\org\examples\signals\valueobject.as</string>
+    <string>src\org\examples\view\testview.as</string>
+    <string>src\org\examples\signaltest.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\main.as</string>
@@ -21,6 +26,11 @@
     <string>src\controller\testcontroller.as</string>
     <string>src\model\testmodel.as</string>
     <string>src\view\testview.as</string>
+    <string>src\org\examples\controller\testcontroller.as</string>
+    <string>src\org\examples\model\testmodel.as</string>
+    <string>src\org\examples\signals\valueobject.as</string>
+    <string>src\org\examples\view\testview.as</string>
+    <string>src\org\examples\signaltest.as</string>
   </CS3_IgnoreClasses>
   <CS3_PreviewType>None</CS3_PreviewType>
 </SWCProject>

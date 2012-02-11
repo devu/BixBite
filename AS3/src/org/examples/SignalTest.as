@@ -74,12 +74,7 @@ package org.examples
 		
 		override public function init():void
 		{
-			addSlot("showResults", onShowResults);
-		}
-		
-		private function onShowResults(s:ValueObject):void
-		{
-			trace("-> TopView -> done in", getTimer() - s.time );
+			
 		}
 		
 		override public function create():void 
