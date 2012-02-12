@@ -50,16 +50,16 @@ package org.examples.view
 			
 		}
 		
-		private function onUpdateView(s:IValueObject):void
+		private function onUpdateView(s:IValueObject = null):void
 		{
 			//removeSlot("updateView");
 			
-			//shape.x = Math.random() * 800;
-			//shape.y = Math.random() * 800;
+			shape.x = Math.random() * 800;
+			shape.y = Math.random() * 800;
 			
-			//shape.graphics.clear();
-			//shape.graphics.beginFill(0xFF0000, 1);
-			//shape.graphics.drawRect(0, 0, 10, 10);
+			shape.graphics.clear();
+			shape.graphics.beginFill(0xFF0000, 1);
+			shape.graphics.drawRect(0, 0, 10, 10);
 		}
 		
 	}

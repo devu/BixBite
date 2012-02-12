@@ -21,7 +21,7 @@ package org.examples.model
 			addSlot("doSomething", letMeDoSomething);
 		}
 		
-		private function letMeDoSomething(s:IValueObject):void 
+		private function letMeDoSomething(s:IValueObject = null):void 
 		{
 			//removeSlot("doSomething");
 			

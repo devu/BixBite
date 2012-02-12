@@ -5,6 +5,7 @@ package org.examples
 	import flash.system.System;
 	import flash.utils.getTimer;
 	import org.bixbite.framework.core.Application;
+	import org.bixbite.framework.interfaces.IValueObject;
 	import org.examples.controller.TestController;
 	import org.examples.controller.TestControllerBeta;
 	import org.examples.model.TestModel;
@@ -31,9 +32,9 @@ package org.examples
 			// Just signals (view is not on the disply list)
 			// iterations 	STARTUP		TEST	FREE MEM		TOTAL MEM
 			// 1.000		10			0		6.412 	kb		4.600 	kb
-			// 10.000		76			3		10.384 	kb		8.620 	kb
-			// 100.000		1068		31		53.908 	kb		52.068 	kb
-			// 1.000.000	35192		310		509.704 kb		506.876 kb
+			// 10.000		76			2		10.384 	kb		8.620 	kb
+			// 100.000		1068		20		53.908 	kb		52.068 	kb
+			// 1.000.000	35192		260		509.704 kb		506.876 kb
 			
 			// 1 signal sent to 3.700,000 views per second!
 			
@@ -88,7 +89,7 @@ package org.examples
 			//one-to-many
 			new TestModel();
 			new TestController(stage);
-			for (var i:int = 0; i < 10000; i++) addView(new TestView());
+			for (var i:int = 0; i < 1000; i++) addView(new TestView());
 			
 			//many-to-one
 			//new TestModel();
@@ -102,8 +103,13 @@ package org.examples
 			
 			trace("MEM USAGE", getSize(this));
 			trace("STARTUP", getTimer() - start );
-			trace("FREE MEM", System.privateMemory/1024 );
-			trace("TOTAL MEM", System.totalMemoryNumber/1024 );
+			trace("FREE MEM", System.privateMemory / 1024 );
+			trace("TOTAL MEM", System.totalMemoryNumber / 1024 );
+			
+		}
+		
+		private function onSlotAdded(s:IValueObject = null):void 
+		{
 			
 		}
 		

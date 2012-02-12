@@ -1,8 +1,10 @@
 package org.bixbite.framework.core 
 {
+	import avmplus.getQualifiedClassName;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.framework.interfaces.IActor;
 	import org.bixbite.framework.interfaces.IValueObject;
+	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
 	 * ...
@@ -10,6 +12,7 @@ package org.bixbite.framework.core
 	 */
 	public class Actor implements IActor
 	{
+		private var _uid			:int = -1;
 		private var observer		:Observer;
 		private var _name			:String;
 		
@@ -20,9 +23,9 @@ package org.bixbite.framework.core
 		{
 			if (Object(this).constructor == Actor)
 				throw new IllegalOperationError("Abstract Class: should be subclassed");
-				
-			observer = Observer.instance;
 			
+			observer = Observer.instance;
+			_uid = observer.BIXBITE::getUID();
 			init();
 		}
 		
@@ -36,9 +39,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	callback
 		 */
-		public function addSlot(type:String, callback:Function, weakKeys:Boolean = false):void
+		public function addSlot(type:String, callback:Function):void
 		{
-			observer.addSlot(this, type, callback, weakKeys);
+			observer.BIXBITE::addSlot(uid, type, callback);
 		}
 		
 		/**
@@ -47,7 +50,7 @@ package org.bixbite.framework.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			observer.removeSlot(this, type);
+			observer.BIXBITE::removeSlot(uid, type);
 		}
 		
 		/**
@@ -56,7 +59,7 @@ package org.bixbite.framework.core
 		 */
 		public function destroySlot(type:String):void
 		{
-			observer.removeSlot(this, type);
+			observer.BIXBITE::removeSlot(uid, type);
 		}
 		
 		/**
@@ -64,9 +67,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:IValueObject = null):Slot
+		public function sendSignal(type:String, params:IValueObject = null):Array
 		{
-			return observer.sendSignal(type, params);
+			return observer.BIXBITE::sendSignal(type, params);
 		}
 		
 		/**
@@ -77,7 +80,7 @@ package org.bixbite.framework.core
 		 */
 		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):Function
 		{
-			return observer.sendSignalTo(target, type, params);
+			return observer.BIXBITE::sendSignalTo(target.uid, type, params);
 		}
 		
 		/**
@@ -85,6 +88,9 @@ package org.bixbite.framework.core
 		 */
 		public function get name():String { return _name; }
 		public function set name(value:String):void { _name = value; }
+		
+		//read only
+		public function get uid():int { return _uid; }
 	}
 
 }

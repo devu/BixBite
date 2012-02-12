@@ -17,10 +17,10 @@ package org.examples.controller
 	 */
 	public class TestControllerBeta extends Controller 
 	{
-		private var time:int;
-		private var stage:Stage;
-		private var parentView:TestView;
-		private var max:int;
+		private var time		:int;
+		private var stage		:Stage;
+		private var max			:int;
+		private var parentView	:TestView;
 		
 		public function TestControllerBeta(stage:Stage, parentView:TestView) 
 		{
@@ -32,7 +32,7 @@ package org.examples.controller
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			var i:int;
-			max = 10000;
+			max = 100000;
 			
 			tare();
 			
@@ -43,8 +43,9 @@ package org.examples.controller
 			//vo.time = getTimer();
 			
 			//and notify our Model
-			var s:Slot = sendSignal("doSomethingDirect");
-			for (i = 0; i < max; i++) s.dispatch();
+			var s:Array = sendSignal("doSomethingDirect");
+			for (i = 0; i < max; i++) for each (var f:Function in s) f();
+			
 			//for (i = 0; i < max; i++) sendSignal("doSomethingDirect");
 			trace("send", getTimer() - time);
 			
@@ -57,11 +58,9 @@ package org.examples.controller
 			tare();
 			
 			time = getTimer();
-			//var f:Function = sendSignalTo(parentView, "doSomething");
-			//trace(f);
 			var myF:Function = sendSignalTo(parentView, "doSomethingDirect");
-			for (i = 0; i < max; i++) myF();
-			//for (i = 0; i < max; i++) sendSignalTo(parentView, "doSomethingDirect");
+			//for (i = 0; i < max; i++) myF();
+			for (i = 0; i < max; i++) sendSignalTo(parentView, "doSomethingDirect");
 			trace("sendTo", getTimer() - time);
 			
 			tare();

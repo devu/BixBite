@@ -1,6 +1,5 @@
 package org.bixbite.framework.interfaces 
 {
-	
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
@@ -9,6 +8,8 @@ package org.bixbite.framework.interfaces
 	{
 		function get name():String
 		function set name(value:String):void
+		
+		function get uid():int;
 	}
 	
 }

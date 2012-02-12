@@ -1,13 +1,12 @@
 package org.bixbite.framework.core 
 {
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.framework.core.Observer;
 	import org.bixbite.framework.interfaces.IActor;
-	import org.bixbite.framework.interfaces.IApplication;
 	import org.bixbite.framework.interfaces.IValueObject;
 	import org.bixbite.framework.interfaces.IView;
+	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
 	 * ...
@@ -18,13 +17,16 @@ package org.bixbite.framework.core
 	 * This is only because Flash Player nature and requirements.
 	 * Document Class must extend DsplayObject.
 	 */
-	public class Application extends Sprite implements IApplication, IActor
+	public class Application extends Sprite implements IActor
 	{
-		private var observer:Observer;
+		private var observer	:Observer;
+		private var _uid		:int;
 		
 		public function Application() 
 		{
 			observer = Observer.instance;
+			_uid = observer.BIXBITE::getUID();
+			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			
 			init();
@@ -69,7 +71,7 @@ package org.bixbite.framework.core
 		 */
 		public function addSlot(type:String, callback:Function, weakKeys:Boolean = false):void
 		{
-			observer.addSlot(this, type, callback, weakKeys);
+			observer.BIXBITE::addSlot(_uid, type, callback, weakKeys);
 		}
 		
 		/**
@@ -78,7 +80,7 @@ package org.bixbite.framework.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			observer.removeSlot(this, type);
+			observer.BIXBITE::removeSlot(_uid, type);
 		}
 		
 		/**
@@ -87,7 +89,7 @@ package org.bixbite.framework.core
 		 */
 		public function destroySlot(type:String):void
 		{
-			observer.destroySlot(type);
+			observer.BIXBITE::destroySlot(type);
 		}
 		
 		/**
@@ -95,9 +97,9 @@ package org.bixbite.framework.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:IValueObject = null):Slot
+		public function sendSignal(type:String, params:IValueObject = null):Array
 		{
-			return observer.sendSignal(type, params);
+			return observer.BIXBITE::sendSignal(type, params);
 		}
 		
 		/**
@@ -107,7 +109,12 @@ package org.bixbite.framework.core
 		 */
 		public function sendSignalTo(target:IActor, type:String, params:IValueObject = null):Function
 		{
-			return observer.sendSignalTo(target, type, params);
+			return observer.BIXBITE::sendSignalTo(target.uid, type, params);
+		}
+		
+		public function get uid():int 
+		{
+			return _uid;
 		}
 		
 	}
