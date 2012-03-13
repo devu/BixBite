@@ -16,7 +16,8 @@ Release log
 - using just a core you can create your own branch or have own idea how you can use it. But from this point we have started creating branches you might pick up the one you prefer.
 - framework layer is completely independent from the core.
 
-Framework Classic Branch
+- framework branches
+<b>Classic</b>
 There is few initial classes that let you built classic flash AS3 projects using Composite and Decorator pattern.
 Composite pattern is being used to create nested views with a structure similar to what we know from Display List.
 Decorator pattern lets you work with native Display Objects inside any View.
@@ -28,11 +29,11 @@ Planed for future releases
 
 - more branches of framework:
     
-Framework Blit
+<b>Framework Blit</b>
 - where views relies on bitmap output data only
 
-Framework CustomDSP
+<b>Framework CustomDSP</b>
 - custom display list implementation, stripped out version of native one to make your application tiny especialy for mobile development.
 
-Framework Stage3D
+<b>Framework Stage3D</b>
 - custom display list and graphics implementation that relies on Stage3D GPU accelerated API
