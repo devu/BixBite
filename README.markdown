@@ -4,6 +4,35 @@ Bixbite is released under the MIT license.
 
 For more info, please visit the [Bixbite](http://www.bixbite.org)
 
-For now just initial push to GitHub, MVC Core and simple signal system implementation in AS3. More examples of usage and detailed description will follow.
+<b>This is Beta release of AS3 port of Bixbite MVC framework. Use on your own risk.</b>
 
-Stay tuned.
+Release log
+0.2.9 What's new
+
+- documentation
+- swc libraries
+- core as a microarchitecture is ready and fully functioning, (not unit tested yet).
+- core has very small footprint. Just 3kb with all nesesary classes to start.
+- using just a core you can create your own branch or have own idea how you can use it. But from this point we have started creating branches you might pick up the one you prefer.
+- framework layer is completly independend from the core.
+
+Framework Classic Branch
+There is few initial classes that let you built classic flash AS3 projects usign Composite and Decorator pattern. 
+Composite pattern is being used to create nested views with a structure similar to what we know from Display List.
+Decorator pattern lets you work with native Display Objects inside any View.
+
+Planed for future releases
+- More detailed DOCS.
+- components - set of functioning triads MVC and acompaning signals, that perform some specific tasks, so you can easly add to your project.
+- examples, examples, examples.
+
+- more branches of framework:
+	
+Framework Blit
+- where views relies on bitmap output data only
+
+Framework CustomDSP
+- custom display list implementation, stripped out version of native one to make your application tiny especialy for mobile development.
+
+Framework Stage3D
+- custom display list and graphics implementation that relies on Stage3D GPU accelerated API
