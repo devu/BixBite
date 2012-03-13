@@ -1,4 +1,18 @@
-Bixbite - Cross platform application framework and interpreter
+Looking for robust, flexible but small and scalable micro architecture and don't want to sacrifice any processor cycle? Look no further!
+
+For time being the core part of bigger project has been open to public.
+<b>Bixbite MVC</b> - The fastest and simplest MVC and Signal/Slot based ActionScript 3 framework!
+
+MVC paradigm inspired by [SMALLTALK 80] (http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html)
+Signal/Slot system inspired by [QT framework] (http://qt-project.org/doc/qt-4.8/signalsandslots.html)
+   
+Core framework ready to go has only 2.8kb footprint.
+Signal/Slot and Request/Response communication mechanism has been designed to keep all Actors completely decoupled.
+That gave us possibility to create independent components or triads that can be added to any Bixbite based project without clashes, cross references and dependencies.
+That makes it perfect modular system. In the same time sticks to MVC paradigm that is based on very first concept of MVC from 70's. Having only 1 layer of abstraction and nested, Composite Pattern base, view structure. At this stage this framework is tiny, AS3 friendly, not intrusive, type safe and the fastest for performance critical code. Signal/Slot system is even faster than Robert Penner Signals implementation and is not relying on Dictionaries.
+
+But this is not enough yet. Signal referencing mechanism will let you perform notification with a speed of local callback (or arrays for multiple listeners).
+There is nothing faster in AS3 world that AS3 world itself!
 
 Bixbite is released under the MIT license.
 
@@ -28,7 +42,7 @@ Planed for future releases
 - examples, examples, examples.
 
 - more branches of framework:
-    
+   
 <b>Framework Blit</b>
 - where views relies on bitmap output data only
 
