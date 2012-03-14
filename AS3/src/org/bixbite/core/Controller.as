@@ -37,7 +37,7 @@ package org.bixbite.core
 	 * There is NO place for controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.2.10
      */
 	public class Controller extends Actor implements IController 
 	{
@@ -55,8 +55,10 @@ package org.bixbite.core
 		
 		/**
          * <p>Standard method of broadcasting a signal across the system. Any actor with a slot added of certain signal type will react to it. This is multi-cast and asynchronous signal/slot system implementation.
-         * You have to be aware that order of execution is unpredictable, if you need to take control over it, consider different signal types being executed one after another. And this is what you can control synchronously. Priority implementation is not needed. Even if possible would sacrifice to much of performance benefits.</p>
-         * @param    type type of the signal as a String
+         * You have to be aware that order of execution is unpredictable, if you need to take control over it, consider different signal types being executed one after another. And this is what you can control synchronously. 
+		 * Priority implementation is not needed. Even if possible would sacrifice to much of performance benefits.</p>
+         * 
+		 * @param    type type of the signal as a String
          */
 		public function sendSignal(type:String):void
 		{
@@ -69,11 +71,11 @@ package org.bixbite.core
          *
          * @param    type, type of the signal as a String
          * @param    callback, listener function that will be triggered as soon as involved actor receive request.
-         * @param    acton, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and to many unique signal types / slots.
+         * @param    action, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and creating too many unique signal types / slots.
          */
-		public function sendRequest(type:String, callback:Function, identifier:String = null):void
+		public function sendRequest(type:String, callback:Function, action:String = null):void
 		{
-			signal.BIXBITE::identifier = identifier;
+			signal.BIXBITE::action = action;
 			_observer.sendRequest(uid, type, signal, callback);
 		}
 		
@@ -82,7 +84,7 @@ package org.bixbite.core
          * This way you have opportunity to execute calls with a native speed of accessing any local array. Nothing will be faster than that. If you have just few callbacks in returned array consider reference them directly as a functions, so the speed will equal exactly the speed of calling local method!
          * However, you have to remember, and this is your responsibility as developer, to kill references to it if no longer needed. Do not over use it.</p>
          *
-         * @param    type type of the signal as a String
+         * @param   type type of the signal as a String
          * @return  array of the listeners attached to provided type of signal.
          */
 		public function getSlotReferences(type:String):Array
