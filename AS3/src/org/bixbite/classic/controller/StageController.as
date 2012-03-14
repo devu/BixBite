@@ -36,7 +36,7 @@ package org.bixbite.classic.controller
 	 * Provides additional values such as center of the stage and orientation.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.2.10
 	 */
 	public class StageController extends Controller 
 	{
@@ -44,6 +44,7 @@ package org.bixbite.classic.controller
 		public static const ORIENTATION_LANDSCAPE	:String = "stageOrientationLandscape";
 		
 		private var stageSignal:StageSignal;
+		private var currentOrientation:String;
 		
 		/**
 		 * Constructor, provides injection for common settings.
@@ -71,7 +72,7 @@ package org.bixbite.classic.controller
 		}
 		
 		/**
-		 * When Stage will change its displayState will broadcast StageSignal.UPDATE isgnal
+		 * When Stage will change its displayState will broadcast StageSignal.UPDATE signal
 		 * @param	e, native Event recieved from stage.
 		 */
 		private function onStageFullScreen(e:FullScreenEvent):void 
@@ -81,7 +82,8 @@ package org.bixbite.classic.controller
 		}
 		
 		/**
-		 * When Stage will change its displayState will broadcast StageSignal.UPDATE isgnal
+		 * When Stage will change its size will broadcast StageSignal.RESIZE signal. 
+		 * If size of stage will affect orientation StageSignal.UPDATE will be fired.
 		 * @param	e, native Event recieved from stage.
 		 */
 		private function onStageResize(e:Event):void 
@@ -96,6 +98,10 @@ package org.bixbite.classic.controller
 		private function invalidate():void 
 		{
 			stageSignal.orientation = (stage.stageWidth > stage.stageHeight) ? ORIENTATION_LANDSCAPE : ORIENTATION_PORTRAIT;
+			if (stageSignal.orientation != currentOrientation){
+				currentOrientation = stageSignal.orientation;
+				sendSignal(StageSignal.UPDATE);
+			}
 			stageSignal.centerWidth = stage.stageWidth * 0.5;
 			stageSignal.centerHeight = stage.stageHeight * 0.5;
 		}
