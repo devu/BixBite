@@ -29,7 +29,7 @@ package org.bixbite.core.interfaces
 	 * Primary reason for this interface is for polymorphism purposes and provide access to common shared properties of all actors.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public interface IActor 
 	{

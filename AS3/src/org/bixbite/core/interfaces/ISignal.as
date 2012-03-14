@@ -25,7 +25,7 @@ package org.bixbite.core.interfaces
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public interface ISignal 
 	{

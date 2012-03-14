@@ -38,7 +38,7 @@ package org.bixbite.core
      * You can have multiple Custom Signals to send different values defined for each actor and keep reassigning them.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
      */
 	public class Signal implements ISignal 
 	{

@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * Bulding application hierarchy you need to start from TopView that serves as a root for all Views</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public class View extends Actor implements IView
 	{
@@ -45,29 +45,13 @@ package org.bixbite.core
 		private var _observer	:Observer 	= Observer.getInstance();
 		
 		/**
-		 * Constructor, View is an abstract class, cannot be directly instatiated. It must be subclassed.
-		 */
+         * Constructor - this class cannot be directly instantiated.
+         */
 		public function View() 
 		{
 			if (Object(this).constructor == View) throw new IllegalOperationError("Abstract Class");
 			init();
  		}
-		
-		/**
-         * This is the way how usually views communicates with Signal/Slot system and external world, they requesting data.
-         * This is why they have only this method implemented. There is no need to notify any other class.
-         * View will not perform any business logic on its own.
-         * @param    type, type of the signal as a String
-         * @param    callback, listener function that will be triggered as soon as involved actor receive request.
-         * @param    action, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and to many unique signal types / slots.
-         */
-		public function sendRequest(type:String, callback:Function, action:String = null):void
-		{
-			signal.BIXBITE::action = action;
-			_observer.sendRequest(uid, type, signal, callback);
-		}
-		
-		
 	}
 
 }

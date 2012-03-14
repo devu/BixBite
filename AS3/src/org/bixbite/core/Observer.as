@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public class Observer
 	{

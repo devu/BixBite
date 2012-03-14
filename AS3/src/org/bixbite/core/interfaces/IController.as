@@ -28,7 +28,7 @@ package org.bixbite.core.interfaces
 	 * Primary reason for this interface is for polymorphism purposes
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public interface IController extends IActor
 	{

@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * <p>Purpose of this class is to provide unified way to register the member within Observer pattern, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.3.1
 	 */
 	public class Actor implements IActor
 	{
@@ -139,6 +139,43 @@ package org.bixbite.core
 		public function removeAllSlots(type:String):void
 		{
 			_observer.removeAllSlots(type);
+		}
+		
+		/**
+         * <p>Standard method of broadcasting a signal across the system. Any actor with a slot added of certain signal type will react to it. This is multi-cast and asynchronous signal/slot system implementation.
+         * You have to be aware that order of execution is unpredictable, if you need to take control over it, consider different signal types being executed one after another. And this is what you can control synchronously. Priority implementation is not needed. Even if possible would sacrifice to much of performance benefits.</p>
+         * @param    type type of the signal as a String
+         */
+		public function sendSignal(type:String):void
+		{
+			_observer.sendSignal(type, signal);
+		}
+		
+		/**
+         * <p>This method is a direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
+         * In case of Controller that method will be used to notify any Model or even multiple Models, that having slot added of provided type of the signal.</p>
+         *
+         * @param    type, type of the signal as a String
+         * @param    callback, listener function that will be triggered as soon as involved actor receive request.
+         * @param    acton, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and to many unique signal types / slots.
+         */
+		public function sendRequest(type:String, callback:Function, action:String = null):void
+		{
+			signal.BIXBITE::action = action;
+			_observer.sendRequest(uid, type, signal, callback);
+		}
+		
+		/**
+         * <p>This method is a helper method that will give you references to all involved actors listening to particular signal type, without executing it. Use it for performance benefits in critical situations.
+         * This way you have opportunity to execute calls with a native speed of accessing any local array. Nothing will be faster than that. If you have just few callbacks in returned array consider reference them directly as a functions, so the speed will equal exactly the speed of calling local method!
+         * However, you have to remember, and this is your responsibility as developer, to kill references to it if no longer needed. Do not over use it.</p>
+         *
+         * @param   type type of the signal as a String
+         * @return  array of the listeners attached to provided type of signal.
+         */
+		public function getSlotReferences(type:String):Array
+		{
+			return _observer.getSlotReferences(type)
 		}
 		
 		/**
