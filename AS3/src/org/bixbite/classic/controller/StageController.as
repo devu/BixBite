@@ -36,15 +36,22 @@ package org.bixbite.classic.controller
 	 * Provides additional values such as center of the stage and orientation.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.10
+	 * @version 0.3.2
 	 */
 	public class StageController extends Controller 
 	{
-		public static const ORIENTATION_PORTRAIT	:String = "stageOrientationPortrait";
-		public static const ORIENTATION_LANDSCAPE	:String = "stageOrientationLandscape";
+		public static const ORIENTATION_PORTRAIT		:String = "stageOrientationPortrait";
+		public static const ORIENTATION_LANDSCAPE		:String = "stageOrientationLandscape";
 		
-		private var stageSignal:StageSignal;
-		private var currentOrientation:String;
+		public static const SCREEN_FACTOR_DESKTOP		:String = "stageScreenFactorDesktop";
+		public static const SCREEN_FACTOR_DESKTOP_HD	:String = "stageScreenFactorDesktopHD";
+		public static const SCREEN_FACTOR_TABLET		:String = "stageScreenFactorTablet";
+		public static const SCREEN_FACTOR_MOBILE		:String = "stageScreenFactorMobile";
+		public static const SCREEN_FACTOR_MOBILE_LARGE	:String = "stageScreenFactorMobileLarge";
+		
+		private var stageSignal		:StageSignal;
+		private var orientation		:String;
+		private var screenFactor	:String;
 		
 		/**
 		 * Constructor, provides injection for common settings.
@@ -68,7 +75,16 @@ package org.bixbite.classic.controller
 			stage.addEventListener(FullScreenEvent.FULL_SCREEN, onStageFullScreen);
 			
 			invalidate();
+			
+			addSlot(StageSignal.UPDATE_REQUEST, onUpdateRequest);
 			sendSignal(StageSignal.UPDATE);
+		}
+		
+		private function onUpdateRequest(s:ISignal):StageSignal 
+		{
+			invalidate();
+			sendSignal(StageSignal.UPDATE);
+			return stageSignal
 		}
 		
 		/**
@@ -98,10 +114,29 @@ package org.bixbite.classic.controller
 		private function invalidate():void 
 		{
 			stageSignal.orientation = (stage.stageWidth > stage.stageHeight) ? ORIENTATION_LANDSCAPE : ORIENTATION_PORTRAIT;
-			if (stageSignal.orientation != currentOrientation){
-				currentOrientation = stageSignal.orientation;
+			
+			if (stageSignal.orientation != orientation){
+				orientation = stageSignal.orientation;
 				sendSignal(StageSignal.UPDATE);
 			}
+			
+			if (stage.stageWidth <= 480){
+				stageSignal.screenFactor = SCREEN_FACTOR_MOBILE;
+			} else if (stage.stageWidth > 480 && stage.stageWidth <= 640){
+				stageSignal.screenFactor = SCREEN_FACTOR_MOBILE_LARGE;
+			} else if (stage.stageWidth > 640 && stage.stageWidth <= 1024){
+				stageSignal.screenFactor = SCREEN_FACTOR_TABLET;
+			} else if (stage.stageWidth > 1024 && stage.stageWidth <= 1920) {
+				stageSignal.screenFactor = SCREEN_FACTOR_DESKTOP;
+			} else {
+				stageSignal.screenFactor = SCREEN_FACTOR_DESKTOP_HD;
+			}
+			
+			if (stageSignal.screenFactor != screenFactor){
+				screenFactor = stageSignal.screenFactor;
+				sendSignal(StageSignal.UPDATE);
+			}
+			
 			stageSignal.centerWidth = stage.stageWidth * 0.5;
 			stageSignal.centerHeight = stage.stageHeight * 0.5;
 		}
