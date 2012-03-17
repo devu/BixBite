@@ -33,7 +33,7 @@ package org.bixbite.core
 	 * <p>The View manages the graphical and/or textual output of the application.</p>
 	 * <p>Framework provides basic implementation of nested structure of the Views.
 	 * Provides set of methods similar to the native Flash Display List and manages nested tree hierarchy. You can start with StageView, DisplayView or DisplayViewContainer as a ready to work building blocks.</p>
-	 * The View itself is just a subclass of Actor as any other member of MVC to provide Base Abstract class ready to extend and work with. We decided to keep it this way for future development purposes. 
+	 * <p>The View itself is just a subclass of Actor as any other member of MVC to provide Base Abstract class ready to extend and work with. We decided to keep it this way for future development purposes. 
 	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
 	 * 
 	 * @langversion	3.0
