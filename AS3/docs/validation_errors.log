@@ -1,3 +1,3 @@
-Text for description in org.bixbite.mvc:View is not valid.
-org.xml.sax.SAXParseException: The element type "i" must be terminated by the matching end-tag "</i>".
+Text for description in org.bixbite.core:View is not valid.
+No matching start tag.
 

@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<docProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <pageTitle>Bixbite</pageTitle>
-  <classPaths>E:\xampp\htdocs\2012\BIXBITE_2\src\org\bixbite\mvc;E:\xampp\htdocs\2012\BIXBITE_2\src\org\bixbite\namespaces</classPaths>
-  <sourcesList />
-  <outputDirectory>E:\xampp\htdocs\2012\BIXBITE_2\docs</outputDirectory>
-  <activeCompiler>1</activeCompiler>
-  <extraOptions />
-</docProject>
