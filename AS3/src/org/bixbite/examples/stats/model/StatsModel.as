@@ -3,9 +3,8 @@ package org.bixbite.examples.stats.model
 	import flash.events.Event;
 	import flash.system.System;
 	import flash.utils.getTimer;
-	
-	import org.bixbite.core.Model;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Model;
 	import org.bixbite.examples.stats.signal.StatsSignal;
 	import org.bixbite.examples.stats.signal.TraceSignal;
 	
@@ -48,12 +47,12 @@ package org.bixbite.examples.stats.model
 		
 		private function onStart(s:ISignal):void 
 		{
-			stage.addEventListener(Event.ENTER_FRAME, calculate);
+			system.addListener(Event.ENTER_FRAME, calculate);
 		}
 		
 		private function onPause(s:ISignal):void
 		{
-			stage.removeEventListener(Event.ENTER_FRAME, calculate);
+			system.removeListener(Event.ENTER_FRAME, calculate);
 		}
 		
 		private function onTrace(s:TraceSignal):void 
@@ -78,7 +77,7 @@ package org.bixbite.examples.stats.model
 				invalidate();
 				sendSignal(StatsSignal.DRAW);
 				
-				statsSignal.infoFPS = "FPS: " + fps + " / " + stage.frameRate;
+				statsSignal.infoFPS = "FPS: " + fps + " / " + system.stage.frameRate;
 				statsSignal.infoMEM = "MEM: " + mem;
 				statsSignal.infoMAX = "MAX: " + max;
 				

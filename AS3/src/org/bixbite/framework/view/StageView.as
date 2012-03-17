@@ -21,36 +21,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core 
+package org.bixbite.framework.view
 {
-	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.Actor;
-	import org.bixbite.core.interfaces.IModel;
+	import flash.display.Sprite;
 	
 	/**
-     * <p><i>"According to the standard model billions of years ago some little quantum fluctuation, perhaps a slightly
-     * lower density of matter, maybe right where we’re sitting right now, caused our galaxy to start collapsing around here.
-     * — Seth Lloyd"</i></p>
-     *
-     * <p>The Model contains the 'application data' AND 'business logic' to manage the STATE of the application. 
-	 * Same way as you cannot control laws of physics, you shouldn't try to put this responsibility into controllers. 
-	 * You can control many objects that are under the defined laws of physics, but it is the Model that defines them.</p>
+	 * StageView, is a classic implementation of main MVC paradigm, when views can be nested and they need a root or 'Top View' class to start from.
+	 * This class serve this purpose. It is also part of Composite pattern and directly extends DisplayViewContainer as the highest in display list hierarchy. 
+	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during Actor initialistion.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
-     */
-	public class Model extends Actor implements IModel
+	 * @version 0.2.9
+	 */
+	public class StageView extends DisplayViewContainer 
 	{
-		private var _emiter:Emiter = Emiter.getInstance();
 		
 		/**
-         * Constructor - this class cannot be directly instantiated.
-         */
-		public function Model() 
+		 * Constructor
+		 */
+		public function StageView() 
 		{
-			if (Object(this).constructor == Model) throw new IllegalOperationError("Abstract Class");
-			init();
+			
 		}
+		
+		/**
+		 * Overrides actor abstract method and place content directly on native stage of the Flash Player.
+		 */
+		override public function init():void 
+		{
+			content = new Sprite()
+			system.stage.addChild(content);
+		}
+		
 	}
 
 }

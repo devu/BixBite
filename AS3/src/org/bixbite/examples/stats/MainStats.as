@@ -1,12 +1,13 @@
 package org.bixbite.examples.stats 
 {
-	import org.bixbite.classic.controller.StageController;
 	import org.bixbite.core.Application;
 	import org.bixbite.examples.stats.controller.StatsController;
 	import org.bixbite.examples.stats.model.StatsModel;
 	import org.bixbite.examples.stats.view.StatsView;
+	import org.bixbite.framework.controller.StageController;
 	
 	/**
+	 * @version  compatibility - 0.4.0
 	 * This is example of how famous stats by mrdoob can be implemented within bixbite mvc framework.
 	 * It is also fork of my fork :) MobileStats.as.
 	 * 

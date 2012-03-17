@@ -21,18 +21,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package org.bixbite.framework.factories 
 {
-	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
-	 * 
-	 * @langversion	3.0
-	 * @version 0.4.0
+	 * Not Implemented yet
 	 */
-	public interface IController extends IActor
+	public class Graphics 
 	{
 		
+		public function Graphics() 
+		{
+			
+		}
+		
+		public function beginFill(color:uint, alpha:Number = 1):void
+		{
+			
+		}
+		
+		public function drawRect(x:Number, y:Number, width:Number, height:Number):void
+		{
+			
+		}
+		
 	}
-	
+
 }

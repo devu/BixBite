@@ -21,18 +21,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package org.bixbite.framework.signal 
 {
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
-	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.2.9
 	 */
-	public interface IController extends IActor
+	public class StageSignal extends Signal 
 	{
+		public static const RESIZE			:String = "stageResize";
+		public static const UPDATE			:String = "stageUpdate";
+		public static const UPDATE_REQUEST	:String = "stageUpdateRequest";
 		
+		public var centerWidth			:Number = 0;
+		public var centerHeight			:Number = 0;
+		public var orientation			:String = "stageOrientationLandscape";
+		public var screenFactor			:String = "desktop";
 	}
-	
+
 }

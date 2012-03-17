@@ -5,9 +5,9 @@ package org.bixbite.examples.stats.view
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	import org.bixbite.classic.signal.StageSignal;
 	import org.bixbite.core.View;
 	import org.bixbite.examples.stats.signal.StatsSignal;
+	import org.bixbite.framework.signal.StageSignal;
 	
 	/**
 	 * StatsView, visual representation of data comning from StatsModel.
@@ -33,6 +33,7 @@ package org.bixbite.examples.stats.view
 		private var info_max		:TextField;
 		private var info_orient		:TextField;
 		private var panel			:Sprite;
+		private var frameRate:int;
 		
 		/**
 		 * Constructor, there is one important thing about constructors in Bixbite worth to remember.
@@ -53,6 +54,8 @@ package org.bixbite.examples.stats.view
 		
 		override public function init():void 
 		{
+			frameRate = system.stage.frameRate;
+			
 			panel = new Sprite();
 			panel.name = "statsPanel";
 			panel.graphics.beginFill(0x000000, 0.8);
@@ -76,7 +79,7 @@ package org.bixbite.examples.stats.view
 			panel.addChild(info_max);
 			panel.addChild(info_orient);
 			
-			stage.addChild(panel);
+			system.stage.addChild(panel);
 			
 			addSlot(StatsSignal.DRAW, drawGraph);
 			addSlot(StatsSignal.UPDATE, updateText);
@@ -86,7 +89,7 @@ package org.bixbite.examples.stats.view
 		
 		private function drawGraph(s:StatsSignal):void
 		{
-			fps_graph = Math.min( graph.height, ( s.fps / stage.frameRate ) * graph.height );
+			fps_graph = Math.min( graph.height, ( s.fps / frameRate ) * graph.height );
 			mem_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( s.mem * 5000 ) ) ) - 2;
 			max_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( s.max * 5000 ) ) ) - 2;
 			

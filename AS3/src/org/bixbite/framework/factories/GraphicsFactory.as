@@ -21,18 +21,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package org.bixbite.framework.factories 
 {
-	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
-	 * 
-	 * @langversion	3.0
-	 * @version 0.4.0
+	 * Not Implemented yet
 	 */
-	public interface IController extends IActor
+	public class GraphicsFactory extends Graphics
 	{
+		private static var _instance:GraphicsFactory = new GraphicsFactory();
+		
+		public function GraphicsFactory() 
+		{
+			
+		}
+		
+		public static function getInstance():Graphics
+		{
+			return _instance
+		}
 		
 	}
-	
+
 }

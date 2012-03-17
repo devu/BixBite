@@ -3,7 +3,6 @@ package org.bixbite.examples.stats.controller
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 	import org.bixbite.core.Controller;
 	import org.bixbite.examples.stats.signal.StatsSignal;
 	import org.bixbite.examples.stats.signal.TraceSignal;
@@ -31,21 +30,19 @@ package org.bixbite.examples.stats.controller
 		
 		override public function init():void 
 		{
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			system.addListener(MouseEvent.MOUSE_UP, onMouseUp);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var objects:Array = stage.getObjectsUnderPoint(new Point(stage.mouseX, stage.mouseY));
+			var objects:Array = system.getObjects();
 			
 			for each(var o:DisplayObject in objects){
 				if (o.name == "statsPanel"){
 					statsPanel = o as Sprite;
 					statsPanel.startDrag();
 					
-					//just a test, nothing very useful
-					//TODO, subject to concideration, posibility to use sendRequest without callback.
 					attachSignal(new TraceSignal("trace something:", this));
 					sendRequest(StatsSignal.TRACE, onTraceResponse);
 					

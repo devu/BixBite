@@ -21,18 +21,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package org.bixbite.framework.interfaces 
 {
 	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
-	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.2.9
 	 */
-	public interface IController extends IActor
+	public interface IDisplayViewContainer 
 	{
+		function removeAllViews():Array;
 		
+		function removeViewsAt(from:int, howMany:int):Array;
+		
+		function removeViewAt(id:int):IDisplayView;
+		
+		function removeView(view:IDisplayView):IDisplayView;
+		
+		function addViewAt(id:int, view:IDisplayView):IDisplayView;
+		
+		function addView(view:IDisplayView):IDisplayView;
+		
+		function get numViews():int;
 	}
 	
 }

@@ -21,36 +21,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core 
+package org.bixbite.framework.interfaces 
 {
-	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.Actor;
-	import org.bixbite.core.interfaces.IModel;
+	import flash.display.DisplayObject;
+	import org.bixbite.core.interfaces.IView;
 	
 	/**
-     * <p><i>"According to the standard model billions of years ago some little quantum fluctuation, perhaps a slightly
-     * lower density of matter, maybe right where we’re sitting right now, caused our galaxy to start collapsing around here.
-     * — Seth Lloyd"</i></p>
-     *
-     * <p>The Model contains the 'application data' AND 'business logic' to manage the STATE of the application. 
-	 * Same way as you cannot control laws of physics, you shouldn't try to put this responsibility into controllers. 
-	 * You can control many objects that are under the defined laws of physics, but it is the Model that defines them.</p>
-	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
-     */
-	public class Model extends Actor implements IModel
+	 * @version 0.2.9
+	 */
+	public interface IDisplayView extends IView
 	{
-		private var _emiter:Emiter = Emiter.getInstance();
+		/**
+		 * Parent view of this view
+		 */
+		function get parentView():IDisplayViewContainer;
+		function set parentView(value:IDisplayViewContainer):void;
 		
 		/**
-         * Constructor - this class cannot be directly instantiated.
-         */
-		public function Model() 
-		{
-			if (Object(this).constructor == Model) throw new IllegalOperationError("Abstract Class");
-			init();
-		}
+		 * Reference to native Flash DisplayObject attached to any IDisplayView. Acts as dependency injector.
+		 */
+		function get content():DisplayObject;
+		function set content(value:DisplayObject):void
+		
+		/**
+		 * Set Interactivity flag of any  DisplayView
+		 */
+		function get interactive():Boolean;
+		function set interactive(value:Boolean):void
 	}
-
+	
 }

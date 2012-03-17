@@ -2,12 +2,11 @@ package org.bixbite.examples.helloflash.controller
 {
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
-	import org.bixbite.classic.view.StageView;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Model;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
 	import org.bixbite.examples.helloflash.view.Ball;
+	import org.bixbite.framework.view.StageView;
 	
 	public class BallController extends Model 
 	{
@@ -20,7 +19,7 @@ package org.bixbite.examples.helloflash.controller
 		
 		override public function init():void 
 		{
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			
 			addSlot(BallSignal.CREATE_BALL, onCreateBall);
 		}
@@ -41,7 +40,7 @@ package org.bixbite.examples.helloflash.controller
 		 */
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var balls:Array = stage.getObjectsUnderPoint(new Point(stage.mouseX, stage.mouseY));
+			var balls:Array = system.getObjects();
 			balls.reverse();
 			
 			for each(var b:DisplayObject in balls){

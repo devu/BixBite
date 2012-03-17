@@ -25,12 +25,12 @@ package org.bixbite.core.interfaces
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.3.1
+	 * @version 0.4.0
 	 */
 	public interface ISignal 
 	{
 		/**
-		 * Actor indicator by Class
+		 * Actor type indicator by Class
 		 */
 		function get actor():Class;
 		
@@ -45,7 +45,7 @@ package org.bixbite.core.interfaces
 		function get action():String;
 		
 		/**
-		 * Deconstructor of an Signal
+		 * Deconstructor of a Signal
 		 */
 		function dispose():void;
 	}

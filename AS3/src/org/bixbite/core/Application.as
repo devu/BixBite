@@ -43,7 +43,7 @@ package org.bixbite.core
 	 * Preloader may already have some actors initialised you wish to reuse such StageController, SharedObjectModel, so you don't have to repeat yourself.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.3.1
+	 * @version 0.4.0
 	 * 
 	 * @example
 	 * <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock ">
@@ -64,7 +64,7 @@ package org.bixbite.core
 	 */
 	public class Application extends Sprite implements IApplication
 	{
-		private var observer	:Observer 	= Observer.register(IApplication(this));
+		private var emiter		:Emiter 	= Emiter.register(IApplication(this));
 		private var _module		:Boolean 	= false;
 		
 		/**
@@ -85,7 +85,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * System controlled setter to switch application into module state
+		 * System controlled setter to switch application into module mode
 		 */
 		BIXBITE function set module(value:Boolean):void 
 		{

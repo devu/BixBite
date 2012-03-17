@@ -21,18 +21,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package org.bixbite.framework.controller 
 {
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
+	import org.bixbite.core.Controller;
 	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
-	 * 
-	 * @langversion	3.0
-	 * @version 0.4.0
+	 * Not implemented yet
 	 */
-	public interface IController extends IActor
+	public class TouchController extends Controller 
 	{
+		/**
+		 * Constructor
+		 */
+		public function TouchController() 
+		{
+			
+		}
+		
+		override public function init():void 
+		{
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
+		}
+		
+		private function onMouseDown(e:MouseEvent):void 
+		{
+			trace(system.getObjects());
+		}
+		
+		private function onMouseUp(e:MouseEvent):void 
+		{
+			
+		}
 		
 	}
-	
+
 }

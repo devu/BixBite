@@ -1,11 +1,10 @@
 package org.bixbite.examples.helloflash.view 
 {
 	import flash.display.Sprite;
-	import org.bixbite.classic.view.DisplayView;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
-	
-	
+	import org.bixbite.framework.view.DisplayView;
+
 	public class Ball extends DisplayView 
 	{
 		private var component	:Sprite;

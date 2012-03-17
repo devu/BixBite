@@ -21,15 +21,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.classic.controller 
+package org.bixbite.framework.controller 
 {
+	import flash.display.Stage;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.FullScreenEvent;
-	import org.bixbite.classic.signal.StageSignal;
 	import org.bixbite.core.Controller;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.signal.StageSignal;
+	
 	
 	/**
 	 * StageController, controls common and basic native flash player stage behaviour for displayable objects. 
@@ -52,14 +54,15 @@ package org.bixbite.classic.controller
 		private var stageSignal		:StageSignal;
 		private var orientation		:String;
 		private var screenFactor	:String;
+		private var stage			:Stage;
 		
 		/**
 		 * Constructor, provides injection for common settings.
 		 */
 		public function StageController(align:String = StageAlign.TOP_LEFT, scaleMode:String = StageScaleMode.NO_SCALE) 
 		{
-			system.align = align;
-			system.scaleMode = scaleMode;
+			stage.align = align;
+			stage.scaleMode = scaleMode;
 		}
 		
 		/**
@@ -68,11 +71,13 @@ package org.bixbite.classic.controller
 		 */
 		override public function init():void 
 		{
+			this.stage = system.stage;
+			
 			stageSignal = new StageSignal();
 			attachSignal(stageSignal);
 			
-			system.addEventListener(Event.RESIZE, onStageResize);
-			system.addEventListener(FullScreenEvent.FULL_SCREEN, onStageFullScreen);
+			system.addListener(Event.RESIZE, onStageResize);
+			system.addListener(FullScreenEvent.FULL_SCREEN, onStageFullScreen);
 			
 			invalidate();
 			

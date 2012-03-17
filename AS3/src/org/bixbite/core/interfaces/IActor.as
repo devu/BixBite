@@ -24,12 +24,13 @@ THE SOFTWARE.
 package org.bixbite.core.interfaces 
 {
 	import flash.display.Stage;
+	import org.bixbite.core.SystemIO;
 	
 	/**
 	 * Primary reason for this interface is for polymorphism purposes and provide access to common shared properties of all actors.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.3.1
+	 * @version 0.4.0
 	 */
 	public interface IActor 
 	{
@@ -39,9 +40,9 @@ package org.bixbite.core.interfaces
 		function get uid():String;
 		
 		/**
-		 * Reference to native flash stage as an system I/O provider for your Actor
+		 * Reference to systemIO for your Actor
 		 */
-		function get stage():Stage;
+		function get system():SystemIO;
 	}
 	
 }

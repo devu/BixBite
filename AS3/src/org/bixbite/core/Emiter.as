@@ -30,40 +30,43 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * <p>The Observer, singleton, core of the signal/slot notification system of this framework.</p>
-	 * <p>Provides set of methods for Actors and keeps it dead simple and straight forward. First as well as second dimension relies on native AS3 Object only. Speed of accessibility, creation and deletion was the main important factor behind design decisions. If you want to get closer to the native speed of execution, Observer provides methods to cross-reference callbacks base on type of the signal.</p>
-	 * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3. This is the only solution that will give you robust structure, perfectly decoupled members of MVC triad and opportunity to execute it with the same seeped as a native local method speed accession. You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new components/class will be added/removed from it.</p>
+	 * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
+	 * <p>Provides set of methods for Actors and keeps it dead simple, fast and straight forward. First as well as second dimension relies on native AS3 Object only. Speed of accessibility, creation and deletion was the main important factor behind design decisions. 
+	 * If you want to get closer to the native speed of execution, Emiter provides methods to cross-reference callbacks base on type of the signal.</p>
+	 * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3. 
+	 * This is the only solution that will give you robust structure, perfectly decoupled members of MVC triad and opportunity to execute it with the same seeped as a native local method speed accession. 
+	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.3.1
+	 * @version 0.4.0
 	 */
-	public class Observer
+	public class Emiter
 	{
-		static private var _instance	:Observer;
+		static private var _instance	:Emiter;
 		static private var isRunning	:Boolean;
 		
 		private var _uid				:int = -1;
-		private var _stage				:Stage;
+		private var _system				:SystemIO;
 		private var _application		:IApplication;
 		
 		/**
-		 * main container for slot references by type
+		 * Main container for slot references.
 		 */ 
 		private var slots				:Object = {};
 		
 		use namespace BIXBITE
 		
 		/**
-		 * The Observer is a singleton, by default and only once via constructor will pass references to the main application.
+		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main application.
 		 * @param	application
 		 */
-		public function Observer(application:IApplication) 
+		public function Emiter(application:IApplication) 
 		{
 			if (_instance) throw IllegalOperationError("Singleton");
 			
 			_application 	= application;
-			_stage 			= application.stage;
+			_system 		= new SystemIO(application.stage);
 		}
 		
 		/**
@@ -132,12 +135,11 @@ package org.bixbite.core
 		 * Method to fast execute signal request and send direct response to a caller.
 		 * Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
 		 * In case you want to use request/response callbacks associated with reponders must return their own signals;
-		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 * @param	signal, attached to a caller
 		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
 		 */
-		internal function sendRequest(callerUID:String, type:String, signal:ISignal, callback:Function):void
+		internal function sendRequest(type:String, signal:ISignal, callback:Function):void
 		{
 			if (!slots[type]) return;
 			for each (var f:Function in slots[type]) callback(f(signal));
@@ -162,10 +164,10 @@ package org.bixbite.core
          * @param    referrer
          * @return
          */
-		static public function register(referrer:IApplication):Observer 
+		static public function register(referrer:IApplication):Emiter 
 		{
 			if(!isRunning){
-				_instance 	= new Observer(referrer);
+				_instance 	= new Emiter(referrer);
 				isRunning 	= true;
 			} else {
 				referrer.BIXBITE::module = true;
@@ -175,10 +177,10 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Reference to a Singleton instance of Observer class.
+		 * Reference to a Singleton instance of Emiter class.
 		 * @return
 		 */
-		static public function getInstance():Observer 
+		static public function getInstance():Emiter 
 		{
 			return _instance;
 		}
@@ -198,9 +200,9 @@ package org.bixbite.core
 		/**
 		 * System I/O accessor. In AS3 implementation is a native stage
 		 */
-		public function get stage():Stage 
+		public function get system():SystemIO 
 		{
-			return _stage;
+			return _system;
 		}
 		
 		/**

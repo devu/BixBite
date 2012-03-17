@@ -6,9 +6,11 @@ package org.bixbite.examples.helloworld.controller
 	import org.bixbite.core.Controller;
 	
 	/**
-	 * This Controller will detect if your text field has been clicked. If so, will send signal demands to change the copy. 
-	 * Don't care with text field. It can be any or many of them at the same time.
-	 */
+     * This Controller will detect if your text field has been clicked.
+     * If so, will send signal demands to change the copy.
+     * Controller don't care with text field. Although don't care witch and how Model will resolve replaceCopy request.
+     * It can be any or many of them at the same time.
+     */
 	public class HelloController extends Controller 
 	{
 		
@@ -17,14 +19,17 @@ package org.bixbite.examples.helloworld.controller
 			
 		}
 		
+		/**
+		 * Add system listener to capture user Input.
+		 */
 		override public function init():void 
 		{
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var objects:Array = stage.getObjectsUnderPoint(new Point(stage.mouseX, stage.mouseY));
+			var objects:Array = system.getObjects();
 			
 			for each(var o:Object in objects){
 				if (o is TextField) {

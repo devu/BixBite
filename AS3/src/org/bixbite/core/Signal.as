@@ -32,13 +32,13 @@ package org.bixbite.core
      * All those getters working together provides convenient way to make multiple variations and stay in tact with DRY rule.
      * In this same time helping you solve all architectural problems without referencing objects and keep your Actors completely decoupled, unaware of each other make a perfect modular system to work with and more importantly easy to maintain.</p>
      *
-     * <p>In case you need to send more valuable informations within an signal we recommend to create your Custom Signal class and that will extends this base Signal class.
+     * <p>In case you need to send more valuable informations within an signal we recommend to create your Custom Signal class, that will extends this base Signal class.
      * You will always stay type safe and have opportunity to ad as many values you want, keeps the basics unchanged and available for a system.
-     * Then Custom Signal needs to be assigned to its Actor.signal public reference before its being broadcasted.
-     * You can have multiple Custom Signals to send different values defined for each actor and keep reassigning them.</p>
+     * You can have multiple Custom Signals to send different values defined for each actor. But by default there is only one Signal attached into Actor. 
+	 * Also, you cannot send multiple signals from one Actor at the same time. You need to attach them to Actor before using attachSignal method.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.3.1
+	 * @version 0.4.0
      */
 	public class Signal implements ISignal 
 	{
@@ -64,7 +64,7 @@ package org.bixbite.core
 		}
 		
 		/**
-         * Actor read-only getter of unique id of the caller.
+         * Unique identifier of the caller.
          * This method will provide unique id of the Actor that sending particular signal.
          * This will give you opportunity to respond directly to involved classes without cross-referencing them.
          */
