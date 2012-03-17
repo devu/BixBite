@@ -1,0 +1,24 @@
+﻿package org.bixbite.framework.interfaces
+{
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.2.9
+	 */
+	public interface IDisplayViewContainer
+	{
+		function get numViews () : int;
+
+		function removeAllViews () : Array;
+
+		function removeViewsAt (from:int, howMany:int) : Array;
+
+		function removeViewAt (id:int) : IDisplayView;
+
+		function removeView (view:IDisplayView) : IDisplayView;
+
+		function addViewAt (id:int, view:IDisplayView) : IDisplayView;
+
+		function addView (view:IDisplayView) : IDisplayView;
+	}
+}

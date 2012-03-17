@@ -1,0 +1,14 @@
+﻿package org.bixbite.framework.factories
+{
+	/**
+	 * Not Implemented yet
+	 */
+	public class GraphicsFactory extends Graphics
+	{
+		private static var _instance : GraphicsFactory;
+
+		public function GraphicsFactory ();
+
+		public static function getInstance () : Graphics;
+	}
+}

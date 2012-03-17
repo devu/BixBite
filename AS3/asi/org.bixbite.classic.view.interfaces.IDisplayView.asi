@@ -1,0 +1,31 @@
+﻿package org.bixbite.classic.view.interfaces
+{
+	import flash.display.DisplayObject;
+	import org.bixbite.core.interfaces.IView;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.2.9
+	 */
+	public interface IDisplayView extends IView
+	{
+		/**
+		 * Parent view of this view
+		 */
+		function get parentView () : IDisplayViewContainer;
+		function set parentView (value:IDisplayViewContainer) : void;
+
+		/**
+		 * Reference to native Flash DisplayObject attached to any IDisplayView. Acts as dependency injector.
+		 */
+		function get content () : DisplayObject;
+		function set content (value:DisplayObject) : void;
+
+		/**
+		 * Set Interactivity flag of any  DisplayView
+		 */
+		function get interactive () : Boolean;
+		function set interactive (value:Boolean) : void;
+	}
+}

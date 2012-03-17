@@ -1,0 +1,19 @@
+﻿package org.bixbite.examples.helloflash.view
+{
+	import flash.text.TextField;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.examples.helloflash.signal.BallSignal;
+	import org.bixbite.framework.view.DisplayView;
+
+	public class Readout extends DisplayView
+	{
+		private var textField : TextField;
+		private var count : int;
+
+		public function Readout ();
+
+		public function init () : void;
+
+		private function onBallCreate (s:ISignal) : void;
+	}
+}

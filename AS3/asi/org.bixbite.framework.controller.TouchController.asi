@@ -1,0 +1,23 @@
+﻿package org.bixbite.framework.controller
+{
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
+	import org.bixbite.core.Controller;
+
+	/**
+	 * Not implemented yet
+	 */
+	public class TouchController extends Controller
+	{
+		/**
+		 * Constructor
+		 */
+		public function TouchController ();
+
+		public function init () : void;
+
+		private function onMouseDown (e:MouseEvent) : void;
+
+		private function onMouseUp (e:MouseEvent) : void;
+	}
+}

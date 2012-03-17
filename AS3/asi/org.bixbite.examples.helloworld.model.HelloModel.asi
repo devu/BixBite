@@ -1,0 +1,26 @@
+﻿package org.bixbite.examples.helloworld.model
+{
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Model;
+	import org.bixbite.examples.helloworld.signal.HelloSignal;
+
+	/**
+	 * This model is a copy holder that will reponse on 2 diferent signals.
+	 * Model don't care who is calling, will respond as soon as a signal has been recieved.
+	 * Althoght don't need to know wich view will display this infromation.
+	 * 
+	 *   The main purpose od the Model is to react on specific set of signals, perform business logic acordingly to set of rulles and broadcast signals in response.
+	 */
+	public class HelloModel extends Model
+	{
+		private var helloSignal : HelloSignal;
+
+		public function HelloModel ();
+
+		public function init () : void;
+
+		private function onCopyRequest (s:ISignal) : ISignal;
+
+		private function onReplaceCopy (s:ISignal) : void;
+	}
+}

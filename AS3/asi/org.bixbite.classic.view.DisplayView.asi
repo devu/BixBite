@@ -1,0 +1,57 @@
+﻿package org.bixbite.classic.view
+{
+	import flash.display.DisplayObject;
+	import flash.display.Graphics;
+	import flash.display.Shape;
+	import org.bixbite.core.View;
+	import org.bixbite.classic.view.interfaces.IDisplayView;
+	import org.bixbite.classic.view.interfaces.IDisplayViewContainer;
+
+	/**
+	 * DisplayView, part of Composite pattern of the display list. 
+	 * The basic View extention to work with flash native DisplayObject.
+	 * Solution built upon Decoration pattern, to wrap up native Objects into MVC structure.
+	 * Lets you control/expose selected aspects of your application or structure.
+	 * @langversion	3.0
+	 * @version 0.2.9
+	 */
+	public class DisplayView extends View implements IDisplayView
+	{
+		private var _content : DisplayObject;
+		private var _parentView : IDisplayViewContainer;
+		private var _interactive : Boolean;
+
+		/**
+		 * Parent view of this view
+		 */
+		public function get parentView () : IDisplayViewContainer;
+		public function set parentView (value:IDisplayViewContainer) : void;
+
+		/**
+		 * Native Flash DisplayObject attached to this view
+		 */
+		public function get content () : DisplayObject;
+		public function set content (value:DisplayObject) : void;
+
+		public function get graphics () : Graphics;
+
+		/**
+		 * Interactivity flag let controllers determine set of actions to perform. 
+		 * Unlike in native flash display list implementation there is no InteractiveObject equivalent. 
+		 * And is not needed since any GUI logic is moved to controllers.
+		 */
+		public function get interactive () : Boolean;
+		public function set interactive (value:Boolean) : void;
+
+		/**
+		 * Constructor
+		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
+		 */
+		public function DisplayView (content:DisplayObject=null);
+
+		/**
+		 * Initialise DisplayView with a default native DisplayObject (by default Shape);
+		 */
+		public function init () : void;
+	}
+}

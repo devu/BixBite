@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FlexBinPath>.\lib\bixbite_0.4.0.swc</FlexBinPath>
+  <FlashBinPath>.\bin\BIXBITE.flash.swc</FlashBinPath>
+  <FlexIncludeASI>true</FlexIncludeASI>
+  <MakeCS3>false</MakeCS3>
+  <MakeMXI>false</MakeMXI>
+  <IntegrateAsDoc>true</IntegrateAsDoc>
+  <LaunchAEM>false</LaunchAEM>
+  <MXIVersion />
+  <MXPIncludeASI>false</MXPIncludeASI>
+  <MXIAuthor />
+  <MXIDescription />
+  <MXIUIAccessText />
+  <Flex_IgnoreClasses>
+    <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
+    <string>src\org\bixbite\examples\helloworld\model\hellomodel.as</string>
+    <string>src\org\bixbite\examples\helloworld\signal\hellosignal.as</string>
+    <string>src\org\bixbite\examples\helloworld\view\helloview.as</string>
+    <string>src\org\bixbite\examples\helloworld\mainhelloworld.as</string>
+    <string>src\org\bixbite\examples\helloflash\helloflash.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\ball.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\readout.as</string>
+    <string>src\org\bixbite\examples\helloflash\signal\appsignal.as</string>
+    <string>src\org\bixbite\examples\helloflash\signal\ballsignal.as</string>
+    <string>src\org\bixbite\examples\helloflash\model\helloflashmodel.as</string>
+    <string>src\org\bixbite\examples\helloflash\controller\ballcontroller.as</string>
+    <string>src\org\bixbite\examples\stats\mainstats.as</string>
+    <string>src\org\bixbite\examples\stats\view\statstraceview.as</string>
+    <string>src\org\bixbite\examples\stats\view\statsview.as</string>
+    <string>src\org\bixbite\examples\stats\signal\statssignal.as</string>
+    <string>src\org\bixbite\examples\stats\signal\tracesignal.as</string>
+    <string>src\org\bixbite\examples\stats\model\statsmodel.as</string>
+    <string>src\org\bixbite\examples\stats\controller\statscontroller.as</string>
+    <string>src\org\bixbite\main.as</string>
+  </Flex_IgnoreClasses>
+  <CS3_IgnoreClasses>
+    <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
+    <string>src\org\bixbite\examples\helloworld\model\hellomodel.as</string>
+    <string>src\org\bixbite\examples\helloworld\signal\hellosignal.as</string>
+    <string>src\org\bixbite\examples\helloworld\view\helloview.as</string>
+    <string>src\org\bixbite\examples\helloworld\mainhelloworld.as</string>
+    <string>src\org\bixbite\examples\helloflash\helloflash.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\ball.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\readout.as</string>
+    <string>src\org\bixbite\examples\helloflash\signal\appsignal.as</string>
+    <string>src\org\bixbite\examples\helloflash\signal\ballsignal.as</string>
+    <string>src\org\bixbite\examples\helloflash\model\helloflashmodel.as</string>
+    <string>src\org\bixbite\examples\helloflash\controller\ballcontroller.as</string>
+    <string>src\org\bixbite\examples\stats\mainstats.as</string>
+    <string>src\org\bixbite\examples\stats\view\statstraceview.as</string>
+    <string>src\org\bixbite\examples\stats\view\statsview.as</string>
+    <string>src\org\bixbite\examples\stats\signal\statssignal.as</string>
+    <string>src\org\bixbite\examples\stats\signal\tracesignal.as</string>
+    <string>src\org\bixbite\examples\stats\model\statsmodel.as</string>
+    <string>src\org\bixbite\examples\stats\controller\statscontroller.as</string>
+    <string>src\org\bixbite\main.as</string>
+  </CS3_IgnoreClasses>
+  <CS3_ComponentClass />
+  <CS3_ComponentName />
+  <CS3_ComponentGroup />
+  <CS3_ComponentToolTip />
+  <CS3_ComponentIconFile />
+  <CS3_PreviewType>None</CS3_PreviewType>
+  <CS3_PreviewResource />
+</SWCProject>

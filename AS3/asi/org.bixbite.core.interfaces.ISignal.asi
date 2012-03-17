@@ -1,0 +1,30 @@
+﻿package org.bixbite.core.interfaces
+{
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.4.0
+	 */
+	public interface ISignal
+	{
+		/**
+		 * Actor type indicator by Class
+		 */
+		function get actor () : Class;
+
+		/**
+		 * Unique identifier of the caller
+		 */
+		function get callerUID () : String;
+
+		/**
+		 * Additional identifier to perform custom actions within same type of signal
+		 */
+		function get action () : String;
+
+		/**
+		 * Deconstructor of a Signal
+		 */
+		function dispose () : void;
+	}
+}
