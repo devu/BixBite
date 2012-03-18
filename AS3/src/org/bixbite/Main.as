@@ -5,7 +5,7 @@ package org.bixbite
 	import org.bixbite.core.Application;
 	
 	/**
-	 * ...
+	 * 
 	 */
 	public class Main extends Application 
 	{
