@@ -63,6 +63,8 @@ package org.bixbite.core
          */
 		public var signal		:ISignal 	= attachSignal();
 		
+		use namespace BIXBITE;
+		
 		/**
 		 * Constructor, Actor is an abstract class, cannot be directly instatiated. 
 		 */

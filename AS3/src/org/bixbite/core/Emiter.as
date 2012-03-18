@@ -77,7 +77,7 @@ package org.bixbite.core
          * @param    type, type of signal
          * @param    callback, listener of the caller that will be added to the slot of certain type.
          */
-		internal function addSlot(callerUID:String, type:String, callback:Function):void
+		BIXBITE function addSlot(callerUID:String, type:String, callback:Function):void
 		{
 			if (!slots[type]) slots[type] = { };
 			slots[type][callerUID] = callback;
@@ -89,7 +89,7 @@ package org.bixbite.core
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		internal function removeSlot(callerUID:String, type:String):void
+		BIXBITE function removeSlot(callerUID:String, type:String):void
 		{
 			if (!slots[type]) return;
 			delete slots[type][callerUID];
@@ -100,7 +100,7 @@ package org.bixbite.core
 		 * Can be invoked by any Actor.
 		 * @param	type, type of signal
 		 */
-		internal function removeAllSlots(type:String):void
+		BIXBITE function removeAllSlots(type:String):void
 		{
 			if (!slots[type]) return;
 			for (var uid:String in slots[type]) removeSlot(uid, type);
@@ -111,7 +111,7 @@ package org.bixbite.core
 		 * Remove all registered signals of concrete Actor by his unique id.
 		 * @param	uid, unique id of the caller
 		 */
-		internal function removeAllSlotsOf(uid:String):void
+		BIXBITE function removeAllSlotsOf(uid:String):void
 		{
 			for (var p:String in slots) {
 				removeSlot(uid, p);
@@ -125,7 +125,7 @@ package org.bixbite.core
 		 * @param	type, type, type of signal
 		 * @param	signal, attached to a caller
 		 */
-		internal function sendSignal(type:String, signal:ISignal):void
+		BIXBITE function sendSignal(type:String, signal:ISignal):void
 		{
 			if (!slots[type]) return;
 			for each (var f:Function in slots[type]) f(signal);
@@ -139,7 +139,7 @@ package org.bixbite.core
 		 * @param	signal, attached to a caller
 		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
 		 */
-		internal function sendRequest(type:String, signal:ISignal, callback:Function):void
+		BIXBITE function sendRequest(type:String, signal:ISignal, callback:Function):void
 		{
 			if (!slots[type]) return;
 			for each (var f:Function in slots[type]) callback(f(signal));
@@ -151,7 +151,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @return
 		 */
-		internal function getSlotReferences(type:String):Array
+		public function getSlotReferences(type:String):Array
 		{
 			var a:Array = [];
 			for each (var f:Function in slots[type]) a.push(f);
@@ -159,10 +159,10 @@ package org.bixbite.core
 		}
 		
 		/**
-         * Each Application will invoke this method in order to register itself within a Observer.
-         * Only first one will become root application, any next one will run as a module and get reference to same instance of Observer.
+         * Each Application will invoke this method in order to register itself within Emiter.
+         * Only first one will become root application, any next one will run as a module and get reference to same instance of Emiter.
          * @param    referrer
-         * @return
+         * @return   reference to Emiter
          */
 		static public function register(referrer:IApplication):Emiter 
 		{
