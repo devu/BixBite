@@ -1,10 +1,10 @@
 package org.bixbite.examples.helloflash 
 {
 	import org.bixbite.core.Application;
+	import org.bixbite.examples.helloflash.view.MainView;
 	import org.bixbite.framework.view.StageView;
 	import org.bixbite.examples.helloflash.controller.BallController;
 	import org.bixbite.examples.helloflash.model.HelloFlashModel;
-	import org.bixbite.examples.helloflash.view.Readout;
 	
 	/**
 	 * @version  compatibility - 0.4.0
@@ -15,9 +15,9 @@ package org.bixbite.examples.helloflash
 	 * 
 	 * Bixbite
 	 * 6 Classes to get job done.
-	 * 5.22 kb footprint.
+	 * 5.37 kb footprint.
 	 * Cleaner code.
-	 * MVC bring back to normal, no mediators, no commands. 1 level of abstraction only.
+	 * MVC bring back to conventional paradigm, no mediators, no commands. 1 level of abstraction only.
 	 * Speed? let's not talk about it again ;)
 	 * 
 	 * RL
@@ -33,12 +33,9 @@ package org.bixbite.examples.helloflash
 		
 		public function HelloFlash() 
 		{
-			var v:StageView 		= new StageView();
-			var c:BallController 	= new BallController(v);
+			var c:BallController 	= new BallController();
+			var v:MainView 			= new MainView();
 			var m:HelloFlashModel 	= new HelloFlashModel();
-			
-			var readout:Readout 	= new Readout();
-			v.addView(readout);
 			
 			// And we're done ;)
 		}

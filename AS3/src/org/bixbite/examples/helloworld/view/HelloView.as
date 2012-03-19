@@ -44,6 +44,8 @@ package org.bixbite.examples.helloworld.view
 		override public function init():void 
 		{
 			textField = new TextField();
+			textField.autoSize = "left";
+			textField.selectable = false;
 			textField.x = 100;
 			textField.y = 100;
 			

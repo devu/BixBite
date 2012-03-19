@@ -8,8 +8,8 @@ package org.bixbite.examples.helloflash.view
 	public class Ball extends DisplayView 
 	{
 		private var component	:Sprite;
-		protected var color		:uint;
-		protected var radius	:Number = 10;
+		private var radius		:int = 10;
+		private var color		:uint = 0x000000;
 
 		public function Ball() 
 		{
@@ -26,9 +26,15 @@ package org.bixbite.examples.helloflash.view
 			
 			content = component;
 			
-			draw();
+			draw(0x000000, 10);
 			
-			addSlot(BallSignal.POKE, poke);
+			addSlot(BallSignal.SHUFFLE, shuffle);
+			addSlot(BallSignal.RED_BALL, onMakeBallRed);
+		}
+		
+		private function onMakeBallRed(s:ISignal):void 
+		{
+			draw(0xFF1100, radius++);
 		}
 		
 		/**
@@ -36,18 +42,16 @@ package org.bixbite.examples.helloflash.view
 		 * View should not perform any calucaltions!
 		 * @param	s signal recieved from ... view should not care at all.
 		 */
-		private function poke(s:ISignal):void
+		private function shuffle(s:ISignal):void
 		{
-			radius++;
-			color = Math.random() * uint.MAX_VALUE;
-			draw();
+			draw(Math.random() * uint.MAX_VALUE, radius++);
 		}
 		
 		/**
-		 * Notice, we using already Classic version of framework. By using DisplayView graphics are already exposed, so you don't have to operate on component.
+		 * Notice, we using already Classic version of framework. By using DisplayView graphics are already exposed, so you don't have to operate directly on component.
 		 * This is because graphics will be consistent across many diferent branches. It means, unified way to draw stuff regardless of its implementation. Bitmap Blitting, Custom Display List or even Stage3D.
 		 */
-		private function draw():void
+		private function draw(color:uint, radius:int):void
 		{
 			graphics.clear();
 			graphics.beginFill(color);
