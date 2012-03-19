@@ -5,7 +5,7 @@ package org.bixbite
 	import org.bixbite.core.Application;
 	
 	/**
-	 * 
+	 * GIT FD plugin test
 	 */
 	public class Main extends Application 
 	{
