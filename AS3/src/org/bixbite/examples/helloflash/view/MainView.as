@@ -1,7 +1,6 @@
 package org.bixbite.examples.helloflash.view 
 {
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
 	import org.bixbite.framework.view.StageView;
 	

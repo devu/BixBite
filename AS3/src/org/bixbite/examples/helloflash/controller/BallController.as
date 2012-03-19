@@ -2,11 +2,8 @@ package org.bixbite.examples.helloflash.controller
 {
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Model;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
-	import org.bixbite.examples.helloflash.view.Ball;
-	import org.bixbite.framework.view.StageView;
 	
 	public class BallController extends Model 
 	{

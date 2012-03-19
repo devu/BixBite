@@ -1,10 +1,9 @@
 package org.bixbite.examples.helloflash 
 {
 	import org.bixbite.core.Application;
-	import org.bixbite.examples.helloflash.view.MainView;
-	import org.bixbite.framework.view.StageView;
 	import org.bixbite.examples.helloflash.controller.BallController;
 	import org.bixbite.examples.helloflash.model.HelloFlashModel;
+	import org.bixbite.examples.helloflash.view.MainView;
 	
 	/**
 	 * @version  compatibility - 0.4.0
