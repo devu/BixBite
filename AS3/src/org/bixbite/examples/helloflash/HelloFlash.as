@@ -9,7 +9,6 @@ package org.bixbite.examples.helloflash
 	/**
 	 * @version  compatibility - 0.4.0
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
-	 * In this example we trying to stay as close to original as we can. But we can't accept breaking the rules. So it's still a compromise.
 	 * 
 	 * Results:
 	 * 
@@ -24,8 +23,8 @@ package org.bixbite.examples.helloflash
 	 * 8 Classes to get job done.
 	 * 16.7 kb footprint
 	 * Taking longer to compile.
-	 * MVC misconceptions, mediators perofm GUI logic, Controllers doing business logic instead of Model, no Applicataion model at all. 
-	 * That also puched authors to create separate Model for stats witch is pointless.
+	 * MVC misconceptions, mediators perofm GUI logic and states of objects, Controllers doing business logic and controlls state of application instead of Model, no Applicataion model at all. 
+	 * There is separate Model for stats witch is pointless.
 	 * Speed? let's not talk about it again ;)
 	 */
 	public class HelloFlash extends Application
