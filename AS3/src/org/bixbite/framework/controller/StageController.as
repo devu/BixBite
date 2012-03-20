@@ -38,7 +38,8 @@ package org.bixbite.framework.controller
 	 * Provides additional values such as center of the stage and orientation.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.3.2
+	 * @version 0.4.1
+	 * @since 0.2.9
 	 */
 	public class StageController extends Controller 
 	{

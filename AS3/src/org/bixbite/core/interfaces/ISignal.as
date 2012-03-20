@@ -25,14 +25,14 @@ package org.bixbite.core.interfaces
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public interface ISignal 
 	{
 		/**
-		 * Actor type indicator by Class
+		 * 
 		 */
-		function get actor():Class;
+		function get phase():int;
 		
 		/**
 		 * Unique identifier of the caller

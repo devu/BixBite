@@ -1,11 +1,17 @@
 ﻿package org.bixbite
 {
-	import org.bixbite.framework.controller.StageController;
-	import org.bixbite.framework.view.StageView;
 	import org.bixbite.core.Application;
+	import org.bixbite.framework.controller.StageController;
+	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.view.StageView;
 
 	/**
-	 * ...
+	 *
+	 * @version 0.4.1
+	 *   total footprint 8.15kb
+	 *   
+	 *     Main Bixbite frmework class for development purposes.
+	 *   Contains collection of framework modules.
 	 */
 	public class Main extends Application
 	{

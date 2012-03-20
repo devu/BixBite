@@ -30,6 +30,8 @@ package org.bixbite.examples.helloworld
 	
 	/**
 	 * @version  compatibility - 0.4.0
+	 * footprint 4.06kb
+	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within Bixbite MVC.
 	 * This example not even using framework but just a Core. Core is fully functioning stand alone unit ready to build framework on top of it. 
 	 * But still in many situations you can rely on Core functionality only to achive simple tasks.
@@ -40,11 +42,11 @@ package org.bixbite.examples.helloworld
 		/**
 		 * Set your default triad.
 		 */
-		public function MainHelloWorld():void 
+		public function MainHelloWorld() 
 		{
 			var c:HelloController = new HelloController();
-			var m:HelloModel = new HelloModel();
 			var v:HelloView = new HelloView();
+			var m:HelloModel = new HelloModel();
 		}
 		
 	}

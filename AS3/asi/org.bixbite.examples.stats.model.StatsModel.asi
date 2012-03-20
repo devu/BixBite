@@ -9,7 +9,10 @@
 	import org.bixbite.examples.stats.signal.TraceSignal;
 
 	/**
-	 * StatsModel, handles all busines logic and calculations on Enter Frame.
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsModel, handles all busines logic and calculations on Enter Frame.
 	 */
 	public class StatsModel extends Model
 	{

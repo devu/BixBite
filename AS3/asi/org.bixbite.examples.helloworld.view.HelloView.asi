@@ -1,13 +1,15 @@
 ﻿package org.bixbite.examples.helloworld.view
 {
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
 	import org.bixbite.examples.helloworld.signal.HelloSignal;
 
 	/**
-	 * View is the display layer. By default will request some data. Then can only listen and react to the changes. 
-	 * But it doesn't need to be aware where the changes coming from.
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     View is the display layer. By default will request some data. Then can only listen and react to the changes. 
+	 *   But it doesn't need to be aware where the changes coming from.
 	 */
 	public class HelloView extends View
 	{

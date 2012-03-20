@@ -2,7 +2,6 @@
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
-	import org.bixbite.namespaces.BIXBITE;
 
 	/**
 	 * <p><i>"We view things not only from different sides, but with different eyes; we have no wish to find them alike. — Blaise Pascal"</i></p>
@@ -13,15 +12,10 @@
 	 * <p>The View itself is just a subclass of Actor as any other member of MVC to provide Base Abstract class ready to extend and work with. We decided to keep it this way for future development purposes. 
 	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public class View extends Actor implements IView
 	{
-		/**
-		 * Short local reference to the Emiter.
-		 */
-		private var _emiter : Emiter;
-
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */

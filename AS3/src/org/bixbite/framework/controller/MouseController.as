@@ -43,18 +43,18 @@ package org.bixbite.framework.controller
 		override public function init():void 
 		{
 			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
+			//system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			trace(system.getObjects());
 		}
-		
+		/*
 		private function onMouseUp(e:MouseEvent):void 
 		{
 			
-		}
+		}*/
 		
 	}
 

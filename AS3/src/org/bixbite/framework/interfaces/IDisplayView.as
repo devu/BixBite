@@ -28,7 +28,7 @@ package org.bixbite.framework.interfaces
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public interface IDisplayView extends IView
 	{
@@ -41,14 +41,8 @@ package org.bixbite.framework.interfaces
 		/**
 		 * Reference to native Flash DisplayObject attached to any IDisplayView. Acts as dependency injector.
 		 */
-		function get content():DisplayObject;
-		function set content(value:DisplayObject):void
-		
-		/**
-		 * Set Interactivity flag of any  DisplayView
-		 */
-		function get interactive():Boolean;
-		function set interactive(value:Boolean):void
+		function get context():DisplayObject;
+		function set context(value:DisplayObject):void
 	}
 	
 }

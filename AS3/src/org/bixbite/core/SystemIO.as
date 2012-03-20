@@ -32,6 +32,9 @@ package org.bixbite.core
 	 * Models can access stage.loaderInfo to get some external data as well as controll the output.
 	 * Controllers can capture user inputs by adding native listeners.
 	 * Views can access stage as 'top view' in nested view hierarhy.
+	 * 
+	 * @langversion	3.0
+	 * @version 0.4.1
 	 */
 	public class SystemIO 
 	{

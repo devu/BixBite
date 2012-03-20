@@ -7,7 +7,7 @@
 	 * This class serve this purpose. It is also part of Composite pattern and directly extends DisplayViewContainer as the highest in display list hierarchy. 
 	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during Actor initialistion.
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public class StageView extends DisplayViewContainer
 	{

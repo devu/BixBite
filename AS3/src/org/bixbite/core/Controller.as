@@ -24,25 +24,19 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.Actor;
 	import org.bixbite.core.interfaces.IController;
-	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
      * <p><i>"The primary symptom of a controller is denial, that is I can’t see its symptoms in myself. — Keith Miller"</i></p>
      * <p>The Controller is an abstract class</p>
      * <p>Handles user input to change the state of the application, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model, controls behaviour of the views and notify model with a signal system. 
-	 * Note for PureMVC and RL users. Commanding means teeling them, sending signals, not taking CONTROL OVER them. Do not look for executable commands over here.
-	 * Also following the rule of "Keep Controllers skinny and Models fat". 
-	 * There is NO place for Controllers to handle business logic of the application due to original paradigm of MVC.</p>
+	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
      */
 	public class Controller extends Actor implements IController 
 	{
-		private var _emiter:Emiter = Emiter.getInstance();
-		
 		/**
          * Constructor - this class cannot be directly instantiated.
          */

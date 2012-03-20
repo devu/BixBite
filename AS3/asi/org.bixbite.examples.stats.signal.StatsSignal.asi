@@ -3,8 +3,11 @@
 	import org.bixbite.core.Signal;
 
 	/**
-	 * StatsSignal as value object contains all needed values to update state of StatsView
-	 * Set of static constants indicates how we can use it.
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsSignal as value object contains all needed values to update state of StatsView
+	 *   Set of static constants indicates how we can use it.
 	 */
 	public class StatsSignal extends Signal
 	{

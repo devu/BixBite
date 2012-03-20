@@ -1,0 +1,50 @@
+﻿package org.bixbite.framework.modules.stats.view
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import org.bixbite.framework.modules.stats.signal.StatsSignal;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.view.DisplayViewContainer;
+
+	/**
+	 *
+	 * @since 0.4.1
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsMonitor
+	 */
+	public class StatsMonitor extends DisplayViewContainer
+	{
+		private var mem_graph : Number;
+		private var max_graph : Number;
+		private var fps_graph : Number;
+		private var monitor : Bitmap;
+		private var graph : BitmapData;
+		private var info_fps : TextField;
+		private var info_ms : TextField;
+		private var info_mem : TextField;
+		private var info_max : TextField;
+		private var info_orient : TextField;
+		private var panel : Sprite;
+		private var frameRate : int;
+
+		/**
+		 * Constructor
+		 * @param	useTracer, turn on/off tracer sub view.
+		 */
+		public function StatsMonitor (useTracer:Boolean=true);
+
+		public function init () : void;
+
+		private function drawGraph (s:StatsSignal) : void;
+
+		private function updateText (s:StatsSignal) : void;
+
+		private function onStageUpdate (s:StageSignal) : void;
+
+		private function createText (posX:Number, posY:Number, color:uint=0xFFFFFF, w:Number=70, h:Number=18) : TextField;
+	}
+}

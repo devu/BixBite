@@ -3,7 +3,10 @@
 	import org.bixbite.core.Signal;
 
 	/**
-	 * Purpose of this signal is to send specific information about copy used by View.
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     Purpose of this signal is to send specific value from Model, copy displayed by View.
 	 */
 	public class HelloSignal extends Signal
 	{

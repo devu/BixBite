@@ -34,12 +34,10 @@ package org.bixbite.framework.view
 	 * Provides set of methods to handle children DisplayView of every DisplayObjectContainer.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public class DisplayViewContainer extends DisplayView implements IDisplayViewContainer
 	{
-		private var _numViews	:int;
-		
 		/**
 		 * Array of views as a children of this view
 		 */
@@ -49,9 +47,9 @@ package org.bixbite.framework.view
 		 * Constructor
 		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
 		 */
-		public function DisplayViewContainer(content:DisplayObjectContainer = null) 
+		public function DisplayViewContainer(context:DisplayObjectContainer = null) 
 		{
-			super(content);
+			super(context);
 		}
 		
 		/**
@@ -59,7 +57,7 @@ package org.bixbite.framework.view
 		 */
 		override public function init():void 
 		{
-			content = new Sprite();
+			context = new Sprite();
 		}
 		
 		/**
@@ -97,14 +95,12 @@ package org.bixbite.framework.view
 		 */
 		private function addViewContent(view:IDisplayView):void
 		{
-			if (content) {
-				if (view.content) addChild(view.content);
-			}
+			if (context && view.context) addChild(view.context);
 		}
 		
 		public function addChild(child:DisplayObject):DisplayObject
 		{
-			return DisplayObjectContainer(content).addChild(child);
+			return DisplayObjectContainer(context).addChild(child);
 		}
 		
 		/**
@@ -126,7 +122,7 @@ package org.bixbite.framework.view
 		{
 			var view:IDisplayView = children[id];
 			children.splice(id, 1);
-			DisplayObjectContainer(content).removeChild(view.content);
+			DisplayObjectContainer(context).removeChild(view.context);
 			return view
 		}
 		
@@ -139,7 +135,7 @@ package org.bixbite.framework.view
 		public function removeViewsAt(from:int, howMany:int):Array
 		{
 			var a:Array = children.splice(from, howMany);
-			for each(var view:IDisplayView in a) DisplayObjectContainer(content).removeChild(view.content);
+			for each(var view:IDisplayView in a) DisplayObjectContainer(context).removeChild(view.context);
 			return a
 		}
 		

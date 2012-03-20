@@ -23,10 +23,13 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IApplication;
+	import org.bixbite.core.interfaces.IController;
+	import org.bixbite.core.interfaces.IModel;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -39,7 +42,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public class Emiter
 	{
@@ -51,9 +54,16 @@ package org.bixbite.core
 		private var _application		:IApplication;
 		
 		/**
-		 * Main container for slot references.
-		 */ 
-		private var slots				:Object = {};
+		 * Reference to active slot
+		 */
+		private var slots				:Object = { };
+		
+		/**
+		* Main containers for slot references.
+		*/ 
+		private var mSlots				:Object = { };
+		private var vSlots				:Object = { };
+		private var cSlots				:Object = { };
 		
 		use namespace BIXBITE
 		
@@ -70,6 +80,7 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * @private
          * Internal method to add slot for any Actor.
          * This is equivalent of addListener or registerNotification known from different systems and implementations.
          * Can be invoked by any Actor.
@@ -77,61 +88,103 @@ package org.bixbite.core
          * @param    type, type of signal
          * @param    callback, listener of the caller that will be added to the slot of certain type.
          */
-		BIXBITE function addSlot(callerUID:String, type:String, callback:Function):void
+		BIXBITE function addSlot(actor:IActor, callerUID:String, type:String, callback:Function):void
 		{
+			slots = selectSlot(actor);
+			
 			if (!slots[type]) slots[type] = { };
 			slots[type][callerUID] = callback;
 		}
 		
 		/**
+		 * @private
 		 * Internal method to remove specific callback assigned to an Actor.
 		 * Can be invoked by any Actor.
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeSlot(callerUID:String, type:String):void
+		BIXBITE function removeSlot(actor:IActor, callerUID:String, type:String):void
 		{
+			slots = selectSlot(actor);
+			
 			if (!slots[type]) return;
 			delete slots[type][callerUID];
 		}
 		
 		/**
+		 * @private
 		 * Remove all registered callbacks within a certain type of signal. 
 		 * Can be invoked by any Actor.
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeAllSlots(type:String):void
+		BIXBITE function removeAllSlots(actor:IActor, type:String):void
 		{
+			slots = selectSlot(actor);
+			
 			if (!slots[type]) return;
-			for (var uid:String in slots[type]) removeSlot(uid, type);
+			for (var uid:String in slots[type]) removeSlot(actor, uid, type);
 			delete slots[type];
 		}
 		
 		/**
+		 * @private
 		 * Remove all registered signals of concrete Actor by his unique id.
 		 * @param	uid, unique id of the caller
 		 */
-		BIXBITE function removeAllSlotsOf(uid:String):void
+		BIXBITE function removeAllSlotsOf(actor:IActor, uid:String):void
 		{
+			slots = selectSlot(actor);
+			
 			for (var p:String in slots) {
-				removeSlot(uid, p);
+				removeSlot(actor, uid, p);
 				if (isEmpty(slots[p])) delete slots[p];
 			}
 		}
 		
 		/**
+		 * @private
 		 * Internal method to execute all callbacks assigned to certain type of signal.
 		 * Can be invoked by any Actor.
 		 * @param	type, type, type of signal
 		 * @param	signal, attached to a caller
 		 */
-		BIXBITE function sendSignal(type:String, signal:ISignal):void
+		BIXBITE function sendSignal(actor:IActor, type:String, signal:ISignal):void
+		{
+			signal.BIXBITE::phase = 0;
+			
+			if (actor is IView){
+				broadcast(cSlots, type, signal);
+				return;
+			}
+			
+			if (actor is IModel){
+				broadcast(vSlots, type, signal);
+				return;
+			}
+			
+			if (actor is IController){
+				broadcast(mSlots, type, signal);
+				signal.BIXBITE::phase = 1;
+				broadcast(vSlots, type, signal);
+				return;
+			}
+		}
+		
+		/**
+		 * sendSignal emiter
+		 * 
+		 * @param	slots
+		 * @param	type
+		 * @param	signal
+		 */
+		private function broadcast(slots:Object, type:String, signal:ISignal):void 
 		{
 			if (!slots[type]) return;
 			for each (var f:Function in slots[type]) f(signal);
 		}
 		
 		/**
+		 * @private
 		 * Method to fast execute signal request and send direct response to a caller.
 		 * Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
 		 * In case you want to use request/response callbacks associated with reponders must return their own signals;
@@ -139,26 +192,72 @@ package org.bixbite.core
 		 * @param	signal, attached to a caller
 		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
 		 */
-		BIXBITE function sendRequest(type:String, signal:ISignal, callback:Function):void
+		BIXBITE function sendRequest(actor:IActor, type:String, signal:ISignal, callback:Function):void
+		{
+			signal.BIXBITE::phase = 0;
+			
+			if (actor is IModel){
+				//broadcast(vSlots, type, signal);
+				return;
+			}
+			
+			if (actor is IView){
+				request(mSlots, type, signal, callback);
+				return;
+			}
+			
+			if (actor is IController){
+				request(mSlots, type, signal, callback);
+				return;
+			}
+		}
+		
+		/**
+		 * sendRequest emiter
+		 * 
+		 * @param	slots
+		 * @param	type
+		 * @param	signal
+		 * @param	callback
+		 */
+		private function request(slots:Object, type:String, signal:ISignal, callback:Function):void 
 		{
 			if (!slots[type]) return;
 			for each (var f:Function in slots[type]) callback(f(signal));
 		}
 		
 		/**
+		 * @private
 		 * Internal method to handle signal referencing mechanism.
 		 * Can be invoked by responders, Model or Controller.
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReferences(type:String):Array
+		public function getSlotReferences(actor:IActor, type:String):Array
 		{
+			slots = selectSlot(actor);
+			
 			var a:Array = [];
 			for each (var f:Function in slots[type]) a.push(f);
 			return a
 		}
 		
 		/**
+		 * 
+		 * @param	actor
+		 * @return
+		 */
+		private function selectSlot(actor:IActor):Object 
+		{
+			if (actor is IModel) return mSlots;
+			if (actor is IView) return vSlots;
+			if (actor is IController) return cSlots;
+			
+			return null
+		}
+		
+		/**
+		 * @private
          * Each Application will invoke this method in order to register itself within Emiter.
          * Only first one will become root application, any next one will run as a module and get reference to same instance of Emiter.
          * @param    referrer

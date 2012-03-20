@@ -38,29 +38,28 @@ package org.bixbite.core
 	 * Also, you cannot send multiple signals from one Actor at the same time. You need to attach them to Actor before using attachSignal method.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
      */
 	public class Signal implements ISignal 
 	{
-		private var _actor			:Class;
+		private var _phase			:int = 0;
 		private var _callerUID		:String;
 		private var _action			:String;
 		
 		/**
-         * Actor type read-only getter recognisable by concrete Class.
-         * Convenient way for Models or Controllers to recognise what type of actor sending a signal, so the response may vary base on it even if senders relay on the same signal type.
-         */
-		public function get actor():Class 
+		 * Phase
+		 */
+		public function get phase():int 
 		{
-			return _actor;
+			return _phase;
 		}
 		
 		/**
-		 * System controlled setter for Actor type
+		 * @private
 		 */
-		BIXBITE function set actor(value:Class):void 
+		BIXBITE function set phase(value:int):void 
 		{
-			_actor = value;
+			_phase = value;
 		}
 		
 		/**
@@ -74,6 +73,7 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * @private
 		 * System controlled setter for caller unique id.
 		 */
 		BIXBITE function set callerUID(value:String):void 
@@ -92,6 +92,7 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * @private
 		 * System controlled setter for action optional parameter
 		 */
 		BIXBITE function set action(value:String):void 
@@ -104,7 +105,7 @@ package org.bixbite.core
 		 */
 		public function dispose():void
 		{
-			_actor = null;
+			_phase = NaN;
 			_callerUID = null;
 			_action = null;
 			

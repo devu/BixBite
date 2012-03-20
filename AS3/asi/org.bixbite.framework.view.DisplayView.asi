@@ -13,7 +13,7 @@
 	 * Solution built upon Decoration pattern, to wrap up native Objects into MVC structure.
 	 * Lets you control/expose selected aspects of your application or structure.
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
@@ -30,8 +30,8 @@
 		/**
 		 * Native Flash DisplayObject attached to this view
 		 */
-		public function get content () : DisplayObject;
-		public function set content (value:DisplayObject) : void;
+		public function get context () : DisplayObject;
+		public function set context (value:DisplayObject) : void;
 
 		public function get graphics () : Graphics;
 

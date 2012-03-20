@@ -1,10 +1,9 @@
 ﻿package org.bixbite.core
 {
-	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.Emiter;
 	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Emiter;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -12,23 +11,29 @@
 	 * 
 	 *   <p>Purpose of this class is to provide unified way to register the member within Signal Emiter, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public class Actor implements IActor
 	{
 		/**
-		 * Every Actor will invoke this assigment in order to get short reference to Emiter.
+		 *
+		 * @private
+		 *   Every Actor will invoke this assigment in order to get short reference to Emiter.
 		 */
 		private var _emiter : Emiter;
 
 		/**
-		 * Every Actor will get short reference to SystemIO, in case of AS3 implementation relies mostly on native stage. 
-		 * This assigment will make system available even before constructor of this class is invoked.
+		 *
+		 * @private
+		 *   Every Actor will get short reference to SystemIO, in case of AS3 implementation relies mostly on native stage. 
+		 *   This assigment will make system available even before constructor of this class is invoked.
 		 */
 		private var _system : SystemIO;
 
 		/**
-		 * Base on Emiter short reference, evey Actor will get unique id from observer uid iterator.
+		 *
+		 * @private
+		 *   Base on Emiter short reference, evey Actor will get unique id from observer uid iterator.
 		 */
 		private var _uid : String;
 
@@ -103,8 +108,8 @@
 		public function sendSignal (type:String) : void;
 
 		/**
-		 * <p>This method is a direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
-		 * In case of Controller that method will be used to notify any Model or even multiple Models, that having slot added of provided type of the signal.</p>
+		 * <p>Direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
+		 * In case of <code>Controller</code> that method will be used to notify any <code>Model</code> or even multiple Models, that having slot added of provided type of the signal.</p>
 		 * @param    type, type of the signal as a String
 		 * @param    callback, optional listener function that will be triggered as soon as involved actor receive request.
 		 * @param    acton, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and to many unique signal types / slots.
@@ -121,7 +126,9 @@
 		public function getSlotReferences (type:String) : Array;
 
 		/**
-		 * Unique actor identifier controlled by Emiter
+		 *
+		 * @private
+		 *   Unique actor identifier controlled by Emiter
 		 * @param	uid
 		 */
 		function setUID (uid:String) : void;

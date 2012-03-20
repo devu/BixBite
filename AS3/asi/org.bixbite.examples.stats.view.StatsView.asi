@@ -10,13 +10,16 @@
 	import org.bixbite.framework.signal.StageSignal;
 
 	/**
-	 * StatsView, visual representation of data comning from StatsModel.
-	 * Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.
-	 * You can even have multiple views reacting on the same set of signals.
-	 * Look at StatsTraceView for instance. In MobileStats fork we had all functionality build into one class. 
-	 * Here we have proper modular system that is more convinient to manage, change and extend.
-	 * 
-	 *   In this example we also shows how we can construct additional subview on demand.
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsView, visual representation of data comning from StatsModel.
+	 *   Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.
+	 *   You can even have multiple views reacting on the same set of signals.
+	 *   Look at StatsTraceView for instance. In MobileStats fork we had all functionality build into one class. 
+	 *   Here we have proper modular system that is more convinient to manage, change and extend.
+	 *   
+	 *     In this example we also shows how we can construct additional subview on demand.
 	 */
 	public class StatsView extends View
 	{

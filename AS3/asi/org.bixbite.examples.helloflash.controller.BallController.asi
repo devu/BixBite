@@ -2,27 +2,24 @@
 {
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Model;
+	import org.bixbite.core.Controller;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
-	import org.bixbite.examples.helloflash.view.Ball;
-	import org.bixbite.framework.view.StageView;
 
-	public class BallController extends Model
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 */
+	public class BallController extends Controller
 	{
-		private var topView : StageView;
-
-		public function BallController (topView:StageView);
+		public function BallController ();
 
 		public function init () : void;
 
-		private function onCreateBall (s:ISignal) : void;
-
 		/**
-		 * Controll, yes, this is what controller is for, capture user input and perform GUI logic!
-		 * I am really disapointed to see this bit in View by RL. In fact RL and PureMVC bad habbits are determined by using view mediators to do Controllers job.
+		 * Controller, captures user input and perform GUI logic.
+		 * Find out if any ball has been clicked, then broadcast signal.
 		 * @param	e native event listener.
 		 */
-		private function onMouseDown (e:MouseEvent) : void;
+		private function onMouseClick (e:MouseEvent) : void;
 	}
 }

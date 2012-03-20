@@ -1,9 +1,35 @@
+/**The MIT License
+
+@copy (c) 2012 Devu Design Limited, Daniel Wasilewski
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
 package org.bixbite.examples.helloflash.model 
 {
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Model;
 	import org.bixbite.examples.helloflash.signal.BallSignal;
 	
+	/**
+	 * @version  compatibility - 0.4.1
+	 */
 	public class HelloFlashModel extends Model 
 	{
 		
@@ -12,7 +38,7 @@ package org.bixbite.examples.helloflash.model
 		
 		/**
          * In RL original example there is no Model of application provided. 
-         * It's a Model responsibility to describe environment that application live in. 
+         * Bixbite It's a Model responsibility to describe environment that application live in. 
 		 * Model is not only data provider! By definition modelling things, so it must specify some rules of the game.
          */
 		public function HelloFlashModel() 
@@ -32,17 +58,6 @@ package org.bixbite.examples.helloflash.model
 			sendSignal(BallSignal.CREATE_BALL);
 		}
 		
-		/**
-		 * Is up to Model to decide what to do with this situation. In this case Increase a counter.
-		 * It is Model manages state of application, so is up to Model to decide how many you can be generated.
-		 * It can send his value to view if needed to display.
-		 * 
-		 * Consider this, if you need to do something diferent every 10 balls being generated. You have to refactor lots of things. View no longer can count! 
-		 * Where you going to put this, into Controller? How you going to send this information from there in order to display count? Stilldoable this way.
-		 * Now, what if every 10 steps is depend of data coming from external xml? You going to refactor this again because Model will get ivolved.
-		 * So why not do this correctly at first place and have open way for changes? If RL needs to reproduce this example in current implementation is in even bigger trouble.
-		 * @param	s
-		 */
 		private function onPoke(s:ISignal):void 
 		{
 			count++;

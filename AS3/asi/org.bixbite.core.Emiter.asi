@@ -1,9 +1,12 @@
 ﻿package org.bixbite.core
 {
-	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IApplication;
+	import org.bixbite.core.interfaces.IController;
+	import org.bixbite.core.interfaces.IModel;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -15,7 +18,7 @@
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public class Emiter
 	{
@@ -26,9 +29,16 @@
 		private var _application : IApplication;
 
 		/**
-		 * Main container for slot references.
+		 * Reference to active slot
 		 */
 		private var slots : Object;
+
+		/**
+		 * Main containers for slot references.
+		 */
+		private var mSlots : Object;
+		private var vSlots : Object;
+		private var cSlots : Object;
 
 		/**
 		 * System I/O accessor. In AS3 implementation is a native stage
@@ -48,67 +58,107 @@
 		public function Emiter (application:IApplication);
 
 		/**
-		 * Internal method to add slot for any Actor.
-		 * This is equivalent of addListener or registerNotification known from different systems and implementations.
-		 * Can be invoked by any Actor.
+		 *
+		 * @private
+		 *   Internal method to add slot for any Actor.
+		 *   This is equivalent of addListener or registerNotification known from different systems and implementations.
+		 *   Can be invoked by any Actor.
 		 * @param    callerUID, unique id of the caller
 		 * @param    type, type of signal
 		 * @param    callback, listener of the caller that will be added to the slot of certain type.
 		 */
-		function addSlot (callerUID:String, type:String, callback:Function) : void;
+		function addSlot (actor:IActor, callerUID:String, type:String, callback:Function) : void;
 
 		/**
-		 * Internal method to remove specific callback assigned to an Actor.
-		 * Can be invoked by any Actor.
+		 *
+		 * @private
+		 *   Internal method to remove specific callback assigned to an Actor.
+		 *   Can be invoked by any Actor.
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		function removeSlot (callerUID:String, type:String) : void;
+		function removeSlot (actor:IActor, callerUID:String, type:String) : void;
 
 		/**
-		 * Remove all registered callbacks within a certain type of signal. 
-		 * Can be invoked by any Actor.
+		 *
+		 * @private
+		 *   Remove all registered callbacks within a certain type of signal. 
+		 *   Can be invoked by any Actor.
 		 * @param	type, type of signal
 		 */
-		function removeAllSlots (type:String) : void;
+		function removeAllSlots (actor:IActor, type:String) : void;
 
 		/**
-		 * Remove all registered signals of concrete Actor by his unique id.
+		 *
+		 * @private
+		 *   Remove all registered signals of concrete Actor by his unique id.
 		 * @param	uid, unique id of the caller
 		 */
-		function removeAllSlotsOf (uid:String) : void;
+		function removeAllSlotsOf (actor:IActor, uid:String) : void;
 
 		/**
-		 * Internal method to execute all callbacks assigned to certain type of signal.
-		 * Can be invoked by any Actor.
+		 *
+		 * @private
+		 *   Internal method to execute all callbacks assigned to certain type of signal.
+		 *   Can be invoked by any Actor.
 		 * @param	type, type, type of signal
 		 * @param	signal, attached to a caller
 		 */
-		function sendSignal (type:String, signal:ISignal) : void;
+		function sendSignal (actor:IActor, type:String, signal:ISignal) : void;
 
 		/**
-		 * Method to fast execute signal request and send direct response to a caller.
-		 * Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
-		 * In case you want to use request/response callbacks associated with reponders must return their own signals;
+		 * sendSignal emiter
+		 * @param	slots
+		 * @param	type
+		 * @param	signal
+		 */
+		private function broadcast (slots:Object, type:String, signal:ISignal) : void;
+
+		/**
+		 *
+		 * @private
+		 *   Method to fast execute signal request and send direct response to a caller.
+		 *   Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
+		 *   In case you want to use request/response callbacks associated with reponders must return their own signals;
 		 * @param	type, type of signal
 		 * @param	signal, attached to a caller
 		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
 		 */
-		function sendRequest (type:String, signal:ISignal, callback:Function) : void;
+		function sendRequest (actor:IActor, type:String, signal:ISignal, callback:Function) : void;
 
 		/**
-		 * Internal method to handle signal referencing mechanism.
-		 * Can be invoked by responders, Model or Controller.
+		 * sendRequest emiter
+		 * @param	slots
+		 * @param	type
+		 * @param	signal
+		 * @param	callback
+		 */
+		private function request (slots:Object, type:String, signal:ISignal, callback:Function) : void;
+
+		/**
+		 *
+		 * @private
+		 *   Internal method to handle signal referencing mechanism.
+		 *   Can be invoked by responders, Model or Controller.
 		 * @param	type
 		 * @return
 		 */
-		function getSlotReferences (type:String) : Array;
+		public function getSlotReferences (actor:IActor, type:String) : Array;
 
 		/**
-		 * Each Application will invoke this method in order to register itself within a Observer.
-		 * Only first one will become root application, any next one will run as a module and get reference to same instance of Observer.
-		 * @param    referrer
+		 *
+		 * @param	actor
 		 * @return
+		 */
+		private function selectSlot (actor:IActor) : Object;
+
+		/**
+		 *
+		 * @private
+		 *   Each Application will invoke this method in order to register itself within Emiter.
+		 *   Only first one will become root application, any next one will run as a module and get reference to same instance of Emiter.
+		 * @param    referrer
+		 * @return   reference to Emiter
 		 */
 		public static function register (referrer:IApplication) : Emiter;
 

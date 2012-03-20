@@ -17,7 +17,5 @@
 		public function init () : void;
 
 		private function onMouseDown (e:MouseEvent) : void;
-
-		private function onMouseUp (e:MouseEvent) : void;
 	}
 }

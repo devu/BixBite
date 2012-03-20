@@ -27,7 +27,7 @@ package org.bixbite.framework.signal
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public class StageSignal extends Signal 
 	{

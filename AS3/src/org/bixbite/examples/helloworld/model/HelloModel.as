@@ -28,6 +28,8 @@ package org.bixbite.examples.helloworld.model
 	import org.bixbite.examples.helloworld.signal.HelloSignal;
 	
 	/**
+	 * @version  compatibility - 0.4.1
+	 * 
 	 * This model is a copy holder that will reponse on 2 diferent signals.
 	 * Model don't care who is calling, will respond as soon as a signal has been recieved.
 	 * Althoght don't need to know wich view will display this infromation.
@@ -46,21 +48,16 @@ package org.bixbite.examples.helloworld.model
 		override public function init():void
 		{
 			helloSignal = new HelloSignal();
+			helloSignal.copy = "<font color='#000000'> Hello World </font>";
 			attachSignal(helloSignal);
 			
-			addSlot("getCopyRequest", onCopyRequest);
 			addSlot("replaceCopy", onReplaceCopy);
-		}
-		
-		private function onCopyRequest(s:ISignal):ISignal
-		{
-			helloSignal.copy = "Hello World";
-			return signal
+			sendSignal("setCopy");
 		}
 		
 		private function onReplaceCopy(s:ISignal):void
 		{
-			helloSignal.copy = "Hello Bixbite";
+			helloSignal.copy = "<font color='#FF0000'> Hello Bixbite </font>";
 			sendSignal("copyReplaced");
 		}
 	

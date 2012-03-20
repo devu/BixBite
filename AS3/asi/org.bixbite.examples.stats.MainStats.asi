@@ -8,11 +8,13 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.0
-	 *   This is example of how famous stats by mrdoob can be implemented within bixbite mvc framework.
-	 *   It is also fork of my fork :) MobileStats.as.
+	 * @version  compatibility - 0.4.1
+	 *   footprint 7.11kb
 	 *   
-	 *     IMPORTANT: This is just an example to show a flow, do not use it for projects.
+	 *     This is example of how famous stats by mrdoob can be implemented within Bixbite mvc framework.
+	 *   It is also a fork of my fork, MobileStats.as.
+	 *   
+	 *     IMPORTANT: This is just an example to show a flow, do not use it for development purposes.
 	 *   There will be proper optimised version provided as a functional module as a part of framework.
 	 */
 	public class MainStats extends Application

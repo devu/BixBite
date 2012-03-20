@@ -8,7 +8,9 @@
 	/**
 	 *
 	 * @version  compatibility - 0.4.0
-	 *   Hello World Example, will show you simplicity and a basic flow within Bixbite MVC.
+	 *   footprint 4.06kb
+	 *   
+	 *     Hello World Example, will show you simplicity and a basic flow within Bixbite MVC.
 	 *   This example not even using framework but just a Core. Core is fully functioning stand alone unit ready to build framework on top of it. 
 	 *   But still in many situations you can rely on Core functionality only to achive simple tasks.
 	 *   The simplest way would be to have just view and model as an copy provider to realise this task. But let's to be conservative and show whole triad.

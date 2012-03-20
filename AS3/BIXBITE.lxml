@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_0.4.0.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_0.4.1.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -33,6 +33,17 @@
     <string>src\org\bixbite\examples\stats\model\statsmodel.as</string>
     <string>src\org\bixbite\examples\stats\controller\statscontroller.as</string>
     <string>src\org\bixbite\main.as</string>
+    <string>src\org\bixbite\examples\helloearth\controller\rocketcontroller.as</string>
+    <string>src\org\bixbite\examples\helloearth\model\earthmodel.as</string>
+    <string>src\org\bixbite\examples\helloearth\helloearth.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\mainview.as</string>
+    <string>src\org\bixbite\framework\modules\stats\stats.as</string>
+    <string>src\org\bixbite\framework\modules\stats\view\statstracer.as</string>
+    <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
+    <string>src\org\bixbite\framework\modules\stats\signal\statssignal.as</string>
+    <string>src\org\bixbite\framework\modules\stats\model\statsmodel.as</string>
+    <string>src\org\bixbite\framework\modules\stats\controller\statscontroller.as</string>
+    <string>src\org\bixbite\framework\modules\stats\signal\tracesignal.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
@@ -55,6 +66,17 @@
     <string>src\org\bixbite\examples\stats\model\statsmodel.as</string>
     <string>src\org\bixbite\examples\stats\controller\statscontroller.as</string>
     <string>src\org\bixbite\main.as</string>
+    <string>src\org\bixbite\examples\helloearth\controller\rocketcontroller.as</string>
+    <string>src\org\bixbite\examples\helloearth\model\earthmodel.as</string>
+    <string>src\org\bixbite\examples\helloearth\helloearth.as</string>
+    <string>src\org\bixbite\examples\helloflash\view\mainview.as</string>
+    <string>src\org\bixbite\framework\modules\stats\stats.as</string>
+    <string>src\org\bixbite\framework\modules\stats\view\statstracer.as</string>
+    <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
+    <string>src\org\bixbite\framework\modules\stats\signal\statssignal.as</string>
+    <string>src\org\bixbite\framework\modules\stats\model\statsmodel.as</string>
+    <string>src\org\bixbite\framework\modules\stats\controller\statscontroller.as</string>
+    <string>src\org\bixbite\framework\modules\stats\signal\tracesignal.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

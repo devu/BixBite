@@ -5,7 +5,7 @@
 	/**
 	 * Primary reason for this interface is for polymorphism purposes.
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public interface IView extends IActor
 	{	}

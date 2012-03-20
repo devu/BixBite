@@ -24,11 +24,12 @@ THE SOFTWARE.
 package org.bixbite.examples.helloworld.view 
 {
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
 	import org.bixbite.examples.helloworld.signal.HelloSignal;
 	
 	/**
+	 * @version  compatibility - 0.4.1
+	 * 
 	 * View is the display layer. By default will request some data. Then can only listen and react to the changes. 
 	 * But it doesn't need to be aware where the changes coming from.
 	 */
@@ -51,8 +52,8 @@ package org.bixbite.examples.helloworld.view
 			
 			system.stage.addChild(textField);
 			
+			addSlot("setCopy", onCopy);
 			addSlot("copyReplaced", onCopyReplaced);
-			sendRequest("getCopyRequest", onCopy);
 		}
 		
 		private function onCopyReplaced(s:HelloSignal):void 
@@ -67,10 +68,8 @@ package org.bixbite.examples.helloworld.view
 		
 		private function applyCopy(copy:String):void 
 		{
-			textField.text = copy;
+			textField.htmlText = copy;
 		}
-		
-		
 	}
 
 }

@@ -23,11 +23,10 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.Emiter;
 	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Emiter;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -36,25 +35,28 @@ package org.bixbite.core
 	 * <p>Purpose of this class is to provide unified way to register the member within Signal Emiter, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.4.0
+	 * @version 0.4.1
 	 */
 	public class Actor implements IActor
 	{
 		/**
+		 * @private
 		 * Every Actor will invoke this assigment in order to get short reference to Emiter.
 		 */
 		private var _emiter	:Emiter 	= Emiter.getInstance();
 		
 		/**
+		 * @private
 		 * Every Actor will get short reference to SystemIO, in case of AS3 implementation relies mostly on native stage. 
 		 * This assigment will make system available even before constructor of this class is invoked.
 		 */
 		private var _system		:SystemIO 	= _emiter.system;
 		
 		/**
+		 * @private
 		 * Base on Emiter short reference, evey Actor will get unique id from observer uid iterator.
 		 */
-		private var _uid		:String		= "@"+_emiter.uid;
+		private var _uid		:String		= "@" + _emiter.uid;
 		
 		/**
          * Reference to default Signal attached to its Actor. It can be reattached from subclass by using attachSignal method by passing Custom Signal implementation into it.
@@ -63,6 +65,9 @@ package org.bixbite.core
          */
 		public var signal		:ISignal 	= attachSignal();
 		
+		/**
+		 * Use system default namespace
+		 */
 		use namespace BIXBITE;
 		
 		/**
@@ -70,7 +75,7 @@ package org.bixbite.core
 		 */
 		public function Actor()
 		{
-			if(Object(this).constructor == Actor) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Actor) throw new IllegalOperationError("Abstract Class");
 		}
 		
 		/**
@@ -90,7 +95,7 @@ package org.bixbite.core
 		 */
 		public function destroy():void
 		{
-			_emiter.removeAllSlotsOf(_uid);
+			_emiter.removeAllSlotsOf(this, _uid);
 			_emiter = null;
 			_system = null;
 			
@@ -109,7 +114,6 @@ package org.bixbite.core
 			else this.signal.dispose();
 			
 			signal.BIXBITE::callerUID = uid;
-			signal.BIXBITE::actor = Object(this).constructor;
 			this.signal = signal;
 			
 			return signal;
@@ -122,7 +126,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			_emiter.addSlot(_uid, type, callback);
+			_emiter.addSlot(this, _uid, type, callback);
 		}
 		
 		/**
@@ -131,7 +135,7 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			_emiter.removeSlot(_uid, type);
+			_emiter.removeSlot(this, _uid, type);
 		}
 		
 		/**
@@ -140,7 +144,7 @@ package org.bixbite.core
 		 */
 		public function removeAllSlots(type:String):void
 		{
-			_emiter.removeAllSlots(type);
+			_emiter.removeAllSlots(this, type);
 		}
 		
 		/**
@@ -152,12 +156,12 @@ package org.bixbite.core
          */
 		public function sendSignal(type:String):void
 		{
-			_emiter.sendSignal(type, signal);
+			_emiter.sendSignal(this, type, signal);
 		}
 		
 		/**
-         * <p>This method is a direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
-         * In case of Controller that method will be used to notify any Model or even multiple Models, that having slot added of provided type of the signal.</p>
+         * <p>Direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
+         * In case of <code>Controller</code> that method will be used to notify any <code>Model</code> or even multiple Models, that having slot added of provided type of the signal.</p>
          *
          * @param    type, type of the signal as a String
          * @param    callback, optional listener function that will be triggered as soon as involved actor receive request.
@@ -166,7 +170,7 @@ package org.bixbite.core
 		public function sendRequest(type:String, callback:Function = null, action:String = null):void
 		{
 			signal.BIXBITE::action = action;
-			_emiter.sendRequest(type, signal, callback);
+			_emiter.sendRequest(this, type, signal, callback);
 		}
 		
 		/**
@@ -179,7 +183,7 @@ package org.bixbite.core
          */
 		public function getSlotReferences(type:String):Array
 		{
-			return _emiter.getSlotReferences(type)
+			return _emiter.getSlotReferences(this, type);
 		}
 		
 		/**
@@ -199,6 +203,7 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * @private
 		 * Unique actor identifier controlled by Emiter
 		 * @param	uid
 		 */

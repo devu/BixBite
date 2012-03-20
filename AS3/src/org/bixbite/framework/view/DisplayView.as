@@ -37,7 +37,7 @@ package org.bixbite.framework.view
 	 * Lets you control/expose selected aspects of your application or structure.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.2.9
+	 * @version 0.4.1
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
@@ -60,7 +60,7 @@ package org.bixbite.framework.view
 		 */
 		override public function init():void 
 		{
-			this.content = new Shape();
+			this.context = new Shape();
 		}
 		
 		/**
@@ -72,8 +72,8 @@ package org.bixbite.framework.view
 		/**
 		 * Native Flash DisplayObject attached to this view
 		 */
-		public function get content():DisplayObject { return _content; }
-		public function set content(value:DisplayObject):void { _content = value; }
+		public function get context():DisplayObject { return _content; }
+		public function set context(value:DisplayObject):void { _content = value; }
 		
 		public function get graphics():Graphics 
 		{

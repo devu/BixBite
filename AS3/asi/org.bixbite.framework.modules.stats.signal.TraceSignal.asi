@@ -1,0 +1,20 @@
+﻿package org.bixbite.framework.modules.stats.signal
+{
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @since 0.4.1
+	 * @version  compatibility - 0.4.1
+	 */
+	public class TraceSignal extends Signal
+	{
+		public var name : String;
+		public var value : String;
+		public var line : int;
+
+		public function TraceSignal (name:String, value:*, line:int=0);
+
+		public function dispose () : void;
+	}
+}
