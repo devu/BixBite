@@ -27,6 +27,8 @@ package org.bixbite.framework.modules.stats.controller
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Controller;
+	import org.bixbite.framework.modules.stats.signal.StatsSignal;
+	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	
 	/**
 	 * @version  compatibility - 0.4.2
@@ -47,6 +49,15 @@ package org.bixbite.framework.modules.stats.controller
 		{
 			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			system.addListener(MouseEvent.MOUSE_UP, onMouseUp);
+			
+			addSlot(StatsSignal.TRACE, onTrace);
+		}
+		
+		//Capture request from View and Pass to Model in order to keep MVC signal flow.
+		private function onTrace(s:TraceSignal):void 
+		{
+			attachSignal(s);
+			sendSignal(StatsSignal.TRACE);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
@@ -64,7 +75,7 @@ package org.bixbite.framework.modules.stats.controller
 		
 		private function onMouseUp(e:MouseEvent):void 
 		{
-			statsPanel.stopDrag();
+			if (statsPanel) statsPanel.stopDrag();
 			statsPanel = null;
 		}
 	}
