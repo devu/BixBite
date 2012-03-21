@@ -25,6 +25,7 @@ package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IModel;
+	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
      * <p><i>"According to the standard model billions of years ago some little quantum fluctuation, perhaps a slightly
@@ -36,17 +37,51 @@ package org.bixbite.core
 	 * You can control many objects that are under defined laws of physics, but it is the Model that defines and manages them.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
      */
 	public class Model extends Actor implements IModel
 	{
+		private var emiter:Emiter 	= Emiter.getInstance();
+		private var slots:Object 	= emiter.slots;
+		
+		use namespace BIXBITE
+		
 		/**
          * Constructor - this class cannot be directly instantiated.
          */
 		public function Model() 
 		{
 			if (Object(this).constructor == Model) throw new IllegalOperationError("Abstract Class");
-			init();
+		}
+		
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot(type:String, callback:Function):void
+		{
+			emiter.addSlot(slots.m, uid, type, callback);
+		}
+		
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot(type:String):void
+		{
+			emiter.removeSlot(slots.m, uid, type);
+		}
+		
+		public function sendSignal(type:String):void 
+		{
+			emiter.broadcast(slots.v, type, signal);
+		}
+		
+		override public function destroy():void 
+		{
+			emiter.removeAllSlotsOf(slots.m, uid);
+			super.destroy();
 		}
 	}
 

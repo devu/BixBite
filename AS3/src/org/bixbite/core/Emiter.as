@@ -42,7 +42,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
 	 */
 	public class Emiter
 	{
@@ -53,17 +53,7 @@ package org.bixbite.core
 		private var _system				:SystemIO;
 		private var _application		:IApplication;
 		
-		/**
-		 * Reference to active slot
-		 */
-		private var slots				:Object = { };
-		
-		/**
-		* Main containers for MVC slot references.
-		*/ 
-		private var mSlots				:Object = { };
-		private var vSlots				:Object = { };
-		private var cSlots				:Object = { };
+		private var _slots				:Object = { m: { }, v: { }, c: { } };
 		
 		use namespace BIXBITE
 		
@@ -88,12 +78,10 @@ package org.bixbite.core
          * @param    type, type of signal
          * @param    callback, listener of the caller that will be added to the slot of certain type.
          */
-		BIXBITE function addSlot(actor:IActor, callerUID:String, type:String, callback:Function):void
+		BIXBITE function addSlot(channel:Object, callerUID:String, type:String, callback:Function):void
 		{
-			slots = selectSlot(actor);
-			
-			if (!slots[type]) slots[type] = { };
-			slots[type][callerUID] = callback;
+			if (!channel[type]) channel[type] = { };
+			channel[type][callerUID] = callback;
 		}
 		
 		/**
@@ -103,12 +91,10 @@ package org.bixbite.core
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeSlot(actor:IActor, callerUID:String, type:String):void
+		BIXBITE function removeSlot(channel:Object, callerUID:String, type:String):void
 		{
-			slots = selectSlot(actor);
-			
-			if (!slots[type]) return;
-			delete slots[type][callerUID];
+			if (!channel[type]) return;
+			delete channel[type][callerUID];
 		}
 		
 		/**
@@ -117,13 +103,11 @@ package org.bixbite.core
 		 * Can be invoked by any Actor.
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeAllSlots(actor:IActor, type:String):void
+		BIXBITE function removeAllSlots(channel:Object, type:String):void
 		{
-			slots = selectSlot(actor);
-			
-			if (!slots[type]) return;
-			for (var uid:String in slots[type]) removeSlot(actor, uid, type);
-			delete slots[type];
+			if (!channel[type]) return;
+			for (var uid:String in channel[type]) removeSlot(channel, uid, type);
+			delete channel[type];
 		}
 		
 		/**
@@ -131,42 +115,11 @@ package org.bixbite.core
 		 * Remove all registered signals of concrete Actor by his unique id.
 		 * @param	uid, unique id of the caller
 		 */
-		BIXBITE function removeAllSlotsOf(actor:IActor, uid:String):void
+		BIXBITE function removeAllSlotsOf(channel:Object, uid:String):void
 		{
-			slots = selectSlot(actor);
-			
-			for (var p:String in slots) {
-				removeSlot(actor, uid, p);
-				if (isEmpty(slots[p])) delete slots[p];
-			}
-		}
-		
-		/**
-		 * @private
-		 * Internal method to execute all callbacks assigned to certain type of signal.
-		 * Can be invoked by any Actor.
-		 * @param	type, type, type of signal
-		 * @param	signal, attached to a caller
-		 */
-		BIXBITE function sendSignal(actor:IActor, type:String, signal:ISignal):void
-		{
-			signal.BIXBITE::phase = 0;
-			
-			if (actor is IView){
-				broadcast(cSlots, type, signal);
-				return;
-			}
-			
-			if (actor is IModel){
-				broadcast(vSlots, type, signal);
-				return;
-			}
-			
-			if (actor is IController){
-				broadcast(mSlots, type, signal);
-				signal.BIXBITE::phase = 1;
-				broadcast(vSlots, type, signal);
-				return;
+			for (var p:String in channel) {
+				removeSlot(channel, uid, p);
+				if (isEmpty(channel[p])) delete channel[p];
 			}
 		}
 		
@@ -177,83 +130,24 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		private function broadcast(slots:Object, type:String, signal:ISignal):void 
+		BIXBITE function broadcast(channel:Object, type:String, signal:ISignal):void 
 		{
-			if (!slots[type]) return;
-			for each (var f:Function in slots[type]) f(signal);
+			if (!channel[type]) return;
+			for each (var f:Function in channel[type]) f(signal);
 		}
 		
 		/**
 		 * @private
-		 * Method to fast execute signal request and send direct response to a caller.
-		 * Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
-		 * In case you want to use request/response callbacks associated with reponders must return their own signals;
-		 * @param	type, type of signal
-		 * @param	signal, attached to a caller
-		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
-		 */
-		BIXBITE function sendRequest(actor:IActor, type:String, signal:ISignal, callback:Function):void
-		{
-			signal.BIXBITE::phase = 0;
-			
-			if (actor is IModel){
-				//broadcast(vSlots, type, signal);
-				return;
-			}
-			
-			if (actor is IView){
-				request(mSlots, type, signal, callback);
-				return;
-			}
-			
-			if (actor is IController){
-				request(mSlots, type, signal, callback);
-				return;
-			}
-		}
-		
-		/**
-		 * sendRequest emiter
 		 * 
 		 * @param	slots
 		 * @param	type
 		 * @param	signal
 		 * @param	callback
 		 */
-		private function request(slots:Object, type:String, signal:ISignal, callback:Function):void 
+		BIXBITE function request(channel:Object, type:String, signal:ISignal, callback:Function):void 
 		{
-			if (!slots[type]) return;
-			for each (var f:Function in slots[type]) callback(f(signal));
-		}
-		
-		/**
-		 * @private
-		 * Internal method to handle signal referencing mechanism.
-		 * Can be invoked by responders, Model or Controller.
-		 * @param	type
-		 * @return
-		 */
-		public function getSlotReferences(actor:IActor, type:String):Array
-		{
-			slots = selectSlot(actor);
-			
-			var a:Array = [];
-			for each (var f:Function in slots[type]) a.push(f);
-			return a
-		}
-		
-		/**
-		 * 
-		 * @param	actor
-		 * @return
-		 */
-		private function selectSlot(actor:IActor):Object 
-		{
-			if (actor is IModel) return mSlots;
-			if (actor is IView) return vSlots;
-			if (actor is IController) return cSlots;
-			
-			return null
+			if (!channel[type]) return;
+			for each (var f:Function in channel[type]) callback(f(signal));
 		}
 		
 		/**
@@ -311,6 +205,11 @@ package org.bixbite.core
 		public function get uid():int 
 		{
 			return ++_uid;
+		}
+		
+		public function get slots():Object 
+		{
+			return _slots;
 		}
 		
 	}

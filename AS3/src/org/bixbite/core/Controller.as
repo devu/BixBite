@@ -25,6 +25,7 @@ package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IController;
+	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
      * <p><i>"The primary symptom of a controller is denial, that is I can’t see its symptoms in myself. — Keith Miller"</i></p>
@@ -33,17 +34,57 @@ package org.bixbite.core
 	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
      */
 	public class Controller extends Actor implements IController 
 	{
+		private var emiter	:Emiter 	= Emiter.getInstance();
+		private var slots	:Object 	= emiter.slots;
+		
+		use namespace BIXBITE
+		
 		/**
          * Constructor - this class cannot be directly instantiated.
          */
 		public function Controller() 
 		{
 			if (Object(this).constructor == Controller) throw new IllegalOperationError("Abstract Class");
-			init();
+		}
+		
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot(type:String, callback:Function):void
+		{
+			emiter.addSlot(slots.c, uid, type, callback);
+		}
+		
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot(type:String):void
+		{
+			emiter.removeSlot(slots.c, uid, type);
+		}
+		
+		public function sendSignal(type:String):void 
+		{
+			emiter.broadcast(slots.m, type, signal);
+			emiter.broadcast(slots.v, type, signal);
+		}
+		
+		public function sendRequest(type:String, callback:Function):void
+		{
+			emiter.request(slots.m, type, signal, callback);
+		}
+		
+		override public function destroy():void 
+		{
+			emiter.removeAllSlotsOf(slots.c, uid);
+			super.destroy();
 		}
 	}
 

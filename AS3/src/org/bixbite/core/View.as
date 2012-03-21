@@ -25,6 +25,7 @@ package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
+	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
 	 * <p><i>"We view things not only from different sides, but with different eyes; we have no wish to find them alike. — Blaise Pascal"</i></p>
@@ -36,18 +37,57 @@ package org.bixbite.core
 	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
 	 */
 	public class View extends Actor implements IView
 	{
+		private var emiter:Emiter 	= Emiter.getInstance();
+		private var slots:Object 	= emiter.slots;
+		
+		use namespace BIXBITE
+		
 		/**
          * Constructor - this class cannot be directly instantiated.
          */
 		public function View() 
 		{
 			if (Object(this).constructor == View) throw new IllegalOperationError("Abstract Class");
-			init();
  		}
+		
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot(type:String, callback:Function):void
+		{
+			emiter.addSlot(slots.v, uid, type, callback);
+		}
+		
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot(type:String):void
+		{
+			emiter.removeSlot(slots.v, uid, type);
+		}
+		
+		public function sendSignal(type:String):void 
+		{
+			emiter.broadcast(slots.c, type, signal);
+		}
+		
+		public function sendRequest(type:String, callback:Function):void
+		{
+			emiter.request(slots.m, type, signal, callback);
+		}
+		
+		override public function destroy():void 
+		{
+			emiter.removeAllSlotsOf(slots.v, uid);
+			super.destroy();
+		}
 	}
 
 }
