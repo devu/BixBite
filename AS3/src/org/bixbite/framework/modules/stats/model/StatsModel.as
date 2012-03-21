@@ -39,7 +39,7 @@ package org.bixbite.framework.modules.stats.model
 	 */
 	public class StatsModel extends Model 
 	{
-		private var statsSignal:StatsSignal;
+		private var statsSignal		:StatsSignal;
 		
 		private var mem				:Number = 0;
 		private var max				:Number = 0;
@@ -81,12 +81,6 @@ package org.bixbite.framework.modules.stats.model
 			system.removeListener(Event.ENTER_FRAME, calculate);
 		}
 		
-		private function onTrace(s:TraceSignal):void 
-		{
-			data[s.line] = { name:s.name, value:s.value };
-			updateTrace();
-		}
-		
 		/**
 		 * On EnterFrame perform calculations, update signal values and broadcast it.
 		 * @param	e
@@ -124,6 +118,12 @@ package org.bixbite.framework.modules.stats.model
 			statsSignal.max = max;
 			statsSignal.mem = mem;
 			statsSignal.fps = fps;
+		}
+		
+		private function onTrace(s:TraceSignal):void 
+		{
+			data[s.line] = { name:s.name, value:s.value };
+			updateTrace();
 		}
 		
 		private function updateTrace():void
