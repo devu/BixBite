@@ -73,16 +73,28 @@ package org.bixbite.core
 			emiter.removeSlot(slots.v, uid, type);
 		}
 		
+		/**
+		 * 
+		 * @param	type
+		 */
 		public function sendSignal(type:String):void 
 		{
 			emiter.broadcast(slots.c, type, signal);
 		}
 		
+		/**
+		 * 
+		 * @param	type
+		 * @param	callback
+		 */
 		public function sendRequest(type:String, callback:Function):void
 		{
 			emiter.request(slots.m, type, signal, callback);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function destroy():void 
 		{
 			emiter.removeAllSlotsOf(slots.v, uid);

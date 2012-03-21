@@ -1,3 +1,26 @@
+/**The MIT License
+
+@copy (c) 2012 Devu Design Limited, Daniel Wasilewski
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
 package test.performance.signalperf 
 {
 	import org.bixbite.core.Application;
@@ -9,6 +32,9 @@ package test.performance.signalperf
 	import test.performance.signalperf.view.TestView;
 	
 	/**
+	 * @version  compatibility - 0.4.3
+	 * footprint 8.92kb
+	 * 
 	 * Subject of this test is to check performance of the current MVC specific signal flow implementation.
 	 * It is protected on the core level witch actor can talk to witch one. 
 	 * Also checking entire triad communication not just signal broadcasting removed from the context.
@@ -23,10 +49,18 @@ package test.performance.signalperf
 	 * 
 	 * Results (Flash Player 11,1,102,63 - Chrome)
 	 * Signals traveling from View -> Controller -> Model -> View.
+	 * 
+	 * v0.4.2
 	 * 1.000 		- 2ms		(3k signals in circulation)
 	 * 10.000 		- 22ms		(30k signals in circulation)
 	 * 100.000		- 207ms		(300k signals in circulation)
 	 * 1.000.000	- 2120ms	(3M signals in circulation)
+	 * 
+	 * v0.4.3
+	 * 1.000 		- 1ms		(3k signals in circulation)
+	 * 10.000 		- 13ms		(30k signals in circulation)
+	 * 100.000		- 133ms		(300k signals in circulation)
+	 * 1.000.000	- 1325ms	(3M signals in circulation)
 	 */
 	public class SignalPerformance extends Application 
 	{
