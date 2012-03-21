@@ -36,7 +36,6 @@ package test.performance.signalperf.model
 		
 		private function onFullTriade(s:TestSignal):void
 		{
-			attachSignal(testSignal);
 			sendSignal("signalFromModelFullTriade");
 		}
 		
