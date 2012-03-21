@@ -1,7 +1,9 @@
 package test.performance.signalperf.model 
 {
+	import flash.utils.getTimer;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Model;
+	import test.performance.signalperf.signal.TestSignal;
 	
 	/**
 	 * ...
@@ -9,6 +11,7 @@ package test.performance.signalperf.model
 	 */
 	public class TestModel extends Model 
 	{
+		private var testSignal:TestSignal;
 		
 		public function TestModel() 
 		{
@@ -17,12 +20,24 @@ package test.performance.signalperf.model
 		
 		override public function init():void 
 		{
-			addSlot("test", onTest);
+			addSlot("signalFromCtrl", onSignalFromCtrl);
+			addSlot("fullTriade", onFullTriade);
 		}
 		
-		private function onTest(s:ISignal):void 
+		private function onSignalFromCtrl(s:TestSignal):void
 		{
-			sendSignal("test");
+			trace("Signal: Controller->Model", s.time - getTimer());
+			
+			testSignal = s;
+			attachSignal(testSignal);
+			
+			sendSignal("signalFromModel");
+		}
+		
+		private function onFullTriade(s:TestSignal):void
+		{
+			attachSignal(testSignal);
+			sendSignal("signalFromModelFullTriade");
 		}
 		
 	}

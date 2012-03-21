@@ -7,6 +7,7 @@ package test.performance.signalperf.signal
 	 */
 	public class TestSignal extends Signal 
 	{
+		public var total:int;
 		public var time:int;
 	}
 
