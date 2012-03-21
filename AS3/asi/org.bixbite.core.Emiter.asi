@@ -18,7 +18,7 @@
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
 	 */
 	public class Emiter
 	{
@@ -34,7 +34,7 @@
 		private var slots : Object;
 
 		/**
-		 * Main containers for slot references.
+		 * Main containers for MVC slot references.
 		 */
 		private var mSlots : Object;
 		private var vSlots : Object;

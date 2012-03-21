@@ -33,7 +33,7 @@ package org.bixbite.core
 	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
      */
 	public class Controller extends Actor implements IController 
 	{

@@ -1,0 +1,34 @@
+﻿package examples.stats.view
+{
+	import examples.stats.signal.StatsSignal;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import org.bixbite.core.View;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.2
+	 *   
+	 *     This little class is a subview of StatsView. Purpose of it is to only display traces.
+	 */
+	public class StatsTraceView extends View
+	{
+		private var info_trace : TextField;
+		private var panel : Sprite;
+
+		/**
+		 * Constructor, by this example we want to show you when the usage of super() is needed. 
+		 * We need reference to the injected panel to be available before init() is triggered.
+		 * So, after referencing it to local variable we calling super() to change order of execution.
+		 * @param	panel
+		 */
+		public function StatsTraceView (panel:Sprite);
+
+		public function init () : void;
+
+		private function onUpdateTrace (s:StatsSignal) : void;
+
+		private function createText (posX:Number, posY:Number, color:uint=0xFFFFFF, w:Number=70, h:Number=18) : TextField;
+	}
+}

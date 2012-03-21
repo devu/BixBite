@@ -29,8 +29,8 @@ package org.bixbite
 	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version 0.4.1
-	 * total footprint 8.15kb
+	 * @version 0.4.2
+	 * total footprint 8.16kb
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.

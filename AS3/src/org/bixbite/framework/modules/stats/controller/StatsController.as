@@ -29,8 +29,8 @@ package org.bixbite.framework.modules.stats.controller
 	import org.bixbite.core.Controller;
 	
 	/**
+	 * @version  compatibility - 0.4.2
 	 * @since 0.4.1
-	 * @version  compatibility - 0.4.1
 	 * 
      * StatsController, will capture event when stats panel has been clicked and perform some basic task.
      */

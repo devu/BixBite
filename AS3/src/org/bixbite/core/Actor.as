@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * <p>Purpose of this class is to provide unified way to register the member within Signal Emiter, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
 	 */
 	public class Actor implements IActor
 	{

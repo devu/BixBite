@@ -42,7 +42,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
 	 */
 	public class Emiter
 	{
@@ -59,7 +59,7 @@ package org.bixbite.core
 		private var slots				:Object = { };
 		
 		/**
-		* Main containers for slot references.
+		* Main containers for MVC slot references.
 		*/ 
 		private var mSlots				:Object = { };
 		private var vSlots				:Object = { };

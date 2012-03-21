@@ -1,0 +1,21 @@
+﻿package examples.helloflash.view
+{
+	import examples.helloflash.signal.BallSignal;
+	import flash.text.TextField;
+	import org.bixbite.framework.view.StageView;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.2
+	 */
+	public class MainView extends StageView
+	{
+		private var textField : TextField;
+
+		public function MainView ();
+
+		public function init () : void;
+
+		private function onCreateBall (s:BallSignal) : void;
+	}
+}

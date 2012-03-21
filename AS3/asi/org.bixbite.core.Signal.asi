@@ -14,7 +14,7 @@
 	 * You can have multiple Custom Signals to send different values defined for each actor. But by default there is only one Signal attached into Actor. 
 	 * Also, you cannot send multiple signals from one Actor at the same time. You need to attach them to Actor before using attachSignal method.</p>
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
 	 */
 	public class Signal implements ISignal
 	{

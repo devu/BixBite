@@ -32,8 +32,8 @@ package org.bixbite.framework.modules.stats.model
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	
 	/**
+	 * @version  compatibility - 0.4.2
 	 * @since 0.4.1
-	 * @version  compatibility - 0.4.1
 	 * 
 	 * StatsModel, handles all busines logic and calculations on Enter Frame.
 	 */

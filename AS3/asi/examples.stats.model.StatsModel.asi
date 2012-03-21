@@ -1,0 +1,51 @@
+﻿package examples.stats.model
+{
+	import examples.stats.signal.StatsSignal;
+	import examples.stats.signal.TraceSignal;
+	import flash.events.Event;
+	import flash.system.System;
+	import flash.utils.getTimer;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Model;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.2
+	 *   
+	 *     StatsModel, handles all busines logic and calculations on Enter Frame.
+	 */
+	public class StatsModel extends Model
+	{
+		private var statsSignal : StatsSignal;
+		private var mem : Number;
+		private var max : Number;
+		private var fps : Number;
+		private var timer : int;
+		private var ms : int;
+		private var ms_prev : int;
+		private var data : Array;
+
+		public function StatsModel ();
+
+		/**
+		 * Attach custom signal and default slots.
+		 */
+		public function init () : void;
+
+		private function onStart (s:ISignal) : void;
+
+		private function onPause (s:ISignal) : void;
+
+		private function onTrace (s:TraceSignal) : void;
+
+		/**
+		 * On EnterFrame perform calculations, update signal values and broadcast it.
+		 * @param	e
+		 */
+		private function calculate (e:Event) : void;
+
+		private function invalidate () : void;
+
+		private function updateTrace () : void;
+	}
+}

@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * You can control many objects that are under defined laws of physics, but it is the Model that defines and manages them.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.1
+	 * @version 0.4.2
      */
 	public class Model extends Actor implements IModel
 	{
