@@ -33,7 +33,7 @@ package examples.stats.view
 	import org.bixbite.framework.signal.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 * 
 	 * StatsView, visual representation of data comning from StatsModel.
 	 * Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.

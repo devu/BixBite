@@ -26,7 +26,7 @@ package examples.helloworld.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 * 
 	 * Purpose of this signal is to send specific value from Model, copy displayed by View.
 	 */

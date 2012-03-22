@@ -29,8 +29,9 @@ package examples.helloworld
 	import org.bixbite.core.Application;
 	
 	/**
-	 * @version  compatibility - 0.4.2
-	 * footprint 4.04kb
+	 * @version  compatibility - 0.4.3
+	 * @since 0.4.2
+	 * footprint 4.01kb
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within Bixbite MVC.
 	 * This example not even using framework but just a Core. Core is fully functioning stand alone unit ready to build framework on top of it. 

@@ -1,0 +1,23 @@
+﻿package test.performance.signalperf.controller
+{
+	import flash.events.MouseEvent;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Controller;
+	import test.performance.signalperf.signal.TestSignal;
+
+	/**
+	 * ...
+	 */
+	public class TestController extends Controller
+	{
+		private var testSignal : TestSignal;
+
+		public function TestController ();
+
+		public function init () : void;
+
+		private function runTest (e:MouseEvent) : void;
+
+		private function onFullTriade (s:TestSignal) : void;
+	}
+}

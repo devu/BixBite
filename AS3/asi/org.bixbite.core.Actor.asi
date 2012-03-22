@@ -11,7 +11,7 @@
 	 * 
 	 *   <p>Purpose of this class is to provide unified way to register the member within Signal Emiter, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
 	 */
 	public class Actor implements IActor
 	{
@@ -80,50 +80,10 @@
 		public function attachSignal (signal:ISignal=null) : ISignal;
 
 		/**
-		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
-		 * @param	type
-		 * @param	callback
-		 */
-		public function addSlot (type:String, callback:Function) : void;
-
-		/**
-		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
-		 * @param	type
-		 */
-		public function removeSlot (type:String) : void;
-
-		/**
 		 * This method will remove entire slot of specific type, no matter witch actor is calling all registered acctors will stop recieveing those signals
 		 * @param	type
 		 */
 		public function removeAllSlots (type:String) : void;
-
-		/**
-		 * <p>Standard method of broadcasting a signal across the system. Any actor with a slot added of certain signal type will react to it. This is multi-cast and asynchronous signal/slot system implementation.
-		 * You have to be aware that order of execution is unpredictable, if you need to take control over it, consider different signal types being executed one after another. And this is what you can control synchronously. 
-		 * 'Priority' implementation is not needed. Even if possible would sacrifice to much of performance benefits.</p>
-		 * @param   type, type of the signal as a String
-		 * @param 	customSignal, optional param if you need to send occasionaly some custom signal that is not attached to Actor.
-		 */
-		public function sendSignal (type:String) : void;
-
-		/**
-		 * <p>Direct method of sending signal when you expect immediate response from involved actor. As a result you will expect to get updated signal of responder that carry on some value informations.
-		 * In case of <code>Controller</code> that method will be used to notify any <code>Model</code> or even multiple Models, that having slot added of provided type of the signal.</p>
-		 * @param    type, type of the signal as a String
-		 * @param    callback, optional listener function that will be triggered as soon as involved actor receive request.
-		 * @param    acton, optional property let you perform different set of actions base on the same type of signal to avoid boiler-plate code and to many unique signal types / slots.
-		 */
-		public function sendRequest (type:String, callback:Function=null, action:String=null) : void;
-
-		/**
-		 * <p>This method is a helper method that will give you references to all involved actors listening to particular signal type, without executing it. Use it for performance benefits in critical situations.
-		 * This way you have opportunity to execute calls with a native speed of accessing any local array. Nothing will be faster than that. If you have just few callbacks in returned array consider reference them directly as a Functions, so the speed will equal exactly the speed of calling local method!
-		 * However, you have to remember, and this is your responsibility as developer, to kill references to it if they are no longer needed. Do not over use it.</p>
-		 * @param   type type of the signal as a String
-		 * @return  array of the listeners attached to provided type of signal.
-		 */
-		public function getSlotReferences (type:String) : Array;
 
 		/**
 		 *

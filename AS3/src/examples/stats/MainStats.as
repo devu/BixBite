@@ -30,8 +30,9 @@ package examples.stats
 	import org.bixbite.framework.controller.StageController;
 	
 	/**
-	 * @version  compatibility - 0.4.2
-	 * footprint 7.07kb
+	 * @version  compatibility - 0.4.3
+	 * @since 0.4.1
+	 * footprint 7.04kb
 	 * 
 	 * This is example of how famous stats by mrdoob can be implemented within Bixbite mvc framework.
 	 * It is also a fork of my fork, MobileStats.as.

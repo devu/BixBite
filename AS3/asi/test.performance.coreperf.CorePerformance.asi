@@ -1,0 +1,83 @@
+﻿package test.performance.coreperf
+{
+	import flash.system.System;
+	import flash.utils.getTimer;
+	import flash.utils.setInterval;
+	import flash.utils.clearInterval;
+	import org.bixbite.core.Application;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.controller.StageController;
+	import org.bixbite.framework.modules.stats.signal.StatsSignal;
+	import org.bixbite.framework.modules.stats.signal.TraceSignal;
+	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.view.StageView;
+	import test.performance.coreperf.controller.TestController;
+	import test.performance.coreperf.model.TestModel;
+	import test.performance.coreperf.view.TestView;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.3
+	 * @since 0.4.3
+	 *   footprint 9.53kb
+	 *   
+	 *     Purpose of this test is to keep track on speed of MVC actor creations. Since Bixbite is self-registered system there is much more going on under the hood.
+	 *   During construction each Actor getting references to Emiter and getting default signal attached to it as well as unique identifier controlled by system.
+	 *   During deconstruction (method destroy()) Object has to release all those references and clean up after itself.
+	 *   Also Emiter always checking if there is empty slot will destroy it. This is why removal is always much slower.
+	 *   
+	 *     Taking under consideration all that, results below are still very satisfactory.
+	 *   
+	 *     Results: (Flash Player 11,1,102,63 - Chrome)
+	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 1.182ms
+	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 2.636ms
+	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 11.64ms
+	 *   TASK: destroy	Views	10.000	COUNT: 10	TIME: 43.18ms
+	 *   TASK: create		Views	100k	COUNT: 10	TIME: 129.9ms
+	 *   TASK: destroy	Views	100k	COUNT: 10	TIME: 533.2ms
+	 *   
+	 *     TASK: create		Ctrls	1.000	COUNT: 10	TIME: 1.000ms
+	 *   TASK: destroy	Ctrls	1.000	COUNT: 10	TIME: 6.455ms
+	 *   TASK: create		Ctrls	10.000	COUNT: 10	TIME: 10.55ms
+	 *   TASK: destroy	Ctrls	10.000	COUNT: 10	TIME: 52.18ms
+	 *   TASK: create		Ctrls	100k	COUNT: 10	TIME: 134.3ms
+	 *   TASK: destroy	Ctrls	100k	COUNT: 10	TIME: 354.0ms
+	 *   
+	 *     TASK: create		Models	1.000	COUNT: 10	TIME: 1.000ms
+	 *   TASK: destroy	Models	1.000	COUNT: 10	TIME: 8.091ms
+	 *   TASK: create		Models	10.000	COUNT: 10	TIME: 11.36ms
+	 *   TASK: destroy	Models	10.000	COUNT: 10	TIME: 54.09ms
+	 *   TASK: create		Models	100k	COUNT: 10	TIME: 134.4ms
+	 *   TASK: destroy	Models	100k	COUNT: 10	TIME: 320.9ms
+	 */
+	public class CorePerformance extends Application
+	{
+		private var results : Array;
+		private var tasks : Array;
+		private var iterator : int;
+		private var task : int;
+		private var repeat : int;
+		private var testContainer : Array;
+		private var stageView : StageView;
+		private var stats : Stats;
+		private var runner : int;
+
+		public function CorePerformance ();
+
+		private function run () : void;
+
+		private function sendTraceSignal (id:int) : void;
+
+		private function test1 (max:int, resultsId:int) : void;
+
+		private function test2 (max:int, resultsId:int) : void;
+
+		private function test3 (max:int, resultsId:int) : void;
+
+		private function test4 (max:int, resultsId:int) : void;
+
+		private function test5 (max:int, resultsId:int) : void;
+
+		private function test6 (max:int, resultsId:int) : void;
+	}
+}

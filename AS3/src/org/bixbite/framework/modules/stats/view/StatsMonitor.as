@@ -33,8 +33,8 @@ package org.bixbite.framework.modules.stats.view
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
+	 * @version  compatibility - 0.4.3
 	 * @since 0.4.2
-	 * @version  compatibility - 0.4.2
 	 * 
 	 * StatsMonitor
 	 */

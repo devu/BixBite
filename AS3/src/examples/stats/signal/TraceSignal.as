@@ -26,7 +26,7 @@ package examples.stats.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 */
 	public class TraceSignal extends Signal 
 	{

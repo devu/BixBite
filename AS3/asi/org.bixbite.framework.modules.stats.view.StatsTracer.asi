@@ -7,8 +7,8 @@
 
 	/**
 	 *
+	 * @version  compatibility - 0.4.3
 	 * @since 0.4.2
-	 * @version  compatibility - 0.4.2
 	 *   
 	 *     This is subview of StatsMonitor to extend its functionality for runtime trace output.
 	 */

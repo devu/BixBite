@@ -2,6 +2,7 @@
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
+	import org.bixbite.namespaces.BIXBITE;
 
 	/**
 	 * <p><i>"We view things not only from different sides, but with different eyes; we have no wish to find them alike. — Blaise Pascal"</i></p>
@@ -12,13 +13,48 @@
 	 * <p>The View itself is just a subclass of Actor as any other member of MVC to provide Base Abstract class ready to extend and work with. We decided to keep it this way for future development purposes. 
 	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
 	 */
 	public class View extends Actor implements IView
 	{
+		private var emiter : Emiter;
+		private var slots : Object;
+
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
 		public function View ();
+
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot (type:String, callback:Function) : void;
+
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 */
+		public function sendSignal (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 * @param	callback
+		 */
+		public function sendRequest (type:String, callback:Function) : void;
+
+		/**
+		 *
+		 * @inheritDoc
+		 */
+		public function destroy () : void;
 	}
 }

@@ -31,7 +31,7 @@ package examples.stats.controller
 	import org.bixbite.core.Controller;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 * 
      * StatsController, will capture event when stats panel has been clicked and perform some basic task.
      * For demonstration purposes, will broadcast TraceSignal to show how sub-view of StatsView is being used.

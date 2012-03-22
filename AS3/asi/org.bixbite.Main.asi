@@ -7,8 +7,8 @@
 
 	/**
 	 *
-	 * @version 0.4.2
-	 *   total footprint 8.16kb
+	 * @version 0.4.3
+	 *   total footprint 8.20kb
 	 *   
 	 *     Main Bixbite frmework class for development purposes.
 	 *   Contains collection of framework modules.

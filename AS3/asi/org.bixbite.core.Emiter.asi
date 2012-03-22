@@ -18,7 +18,7 @@
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * @langversion	3.0
-	 * @version 0.4.2
+	 * @version 0.4.3
 	 */
 	public class Emiter
 	{
@@ -27,18 +27,7 @@
 		private var _uid : int;
 		private var _system : SystemIO;
 		private var _application : IApplication;
-
-		/**
-		 * Reference to active slot
-		 */
-		private var slots : Object;
-
-		/**
-		 * Main containers for MVC slot references.
-		 */
-		private var mSlots : Object;
-		private var vSlots : Object;
-		private var cSlots : Object;
+		private var _slots : Object;
 
 		/**
 		 * System I/O accessor. In AS3 implementation is a native stage
@@ -50,6 +39,8 @@
 		 * Each Actor will invoke this method on construction time and Observer's uid act as a fast system iterator.
 		 */
 		public function get uid () : int;
+
+		public function get slots () : Object;
 
 		/**
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main application.
@@ -67,7 +58,7 @@
 		 * @param    type, type of signal
 		 * @param    callback, listener of the caller that will be added to the slot of certain type.
 		 */
-		function addSlot (actor:IActor, callerUID:String, type:String, callback:Function) : void;
+		function addSlot (channel:Object, callerUID:String, type:String, callback:Function) : void;
 
 		/**
 		 *
@@ -77,7 +68,7 @@
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		function removeSlot (actor:IActor, callerUID:String, type:String) : void;
+		function removeSlot (channel:Object, callerUID:String, type:String) : void;
 
 		/**
 		 *
@@ -86,7 +77,7 @@
 		 *   Can be invoked by any Actor.
 		 * @param	type, type of signal
 		 */
-		function removeAllSlots (actor:IActor, type:String) : void;
+		function removeAllSlots (channel:Object, type:String) : void;
 
 		/**
 		 *
@@ -94,17 +85,7 @@
 		 *   Remove all registered signals of concrete Actor by his unique id.
 		 * @param	uid, unique id of the caller
 		 */
-		function removeAllSlotsOf (actor:IActor, uid:String) : void;
-
-		/**
-		 *
-		 * @private
-		 *   Internal method to execute all callbacks assigned to certain type of signal.
-		 *   Can be invoked by any Actor.
-		 * @param	type, type, type of signal
-		 * @param	signal, attached to a caller
-		 */
-		function sendSignal (actor:IActor, type:String, signal:ISignal) : void;
+		function removeAllSlotsOf (channel:Object, uid:String) : void;
 
 		/**
 		 * sendSignal emiter
@@ -112,45 +93,17 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		private function broadcast (slots:Object, type:String, signal:ISignal) : void;
+		function broadcast (channel:Object, type:String, signal:ISignal) : void;
 
 		/**
 		 *
 		 * @private
-		 *   Method to fast execute signal request and send direct response to a caller.
-		 *   Can be invoked by any View to notify Model or Controller, or by any Controller to notify Model.
-		 *   In case you want to use request/response callbacks associated with reponders must return their own signals;
-		 * @param	type, type of signal
-		 * @param	signal, attached to a caller
-		 * @param	callback, listener of the caller that will be ivoked as soon as appropriate slot will be found.
-		 */
-		function sendRequest (actor:IActor, type:String, signal:ISignal, callback:Function) : void;
-
-		/**
-		 * sendRequest emiter
 		 * @param	slots
 		 * @param	type
 		 * @param	signal
 		 * @param	callback
 		 */
-		private function request (slots:Object, type:String, signal:ISignal, callback:Function) : void;
-
-		/**
-		 *
-		 * @private
-		 *   Internal method to handle signal referencing mechanism.
-		 *   Can be invoked by responders, Model or Controller.
-		 * @param	type
-		 * @return
-		 */
-		public function getSlotReferences (actor:IActor, type:String) : Array;
-
-		/**
-		 *
-		 * @param	actor
-		 * @return
-		 */
-		private function selectSlot (actor:IActor) : Object;
+		function request (channel:Object, type:String, signal:ISignal, callback:Function) : void;
 
 		/**
 		 *

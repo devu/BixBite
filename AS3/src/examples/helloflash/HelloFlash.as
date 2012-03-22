@@ -29,12 +29,13 @@ package examples.helloflash
 	import org.bixbite.core.Application;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
+	 * @since 0.4.0
 	 * 
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 5.65 kb, (core API 2.80 kb)
+	 * Footprint 5.62 kb, (core API 2.80 kb)
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb

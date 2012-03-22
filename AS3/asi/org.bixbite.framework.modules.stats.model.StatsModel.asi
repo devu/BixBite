@@ -10,7 +10,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 * @since 0.4.1
 	 *   
 	 *     StatsModel, handles all busines logic and calculations on Enter Frame.
@@ -37,8 +37,6 @@
 
 		private function onPause (s:ISignal) : void;
 
-		private function onTrace (s:TraceSignal) : void;
-
 		/**
 		 * On EnterFrame perform calculations, update signal values and broadcast it.
 		 * @param	e
@@ -46,6 +44,8 @@
 		private function calculate (e:Event) : void;
 
 		private function invalidate () : void;
+
+		private function onTrace (s:TraceSignal) : void;
 
 		private function updateTrace () : void;
 	}

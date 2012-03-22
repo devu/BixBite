@@ -1,0 +1,15 @@
+﻿package test.performance.coreperf.model
+{
+	import org.bixbite.core.Model;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.3
+	 */
+	public class TestModel extends Model
+	{
+		public function TestModel ();
+
+		public function init () : void;
+	}
+}

@@ -29,8 +29,8 @@ package org.bixbite.framework.modules.stats.view
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
+	 * @version  compatibility - 0.4.3
 	 * @since 0.4.2
-	 * @version  compatibility - 0.4.2
 	 * 
 	 * This is subview of StatsMonitor to extend its functionality for runtime trace output.
 	 */
@@ -74,7 +74,6 @@ package org.bixbite.framework.modules.stats.view
 			t.defaultTextFormat = tf;
 			t.width = w;
 			t.height = h;
-			t.selectable = false;
 			
 			return t;
 		}

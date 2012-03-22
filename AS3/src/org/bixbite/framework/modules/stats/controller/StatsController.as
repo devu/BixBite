@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stats.controller
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.2
+	 * @version  compatibility - 0.4.3
 	 * @since 0.4.1
 	 * 
      * StatsController, will capture event when stats panel has been clicked and perform some basic task.
