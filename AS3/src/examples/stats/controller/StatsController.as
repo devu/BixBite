@@ -78,8 +78,10 @@ package examples.stats.controller
 		
 		private function onMouseUp(e:MouseEvent):void 
 		{
-			statsPanel.stopDrag();
-			statsPanel = null;
+			if(statsPanel){
+				statsPanel.stopDrag();
+				statsPanel = null;
+			}
 		}
 		
 		private function onTraceResponse(s:StatsSignal):void
