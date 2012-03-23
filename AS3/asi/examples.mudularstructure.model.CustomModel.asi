@@ -1,0 +1,18 @@
+﻿package examples.mudularstructure.model
+{
+	import examples.helloworld.MainHelloWorld;
+	import org.bixbite.core.Model;
+
+	/**
+	 *
+	 * @version compatibility 0.4.3
+	 */
+	public class CustomModel extends Model
+	{
+		private var helloWorldModule : MainHelloWorld;
+
+		public function CustomModel (helloWorld:MainHelloWorld);
+
+		public function init () : void;
+	}
+}

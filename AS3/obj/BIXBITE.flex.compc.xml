@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.4.3.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.4.31.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -50,5 +50,9 @@
     <class>org.bixbite.framework.interfaces.IDisplayViewContainer</class>
     <class>org.bixbite.framework.factories.GraphicsFactory</class>
     <class>org.bixbite.framework.factories.Graphics</class>
+    <class>examples.mudularstructure.MyApplication</class>
+    <class>examples.mudularstructure.view.CustomView</class>
+    <class>examples.mudularstructure.model.CustomModel</class>
+    <class>examples.mudularstructure.controller.CustomController</class>
   </include-classes>
 </flex-config>
