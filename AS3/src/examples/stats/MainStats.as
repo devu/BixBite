@@ -30,7 +30,7 @@ package examples.stats
 	import org.bixbite.framework.controller.StageController;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.1
 	 * footprint 7.04kb
 	 * 

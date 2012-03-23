@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.4.31.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.4.4.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -25,13 +25,13 @@
   </compiler>
   <include-classes>
     <class>org.bixbite.namespaces.BIXBITE</class>
-    <class>org.bixbite.core.Actor</class>
     <class>org.bixbite.core.Application</class>
+    <class>org.bixbite.core.Signal</class>
+    <class>org.bixbite.core.SystemIO</class>
+    <class>org.bixbite.core.Actor</class>
     <class>org.bixbite.core.Controller</class>
     <class>org.bixbite.core.Emiter</class>
     <class>org.bixbite.core.Model</class>
-    <class>org.bixbite.core.Signal</class>
-    <class>org.bixbite.core.SystemIO</class>
     <class>org.bixbite.core.View</class>
     <class>org.bixbite.core.interfaces.IActor</class>
     <class>org.bixbite.core.interfaces.IApplication</class>

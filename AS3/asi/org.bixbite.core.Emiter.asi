@@ -18,7 +18,7 @@
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public class Emiter
 	{
@@ -104,6 +104,15 @@
 		 * @param	callback
 		 */
 		function request (channel:Object, type:String, signal:ISignal, callback:Function) : void;
+
+		/**
+		 *
+		 * @param	channel
+		 * @param	type
+		 * @param	signal
+		 * @param	callback
+		 */
+		function getSlot (channel:Object, type:String) : Array;
 
 		/**
 		 *

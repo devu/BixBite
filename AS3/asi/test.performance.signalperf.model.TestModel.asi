@@ -6,11 +6,13 @@
 	import test.performance.signalperf.signal.TestSignal;
 
 	/**
-	 * ...
+	 *
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestModel extends Model
 	{
 		private var testSignal : TestSignal;
+		private var slotReference : Function;
 
 		public function TestModel ();
 

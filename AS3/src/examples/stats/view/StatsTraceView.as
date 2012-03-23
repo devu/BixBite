@@ -30,7 +30,7 @@ package examples.stats.view
 	import org.bixbite.core.View;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * 
 	 * This little class is a subview of StatsView. Purpose of it is to only display traces.
 	 */

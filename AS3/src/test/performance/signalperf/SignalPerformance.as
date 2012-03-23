@@ -32,7 +32,7 @@ package test.performance.signalperf
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.2
 	 * footprint 8.92kb
 	 * 
@@ -62,8 +62,18 @@ package test.performance.signalperf
 	 * 10.000 		- 13ms		(30k signals in circulation)
 	 * 100.000		- 133ms		(300k signals in circulation)
 	 * 1.000.000	- 1325ms	(3M signals in circulation)
+	 *
+	 * v0.4.4 
+	 * No changes to compare to v0.4.3
+	 * 
+	 * v0.4.4 and signal reference system in use!
+	 * 1.000 		- no time:)	(3k signals in circulation)
+	 * 10.000 		- 1ms		(30k signals in circulation)
+	 * 100.000		- 9ms		(300k signals in circulation)
+	 * 1.000.000	- 99ms		(3M signals in circulation)
+	 * 10.000.000	- 931ms		(30M signals in circulation) and this is fucking insaine!
 	 */
-	public class SignalPerformance extends Application 
+	public class SignalPerformance extends Application
 	{
 		
 		public function SignalPerformance() 

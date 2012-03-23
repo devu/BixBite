@@ -26,7 +26,7 @@ package org.bixbite.framework.modules.stats.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.1
 	 */
 	public class TraceSignal extends Signal 

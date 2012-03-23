@@ -37,7 +37,7 @@ package org.bixbite.core
 	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public class View extends Actor implements IView
 	{
@@ -90,6 +90,16 @@ package org.bixbite.core
 		public function sendRequest(type:String, callback:Function):void
 		{
 			emiter.request(slots.m, type, signal, callback);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference(type:String):Array
+		{
+			return emiter.getSlot(slots.c, type);
 		}
 		
 		/**

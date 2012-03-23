@@ -9,11 +9,13 @@
 	import flash.utils.setInterval;
 
 	/**
-	 * ...
+	 *
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestView extends View
 	{
 		private var testSignal : TestSignal;
+		private var slotReference : Function;
 
 		public function TestView ();
 

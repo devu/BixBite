@@ -10,7 +10,7 @@
 	 * <p>Handles user input to change the state of the application, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model, controls behaviour of the views and notify model with a signal system. 
 	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public class Controller extends Actor implements IController
 	{
@@ -47,6 +47,13 @@
 		 * @param	callback
 		 */
 		public function sendRequest (type:String, callback:Function) : void;
+
+		/**
+		 *
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference (type:String) : Array;
 
 		/**
 		 *

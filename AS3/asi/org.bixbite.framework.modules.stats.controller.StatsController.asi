@@ -9,7 +9,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.1
 	 *   
 	 *     StatsController, will capture event when stats panel has been clicked and perform some basic task.

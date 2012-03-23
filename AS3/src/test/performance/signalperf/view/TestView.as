@@ -32,11 +32,12 @@ package test.performance.signalperf.view
 	import flash.utils.setInterval;
 	
 	/**
-	 * ...
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestView extends View 
 	{
 		private var testSignal:TestSignal;
+		private var slotReference:Function;
 		
 		public function TestView() 
 		{
@@ -67,7 +68,7 @@ package test.performance.signalperf.view
 		 */
 		private function onSignalFromModel(s:TestSignal):void 
 		{
-			var MAX:int = 100000;
+			var MAX:int = 10000000;
 			var i:int;
 			
 			trace("Signal: Controller->Model->View  Phase:", s.phase);
@@ -75,6 +76,9 @@ package test.performance.signalperf.view
 			testSignal = s;
 			attachSignal(testSignal);
 			testSignal.total = getTimer();
+			
+			
+			slotReference = getSlotReference("fullTriade")[0]; //turbo mode
 			
 			for (i = 0 ; i < MAX; i++){
 				fullTriadeTest();
@@ -88,11 +92,14 @@ package test.performance.signalperf.view
 		private function onSignalFromModelFullTriade(s:TestSignal):void
 		{
 			//end point of full triade test
+			//trace("did you get here?"); //test it on small numbers to avoid output stack overflow!
 		}
 		
 		private function fullTriadeTest():void
 		{
-			sendSignal("fullTriade");
+			
+			slotReference(signal); //turbo mode
+			//sendSignal("fullTriade");
 		}
 		
 	}

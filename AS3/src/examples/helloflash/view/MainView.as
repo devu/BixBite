@@ -28,7 +28,7 @@ package examples.helloflash.view
 	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 */
 	public class MainView extends StageView 
 	{

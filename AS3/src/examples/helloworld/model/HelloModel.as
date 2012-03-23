@@ -28,7 +28,7 @@ package examples.helloworld.model
 	import org.bixbite.core.Model;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * 
 	 * This model is a copy holder that will reponse on 2 diferent signals.
 	 * Model don't care who is calling, will respond as soon as a signal has been recieved.

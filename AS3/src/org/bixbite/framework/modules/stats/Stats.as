@@ -30,7 +30,7 @@ package org.bixbite.framework.modules.stats
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.1
 	 * footprint ~ 2.89kb
 	 * 

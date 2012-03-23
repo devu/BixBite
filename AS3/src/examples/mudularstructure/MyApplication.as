@@ -32,7 +32,7 @@ package examples.mudularstructure
 	import org.bixbite.core.Application;
 	
 	/**
-     * @version compatibility 0.4.3
+     * @version compatibility 0.4.4
      * @since 0.4.3
      * total footprint 10.04kb
      *

@@ -28,7 +28,7 @@ package examples.helloworld.view
 	import org.bixbite.core.View;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * 
 	 * View is the display layer. By default will request some data. Then can only listen and react to the changes. 
 	 * But it doesn't need to be aware where the changes coming from.

@@ -26,7 +26,7 @@ package examples.mudularstructure.controller
 	import org.bixbite.core.Controller;
 	
 	/**
-     * @version compatibility 0.4.3
+     * @version compatibility 0.4.4
 	 */
 	public class CustomController extends Controller
 	{

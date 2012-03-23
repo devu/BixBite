@@ -29,7 +29,7 @@ package examples.helloworld
 	import org.bixbite.core.Application;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.2
 	 * footprint 4.01kb
 	 * 

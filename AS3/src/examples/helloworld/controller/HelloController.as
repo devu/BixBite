@@ -28,7 +28,7 @@ package examples.helloworld.controller
 	import org.bixbite.core.Controller;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * 
      * This Controller will detect if your text field has been clicked.
      * If so, will send signal demands to change the copy.

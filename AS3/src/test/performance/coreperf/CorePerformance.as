@@ -39,7 +39,7 @@ package test.performance.coreperf
 	import test.performance.coreperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.3
 	 * footprint 9.53kb
 	 * 

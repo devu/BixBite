@@ -34,7 +34,7 @@ package org.bixbite.core
 	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
      */
 	public class Controller extends Actor implements IController 
 	{
@@ -88,6 +88,16 @@ package org.bixbite.core
 		public function sendRequest(type:String, callback:Function):void
 		{
 			emiter.request(slots.m, type, signal, callback);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference(type:String):Array
+		{
+			return emiter.getSlot(slots.m, type);
 		}
 		
 		/**

@@ -29,11 +29,12 @@ package test.performance.signalperf.controller
 	import test.performance.signalperf.signal.TestSignal;
 	
 	/**
-	 * ...
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestController extends Controller 
 	{
 		private var testSignal:TestSignal;
+		private var slotReference:Function;
 		
 		public function TestController() 
 		{
@@ -52,13 +53,16 @@ package test.performance.signalperf.controller
 		
 		private function runTest(e:MouseEvent):void 
 		{
+			slotReference = getSlotReference("fullTriade")[0]; //turbo mode
+			
 			testSignal.time = getTimer();
 			sendSignal("signalFromCtrl");
 		}
 		
 		private function onFullTriade(s:TestSignal):void 
 		{
-			sendSignal("fullTriade");
+			slotReference(signal); //turbo mode
+			//sendSignal("fullTriade");
 		}
 	}
 

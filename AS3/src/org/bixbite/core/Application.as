@@ -43,7 +43,7 @@ package org.bixbite.core
 	 * Preloader may already have some actors initialised you wish to reuse such StageController, SharedObjectModel, so you don't have to repeat yourself.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 * 
 	 * @example
 	 * <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock ">

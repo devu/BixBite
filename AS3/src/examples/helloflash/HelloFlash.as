@@ -29,7 +29,7 @@ package examples.helloflash
 	import org.bixbite.core.Application;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 * @since 0.4.0
 	 * 
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.

@@ -24,12 +24,8 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IApplication;
-	import org.bixbite.core.interfaces.IController;
-	import org.bixbite.core.interfaces.IModel;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -42,7 +38,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public class Emiter
 	{
@@ -148,6 +144,21 @@ package org.bixbite.core
 		{
 			if (!channel[type]) return;
 			for each (var f:Function in channel[type]) callback(f(signal));
+		}
+		
+		/**
+		 * 
+		 * @param	channel
+		 * @param	type
+		 * @param	signal
+		 * @param	callback
+		 */
+		BIXBITE function getSlot(channel:Object, type:String):Array 
+		{
+			var a:Array = [];
+			if (!channel[type]) return a;
+			for each (var f:Function in channel[type]) a.push(f);
+			return a
 		}
 		
 		/**

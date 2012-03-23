@@ -26,7 +26,7 @@ package examples.helloflash.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 */
 	public class BallSignal extends Signal 
 	{

@@ -29,15 +29,13 @@ package org.bixbite
 	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 * total footprint 8.20kb
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
-	 * TODO 
-	 * 0.4.4
-	 * -signals reference mechanism
+	 * TODO
 	 * 0.4.5
 	 * -signals try multi attachSignal by id.
 	 * 0.4.6

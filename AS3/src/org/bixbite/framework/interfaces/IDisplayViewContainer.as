@@ -26,7 +26,7 @@ package org.bixbite.framework.interfaces
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public interface IDisplayViewContainer 
 	{

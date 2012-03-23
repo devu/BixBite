@@ -4,7 +4,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestModel extends Model
 	{

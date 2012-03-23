@@ -37,7 +37,7 @@ package org.bixbite.framework.view
 	 * Lets you control/expose selected aspects of your application or structure.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{

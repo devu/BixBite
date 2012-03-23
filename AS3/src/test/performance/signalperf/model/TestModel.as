@@ -29,11 +29,12 @@ package test.performance.signalperf.model
 	import test.performance.signalperf.signal.TestSignal;
 	
 	/**
-	 * ...
+	 * @version  compatibility - 0.4.4
 	 */
 	public class TestModel extends Model 
 	{
-		private var testSignal:TestSignal;
+		private var testSignal		:TestSignal;
+		private var slotReference	:Function;
 		
 		public function TestModel() 
 		{
@@ -53,12 +54,15 @@ package test.performance.signalperf.model
 			testSignal = s;
 			attachSignal(testSignal);
 			
+			slotReference = getSlotReference("signalFromModelFullTriade")[0]; //turbo mode
 			sendSignal("signalFromModel");
 		}
 		
 		private function onFullTriade(s:TestSignal):void
 		{
-			sendSignal("signalFromModelFullTriade");
+			
+			slotReference(signal); //turbo mode
+			//sendSignal("signalFromModelFullTriade");
 		}
 		
 	}

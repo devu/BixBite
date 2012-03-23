@@ -37,7 +37,7 @@ package org.bixbite.core
 	 * You can control many objects that are under defined laws of physics, but it is the Model that defines and manages them.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.3
+	 * @version 0.4.4
      */
 	public class Model extends Actor implements IModel
 	{
@@ -80,6 +80,16 @@ package org.bixbite.core
 		public function sendSignal(type:String):void 
 		{
 			emiter.broadcast(slots.v, type, signal);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference(type:String):Array
+		{
+			return emiter.getSlot(slots.v, type);
 		}
 		
 		/**

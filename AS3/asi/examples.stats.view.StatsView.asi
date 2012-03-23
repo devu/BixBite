@@ -11,7 +11,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.3
+	 * @version  compatibility - 0.4.4
 	 *   
 	 *     StatsView, visual representation of data comning from StatsModel.
 	 *   Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.
