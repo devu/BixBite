@@ -37,7 +37,8 @@ package org.bixbite
 	 * 
 	 * TODO
 	 * 0.4.5
-	 * -signals try multi attachSignal by id.
+	 * - use good practices - no strings for signal names. Use static constants instead.
+	 * - signals try multi attachSignal by id.
 	 * 0.4.6
 	 * -each actor specific methods to access system, remove systemIO.
 	 */

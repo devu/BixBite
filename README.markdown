@@ -21,26 +21,41 @@ For more info, please visit the [Bixbite](http://www.bixbite.org)
 <b>This is Beta release of AS3 port of Bixbite MVC framework. Use on your own risk.</b>
 
 Release log
-0.2.9 What's new
+0.4.4 What's new
 
-- documentation
-- swc libraries
+- documentation.
+- swc libraries.
+- performance tests.
+- examples of use.
+- The best framework for game developers and mobile platform in terms of performance and memory consumption.
+- self registered system, no boilerplate code.
+- Signal/Slot/Request notification system inspired by QT4
+- Signals are faster than native events
+- Send one signal to notify multiple Actos at the same time. (multicast)
+- Type safe API.
+- Completly loosely decoupled classes.
+- Less classes to get job done.
+- Smallest footprint, fully functional core has only 2.80 kb;
+- Faster execution of any part of the system.
+- Smallest startup lag.
+- Cleaner code.
+- Only 1 level of abstraction
+- ANMS - Application Nested Modular System - you can create number of small standalone apps and pull them into another application runs as modules.
+- MVC signal bus to make sure communication between actors is happening in correct order.
 - core as a micro architecture is ready and fully functioning, (not unit tested yet).
-- core has very small footprint. Just 3kb with all necessary classes to start.
-- using just a core you can create your own branch or have own idea how you can use it. But from this point we have started creating branches you might pick up the one you prefer.
-- framework layer is completely independent from the core.
+- core has very small footprint. Less than 3kb with all necessary classes to start.
+- using just a core you can create your own branch or have own idea how you can use it.
+- framework layer is completely independent from the core. Creates oportunity to have diferent framework implementations based on native display list, custom as well as Stage3D.
 
 - framework branches
 <b>Classic</b>
-There is few initial classes that let you built classic flash AS3 projects using Composite and Decorator pattern.
+There is few (3) initial classes that let you built classic flash AS3 projects using Composite and Decorator pattern.
 Composite pattern is being used to create nested views with a structure similar to what we know from Display List.
 Decorator pattern lets you work with native Display Objects inside any View.
 
 Planed for future releases
 - More detailed DOCS.
-- components - set of functioning triads MVC and accompanying signals, that perform some specific tasks, so you can easily add to your project.
-- examples, examples, examples.
-
+- more examples.
 - more branches of framework:
    
 <b>Framework Blit</b>
