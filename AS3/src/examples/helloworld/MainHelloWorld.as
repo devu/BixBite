@@ -23,13 +23,13 @@ THE SOFTWARE.
 
 package examples.helloworld
 {
-	import examples.helloworld.controller.HelloController;
 	import examples.helloworld.model.HelloModel;
+	import examples.helloworld.transponder.HelloTransponder;
 	import examples.helloworld.view.HelloView;
 	import org.bixbite.core.Application;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.2
 	 * footprint 4.01kb
 	 * 
@@ -45,7 +45,7 @@ package examples.helloworld
 		 */
 		public function MainHelloWorld() 
 		{
-			var c:HelloController = new HelloController();
+			var c:HelloTransponder = new HelloTransponder();
 			var v:HelloView = new HelloView();
 			var m:HelloModel = new HelloModel();
 		}

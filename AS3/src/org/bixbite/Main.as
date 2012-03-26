@@ -24,30 +24,36 @@ THE SOFTWARE.
 package org.bixbite 
 {
 	import org.bixbite.core.Application;
-	import org.bixbite.framework.controller.StageController;
 	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version 0.4.4
+	 * @version 0.4.5
 	 * total footprint 8.20kb
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO
-	 * 0.4.5
-	 * - use good practices - no strings for signal names. Use static constants instead.
-	 * - signals try multi attachSignal by id.
 	 * 0.4.6
 	 * -each actor specific methods to access system, remove systemIO.
+	 * 0.4.7
+	 * - signals try multi attachSignal by id.
+	 * 
+	 * LOG:
+	 * 0.4.5 
+	 * - Controller renamed to Transponder to indicate its proper role
+	 * - Constants fro signal types.
+	 * 0.4.4
+	 * - signal channels implemented MVC (specific routes)
 	 */
 	public class Main extends Application
 	{
 		
 		public function Main() 
 		{
-			var stageCtrl	:StageController 	= new StageController();
+			var stageTrans	:StageTransponder 	= new StageTransponder();
 			var stageView	:StageView 			= new StageView();
 			
 			var stats		:Stats 				= new Stats(stageView, false);

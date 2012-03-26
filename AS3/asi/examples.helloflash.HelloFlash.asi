@@ -1,6 +1,6 @@
 ﻿package examples.helloflash
 {
-	import examples.helloflash.controller.BallController;
+	import examples.helloflash.transponder.BallTransponder;
 	import examples.helloflash.model.HelloFlashModel;
 	import examples.helloflash.view.MainView;
 	import org.bixbite.core.Application;

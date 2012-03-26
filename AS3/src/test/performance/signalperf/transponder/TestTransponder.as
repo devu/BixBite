@@ -21,26 +21,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.mudularstructure.controller 
+package test.performance.signalperf.transponder 
 {
-	import org.bixbite.core.Controller;
+	import flash.events.MouseEvent;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Transponder;
+	import test.performance.signalperf.signal.TestSignal;
 	
 	/**
-     * @version compatibility 0.4.4
+	 * @version  compatibility - 0.4.5
 	 */
-	public class CustomController extends Controller
+	public class TestTransponder extends Transponder 
 	{
+		private var testSignal:TestSignal;
+		private var slotReference:Function;
 		
-		public function CustomController() 
+		public function TestTransponder() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
+			testSignal = new TestSignal();
+			attachSignal(testSignal);
 			
+			system.addListener(MouseEvent.CLICK, runTest);
+			
+			addSlot("fullTriade", onFullTriade);
 		}
 		
+		private function runTest(e:MouseEvent):void 
+		{
+			slotReference = getSlotReference("fullTriade")[0]; //turbo mode
+			
+			testSignal.time = getTimer();
+			sendSignal("signalFromCtrl");
+		}
+		
+		private function onFullTriade(s:TestSignal):void 
+		{
+			slotReference(signal); //turbo mode
+			//sendSignal("fullTriade");
+		}
 	}
 
 }

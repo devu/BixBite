@@ -21,39 +21,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.controller 
+package examples.helloflash.transponder 
 {
+	import examples.helloflash.signal.BallSignal;
+	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
-	import org.bixbite.core.Controller;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * Not implemented yet
+	 * @version  compatibility - 0.4.5
 	 */
-	public class TouchController extends Controller 
+	public class BallTransponder extends Transponder 
 	{
-		/**
-		 * Constructor
-		 */
-		public function TouchController() 
+		public function BallTransponder()
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
+			system.addListener(MouseEvent.CLICK, onMouseClick);
 		}
 		
-		private function onMouseDown(e:MouseEvent):void 
+		/**
+		 * Controller, captures user input and perform GUI logic.
+		 * Find out if any ball has been clicked, then broadcast signal.
+		 * @param	e native event listener.
+		 */
+		private function onMouseClick(e:MouseEvent):void 
 		{
-			trace(system.getObjects());
-		}
-		
-		private function onMouseUp(e:MouseEvent):void 
-		{
-			
+			var balls:Array = system.getObjects();
+			for each(var b:DisplayObject in balls){
+				if (b.name == "ball") sendSignal(BallSignal.POKE);
+				return;
+			}
 		}
 		
 	}

@@ -21,26 +21,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.modules.stats.controller 
+package org.bixbite.framework.transponder 
 {
-	import flash.display.DisplayObject;
-	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.Controller;
-	import org.bixbite.framework.modules.stats.signal.StatsSignal;
-	import org.bixbite.framework.modules.stats.signal.TraceSignal;
+	import flash.geom.Point;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.4.4
-	 * @since 0.4.1
-	 * 
-     * StatsController, will capture event when stats panel has been clicked and perform some basic task.
-     */
-	public class StatsController extends Controller 
+	 * Not implemented yet
+	 */
+	public class TouchTransponder extends Transponder 
 	{
-		private var statsPanel:Sprite;
-		
-		public function StatsController() 
+		/**
+		 * Constructor
+		 */
+		public function TouchTransponder() 
 		{
 			
 		}
@@ -48,36 +43,19 @@ package org.bixbite.framework.modules.stats.controller
 		override public function init():void 
 		{
 			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			system.addListener(MouseEvent.MOUSE_UP, onMouseUp);
-			
-			addSlot(StatsSignal.TRACE, onTrace);
-		}
-		
-		//Capture request from View and Pass to Model in order to keep MVC signal flow.
-		private function onTrace(s:TraceSignal):void 
-		{
-			attachSignal(s);
-			sendSignal(StatsSignal.TRACE);
+			system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var objects:Array = system.getObjects();
-			
-			for each(var o:DisplayObject in objects){
-				if (o.name == "statsPanel"){
-					statsPanel = o as Sprite;
-					statsPanel.startDrag();
-					return;
-				}
-			}
+			trace(system.getObjects());
 		}
 		
 		private function onMouseUp(e:MouseEvent):void 
 		{
-			if (statsPanel) statsPanel.stopDrag();
-			statsPanel = null;
+			
 		}
+		
 	}
 
 }

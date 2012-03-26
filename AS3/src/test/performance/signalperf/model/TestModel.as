@@ -29,7 +29,7 @@ package test.performance.signalperf.model
 	import test.performance.signalperf.signal.TestSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 */
 	public class TestModel extends Model 
 	{

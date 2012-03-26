@@ -25,14 +25,14 @@ package examples.mudularstructure
 {
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.MainHelloWorld;
-	import examples.mudularstructure.controller.CustomController;
+	import examples.mudularstructure.transponder.CustomTransponder;
 	import examples.mudularstructure.model.CustomModel;
 	import examples.mudularstructure.view.CustomView;
 	import examples.stats.MainStats;
 	import org.bixbite.core.Application;
 	
 	/**
-     * @version compatibility 0.4.4
+     * @version compatibility 0.4.5
      * @since 0.4.3
      * total footprint 10.04kb
      *
@@ -59,7 +59,7 @@ package examples.mudularstructure
 			//However if you don't want to cross reference module with your triad, use Signal/Slot mechanism.
 			var m:CustomModel 		= new CustomModel(helloworld);
 			var v:CustomView 		= new CustomView();
-			var c:CustomController	= new CustomController();
+			var t:CustomTransponder	= new CustomTransponder();
 		   
             //That's it!, all examples working in perfect harmony together.
         }

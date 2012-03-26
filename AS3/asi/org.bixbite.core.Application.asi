@@ -19,7 +19,7 @@
 	 * This is very usefull in modular projects. Concider application, for instance Preloader, that will load external swf build within Bixbite framework as well. 
 	 * Preloader may already have some actors initialised you wish to reuse such StageController, SharedObjectModel, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
 	 * @example
 	 *   <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock ">
 	 *   //Bixbite document class template

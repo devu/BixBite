@@ -21,15 +21,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.controller 
+package org.bixbite.framework.transponder 
 {
 	import flash.display.Stage;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.FullScreenEvent;
-	import org.bixbite.core.Controller;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.StageSignal;
 	
 	
@@ -41,7 +41,7 @@ package org.bixbite.framework.controller
 	 * @version 0.4.4
 	 * @since 0.2.9
 	 */
-	public class StageController extends Controller 
+	public class StageTransponder extends Transponder 
 	{
 		public static const ORIENTATION_PORTRAIT		:String = "stageOrientationPortrait";
 		public static const ORIENTATION_LANDSCAPE		:String = "stageOrientationLandscape";
@@ -60,7 +60,7 @@ package org.bixbite.framework.controller
 		/**
 		 * Constructor, provides injection for common settings.
 		 */
-		public function StageController(align:String = StageAlign.TOP_LEFT, scaleMode:String = StageScaleMode.NO_SCALE) 
+		public function StageTransponder(align:String = StageAlign.TOP_LEFT, scaleMode:String = StageScaleMode.NO_SCALE) 
 		{
 			stage.align = align;
 			stage.scaleMode = scaleMode;

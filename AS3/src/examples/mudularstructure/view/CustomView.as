@@ -26,7 +26,7 @@ package examples.mudularstructure.view
 	import org.bixbite.core.View;
 	
 	/**
-     * @version compatibility 0.4.4
+     * @version compatibility 0.4.5
 	 */
 	public class CustomView extends View 
 	{

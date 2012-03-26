@@ -2,7 +2,7 @@
 {
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.MainHelloWorld;
-	import examples.mudularstructure.controller.CustomController;
+	import examples.mudularstructure.transponder.CustomTransponder;
 	import examples.mudularstructure.model.CustomModel;
 	import examples.mudularstructure.view.CustomView;
 	import examples.stats.MainStats;
@@ -10,7 +10,7 @@
 
 	/**
 	 *
-	 * @version compatibility 0.4.4
+	 * @version compatibility 0.4.5
 	 * @since 0.4.3
 	 *   total footprint 10.04kb
 	 *   

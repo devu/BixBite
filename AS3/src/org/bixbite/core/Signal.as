@@ -38,7 +38,7 @@ package org.bixbite.core
 	 * Also, you cannot send multiple signals from one Actor at the same time. You need to attach them to Actor before using attachSignal method.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
      */
 	public class Signal implements ISignal 
 	{

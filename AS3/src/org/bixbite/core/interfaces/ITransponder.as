@@ -21,42 +21,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloflash.controller 
+package org.bixbite.core.interfaces 
 {
-	import examples.helloflash.signal.BallSignal;
-	import flash.display.DisplayObject;
-	import flash.events.MouseEvent;
-	import org.bixbite.core.Controller;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * Primary reason for this interface is for polymorphism purposes
+	 * 
+	 * @langversion	3.0
+	 * @version 0.4.5
 	 */
-	public class BallController extends Controller 
+	public interface ITransponder extends IActor
 	{
-		public function BallController()
-		{
-			
-		}
-		
-		override public function init():void 
-		{
-			system.addListener(MouseEvent.CLICK, onMouseClick);
-		}
-		
-		/**
-		 * Controller, captures user input and perform GUI logic.
-		 * Find out if any ball has been clicked, then broadcast signal.
-		 * @param	e native event listener.
-		 */
-		private function onMouseClick(e:MouseEvent):void 
-		{
-			var balls:Array = system.getObjects();
-			for each(var b:DisplayObject in balls){
-				if (b.name == "ball") sendSignal(BallSignal.POKE);
-				return;
-			}
-		}
 		
 	}
-
+	
 }

@@ -1,12 +1,8 @@
 ﻿package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IApplication;
-	import org.bixbite.core.interfaces.IController;
-	import org.bixbite.core.interfaces.IModel;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -18,7 +14,7 @@
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
 	 */
 	public class Emiter
 	{

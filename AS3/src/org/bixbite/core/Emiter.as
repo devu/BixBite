@@ -38,7 +38,7 @@ package org.bixbite.core
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
 	 */
 	public class Emiter
 	{

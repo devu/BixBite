@@ -24,19 +24,19 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.interfaces.IController;
+	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
      * <p><i>"The primary symptom of a controller is denial, that is I can’t see its symptoms in myself. — Keith Miller"</i></p>
-     * <p>The Controller is an abstract class</p>
-     * <p>Handles user input to change the state of the application, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model, controls behaviour of the views and notify model with a signal system. 
-	 * Following the rule "Keep Controllers skinny and Models fat". There is NO place in Controllers to handle business logic of the application due to original paradigm of MVC.</p>
+     * <p>The Transponder is an abstract class</p>
+     * <p>An Class that transmits a predetermined message in response to a predefined received signal.
+	 * Handles user input and translate it, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
      */
-	public class Controller extends Actor implements IController 
+	public class Transponder extends Actor implements ITransponder 
 	{
 		private var emiter	:Emiter 	= Emiter.getInstance();
 		private var slots	:Object 	= emiter.slots;
@@ -46,9 +46,9 @@ package org.bixbite.core
 		/**
          * Constructor - this class cannot be directly instantiated.
          */
-		public function Controller() 
+		public function Transponder() 
 		{
-			if (Object(this).constructor == Controller) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Transponder) throw new IllegalOperationError("Abstract Class");
 		}
 		
 		/**

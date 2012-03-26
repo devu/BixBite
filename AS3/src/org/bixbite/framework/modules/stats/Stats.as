@@ -24,13 +24,13 @@ THE SOFTWARE.
 package org.bixbite.framework.modules.stats 
 {
 	import org.bixbite.core.Application;
-	import org.bixbite.framework.modules.stats.controller.StatsController;
 	import org.bixbite.framework.modules.stats.model.StatsModel;
+	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.modules.stats.view.StatsMonitor;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.1
 	 * footprint ~ 2.89kb
 	 * 
@@ -46,7 +46,7 @@ package org.bixbite.framework.modules.stats
 		{
 			var m:StatsModel 		= new StatsModel();
 			var v:StatsMonitor 		= new StatsMonitor(useTracer);
-			var c:StatsController 	= new StatsController();
+			var c:StatsTransponder 	= new StatsTransponder();
 			
 			viewContainer.addView(v);
 		}

@@ -26,7 +26,7 @@ package examples.stats.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * 
 	 * StatsSignal as value object contains all needed values to update state of StatsView
 	 * Set of static constants indicates how we can use it.

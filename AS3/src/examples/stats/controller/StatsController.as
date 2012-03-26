@@ -28,10 +28,10 @@ package examples.stats.controller
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.Controller;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * 
      * StatsController, will capture event when stats panel has been clicked and perform some basic task.
      * For demonstration purposes, will broadcast TraceSignal to show how sub-view of StatsView is being used.
@@ -44,7 +44,7 @@ package examples.stats.controller
      * In proper application you are more likely to use MouseController or TouchController class that will work out all inputs automatically.
      * There rest of your controllers will only reuse already established signal system. So you don't have to repeat yourself.
      */
-	public class StatsController extends Controller 
+	public class StatsController extends Transponder 
 	{
 		private var statsPanel:Sprite;
 		

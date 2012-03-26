@@ -1,0 +1,25 @@
+﻿package test.performance.signalperf.transponder
+{
+	import flash.events.MouseEvent;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Transponder;
+	import test.performance.signalperf.signal.TestSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.5
+	 */
+	public class TestTransponder extends Transponder
+	{
+		private var testSignal : TestSignal;
+		private var slotReference : Function;
+
+		public function TestTransponder ();
+
+		public function init () : void;
+
+		private function runTest (e:MouseEvent) : void;
+
+		private function onFullTriade (s:TestSignal) : void;
+	}
+}

@@ -29,7 +29,7 @@ package org.bixbite.framework.modules.stats.view
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.2
 	 * 
 	 * This is subview of StatsMonitor to extend its functionality for runtime trace output.

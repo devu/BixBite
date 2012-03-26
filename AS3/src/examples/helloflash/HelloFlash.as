@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package examples.helloflash 
 {
-	import examples.helloflash.controller.BallController;
+	import examples.helloflash.transponder.BallTransponder;
 	import examples.helloflash.model.HelloFlashModel;
 	import examples.helloflash.view.MainView;
 	import org.bixbite.core.Application;
@@ -91,7 +91,7 @@ package examples.helloflash
 		
 		public function HelloFlash() 
 		{
-			var c:BallController 	= new BallController();
+			var c:BallTransponder 	= new BallTransponder();
 			var v:MainView 			= new MainView();
 			var m:HelloFlashModel 	= new HelloFlashModel();
 			

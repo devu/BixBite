@@ -34,7 +34,7 @@ package org.bixbite.core
 	 * Views can access stage as 'top view' in nested view hierarhy.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.4
+	 * @version 0.4.5
 	 */
 	public class SystemIO 
 	{

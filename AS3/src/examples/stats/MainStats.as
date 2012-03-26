@@ -23,14 +23,14 @@ THE SOFTWARE.
 
 package examples.stats 
 {
-	import examples.stats.controller.StatsController;
 	import examples.stats.model.StatsModel;
 	import examples.stats.view.StatsView;
 	import org.bixbite.core.Application;
-	import org.bixbite.framework.controller.StageController;
+	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
+	import org.bixbite.framework.transponder.StageTransponder;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.1
 	 * footprint 7.04kb
 	 * 
@@ -49,12 +49,12 @@ package examples.stats
 		public function MainStats() 
 		{
 			//For presentaion purposes only
-			var stageCtrl:StageController = new StageController();
+			var stageCtrl:StageTransponder = new StageTransponder();
 			
 			//Set of actors needed to perform this task.
 			var m:StatsModel 		= new StatsModel();
 			var v:StatsView 		= new StatsView();
-			var c:StatsController 	= new StatsController();
+			var t:StatsTransponder 	= new StatsTransponder();
 			
 			// If you will study this example, you can quickly recognise posibilities that Bixbite opens.
 			// You can easly replace any of the actor with your own implementation. 

@@ -1,0 +1,15 @@
+﻿package test.performance.coreperf.transponder
+{
+	import org.bixbite.core.Transponder;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.5
+	 */
+	public class TestTransponder extends Transponder
+	{
+		public function TestTransponder ();
+
+		public function init () : void;
+	}
+}

@@ -32,7 +32,7 @@ package test.performance.signalperf.view
 	import flash.utils.setInterval;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 */
 	public class TestView extends View 
 	{

@@ -24,15 +24,15 @@ THE SOFTWARE.
 package test.performance.signalperf 
 {
 	import org.bixbite.core.Application;
-	import org.bixbite.framework.controller.StageController;
+	import org.bixbite.framework.controller.StageTransponder;
 	import org.bixbite.framework.modules.stats.Stats;
 	import org.bixbite.framework.view.StageView;
-	import test.performance.signalperf.controller.TestController;
 	import test.performance.signalperf.model.TestModel;
+	import test.performance.signalperf.transponder.TestTransponder;
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.2
 	 * footprint 8.92kb
 	 * 
@@ -71,21 +71,21 @@ package test.performance.signalperf
 	 * 10.000 		- 1ms		(30k signals in circulation)
 	 * 100.000		- 9ms		(300k signals in circulation)
 	 * 1.000.000	- 99ms		(3M signals in circulation)
-	 * 10.000.000	- 931ms		(30M signals in circulation) and this is fucking insaine!
+	 * 10.000.000	- 931ms		(30M signals in circulation) and this is what we talking about :).
 	 */
 	public class SignalPerformance extends Application
 	{
 		
 		public function SignalPerformance() 
 		{
-			var stageCtrl:StageController = new StageController();
+			var stageCtrl:StageTransponder = new StageTransponder();
 			var stageView:StageView = new StageView();
 			
 			var stats:Stats = new Stats(stageView);
 			
 			var m:TestModel = new TestModel();
 			var v:TestView = new TestView();
-			var c:TestController = new TestController();
+			var c:TestTransponder = new TestTransponder();
 		}
 		
 	}

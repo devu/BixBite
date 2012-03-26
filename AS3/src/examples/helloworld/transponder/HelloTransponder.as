@@ -21,18 +21,50 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core.interfaces 
+package examples.helloworld.transponder 
 {
+	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes
+	 * @version  compatibility - 0.4.5
 	 * 
-	 * @langversion	3.0
-	 * @version 0.4.4
-	 */
-	public interface IController extends IActor
+     * This Controller will detect if your text field has been clicked.
+     * If so, will send signal demands to change the copy.
+     * Controller don't care with text field. Although don't care witch and how Model will resolve replaceCopy request.
+     * It can be any or many of them at the same time.
+     */
+	public class HelloTransponder extends Transponder 
 	{
 		
+		public function HelloTransponder() 
+		{
+			
+		}
+		
+		/**
+		 * Add system listener to capture user Input.
+		 */
+		override public function init():void 
+		{
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		}
+		
+		private function onMouseDown(e:MouseEvent):void 
+		{
+			var objects:Array = system.getObjects();
+			
+			var tf:TextField;
+			for each(var o:Object in objects){
+				if (o is TextField) {
+					tf = o as TextField;
+					tf.mouseEnabled = false;
+					sendSignal("replaceCopy");
+				}
+			}
+		}
+		
 	}
-	
+
 }

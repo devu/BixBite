@@ -21,25 +21,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.coreperf.controller 
+package org.bixbite.framework.transponder 
 {
-	import org.bixbite.core.Controller;
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * Not implemented yet
 	 */
-	public class TestController extends Controller 
+	public class MouseTransponder extends Transponder 
 	{
-		
-		public function TestController() 
+		/**
+		 * Constructor
+		 */
+		public function MouseTransponder() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			
+			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			//system.addListener(MouseEvent.MOUSE_UP	, onMouseUp);
 		}
+		
+		private function onMouseDown(e:MouseEvent):void 
+		{
+			trace(system.getObjects());
+		}
+		/*
+		private function onMouseUp(e:MouseEvent):void 
+		{
+			
+		}*/
 		
 	}
 

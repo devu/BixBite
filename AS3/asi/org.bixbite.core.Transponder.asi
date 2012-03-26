@@ -1,0 +1,64 @@
+﻿package org.bixbite.core
+{
+	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.ITransponder;
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * <p><i>"The primary symptom of a controller is denial, that is I can’t see its symptoms in myself. — Keith Miller"</i></p>
+	 * <p>The Transponder is an abstract class</p>
+	 * <p>An Class that transmits a predetermined message in response to a predefined received signal.
+	 * Handles user input and translate it, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model.</p>
+	 * @langversion	3.0
+	 * @version 0.4.5
+	 */
+	public class Transponder extends Actor implements ITransponder
+	{
+		private var emiter : Emiter;
+		private var slots : Object;
+
+		/**
+		 * Constructor - this class cannot be directly instantiated.
+		 */
+		public function Transponder ();
+
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot (type:String, callback:Function) : void;
+
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 */
+		public function sendSignal (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 * @param	callback
+		 */
+		public function sendRequest (type:String, callback:Function) : void;
+
+		/**
+		 *
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference (type:String) : Array;
+
+		/**
+		 *
+		 * @inheritDoc
+		 */
+		public function destroy () : void;
+	}
+}

@@ -29,17 +29,17 @@ package test.performance.coreperf
 	import flash.utils.clearInterval;
 	import org.bixbite.core.Application;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.controller.StageController;
+	import org.bixbite.framework.controller.StageTransponder;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	import org.bixbite.framework.modules.stats.Stats;
 	import org.bixbite.framework.view.StageView;
-	import test.performance.coreperf.controller.TestController;
 	import test.performance.coreperf.model.TestModel;
+	import test.performance.coreperf.transponder.TestTransponder;
 	import test.performance.coreperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 * @since 0.4.3
 	 * footprint 9.53kb
 	 * 
@@ -58,12 +58,12 @@ package test.performance.coreperf
 	 * TASK: create		Views	100k	COUNT: 10	TIME: 129.9ms
 	 * TASK: destroy	Views	100k	COUNT: 10	TIME: 533.2ms
 	 * 
-	 * TASK: create		Ctrls	1.000	COUNT: 10	TIME: 1.000ms
-	 * TASK: destroy	Ctrls	1.000	COUNT: 10	TIME: 6.455ms
-	 * TASK: create		Ctrls	10.000	COUNT: 10	TIME: 10.55ms
-	 * TASK: destroy	Ctrls	10.000	COUNT: 10	TIME: 52.18ms
-	 * TASK: create		Ctrls	100k	COUNT: 10	TIME: 134.3ms
-	 * TASK: destroy	Ctrls	100k	COUNT: 10	TIME: 354.0ms
+	 * TASK: create		Trans	1.000	COUNT: 10	TIME: 1.000ms
+	 * TASK: destroy	Trans	1.000	COUNT: 10	TIME: 6.455ms
+	 * TASK: create		Trans	10.000	COUNT: 10	TIME: 10.55ms
+	 * TASK: destroy	Trans	10.000	COUNT: 10	TIME: 52.18ms
+	 * TASK: create		Trans	100k	COUNT: 10	TIME: 134.3ms
+	 * TASK: destroy	Trans	100k	COUNT: 10	TIME: 354.0ms
 	 * 
 	 * TASK: create		Models	1.000	COUNT: 10	TIME: 1.000ms
 	 * TASK: destroy	Models	1.000	COUNT: 10	TIME: 8.091ms
@@ -90,7 +90,7 @@ package test.performance.coreperf
 		
 		public function CorePerformance() 
 		{
-			var stageCtrl:StageController = new StageController();
+			var stageCtrl:StageTransponder = new StageTransponder();
 			stageView = new StageView();
 			
 			stats = new Stats(stageView);
@@ -102,12 +102,12 @@ package test.performance.coreperf
 			tasks[4] = "create		Views	100k";
 			tasks[5] = "destroy	Views	100k";
 			
-			tasks[6] = "create		Ctrls	1.000";
-			tasks[7] = "destroy	Ctrls	1.000";
-			tasks[8] = "create		Ctrls	10.000";
-			tasks[9] = "destroy	Ctrls	10.000";
-			tasks[10] = "create		Ctrls	100k";
-			tasks[11] = "destroy	Ctrls	100k";
+			tasks[6] = "create		Trans	1.000";
+			tasks[7] = "destroy	Trans	1.000";
+			tasks[8] = "create		Trans	10.000";
+			tasks[9] = "destroy	Trans	10.000";
+			tasks[10] = "create		Trans	100k";
+			tasks[11] = "destroy	Trans	100k";
 			
 			tasks[12] = "create		Models	1.000";
 			tasks[13] = "destroy	Models	1.000";
@@ -277,7 +277,7 @@ package test.performance.coreperf
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {
-				testContainer[i] = new TestController();
+				testContainer[i] = new TestTransponder();
 			}
 			results[resultsId] += getTimer() - time;
 		}
@@ -286,7 +286,7 @@ package test.performance.coreperf
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {
-				TestController(testContainer[i]).destroy();
+				TestTransponder(testContainer[i]).destroy();
 				testContainer[i] = null;
 			}
 			results[resultsId] += getTimer() - time;

@@ -28,7 +28,7 @@ package examples.helloflash.model
 	import org.bixbite.core.Model;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.4.5
 	 */
 	public class HelloFlashModel extends Model 
 	{
