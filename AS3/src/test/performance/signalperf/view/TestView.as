@@ -24,12 +24,10 @@ THE SOFTWARE.
 package test.performance.signalperf.view 
 {
 	import flash.utils.getTimer;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	import test.performance.signalperf.signal.TestSignal;
-	import flash.utils.setInterval;
 	
 	/**
 	 * @version  compatibility - 0.4.5
@@ -68,7 +66,7 @@ package test.performance.signalperf.view
 		 */
 		private function onSignalFromModel(s:TestSignal):void 
 		{
-			var MAX:int = 10000000;
+			var MAX:int = 1000000;
 			var i:int;
 			
 			trace("Signal: Controller->Model->View  Phase:", s.phase);
