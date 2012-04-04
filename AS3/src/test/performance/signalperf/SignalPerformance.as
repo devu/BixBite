@@ -24,8 +24,8 @@ THE SOFTWARE.
 package test.performance.signalperf 
 {
 	import org.bixbite.core.Application;
-	import org.bixbite.framework.controller.StageTransponder;
 	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
 	import test.performance.signalperf.model.TestModel;
 	import test.performance.signalperf.transponder.TestTransponder;
