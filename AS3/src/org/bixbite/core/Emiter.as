@@ -202,7 +202,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * System I/O accessor. In AS3 implementation is a native stage
+		 * System I/O accessor.
 		 */
 		public function get system():SystemIO 
 		{
@@ -222,7 +222,5 @@ package org.bixbite.core
 		{
 			return _slots;
 		}
-		
 	}
-
 }

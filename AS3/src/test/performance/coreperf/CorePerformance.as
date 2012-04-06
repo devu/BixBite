@@ -29,10 +29,10 @@ package test.performance.coreperf
 	import flash.utils.clearInterval;
 	import org.bixbite.core.Application;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.controller.StageTransponder;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
 	import test.performance.coreperf.model.TestModel;
 	import test.performance.coreperf.transponder.TestTransponder;

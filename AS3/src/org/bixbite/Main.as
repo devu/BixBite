@@ -44,7 +44,7 @@ package org.bixbite
 	 * LOG:
 	 * 0.4.5 
 	 * - Controller renamed to Transponder to indicate its proper role
-	 * - Constants fro signal types.
+	 * - Constants for signal types.
 	 * 0.4.4
 	 * - signal channels implemented MVC (specific routes)
 	 */
