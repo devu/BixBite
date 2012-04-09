@@ -29,37 +29,21 @@ package org.bixbite.core
 	/**
      * <p>Signal is a base class for all signals being propagated within a system.
      * Provides all necessary getters in read-only mode, and setters automatically controlled by framework.
-     * All those getters working together provides convenient way to make multiple variations and stay in tact with DRY rule.
-     * In this same time helping you solve all architectural problems without referencing objects and keep your Actors completely decoupled, unaware of each other make a perfect modular system to work with and more importantly easy to maintain.</p>
+     * In this same time helping you solve all architectural problems without referencing objects and keep your Components and Compounds completely decoupled, unaware of each other makes a perfect modular system to work with and more importantly easy to maintain.</p>
      *
-     * <p>In case you need to send more valuable informations within an signal we recommend to create your Custom Signal class, that will extends this base Signal class.
-     * You will always stay type safe and have opportunity to ad as many values you want, keeps the basics unchanged and available for a system.
-     * You can have multiple Custom Signals to send different values defined for each actor. But by default there is only one Signal attached into Actor. 
-	 * Also, you cannot send multiple signals from one Actor at the same time. You need to attach them to Actor before using attachSignal method.</p>
+     * <p>In case you need to send more valuable informations within an signal you can use build in params array.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
      */
 	public class Signal implements ISignal 
 	{
-		private var _phase			:int = 0;
 		private var _callerUID		:String;
-		private var _action			:String;
+		private var _params			:Array;
 		
-		/**
-		 * Phase
-		 */
-		public function get phase():int 
+		public function Signal(uid:String)
 		{
-			return _phase;
-		}
-		
-		/**
-		 * @private
-		 */
-		BIXBITE function set phase(value:int):void 
-		{
-			_phase = value;
+			_callerUID = uid;
 		}
 		
 		/**
@@ -81,34 +65,23 @@ package org.bixbite.core
 			_callerUID = value;
 		}
 		
-		/**
-         * Read-only action is an additional and optional parameter, that will let you distinguish different requirements and perform some logical operations within the same type of signal when sending request.
-         * This is to avoid boilerplate-code and overloading signal/slot system too much.
-         * But can be invoked only by requesters using sendRequest method.
-         */
-		public function get action():String 
+		public function get params():Array 
 		{
-			return _action;
+			return _params;
 		}
 		
-		/**
-		 * @private
-		 * System controlled setter for action optional parameter
-		 */
-		BIXBITE function set action(value:String):void 
+		public function set params(value:Array):void 
 		{
-			_action = value;
+			_params = value;
 		}
 		
 		/**
 		 * Public method to deconstruct signal
 		 */
-		public function dispose():void
+		BIXBITE function dispose():void
 		{
-			_phase = NaN;
 			_callerUID = null;
-			_action = null;
-			
+			_params = null;
 		}
 	}
 
