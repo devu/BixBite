@@ -30,8 +30,8 @@ package org.bixbite
 	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version 0.4.5
-	 * footprint 8.20kb (8.47kb);
+	 * @version 0.5.0
+	 * footprint 7.88kb; (8.20kb for v0.4.5)
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.
@@ -68,7 +68,7 @@ package org.bixbite
 		
 		public function Main() 
 		{
-			var stageManager	:StageManager 	= new StageManager(stage);
+			var stageManager	:StageManager 	= new StageManager();
 			var stats			:Stats 			= new Stats();
 		}
 		

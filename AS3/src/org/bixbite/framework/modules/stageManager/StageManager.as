@@ -16,13 +16,9 @@ package org.bixbite.framework.modules.stageManager
 	public class StageManager extends Compound 
 	{
 		
-		public function StageManager(stage:Stage = null, align:String = "TL", scaleMode:String = "noScale") 
+		public function StageManager(align:String = "TL", scaleMode:String = "noScale") 
 		{
-			stage = (!this.stage) ? stage : this.stage;
-			stage.scaleMode = scaleMode;
-			stage.align = align;
-			
-			var d:StageData 		= new StageData();
+			var d:StageData 		= new StageData(align, scaleMode);
 			var t:StageTransponder 	= new StageTransponder();
 			
 			addBehaviour(StageSignal.RESIZE, StageResize);

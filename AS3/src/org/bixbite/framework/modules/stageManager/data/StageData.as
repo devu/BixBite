@@ -12,9 +12,11 @@ package org.bixbite.framework.modules.stageManager.data
 	{
 		private var stage:Stage;
 		
-		public function StageData() 
+		public function StageData(align:String = "TL", scaleMode:String = "noScale") 
 		{
-			
+			stage = system;
+			stage.align = align;
+			stage.scaleMode = scaleMode;
 		}
 		
 		override public function init():void 
