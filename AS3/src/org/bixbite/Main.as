@@ -30,23 +30,37 @@ package org.bixbite
 	
 	/**
 	 * @version 0.4.5
-	 * total footprint 8.20kb
+	 * footprint 8.20kb (8.47kb);
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO
-	 * 0.4.6
-	 * -each actor specific methods to access system, remove systemIO.
-	 * 0.4.7
-	 * - signals try multi attachSignal by id.
+	 * 0.5.1
+	 * - more integration and performance tests
+	 * 0.5.0
+	 * - rebuild docs. libs and all examples based on new architecture.
 	 * 
 	 * LOG:
+	 * 0.4.9
+	 * - Behaviour mechanism and communication model
+	 * - no need for bid-irectional communication
+	 * 0.4.8
+	 * - Move away from MVC pattern
+	 * - Compound Crystal Pattern name conventions
+	 * - Attach Signal obsolete, no more reatachment
+	 * - Signals are no longer value objects, use Data Components instead to carry informations
+	 * 0.4.7
+	 * - Model divided to Atom and Data components
+	 * - Improved communication model.
+	 * - response/request
+	 * 0.4.6
+	 * -each actor specific methods to access system, remove systemIO.
 	 * 0.4.5 
 	 * - Controller renamed to Transponder to indicate its proper role
 	 * - Constants for signal types.
 	 * 0.4.4
-	 * - signal channels implemented MVC (specific routes)
+	 * - signal channels implemented(MVC specific routes)
 	 */
 	public class Main extends Application
 	{
@@ -55,7 +69,6 @@ package org.bixbite
 		{
 			var stageTrans	:StageTransponder 	= new StageTransponder();
 			var stageView	:StageView 			= new StageView();
-			
 			var stats		:Stats 				= new Stats(stageView, false);
 		}
 		
