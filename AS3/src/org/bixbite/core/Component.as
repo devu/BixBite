@@ -25,64 +25,58 @@ package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.Emiter;
-	import org.bixbite.core.interfaces.IActor;
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * <p>The Actor is a abstract base class for all the mebers of the MVC triad.</p>
+	 * <p>The Component is a abstract base class for View, Transporder and Data components</p>
 	 * 
-	 * <p>Purpose of this class is to provide unified way to register the member within Signal Emiter, get unique id and attach default signal into it. As well as provide common set of signal/slot methods for communication</p>
+	 * <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
+	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
-	public class Actor implements IActor
+	public class Component implements IComponent
 	{
-		/**
-		 * @private
-		 * Every Actor will invoke this assigment in order to get short reference to Emiter.
-		 */
-		private var _emiter		:Emiter 	= Emiter.getInstance();
-		
-		/**
-		 * @private
-		 * Every Actor will get short reference to SystemIO, in case of AS3 implementation relies mostly on native stage. 
-		 * This assigment will make system available even before constructor of this class is invoked.
-		 */
-		private var _system		:SystemIO 	= _emiter.system;
-		
-		/**
-		 * @private
-		 * Base on Emiter short reference, evey Actor will get unique id from observer uid iterator.
-		 */
-		private var _uid		:String		= "@" + _emiter.uid;
-		
-		/**
-         * Reference to default Signal attached to its Actor. It can be reattached from subclass by using attachSignal method by passing Custom Signal implementation into it.
-         * However direct access to this reference is provided via ISignal interface. Since only necessary set of interface methods are controlled by system.
-         * In receiver of particular signal if you know the type of the Custom Signal you expecting to recieve, you can use concrete class name of the Signal in signature to avoid unnecessary castings and access values directly;
-         */
-		public var signal		:ISignal 	= attachSignal();
-		
-		
-		/**
-		 * Use system default namespace
-		 */
 		use namespace BIXBITE;
 		
 		/**
-		 * Constructor, Actor is an abstract class, cannot be directly instatiated. 
+		 * @private
+		 * Every Component will invoke this assigment in order to get short reference to Emiter.
 		 */
-		public function Actor()
+		BIXBITE var emiter		:Emiter 	= Emiter.getInstance();
+		
+		/**
+		 * @private
+		 * Based on Emiter short reference, evey Component will get unique id from observer uid iterator.
+		 */
+		BIXBITE var _uid		:String		= "@" + emiter.uid;
+		
+		/**
+		 * @private
+		 * Slots reference to provide access to specific channel
+		 */
+		BIXBITE var slots	:Object 		= emiter.slots;
+		
+		/**
+		 * @private
+		 * Default signal attached to this Component
+		 */
+		BIXBITE var signal	:ISignal 		= new Signal(uid);
+		
+		/**
+		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
+		 */
+		public function Component()
 		{
-			if (Object(this).constructor == Actor) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Component) throw new IllegalOperationError("Abstract Class");
 			init();
 		}
 		
 		/**
-		 * Abstract method init must be overriden in subclasses. 
-		 * Is not directly triggered by Actor class but by MVC specific subclasses to ensure all assigments are in place.
+		 * Abstract method init must be overriden in subclasses.
 		 */
 		public function init():void
 		{
@@ -90,69 +84,36 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Deconstructor of an Actor. 
+		 * Deconstructor of Component. 
 		 * Will detach/unregister all registered signals form Emiter and clear all nesesary references.
-		 * Subclasses should override this method and call super.destroy();.
-		 * On Subclass level you don't have to care about signal removal, only references of the objects you have created.
+		 * Subclasses should override this method and call super.destroy().
 		 */
 		public function destroy():void
 		{
-			_emiter = null;
-			_system = null;
+			emiter 	= null;
 			
-			signal.dispose();
-			signal = null;
-			_uid = null;
+			signal.BIXBITE::dispose();
+			signal 	= null;
+			
+			slots 	= null;
+			_uid 	= null;
 		}
 		
 		/**
-		 * Method to set default signal attached to Actor, that will be later on send within Signal/Slot system.
-		 * If not set, basic Signal will be constructed by default.
-		 */
-		public function attachSignal(signal:ISignal = null):ISignal
-		{
-			if (!signal) signal = new Signal();
-			else this.signal.dispose();
-			
-			signal.BIXBITE::callerUID = uid;
-			this.signal = signal;
-			
-			return signal;
-		}
-		
-		/**
-		 * This method will remove entire slot of specific type, no matter witch actor is calling all registered acctors will stop recieveing those signals
+		 * This method will remove entire slot of specific type, no matter witch Component is calling, all registered acctors will stop recieveing those signals.
 		 * @param	type
 		 */
 		public function removeAllSlots(type:String):void
 		{
-			_emiter.removeAllSlots(this, type);
+			emiter.removeAllSlots(this, type);
 		}
 		
 		/**
-		 * Reference to System I/O
-		 */
-		public function get system():SystemIO 
-		{
-			return _system;
-		}
-		
-		/**
-		 * Unique actor identifier
+		 * Unique Component identifier
 		 */
 		public function get uid():String 
 		{
 			return _uid;
-		}
-		
-		/**
-		 * @private
-		 * Unique actor identifier controlled by Emiter
-		 * @param	uid
-		 */
-		BIXBITE function setUID(uid:String):void
-		{
-			_uid = uid;
 		}
 		
 	}
