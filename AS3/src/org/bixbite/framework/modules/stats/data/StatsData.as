@@ -21,34 +21,51 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.modules.stats.signal 
+package org.bixbite.framework.modules.stats.data 
 {
-	import org.bixbite.core.Signal;
+	import flash.display.Stage;
+	import flash.events.Event;
+	import flash.system.System;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Data;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
+	 * 
 	 */
-	public class TraceSignal extends Signal 
+	public class StatsData extends Data 
 	{
-		public var name		:String;
-		public var value	:String;
-		public var line		:int;
+		public var mem				:Number = 0;
+		public var max				:Number = 0;
+		public var fps				:Number = 0;
 		
-		public function TraceSignal(name:String, value:*, line:int = 0) 
+		public var timer			:int;
+		public var ms				:int;
+		public var ms_prev			:int;
+		
+		public var frameRate		:Number;
+		
+		public var infoFPS			:String;
+		public var infoMEM			:String;
+		public var infoMAX			:String;
+		public var infoMS			:String;
+		
+		public function StatsData()
 		{
-			this.name = name;
-			this.value = value.toString();
-			this.line = line;
+			frameRate = system.frameRate;
 		}
 		
-		override public function dispose():void 
+		override public function init():void
 		{
-			super.dispose();
-			
-			this.name = null;
-			this.value = null;
-			this.line = NaN;
+			addSlot(StatsSignal.DATA_REQUEST, onDataRequest);
+		}
+		
+		private function onDataRequest():StatsData
+		{
+			return this
 		}
 		
 	}

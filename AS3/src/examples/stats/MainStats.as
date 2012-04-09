@@ -25,7 +25,7 @@ package examples.stats
 {
 	import examples.stats.model.StatsModel;
 	import examples.stats.view.StatsView;
-	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.transponder.StageTransponder;
 	
@@ -40,7 +40,7 @@ package examples.stats
 	 * IMPORTANT: This is just an example to show a flow, do not use it for development purposes.
 	 * There will be proper optimised version provided as a functional module as a part of framework.
 	 */
-	public class MainStats extends Application 
+	public class MainStats extends Compound 
 	{
 		/**
 		 * Constructor, set a triad (StageController is a temporary controller if this project runs as independend Application. 
@@ -49,10 +49,10 @@ package examples.stats
 		public function MainStats() 
 		{
 			//For presentaion purposes only
-			var stageCtrl:StageTransponder = new StageTransponder();
+			var st:StageTransponder = new StageTransponder(stage);
 			
 			//Set of actors needed to perform this task.
-			var m:StatsModel 		= new StatsModel();
+			var d:StatsData 		= new StatsData();
 			var v:StatsView 		= new StatsView();
 			var t:StatsTransponder 	= new StatsTransponder();
 			

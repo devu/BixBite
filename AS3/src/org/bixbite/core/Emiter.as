@@ -282,6 +282,14 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * 
+		 */
+		BIXBITE function get stage():Stage
+		{
+			return _stage;
+		}
+		
+		/**
 		 * Retruns reference to all slot channels
 		 */
 		public function get slots():Object 

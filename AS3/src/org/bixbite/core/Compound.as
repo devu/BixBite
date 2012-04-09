@@ -81,7 +81,7 @@ package org.bixbite.core
 		
 		public function Compound()
 		{
-			_stageView = new StageView(stage);
+			_stageView = new StageView(emiter.stage);
 			if(Object(this).constructor == Compound) throw new IllegalOperationError("Abstract Class");
 		}
 		

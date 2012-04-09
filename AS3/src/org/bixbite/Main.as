@@ -23,7 +23,8 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
-	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.stageManager.StageManager;
 	import org.bixbite.framework.modules.stats.Stats;
 	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
@@ -39,7 +40,7 @@ package org.bixbite
 	 * 0.5.1
 	 * - more integration and performance tests
 	 * 0.5.0
-	 * - rebuild docs. libs and all examples based on new architecture.
+	 * - rebuild docs, libs, modules and all examples based on new architecture.
 	 * 
 	 * LOG:
 	 * 0.4.9
@@ -62,14 +63,13 @@ package org.bixbite
 	 * 0.4.4
 	 * - signal channels implemented(MVC specific routes)
 	 */
-	public class Main extends Application
+	public class Main extends Compound
 	{
 		
 		public function Main() 
 		{
-			var stageTrans	:StageTransponder 	= new StageTransponder();
-			var stageView	:StageView 			= new StageView();
-			var stats		:Stats 				= new Stats(stageView, false);
+			var stageManager	:StageManager 	= new StageManager(stage);
+			var stats			:Stats 			= new Stats();
 		}
 		
 	}

@@ -22,7 +22,7 @@ package org.bixbite.framework.modules.stageManager
 			stage.scaleMode = scaleMode;
 			stage.align = align;
 			
-			var d:StageData 		= new StageData(stage);
+			var d:StageData 		= new StageData();
 			var t:StageTransponder 	= new StageTransponder();
 			
 			addBehaviour(StageSignal.RESIZE, StageResize);

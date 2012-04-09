@@ -12,9 +12,9 @@ package org.bixbite.framework.modules.stageManager.data
 	{
 		private var stage:Stage;
 		
-		public function StageData(stage:Stage) 
+		public function StageData() 
 		{
-			this.stage = stage;
+			
 		}
 		
 		override public function init():void 

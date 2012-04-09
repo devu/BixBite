@@ -31,9 +31,10 @@ package examples.stats.view
 	import flash.text.TextFormat;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * 
 	 * StatsView, visual representation of data comning from StatsModel.
 	 * Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.
@@ -43,7 +44,7 @@ package examples.stats.view
 	 * 
 	 * In this example we also shows how we can construct additional subview on demand.
 	 */
-	public class StatsView extends View 
+	public class StatsView extends DisplayViewContainer 
 	{
 		private var mem_graph		:Number = 0;
 		private var max_graph		:Number = 0;
@@ -104,11 +105,10 @@ package examples.stats.view
 			panel.addChild(info_max);
 			panel.addChild(info_orient);
 			
-			system.stage.addChild(panel);
+			setContext("statsPanel", panel);
 			
 			addSlot(StatsSignal.DRAW, drawGraph);
 			addSlot(StatsSignal.UPDATE, updateText);
-			
 			addSlot(StageSignal.UPDATE, onStageUpdate);
 		}
 		
@@ -134,10 +134,11 @@ package examples.stats.view
 			info_ms.text = s.infoMS;
 		}
 		
+		/*
 		private function onStageUpdate(s:StageSignal):void 
 		{
 			info_orient.text = (s.orientation == "stageOrientationPortrait") ? "PORTRAIT" : "LANDSCAPE";
-		}
+		}*/
 		
 		//TODO, subject to concideration build-in to framework branches factory methods to create shapes and text fields.
 		private function createText(posX:Number, posY:Number, color:uint = 0xFFFFFF, w:Number = 70, h:Number = 18):TextField

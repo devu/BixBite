@@ -26,12 +26,12 @@ package examples.stats.signal
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * 
 	 * StatsSignal as value object contains all needed values to update state of StatsView
 	 * Set of static constants indicates how we can use it.
 	 */
-	public class StatsSignal extends Signal 
+	public class StatsSignal
 	{
 		public static const START			:String = "statsStart";
 		public static const PAUSE			:String = "statsPause";
@@ -56,6 +56,7 @@ package examples.stats.signal
 		 * When model is deconstructed will ivoke dispose() function automatially. 
 		 * This is developer opportunity to make sure his custom signals will clean up all values and feferences.
 		 */
+		/*
 		override public function dispose():void 
 		{
 			super.dispose();
@@ -71,7 +72,7 @@ package examples.stats.signal
 			infoMAX		= null;
 			infoMS		= null;
 			infoTRACE 	= null;
-		}
+		}*/
 		
 		
 	}

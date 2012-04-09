@@ -25,20 +25,18 @@ package org.bixbite.framework.modules.stats.transponder
 {
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.modules.stats.signal.StatsSignal;
-	import org.bixbite.framework.modules.stats.signal.TraceSignal;
+	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 * 
-     * StatsController, will capture event when stats panel has been clicked and perform some basic task.
      */
 	public class StatsTransponder extends Transponder 
 	{
-		private var statsPanel:Sprite;
+		private var panel:Sprite;
 		
 		public function StatsTransponder() 
 		{
@@ -47,36 +45,30 @@ package org.bixbite.framework.modules.stats.transponder
 		
 		override public function init():void 
 		{
-			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			system.addListener(MouseEvent.MOUSE_UP, onMouseUp);
-			
-			addSlot(StatsSignal.TRACE, onTrace);
+			addSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
+			addSensor(MouseEvent.MOUSE_UP	, onMouseUp);
+			addSensor(Event.ENTER_FRAME		, onEnterFrame);
 		}
 		
-		//Capture request from View and Pass to Model in order to keep MVC signal flow.
-		private function onTrace(s:TraceSignal):void 
+		private function onEnterFrame(e:Event):void 
 		{
-			attachSignal(s);
-			sendSignal(StatsSignal.TRACE);
+			sendSignal(StatsSignal.CALCULATE);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var objects:Array = system.getObjects();
-			
-			for each(var o:DisplayObject in objects){
-				if (o.name == "statsPanel"){
-					statsPanel = o as Sprite;
-					statsPanel.startDrag();
-					return;
-				}
+			if (findObjectByName("statsPanel")){
+				panel = getObjectByName("statsPanel") as Sprite;
+				panel.startDrag();
 			}
 		}
 		
 		private function onMouseUp(e:MouseEvent):void 
 		{
-			if (statsPanel) statsPanel.stopDrag();
-			statsPanel = null;
+			if (panel) {
+				panel.stopDrag();
+				panel = null;
+			}
 		}
 	}
 

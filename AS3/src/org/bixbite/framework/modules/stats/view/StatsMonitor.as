@@ -28,8 +28,10 @@ package org.bixbite.framework.modules.stats.view
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	import org.bixbite.framework.modules.stats.signal.StatsSignal;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.stats.data.StatsData;
+	import org.bixbite.framework.signals.StageSignal;
+	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
@@ -53,40 +55,33 @@ package org.bixbite.framework.modules.stats.view
 		private var info_max		:TextField;
 		private var info_orient		:TextField;
 		private var panel			:Sprite;
-		private var frameRate		:int;
 		
 		/**
 		 * Constructor
-		 * @param	useTracer, turn on/off tracer sub view.
 		 */
-		public function StatsMonitor(useTracer:Boolean = true) 
+		public function StatsMonitor() 
 		{
-			if (useTracer){
-				addView(new StatsTracer());
-			}
+			
 		}
 		
 		override public function init():void 
 		{
-			frameRate = system.stage.frameRate;
+			//frameRate = system.stage.frameRate;
 			
 			panel = new Sprite();
-			panel.name = "statsPanel";
 			panel.graphics.beginFill(0x000000, 0.8);
 			panel.graphics.drawRect(0, 0, 310, 56);
 			panel.mouseEnabled = false;
-			
-			context = panel;
 			
 			graph = new BitmapData(230, 56, true, 0x00000000);
 			monitor = new Bitmap(graph);
 			monitor.x = 80;
 			panel.addChild(monitor);
 			
-			info_fps = createText(3, 2, 0xFFFF66);
-			info_ms = createText(3, 10, 0x00FF00);
-			info_mem = createText(3, 18, 0x00FFFF);
-			info_max = createText(3, 26, 0xFF25F0);
+			info_fps 	= createText(3, 2, 0xFFFF66);
+			info_ms 	= createText(3, 10, 0x00FF00);
+			info_mem 	= createText(3, 18, 0x00FFFF);
+			info_max 	= createText(3, 26, 0xFF25F0);
 			info_orient = createText(3, 34, 0xDEDEDE);
 			
 			panel.addChild(info_fps);
@@ -96,38 +91,58 @@ package org.bixbite.framework.modules.stats.view
 			panel.addChild(info_orient);
 			
 			addSlot(StatsSignal.DRAW, drawGraph);
-			addSlot(StatsSignal.UPDATE, updateText);
+			addSlot(StatsSignal.UPDATE, update);
+			addSlot(StatsSignal.UPDATE_REALTIME, updateRealtime);
+			//addSlot(StageSignal.RESIZE, onStageResize);
 			
-			addSlot(StageSignal.UPDATE, onStageUpdate);
+			setContext("statsPanel", panel);
 		}
 		
-		private function drawGraph(s:StatsSignal):void
+		private function drawGraph(s:ISignal):void
 		{
-			fps_graph = Math.min( graph.height, ( s.fps / frameRate ) * graph.height );
-			mem_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( s.mem * 5000 ) ) ) - 2;
-			max_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( s.max * 5000 ) ) ) - 2;
+			var data:StatsData = s.params[0];
+			
+			var fps			:int 		= data.fps;
+			var mem			:Number 	= data.mem;
+			var max			:Number 	= data.max;
+			var timer		:int 		= data.timer;
+			var ms			:int 		= data.ms;
+			var frameRate	:Number 	= data.frameRate;
+			
+			fps_graph = Math.min( graph.height, ( fps / frameRate ) * graph.height );
+			mem_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( mem * 5000 ) ) ) - 2;
+			max_graph = Math.min( graph.height, Math.sqrt( Math.sqrt( max * 5000 ) ) ) - 2;
 			
 			graph.scroll( -1, 0 );
 			
 			graph.setPixel32( 228, 56 - fps_graph, 0xFFFFFF66);
-			graph.setPixel32( 228, 56 - ( ( s.timer - s.ms ) >> 1 ), 0xFF00FF00 );
+			graph.setPixel32( 228, 56 - ( ( timer - ms ) >> 1 ), 0xFF00FF00 );
 			graph.setPixel32( 228, 56 - mem_graph, 0xFF00FFFF);
 			graph.setPixel32( 228, 56 - max_graph,  0xFFFF0000);
 		}
 		
-		private function updateText(s:StatsSignal):void
+		private function update(s:ISignal):void
 		{
-			info_fps.text = s.infoFPS;
-			info_mem.text = s.infoMEM;
-			info_max.text = s.infoMAX;
-			info_ms.text = s.infoMS;
+			var data:StatsData = s.params[0];
+			
+			info_fps.text = data.infoFPS;
+			info_mem.text = data.infoMEM;
+			info_max.text = data.infoMAX;
 		}
 		
-		private function onStageUpdate(s:StageSignal):void 
+		private function updateRealtime(s:ISignal):void
 		{
-			info_orient.text = (s.orientation == "stageOrientationPortrait") ? "PORTRAIT" : "LANDSCAPE";
+			var data:StatsData = s.params[0];
+			
+			info_ms.text = data.infoMS;
 		}
-		
+		/*
+		private function onStageResize(s:StageSignal):void 
+		{
+			//trace(this, "resize");
+			//info_orient.text = (s.orientation == "stageOrientationPortrait") ? "PORTRAIT" : "LANDSCAPE";
+		}
+		*/
 		private function createText(posX:Number, posY:Number, color:uint = 0xFFFFFF, w:Number = 70, h:Number = 18):TextField
 		{
 			var tf:TextFormat = new TextFormat("tahoma", 9, color);

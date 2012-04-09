@@ -23,32 +23,35 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stats 
 {
-	import org.bixbite.core.Application;
-	import org.bixbite.framework.modules.stats.model.StatsModel;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.stats.behaviour.Calculate;
+	import org.bixbite.framework.modules.stats.data.StatsData;
 	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.modules.stats.view.StatsMonitor;
-	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 * footprint ~ 2.89kb
+	 * footprint ~ 7.15kb
 	 * 
 	 * This is fork of stats by mrdoob implemented within Bixbite mvc framework.
 	 * 
 	 */
-	public class Stats extends Application 
+	public class Stats extends Compound 
 	{
 		/**
 		 * Constructor, set a functional triad.
 		 */
-		public function Stats(viewContainer:DisplayViewContainer, useTracer:Boolean = true) 
+		public function Stats() 
 		{
-			var m:StatsModel 		= new StatsModel();
-			var v:StatsMonitor 		= new StatsMonitor(useTracer);
+			var m:StatsData 		= new StatsData();
+			var v:StatsMonitor 		= new StatsMonitor();
 			var c:StatsTransponder 	= new StatsTransponder();
 			
-			viewContainer.addView(v);
+			stageView.addView(v);
+			
+			addBehaviour(StatsSignal.CALCULATE, Calculate);
 		}
 		
 	}

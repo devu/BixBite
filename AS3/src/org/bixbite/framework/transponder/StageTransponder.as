@@ -28,9 +28,8 @@ package org.bixbite.framework.transponder
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.FullScreenEvent;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.signals.StageSignal;
 	
 	
 	/**
@@ -52,7 +51,6 @@ package org.bixbite.framework.transponder
 		public static const SCREEN_FACTOR_MOBILE		:String = "stageScreenFactorMobile";
 		public static const SCREEN_FACTOR_MOBILE_LARGE	:String = "stageScreenFactorMobileLarge";
 		
-		private var stageSignal		:StageSignal;
 		private var orientation		:String;
 		private var screenFactor	:String;
 		private var stage			:Stage;
@@ -60,8 +58,9 @@ package org.bixbite.framework.transponder
 		/**
 		 * Constructor, provides injection for common settings.
 		 */
-		public function StageTransponder(align:String = StageAlign.TOP_LEFT, scaleMode:String = StageScaleMode.NO_SCALE) 
+		public function StageTransponder(stage:Stage, align:String = StageAlign.TOP_LEFT, scaleMode:String = StageScaleMode.NO_SCALE) 
 		{
+			this.stage = stage;
 			stage.align = align;
 			stage.scaleMode = scaleMode;
 		}
@@ -72,26 +71,21 @@ package org.bixbite.framework.transponder
 		 */
 		override public function init():void 
 		{
-			this.stage = system.stage;
-			
-			stageSignal = new StageSignal();
-			attachSignal(stageSignal);
-			
-			system.addListener(Event.RESIZE, onStageResize);
-			system.addListener(FullScreenEvent.FULL_SCREEN, onStageFullScreen);
+			addSensor(Event.RESIZE, onStageResize);
+			addSensor(FullScreenEvent.FULL_SCREEN, onStageFullScreen);
 			
 			invalidate();
 			
-			addSlot(StageSignal.UPDATE_REQUEST, onUpdateRequest);
+			//addSlot(StageSignal.UPDATE_REQUEST, onUpdateRequest);
 			sendSignal(StageSignal.UPDATE);
 		}
-		
+		/*
 		private function onUpdateRequest(s:ISignal):StageSignal 
 		{
 			invalidate();
 			sendSignal(StageSignal.UPDATE);
 			return stageSignal
-		}
+		}*/
 		
 		/**
 		 * When Stage will change its displayState will broadcast StageSignal.UPDATE signal
