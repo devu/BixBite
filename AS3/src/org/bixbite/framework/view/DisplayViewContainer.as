@@ -47,9 +47,9 @@ package org.bixbite.framework.view
 		 * Constructor
 		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
 		 */
-		public function DisplayViewContainer(context:DisplayObjectContainer = null) 
+		public function DisplayViewContainer() 
 		{
-			super(context);
+			
 		}
 		
 		/**

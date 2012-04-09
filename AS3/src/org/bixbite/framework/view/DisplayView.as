@@ -49,10 +49,19 @@ package org.bixbite.framework.view
 		 * Constructor
 		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
 		 */
-		public function DisplayView(content:DisplayObject = null) 
+		public function DisplayView() 
 		{
-			//Dependency Injection
-			if (content) _content = content;
+			
+		}
+		
+		public function setContext(name:String, object:DisplayObject = null):void
+		{
+			if (object) {
+				_content = object;
+			} else {
+				_content = new Shape();
+			}
+			_content.name = name + uid;
 		}
 		
 		/**
@@ -79,14 +88,6 @@ package org.bixbite.framework.view
 		{
 			return _content["graphics"];
 		}
-		
-		/**
-		 * Interactivity flag let controllers determine set of actions to perform. 
-		 * Unlike in native flash display list implementation there is no InteractiveObject equivalent. 
-		 * And is not needed since any GUI logic is moved to controllers.
-		 */
-		public function get interactive():Boolean { return _interactive; }
-		public function set interactive(value:Boolean):void { _interactive = value; }
 	}
 
 }
