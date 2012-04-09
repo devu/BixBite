@@ -21,24 +21,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.signal 
+package org.bixbite.framework.signals 
 {
-	import org.bixbite.core.Signal;
-	
 	/**
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
-	public class StageSignal extends Signal 
+	public class StageSignal
 	{
 		public static const RESIZE			:String = "stageResize";
 		public static const UPDATE			:String = "stageUpdate";
-		public static const UPDATE_REQUEST	:String = "stageUpdateRequest";
-		
-		public var centerWidth			:Number = 0;
-		public var centerHeight			:Number = 0;
-		public var orientation			:String = "stageOrientationLandscape";
-		public var screenFactor			:String = "desktop";
+		public static const DATA_REQUEST	:String = "stageDataRequest";
 	}
 
 }
