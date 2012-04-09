@@ -25,29 +25,20 @@ package org.bixbite.core.interfaces
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
 	public interface ISignal 
 	{
-		/**
-		 * 
-		 */
-		function get phase():int;
-		
 		/**
 		 * Unique identifier of the caller
 		 */
 		function get callerUID():String;
 		
 		/**
-		 * Additional identifier to perform custom actions within same type of signal
+		 * 
 		 */
-		function get action():String;
-		
-		/**
-		 * Deconstructor of a Signal
-		 */
-		function dispose():void;
+		function get params():Array;
+		function set params(value:Array):void
 	}
 	
 }
