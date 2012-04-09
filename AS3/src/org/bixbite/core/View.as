@@ -24,6 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -31,19 +32,16 @@ package org.bixbite.core
 	 * <p><i>"We view things not only from different sides, but with different eyes; we have no wish to find them alike. — Blaise Pascal"</i></p>
 	 * 
 	 * <p>The View manages the graphical and/or textual output of the application.</p>
-	 * <p>Framework provides basic implementation of nested structure of the Views.
-	 * Provides set of methods similar to the native Flash Display List and manages nested tree hierarchy. You can start with StageView, DisplayView or DisplayViewContainer as a ready to work building blocks.</p>
-	 * <p>The View itself is just a subclass of Actor as any other member of MVC to provide Base Abstract class ready to extend and work with. We decided to keep it this way for future development purposes. 
-	 * We planing to provide diferent versions of framework when main diference is based on how we dealing with View nested structure and its implementation. So the basic view is here to keep consistency across the Core of the Bixbite MVC.</p>
+	 * <p>Framework provides basic implementation of nested structure of the Views aka Composite Pattern.
+	 * Provides set of methods similar to the native Flash Display List and manages nested tree hierarchy. 
+	 * Use StageView built into Compound as your top view class. Use DisplayView or DisplayViewContainer as a ready to work building blocks.</p>
+	 * <p>The View itself is just a subclass of Component to provide base abstract class ready to extend and work with.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
-	public class View extends Actor implements IView
+	public class View extends Component implements IView
 	{
-		private var emiter:Emiter 	= Emiter.getInstance();
-		private var slots:Object 	= emiter.slots;
-		
 		use namespace BIXBITE
 		
 		/**
@@ -80,16 +78,6 @@ package org.bixbite.core
 		public function sendSignal(type:String):void 
 		{
 			emiter.broadcast(slots.c, type, signal);
-		}
-		
-		/**
-		 * 
-		 * @param	type
-		 * @param	callback
-		 */
-		public function sendRequest(type:String, callback:Function):void
-		{
-			emiter.request(slots.m, type, signal, callback);
 		}
 		
 		/**

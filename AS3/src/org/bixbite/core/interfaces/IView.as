@@ -29,9 +29,9 @@ package org.bixbite.core.interfaces
 	 * Primary reason for this interface is for polymorphism purposes.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
-	public interface IView extends IActor
+	public interface IView extends IComponent
 	{
 		
 	}
