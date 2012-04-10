@@ -146,6 +146,18 @@ package org.bixbite.core
 			return null
 		}
 		
+		public function findObjectByType(object:Class):Boolean
+		{
+			var objects:Array = emiter.getObjects();
+			objects.reverse();
+			
+			for each(var o:Object in objects){
+				if (o is object) return true;
+			}
+			
+			return false;
+		}
+		
 		/**
 		 * @inheritDoc
 		 */

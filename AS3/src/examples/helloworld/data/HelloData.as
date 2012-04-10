@@ -21,18 +21,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld.signal 
+package examples.helloworld.data
 {
-	import org.bixbite.core.Signal;
+	import examples.helloworld.HelloSignal;
+	import org.bixbite.core.Data;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * 
-	 * Purpose of this signal is to send specific value from Model, copy displayed by View.
+	 * This Data component is a copy holder that will reponse to Atom on reqeted data.
+	 * Data component don't care who is calling, will respond as soon as a signal has been recieved.
+	 *
+	 * The main purpose od the Data component is to react on specific signal from Atom and response with Data set that privides.
 	 */
-	public class HelloSignal extends Signal 
+	public class HelloData extends Data
 	{
-		public var copy:String;
+		public var english	:String = "<font color='#000000'> Hello world </font>";
+		public var polish	:String = "<font color='#000000'> Witaj świecie </font>";
+		public var french	:String = "<font color='#000000'> Bonjour tout le monde </font>";
+		public var german	:String = "<font color='#000000'> Hallo Welt </font>";
+		
+		public function HelloData()
+		{
+		
+		}
+		
+		override public function init():void
+		{
+			addSlot(HelloSignal.COPY_REQUEST, onCopyRequest);
+		}
+		
+		private function onCopyRequest():HelloData
+		{
+			return this
+		}
+	
 	}
 
 }

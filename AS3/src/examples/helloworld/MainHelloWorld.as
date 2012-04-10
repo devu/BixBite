@@ -23,31 +23,35 @@ THE SOFTWARE.
 
 package examples.helloworld
 {
-	import examples.helloworld.model.HelloModel;
+	import examples.helloworld.behaviour.CopyHandler;
+	import examples.helloworld.data.HelloData;
 	import examples.helloworld.transponder.HelloTransponder;
 	import examples.helloworld.view.HelloView;
-	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
-	 * footprint 4.01kb
+	 * footprint 6.37kb.
 	 * 
-	 * Hello World Example, will show you simplicity and a basic flow within Bixbite MVC.
-	 * This example not even using framework but just a Core. Core is fully functioning stand alone unit ready to build framework on top of it. 
-	 * But still in many situations you can rely on Core functionality only to achive simple tasks.
-	 * The simplest way would be to have just view and model as an copy provider to realise this task. But let's to be conservative and show whole triad.
+	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
-	public class MainHelloWorld extends Application
+	public class MainHelloWorld extends Compound
 	{
 		/**
 		 * Set your default triad.
 		 */
 		public function MainHelloWorld() 
 		{
-			var c:HelloTransponder = new HelloTransponder();
-			var v:HelloView = new HelloView();
-			var m:HelloModel = new HelloModel();
+			var c:HelloTransponder 	= new HelloTransponder();
+			var v:HelloView 		= new HelloView();
+			var d:HelloData 		= new HelloData();
+			
+			stageView.addView(v);
+			
+			addBehaviour(HelloSignal.GET_COPY, CopyHandler);
+			
+			startup(HelloSignal.INIT);
 		}
 		
 	}

@@ -21,46 +21,57 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld.model
+package examples.helloworld.behaviour 
 {
-	import examples.helloworld.signal.HelloSignal;
+	import examples.helloworld.data.HelloData;
+	import examples.helloworld.HelloSignal;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Model;
 	
 	/**
-	 * @version  compatibility - 0.4.5
-	 * 
-	 * This model is a copy holder that will reponse on 2 diferent signals.
-	 * Model don't care who is calling, will respond as soon as a signal has been recieved.
-	 * Althoght don't need to know wich view will display this infromation.
-	 *
-	 * The main purpose od the Model is to react on specific set of signals, perform business logic acordingly to set of rulles and broadcast signals in response.
+	 * @version  compatibility - 0.5.0
 	 */
-	public class HelloModel extends Model
+	public class CopyHandler extends Behaviour 
 	{
-		private var helloSignal:HelloSignal;
+		private var copy:HelloData;
 		
-		public function HelloModel()
+		public function CopyHandler() 
 		{
-		
-		}
-		
-		override public function init():void
-		{
-			helloSignal = new HelloSignal();
-			helloSignal.copy = "<font color='#000000'> Hello World </font>";
-			attachSignal(helloSignal);
 			
-			addSlot("replaceCopy", onReplaceCopy);
-			sendSignal("setCopy");
 		}
 		
-		private function onReplaceCopy(s:ISignal):void
+		override public function init():void 
 		{
-			helloSignal.copy = "<font color='#FF0000'> Hello Bixbite </font>";
-			sendSignal("copyReplaced");
+			sendRequest(HelloSignal.COPY_REQUEST, onCopyData);
 		}
-	
+		
+		private function onCopyData(data:HelloData):void 
+		{
+			copy = data;
+		}
+		
+		override public function execute(s:ISignal):void 
+		{
+			var copyString:String;
+			switch(s.params[0])
+			{
+				case "english":
+					copyString = copy.english;
+					break;
+				case "polish":
+					copyString = copy.polish;
+					break;
+				case "french":
+					copyString = copy.french;
+					break;
+				case "german":
+					copyString = copy.german;
+					break;
+			}
+			
+			sendSignal(HelloSignal.SET_COPY, [copyString]);
+		}
+		
 	}
 
 }

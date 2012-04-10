@@ -23,45 +23,57 @@ THE SOFTWARE.
 
 package examples.helloworld.transponder 
 {
+	import examples.helloworld.HelloSignal;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * 
-     * This Controller will detect if your text field has been clicked.
+     * This Trasponder will detect if any text field has been clicked.
      * If so, will send signal demands to change the copy.
-     * Controller don't care with text field. Although don't care witch and how Model will resolve replaceCopy request.
-     * It can be any or many of them at the same time.
+     * Trasponder don't care with text field. Although don't care witch and how Atom will resolve GET_COPY request.
      */
 	public class HelloTransponder extends Transponder 
 	{
+		private var languages	:Array = [];
+		private var lang		:int = 0;
 		
 		public function HelloTransponder() 
 		{
-			
+			languages[0] = "english";
+			languages[1] = "polish";
+			languages[2] = "french";
+			languages[3] = "german";
 		}
 		
 		/**
-		 * Add system listener to capture user Input.
+		 * Add system listener to capture user Input by adding sensors.
 		 */
 		override public function init():void 
 		{
-			system.addListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
+			addSlot(HelloSignal.GET_COPY, onGetCopy);
+		}
+		
+		private function onGetCopy(s:ISignal):void 
+		{
+			sendSignal(HelloSignal.GET_COPY, [languages[lang]]);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			var objects:Array = system.getObjects();
-			
-			var tf:TextField;
-			for each(var o:Object in objects){
-				if (o is TextField) {
-					tf = o as TextField;
-					tf.mouseEnabled = false;
-					sendSignal("replaceCopy");
+			if (findObjectByType(TextField)) {
+				
+				if (lang < 3){
+					lang++;
+				} else {
+					lang = 0;
 				}
+				
+				sendSignal(HelloSignal.GET_COPY, [languages[lang]]);
 			}
 		}
 		

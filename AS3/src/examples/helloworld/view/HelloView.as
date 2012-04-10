@@ -23,17 +23,19 @@ THE SOFTWARE.
 
 package examples.helloworld.view 
 {
-	import examples.helloworld.signal.HelloSignal;
+	import examples.helloworld.HelloSignal;
+	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.core.View;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.view.DisplayView;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * 
 	 * View is the display layer. By default will request some data. Then can only listen and react to the changes. 
 	 * But it doesn't need to be aware where the changes coming from.
 	 */
-	public class HelloView extends View 
+	public class HelloView extends DisplayView 
 	{
 		private var textField:TextField;
 		
@@ -44,26 +46,30 @@ package examples.helloworld.view
 		
 		override public function init():void 
 		{
+			var container:Sprite = new Sprite();
+			
 			textField = new TextField();
 			textField.autoSize = "left";
 			textField.selectable = false;
 			textField.x = 100;
 			textField.y = 100;
 			
-			system.stage.addChild(textField);
+			container.addChild(textField);
 			
-			addSlot("setCopy", onCopy);
-			addSlot("copyReplaced", onCopyReplaced);
+			setContext("myTextField", container);
+			
+			addSlot(HelloSignal.INIT			, onInit);
+			addSlot(HelloSignal.SET_COPY		, onSetCopy);
 		}
 		
-		private function onCopyReplaced(s:HelloSignal):void 
+		private function onInit(s:ISignal):void
 		{
-			applyCopy(s.copy);
+			sendSignal(HelloSignal.GET_COPY);
 		}
 		
-		private function onCopy(s:HelloSignal):void 
+		private function onSetCopy(s:ISignal):void 
 		{
-			applyCopy(s.copy);
+			applyCopy(s.params[0]);
 		}
 		
 		private function applyCopy(copy:String):void 
