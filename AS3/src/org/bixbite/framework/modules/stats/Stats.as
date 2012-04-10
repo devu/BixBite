@@ -33,7 +33,7 @@ package org.bixbite.framework.modules.stats
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 * footprint ~ 7.15kb
+	 * footprint ~ 7.19kb
 	 * 
 	 * This is fork of stats by mrdoob implemented within Bixbite mvc framework.
 	 * 
