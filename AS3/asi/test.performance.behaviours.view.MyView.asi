@@ -1,0 +1,25 @@
+﻿package test.performance.behaviours.view
+{
+	import flash.display.Sprite;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.view.DisplayView;
+	import test.performance.behaviours.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
+	 */
+	public class MyView extends DisplayView
+	{
+		public function MyView ();
+
+		public function init () : void;
+
+		private function onReposition (s:ISignal) : void;
+
+		private function onChangeColor (s:ISignal) : void;
+
+		private function draw (color:uint) : void;
+	}
+}

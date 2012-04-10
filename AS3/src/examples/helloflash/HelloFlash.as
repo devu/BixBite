@@ -23,29 +23,29 @@ THE SOFTWARE.
 
 package examples.helloflash 
 {
+	import examples.helloflash.data.HelloFlashData;
 	import examples.helloflash.transponder.BallTransponder;
-	import examples.helloflash.model.HelloFlashModel;
 	import examples.helloflash.view.MainView;
-	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.4.4
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.0
 	 * 
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 5.62 kb, (core API 2.80 kb)
+	 * Footprint 6.21 kb
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb
 	 * 
 	 * General coparison an conclusions:
 	 * Bixbite
-	 * +/- Original MVC paradigm. Considering popularity of other frameworks that treating MVC paradigm difrently it might be hard to change habbits.
+	 * +/- Original MVC paradigm. Considering popularity of other frameworks based on not original MVC paradigm it might be hard to change habbits.
 	 *
 	 * + Self registered system
-	 * + Signal/Slot/Request notification system inspired by QT4
+	 * + Signal/Slot and Request/Response notification system inspired by QT4
 	 * + Signals are faster than native events
 	 * + Signal reference mechanism will let you operate with local callback native speed.
 	 * + Type safe API.
@@ -55,7 +55,7 @@ package examples.helloflash
 	 * + Much smaller memory consumption
 	 * + Faster execution any part of the system.
 	 * + Smallest startup lag.
-	 * + Cleaner code.
+	 * + Cleaner no Boiler-plate code.
 	 * + Only 1 level of abstraction
 	 * + The best framework for game developers and mobile platform in terms of performance.
 	 *
@@ -65,7 +65,7 @@ package examples.helloflash
 	 * - Not unit testing yet.
 	 
 	 * Robotlegs
-	 * +/- Break rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. It might not be concidered as an issue. Is just the way it is. As long as rule of the game are clear and not abused by developers. 
+	 * +/- Breaks rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. It might not be concidered as an issue. Is just the way it is. As long as rule of the game are clear and not abused by developers. 
 	 *
 	 * + Good support, active development and documentation.
 	 * + Very well solves Dependency injection implementation. 
@@ -83,17 +83,19 @@ package examples.helloflash
 	 * - easy to leak memory.
 	 * - to much construction/deconstruction needed slowing system down.
 	 * - Additional levels of abstraction to the MVC and manualy registered system forcing you to cross reference actors, this destroying loosely decoupled classes principal.
-	 * - To much influenced by PureMVC on architecture level.
+	 * - To much influenced by PureMVC on architecture level trying to cmpete with already bad architecture by mimics it.
 
 	 */
-	public class HelloFlash extends Application
+	public class HelloFlash extends Compound
 	{
 		
 		public function HelloFlash() 
 		{
-			var c:BallTransponder 	= new BallTransponder();
+			var t:BallTransponder 	= new BallTransponder();
 			var v:MainView 			= new MainView();
-			var m:HelloFlashModel 	= new HelloFlashModel();
+			var d:HelloFlashData	= new HelloFlashData();
+			
+			stageView.addView(v);
 			
 			// And we're done ;)
 		}

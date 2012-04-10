@@ -1,59 +1,76 @@
 ﻿package org.bixbite.core
 {
+	import flash.display.DisplayObject;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
-	 * <p><i>"The primary symptom of a controller is denial, that is I can’t see its symptoms in myself. — Keith Miller"</i></p>
-	 * <p>The Transponder is an abstract class</p>
-	 * <p>An Class that transmits a predetermined message in response to a predefined received signal.
-	 * Handles user input and translate it, Interprets the mouse and keyboard inputs from the user, is mainly responsible for GUI logic, mediator between view and model.</p>
+	 * <p>The Transponder is a abstract class that emits an identifying signal in response to an interrogating received signals.</p>
+	 * In computer sicence interogate means transmit a signal for setting off an appropriate response.
+	 * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
-	public class Transponder extends Actor implements ITransponder
+	public class Transponder extends Component implements ITransponder
 	{
-		private var emiter : Emiter;
-		private var slots : Object;
-
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
 		public function Transponder ();
 
 		/**
-		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * Add Slot / register callbacks of specific type of signal and asociate them with this Component as well as its communication channel.
 		 * @param	type
 		 * @param	callback
 		 */
 		public function addSlot (type:String, callback:Function) : void;
 
 		/**
-		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * Remove Slot / unregister this specific collback from being able to recieve any signals of specific type asociated with this Component.
 		 * @param	type
 		 */
 		public function removeSlot (type:String) : void;
 
 		/**
-		 *
+		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
+		 * TODO - test with multiple compounds if all atoms can recieve same signal from one Transponder.
 		 * @param	type
+		 * @param	params
 		 */
-		public function sendSignal (type:String) : void;
+		public function sendSignal (type:String, params:Array=null) : void;
 
 		/**
-		 *
-		 * @param	type
-		 * @param	callback
-		 */
-		public function sendRequest (type:String, callback:Function) : void;
-
-		/**
-		 *
+		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.
+		 * Transponders can only reference slots of Atom.
 		 * @param	type
 		 * @return
 		 */
 		public function getSlotReference (type:String) : Array;
+
+		/**
+		 * Add platform native listeners in oreder to gather user/system inputs.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSensor (type:String, callback:Function) : void;
+
+		/**
+		 * Remove platform native listeners.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function removeSensor (type:String, callback:Function) : void;
+
+		/**
+		 * Find display objects (context of Views) by name under the current input point. 
+		 * If object has been found transponder's signal will take over target uid. Otherwise will restore its own.
+		 * @param	name
+		 * @return
+		 */
+		public function findObjectByName (name:String) : Boolean;
+
+		public function getObjectByName (name:String) : DisplayObject;
 
 		/**
 		 *

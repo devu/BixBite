@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.4.5.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.5.0.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -25,39 +25,35 @@
   </compiler>
   <include-classes>
     <class>org.bixbite.namespaces.BIXBITE</class>
-    <class>org.bixbite.core.Application</class>
     <class>org.bixbite.core.Signal</class>
-    <class>org.bixbite.core.SystemIO</class>
-    <class>org.bixbite.core.Actor</class>
+    <class>org.bixbite.core.Component</class>
     <class>org.bixbite.core.Emiter</class>
-    <class>org.bixbite.core.Model</class>
+    <class>org.bixbite.core.Data</class>
     <class>org.bixbite.core.View</class>
     <class>org.bixbite.core.Transponder</class>
-    <class>org.bixbite.core.interfaces.IActor</class>
-    <class>org.bixbite.core.interfaces.IApplication</class>
+    <class>org.bixbite.core.Behaviour</class>
+    <class>org.bixbite.core.Compound</class>
+    <class>org.bixbite.core.interfaces.IComponent</class>
     <class>org.bixbite.core.interfaces.ITransponder</class>
-    <class>org.bixbite.core.interfaces.IModel</class>
+    <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.ISignal</class>
     <class>org.bixbite.core.interfaces.IView</class>
+    <class>org.bixbite.core.interfaces.ICompound</class>
     <class>org.bixbite.framework.view.DisplayView</class>
     <class>org.bixbite.framework.view.DisplayViewContainer</class>
     <class>org.bixbite.framework.view.StageView</class>
-    <class>org.bixbite.framework.signal.StageSignal</class>
-    <class>org.bixbite.framework.transponder.MouseTransponder</class>
-    <class>org.bixbite.framework.transponder.TouchTransponder</class>
-    <class>org.bixbite.framework.transponder.StageTransponder</class>
+    <class>org.bixbite.framework.signals.StageSignal</class>
+    <class>org.bixbite.framework.signals.StatsSignal</class>
     <class>org.bixbite.framework.interfaces.IDisplayView</class>
     <class>org.bixbite.framework.interfaces.IDisplayViewContainer</class>
     <class>org.bixbite.framework.factories.GraphicsFactory</class>
     <class>org.bixbite.framework.factories.Graphics</class>
     <class>org.bixbite.framework.modules.stats.transponder.StatsTransponder</class>
-    <class>test.performance.signalperf.transponder.TestTransponder</class>
-    <class>test.performance.coreperf.transponder.TestTransponder</class>
-    <class>examples.helloworld.transponder.HelloTransponder</class>
-    <class>examples.helloflash.transponder.BallTransponder</class>
-    <class>examples.mudularstructure.MyApplication</class>
-    <class>examples.mudularstructure.view.CustomView</class>
-    <class>examples.mudularstructure.model.CustomModel</class>
-    <class>examples.mudularstructure.transponder.CustomTransponder</class>
+    <class>org.bixbite.framework.modules.stats.data.StatsData</class>
+    <class>org.bixbite.framework.modules.stats.behaviour.Calculate</class>
+    <class>org.bixbite.framework.modules.stageManager.StageManager</class>
+    <class>org.bixbite.framework.modules.stageManager.data.StageData</class>
+    <class>org.bixbite.framework.modules.stageManager.behaviour.StageResize</class>
+    <class>org.bixbite.framework.modules.stageManager.transponder.StageTransponder</class>
   </include-classes>
 </flex-config>

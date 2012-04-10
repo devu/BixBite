@@ -1,0 +1,22 @@
+﻿package org.bixbite.framework.modules.stageManager.data
+{
+	import flash.display.Stage;
+	import org.bixbite.core.Data;
+	import org.bixbite.framework.signals.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.4.1
+	 */
+	public class StageData extends Data
+	{
+		private var stage : Stage;
+
+		public function StageData (align:String="TL", scaleMode:String="noScale");
+
+		public function init () : void;
+
+		private function onDataRequest () : StageData;
+	}
+}

@@ -5,11 +5,12 @@
 	import flash.utils.setInterval;
 	import flash.utils.clearInterval;
 	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.controller.StageTransponder;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	import org.bixbite.framework.modules.stats.Stats;
+	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
 	import test.performance.coreperf.model.TestModel;
 	import test.performance.coreperf.transponder.TestTransponder;
@@ -28,7 +29,7 @@
 	 *   
 	 *     Taking under consideration all that, results below are still very satisfactory.
 	 *   
-	 *     Results: (Flash Player 11,1,102,63 - Chrome)
+	 *     Results: (0.4.5)(Flash Player 11,1,102,63 - Chrome)
 	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 1.182ms
 	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 2.636ms
 	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 11.64ms
@@ -50,7 +51,7 @@
 	 *   TASK: create		Models	100k	COUNT: 10	TIME: 134.4ms
 	 *   TASK: destroy	Models	100k	COUNT: 10	TIME: 320.9ms
 	 */
-	public class CorePerformance extends Application
+	public class CorePerformance extends Compound
 	{
 		private var results : Array;
 		private var tasks : Array;
@@ -58,7 +59,6 @@
 		private var task : int;
 		private var repeat : int;
 		private var testContainer : Array;
-		private var stageView : StageView;
 		private var stats : Stats;
 		private var runner : int;
 

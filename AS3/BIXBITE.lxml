@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_0.4.5.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_0.5.0.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -71,6 +71,24 @@
     <string>src\test\performance\coreperf\model\testmodel.as</string>
     <string>src\test\performance\coreperf\view\testview.as</string>
     <string>src\test\performance\coreperf\coreperformance.as</string>
+    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\behaviours\signals.as</string>
+    <string>src\test\performance\behaviours\behaviourflow.as</string>
+    <string>src\test\performance\behaviours\view\myview.as</string>
+    <string>src\test\performance\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\performance\behaviours\data\mydata.as</string>
+    <string>src\test\performance\behaviours\behaviour\redraw.as</string>
+    <string>src\test\performance\behaviours\behaviour\startup.as</string>
+    <string>src\examples\mudularstructure\myapplication.as</string>
+    <string>src\examples\mudularstructure\view\customview.as</string>
+    <string>src\examples\mudularstructure\transponder\customtransponder.as</string>
+    <string>src\examples\mudularstructure\model\custommodel.as</string>
+    <string>src\examples\helloworld\transponder\hellotransponder.as</string>
+    <string>src\examples\helloflash\transponder\balltransponder.as</string>
+    <string>src\examples\helloflash\data\helloflashdata.as</string>
+    <string>src\org\bixbite\framework\transponder\mousetransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\touchtransponder.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
@@ -131,6 +149,24 @@
     <string>src\test\performance\coreperf\model\testmodel.as</string>
     <string>src\test\performance\coreperf\view\testview.as</string>
     <string>src\test\performance\coreperf\coreperformance.as</string>
+    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\behaviours\signals.as</string>
+    <string>src\test\performance\behaviours\behaviourflow.as</string>
+    <string>src\test\performance\behaviours\view\myview.as</string>
+    <string>src\test\performance\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\performance\behaviours\data\mydata.as</string>
+    <string>src\test\performance\behaviours\behaviour\redraw.as</string>
+    <string>src\test\performance\behaviours\behaviour\startup.as</string>
+    <string>src\examples\mudularstructure\myapplication.as</string>
+    <string>src\examples\mudularstructure\view\customview.as</string>
+    <string>src\examples\mudularstructure\transponder\customtransponder.as</string>
+    <string>src\examples\mudularstructure\model\custommodel.as</string>
+    <string>src\examples\helloworld\transponder\hellotransponder.as</string>
+    <string>src\examples\helloflash\transponder\balltransponder.as</string>
+    <string>src\examples\helloflash\data\helloflashdata.as</string>
+    <string>src\org\bixbite\framework\transponder\mousetransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\touchtransponder.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

@@ -1,12 +1,10 @@
 ﻿package test.performance.signalperf.view
 {
 	import flash.utils.getTimer;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
 	import test.performance.signalperf.signal.TestSignal;
-	import flash.utils.setInterval;
 
 	/**
 	 *

@@ -1,0 +1,23 @@
+﻿package org.bixbite.framework.modules.stageManager
+{
+	import flash.events.Event;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.stageManager.behaviour.StageResize;
+	import org.bixbite.framework.modules.stageManager.data.StageData;
+	import org.bixbite.framework.modules.stageManager.transponder.StageTransponder;
+	import org.bixbite.framework.signals.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
+	 *   
+	 *     footprint 5.62kb
+	 */
+	public class StageManager extends Compound
+	{
+		public function StageManager (align:String="TL", scaleMode:String="noScale");
+
+		private function onResize (e:Event) : void;
+	}
+}

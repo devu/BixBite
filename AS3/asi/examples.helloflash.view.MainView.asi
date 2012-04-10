@@ -1,14 +1,15 @@
 ﻿package examples.helloflash.view
 {
 	import examples.helloflash.signal.BallSignal;
+	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.framework.view.StageView;
+	import org.bixbite.framework.view.DisplayViewContainer;
 
 	/**
 	 *
 	 * @version  compatibility - 0.4.5
 	 */
-	public class MainView extends StageView
+	public class MainView extends DisplayViewContainer
 	{
 		private var textField : TextField;
 

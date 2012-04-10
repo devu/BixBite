@@ -36,18 +36,12 @@
 		public function get graphics () : Graphics;
 
 		/**
-		 * Interactivity flag let controllers determine set of actions to perform. 
-		 * Unlike in native flash display list implementation there is no InteractiveObject equivalent. 
-		 * And is not needed since any GUI logic is moved to controllers.
-		 */
-		public function get interactive () : Boolean;
-		public function set interactive (value:Boolean) : void;
-
-		/**
 		 * Constructor
 		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
 		 */
-		public function DisplayView (content:DisplayObject=null);
+		public function DisplayView ();
+
+		public function setContext (name:String, object:DisplayObject=null) : void;
 
 		/**
 		 * Initialise DisplayView with a default native DisplayObject (by default Shape);

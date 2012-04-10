@@ -1,0 +1,75 @@
+﻿package org.bixbite.core
+{
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Atom in response to stimuli, such as user input (Transponder). 
+	 * Also, "a behavior" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
+	 * In BixBite Behaviours can broadcast signals only to Views in Multi-cast and Signle-Cast mode. 
+	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
+	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
+	 * @langversion	3.0
+	 * @version 0.5.0
+	 */
+	public class Behaviour
+	{
+		private var emiter : Emiter;
+		private var uid : String;
+		private var signal : ISignal;
+		private var type : String;
+		private var slots : Object;
+		private var autoDispose : Boolean;
+		private var cached : Boolean;
+		private var dataExec : Function;
+
+		public function Behaviour ();
+
+		function initialise (emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean=false) : void;
+
+		/**
+		 * Internal pre-execute method.
+		 * @param	s
+		 */
+		private function exe (s:ISignal) : void;
+
+		/**
+		 * Abstract method to perform initial preparation before execute() is triggered.
+		 */
+		public function init () : void;
+
+		/**
+		 * Abstract method to hold executable block of code, that perform some logic.
+		 * @param	s
+		 */
+		public function execute (s:ISignal) : void;
+
+		/**
+		 * Deconstructor of behaviour. 
+		 * When overriden in subclass must call super.dispose()
+		 */
+		public function dispose () : void;
+
+		/**
+		 * Request data component.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function sendRequest (type:String, callback:Function) : void;
+
+		/**
+		 * Multi-cast method to broadcast one singal to multiple View components.
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignal (type:String, params:Array=null) : void;
+
+		/**
+		 * Signle-cast method to send signal to speific View component.
+		 * @param	uid
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignalTo (uid:String, type:String, params:Array=null) : void;
+	}
+}

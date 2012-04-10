@@ -1,6 +1,7 @@
 ﻿package org.bixbite.framework.view
 {
 	import flash.display.Sprite;
+	import flash.display.Stage;
 
 	/**
 	 * StageView, is a classic implementation of main MVC paradigm, when views can be nested and they need a root or 'Top View' class to start from.
@@ -14,7 +15,7 @@
 		/**
 		 * Constructor
 		 */
-		public function StageView ();
+		public function StageView (stage:Stage);
 
 		/**
 		 * Overrides actor abstract method and place content directly on native stage of the Flash Player.

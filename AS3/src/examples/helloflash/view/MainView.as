@@ -24,13 +24,14 @@ THE SOFTWARE.
 package examples.helloflash.view 
 {
 	import examples.helloflash.signal.BallSignal;
+	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.framework.view.StageView;
+	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
 	 * @version  compatibility - 0.4.5
 	 */
-	public class MainView extends StageView 
+	public class MainView extends DisplayViewContainer 
 	{
 		private var textField:TextField;
 		
@@ -43,9 +44,13 @@ package examples.helloflash.view
 		{
 			super.init();
 			
+			var container:Sprite = new Sprite();
+			
 			textField = new TextField();
 			textField.selectable = false;
-			system.stage.addChild(textField);
+			container.addChild(textField);
+			
+			setContext("main", container);
 			
 			addSlot(BallSignal.CREATE_BALL, onCreateBall);
 		}

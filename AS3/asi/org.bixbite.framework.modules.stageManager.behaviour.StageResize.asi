@@ -1,0 +1,25 @@
+﻿package org.bixbite.framework.modules.stageManager.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.stageManager.data.StageData;
+	import org.bixbite.framework.signals.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.4.1
+	 */
+	public class StageResize extends Behaviour
+	{
+		private var stageData : StageData;
+
+		public function StageResize ();
+
+		public function init () : void;
+
+		private function onStageData (data:StageData) : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

@@ -21,16 +21,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloflash.model 
+package examples.helloflash.data 
 {
 	import examples.helloflash.signal.BallSignal;
+	import org.bixbite.core.Data;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Model;
 	
 	/**
 	 * @version  compatibility - 0.4.5
 	 */
-	public class HelloFlashModel extends Model 
+	public class HelloFlashData extends Data 
 	{
 		
 		private var ballSignal	:BallSignal;
@@ -41,21 +41,18 @@ package examples.helloflash.model
          * Bixbite It's a Model responsibility to describe environment that application live in. 
 		 * Model is not only data provider! By definition modelling things, so it must specify some rules of the game.
          */
-		public function HelloFlashModel() 
+		public function HelloFlashData() 
 		{
 			
 		}
 		
 		override public function init():void
 		{
-			ballSignal = new BallSignal();
-			attachSignal(ballSignal);
-			
 			addSlot(BallSignal.POKE, onPoke);
 			
 			count = 1;
 			ballSignal.count = count;
-			sendSignal(BallSignal.CREATE_BALL);
+			//sendSignal(BallSignal.CREATE_BALL);
 		}
 		
 		private function onPoke(s:ISignal):void 
@@ -64,11 +61,11 @@ package examples.helloflash.model
 			ballSignal.count = count;
 			
 			if ((count % 10) == 0){
-				sendSignal(BallSignal.CREATE_BALL);
-				sendSignal(BallSignal.RED_BALL);
+				//sendSignal(BallSignal.CREATE_BALL);
+				//sendSignal(BallSignal.RED_BALL);
 			} else {
-				sendSignal(BallSignal.CREATE_BALL);
-				sendSignal(BallSignal.SHUFFLE);
+				//sendSignal(BallSignal.CREATE_BALL);
+				//sendSignal(BallSignal.SHUFFLE);
 			}
 		}
 	}

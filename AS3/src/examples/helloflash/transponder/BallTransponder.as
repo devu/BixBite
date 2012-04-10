@@ -40,7 +40,7 @@ package examples.helloflash.transponder
 		
 		override public function init():void 
 		{
-			system.addListener(MouseEvent.CLICK, onMouseClick);
+			addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		
 		/**
@@ -50,11 +50,7 @@ package examples.helloflash.transponder
 		 */
 		private function onMouseClick(e:MouseEvent):void 
 		{
-			var balls:Array = system.getObjects();
-			for each(var b:DisplayObject in balls){
-				if (b.name == "ball") sendSignal(BallSignal.POKE);
-				return;
-			}
+			if (findObjectByName("ball")) sendSignal(BallSignal.POKE);
 		}
 		
 	}
