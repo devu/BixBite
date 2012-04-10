@@ -23,9 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stageManager.behaviour 
 {
-	import flash.utils.IDataInput;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.modules.stageManager.data.StageData;
 	import org.bixbite.framework.signals.StageSignal;

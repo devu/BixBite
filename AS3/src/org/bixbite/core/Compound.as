@@ -29,7 +29,6 @@ package org.bixbite.core
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.StageView;
 	import org.bixbite.namespaces.BIXBITE;
-	import test.performance.behaviours.BehaviourFlow;
 	
 	/**
 	 * <p>The Compound represents default class you should subclass your Document Class with.</br>

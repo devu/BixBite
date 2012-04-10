@@ -28,6 +28,7 @@ package test.performance.coreperf
 	import flash.utils.setInterval;
 	import flash.utils.clearInterval;
 	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.modules.stats.signal.StatsSignal;
 	import org.bixbite.framework.modules.stats.signal.TraceSignal;
@@ -50,7 +51,7 @@ package test.performance.coreperf
      *
      * Taking under consideration all that, results below are still very satisfactory.
 	 * 
-	 * Results: (Flash Player 11,1,102,63 - Chrome)
+	 * Results: (0.4.5)(Flash Player 11,1,102,63 - Chrome)
 	 * TASK: create		Views	1.000	COUNT: 10	TIME: 1.182ms
 	 * TASK: destroy	Views	1.000	COUNT: 10	TIME: 2.636ms
 	 * TASK: create		Views	10.000	COUNT: 10	TIME: 11.64ms
@@ -73,7 +74,7 @@ package test.performance.coreperf
 	 * TASK: destroy	Models	100k	COUNT: 10	TIME: 320.9ms
 	 */
 	
-	public class CorePerformance extends Application
+	public class CorePerformance extends Compound
 	{
 		private var results		:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		private var tasks		:Array = [];
@@ -84,7 +85,6 @@ package test.performance.coreperf
 		
 		private var testContainer	:Array = [];
 		
-		private var stageView	:StageView;
 		private var stats		:Stats;
 		private var runner		:int;
 		
@@ -109,12 +109,12 @@ package test.performance.coreperf
 			tasks[10] = "create		Trans	100k";
 			tasks[11] = "destroy	Trans	100k";
 			
-			tasks[12] = "create		Models	1.000";
-			tasks[13] = "destroy	Models	1.000";
-			tasks[14] = "create		Models	10.000";
-			tasks[15] = "destroy	Models	10.000";
-			tasks[16] = "create		Models	100k";
-			tasks[17] = "destroy	Models	100k";
+			tasks[12] = "create		Data	1.000";
+			tasks[13] = "destroy	Data	1.000";
+			tasks[14] = "create		Data	10.000";
+			tasks[15] = "destroy	Data	10.000";
+			tasks[16] = "create		Data	100k";
+			tasks[17] = "destroy	Data	100k";
 			
 			runner = setInterval(run, 100);
 		}

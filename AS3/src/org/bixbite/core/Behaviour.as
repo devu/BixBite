@@ -23,7 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	

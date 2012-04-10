@@ -30,7 +30,6 @@ package org.bixbite.framework.modules.stats.view
 	import flash.text.TextFormat;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.modules.stats.data.StatsData;
-	import org.bixbite.framework.signals.StageSignal;
 	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	

@@ -27,7 +27,6 @@ package org.bixbite.core
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ICompound;
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	

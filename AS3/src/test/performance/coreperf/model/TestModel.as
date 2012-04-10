@@ -23,12 +23,12 @@ THE SOFTWARE.
 
 package test.performance.coreperf.model 
 {
-	import org.bixbite.core.Model;
+	import org.bixbite.core.Data;
 	
 	/**
 	 * @version  compatibility - 0.4.5
 	 */
-	public class TestModel extends Model 
+	public class TestModel extends Data 
 	{
 		
 		public function TestModel() 

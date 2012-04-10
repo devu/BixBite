@@ -23,12 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stats.data 
 {
-	import flash.display.Stage;
-	import flash.events.Event;
-	import flash.system.System;
-	import flash.utils.getTimer;
 	import org.bixbite.core.Data;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**

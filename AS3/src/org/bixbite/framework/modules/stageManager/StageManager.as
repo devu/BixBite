@@ -23,8 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stageManager 
 {
-	import flash.display.Sprite;
-	import flash.display.Stage;
 	import flash.events.Event;
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.stageManager.behaviour.StageResize;

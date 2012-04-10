@@ -24,7 +24,6 @@ THE SOFTWARE.
 package org.bixbite.framework.transponder 
 {
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 	import org.bixbite.core.Transponder;
 	
 	/**

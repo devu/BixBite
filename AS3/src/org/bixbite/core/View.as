@@ -24,7 +24,6 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.errors.IllegalOperationError;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	

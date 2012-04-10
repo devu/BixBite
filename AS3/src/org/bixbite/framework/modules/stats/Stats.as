@@ -35,13 +35,13 @@ package org.bixbite.framework.modules.stats
 	 * @since 0.4.1
 	 * footprint ~ 7.19kb
 	 * 
-	 * This is fork of stats by mrdoob implemented within Bixbite mvc framework.
+	 * This is fork of stats by mrdoob implemented within Bixbite framework.
 	 * 
 	 */
 	public class Stats extends Compound 
 	{
 		/**
-		 * Constructor, set a functional triad.
+		 * Constructor, set a functional triad, modules and behaviours.
 		 */
 		public function Stats() 
 		{

@@ -26,12 +26,10 @@ package org.bixbite
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.stageManager.StageManager;
 	import org.bixbite.framework.modules.stats.Stats;
-	import org.bixbite.framework.transponder.StageTransponder;
-	import org.bixbite.framework.view.StageView;
 	
 	/**
 	 * @version 0.5.0
-	 * footprint 7.88kb; (8.20kb for v0.4.5)
+	 * footprint 7.88kb; (8.20kb for v0.4.5) StageManager + Stats
 	 * 
 	 * Main Bixbite frmework class for development purposes.
 	 * Contains collection of framework modules.
