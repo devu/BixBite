@@ -123,7 +123,7 @@ package org.bixbite.core
 			
 			for each(var o:DisplayObject in objects){
 				var a:Array = o.name.split("@");
-				if (a[0] == "myView"){
+				if (a[0] == name){
 					signal.BIXBITE::callerUID = "@" + a[1];
 					return true;
 				}
@@ -131,6 +131,19 @@ package org.bixbite.core
 			
 			signal.BIXBITE::callerUID = uid;
 			return false;
+		}
+		
+		public function getObjectByName(name:String):DisplayObject
+		{
+			var objects:Array = emiter.getObjects();
+			objects.reverse();
+			
+			for each(var o:DisplayObject in objects){
+				var a:Array = o.name.split("@");
+				if (a[0] == name) return o;
+			}
+			
+			return null
 		}
 		
 		/**
