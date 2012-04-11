@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package test.performance.behaviours.view 
 {
-	import flash.display.Sprite;
+	import flash.display.Shape;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
 	import test.performance.behaviours.Signals;
@@ -31,9 +31,12 @@ package test.performance.behaviours.view
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
+	 * 
+	 * fotprint 13.3kb
 	 */
 	public class MyView extends DisplayView 
 	{
+		private var content:Shape;
 		
 		public function MyView() 
 		{
@@ -42,7 +45,8 @@ package test.performance.behaviours.view
 		
 		override public function init():void 
 		{
-			setContext("myView");
+			content = new Shape();
+			setContext("myView", content);
 			
 			addSlot(Signals.REPOSITION		, onReposition);
 			addSlot(Signals.CHANGE_COLOR	, onChangeColor);
@@ -61,9 +65,9 @@ package test.performance.behaviours.view
 		
 		private function draw(color:uint):void 
 		{
-			graphics.clear();
-			graphics.beginFill(color, 1);
-			graphics.drawRect(0, 0, 100, 100);
+			content.graphics.clear();
+			content.graphics.beginFill(color, 1);
+			content.graphics.drawRect(0, 0, 100, 100);
 		}
 		
 	}

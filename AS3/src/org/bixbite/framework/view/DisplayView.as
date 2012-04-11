@@ -54,13 +54,9 @@ package org.bixbite.framework.view
 			
 		}
 		
-		public function setContext(name:String, object:DisplayObject = null):void
+		public function setContext(name:String, object:DisplayObject):void
 		{
-			if (object) {
-				_context = object;
-			} else {
-				_context = new Shape();
-			}
+			_context = object;
 			_context.name = name + uid;
 		}
 		

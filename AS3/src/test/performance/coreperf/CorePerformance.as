@@ -27,13 +27,11 @@ package test.performance.coreperf
 	import flash.utils.getTimer;
 	import flash.utils.setInterval;
 	import flash.utils.clearInterval;
-	import org.bixbite.core.Application;
 	import org.bixbite.core.Compound;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.modules.stats.signal.StatsSignal;
-	import org.bixbite.framework.modules.stats.signal.TraceSignal;
+	import org.bixbite.framework.modules.stageManager.StageManager;
+	import org.bixbite.framework.modules.stageManager.transponder.StageTransponder;
 	import org.bixbite.framework.modules.stats.Stats;
-	import org.bixbite.framework.transponder.StageTransponder;
 	import org.bixbite.framework.view.StageView;
 	import test.performance.coreperf.model.TestModel;
 	import test.performance.coreperf.transponder.TestTransponder;
@@ -90,10 +88,8 @@ package test.performance.coreperf
 		
 		public function CorePerformance() 
 		{
-			var stageCtrl:StageTransponder = new StageTransponder();
-			stageView = new StageView();
-			
-			stats = new Stats(stageView);
+			var stageManager:StageManager = new StageManager();
+			var stats:Stats = new Stats();
 			
 			tasks[0] = "create		Views	1.000";
 			tasks[1] = "destroy	Views	1.000";
@@ -239,8 +235,8 @@ package test.performance.coreperf
 						runner = setInterval(run, 1500);
 						break;
 					case 9:
-						stageView.attachSignal(new TraceSignal("TEST", "COMPLETE", 18));
-						stageView.sendSignal(StatsSignal.TRACE);
+						//stageView.attachSignal(new TraceSignal("TEST", "COMPLETE", 18));
+						//stageView.sendSignal(StatsSignal.TRACE);
 						break;
 				}
 			}
@@ -250,8 +246,8 @@ package test.performance.coreperf
 		
 		private function sendTraceSignal(id:int):void
 		{
-			stageView.attachSignal(new TraceSignal("TASK: " + tasks[id] + "		COUNT: " + iterator + "	TIME:", Number(results[id] / (iterator + 1)).toPrecision(4), id));
-			stageView.sendSignal(StatsSignal.TRACE);
+			//stageView.attachSignal(new TraceSignal("TASK: " + tasks[id] + "		COUNT: " + iterator + "	TIME:", Number(results[id] / (iterator + 1)).toPrecision(4), id));
+			//stageView.sendSignal(StatsSignal.TRACE);
 		}
 		
 		private function test1(max:int, resultsId:int):void 

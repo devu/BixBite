@@ -32,7 +32,7 @@ package examples.helloworld
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
-	 * footprint 6.48kb.
+	 * footprint 6.42kb.
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
