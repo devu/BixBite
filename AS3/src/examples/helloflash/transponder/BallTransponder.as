@@ -23,13 +23,14 @@ THE SOFTWARE.
 
 package examples.helloflash.transponder 
 {
-	import examples.helloflash.signal.BallSignal;
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
+	import examples.helloflash.Signals;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class BallTransponder extends Transponder 
 	{
@@ -43,14 +44,9 @@ package examples.helloflash.transponder
 			addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		
-		/**
-		 * Controller, captures user input and perform GUI logic.
-		 * Find out if any ball has been clicked, then broadcast signal.
-		 * @param	e native event listener.
-		 */
 		private function onMouseClick(e:MouseEvent):void 
 		{
-			if (findObjectByName("ball")) sendSignal(BallSignal.POKE);
+			if (findObjectByName("ball")) sendSignal(Signals.POKE);
 		}
 		
 	}

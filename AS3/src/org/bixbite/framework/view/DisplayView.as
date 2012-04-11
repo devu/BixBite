@@ -41,7 +41,7 @@ package org.bixbite.framework.view
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
-		private var _content		:DisplayObject;
+		private var _context		:DisplayObject;
 		private var _parentView		:IDisplayViewContainer;
 		private var _interactive	:Boolean;
 		
@@ -57,11 +57,11 @@ package org.bixbite.framework.view
 		public function setContext(name:String, object:DisplayObject = null):void
 		{
 			if (object) {
-				_content = object;
+				_context = object;
 			} else {
-				_content = new Shape();
+				_context = new Shape();
 			}
-			_content.name = name + uid;
+			_context.name = name + uid;
 		}
 		
 		/**
@@ -81,13 +81,8 @@ package org.bixbite.framework.view
 		/**
 		 * Native Flash DisplayObject attached to this view
 		 */
-		public function get context():DisplayObject { return _content; }
-		public function set context(value:DisplayObject):void { _content = value; }
-		
-		public function get graphics():Graphics 
-		{
-			return _content["graphics"];
-		}
+		public function get context():DisplayObject { return _context; }
+		public function set context(value:DisplayObject):void { _context = value; }
 	}
 
 }

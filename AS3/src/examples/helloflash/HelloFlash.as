@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package examples.helloflash 
 {
-	import examples.helloflash.data.HelloFlashData;
+	import examples.helloflash.behaviour.Poke;
 	import examples.helloflash.transponder.BallTransponder;
 	import examples.helloflash.view.MainView;
 	import org.bixbite.core.Compound;
@@ -35,7 +35,7 @@ package examples.helloflash
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 6.21 kb
+	 * Footprint 6.11 kb
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb
@@ -93,9 +93,11 @@ package examples.helloflash
 		{
 			var t:BallTransponder 	= new BallTransponder();
 			var v:MainView 			= new MainView();
-			var d:HelloFlashData	= new HelloFlashData();
-			
 			stageView.addView(v);
+			
+			addBehaviour(Signals.POKE, Poke);
+			
+			startup(Signals.INIT);
 			
 			// And we're done ;)
 		}

@@ -21,20 +21,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloflash.signal 
+package examples.helloflash 
 {
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 */
-	public class BallSignal
+	public class Signals
 	{
-		public static const CREATE_BALL			:String = "createBall";
-		public static const RED_BALL			:String = "makeRedBall";
-		public static const POKE				:String = "poke";
-		public static const SHUFFLE				:String = "shuffle";
-		
-		public var count:int = 0;
+		public static const INIT				:String = "helloFlashInit";
+		public static const CREATE_BALL			:String = "helloFlashCreateBall";
+		public static const RED_BALL			:String = "helloFlashRedBall";
+		public static const POKE				:String = "helloFlashPoke";
+		public static const SHUFFLE				:String = "helloFlashShuffle";
 	}
 
 }

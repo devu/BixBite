@@ -23,13 +23,14 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
-	import examples.helloflash.signal.BallSignal;
+	import examples.helloflash.Signals;
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class MainView extends DisplayViewContainer 
 	{
@@ -48,18 +49,23 @@ package examples.helloflash.view
 			
 			textField = new TextField();
 			textField.selectable = false;
+			textField.text = "Click count: 1";
 			container.addChild(textField);
 			
 			setContext("main", container);
 			
-			addSlot(BallSignal.CREATE_BALL, onCreateBall);
+			addSlot(Signals.CREATE_BALL, onCreateBall);
+			addSlot(Signals.INIT, createBall);
 		}
 		
-		// Add a Ball to the view
-		private function onCreateBall(s:BallSignal):void
+		private function onCreateBall(s:ISignal):void
 		{
-			textField.text = "Click count:" + s.count;
-			
+			textField.text = "Click count:" + s.params[0];
+			createBall(s);
+		}
+		
+		private function createBall(s:ISignal):void 
+		{
 			var ball:Ball = new Ball();
 			ball.x = Math.random() * 500;
 			ball.y = Math.random() * 375;
