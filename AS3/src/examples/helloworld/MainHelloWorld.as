@@ -32,7 +32,7 @@ package examples.helloworld
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
-	 * footprint 6.37kb.
+	 * footprint 6.48kb.
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
@@ -43,13 +43,16 @@ package examples.helloworld
 		 */
 		public function MainHelloWorld() 
 		{
-			var c:HelloTransponder 	= new HelloTransponder();
-			var v:HelloView 		= new HelloView();
+			var t:HelloTransponder 	= new HelloTransponder();
 			var d:HelloData 		= new HelloData();
+			var v:HelloView;
 			
-			stageView.addView(v);
+			for ( var i:int = 0; i < 20; i++){
+				v = new HelloView();
+				stageView.addView(v);
+			}
 			
-			addBehaviour(HelloSignal.GET_COPY, CopyHandler);
+			addBehaviour(HelloSignal.UPDATE_COPY, CopyHandler);
 			
 			startup(HelloSignal.INIT);
 		}

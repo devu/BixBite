@@ -38,15 +38,11 @@ package examples.helloworld.transponder
      */
 	public class HelloTransponder extends Transponder 
 	{
-		private var languages	:Array = [];
-		private var lang		:int = 0;
+		
 		
 		public function HelloTransponder() 
 		{
-			languages[0] = "english";
-			languages[1] = "polish";
-			languages[2] = "french";
-			languages[3] = "german";
+			
 		}
 		
 		/**
@@ -55,26 +51,18 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			addSlot(HelloSignal.GET_COPY, onGetCopy);
+			addSlot(HelloSignal.GET_DEFAULT_COPY, onGetDefaultCopy);
 		}
 		
-		private function onGetCopy(s:ISignal):void 
+		private function onGetDefaultCopy(s:ISignal):void 
 		{
-			sendSignal(HelloSignal.GET_COPY, [languages[lang]]);
+			sendSignal(HelloSignal.UPDATE_COPY, [true]);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			if (findObjectByType(TextField)) {
-				
-				if (lang < 3){
-					lang++;
-				} else {
-					lang = 0;
-				}
-				
-				sendSignal(HelloSignal.GET_COPY, [languages[lang]]);
-			}
+			if (findObjectByType(TextField)) 
+				sendSignal(HelloSignal.UPDATE_COPY, [false]);
 		}
 		
 	}

@@ -29,11 +29,11 @@ package examples.helloworld
 	 */
 	public class HelloSignal
 	{
-		public static const INIT:String = "helloSignalInit";
-		public static const COPY_REQUEST:String = "copyRequest";
-		
-		public static const GET_COPY:String = "getCopy";
-		public static const SET_COPY:String = "setCopy";
+		public static const INIT				:String = "helloWorldInit";
+		public static const COPY_REQUEST		:String = "helloWorldCopyRequest";
+		public static const UPDATE_COPY			:String = "helloWorldUpdateCopy";
+		public static const GET_DEFAULT_COPY	:String = "helloWorldGetDefaultCopy";
+		public static const SET_COPY			:String = "helloWorldSetCopy";
 	}
 
 }

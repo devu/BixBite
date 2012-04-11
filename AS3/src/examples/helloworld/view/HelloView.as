@@ -31,9 +31,6 @@ package examples.helloworld.view
 	
 	/**
 	 * @version  compatibility - 0.5.0
-	 * 
-	 * View is the display layer. By default will request some data. Then can only listen and react to the changes. 
-	 * But it doesn't need to be aware where the changes coming from.
 	 */
 	public class HelloView extends DisplayView 
 	{
@@ -64,7 +61,9 @@ package examples.helloworld.view
 		
 		private function onInit(s:ISignal):void
 		{
-			sendSignal(HelloSignal.GET_COPY);
+			context.x = Math.random() * 600;
+			context.y = Math.random() * 600;
+			sendSignal(HelloSignal.GET_DEFAULT_COPY);
 		}
 		
 		private function onSetCopy(s:ISignal):void 

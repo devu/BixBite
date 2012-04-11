@@ -33,7 +33,10 @@ package examples.helloworld.behaviour
 	 */
 	public class CopyHandler extends Behaviour 
 	{
-		private var copy:HelloData;
+		private var copy		:HelloData;
+		
+		private var languages	:Array;
+		private var lang		:int = 1;
 		
 		public function CopyHandler() 
 		{
@@ -42,6 +45,12 @@ package examples.helloworld.behaviour
 		
 		override public function init():void 
 		{
+			languages = [];
+			languages[0] = "english";
+			languages[1] = "polish";
+			languages[2] = "french";
+			languages[3] = "german";
+			
 			sendRequest(HelloSignal.COPY_REQUEST, onCopyData);
 		}
 		
@@ -52,8 +61,16 @@ package examples.helloworld.behaviour
 		
 		override public function execute(s:ISignal):void 
 		{
+			var isDefault:Boolean = s.params[0];
+			
+			if (isDefault){
+				sendSignal(HelloSignal.SET_COPY, [copy.english]);
+				return
+			}
+			
 			var copyString:String;
-			switch(s.params[0])
+			
+			switch(languages[lang])
 			{
 				case "english":
 					copyString = copy.english;
@@ -70,6 +87,12 @@ package examples.helloworld.behaviour
 			}
 			
 			sendSignal(HelloSignal.SET_COPY, [copyString]);
+			
+			if (lang < 3){
+				lang++;
+			} else {
+				lang = 0;
+			}
 		}
 		
 	}
