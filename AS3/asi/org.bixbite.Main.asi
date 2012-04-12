@@ -21,7 +21,7 @@
 	 *     LOG:
 	 *   0.4.9
 	 *   - Behaviour mechanism and communication model
-	 *   - no need for bid-irectional communication
+	 *   - no need for bi-directional communication
 	 *   0.4.8
 	 *   - Move away from MVC pattern
 	 *   - Compound Crystal Pattern name conventions

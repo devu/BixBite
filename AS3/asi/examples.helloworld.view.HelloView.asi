@@ -1,17 +1,16 @@
 ﻿package examples.helloworld.view
 {
-	import examples.helloworld.signal.HelloSignal;
+	import examples.helloworld.HelloSignal;
+	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.core.View;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.view.DisplayView;
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
-	 *   
-	 *     View is the display layer. By default will request some data. Then can only listen and react to the changes. 
-	 *   But it doesn't need to be aware where the changes coming from.
+	 * @version  compatibility - 0.5.0
 	 */
-	public class HelloView extends View
+	public class HelloView extends DisplayView
 	{
 		private var textField : TextField;
 
@@ -19,9 +18,9 @@
 
 		public function init () : void;
 
-		private function onCopyReplaced (s:HelloSignal) : void;
+		private function onInit (s:ISignal) : void;
 
-		private function onCopy (s:HelloSignal) : void;
+		private function onSetCopy (s:ISignal) : void;
 
 		private function applyCopy (copy:String) : void;
 	}

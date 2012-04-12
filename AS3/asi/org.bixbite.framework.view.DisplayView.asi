@@ -17,7 +17,7 @@
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
-		private var _content : DisplayObject;
+		private var _context : DisplayObject;
 		private var _parentView : IDisplayViewContainer;
 		private var _interactive : Boolean;
 
@@ -33,15 +33,13 @@
 		public function get context () : DisplayObject;
 		public function set context (value:DisplayObject) : void;
 
-		public function get graphics () : Graphics;
-
 		/**
 		 * Constructor
 		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
 		 */
 		public function DisplayView ();
 
-		public function setContext (name:String, object:DisplayObject=null) : void;
+		public function setContext (name:String, object:DisplayObject) : void;
 
 		/**
 		 * Initialise DisplayView with a default native DisplayObject (by default Shape);

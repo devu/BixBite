@@ -1,6 +1,6 @@
 ﻿package examples.helloflash
 {
-	import examples.helloflash.data.HelloFlashData;
+	import examples.helloflash.behaviour.Poke;
 	import examples.helloflash.transponder.BallTransponder;
 	import examples.helloflash.view.MainView;
 	import org.bixbite.core.Compound;
@@ -13,7 +13,7 @@
 	 *     This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 *   
 	 *     Bixbite
-	 *   Footprint 6.21 kb
+	 *   Footprint 6.11 kb
 	 *   
 	 *     Robotlegs
 	 *   Footprint 16.7 kb

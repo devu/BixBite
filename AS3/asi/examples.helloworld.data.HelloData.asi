@@ -1,0 +1,28 @@
+﻿package examples.helloworld.data
+{
+	import examples.helloworld.HelloSignal;
+	import org.bixbite.core.Data;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 *   
+	 *     This Data component is a copy holder that will reponse to Atom on reqeted data.
+	 *   Data component don't care who is calling, will respond as soon as a signal has been recieved.
+	 *   
+	 *     The main purpose od the Data component is to react on specific signal from Atom and response with Data set that privides.
+	 */
+	public class HelloData extends Data
+	{
+		public var english : String;
+		public var polish : String;
+		public var french : String;
+		public var german : String;
+
+		public function HelloData ();
+
+		public function init () : void;
+
+		private function onCopyRequest () : HelloData;
+	}
+}

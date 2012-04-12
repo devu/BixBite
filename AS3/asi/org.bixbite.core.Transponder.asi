@@ -72,6 +72,8 @@
 
 		public function getObjectByName (name:String) : DisplayObject;
 
+		public function findObjectByType (object:Class) : Boolean;
+
 		/**
 		 *
 		 * @inheritDoc
