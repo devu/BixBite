@@ -21,35 +21,60 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours.transponder 
+package test.integration.behaviours.behaviour 
 {
-	import flash.display.DisplayObject;
-	import flash.events.MouseEvent;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Transponder;
-	import test.performance.behaviours.Signals;
+	import test.integration.behaviours.data.MyData;
+	import test.integration.behaviours.Signals;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
 	 */
-	public class MyTransponder extends Transponder 
+	public class Redraw extends Behaviour
 	{
+		private var ds		:MyData;
+		private var phase	:int = 0;
 		
-		public function MyTransponder() 
+		public function Redraw() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			addSensor(MouseEvent.MOUSE_DOWN, onInput);
-			addSensor(MouseEvent.MOUSE_UP, onInput);
+			sendRequest(Signals.TIME_DATA, onMyData);
 		}
 		
-		private function onInput(e:MouseEvent):void
+		private function onMyData(data:MyData):void 
 		{
-			if (findObjectByName("myView")) sendSignal(Signals.REDRAW);
+			ds = data;
+		}
+		
+		override public function execute(s:ISignal):void
+		{
+			var dif:int = getTimer() - ds.prevTime;
+			ds.prevTime = getTimer();
+			
+			var color:uint;
+			if(phase % 2){
+				if (dif <= 100){
+					color = 0xFF0000;
+				} else if (dif > 100 && dif < 200){
+					color = 0x00FF00;
+				} else {
+					color = 0x0000FF;
+				}
+				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [color]);
+			} else {
+				color = 0x000000;
+				sendSignal(Signals.CHANGE_COLOR, [color]);
+				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [0xFF00FF]);
+			}
+			
+			phase++;
 		}
 		
 	}

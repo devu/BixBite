@@ -70,7 +70,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\test\performance\behaviours\BehaviourFlow.as" />
+    <compile path="src\test\integration\behaviours\BehaviourFlow.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

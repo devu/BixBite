@@ -21,34 +21,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours.data 
+package test.integration.behaviours 
 {
-	import flash.utils.getTimer;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Data;
-	import test.performance.behaviours.Signals;
+	import org.bixbite.core.Compound;
+	import test.integration.behaviours.behaviour.Redraw;
+	import test.integration.behaviours.behaviour.Startup;
+	import test.integration.behaviours.data.MyData;
+	import test.integration.behaviours.transponder.MyTransponder;
+	import test.integration.behaviours.view.MyView;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
 	 */
-	public class MyData extends Data 
+	public class BehaviourFlow extends Compound 
 	{
-		public var prevTime		:int = 0;
 		
-		public function MyData() 
+		public function BehaviourFlow() 
 		{
+			var m:MyData 		= new MyData();
+			var t:MyTransponder = new MyTransponder();
+			var v:MyView;
 			
-		}
-		
-		override public function init():void 
-		{
-			addSlot(Signals.TIME_DATA, onTimeDataRequest);
-		}
-		
-		private function onTimeDataRequest():Data
-		{
-			return this
+			for (var i:int = 0; i < 10; i++) {
+				v = new MyView();
+				stageView.addView(v);
+			}
+			
+			addBehaviour(Signals.STARTUP	, Startup		, true);
+			addBehaviour(Signals.REDRAW		, Redraw);
+			
+			startup(Signals.STARTUP);
 		}
 		
 	}

@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'4/12/2012'</value>
+      <value>'4/14/2012'</value>
     </define>
     <optimize>true</optimize>
     <omit-trace-statements>true</omit-trace-statements>
@@ -27,9 +27,7 @@
     </source-path>
     <library-path append="true" />
   </compiler>
-  <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\test\performance\behaviours\BehaviourFlow.as</path-element>
-  </file-specs>
+  <file-specs />
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>

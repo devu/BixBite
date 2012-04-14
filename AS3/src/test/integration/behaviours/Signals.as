@@ -21,39 +21,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours 
+package test.integration.behaviours 
 {
-	import org.bixbite.core.Compound;
-	import org.bixbite.framework.view.StageView;
-	import test.performance.behaviours.behaviour.Redraw;
-	import test.performance.behaviours.behaviour.Startup;
-	import test.performance.behaviours.data.MyData;
-	import test.performance.behaviours.transponder.MyTransponder;
-	import test.performance.behaviours.view.MyView;
-	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
+	 * 
+	 * Ordered by sender
 	 */
-	public class BehaviourFlow extends Compound 
+	public class Signals 
 	{
+		//atom
+		public static const STARTUP			:String = "startup";
+		public static const REPOSITION		:String = "reposition";
+		public static const CHANGE_COLOR	:String = "color";
+		public static const TIME_DATA		:String = "timeData";
 		
-		public function BehaviourFlow() 
-		{
-			var m:MyData 		= new MyData();
-			var t:MyTransponder = new MyTransponder();
-			var v:MyView;
-			
-			for (var i:int = 0; i < 10; i++) {
-				v = new MyView();
-				stageView.addView(v);
-			}
-			
-			addBehaviour(Signals.STARTUP	, Startup		, true);
-			addBehaviour(Signals.REDRAW		, Redraw);
-			
-			startup(Signals.STARTUP);
-		}
+		//transponder
+		public static const REDRAW			:String = "redraw";
 		
 	}
 

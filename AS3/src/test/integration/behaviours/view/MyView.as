@@ -21,24 +21,54 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours 
+package test.integration.behaviours.view 
 {
+	import flash.display.Shape;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.view.DisplayView;
+	import test.integration.behaviours.Signals;
+	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
 	 * 
-	 * Ordered by sender
+	 * fotprint 13.3kb
 	 */
-	public class Signals 
+	public class MyView extends DisplayView 
 	{
-		//atom
-		public static const STARTUP			:String = "startup";
-		public static const REPOSITION		:String = "reposition";
-		public static const CHANGE_COLOR	:String = "color";
-		public static const TIME_DATA		:String = "timeData";
+		private var content:Shape;
 		
-		//transponder
-		public static const REDRAW			:String = "redraw";
+		public function MyView() 
+		{
+			
+		}
+		
+		override public function init():void 
+		{
+			content = new Shape();
+			setContext("myView", content);
+			
+			addSlot(Signals.REPOSITION		, onReposition);
+			addSlot(Signals.CHANGE_COLOR	, onChangeColor);
+		}
+		
+		private function onReposition(s:ISignal):void 
+		{
+			context.x = Math.random() * 600;
+			context.y = Math.random() * 600;
+		}
+		
+		private function onChangeColor(s:ISignal):void 
+		{
+			draw(s.params[0]);
+		}
+		
+		private function draw(color:uint):void 
+		{
+			content.graphics.clear();
+			content.graphics.beginFill(color, 1);
+			content.graphics.drawRect(0, 0, 100, 100);
+		}
 		
 	}
 

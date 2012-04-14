@@ -21,53 +21,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours.view 
+package test.integration.behaviours.data 
 {
-	import flash.display.Shape;
+	import flash.utils.getTimer;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
-	import test.performance.behaviours.Signals;
+	import org.bixbite.core.Data;
+	import test.integration.behaviours.Signals;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
-	 * 
-	 * fotprint 13.3kb
 	 */
-	public class MyView extends DisplayView 
+	public class MyData extends Data 
 	{
-		private var content:Shape;
+		public var prevTime		:int = 0;
 		
-		public function MyView() 
+		public function MyData() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			content = new Shape();
-			setContext("myView", content);
-			
-			addSlot(Signals.REPOSITION		, onReposition);
-			addSlot(Signals.CHANGE_COLOR	, onChangeColor);
+			addSlot(Signals.TIME_DATA, onTimeDataRequest);
 		}
 		
-		private function onReposition(s:ISignal):void 
+		private function onTimeDataRequest():Data
 		{
-			context.x = Math.random() * 600;
-			context.y = Math.random() * 600;
-		}
-		
-		private function onChangeColor(s:ISignal):void 
-		{
-			draw(s.params[0]);
-		}
-		
-		private function draw(color:uint):void 
-		{
-			content.graphics.clear();
-			content.graphics.beginFill(color, 1);
-			content.graphics.drawRect(0, 0, 100, 100);
+			return this
 		}
 		
 	}

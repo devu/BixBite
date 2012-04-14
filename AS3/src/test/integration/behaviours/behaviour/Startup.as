@@ -21,61 +21,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.behaviours.behaviour 
+package test.integration.behaviours.behaviour 
 {
-	import flash.utils.getTimer;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
-	import test.performance.behaviours.data.MyData;
-	import test.performance.behaviours.Signals;
+	import test.integration.behaviours.Signals;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
 	 */
-	public class Redraw extends Behaviour
+	public class Startup extends Behaviour 
 	{
-		private var ds		:MyData;
-		private var phase	:int = 0;
 		
-		public function Redraw() 
+		public function Startup() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function execute(s:ISignal):void 
 		{
-			sendRequest(Signals.TIME_DATA, onMyData);
-		}
-		
-		private function onMyData(data:MyData):void 
-		{
-			ds = data;
-		}
-		
-		override public function execute(s:ISignal):void
-		{
-			var dif:int = getTimer() - ds.prevTime;
-			ds.prevTime = getTimer();
-			
-			var color:uint;
-			if(phase % 2){
-				if (dif <= 100){
-					color = 0xFF0000;
-				} else if (dif > 100 && dif < 200){
-					color = 0x00FF00;
-				} else {
-					color = 0x0000FF;
-				}
-				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [color]);
-			} else {
-				color = 0x000000;
-				sendSignal(Signals.CHANGE_COLOR, [color]);
-				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [0xFF00FF]);
-			}
-			
-			phase++;
+			sendSignal(Signals.REPOSITION);
+			sendSignal(Signals.CHANGE_COLOR, [0x000000]);
 		}
 		
 	}

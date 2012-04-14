@@ -21,24 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.coreperf.data
+package test.integration.behaviours.transponder 
 {
-	import org.bixbite.core.Data;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Transponder;
+	import test.integration.behaviours.Signals;
 	
 	/**
 	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
 	 */
-	public class TestData extends Data 
+	public class MyTransponder extends Transponder 
 	{
 		
-		public function TestData() 
+		public function MyTransponder() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			
+			addSensor(MouseEvent.MOUSE_DOWN, onInput);
+			addSensor(MouseEvent.MOUSE_UP, onInput);
+		}
+		
+		private function onInput(e:MouseEvent):void
+		{
+			if (findObjectByName("myView")) sendSignal(Signals.REDRAW);
 		}
 		
 	}
