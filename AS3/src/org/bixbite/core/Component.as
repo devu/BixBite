@@ -64,7 +64,7 @@ package org.bixbite.core
 		 * @private
 		 * Default signal attached to this Component
 		 */
-		private var _signal	:ISignal 		= new Signal(uid);
+		public var signal	:ISignal 		= new Signal(uid);
 		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
@@ -92,8 +92,8 @@ package org.bixbite.core
 		{
 			emiter 	= null;
 			
-			_signal.BIXBITE::dispose();
-			_signal = null;
+			signal.BIXBITE::dispose();
+			signal = null;
 			
 			slots 	= null;
 			_uid 	= null;
@@ -114,16 +114,6 @@ package org.bixbite.core
 		public function get uid():String 
 		{
 			return _uid;
-		}
-		
-		public function get signal():ISignal 
-		{
-			return _signal;
-		}
-		
-		BIXBITE function set signal(value:ISignal):void 
-		{
-			_signal = value;
 		}
 		
 	}

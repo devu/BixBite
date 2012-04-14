@@ -21,48 +21,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf.model 
+package test.performance.signalperf.behaviour 
 {
-	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Model;
-	import test.performance.signalperf.signal.TestSignal;
+	import test.performance.signalperf.Signals;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
-	public class TestModel extends Model 
+	public class TestRunner extends Behaviour 
 	{
-		private var testSignal		:TestSignal;
-		private var slotReference	:Function;
+		private var slotReference:Function;
 		
-		public function TestModel() 
+		public function TestRunner() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			addSlot("signalFromCtrl", onSignalFromCtrl);
-			addSlot("fullTriade", onFullTriade);
+			slotReference = getSlotReference(Signals.RUN_TEST)[0];
 		}
 		
-		private function onSignalFromCtrl(s:TestSignal):void
+		override public function execute(s:ISignal):void
 		{
-			trace("Signal: Controller->Model", s.time - getTimer());
-			
-			testSignal = s;
-			attachSignal(testSignal);
-			
-			slotReference = getSlotReference("signalFromModelFullTriade")[0]; //turbo mode
-			sendSignal("signalFromModel");
-		}
-		
-		private function onFullTriade(s:TestSignal):void
-		{
-			
-			slotReference(signal); //turbo mode
-			//sendSignal("signalFromModelFullTriade");
+			//standard
+			//sendSignal(Signals.RUN_TEST);
+			//SRS
+			slotReference(signal);
 		}
 		
 	}

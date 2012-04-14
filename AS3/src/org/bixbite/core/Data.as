@@ -78,6 +78,9 @@ package org.bixbite.core
 			super.destroy();
 		}
 		
+		/**
+		 * 
+		 */
 		public function get system():Stage
 		{
 			return emiter.BIXBITE::stage;

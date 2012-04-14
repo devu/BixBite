@@ -25,16 +25,20 @@ package test.performance.signalperf.transponder
 {
 	import flash.events.MouseEvent;
 	import flash.utils.getTimer;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import test.performance.signalperf.signal.TestSignal;
+	import org.bixbite.framework.signals.StatsSignal;
+	import test.performance.signalperf.Signals;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class TestTransponder extends Transponder 
 	{
-		private var testSignal:TestSignal;
 		private var slotReference:Function;
+		
+		private var iterator:int = 0;
+		private var startTime:int = 0;
 		
 		public function TestTransponder() 
 		{
@@ -43,26 +47,27 @@ package test.performance.signalperf.transponder
 		
 		override public function init():void 
 		{
-			testSignal = new TestSignal();
-			attachSignal(testSignal);
-			
-			system.addListener(MouseEvent.CLICK, runTest);
-			
-			addSlot("fullTriade", onFullTriade);
+			addSlot(Signals.INIT_TEST, onTestInit);
 		}
 		
-		private function runTest(e:MouseEvent):void 
+		private function onTestInit(s:ISignal):void 
 		{
-			slotReference = getSlotReference("fullTriade")[0]; //turbo mode
-			
-			testSignal.time = getTimer();
-			sendSignal("signalFromCtrl");
+			addSensor(MouseEvent.CLICK, startTest);
+			addSlot(Signals.RUN_TEST, onRunTest);
 		}
 		
-		private function onFullTriade(s:TestSignal):void 
+		private function startTest(e:MouseEvent):void
 		{
-			slotReference(signal); //turbo mode
-			//sendSignal("fullTriade");
+			slotReference = getSlotReference(Signals.RUN_TEST)[0];
+			sendSignal(Signals.START_TEST);
+		}
+		
+		private function onRunTest(s:ISignal):void
+		{
+			//standard
+			//sendSignal(Signals.RUN_TEST);
+			//SRS
+			slotReference(signal);
 		}
 	}
 

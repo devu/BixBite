@@ -65,11 +65,17 @@ package org.bixbite.core
 			_callerUID = value;
 		}
 		
+		/**
+		 * 
+		 */
 		public function get params():Array 
 		{
 			return _params;
 		}
 		
+		/**
+		 * 
+		 */
 		public function set params(value:Array):void 
 		{
 			_params = value;

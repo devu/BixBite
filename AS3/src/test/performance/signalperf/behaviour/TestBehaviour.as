@@ -21,50 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf.view 
+package test.performance.signalperf.behaviour 
 {
-	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.View;
-	import org.bixbite.framework.signals.StatsSignal;
 	import test.performance.signalperf.Signals;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 */
-	public class TestView extends View
+	public class TestBehaviour extends Behaviour 
 	{
-		private var slotReference:Function;
 		
-		public function TestView() 
+		public function TestBehaviour() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			addSlot(Signals.START_TEST, onStartTest);
-			addSlot(Signals.RUN_TEST, onRunTest);
-		}
-		
-		private function onRunTest(s:ISignal):void 
-		{
 			
 		}
 		
-		private function onStartTest(s:ISignal):void
+		override public function execute(s:ISignal):void
 		{
-			slotReference = getSlotReference(Signals.RUN_TEST)[0];
-			
-			var startTime:int = getTimer();
-			
-			//standard
-			//for (var i:int = 0 ; i < 1000000; i++) sendSignal(Signals.RUN_TEST);
-			//SRS
-			for (var i:int = 0 ; i < 100000; i++) slotReference(signal);
-			
-			sendSignal(StatsSignal.TRACE, [0, "Time:", String(getTimer() - startTime)]);
+			sendSignal(Signals.START_TEST);
 		}
+		
 	}
 
 }

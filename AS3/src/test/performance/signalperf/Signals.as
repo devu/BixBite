@@ -21,17 +21,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf.signal 
+package test.performance.signalperf 
 {
-	import org.bixbite.core.Signal;
-	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
-	public class TestSignal extends Signal 
+	public class Signals 
 	{
-		public var total:int;
-		public var time:int;
+		public static const INIT_TEST	:String = "signalPerfInitTest";
+		public static const START_TEST	:String = "signalPerfStartTest";
+		public static const RUN_TEST	:String = "signalPerfRunTest";
 	}
 
 }

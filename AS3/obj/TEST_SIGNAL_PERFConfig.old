@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'4/4/2012'</value>
+      <value>'4/14/2012'</value>
     </define>
     <optimize>true</optimize>
     <omit-trace-statements>true</omit-trace-statements>

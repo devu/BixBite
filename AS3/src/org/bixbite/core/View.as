@@ -74,8 +74,9 @@ package org.bixbite.core
 		 * 
 		 * @param	type
 		 */
-		public function sendSignal(type:String):void 
+		public function sendSignal(type:String, params:Array = null):void 
 		{
+			signal.params = params;
 			emiter.broadcast(slots.c, type, signal);
 		}
 		
@@ -86,7 +87,7 @@ package org.bixbite.core
 		 */
 		public function getSlotReference(type:String):Array
 		{
-			return emiter.getSlot(type);
+			return emiter.getSlot(slots.c, type);
 		}
 		
 		/**

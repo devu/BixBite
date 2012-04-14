@@ -40,9 +40,10 @@ package org.bixbite.core
 	 */
 	public class Behaviour 
 	{
+		public var signal		:ISignal;
+		
 		private var emiter		:Emiter;
 		private var uid			:String;
-		private var signal		:ISignal;
 		private var type		:String;
 		private var slots		:Object;
 		private var autoDispose	:Boolean;
@@ -103,12 +104,12 @@ package org.bixbite.core
 		{
 			emiter.removeSlot(slots.a, uid, type);
 			
-			signal 		= null;
-			emiter 		= null;
-			uid 		= null;
-			type 		= null;
-			slots 		= null;
-			dataExec	= null;
+			signal 	= null;
+			emiter 	= null;
+			uid 	= null;
+			type 	= null;
+			slots 	= null;
+			dataExec= null;
 		}
 		
 		/**
@@ -143,6 +144,16 @@ package org.bixbite.core
 		{
 			signal.params = params;
 			emiter.response(slots.v, uid, type, signal);
+		}
+		
+		/**
+		 * SRS - Slot Reference mechanism
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference(type:String):Array
+		{
+			return emiter.getSlot(slots.v, type);
 		}
 		
 	}

@@ -56,7 +56,7 @@ package org.bixbite.framework.modules.stats.transponder
 		
 		private function onTrace(s:ISignal):void 
 		{
-			sendSignal(StatsSignal.TRACE, [s.params]);
+			sendSignal(StatsSignal.TRACE, s.params);
 		}
 		
 		private function onStart(s:ISignal):void 
@@ -73,7 +73,7 @@ package org.bixbite.framework.modules.stats.transponder
 		
 		private function onEnterFrame(e:Event):void 
 		{
-			//sendSignal(StatsSignal.CALCULATE);
+			//SRS
 			calculate(signal);
 		}
 		
