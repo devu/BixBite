@@ -58,10 +58,5 @@
     <class>org.bixbite.framework.modules.stageManager.data.StageData</class>
     <class>org.bixbite.framework.modules.stageManager.behaviour.StageResize</class>
     <class>org.bixbite.framework.modules.stageManager.transponder.StageTransponder</class>
-    <class>examples.helloworld.HelloSignal</class>
-    <class>examples.helloworld.data.HelloData</class>
-    <class>examples.helloworld.behaviour.CopyHandler</class>
-    <class>examples.helloflash.Signals</class>
-    <class>examples.helloflash.behaviour.Poke</class>
   </include-classes>
 </flex-config>

@@ -101,6 +101,11 @@
     <string>src\test\performance\signalperf\signals.as</string>
     <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
     <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
+    <string>src\examples\helloworld\hellosignal.as</string>
+    <string>src\examples\helloworld\data\hellodata.as</string>
+    <string>src\examples\helloworld\behaviour\copyhandler.as</string>
+    <string>src\examples\helloflash\signals.as</string>
+    <string>src\examples\helloflash\behaviour\poke.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
@@ -191,6 +196,11 @@
     <string>src\test\performance\signalperf\signals.as</string>
     <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
     <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
+    <string>src\examples\helloworld\hellosignal.as</string>
+    <string>src\examples\helloworld\data\hellodata.as</string>
+    <string>src\examples\helloworld\behaviour\copyhandler.as</string>
+    <string>src\examples\helloflash\signals.as</string>
+    <string>src\examples\helloflash\behaviour\poke.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />
