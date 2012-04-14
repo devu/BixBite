@@ -7,9 +7,9 @@
 	/**
 	 *
 	 * @version 0.5.0
-	 *   footprint 7.88kb; (8.20kb for v0.4.5) StageManager + Stats
+	 *   footprint 8.69kb, StageManager + Stats
 	 *   
-	 *     Main Bixbite frmework class for development purposes.
+	 *     Main BixBite frmework class for development purposes.
 	 *   Contains collection of framework modules.
 	 *   
 	 *     TODO

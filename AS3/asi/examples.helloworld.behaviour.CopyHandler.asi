@@ -1,7 +1,7 @@
 ﻿package examples.helloworld.behaviour
 {
 	import examples.helloworld.data.HelloData;
-	import examples.helloworld.HelloSignal;
+	import examples.helloworld.Signals;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 

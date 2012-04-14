@@ -1,6 +1,6 @@
 ﻿package examples.helloworld.data
 {
-	import examples.helloworld.HelloSignal;
+	import examples.helloworld.Signals;
 	import org.bixbite.core.Data;
 
 	/**

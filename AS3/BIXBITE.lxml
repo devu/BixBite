@@ -106,6 +106,7 @@
     <string>src\examples\helloworld\behaviour\copyhandler.as</string>
     <string>src\examples\helloflash\signals.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
+    <string>src\examples\helloworld\signals.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
@@ -201,6 +202,7 @@
     <string>src\examples\helloworld\behaviour\copyhandler.as</string>
     <string>src\examples\helloflash\signals.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
+    <string>src\examples\helloworld\signals.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />
