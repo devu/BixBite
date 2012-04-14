@@ -86,7 +86,7 @@ package org.bixbite.core
 		 */
 		public function getSlotReference(type:String):Array
 		{
-			return emiter.getSlot(slots.c, type);
+			return emiter.getSlot(type);
 		}
 		
 		/**

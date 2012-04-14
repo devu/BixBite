@@ -130,6 +130,7 @@ package org.bixbite.core
 		public function startup(type:String):void
 		{
 			emiter.broadcast(slots.v, type, signal);
+			emiter.broadcast(slots.c, type, signal);
 			emiter.broadcast(slots.a, type, signal);
 		}
 	}

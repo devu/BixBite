@@ -207,11 +207,14 @@ package org.bixbite.core
 		 * @param	type
 		 * @return  array, of registered callbacks
 		 */
-		BIXBITE function getSlot(channel:Object, type:String):Array 
+		BIXBITE function getSlot(type:String):Array 
 		{
+			var f:Function;
 			var a:Array = [];
-			if (!channel[type]) return a;
-			for each (var f:Function in channel[type]) a.push(f);
+			for each (f in _slots.a[type]) a.push(f);
+			for each (f in _slots.m[type]) a.push(f);
+			for each (f in _slots.v[type]) a.push(f);
+			for each (f in _slots.c[type]) a.push(f);
 			return a
 		}
 		
