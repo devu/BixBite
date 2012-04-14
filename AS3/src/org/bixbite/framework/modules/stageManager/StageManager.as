@@ -34,7 +34,7 @@ package org.bixbite.framework.modules.stageManager
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
 	 * 
-	 * footprint 6.23kb
+	 * footprint 5.69kb
 	 */
 	public class StageManager extends Compound 
 	{

@@ -129,9 +129,13 @@ package org.bixbite.core
 		 */
 		public function startup(type:String):void
 		{
+			emiter.broadcast(slots.a, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 			emiter.broadcast(slots.c, type, signal);
-			emiter.broadcast(slots.a, type, signal);
+			
+			emiter.removeAllSlots(slots.a, type);
+			emiter.removeAllSlots(slots.v, type);
+			emiter.removeAllSlots(slots.c, type);
 		}
 	}
 
