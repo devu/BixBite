@@ -21,17 +21,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.coreperf.view 
+package test.performance.coreperf.data
 {
-	import org.bixbite.core.View;
+	import org.bixbite.core.Data;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.4.5
 	 */
-	public class TestView extends View 
+	public class TestData extends Data 
 	{
 		
-		public function TestView() 
+		public function TestData() 
 		{
 			
 		}

@@ -21,17 +21,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.coreperf.model 
+package test.performance.coreperf.transponder 
 {
-	import org.bixbite.core.Data;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
-	public class TestModel extends Data 
+	public class Tester extends Transponder 
 	{
 		
-		public function TestModel() 
+		public function Tester() 
 		{
 			
 		}
