@@ -10,6 +10,7 @@ package org.bixbite.framework.modules.stats.behaviour
 	 */
 	public class Trace extends Behaviour 
 	{
+		private var msg:Array = [];
 		
 		public function Trace() 
 		{
@@ -23,7 +24,14 @@ package org.bixbite.framework.modules.stats.behaviour
 		
 		override public function execute(s:ISignal):void 
 		{
-			var info:String = s.params.join(",") + "\n";
+			var id:int = s.params.shift();
+			msg[id] = s.params.join(" ");
+			
+			var info:String = "";
+			for (var i:int = 0; i < msg.length; i++ ){
+				info += msg[i] + "\n";
+			}
+			
 			sendSignal(StatsSignal.DISPLAY_TRACE, [info]);
 		}
 		

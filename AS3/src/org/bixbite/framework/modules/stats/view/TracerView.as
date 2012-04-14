@@ -42,7 +42,7 @@ package org.bixbite.framework.modules.stats.view
 		
 		private function onDisplay(s:ISignal):void 
 		{
-			info.appendText(s.params[0]);
+			info.text = s.params[0];
 		}
 	}
 
