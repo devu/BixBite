@@ -27,7 +27,9 @@
     </source-path>
     <library-path append="true" />
   </compiler>
-  <file-specs />
+  <file-specs>
+    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\test\integration\behaviours\BehaviourFlow.as</path-element>
+  </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>

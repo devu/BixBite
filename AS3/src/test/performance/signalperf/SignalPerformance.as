@@ -34,7 +34,7 @@ package test.performance.signalperf
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
-	 * footprint 8.92kb
+	 * footprint 9.52kb
 	 * 
 	 * Subject of this test is to check performance of the current BixBite signal flow implementation.
 	 * 

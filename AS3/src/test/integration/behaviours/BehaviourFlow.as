@@ -33,6 +33,8 @@ package test.integration.behaviours
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.5.0
+	 * 
+	 * footprint 6.26kb
 	 */
 	public class BehaviourFlow extends Compound 
 	{

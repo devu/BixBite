@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package examples.helloworld.data
 {
-	import examples.helloworld.HelloSignal;
+	import examples.helloworld.Signals;
 	import org.bixbite.core.Data;
 	
 	/**
@@ -48,7 +48,7 @@ package examples.helloworld.data
 		
 		override public function init():void
 		{
-			addSlot(HelloSignal.COPY_REQUEST, onCopyRequest);
+			addSlot(Signals.COPY_REQUEST, onCopyRequest);
 		}
 		
 		private function onCopyRequest():HelloData

@@ -24,7 +24,7 @@ THE SOFTWARE.
 package examples.helloworld.behaviour 
 {
 	import examples.helloworld.data.HelloData;
-	import examples.helloworld.HelloSignal;
+	import examples.helloworld.Signals;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 	
@@ -51,7 +51,7 @@ package examples.helloworld.behaviour
 			languages[2] = "french";
 			languages[3] = "german";
 			
-			sendRequest(HelloSignal.COPY_REQUEST, onCopyData);
+			sendRequest(Signals.COPY_REQUEST, onCopyData);
 		}
 		
 		private function onCopyData(data:HelloData):void 
@@ -64,7 +64,7 @@ package examples.helloworld.behaviour
 			var isDefault:Boolean = s.params[0];
 			
 			if (isDefault){
-				sendSignal(HelloSignal.SET_COPY, [copy.english]);
+				sendSignal(Signals.SET_COPY, [copy.english]);
 				return
 			}
 			
@@ -86,7 +86,7 @@ package examples.helloworld.behaviour
 					break;
 			}
 			
-			sendSignal(HelloSignal.SET_COPY, [copyString]);
+			sendSignal(Signals.SET_COPY, [copyString]);
 			
 			if (lang < 3){
 				lang++;

@@ -35,7 +35,7 @@ package org.bixbite.framework.modules.stats
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 * footprint ~ 8.0kb
+	 * footprint ~ 8.02kb
 	 * 
 	 * This is fork of stats by mrdoob implemented within BixBite framework.
 	 * 

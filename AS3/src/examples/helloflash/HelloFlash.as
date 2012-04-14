@@ -35,7 +35,7 @@ package examples.helloflash
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 6.11 kb
+	 * Footprint 6.13 kb
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb

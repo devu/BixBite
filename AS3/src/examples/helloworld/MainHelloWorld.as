@@ -32,7 +32,7 @@ package examples.helloworld
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
-	 * footprint 6.42kb.
+	 * footprint 6.43kb.
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
@@ -52,9 +52,9 @@ package examples.helloworld
 				stageView.addView(v);
 			}
 			
-			addBehaviour(HelloSignal.UPDATE_COPY, CopyHandler);
+			addBehaviour(Signals.UPDATE_COPY, CopyHandler);
 			
-			startup(HelloSignal.INIT);
+			startup(Signals.INIT);
 		}
 		
 	}

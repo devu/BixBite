@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package examples.helloworld.transponder 
 {
-	import examples.helloworld.HelloSignal;
+	import examples.helloworld.Signals;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
@@ -51,18 +51,18 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			addSlot(HelloSignal.GET_DEFAULT_COPY, onGetDefaultCopy);
+			addSlot(Signals.GET_DEFAULT_COPY, onGetDefaultCopy);
 		}
 		
 		private function onGetDefaultCopy(s:ISignal):void 
 		{
-			sendSignal(HelloSignal.UPDATE_COPY, [true]);
+			sendSignal(Signals.UPDATE_COPY, [true]);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			if (findObjectByType(TextField)) 
-				sendSignal(HelloSignal.UPDATE_COPY, [false]);
+				sendSignal(Signals.UPDATE_COPY, [false]);
 		}
 		
 	}

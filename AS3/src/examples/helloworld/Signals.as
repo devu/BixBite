@@ -27,7 +27,7 @@ package examples.helloworld
 	/**
 	 * @version  compatibility - 0.5.0
 	 */
-	public class HelloSignal
+	public class Signals
 	{
 		public static const INIT				:String = "helloWorldInit";
 		public static const COPY_REQUEST		:String = "helloWorldCopyRequest";

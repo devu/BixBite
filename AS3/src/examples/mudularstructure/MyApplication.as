@@ -31,7 +31,7 @@ package examples.mudularstructure
 	/**
      * @version compatibility 0.5.0
      * @since 0.4.3
-     * total footprint 10.06kb
+     * total footprint 10.7kb
      *
      * Purpose of this example is to show you true power of BixBite framework.
      * Due to architecture arrangement, Crystal pattern and Signal/Slot system that keeps all classes perfectly decoupled, let you create number of small functional applications (Compounds) and put them together in no time, to create brand new application.
