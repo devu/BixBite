@@ -40,7 +40,6 @@ package org.bixbite.framework.modules.stats.behaviour
 		private var fps			:int;
 		private var timer		:int;
 		private var ms_prev		:int;
-		private var frameRate	:int;
 		
 		public function Calculate() 
 		{
@@ -60,11 +59,12 @@ package org.bixbite.framework.modules.stats.behaviour
 		override public function execute(s:ISignal):void 
 		{
 			timer = getTimer();
+			data.timer = timer;
 			
-			var max:Number = data.max;
-			var mem:Number = data.mem;
-			var frameRate:int = data.frameRate;
-			var ms:int = data.ms;
+			var max			:Number = data.max;
+			var mem			:Number = data.mem;
+			var frameRate	:int 	= data.frameRate;
+			var ms			:int 	= data.ms;
 			
 			if( timer - 1000 >= ms_prev){
 				ms_prev = timer;
@@ -77,7 +77,7 @@ package org.bixbite.framework.modules.stats.behaviour
 				
 				data.infoFPS = "FPS: " + fps + " / " + frameRate;
 				data.infoMEM = "MEM: " + mem;
-				data.infoMAX = "MAX: " + max;
+				data.infoMAX = "MAX: " + data.max;
 				data.infoMS  = "MS: " + (timer - ms);
 				
 				sendSignal(StatsSignal.UPDATE, [data]);

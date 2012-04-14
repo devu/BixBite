@@ -39,7 +39,6 @@ package org.bixbite.framework.modules.stats.data
 		
 		public var timer			:int;
 		public var ms				:int;
-		public var ms_prev			:int;
 		
 		public var frameRate		:Number;
 		

@@ -25,33 +25,46 @@ package org.bixbite.framework.modules.stats
 {
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.stats.behaviour.Calculate;
+	import org.bixbite.framework.modules.stats.behaviour.Trace;
 	import org.bixbite.framework.modules.stats.data.StatsData;
 	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.modules.stats.view.StatsMonitor;
+	import org.bixbite.framework.modules.stats.view.TracerView;
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 * footprint ~ 7.19kb
+	 * footprint ~ 8.0kb
 	 * 
-	 * This is fork of stats by mrdoob implemented within Bixbite framework.
+	 * This is fork of stats by mrdoob implemented within BixBite framework.
 	 * 
 	 */
 	public class Stats extends Compound 
 	{
+		private var monitor:StatsMonitor;
+		
 		/**
-		 * Constructor, set a functional triad, modules and behaviours.
+		 * Constructor
 		 */
 		public function Stats() 
 		{
-			var m:StatsData 		= new StatsData();
-			var v:StatsMonitor 		= new StatsMonitor();
-			var c:StatsTransponder 	= new StatsTransponder();
-			
-			stageView.addView(v);
+			var data	:StatsData 			= new StatsData();
+			var trnspdr	:StatsTransponder 	= new StatsTransponder();
+			monitor 						= new StatsMonitor();
+			stageView.addView(monitor);
 			
 			addBehaviour(StatsSignal.CALCULATE, Calculate);
+			
+			startup(StatsSignal.START);
+		}
+		
+		public function enableTracer():void
+		{
+			var tracer	:TracerView 		= new TracerView();
+			monitor.addView(tracer);
+			
+			addBehaviour(StatsSignal.TRACE, Trace);
 		}
 		
 	}

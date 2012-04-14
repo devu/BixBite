@@ -31,10 +31,13 @@ package org.bixbite.framework.signals
 	{
 		public static const DATA_REQUEST	:String = "statsDataRequest";
 		public static const CALCULATE		:String = "statsCalculate";
+		public static const START			:String = "statsStart";
 		public static const PAUSE			:String = "statsPause";
 		public static const DRAW			:String = "statsDraw";
 		public static const UPDATE			:String = "statsUpdate";
 		public static const UPDATE_REALTIME	:String = "statsUpdateRealtime";
+		public static const TRACE			:String = "statsTrace";
+		public static const DISPLAY_TRACE	:String = "statsDisplayTrace";
 	}
 
 }

@@ -29,6 +29,7 @@ package org.bixbite.framework.modules.stats.view
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.modules.stats.data.StatsData;
 	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
@@ -65,7 +66,7 @@ package org.bixbite.framework.modules.stats.view
 		
 		override public function init():void 
 		{
-			//frameRate = system.stage.frameRate;
+			var textFactory:TextFactory = TextFactory.instance;
 			
 			panel = new Sprite();
 			panel.graphics.beginFill(0x000000, 0.8);
@@ -77,11 +78,11 @@ package org.bixbite.framework.modules.stats.view
 			monitor.x = 80;
 			panel.addChild(monitor);
 			
-			info_fps 	= createText(3, 2, 0xFFFF66);
-			info_ms 	= createText(3, 10, 0x00FF00);
-			info_mem 	= createText(3, 18, 0x00FFFF);
-			info_max 	= createText(3, 26, 0xFF25F0);
-			info_orient = createText(3, 34, 0xDEDEDE);
+			info_fps 	= textFactory.createSimpleText(panel, 3, 2 , 70, 18, 0xFFFF66);
+			info_ms 	= textFactory.createSimpleText(panel, 3, 10, 70, 18, 0x00FF00);
+			info_mem 	= textFactory.createSimpleText(panel, 3, 18, 70, 18, 0x00FFFF);
+			info_max 	= textFactory.createSimpleText(panel, 3, 26, 70, 18, 0xFF25F0);
+			info_orient = textFactory.createSimpleText(panel, 3, 34, 70, 18, 0xDEDEDE);
 			
 			panel.addChild(info_fps);
 			panel.addChild(info_ms);
@@ -142,21 +143,6 @@ package org.bixbite.framework.modules.stats.view
 			//info_orient.text = (s.orientation == "stageOrientationPortrait") ? "PORTRAIT" : "LANDSCAPE";
 		}
 		*/
-		private function createText(posX:Number, posY:Number, color:uint = 0xFFFFFF, w:Number = 70, h:Number = 18):TextField
-		{
-			var tf:TextFormat = new TextFormat("tahoma", 9, color);
-			
-			var t:TextField = new TextField();
-			t.mouseEnabled = false;
-			t.selectable = false;
-			t.x = posX;
-			t.y = posY;
-			t.defaultTextFormat = tf;
-			t.width = w;
-			t.height = h;
-			
-			return t;
-		}
 		
 	}
 

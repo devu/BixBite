@@ -26,6 +26,7 @@ package org.bixbite.framework.modules.stats.transponder
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signals.StatsSignal;
 	
@@ -35,7 +36,8 @@ package org.bixbite.framework.modules.stats.transponder
      */
 	public class StatsTransponder extends Transponder 
 	{
-		private var panel:Sprite;
+		private var panel		:Sprite;
+		private var calculate	:Function;
 		
 		public function StatsTransponder() 
 		{
@@ -46,12 +48,33 @@ package org.bixbite.framework.modules.stats.transponder
 		{
 			addSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
 			addSensor(MouseEvent.MOUSE_UP	, onMouseUp);
+			
+			addSlot(StatsSignal.START, onStart);
+			addSlot(StatsSignal.PAUSE, onPause);
+			addSlot(StatsSignal.TRACE, onTrace);
+		}
+		
+		private function onTrace(s:ISignal):void 
+		{
+			sendSignal(StatsSignal.TRACE, [s.params]);
+		}
+		
+		private function onStart(s:ISignal):void 
+		{
+			calculate = getSlotReference(StatsSignal.CALCULATE)[0];
 			addSensor(Event.ENTER_FRAME		, onEnterFrame);
+		}
+		
+		private function onPause(s:ISignal):void 
+		{
+			calculate = null;
+			removeSensor(Event.ENTER_FRAME	, onEnterFrame);
 		}
 		
 		private function onEnterFrame(e:Event):void 
 		{
-			sendSignal(StatsSignal.CALCULATE);
+			//sendSignal(StatsSignal.CALCULATE);
+			calculate(signal);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
