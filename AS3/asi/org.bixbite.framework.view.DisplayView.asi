@@ -19,7 +19,6 @@
 	{
 		private var _context : DisplayObject;
 		private var _parentView : IDisplayViewContainer;
-		private var _interactive : Boolean;
 
 		/**
 		 * Parent view of this view

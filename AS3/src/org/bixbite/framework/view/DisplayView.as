@@ -43,7 +43,6 @@ package org.bixbite.framework.view
 	{
 		private var _context		:DisplayObject;
 		private var _parentView		:IDisplayViewContainer;
-		private var _interactive	:Boolean;
 		
 		/**
 		 * Constructor

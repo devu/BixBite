@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
@@ -95,6 +96,14 @@ package org.bixbite.core
 		{
 			emiter.removeAllSlotsOf(slots.v, uid);
 			super.destroy();
+		}
+		
+		/**
+		 * Access to native flash stage
+		 */
+		public function get stage():Stage
+		{
+			return emiter.BIXBITE::stage;
 		}
 	}
 

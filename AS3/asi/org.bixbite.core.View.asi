@@ -1,5 +1,6 @@
 ﻿package org.bixbite.core
 {
+	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
@@ -15,6 +16,11 @@
 	 */
 	public class View extends Component implements IView
 	{
+		/**
+		 * Access to native flash stage
+		 */
+		public function get stage () : Stage;
+
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
