@@ -30,7 +30,13 @@
 		 */
 		function set callerUID (value:String) : void;
 
+		/**
+		 *
+		 */
 		public function get params () : Array;
+		/**
+		 *
+		 */
 		public function set params (value:Array) : void;
 
 		public function Signal (uid:String);

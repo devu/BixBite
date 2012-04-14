@@ -6,13 +6,14 @@
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.modules.stats.data.StatsData;
 	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
 	 *   
 	 *     StatsMonitor
@@ -43,7 +44,5 @@
 		private function update (s:ISignal) : void;
 
 		private function updateRealtime (s:ISignal) : void;
-
-		private function createText (posX:Number, posY:Number, color:uint=0xFFFFFF, w:Number=70, h:Number=18) : TextField;
 	}
 }

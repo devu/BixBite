@@ -28,8 +28,6 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * <p><i>"We view things not only from different sides, but with different eyes; we have no wish to find them alike. — Blaise Pascal"</i></p>
-	 * 
 	 * <p>The View manages the graphical and/or textual output of the application.</p>
 	 * <p>Framework provides basic implementation of nested structure of the Views aka Composite Pattern.
 	 * Provides set of methods similar to the native Flash Display List and manages nested tree hierarchy. 

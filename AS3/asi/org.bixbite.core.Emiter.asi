@@ -9,13 +9,12 @@
 
 	/**
 	 * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
-	 * <p>Provides set of methods for Components and keeps it dead simple, fast and straight forward. First as well as second dimension relies on native AS3 Object only. Speed of accessibility, creation and deletion was the main important factor behind design decisions. 
-	 * If you want to get closer to the native speed of execution, Emiter provides methods to cross-reference callbacks base on type of the signal.</p>
-	 * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3. 
-	 * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with the same seeped as a native local method speed accession. 
+	 * <p>Provides set of methods for Components and keeps it dead simple, fast and straight forward. First as well as second dimension relies on native AS3 Object only. Speed of accessibility, creation and deletion was the main important factor behind design decisions. If you want to get closer to the native speed of execution, Emiter provides methods to cross-reference callbacks base on type of the signal.</p>
+	 * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3.
+	 * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with the same seeped as a native local method speed accession.
 	 * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed from it.</p>
-	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.<br><br>
-	 * Current version of Bixbite is able to send over 30.000.000 signals per second (AMD 955 Quad Core)</p>
+	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
+	 * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
 	 * @langversion	3.0
 	 * @version 0.5.0
 	 */

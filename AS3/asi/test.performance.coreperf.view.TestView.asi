@@ -4,7 +4,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class TestView extends View
 	{

@@ -6,9 +6,9 @@
 	 *
 	 * @version  compatibility - 0.5.0
 	 */
-	public class TestTransponder extends Transponder
+	public class Tester extends Transponder
 	{
-		public function TestTransponder ();
+		public function Tester ();
 
 		public function init () : void;
 	}

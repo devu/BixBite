@@ -42,7 +42,7 @@
 		 * @private
 		 *   Default signal attached to this Component
 		 */
-		var signal : ISignal;
+		public var signal : ISignal;
 
 		/**
 		 * Unique Component identifier

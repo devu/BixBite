@@ -14,11 +14,11 @@
 	 *   
 	 *     TODO
 	 *   0.5.1
-	 *   - more integration and performance tests
-	 *   0.5.0
-	 *   - rebuild docs, libs, modules and all examples based on new architecture.
+	 *   - more examples, integration and performance tests
 	 *   
 	 *     LOG:
+	 *   0.5.0
+	 *   - rebuild docs, libs, modules and all examples based on new architecture.
 	 *   0.4.9
 	 *   - Behaviour mechanism and communication model
 	 *   - no need for bi-directional communication

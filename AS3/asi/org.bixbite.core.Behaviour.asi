@@ -14,9 +14,9 @@
 	 */
 	public class Behaviour
 	{
+		public var signal : ISignal;
 		private var emiter : Emiter;
 		private var uid : String;
-		private var signal : ISignal;
 		private var type : String;
 		private var slots : Object;
 		private var autoDispose : Boolean;
@@ -71,5 +71,12 @@
 		 * @param	params
 		 */
 		public function sendSignalTo (uid:String, type:String, params:Array=null) : void;
+
+		/**
+		 * SRS - Slot Reference mechanism
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference (type:String) : Array;
 	}
 }

@@ -24,7 +24,8 @@ THE SOFTWARE.
 package org.bixbite.framework.signals 
 {
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @langversion	3.0
+	 * @version 0.5.0
 	 * @since 0.4.1
 	 */
 	public class StatsSignal

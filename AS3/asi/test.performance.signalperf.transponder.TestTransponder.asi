@@ -2,24 +2,29 @@
 {
 	import flash.events.MouseEvent;
 	import flash.utils.getTimer;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import test.performance.signalperf.signal.TestSignal;
+	import org.bixbite.framework.signals.StatsSignal;
+	import test.performance.signalperf.Signals;
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class TestTransponder extends Transponder
 	{
-		private var testSignal : TestSignal;
 		private var slotReference : Function;
+		private var iterator : int;
+		private var startTime : int;
 
 		public function TestTransponder ();
 
 		public function init () : void;
 
-		private function runTest (e:MouseEvent) : void;
+		private function onTestInit (s:ISignal) : void;
 
-		private function onFullTriade (s:TestSignal) : void;
+		private function startTest (e:MouseEvent) : void;
+
+		private function onRunTest (s:ISignal) : void;
 	}
 }

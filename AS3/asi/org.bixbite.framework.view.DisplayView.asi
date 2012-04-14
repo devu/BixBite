@@ -10,10 +10,10 @@
 	/**
 	 * DisplayView, part of Composite pattern of the display list. 
 	 * The basic View extention to work with flash native DisplayObject.
-	 * Solution built upon Decoration pattern, to wrap up native Objects into MVC structure.
+	 * Solution built upon Decoration pattern, to wrap up native Objects into BixBite structure.
 	 * Lets you control/expose selected aspects of your application or structure.
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
@@ -39,6 +39,11 @@
 		 */
 		public function DisplayView ();
 
+		/**
+		 *
+		 * @param	name
+		 * @param	object
+		 */
 		public function setContext (name:String, object:DisplayObject) : void;
 
 		/**

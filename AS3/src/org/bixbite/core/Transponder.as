@@ -30,9 +30,9 @@ package org.bixbite.core
 	
 	/**
      * <p>The Transponder is a abstract class that emits an identifying signal in response to an interrogating received signals.</p>
-	 * In computer sicence interogate means transmit a signal for setting off an appropriate response.
-	 * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
-	 * 
+     * <p>In computer science interrogate means transmit a signal for setting off an appropriate response.
+     * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
+     * 
 	 * @langversion	3.0
 	 * @version 0.5.0
      */

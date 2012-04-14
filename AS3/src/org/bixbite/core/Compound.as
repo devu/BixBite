@@ -31,36 +31,19 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * <p>The Compound represents default class you should subclass your Document Class with.</br>
-	 * This is required to initialise Emiter and signal/slot system.</p>
-	 * 
-	 * <p>Due to AS3 Document Class restrictions it must subclass DisplayObjectContainer this is why extends Sprite.<br>
-	 * The only thing we need from it, is to access the system features. And implemementation of this class may vary depends of target platforms.
-	 * This is platform specific implementation when the Stage is the main system IO provider.</p>
-	 * 
-	 * <p>In case you have more than one Compound running at the same time any following Compound will run as module, usign the same reference of Emiter signleton to make shared signal/slot communication possible.
-	 * This is very usefull in modular projects. Consider application, for instance Preloader, that will load external swf build within Bixbite framework as well. 
-	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
-	 * 
+     * <p>The Compound represents default class you should subclass your Document Class with.</br>
+     * This is required to initialise Emiter and signal/slot system.</p>
+     *
+     * <p>Due to AS3 Document Class restrictions it must subclass DisplayObjectContainer this is why extends Sprite.</br>
+     * The only thing we need from it, is to access the system features. And implementation of this class may vary depends of target platforms.
+     * This is platform specific implementation when the Stage is the main system IO provider.</p>
+     *
+     * <p>In case you have more than one Compound running at the same time any following Compound will run as module, using the same reference of Emiter singleton to make shared signal/slot communication possible.
+     * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
+     * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
+     * 
 	 * @langversion	3.0
 	 * @version 0.5.0
-	 * 
-	 * @example
-	 * <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock ">
-	 * //Bixbite document class template
-	 * package  
-	 * {
-	 * 	import org.bixbite.mvc.Application;
-	 * 	
-	 * 	public class Main extends Compound 
-	 * 	{
-	 * 		public function Main() 
-	 * 		{
-	 * 			entry point
-	 * 		}
-	 * 	}
-	 * }
-	 * </codeblock>
 	 */
 	public class Compound extends Sprite implements ICompound
 	{

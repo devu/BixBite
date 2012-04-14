@@ -89,6 +89,18 @@
     <string>src\examples\helloflash\data\helloflashdata.as</string>
     <string>src\org\bixbite\framework\transponder\mousetransponder.as</string>
     <string>src\org\bixbite\framework\transponder\touchtransponder.as</string>
+    <string>src\test\integration\behaviours\signals.as</string>
+    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
+    <string>src\test\integration\behaviours\behaviour\startup.as</string>
+    <string>src\test\integration\behaviours\data\mydata.as</string>
+    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\integration\behaviours\view\myview.as</string>
+    <string>src\test\integration\behaviours\behaviourflow.as</string>
+    <string>src\test\performance\coreperf\transponder\tester.as</string>
+    <string>src\test\performance\coreperf\data\testdata.as</string>
+    <string>src\test\performance\signalperf\signals.as</string>
+    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\examples\helloworld\controller\hellocontroller.as</string>
@@ -167,6 +179,18 @@
     <string>src\examples\helloflash\data\helloflashdata.as</string>
     <string>src\org\bixbite\framework\transponder\mousetransponder.as</string>
     <string>src\org\bixbite\framework\transponder\touchtransponder.as</string>
+    <string>src\test\integration\behaviours\signals.as</string>
+    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
+    <string>src\test\integration\behaviours\behaviour\startup.as</string>
+    <string>src\test\integration\behaviours\data\mydata.as</string>
+    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\integration\behaviours\view\myview.as</string>
+    <string>src\test\integration\behaviours\behaviourflow.as</string>
+    <string>src\test\performance\coreperf\transponder\tester.as</string>
+    <string>src\test\performance\coreperf\data\testdata.as</string>
+    <string>src\test\performance\signalperf\signals.as</string>
+    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

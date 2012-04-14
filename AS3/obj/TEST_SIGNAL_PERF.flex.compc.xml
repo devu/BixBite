@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_0.5.0.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\bin\TEST_SIGNAL_PERF.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -20,10 +20,11 @@
       <path-element>e:\xampp\htdocs\2012\bixbite\as3\src</path-element>
     </source-path>
     <library-path>
-      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_logos.swc</path-element>
+      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_0.2.9.swc</path-element>
     </library-path>
   </compiler>
   <include-classes>
+    <class>org.bixbite.Main</class>
     <class>org.bixbite.namespaces.BIXBITE</class>
     <class>org.bixbite.core.Signal</class>
     <class>org.bixbite.core.Component</class>
@@ -49,8 +50,10 @@
     <class>org.bixbite.framework.factories.GraphicsFactory</class>
     <class>org.bixbite.framework.factories.Graphics</class>
     <class>org.bixbite.framework.factories.TextFactory</class>
+    <class>org.bixbite.framework.modules.stats.Stats</class>
     <class>org.bixbite.framework.modules.stats.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.modules.stats.data.StatsData</class>
+    <class>org.bixbite.framework.modules.stats.view.StatsMonitor</class>
     <class>org.bixbite.framework.modules.stats.view.TracerView</class>
     <class>org.bixbite.framework.modules.stats.behaviour.Calculate</class>
     <class>org.bixbite.framework.modules.stats.behaviour.Trace</class>
@@ -58,10 +61,36 @@
     <class>org.bixbite.framework.modules.stageManager.data.StageData</class>
     <class>org.bixbite.framework.modules.stageManager.behaviour.StageResize</class>
     <class>org.bixbite.framework.modules.stageManager.transponder.StageTransponder</class>
+    <class>test.performance.signalperf.SignalPerformance</class>
+    <class>test.performance.signalperf.Signals</class>
+    <class>test.performance.signalperf.view.TestView</class>
+    <class>test.performance.signalperf.transponder.TestTransponder</class>
+    <class>test.performance.signalperf.behaviour.TestBehaviour</class>
+    <class>test.performance.signalperf.behaviour.TestRunner</class>
+    <class>test.performance.coreperf.CorePerformance</class>
+    <class>test.performance.coreperf.view.TestView</class>
+    <class>test.performance.coreperf.data.TestData</class>
+    <class>test.performance.coreperf.transponder.TestTransponder</class>
+    <class>test.performance.coreperf.transponder.Tester</class>
+    <class>test.integration.behaviours.BehaviourFlow</class>
+    <class>test.integration.behaviours.Signals</class>
+    <class>test.integration.behaviours.behaviour.Redraw</class>
+    <class>test.integration.behaviours.behaviour.Startup</class>
+    <class>test.integration.behaviours.data.MyData</class>
+    <class>test.integration.behaviours.view.MyView</class>
+    <class>test.integration.behaviours.transponder.MyTransponder</class>
+    <class>examples.helloworld.MainHelloWorld</class>
     <class>examples.helloworld.HelloSignal</class>
+    <class>examples.helloworld.transponder.HelloTransponder</class>
     <class>examples.helloworld.data.HelloData</class>
+    <class>examples.helloworld.view.HelloView</class>
     <class>examples.helloworld.behaviour.CopyHandler</class>
+    <class>examples.helloflash.HelloFlash</class>
     <class>examples.helloflash.Signals</class>
+    <class>examples.helloflash.view.Ball</class>
+    <class>examples.helloflash.view.MainView</class>
+    <class>examples.helloflash.transponder.BallTransponder</class>
     <class>examples.helloflash.behaviour.Poke</class>
+    <class>examples.mudularstructure.MyApplication</class>
   </include-classes>
 </flex-config>

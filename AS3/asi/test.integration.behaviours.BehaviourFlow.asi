@@ -1,0 +1,19 @@
+﻿package test.integration.behaviours
+{
+	import org.bixbite.core.Compound;
+	import test.integration.behaviours.behaviour.Redraw;
+	import test.integration.behaviours.behaviour.Startup;
+	import test.integration.behaviours.data.MyData;
+	import test.integration.behaviours.transponder.MyTransponder;
+	import test.integration.behaviours.view.MyView;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
+	 */
+	public class BehaviourFlow extends Compound
+	{
+		public function BehaviourFlow ();
+	}
+}

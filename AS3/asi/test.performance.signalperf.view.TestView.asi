@@ -1,40 +1,25 @@
 ﻿package test.performance.signalperf.view
 {
 	import flash.utils.getTimer;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.modules.stats.signal.StatsSignal;
-	import org.bixbite.framework.modules.stats.signal.TraceSignal;
-	import test.performance.signalperf.signal.TestSignal;
+	import org.bixbite.framework.signals.StatsSignal;
+	import test.performance.signalperf.Signals;
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 */
 	public class TestView extends View
 	{
-		private var testSignal : TestSignal;
 		private var slotReference : Function;
 
 		public function TestView ();
 
 		public function init () : void;
 
-		/**
-		 * Signals from Controller should arrive AFTER signal from Model, if Controller broadcasted exactly same type of signal and both, Model and View listen to it
-		 * Phase of this signal should be always 1. Usign phase value you can recognize within View who is calling.
-		 * @param	s
-		 */
-		private function onSignalFromController (s:TestSignal) : void;
+		private function onRunTest (s:ISignal) : void;
 
-		/**
-		 * Signals from Model should always arrive BEFORE signal from Controller, if Controller broadcasted exactly same type of signal and both, Model and View listen to it.
-		 * The reason being is to have opportunity to manage the flow and Model can decide about cancelation of the 2nd phase.
-		 * @param	s
-		 */
-		private function onSignalFromModel (s:TestSignal) : void;
-
-		private function onSignalFromModelFullTriade (s:TestSignal) : void;
-
-		private function fullTriadeTest () : void;
+		private function onStartTest (s:ISignal) : void;
 	}
 }

@@ -1,39 +1,53 @@
 ﻿package test.performance.signalperf
 {
-	import org.bixbite.core.Application;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.stageManager.StageManager;
 	import org.bixbite.framework.modules.stats.Stats;
-	import org.bixbite.framework.transponder.StageTransponder;
-	import org.bixbite.framework.view.StageView;
-	import test.performance.signalperf.model.TestModel;
+	import test.performance.signalperf.behaviour.TestBehaviour;
+	import test.performance.signalperf.behaviour.TestRunner;
 	import test.performance.signalperf.transponder.TestTransponder;
 	import test.performance.signalperf.view.TestView;
 
 	/**
 	 *
-	 * @version  compatibility - 0.4.5
+	 * @version  compatibility - 0.5.0
 	 * @since 0.4.2
 	 *   footprint 8.92kb
 	 *   
-	 *     Subject of this test is to check performance of the current MVC specific signal flow implementation.
-	 *   It is protected on the core level witch actor can talk to witch one. 
-	 *   Also checking entire triad communication not just signal broadcasting removed from the context.
+	 *     Subject of this test is to check performance of the current BixBite signal flow implementation.
 	 *   
 	 *     1 Phase
-	 *   On mouse click Controller will send signal to Model and Model respond to View.
-	 *   This is just test a flow test. Making sure View and Model can get response from Controller in controller manier.
+	 *   On mouse click Transponder will send signal to Atom and Atom will respond to View.
+	 *   This is just initial flow test. Making sure Components can talk to each other.
 	 *   
 	 *     2 Phase
 	 *   Once 1 Phase is finished View will send X number of times signals going through full triade following the flow:
-	 *   View -> Controller -> Model -> View. When finish will send signal to Stats to display results.
+	 *   View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
 	 *   
 	 *     Results (Flash Player 11,1,102,63 - Chrome)
-	 *   Signals traveling from View -> Controller -> Model -> View.
+	 *   Signals traveling from View -> Transponder -> Atom -> View.
 	 *   
-	 *     v0.4.2
-	 *   1.000 		- 2ms		(3k signals in circulation)
-	 *   10.000 		- 22ms		(30k signals in circulation)
-	 *   100.000		- 207ms		(300k signals in circulation)
-	 *   1.000.000	- 2120ms	(3M signals in circulation)
+	 *     v0.5.0 SRS
+	 *   1.000 		- no time:)	(3k signals in circulation)
+	 *   10.000 		- 0.9ms		(30k signals in circulation)
+	 *   100.000		- 9ms		(300k signals in circulation)
+	 *   1.000.000	- 94ms		(3M signals in circulation)
+	 *   10.000.000	- 948ms		(30M signals in circulation)
+	 *   
+	 *     v0.5.0
+	 *   1.000 		- 1			(3k signals in circulation)
+	 *   10.000 		- 12ms		(30k signals in circulation)
+	 *   100.000		- 125ms		(300k signals in circulation)
+	 *   1.000.000	- 1289ms	(3M signals in circulation)
+	 *   
+	 *     v0.4.4 SRS in use!
+	 *   1.000 		- no time:)	(3k signals in circulation)
+	 *   10.000 		- 1ms		(30k signals in circulation)
+	 *   100.000		- 9ms		(300k signals in circulation)
+	 *   1.000.000	- 99ms		(3M signals in circulation)
+	 *   10.000.000	- 931ms		(30M signals in circulation)
+	 *   
+	 *     v0.4.4 - No changes
 	 *   
 	 *     v0.4.3
 	 *   1.000 		- 1ms		(3k signals in circulation)
@@ -41,17 +55,14 @@
 	 *   100.000		- 133ms		(300k signals in circulation)
 	 *   1.000.000	- 1325ms	(3M signals in circulation)
 	 *   
-	 *     v0.4.4 
-	 *   No changes to compare to v0.4.3
+	 *     v0.4.2
+	 *   1.000 		- 2ms		(3k signals in circulation)
+	 *   10.000 		- 22ms		(30k signals in circulation)
+	 *   100.000		- 207ms		(300k signals in circulation)
+	 *   1.000.000	- 2120ms	(3M signals in circulation)
 	 *   
-	 *     v0.4.4 and signal reference system in use!
-	 *   1.000 		- no time:)	(3k signals in circulation)
-	 *   10.000 		- 1ms		(30k signals in circulation)
-	 *   100.000		- 9ms		(300k signals in circulation)
-	 *   1.000.000	- 99ms		(3M signals in circulation)
-	 *   10.000.000	- 931ms		(30M signals in circulation) and this is what we talking about :).
 	 */
-	public class SignalPerformance extends Application
+	public class SignalPerformance extends Compound
 	{
 		public function SignalPerformance ();
 	}

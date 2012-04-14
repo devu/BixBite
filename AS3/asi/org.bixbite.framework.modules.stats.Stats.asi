@@ -2,25 +2,31 @@
 {
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.stats.behaviour.Calculate;
+	import org.bixbite.framework.modules.stats.behaviour.Trace;
 	import org.bixbite.framework.modules.stats.data.StatsData;
 	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.modules.stats.view.StatsMonitor;
+	import org.bixbite.framework.modules.stats.view.TracerView;
 	import org.bixbite.framework.signals.StatsSignal;
 
 	/**
 	 *
 	 * @version  compatibility - 0.5.0
 	 * @since 0.4.1
-	 *   footprint ~ 7.19kb
+	 *   footprint ~ 8.0kb
 	 *   
-	 *     This is fork of stats by mrdoob implemented within Bixbite framework.
+	 *     This is fork of stats by mrdoob implemented within BixBite framework.
 	 *   
 	 */
 	public class Stats extends Compound
 	{
+		private var monitor : StatsMonitor;
+
 		/**
-		 * Constructor, set a functional triad, modules and behaviours.
+		 * Constructor
 		 */
 		public function Stats ();
+
+		public function enableTracer () : void;
 	}
 }

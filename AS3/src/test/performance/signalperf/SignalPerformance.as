@@ -51,7 +51,7 @@ package test.performance.signalperf
 	 * 
 	 * v0.5.0 SRS
 	 * 1.000 		- no time:)	(3k signals in circulation)
-	 * 10.000 		- >1ms		(30k signals in circulation)
+	 * 10.000 		- 0.9ms		(30k signals in circulation)
 	 * 100.000		- 9ms		(300k signals in circulation)
 	 * 1.000.000	- 94ms		(3M signals in circulation)
 	 * 10.000.000	- 948ms		(30M signals in circulation)

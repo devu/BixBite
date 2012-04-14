@@ -1,0 +1,13 @@
+﻿package test.performance.signalperf
+{
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 */
+	public class Signals
+	{
+		public static const INIT_TEST : String = "signalPerfInitTest";
+		public static const START_TEST : String = "signalPerfStartTest";
+		public static const RUN_TEST : String = "signalPerfRunTest";
+	}
+}

@@ -32,7 +32,7 @@ package org.bixbite.framework.view
 	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during Actor initialistion.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.4.5
+	 * @version 0.5.0
 	 */
 	public class StageView extends DisplayViewContainer 
 	{
