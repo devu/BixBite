@@ -1,5 +1,12 @@
 /**The MIT License
 
+B""""B             B""""B                
+B    B   e  e    e B    B   e eeeee eeee 
+Beeee8ee B  B    B Beeee8ee B   B   B    
+BB     B Be  eeee  BB     B Be  Be  Beee 
+BB     B BB BB   B BB     B BB  BB  BB   
+BBeeeeeB BB BB   B BBeeeee8 BB  BB  BBee
+
 @copy (c) 2012 Devu Design Limited, Daniel Wasilewski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,9 +36,9 @@ package org.bixbite
 	
 	/**
 	 * @version 0.5.0
-	 * footprint 7.88kb; (8.20kb for v0.4.5) StageManager + Stats
+	 * footprint 8.69kb, StageManager + Stats
 	 * 
-	 * Main Bixbite frmework class for development purposes.
+	 * Main BixBite frmework class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO
