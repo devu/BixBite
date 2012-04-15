@@ -29,7 +29,7 @@ package examples.helloworld.behaviour
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class CopyHandler extends Behaviour 
 	{
@@ -51,10 +51,10 @@ package examples.helloworld.behaviour
 			languages[2] = "french";
 			languages[3] = "german";
 			
-			sendRequest(Signals.COPY_REQUEST, onCopyData);
+			addResponder(Signals.COPY_REQUEST, onCopyData, true);
 		}
 		
-		private function onCopyData(data:HelloData):void 
+		private function onCopyData(s:ISignal, data:HelloData):void 
 		{
 			copy = data;
 		}
