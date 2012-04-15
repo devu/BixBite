@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stats.transponder
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.1
      */
 	public class StatsTransponder extends Transponder 

@@ -33,9 +33,9 @@ package org.bixbite.framework.modules.stats
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.1
-	 * footprint ~ 8.02kb
+	 * footprint ~ 8.08kb
 	 * 
 	 * This is fork of stats by mrdoob implemented within BixBite framework.
 	 * 

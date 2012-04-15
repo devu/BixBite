@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stats.behaviour
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour 
@@ -48,10 +48,10 @@ package org.bixbite.framework.modules.stats.behaviour
 		
 		override public function init():void 
 		{
-			sendRequest(StatsSignal.DATA_REQUEST, onData);
+			addResponder(StatsSignal.DATA_REQUEST, onData, true);
 		}
 		
-		private function onData(data:StatsData):void 
+		private function onData(s:ISignal, data:StatsData):void 
 		{
 			this.data = data;
 		}

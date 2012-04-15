@@ -27,7 +27,6 @@ package org.bixbite.framework.modules.stats.view
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import flash.text.TextFormat;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.modules.stats.data.StatsData;
@@ -35,7 +34,7 @@ package org.bixbite.framework.modules.stats.view
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.2
 	 * 
 	 * StatsMonitor

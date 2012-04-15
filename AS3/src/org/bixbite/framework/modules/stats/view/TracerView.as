@@ -23,18 +23,15 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stats.view 
 {
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import flash.text.TextFormat;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayView;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.2
 	 */
 	public class TracerView extends DisplayView 

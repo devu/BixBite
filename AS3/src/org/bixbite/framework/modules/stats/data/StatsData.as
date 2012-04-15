@@ -24,10 +24,11 @@ THE SOFTWARE.
 package org.bixbite.framework.modules.stats.data 
 {
 	import org.bixbite.core.Data;
+	import org.bixbite.core.Signal;
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.1
 	 * 
 	 */
@@ -57,9 +58,9 @@ package org.bixbite.framework.modules.stats.data
 			addSlot(StatsSignal.DATA_REQUEST, onDataRequest);
 		}
 		
-		private function onDataRequest():StatsData
+		private function onDataRequest(s:Signal):void
 		{
-			return this
+			responseTo(s.callerUID, StatsSignal.DATA_REQUEST);
 		}
 		
 	}
