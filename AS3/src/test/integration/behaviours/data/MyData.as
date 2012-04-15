@@ -29,7 +29,7 @@ package test.integration.behaviours.data
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 */
 	public class MyData extends Data 
@@ -46,9 +46,9 @@ package test.integration.behaviours.data
 			addSlot(Signals.TIME_DATA, onTimeDataRequest);
 		}
 		
-		private function onTimeDataRequest():Data
+		private function onTimeDataRequest(s:ISignal):void
 		{
-			return this
+			responseTo(s.callerUID, Signals.TIME_DATA);
 		}
 		
 	}

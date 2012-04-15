@@ -31,10 +31,10 @@ package test.integration.behaviours
 	import test.integration.behaviours.view.MyView;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 * 
-	 * footprint 6.26kb
+	 * footprint 6.32kb
 	 */
 	public class BehaviourFlow extends Compound 
 	{

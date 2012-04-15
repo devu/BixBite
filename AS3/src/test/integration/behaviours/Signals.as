@@ -24,7 +24,7 @@ THE SOFTWARE.
 package test.integration.behaviours 
 {
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 * 
 	 * Ordered by sender

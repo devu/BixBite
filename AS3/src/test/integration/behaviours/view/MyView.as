@@ -24,15 +24,15 @@ THE SOFTWARE.
 package test.integration.behaviours.view 
 {
 	import flash.display.Shape;
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 * 
-	 * fotprint 13.3kb
 	 */
 	public class MyView extends DisplayView 
 	{
@@ -58,7 +58,7 @@ package test.integration.behaviours.view
 			context.y = Math.random() * 600;
 		}
 		
-		private function onChangeColor(s:ISignal):void 
+		private function onChangeColor(s:ISignal, data:IData = null):void
 		{
 			draw(s.params[0]);
 		}

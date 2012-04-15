@@ -28,7 +28,7 @@ package test.integration.behaviours.transponder
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 */
 	public class MyTransponder extends Transponder 

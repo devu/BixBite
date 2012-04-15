@@ -30,7 +30,7 @@ package test.integration.behaviours.behaviour
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 */
 	public class Redraw extends Behaviour
@@ -45,10 +45,10 @@ package test.integration.behaviours.behaviour
 		
 		override public function init():void 
 		{
-			sendRequest(Signals.TIME_DATA, onMyData);
+			addResponder(Signals.TIME_DATA, onMyData, true);
 		}
 		
-		private function onMyData(data:MyData):void 
+		private function onMyData(s:ISignal, data:MyData):void 
 		{
 			ds = data;
 		}
@@ -67,11 +67,11 @@ package test.integration.behaviours.behaviour
 				} else {
 					color = 0x0000FF;
 				}
-				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [color]);
+				responseTo(s.callerUID, Signals.CHANGE_COLOR, [color]);
 			} else {
 				color = 0x000000;
 				sendSignal(Signals.CHANGE_COLOR, [color]);
-				sendSignalTo(s.callerUID, Signals.CHANGE_COLOR, [0xFF00FF]);
+				responseTo(s.callerUID, Signals.CHANGE_COLOR, [0xFF00FF]);
 			}
 			
 			phase++;
