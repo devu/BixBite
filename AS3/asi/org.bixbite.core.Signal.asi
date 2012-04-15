@@ -10,7 +10,7 @@
 	 * 
 	 *   <p>In case you need to send more valuable informations within an signal you can use build in params array.</p>
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Signal implements ISignal
 	{

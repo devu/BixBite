@@ -43,7 +43,7 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Compound extends Sprite implements ICompound
 	{
@@ -60,6 +60,8 @@ package org.bixbite.core
 		private var _stageView	:StageView;
 		
 		private var signal		:ISignal 	= new Signal(_uid);
+		
+		private var behaviours	:Object = { };
 		
 		public function Compound()
 		{
@@ -82,12 +84,22 @@ package org.bixbite.core
 		 * Atom implementation does't exist. It's only contractual and virtual name convention. It has been build into Compound for performance reason.
 		 * @param	type
 		 * @param	behaviour
-		 * @param	autoDispose dispose your Behaviour after being executed.
+		 * @param	autoDispose, dispose your Behaviour after being executed first time.
 		 */
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false):void
 		{
-			var b:Behaviour = new behaviour();
-			b.initialise(emiter, uid, signal, type, slots, autoDispose);
+			behaviours.type = new behaviour();
+			behaviours.type.initialise(removeBehaviour, emiter, uid, signal, type, slots, autoDispose);
+		}
+		
+		/**
+		 * 
+		 * @param	type
+		 */
+		public function removeBehaviour(type:String):void
+		{
+			behaviours.type.dispose();
+			delete behaviours.type
 		}
 		
 		/**

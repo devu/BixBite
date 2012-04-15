@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Component implements IComponent
 	{
@@ -97,15 +97,6 @@ package org.bixbite.core
 			
 			slots 	= null;
 			_uid 	= null;
-		}
-		
-		/**
-		 * This method will remove entire slot of specific type, no matter witch Component is calling, all registered acctors will stop recieveing those signals.
-		 * @param	type
-		 */
-		public function removeAllSlots(type:String):void
-		{
-			emiter.removeAllSlots(this, type);
 		}
 		
 		/**

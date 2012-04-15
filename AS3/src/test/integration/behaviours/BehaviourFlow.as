@@ -31,10 +31,10 @@ package test.integration.behaviours
 	import test.integration.behaviours.view.MyView;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.5.0
 	 * 
-	 * footprint 6.32kb
+	 * footprint 6.37kb
 	 */
 	public class BehaviourFlow extends Compound 
 	{
@@ -50,8 +50,8 @@ package test.integration.behaviours
 				stageView.addView(v);
 			}
 			
-			addBehaviour(Signals.STARTUP	, Startup		, true);
 			addBehaviour(Signals.REDRAW		, Redraw);
+			addBehaviour(Signals.STARTUP	, Startup);
 			
 			startup(Signals.STARTUP);
 		}

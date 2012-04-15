@@ -28,10 +28,11 @@ package org.bixbite.framework.modules.stats.transponder
 	import flash.events.MouseEvent;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signals.StageSignal;
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
      */
 	public class StatsTransponder extends Transponder 

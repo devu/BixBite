@@ -12,7 +12,7 @@
 	 * Use StageView built into Compound as your top view class. Use DisplayView or DisplayViewContainer as a ready to work building blocks.</p>
 	 * <p>The View itself is just a subclass of Component to provide base abstract class ready to extend and work with.</p>
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class View extends Component implements IView
 	{

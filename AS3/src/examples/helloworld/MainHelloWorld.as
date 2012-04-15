@@ -30,9 +30,9 @@ package examples.helloworld
 	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.2
-	 * footprint 6.49kb.
+	 * footprint 6.57kb.
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */

@@ -19,7 +19,7 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Compound extends Sprite implements ICompound
 	{
@@ -29,6 +29,7 @@
 		private var _module : Boolean;
 		private var _stageView : StageView;
 		private var signal : ISignal;
+		private var behaviours : Object;
 
 		public function get module () : Boolean;
 		function set module (value:Boolean) : void;
@@ -50,9 +51,15 @@
 		 * Atom implementation does't exist. It's only contractual and virtual name convention. It has been build into Compound for performance reason.
 		 * @param	type
 		 * @param	behaviour
-		 * @param	autoDispose dispose your Behaviour after being executed.
+		 * @param	autoDispose, dispose your Behaviour after being executed first time.
 		 */
 		public function addBehaviour (type:String, behaviour:Class, autoDispose:Boolean=false) : void;
+
+		/**
+		 *
+		 * @param	type
+		 */
+		public function removeBehaviour (type:String) : void;
 
 		/**
 		 * Start Compound with a specific signal type.

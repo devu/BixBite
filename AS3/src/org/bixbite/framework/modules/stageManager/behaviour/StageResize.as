@@ -23,18 +23,20 @@ THE SOFTWARE.
 
 package org.bixbite.framework.modules.stageManager.behaviour 
 {
+	import flash.display.Stage;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.modules.stageManager.data.StageData;
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 */
 	public class StageResize extends Behaviour 
 	{
-		private var stageData:StageData;
+		private var data	:StageData;
+		private var stage	:Stage;
 		
 		public function StageResize() 
 		{
@@ -48,12 +50,20 @@ package org.bixbite.framework.modules.stageManager.behaviour
 		
 		private function onData(s:ISignal, data:StageData):void
 		{
-			stageData = data;
+			this.data = data;
+			this.stage = data.stage;
 		}
 		
-		override public function execute(s:ISignal):void 
+		override public function execute(s:ISignal):void
 		{
-			sendSignal(StageSignal.RESIZE);
+			var currentOrientation:String = (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
+			
+			if (data.orientation != currentOrientation){
+				data.orientation = currentOrientation;
+				sendSignal(StageSignal.ORIENTATION_CHANGED, [currentOrientation]);
+			}
+			
+			sendSignal(StageSignal.RESIZE, [stage.stageWidth, stage.stageHeight]);
 		}
 		
 	}

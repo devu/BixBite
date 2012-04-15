@@ -1,5 +1,6 @@
 ﻿package org.bixbite.framework.modules.stageManager.behaviour
 {
+	import flash.display.Stage;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.modules.stageManager.data.StageData;
@@ -7,12 +8,13 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 */
 	public class StageResize extends Behaviour
 	{
-		private var stageData : StageData;
+		private var data : StageData;
+		private var stage : Stage;
 
 		public function StageResize ();
 

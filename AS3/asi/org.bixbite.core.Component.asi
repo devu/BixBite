@@ -12,7 +12,7 @@
 	 *   <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
 	 * As well as provide set of commonly shared methods for communication</p>
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Component implements IComponent
 	{
@@ -65,11 +65,5 @@
 		 * Subclasses should override this method and call super.destroy().
 		 */
 		public function destroy () : void;
-
-		/**
-		 * This method will remove entire slot of specific type, no matter witch Component is calling, all registered acctors will stop recieveing those signals.
-		 * @param	type
-		 */
-		public function removeAllSlots (type:String) : void;
 	}
 }

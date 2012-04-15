@@ -4,11 +4,11 @@
 	import flash.display.Stage;
 
 	/**
-	 * StageView, is a classic implementation of main MVC paradigm, when views can be nested and they need a root or 'Top View' class to start from.
-	 * This class serve this purpose. It is also part of Composite pattern and directly extends DisplayViewContainer as the highest in display list hierarchy. 
-	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during Actor initialistion.
+	 * StageView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
+	 * This class serve this purpose. Directly extends DisplayViewContainer as the highest in display list hierarchy. 
+	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during View component initialistion.
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class StageView extends DisplayViewContainer
 	{

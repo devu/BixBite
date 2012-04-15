@@ -29,12 +29,16 @@ package org.bixbite.framework.modules.stageManager.data
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 */
 	public class StageData extends Data 
 	{
-		private var stage:Stage;
+		public static const PORTRAIT	:String = "stageOrientationPortrait";
+		public static const LANDSCAPE	:String = "stageOrientationLandscape";
+		
+		public var stage		:Stage;
+		public var orientation	:String = "";
 		
 		public function StageData(align:String = "TL", scaleMode:String = "noScale") 
 		{

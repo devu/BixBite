@@ -37,12 +37,13 @@ package org.bixbite.core
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Behaviour 
 	{
 		public var signal		:ISignal;
 		
+		private var deconstruct	:Function;
 		private var emiter		:Emiter;
 		private var uid			:String;
 		private var type		:String;
@@ -56,8 +57,9 @@ package org.bixbite.core
 			
 		}
 		
-		BIXBITE function initialise(emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean = false):void
+		BIXBITE function initialise(deconstruct:Function, emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean = false):void
 		{
+			this.deconstruct 	= deconstruct;
 			this.emiter 		= emiter;
 			this.uid 			= uid;
 			this.signal 		= signal;
@@ -77,7 +79,7 @@ package org.bixbite.core
 		private function exe(s:ISignal):void
 		{
 			execute(s);
-			if (autoDispose) dispose();
+			if (autoDispose) deconstruct(type);
 		}
 		
 		/**
@@ -85,12 +87,12 @@ package org.bixbite.core
 		 */
 		public function init():void
 		{
-			//abstract
+			//abstract but not mendatory
 		}
 		
 		/**
 		 * Abstract method to hold executable block of code, that perform some logic.
-		 * @param	s
+		 * @param	s signal being sent by coresponding Transponder
 		 */
 		public function execute(s:ISignal):void
 		{
@@ -98,8 +100,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Deconstructor of behaviour. 
-		 * When overriden in subclass must call super.dispose()
+		 * Deconstructor of behaviour.
 		 */
 		public function dispose():void
 		{
@@ -114,9 +115,10 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Add responder into Atom on order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
 		 * @param	type
 		 * @param	callback
+		 * @param	autoRequest request data immediately
 		 */
 		public function addResponder(type:String, callback:Function, autoRequest:Boolean = false):void
 		{
@@ -125,8 +127,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Request data component.
-		 * 
+		 * Request data component by type.
 		 * @param	type
 		 */
 		public function sendRequest(type:String):void
@@ -158,7 +159,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * SRS - Slot Reference mechanism
+		 * SRS - Slot Reference System
 		 * @param	type
 		 * @return
 		 */

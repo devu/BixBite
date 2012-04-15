@@ -15,7 +15,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.3
 	 *   footprint 10.1kb
 	 *   
@@ -27,7 +27,7 @@
 	 *     Taking under consideration all that, results below are still very satisfactory.
 	 *   
 	 *     Results: (0.5.0) ADTV (Flash Player 11,1,102,63 - Chrome) footprint 10.1kb
-	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 0.632ms
+	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 0.432ms
 	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 3.182ms
 	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 9.909ms
 	 *   TASK: destroy	Views	10.000	COUNT: 10	TIME: 39.70ms

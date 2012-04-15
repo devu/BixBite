@@ -11,11 +11,12 @@
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class Behaviour
 	{
 		public var signal : ISignal;
+		private var deconstruct : Function;
 		private var emiter : Emiter;
 		private var uid : String;
 		private var type : String;
@@ -26,7 +27,7 @@
 
 		public function Behaviour ();
 
-		function initialise (emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean=false) : void;
+		function initialise (deconstruct:Function, emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean=false) : void;
 
 		/**
 		 * Internal pre-execute method.
@@ -41,25 +42,25 @@
 
 		/**
 		 * Abstract method to hold executable block of code, that perform some logic.
-		 * @param	s
+		 * @param	s signal being sent by coresponding Transponder
 		 */
 		public function execute (s:ISignal) : void;
 
 		/**
-		 * Deconstructor of behaviour. 
-		 * When overriden in subclass must call super.dispose()
+		 * Deconstructor of behaviour.
 		 */
 		public function dispose () : void;
 
 		/**
-		 *
+		 * Add responder into Atom on order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
 		 * @param	type
 		 * @param	callback
+		 * @param	autoRequest request data immediately
 		 */
 		public function addResponder (type:String, callback:Function, autoRequest:Boolean=false) : void;
 
 		/**
-		 * Request data component.
+		 * Request data component by type.
 		 * @param	type
 		 */
 		public function sendRequest (type:String) : void;
@@ -80,7 +81,7 @@
 		public function responseTo (uid:String, type:String, params:Array=null, data:IData=null) : void;
 
 		/**
-		 * SRS - Slot Reference mechanism
+		 * SRS - Slot Reference System
 		 * @param	type
 		 * @return
 		 */

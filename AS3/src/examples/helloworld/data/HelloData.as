@@ -28,7 +28,7 @@ package examples.helloworld.data
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * 
 	 * This Data component is a copy holder that will reponse to Atom on reqeted data.
 	 * Data component don't care who is calling, will respond as soon as a signal has been recieved.

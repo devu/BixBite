@@ -32,9 +32,9 @@ package test.performance.signalperf
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.2
-	 * footprint 9.55kb
+	 * footprint 10.0kb
 	 * 
 	 * Subject of this test is to check performance of the current BixBite signal flow implementation.
 	 * 
@@ -49,14 +49,14 @@ package test.performance.signalperf
 	 * Results (Flash Player 11,1,102,63 - Chrome)
 	 * Signals traveling from View -> Transponder -> Atom -> View. (ADTV);
 	 * 
-	 * v0.5.0 SRS
+	 * v0.5.2 SRS
 	 * 1.000 		- no time:)	(3k signals in circulation)
 	 * 10.000 		- 0.9ms		(30k signals in circulation)
 	 * 100.000		- 9ms		(300k signals in circulation)
 	 * 1.000.000	- 94ms		(3M signals in circulation)
-	 * 10.000.000	- 948ms		(30M signals in circulation)
+	 * 10.000.000	- 947ms		(30M signals in circulation)
 	 * 
-	 * v0.5.0
+	 * v0.5.2
 	 * 1.000 		- 1			(3k signals in circulation)
 	 * 10.000 		- 12ms		(30k signals in circulation)
 	 * 100.000		- 125ms		(300k signals in circulation)
@@ -91,6 +91,7 @@ package test.performance.signalperf
 		public function SignalPerformance() 
 		{
 			var stageManager	:StageManager = new StageManager();
+			
 			var stats			:Stats = new Stats();
 			stats.enableTracer();
 			

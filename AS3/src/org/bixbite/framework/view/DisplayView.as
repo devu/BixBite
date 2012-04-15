@@ -31,13 +31,13 @@ package org.bixbite.framework.view
 	import org.bixbite.framework.interfaces.IDisplayViewContainer;
 	
 	/**
-	 * DisplayView, part of Composite pattern of the display list. 
-	 * The basic View extention to work with flash native DisplayObject.
-	 * Solution built upon Decoration pattern, to wrap up native Objects into BixBite structure.
-	 * Lets you control/expose selected aspects of your application or structure.
+	 * <p>DisplayView, part of Composite pattern of the display list. It is a leaf, end point of tree structure, so children cannot be added into it.
+	 * We recomend to use native Shape class most of the time when your context is simple and not required further extentions.
+	 * This is basic View extention to work with flash native DisplayObjects.
+	 * Solution built upon Decoration pattern, to wrap up native Display Objects into BixBite View structure.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.2
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
@@ -54,7 +54,7 @@ package org.bixbite.framework.view
 		}
 		
 		/**
-		 * 
+		 * Set context of this view, it can be any kind of native DisplayObject.
 		 * @param	name
 		 * @param	object
 		 */

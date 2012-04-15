@@ -29,12 +29,14 @@ package org.bixbite.framework.modules.stats.view
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.factories.TextFactory;
+	import org.bixbite.framework.modules.stageManager.data.StageData;
 	import org.bixbite.framework.modules.stats.data.StatsData;
+	import org.bixbite.framework.signals.StageSignal;
 	import org.bixbite.framework.signals.StatsSignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.2
 	 * 
 	 * StatsMonitor
@@ -47,13 +49,13 @@ package org.bixbite.framework.modules.stats.view
 		
 		private var monitor			:Bitmap;
 		private var graph			:BitmapData;
-		
+
+		private var panel			:Sprite;
 		private var info_fps		:TextField;
 		private var info_ms			:TextField;
 		private var info_mem		:TextField;
 		private var info_max		:TextField;
 		private var info_orient		:TextField;
-		private var panel			:Sprite;
 		
 		/**
 		 * Constructor
@@ -83,16 +85,10 @@ package org.bixbite.framework.modules.stats.view
 			info_max 	= textFactory.createSimpleText(panel, 3, 26, 70, 18, 0xFF25F0);
 			info_orient = textFactory.createSimpleText(panel, 3, 34, 70, 18, 0xDEDEDE);
 			
-			panel.addChild(info_fps);
-			panel.addChild(info_ms);
-			panel.addChild(info_mem);
-			panel.addChild(info_max);
-			panel.addChild(info_orient);
-			
 			addSlot(StatsSignal.DRAW, drawGraph);
 			addSlot(StatsSignal.UPDATE, update);
 			addSlot(StatsSignal.UPDATE_REALTIME, updateRealtime);
-			//addSlot(StageSignal.RESIZE, onStageResize);
+			addSlot(StageSignal.ORIENTATION_CHANGED, onOrietnationChanged);
 			
 			setContext("statsPanel", panel);
 		}
@@ -135,13 +131,11 @@ package org.bixbite.framework.modules.stats.view
 			
 			info_ms.text = data.infoMS;
 		}
-		/*
-		private function onStageResize(s:StageSignal):void 
+		
+		private function onOrietnationChanged(s:ISignal):void 
 		{
-			//trace(this, "resize");
-			//info_orient.text = (s.orientation == "stageOrientationPortrait") ? "PORTRAIT" : "LANDSCAPE";
+			info_orient.text = (s.params[0] == StageData.PORTRAIT) ? "PORTRAIT" : "LANDSCAPE";
 		}
-		*/
 		
 	}
 

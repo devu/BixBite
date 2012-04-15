@@ -28,7 +28,7 @@ package test.integration.behaviours.behaviour
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.5.0
 	 */
 	public class Startup extends Behaviour 

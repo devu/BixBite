@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stats.view
 	import org.bixbite.framework.view.DisplayView;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.2
 	 */
 	public class TracerView extends DisplayView 

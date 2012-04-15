@@ -24,7 +24,7 @@ THE SOFTWARE.
 package test.performance.signalperf 
 {
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 */
 	public class Signals 
 	{

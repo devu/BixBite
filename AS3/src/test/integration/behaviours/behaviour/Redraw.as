@@ -30,12 +30,12 @@ package test.integration.behaviours.behaviour
 	import test.integration.behaviours.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.5.0
 	 */
 	public class Redraw extends Behaviour
 	{
-		private var ds		:MyData;
+		private var data	:MyData;
 		private var phase	:int = 0;
 		
 		public function Redraw() 
@@ -50,13 +50,13 @@ package test.integration.behaviours.behaviour
 		
 		private function onMyData(s:ISignal, data:MyData):void 
 		{
-			ds = data;
+			this.data = data;
 		}
 		
 		override public function execute(s:ISignal):void
 		{
-			var dif:int = getTimer() - ds.prevTime;
-			ds.prevTime = getTimer();
+			var dif:int = getTimer() - data.prevTime;
+			data.prevTime = getTimer();
 			
 			var color:uint;
 			if(phase % 2){

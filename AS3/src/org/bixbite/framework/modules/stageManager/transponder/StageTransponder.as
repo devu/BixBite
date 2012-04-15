@@ -24,11 +24,12 @@ THE SOFTWARE.
 package org.bixbite.framework.modules.stageManager.transponder 
 {
 	import flash.events.Event;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 */
 	public class StageTransponder extends Transponder 
@@ -41,7 +42,13 @@ package org.bixbite.framework.modules.stageManager.transponder
 		
 		override public function init():void 
 		{
+			addSlot(StageSignal.UPDATE, onStageUpdate);
 			addSensor(Event.RESIZE, onStageResize);
+		}
+		
+		private function onStageUpdate(s:ISignal):void 
+		{
+			sendSignal(StageSignal.RESIZE);
 		}
 		
 		private function onStageResize(e:Event):void 

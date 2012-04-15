@@ -28,7 +28,7 @@ package org.bixbite.framework.modules.stats.data
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 * 
 	 */

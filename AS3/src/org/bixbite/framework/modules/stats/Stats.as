@@ -30,10 +30,11 @@ package org.bixbite.framework.modules.stats
 	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
 	import org.bixbite.framework.modules.stats.view.StatsMonitor;
 	import org.bixbite.framework.modules.stats.view.TracerView;
+	import org.bixbite.framework.signals.StageSignal;
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.1
 	 * footprint ~ 8.08kb
 	 * 
@@ -42,29 +43,62 @@ package org.bixbite.framework.modules.stats
 	 */
 	public class Stats extends Compound 
 	{
-		private var monitor:StatsMonitor;
+		private var data	:StatsData;
+		private var monitor	:StatsMonitor;
+		private var trans	:StatsTransponder;
+		private var tracer	:TracerView;
+		
+		private var isMonitored	:Boolean = false;
 		
 		/**
 		 * Constructor
 		 */
 		public function Stats() 
 		{
-			var data	:StatsData 			= new StatsData();
-			var trnspdr	:StatsTransponder 	= new StatsTransponder();
-			monitor 						= new StatsMonitor();
+			data 	= new StatsData();
+			trans 	= new StatsTransponder();
+			monitor = new StatsMonitor();
 			stageView.addView(monitor);
 			
 			addBehaviour(StatsSignal.CALCULATE, Calculate);
 			
-			startup(StatsSignal.START);
+			startMonitor();
 		}
 		
 		public function enableTracer():void
 		{
-			var tracer	:TracerView 		= new TracerView();
+			tracer 	= new TracerView();
 			monitor.addView(tracer);
 			
 			addBehaviour(StatsSignal.TRACE, Trace);
+		}
+		
+		public function startMonitor():void
+		{
+			if(!isMonitored){
+				monitor.sendSignal(StatsSignal.START);
+				monitor.sendSignal(StageSignal.UPDATE);
+				isMonitored = true;
+			}
+		}
+		
+		public function pauseMonitor():void
+		{
+			if(isMonitored){
+				monitor.sendSignal(StatsSignal.PAUSE);
+				isMonitored = false;
+			}
+		}
+		
+		public function destroy():void
+		{
+			stageView.removeView(monitor);
+			
+			data.destroy();
+			trans.destroy();
+			monitor.destroy();
+			
+			removeBehaviour(StatsSignal.CALCULATE);
 		}
 		
 	}

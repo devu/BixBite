@@ -7,13 +7,13 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 * @since 0.4.0
 	 *   
 	 *     This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 *   
 	 *     Bixbite
-	 *   Footprint 6.19 kb
+	 *   Footprint 6.25 kb
 	 *   
 	 *     Robotlegs
 	 *   Footprint 16.7 kb
@@ -29,7 +29,7 @@
 	 *   + Type safe API.
 	 *   + Completly loosely decoupled classes.
 	 *   + Less classes to get job done.
-	 *   + Smallest Footprint fully functional core has only 4.0 kb;
+	 *   + Smallest Footprint fully functional core has below 4.0 kb footprint.
 	 *   + Very low memory consumption
 	 *   + Faster execution any part of the system.
 	 *   + Smallest startup lag.

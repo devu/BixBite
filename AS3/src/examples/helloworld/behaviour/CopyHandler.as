@@ -29,7 +29,7 @@ package examples.helloworld.behaviour
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.1
+	 * @version  compatibility - 0.5.2
 	 */
 	public class CopyHandler extends Behaviour 
 	{
