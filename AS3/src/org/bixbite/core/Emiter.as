@@ -27,6 +27,7 @@ package org.bixbite.core
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ICompound;
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -173,30 +174,16 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Send data request
-		 * @param   channel, slot channel
-		 * @param	type
-		 * @param	signal
-		 * @param	callback
-		 */
-		BIXBITE function request(channel:Object, type:String, callback:Function):void 
-		{
-			if (!channel[type]) return
-			for each (var f:Function in channel[type]) callback(f());
-		}
-		
-		/**
-		 * @private
 		 * Send response directly to specific Component base on its unique ID
 		 * @param   channel, slot channel
 		 * @param	callerUID
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function response(channel:Object, callerUID:String, type:String, signal:ISignal):void 
+		BIXBITE function response(channel:Object, targetUID:String, type:String, signal:ISignal, data:IData = null):void 
 		{
 			if (!channel[type]) return;
-			channel[type][callerUID](signal);
+			channel[type][targetUID](signal, data);
 		}
 		
 		/**

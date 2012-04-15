@@ -29,7 +29,7 @@ package org.bixbite.framework.modules.stageManager.behaviour
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.1
 	 */
 	public class StageResize extends Behaviour 
@@ -43,10 +43,10 @@ package org.bixbite.framework.modules.stageManager.behaviour
 		
 		override public function init():void 
 		{
-			sendRequest(StageSignal.DATA_REQUEST, onStageData);
+			addResponder(StageSignal.DATA_REQUEST, onData, true);
 		}
 		
-		private function onStageData(data:StageData):void 
+		private function onData(s:ISignal, data:StageData):void
 		{
 			stageData = data;
 		}

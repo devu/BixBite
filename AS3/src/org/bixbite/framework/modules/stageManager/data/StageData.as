@@ -25,10 +25,11 @@ package org.bixbite.framework.modules.stageManager.data
 {
 	import flash.display.Stage;
 	import org.bixbite.core.Data;
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.1
 	 */
 	public class StageData extends Data 
@@ -47,9 +48,9 @@ package org.bixbite.framework.modules.stageManager.data
 			addSlot(StageSignal.DATA_REQUEST, onDataRequest);
 		}
 		
-		private function onDataRequest():StageData 
+		private function onDataRequest(s:ISignal):void
 		{
-			return this
+			responseTo(s.callerUID, StageSignal.DATA_REQUEST);
 		}
 		
 	}

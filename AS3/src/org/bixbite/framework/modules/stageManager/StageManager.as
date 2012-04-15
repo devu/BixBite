@@ -31,10 +31,10 @@ package org.bixbite.framework.modules.stageManager
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 * 
-	 * footprint 5.64kb
+	 * footprint 5.69kb
 	 */
 	public class StageManager extends Compound 
 	{

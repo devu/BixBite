@@ -70,6 +70,17 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * 
+		 * @param	uid
+		 * @param	type
+		 * @param	params
+		 */
+		public function responseTo(targetUID:String, type:String):void
+		{
+			emiter.response(slots.a, targetUID, type, signal, this);
+		}
+		
+		/**
 		 * @inheritDoc
 		 */
 		override public function destroy():void 

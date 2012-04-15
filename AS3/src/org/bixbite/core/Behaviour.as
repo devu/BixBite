@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -113,14 +114,24 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Request data component.
 		 * 
 		 * @param	type
 		 * @param	callback
 		 */
-		public function sendRequest(type:String, callback:Function):void
+		public function addResponder(type:String, callback:Function, autoRequest:Boolean = false):void
 		{
-			emiter.request(slots.m, type, callback);
+			emiter.addSlot(slots.a, uid, type, callback);
+			if (autoRequest) sendRequest(type);
+		}
+		
+		/**
+		 * Request data component.
+		 * 
+		 * @param	type
+		 */
+		public function sendRequest(type:String):void
+		{
+			emiter.broadcast(slots.m, type, signal);
 		}
 		
 		/**
@@ -140,10 +151,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignalTo(uid:String, type:String, params:Array = null):void
+		public function responseTo(uid:String, type:String, params:Array = null, data:IData = null):void
 		{
 			signal.params = params;
-			emiter.response(slots.v, uid, type, signal);
+			emiter.response(slots.v, uid, type, signal, data);
 		}
 		
 		/**
