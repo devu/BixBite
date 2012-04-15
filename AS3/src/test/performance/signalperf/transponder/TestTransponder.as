@@ -24,14 +24,12 @@ THE SOFTWARE.
 package test.performance.signalperf.transponder 
 {
 	import flash.events.MouseEvent;
-	import flash.utils.getTimer;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.signals.StatsSignal;
 	import test.performance.signalperf.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class TestTransponder extends Transponder 
 	{

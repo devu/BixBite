@@ -32,9 +32,9 @@ package test.performance.signalperf
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.2
-	 * footprint 9.52kb
+	 * footprint 9.55kb
 	 * 
 	 * Subject of this test is to check performance of the current BixBite signal flow implementation.
 	 * 
@@ -47,7 +47,7 @@ package test.performance.signalperf
 	 * View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
 	 * 
 	 * Results (Flash Player 11,1,102,63 - Chrome)
-	 * Signals traveling from View -> Transponder -> Atom -> View.
+	 * Signals traveling from View -> Transponder -> Atom -> View. (ADTV);
 	 * 
 	 * v0.5.0 SRS
 	 * 1.000 		- no time:)	(3k signals in circulation)
@@ -62,6 +62,7 @@ package test.performance.signalperf
 	 * 100.000		- 125ms		(300k signals in circulation)
 	 * 1.000.000	- 1289ms	(3M signals in circulation)
 	 * 
+	 * Signals traveling from View -> Controller -> Model -> View. (MVC)
 	 * v0.4.4 SRS in use!
 	 * 1.000 		- no time:)	(3k signals in circulation)
 	 * 10.000 		- 1ms		(30k signals in circulation)

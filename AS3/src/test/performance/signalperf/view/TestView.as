@@ -30,7 +30,7 @@ package test.performance.signalperf.view
 	import test.performance.signalperf.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class TestView extends View
 	{
