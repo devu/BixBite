@@ -29,7 +29,7 @@ package examples.mudularstructure
 	import org.bixbite.framework.modules.stats.Stats;
 	
 	/**
-     * @version compatibility 0.5.0
+     * @version compatibility 0.5.1
      * @since 0.4.3
      * total footprint 10.7kb
      *
@@ -56,8 +56,8 @@ package examples.mudularstructure
         }
        
         /**
-         * Now, this is something worth consideration. Each functional triad might have some public methods exposed to control internal functional modules.
-         * This way you can easily provide some API for your modules, than can be controlled from main Application directly.
+         * Now, this is something worth consideration. Each functional Compound might have some public methods exposed to control internal functional modules.
+         * This way you can easily provide some API for your modules, than can be controlled from main Compound/Application directly.
          * However indirectly you can still use Signals to even keep your modules decoupled!
          *
          * BixBite framework assuming this is perfectly fine to use both ways in this case.
