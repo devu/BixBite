@@ -7,7 +7,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class CopyHandler extends Behaviour
 	{
@@ -19,7 +19,7 @@
 
 		public function init () : void;
 
-		private function onCopyData (data:HelloData) : void;
+		private function onCopyData (s:ISignal, data:HelloData) : void;
 
 		public function execute (s:ISignal) : void;
 	}

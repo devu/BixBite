@@ -13,10 +13,13 @@
 	 *   Contains collection of framework modules.
 	 *   
 	 *     TODO
-	 *   0.5.1
+	 *   0.5.2
 	 *   - more examples, integration and performance tests
 	 *   
 	 *     LOG:
+	 *   0.5.1
+	 *   - sync/async data request/response
+	 *   - type safe data on response
 	 *   0.5.0
 	 *   - rebuild docs, libs, modules and all examples based on new architecture.
 	 *   0.4.9

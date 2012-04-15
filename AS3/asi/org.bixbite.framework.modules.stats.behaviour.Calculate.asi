@@ -9,7 +9,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour
@@ -23,7 +23,7 @@
 
 		public function init () : void;
 
-		private function onData (data:StatsData) : void;
+		private function onData (s:ISignal, data:StatsData) : void;
 
 		public function execute (s:ISignal) : void;
 	}

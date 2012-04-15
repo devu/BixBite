@@ -41,6 +41,14 @@
 
 		/**
 		 *
+		 * @param	uid
+		 * @param	type
+		 * @param	params
+		 */
+		public function responseTo (targetUID:String, type:String) : void;
+
+		/**
+		 *
 		 * @inheritDoc
 		 */
 		public function destroy () : void;
