@@ -26,7 +26,7 @@ package test.performance.coreperf.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class Tester extends Transponder 
 	{

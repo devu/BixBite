@@ -26,7 +26,7 @@ package test.performance.coreperf.view
 	import org.bixbite.core.View;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class TestView extends View 
 	{

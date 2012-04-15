@@ -26,7 +26,7 @@ package test.performance.coreperf.data
 	import org.bixbite.core.Data;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class TestData extends Data 
 	{
