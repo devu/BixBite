@@ -29,30 +29,30 @@ package examples.helloflash
 	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 * @since 0.4.0
 	 * 
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 6.13 kb
+	 * Footprint 6.19 kb
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb
 	 * 
 	 * General coparison an conclusions:
 	 * Bixbite
-	 * +/- Original MVC paradigm. Considering popularity of other frameworks based on not original MVC paradigm it might be hard to change habbits.
+	 * +/- ADTV paradigm (Atom, Data, Transponder, View). Considering popularity of other frameworks based on MVC paradigm it might be hard to change habbits.
 	 *
 	 * + Self registered system
 	 * + Signal/Slot and Request/Response notification system inspired by QT4
 	 * + Signals are faster than native events
-	 * + Signal reference mechanism will let you operate with local callback native speed.
+	 * + SRS - Signal Reference System will let you operate with nearly local callback native speed.
 	 * + Type safe API.
 	 * + Completly loosely decoupled classes.
 	 * + Less classes to get job done.
-	 * + Smallest Footprint fully functional core has only 2.80 kb;
-	 * + Much smaller memory consumption
+	 * + Smallest Footprint fully functional core has only 4.0 kb;
+	 * + Very low memory consumption
 	 * + Faster execution any part of the system.
 	 * + Smallest startup lag.
 	 * + Cleaner no Boiler-plate code.
@@ -65,7 +65,7 @@ package examples.helloflash
 	 * - Not unit testing yet.
 	 
 	 * Robotlegs
-	 * +/- Breaks rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. It might not be concidered as an issue. Is just the way it is. As long as rule of the game are clear and not abused by developers. 
+	 * +/- Breaks rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. It might not be concidered as an issue. Is just the way it is. As long as rule of the game is clear and not abused by developers. 
 	 *
 	 * + Good support, active development and documentation.
 	 * + Very well solves Dependency injection implementation. 
@@ -83,7 +83,7 @@ package examples.helloflash
 	 * - easy to leak memory.
 	 * - to much construction/deconstruction needed slowing system down.
 	 * - Additional levels of abstraction to the MVC and manualy registered system forcing you to cross reference actors, this destroying loosely decoupled classes principal.
-	 * - To much influenced by PureMVC on architecture level trying to cmpete with already bad architecture by mimics it.
+	 * - To much influenced by PureMVC on architecture level trying to compete with already overdone architecture by mimics it.
 
 	 */
 	public class HelloFlash extends Compound

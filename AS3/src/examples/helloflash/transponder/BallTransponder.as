@@ -30,7 +30,7 @@ package examples.helloflash.transponder
 	import examples.helloflash.Signals;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class BallTransponder extends Transponder 
 	{

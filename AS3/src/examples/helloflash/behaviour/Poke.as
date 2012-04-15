@@ -28,7 +28,7 @@ package examples.helloflash.behaviour
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.0
+	 * @version  compatibility - 0.5.1
 	 */
 	public class Poke extends Behaviour 
 	{
