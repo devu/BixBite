@@ -37,9 +37,7 @@
     <string>src\org\bixbite\examples\helloearth\model\earthmodel.as</string>
     <string>src\org\bixbite\examples\helloearth\helloearth.as</string>
     <string>src\org\bixbite\examples\helloflash\view\mainview.as</string>
-    <string>src\org\bixbite\framework\modules\stats\stats.as</string>
     <string>src\org\bixbite\framework\modules\stats\view\statstracer.as</string>
-    <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
     <string>src\org\bixbite\framework\modules\stats\signal\statssignal.as</string>
     <string>src\org\bixbite\framework\modules\stats\model\statsmodel.as</string>
     <string>src\org\bixbite\framework\modules\stats\controller\statscontroller.as</string>
@@ -133,9 +131,7 @@
     <string>src\org\bixbite\examples\helloearth\model\earthmodel.as</string>
     <string>src\org\bixbite\examples\helloearth\helloearth.as</string>
     <string>src\org\bixbite\examples\helloflash\view\mainview.as</string>
-    <string>src\org\bixbite\framework\modules\stats\stats.as</string>
     <string>src\org\bixbite\framework\modules\stats\view\statstracer.as</string>
-    <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
     <string>src\org\bixbite\framework\modules\stats\signal\statssignal.as</string>
     <string>src\org\bixbite\framework\modules\stats\model\statsmodel.as</string>
     <string>src\org\bixbite\framework\modules\stats\controller\statscontroller.as</string>

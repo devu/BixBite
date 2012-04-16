@@ -49,8 +49,10 @@
     <class>org.bixbite.framework.factories.GraphicsFactory</class>
     <class>org.bixbite.framework.factories.Graphics</class>
     <class>org.bixbite.framework.factories.TextFactory</class>
+    <class>org.bixbite.framework.modules.stats.Stats</class>
     <class>org.bixbite.framework.modules.stats.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.modules.stats.data.StatsData</class>
+    <class>org.bixbite.framework.modules.stats.view.StatsMonitor</class>
     <class>org.bixbite.framework.modules.stats.view.TracerView</class>
     <class>org.bixbite.framework.modules.stats.behaviour.Calculate</class>
     <class>org.bixbite.framework.modules.stats.behaviour.Trace</class>
