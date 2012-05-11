@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework.modules.activeGrid
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.activeGrid.behaviour.CalculateGrid;
+	import org.bixbite.framework.modules.activeGrid.data.ActiveGridData;
+	import org.bixbite.framework.modules.activeGrid.view.ActiveGridView;
+	import org.bixbite.framework.modules.stageManager.StageManager;
+	import org.bixbite.framework.signals.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.3
+	 * @since 0.5.3
+	 */
+	public class ActiveGridLayout extends Compound
+	{
+		public function ActiveGridLayout ();
+	}
+}

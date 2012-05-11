@@ -1,0 +1,25 @@
+﻿package org.bixbite.framework.modules.activeGrid.view
+{
+	import flash.display.Shape;
+	import flash.display.Sprite;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.signals.ActiveGridSignal;
+	import org.bixbite.framework.view.DisplayView;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class ActiveGridView extends DisplayView
+	{
+		private var content : Sprite;
+
+		public function ActiveGridView ();
+
+		public function init () : void;
+
+		private function onSetGrid (s:ISignal) : void;
+
+		private function onDistribute (s:ISignal) : void;
+	}
+}

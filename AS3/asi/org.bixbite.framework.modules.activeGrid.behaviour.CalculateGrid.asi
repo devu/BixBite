@@ -1,0 +1,41 @@
+﻿package org.bixbite.framework.modules.activeGrid.behaviour
+{
+	import flash.display.Stage;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.activeGrid.data.ActiveGridData;
+	import org.bixbite.framework.modules.stageManager.data.StageData;
+	import org.bixbite.framework.signals.ActiveGridSignal;
+	import org.bixbite.framework.signals.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.3
+	 * @since 0.5.3
+	 */
+	public class CalculateGrid extends Behaviour
+	{
+		private var stageData : StageData;
+		private var gridData : ActiveGridData;
+		private var stage : Stage;
+		private var col : int;
+		private var row : int;
+		private var boxes : Array;
+
+		public function CalculateGrid ();
+
+		public function init () : void;
+
+		private function onStageData (s:ISignal, data:StageData) : void;
+
+		private function onGridData (s:ISignal, data:ActiveGridData) : void;
+
+		public function execute (s:ISignal) : void;
+
+		private function distribute () : void;
+
+		private function checkHRange () : int;
+
+		private function checkVRange () : int;
+	}
+}
