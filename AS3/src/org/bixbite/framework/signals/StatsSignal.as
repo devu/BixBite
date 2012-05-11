@@ -25,7 +25,7 @@ package org.bixbite.framework.signals
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.3
 	 * @since 0.4.1
 	 */
 	public class StatsSignal

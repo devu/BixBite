@@ -7,7 +7,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.4.1
 	 */
 	public class StageData extends Data
@@ -17,7 +17,7 @@
 		public var stage : Stage;
 		public var orientation : String;
 
-		public function StageData (align:String="TL", scaleMode:String="noScale");
+		public function StageData ();
 
 		public function init () : void;
 

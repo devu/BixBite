@@ -43,7 +43,7 @@ package test.performance.signalperf.view
 		
 		override public function init():void 
 		{
-			addSlot(Signals.START_TEST, onStartTest);
+			addSlot(Signals.BEGIN_TEST, onBeginTest);
 			addSlot(Signals.RUN_TEST, onRunTest);
 		}
 		
@@ -52,7 +52,7 @@ package test.performance.signalperf.view
 			
 		}
 		
-		private function onStartTest(s:ISignal):void
+		private function onBeginTest(s:ISignal):void
 		{
 			slotReference = getSlotReference(Signals.RUN_TEST)[0];
 			

@@ -20,6 +20,6 @@
 
 		private function onRunTest (s:ISignal) : void;
 
-		private function onStartTest (s:ISignal) : void;
+		private function onBeginTest (s:ISignal) : void;
 	}
 }

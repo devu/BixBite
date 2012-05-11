@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stats.behaviour
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour 

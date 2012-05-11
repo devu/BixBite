@@ -25,14 +25,19 @@ package org.bixbite.framework.signals
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.5.0
+	 * @version 0.5.3
 	 */
 	public class StageSignal
 	{
-		public static const ORIENTATION_CHANGED	:String = "stageOrientationChanged";
-		public static const RESIZE				:String = "stageResize";
+		//requests
 		public static const UPDATE				:String = "stageUpdate";
+		public static const RESIZE				:String = "stageResize";
 		public static const DATA_REQUEST		:String = "stageDataRequest";
+		
+		//responses
+		public static const ORIENTATION_CHANGED	:String = "stageOrientationChanged";
+		public static const RESIZED				:String = "stageUpdated";
+		
 	}
 
 }

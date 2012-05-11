@@ -30,6 +30,7 @@ package test.performance.signalperf
 	{
 		public static const INIT_TEST	:String = "signalPerfInitTest";
 		public static const START_TEST	:String = "signalPerfStartTest";
+		public static const BEGIN_TEST	:String = "signalPerfBeginTest";
 		public static const RUN_TEST	:String = "signalPerfRunTest";
 	}
 

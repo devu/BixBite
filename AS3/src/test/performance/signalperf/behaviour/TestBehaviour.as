@@ -45,7 +45,7 @@ package test.performance.signalperf.behaviour
 		
 		override public function execute(s:ISignal):void
 		{
-			sendSignal(Signals.START_TEST);
+			sendSignal(Signals.BEGIN_TEST);
 		}
 		
 	}

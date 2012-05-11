@@ -34,7 +34,7 @@ package org.bixbite.framework.modules.stats
 	import org.bixbite.framework.signals.StatsSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.4.1
 	 * footprint ~ 8.08kb
 	 * 

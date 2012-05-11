@@ -27,7 +27,7 @@
 
 		public function Behaviour ();
 
-		function initialise (deconstruct:Function, emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean=false) : void;
+		function initialise (deconstruct:Function, emiter:Emiter, type:String, slots:Object, autoDispose:Boolean=false) : void;
 
 		/**
 		 * Internal pre-execute method.
