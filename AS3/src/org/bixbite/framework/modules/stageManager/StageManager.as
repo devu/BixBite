@@ -31,20 +31,27 @@ package org.bixbite.framework.modules.stageManager
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.5.0
 	 * 
 	 * footprint 8.73kb
 	 */
-	public class StageManager extends Compound 
+	public class StageManager extends Compound
 	{
+		private var data:StageData;
 		
-		public function StageManager(align:String = "TL", scaleMode:String = "noScale") 
+		public function StageManager()
 		{
-			var d:StageData 		= new StageData(align, scaleMode);
+			data 	= new StageData();
 			var t:StageTransponder 	= new StageTransponder();
 			
 			addBehaviour(StageSignal.RESIZE, StageResize);
+		}
+		
+		public function setStage(align:String = "TL", scaleMode:String = "noScale"):void
+		{
+			data.stage.align = align;
+			data.stage.scaleMode = scaleMode;
 		}
 	}
 

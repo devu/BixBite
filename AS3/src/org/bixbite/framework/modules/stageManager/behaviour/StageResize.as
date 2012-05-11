@@ -30,7 +30,7 @@ package org.bixbite.framework.modules.stageManager.behaviour
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.4.1
 	 */
 	public class StageResize extends Behaviour 
@@ -52,6 +52,8 @@ package org.bixbite.framework.modules.stageManager.behaviour
 		{
 			this.data = data;
 			this.stage = data.stage;
+			
+			data.orientation = (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
 		}
 		
 		override public function execute(s:ISignal):void
@@ -63,7 +65,7 @@ package org.bixbite.framework.modules.stageManager.behaviour
 				sendSignal(StageSignal.ORIENTATION_CHANGED, [currentOrientation]);
 			}
 			
-			sendSignal(StageSignal.RESIZE, [stage.stageWidth, stage.stageHeight]);
+			sendSignal(StageSignal.RESIZED, [stage.stageWidth, stage.stageHeight]);
 		}
 		
 	}

@@ -29,7 +29,7 @@ package org.bixbite.framework.modules.stageManager.transponder
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.3
 	 * @since 0.4.1
 	 */
 	public class StageTransponder extends Transponder 
