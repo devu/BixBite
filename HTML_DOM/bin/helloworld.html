@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="js/bixbite.js"></script>
+	
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<script>
+		var myApp = new Compound();
+		
+		var HelloTransponder 	= new Transponder();
+		var HelloData 			= new Data();
+		var HelloView;
+		
+		for (i = 0; i < 20; i++){
+			HelloView = new View();
+			myApp.stageView.addView(HelloView);
+		}
+		
+		//Copy handler behaviour
+		var CopyHandler = new Behaviour();
+		CopyHandler.languages = [];
+		/*
+		CopyHandler.init = function(){
+			languages[0] = "english";
+			languages[1] = "polish";
+			languages[2] = "french";
+			languages[3] = "german";
+			
+			addResponder("COPY_REQUEST", onCopyData, true);
+		}
+		
+		CopyHandler.execute = function(s){
+			var isDefault:Boolean = s.params[0];
+			
+			if (isDefault){
+				sendSignal(Signals.SET_COPY, [copy.english]);
+				return
+			}
+			
+			var copyString:String;
+			switch(languages[lang]){
+				case "english":
+					copyString = copy.english;
+					break;
+				case "polish":
+					copyString = copy.polish;
+					break;
+				case "french":
+					copyString = copy.french;
+					break;
+				case "german":
+					copyString = copy.german;
+					break;
+			}
+			
+			sendSignal("SET_COPY", [copyString]);
+			
+			(lang < 3) ? lang++ : lang = 0;
+		}
+		*/
+		myApp.addBehaviour("UPDATE_COPY", CopyHandler, false);
+		
+		//startup
+		myApp.startup("HELLO_WORLD_INIT");
+		
+	</script>
+</body>
+
+</html>

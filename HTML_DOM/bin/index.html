@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="js/bixbite.js"></script>
+	
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<script>
+		var executor = 0;
+		
+		var myApp = new Compound();
+		
+		var myBehaviour = new Behaviour();
+		myBehaviour.execute = function(s){
+			
+		}
+		
+		myApp.addBehaviour("test", myBehaviour, false);
+		
+		var myBehaviour2 = new Behaviour();
+		myBehaviour2.execute = function(s){
+			document.write("executed: " + executor++ + "<br/>");
+		}
+		
+		myApp.addBehaviour("test2", myBehaviour2, false);
+		
+		var d = new Data();
+		var t = new Transponder();
+		var v = new View();
+		
+		v.addSlot("test3", function(){document.write("view signal recieved <br/>")})
+		
+		myApp.startup("test3");
+		/*
+		var time; 
+		
+		for (i=0; i<10; i++){myApp.startup("test2");}
+		document.write("behaviour test: " + (new Date()-time) + "<br/>");
+		/*
+		time = new Date();
+		for (i=0; i<100000; i++){myApp.startup("test");}
+		document.write("behaviour executed 100.000 times: " + (new Date()-time) + "<br/>");
+		
+		time = new Date();
+		for (i=0; i<300000; i++){myApp.startup("test");}
+		document.write("behaviour executed 300.000 times: " + (new Date()-time) + "<br/>");
+		
+		time = new Date();
+		for (i=0; i<3000000; i++){myApp.startup("test");}
+		document.write("behaviour executed 3.000.000 times: " + (new Date()-time) + "<br/>");
+		*/
+		/*
+		time = new Date();
+		for (i=0; i<30000000; i++){myApp.startup("test");}
+		document.write("behaviour executed 30.000.000 times: " + (new Date()-time) + "<br/>");
+		*/
+	</script>
+</body>
+
+</html>
