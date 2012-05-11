@@ -89,7 +89,7 @@ package org.bixbite.core
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false):void
 		{
 			behaviours.type = new behaviour();
-			behaviours.type.initialise(removeBehaviour, emiter, uid, signal, type, slots, autoDispose);
+			behaviours.type.initialise(removeBehaviour, emiter, type, slots, autoDispose);
 		}
 		
 		/**

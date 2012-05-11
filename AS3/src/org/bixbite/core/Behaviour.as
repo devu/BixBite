@@ -57,12 +57,12 @@ package org.bixbite.core
 			
 		}
 		
-		BIXBITE function initialise(deconstruct:Function, emiter:Emiter, uid:String, signal:ISignal, type:String, slots:Object, autoDispose:Boolean = false):void
+		BIXBITE function initialise(deconstruct:Function, emiter:Emiter, type:String, slots:Object, autoDispose:Boolean = false):void
 		{
 			this.deconstruct 	= deconstruct;
 			this.emiter 		= emiter;
-			this.uid 			= uid;
-			this.signal 		= signal;
+			this.uid 			= "@" + emiter.uid;
+			this.signal 		= new Signal(uid);
 			this.type 			= type;
 			this.slots 			= slots;
 			this.autoDispose 	= autoDispose;
@@ -143,6 +143,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Array = null):void
 		{
 			signal.params = params;
+			emiter.broadcast(slots.a, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 		}
 		

@@ -61,6 +61,7 @@ package org.bixbite
 	 * 
 	 * TODO
 	 * 0.5.3
+	 * - behaviours - individual signals on Atom channel
 	 * - more examples, integration and performance tests
 	 * 
 	 * LOG:
