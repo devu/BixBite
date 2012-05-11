@@ -44,6 +44,7 @@
     <class>org.bixbite.framework.view.StageView</class>
     <class>org.bixbite.framework.signals.StageSignal</class>
     <class>org.bixbite.framework.signals.StatsSignal</class>
+    <class>org.bixbite.framework.signals.ActiveGridSignal</class>
     <class>org.bixbite.framework.interfaces.IDisplayView</class>
     <class>org.bixbite.framework.interfaces.IDisplayViewContainer</class>
     <class>org.bixbite.framework.factories.GraphicsFactory</class>
@@ -60,5 +61,9 @@
     <class>org.bixbite.framework.modules.stageManager.data.StageData</class>
     <class>org.bixbite.framework.modules.stageManager.behaviour.StageResize</class>
     <class>org.bixbite.framework.modules.stageManager.transponder.StageTransponder</class>
+    <class>org.bixbite.framework.modules.activeGrid.ActiveGridLayout</class>
+    <class>org.bixbite.framework.modules.activeGrid.behaviour.CalculateGrid</class>
+    <class>org.bixbite.framework.modules.activeGrid.data.ActiveGridData</class>
+    <class>org.bixbite.framework.modules.activeGrid.view.ActiveGridView</class>
   </include-classes>
 </flex-config>
