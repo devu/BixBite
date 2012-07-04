@@ -42,30 +42,27 @@ package org.bixbite.core
 	public class Behaviour 
 	{
 		public var signal		:ISignal;
+		public var remove		:Function;
 		
-		private var deconstruct	:Function;
 		private var emiter		:Emiter;
 		private var uid			:String;
 		private var type		:String;
 		private var slots		:Object;
-		private var autoDispose	:Boolean;
-		private var cached		:Boolean;
-		private var dataExec	:Function;
+		
+		//private var dataExec	:Function;
 		
 		public function Behaviour() 
 		{
 			
 		}
 		
-		BIXBITE function initialise(deconstruct:Function, emiter:Emiter, type:String, slots:Object, autoDispose:Boolean = false):void
+		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object):void
 		{
-			this.deconstruct 	= deconstruct;
 			this.emiter 		= emiter;
 			this.uid 			= "@" + emiter.uid;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
 			this.slots 			= slots;
-			this.autoDispose 	= autoDispose;
 			
 			emiter.addSlot(slots.a, uid, type, exe);
 			
@@ -79,7 +76,7 @@ package org.bixbite.core
 		private function exe(s:ISignal):void
 		{
 			execute(s);
-			if (autoDispose) deconstruct(type);
+			if (remove != null) remove(type);
 		}
 		
 		/**
@@ -111,7 +108,7 @@ package org.bixbite.core
 			uid 	= null;
 			type 	= null;
 			slots 	= null;
-			dataExec= null;
+			remove	= null;
 		}
 		
 		/**
@@ -136,7 +133,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Multi-cast method to broadcast one singal to multiple View components.
+		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.
 		 * @param	type
 		 * @param	params
 		 */

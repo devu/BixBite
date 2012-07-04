@@ -12,8 +12,6 @@
 	public class TestTransponder extends Transponder
 	{
 		private var slotReference : Function;
-		private var iterator : int;
-		private var startTime : int;
 
 		public function TestTransponder ();
 

@@ -35,8 +35,8 @@ package test.performance.signalperf.transponder
 	{
 		private var slotReference:Function;
 		
-		private var iterator:int = 0;
-		private var startTime:int = 0;
+		//private var iterator:int = 0;
+		//private var startTime:int = 0;
 		
 		public function TestTransponder() 
 		{

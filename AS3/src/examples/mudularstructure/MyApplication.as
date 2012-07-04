@@ -60,7 +60,7 @@ package examples.mudularstructure
        
         /**
          * Now, this is something worth consideration. Each functional Compound might have some public methods exposed to control internal functional modules.
-         * This way you can easily provide some API for your modules, than can be controlled from main Compound/Application directly.
+         * This way you can easily provide some API for your modules, than can be controlled from main or parent Compound/Application directly.
          * However indirectly you can still use Signals to even keep your modules decoupled!
          *
          * BixBite framework assuming this is perfectly fine to use both ways in this case.

@@ -88,8 +88,9 @@ package org.bixbite.core
 		 */
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false):void
 		{
-			behaviours.type = new behaviour();
-			behaviours.type.initialise(removeBehaviour, emiter, type, slots, autoDispose);
+			behaviours[type] = new behaviour();
+			behaviours[type].initialise(emiter, type, slots);
+			if (autoDispose) behaviours[type].remove = removeBehaviour;
 		}
 		
 		/**
@@ -98,8 +99,8 @@ package org.bixbite.core
 		 */
 		public function removeBehaviour(type:String):void
 		{
-			behaviours.type.dispose();
-			delete behaviours.type
+			behaviours[type].dispose();
+			delete behaviours[type]
 		}
 		
 		/**
@@ -121,16 +122,15 @@ package org.bixbite.core
 		/**
 		 * Start Compound with a specific signal type.
 		 * @param	type
+		 * @param	params
 		 */
-		public function startup(type:String):void
+		public function startup(type:String, params:Array = null):void
 		{
+			if (params) signal.params = params;
+			
 			emiter.broadcast(slots.a, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 			emiter.broadcast(slots.c, type, signal);
-			
-			emiter.removeAllSlots(slots.a, type);
-			emiter.removeAllSlots(slots.v, type);
-			emiter.removeAllSlots(slots.c, type);
 		}
 	}
 

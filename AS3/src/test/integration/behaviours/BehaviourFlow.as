@@ -54,6 +54,8 @@ package test.integration.behaviours
 			addBehaviour(Signals.STARTUP	, Startup);
 			
 			startup(Signals.STARTUP);
+			
+			removeBehaviour(Signals.STARTUP);
 		}
 		
 	}

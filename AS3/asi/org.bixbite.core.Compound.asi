@@ -64,7 +64,8 @@
 		/**
 		 * Start Compound with a specific signal type.
 		 * @param	type
+		 * @param	params
 		 */
-		public function startup (type:String) : void;
+		public function startup (type:String, params:Array=null) : void;
 	}
 }

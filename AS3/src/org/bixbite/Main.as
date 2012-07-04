@@ -56,7 +56,7 @@ package org.bixbite
 	 * @version 0.5.2
 	 * footprint 3.96kb
 	 * 
-	 * Main BixBite frmework class for development purposes.
+	 * Main BixBite frmework document class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO

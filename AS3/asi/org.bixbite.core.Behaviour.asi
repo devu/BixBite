@@ -16,18 +16,15 @@
 	public class Behaviour
 	{
 		public var signal : ISignal;
-		private var deconstruct : Function;
+		public var remove : Function;
 		private var emiter : Emiter;
 		private var uid : String;
 		private var type : String;
 		private var slots : Object;
-		private var autoDispose : Boolean;
-		private var cached : Boolean;
-		private var dataExec : Function;
 
 		public function Behaviour ();
 
-		function initialise (deconstruct:Function, emiter:Emiter, type:String, slots:Object, autoDispose:Boolean=false) : void;
+		function initialise (emiter:Emiter, type:String, slots:Object) : void;
 
 		/**
 		 * Internal pre-execute method.
@@ -66,7 +63,7 @@
 		public function sendRequest (type:String) : void;
 
 		/**
-		 * Multi-cast method to broadcast one singal to multiple View components.
+		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.
 		 * @param	type
 		 * @param	params
 		 */
