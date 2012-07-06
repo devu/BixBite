@@ -111,6 +111,15 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * Return array of all ubject under the point
+		 * @return
+		 */
+		public function getAllObjects():Array
+		{
+			return emiter.getObjects().reverse();
+		}
+		
+		/**
 		 * Find display objects (context of Views) by name under the current input point. 
 		 * If object has been found transponder's signal will take over target uid. Otherwise will restore its own.
 		 * @param	name

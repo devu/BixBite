@@ -42,7 +42,7 @@ package org.bixbite.framework.interfaces
 		 * Reference to native Flash DisplayObject attached to any IDisplayView. Acts as dependency injector.
 		 */
 		function get context():DisplayObject;
-		function set context(value:DisplayObject):void
+		function setContext(name:String, object:DisplayObject):void
 	}
 	
 }

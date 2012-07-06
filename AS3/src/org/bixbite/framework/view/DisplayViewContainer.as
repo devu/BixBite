@@ -57,7 +57,7 @@ package org.bixbite.framework.view
 		 */
 		override public function init():void 
 		{
-			context = new Sprite();
+			setContext("DisplayViewContainer", new Sprite());
 		}
 		
 		/**
@@ -152,7 +152,6 @@ package org.bixbite.framework.view
 		 * Number of children views of this view
 		 */
 		public function get numViews():int { return children.length; }
-		
 	}
 
 }

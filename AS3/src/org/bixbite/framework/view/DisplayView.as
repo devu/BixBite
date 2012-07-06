@@ -43,6 +43,7 @@ package org.bixbite.framework.view
 	{
 		private var _context		:DisplayObject;
 		private var _parentView		:IDisplayViewContainer;
+		private var _graphics		:Graphics;
 		
 		/**
 		 * Constructor
@@ -54,22 +55,23 @@ package org.bixbite.framework.view
 		}
 		
 		/**
+		 * Initialise DisplayView with a default native DisplayObject (by default Shape);
+		 */
+		override public function init():void 
+		{
+			setContext("DisplayView", new Shape());
+		}
+		
+		/**
 		 * Set context of this view, it can be any kind of native DisplayObject.
 		 * @param	name
-		 * @param	object
+		 * @param	DisplayObject
 		 */
 		public function setContext(name:String, object:DisplayObject):void
 		{
 			_context = object;
 			_context.name = name + uid;
-		}
-		
-		/**
-		 * Initialise DisplayView with a default native DisplayObject (by default Shape);
-		 */
-		override public function init():void 
-		{
-			this.context = new Shape();
+			_graphics = context['graphics'];
 		}
 		
 		/**
@@ -82,7 +84,10 @@ package org.bixbite.framework.view
 		 * Native Flash DisplayObject attached to this view
 		 */
 		public function get context():DisplayObject { return _context; }
-		public function set context(value:DisplayObject):void { _context = value; }
+		//public function set context(value:DisplayObject):void { _context = value; _graphics = context['graphics'] }
+		
+		public function get graphics():Graphics { return _graphics; }
+		public function set graphics(value:Graphics):void { _graphics = value; }
 	}
 
 }

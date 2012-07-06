@@ -60,11 +60,14 @@ package org.bixbite
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO
-	 * 0.5.3
-	 * - behaviours - individual signals on Atom channel
+	 * 0.5.4
+	 * - framework UI components
 	 * - more examples, integration and performance tests
 	 * 
 	 * LOG:
+	 * 0.5.3
+	 * - behaviours - individual signals on Atom channel
+	 * - behaviours - bug fix with removal
 	 * 0.5.2
 	 * - Improved framework modules.
 	 * - deconstructors, GC improvements.
