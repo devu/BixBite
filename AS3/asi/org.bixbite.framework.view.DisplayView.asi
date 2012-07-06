@@ -19,6 +19,7 @@
 	{
 		private var _context : DisplayObject;
 		private var _parentView : IDisplayViewContainer;
+		private var _graphics : Graphics;
 
 		/**
 		 * Parent view of this view
@@ -30,7 +31,9 @@
 		 * Native Flash DisplayObject attached to this view
 		 */
 		public function get context () : DisplayObject;
-		public function set context (value:DisplayObject) : void;
+
+		public function get graphics () : Graphics;
+		public function set graphics (value:Graphics) : void;
 
 		/**
 		 * Constructor
@@ -39,15 +42,15 @@
 		public function DisplayView ();
 
 		/**
-		 * Set context of this view, it can be any kind of native DisplayObject.
-		 * @param	name
-		 * @param	object
-		 */
-		public function setContext (name:String, object:DisplayObject) : void;
-
-		/**
 		 * Initialise DisplayView with a default native DisplayObject (by default Shape);
 		 */
 		public function init () : void;
+
+		/**
+		 * Set context of this view, it can be any kind of native DisplayObject.
+		 * @param	name
+		 * @param	DisplayObject
+		 */
+		public function setContext (name:String, object:DisplayObject) : void;
 	}
 }

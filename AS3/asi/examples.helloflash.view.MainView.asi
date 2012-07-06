@@ -18,6 +18,8 @@
 
 		public function init () : void;
 
+		private function onDirectResponse (s:ISignal) : void;
+
 		private function onCreateBall (s:ISignal) : void;
 
 		private function createBall (s:ISignal) : void;

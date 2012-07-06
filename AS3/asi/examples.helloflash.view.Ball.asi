@@ -28,6 +28,8 @@
 
 		public function init () : void;
 
+		private function onDirectResponse (s:ISignal) : void;
+
 		private function onMakeBallRed (s:ISignal) : void;
 
 		private function shuffle (s:ISignal) : void;

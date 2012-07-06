@@ -35,7 +35,7 @@ package examples.helloflash.view
 	{
 		private var radius		:int = 10;
 		private var color		:uint = 0x000000;
-		private var ball:Sprite;
+		private var ball		:Sprite;
 		
 		/**
 		 * Constructor
@@ -58,6 +58,12 @@ package examples.helloflash.view
 			
 			addSlot(Signals.SHUFFLE, shuffle);
 			addSlot(Signals.RED_BALL, onMakeBallRed);
+			addSlot(Signals.DIRECT_RESPONSE, onDirectResponse);
+		}
+		
+		private function onDirectResponse(s:ISignal):void 
+		{
+			trace("Transponder fast response");
 		}
 		
 		private function onMakeBallRed(s:ISignal):void 

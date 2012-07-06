@@ -41,6 +41,20 @@
 		public function sendSignal (type:String, params:Array=null) : void;
 
 		/**
+		 * Multicast (one-to-many) method to broadcast signals on View communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function response (type:String, params:Array=null) : void;
+
+		/**
+		 * Signlecast (one-to-one) method to send direct signal on View communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function responseTo (target:Object, type:String, params:Array=null) : void;
+
+		/**
 		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.
 		 * Transponders can only reference slots of Atom.
 		 * @param	type
@@ -61,6 +75,12 @@
 		 * @param	callback
 		 */
 		public function removeSensor (type:String, callback:Function) : void;
+
+		/**
+		 * Return array of all ubject under the point
+		 * @return
+		 */
+		public function getAllObjects () : Array;
 
 		/**
 		 * Find display objects (context of Views) by name under the current input point. 

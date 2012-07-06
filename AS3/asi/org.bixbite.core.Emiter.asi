@@ -137,6 +137,17 @@
 		/**
 		 *
 		 * @private
+		 *   Send response directly to specific Component base on its unique ID
+		 * @param   channel, slot channel
+		 * @param	callerUID
+		 * @param	type
+		 * @param	signal
+		 */
+		function responseTo (channel:Object, targetUID:String, type:String, signal:ISignal) : void;
+
+		/**
+		 *
+		 * @private
 		 *   Reference Signal Mechanism - get reference to slot of specific type.
 		 * @param	channel
 		 * @param	type

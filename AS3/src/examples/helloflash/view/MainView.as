@@ -56,6 +56,12 @@ package examples.helloflash.view
 			
 			addSlot(Signals.CREATE_BALL, onCreateBall);
 			addSlot(Signals.INIT, createBall);
+			addSlot(Signals.DIRECT_RESPONSE, onDirectResponse);
+		}
+		
+		private function onDirectResponse(s:ISignal):void 
+		{
+			trace("Transponder fast response to parent of ball");
 		}
 		
 		private function onCreateBall(s:ISignal):void

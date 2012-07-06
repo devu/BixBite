@@ -46,7 +46,19 @@ package examples.helloflash.transponder
 		
 		private function onMouseClick(e:MouseEvent):void 
 		{
-			if (findObjectByName("ball")) sendSignal(Signals.POKE);
+			if (findObjectByName("ball")) {
+				// One to many on view channel
+				//response(Signals.DIRECT_RESPONSE);
+				
+				//One to One on view channel
+				responseTo(e.target, Signals.DIRECT_RESPONSE);
+				
+				//One to One on view channel to parent of the target
+				responseTo(e.target.parent, Signals.DIRECT_RESPONSE);
+				
+				//One to Many on Atom channel
+				sendSignal(Signals.POKE);
+			}
 		}
 		
 	}

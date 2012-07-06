@@ -80,6 +80,29 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * Multicast (one-to-many) method to broadcast signals on View communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function response(type:String, params:Array = null):void 
+		{
+			signal.params = params;
+			emiter.broadcast(slots.v, type, signal);
+		}
+		
+		/**
+		 * Signlecast (one-to-one) method to send direct signal on View communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function responseTo(target:Object, type:String, params:Array = null):void 
+		{
+			var uid:String = "@" + target.name.split("@")[1];
+			signal.params = params;
+			emiter.responseTo(slots.v, uid, type, signal);
+		}
+		
+		/**
 		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.
 		 * Transponders can only reference slots of Atom.
 		 * @param	type

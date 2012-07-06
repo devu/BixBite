@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\bin\BIXBITE.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\bin\EXAMPLE_HelloFlash.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -20,10 +20,11 @@
       <path-element>e:\xampp\htdocs\2012\bixbite\as3\src</path-element>
     </source-path>
     <library-path>
-      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_logos.swc</path-element>
+      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_0.2.9.swc</path-element>
     </library-path>
   </compiler>
   <include-classes>
+    <class>org.bixbite.Main</class>
     <class>org.bixbite.namespaces.BIXBITE</class>
     <class>org.bixbite.core.Signal</class>
     <class>org.bixbite.core.Component</class>

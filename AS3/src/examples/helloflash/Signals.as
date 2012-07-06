@@ -34,6 +34,7 @@ package examples.helloflash
 		public static const RED_BALL			:String = "helloFlashRedBall";
 		public static const POKE				:String = "helloFlashPoke";
 		public static const SHUFFLE				:String = "helloFlashShuffle";
+		public static const DIRECT_RESPONSE		:String = "helloFlashDirectResponse";
 	}
 
 }
