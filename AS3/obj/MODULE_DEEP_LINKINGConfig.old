@@ -26,7 +26,7 @@
     <library-path append="true" />
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\examples\mudularstructure\MyApplication.as</path-element>
+    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\org\bixbite\framework\modules\deeplinking\DeepLinking.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

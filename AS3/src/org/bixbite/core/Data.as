@@ -81,6 +81,17 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignal(type:String, params:Array = null):void 
+		{
+			signal.params = params;
+			emiter.broadcast(slots.a, type, signal);
+		}
+		
+		/**
 		 * @inheritDoc
 		 */
 		override public function destroy():void 

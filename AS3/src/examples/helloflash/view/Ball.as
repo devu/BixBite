@@ -66,7 +66,7 @@ package examples.helloflash.view
 			trace("Transponder fast response");
 		}
 		
-		private function onMakeBallRed(s:ISignal):void 
+		private function onMakeBallRed(s:ISignal):void
 		{
 			draw(0xFF1100, radius++);
 		}

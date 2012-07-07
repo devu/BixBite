@@ -68,10 +68,12 @@ package org.bixbite
 	 * 0.5.3
 	 * - behaviours - individual signals on Atom channel
 	 * - behaviours - bug fix with removal
+	 * - transponder - ability to broadcast signals on view channel
+	 * - sendRequest - methods parameters added
 	 * 0.5.2
 	 * - Improved framework modules.
 	 * - deconstructors, GC improvements.
-     * - DEBUG::config when necessary to preserve memory consumption in RELEASE mode and give developer more information in DEBUG mode.
+     * - DEBUG::config when necessary to preserve resources in RELEASE mode, and give developer more information in DEBUG mode.
 	 * 0.5.1
 	 * - sync/async data request/response.
 	 * - type safe data on response.

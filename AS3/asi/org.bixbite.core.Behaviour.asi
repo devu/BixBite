@@ -49,7 +49,7 @@
 		public function dispose () : void;
 
 		/**
-		 * Add responder into Atom on order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
+		 * Add responder into Atom in order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
 		 * @param	type
 		 * @param	callback
 		 * @param	autoRequest request data immediately
@@ -60,7 +60,7 @@
 		 * Request data component by type.
 		 * @param	type
 		 */
-		public function sendRequest (type:String) : void;
+		public function sendRequest (type:String, params:Array=null) : void;
 
 		/**
 		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.

@@ -48,6 +48,13 @@
 		public function responseTo (targetUID:String, type:String) : void;
 
 		/**
+		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignal (type:String, params:Array=null) : void;
+
+		/**
 		 *
 		 * @inheritDoc
 		 */

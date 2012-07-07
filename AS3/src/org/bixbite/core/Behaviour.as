@@ -112,7 +112,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Add responder into Atom on order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
+		 * Add responder into Atom in order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
 		 * @param	type
 		 * @param	callback
 		 * @param	autoRequest request data immediately
@@ -127,8 +127,9 @@ package org.bixbite.core
 		 * Request data component by type.
 		 * @param	type
 		 */
-		public function sendRequest(type:String):void
+		public function sendRequest(type:String, params:Array = null):void
 		{
+			signal.params = params;
 			emiter.broadcast(slots.m, type, signal);
 		}
 		
