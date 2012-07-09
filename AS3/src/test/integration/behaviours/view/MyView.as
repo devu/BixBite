@@ -27,10 +27,10 @@ package test.integration.behaviours.view
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
-	import test.integration.behaviours.Signals;
+	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 * 
 	 */
@@ -48,8 +48,8 @@ package test.integration.behaviours.view
 			content = new Shape();
 			setContext("myView", content);
 			
-			addSlot(Signals.REPOSITION		, onReposition);
-			addSlot(Signals.CHANGE_COLOR	, onChangeColor);
+			addSlot(BehaviourFlow.REPOSITION		, onReposition);
+			addSlot(BehaviourFlow.CHANGE_COLOR	, onChangeColor);
 		}
 		
 		private function onReposition(s:ISignal):void 

@@ -38,9 +38,9 @@ package test.performance.coreperf
 	
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.4.3
-	 * footprint 10.1kb
+	 * footprint 11.0kb
 	 * 
      * Purpose of this test is to keep track on speed of MVC actor creations. Since Bixbite is self-registered system there is much more going on under the hood.
      * During construction each Actor getting references to Emiter and getting default signal attached to it as well as unique identifier controlled by system.
@@ -48,6 +48,28 @@ package test.performance.coreperf
      * Also Emiter always checking if there is empty slot will destroy it. This is why removal is always much slower.
      *
      * Taking under consideration all that, results below are still very satisfactory.
+	 * 
+	 * Results: (0.5.4) ADTV (Flash Player 11,1,102,63 - Chrome) footprint 11.0kb
+	 * TASK: create		Views	1.000	COUNT: 10	TIME: 0.272ms
+	 * TASK: destroy	Views	1.000	COUNT: 10	TIME: 3.809ms
+	 * TASK: create		Views	10.000	COUNT: 10	TIME: 10.27ms
+	 * TASK: destroy	Views	10.000	COUNT: 10	TIME: 52.64ms
+	 * TASK: create		Views	100k	COUNT: 10	TIME: 118.3ms
+	 * TASK: destroy	Views	100k	COUNT: 10	TIME: 776.8ms
+	 * 
+	 * TASK: create		Trans	1.000	COUNT: 10	TIME: 1.0ms
+	 * TASK: destroy	Trans	1.000	COUNT: 10	TIME: 4.318ms
+	 * TASK: create		Trans	10.000	COUNT: 10	TIME: 11.36ms
+	 * TASK: destroy	Trans	10.000	COUNT: 10	TIME: 71.73ms
+	 * TASK: create		Trans	100k	COUNT: 10	TIME: 141.9ms
+	 * TASK: destroy	Trans	100k	COUNT: 10	TIME: 596.2ms
+	 * 
+	 * TASK: create		Data	1.000	COUNT: 10	TIME: 0.54ms
+	 * TASK: destroy	Data	1.000	COUNT: 10	TIME: 4.45ms
+	 * TASK: create		Data	10.000	COUNT: 10	TIME: 9.0ms
+	 * TASK: destroy	Data	10.000	COUNT: 10	TIME: 98.64ms
+	 * TASK: create		Data	100k	COUNT: 10	TIME: 177.2ms
+	 * TASK: destroy	Data	100k	COUNT: 10	TIME: 1003.1ms
 	 * 
 	 * Results: (0.5.0) ADTV (Flash Player 11,1,102,63 - Chrome) footprint 10.1kb
 	 * TASK: create		Views	1.000	COUNT: 10	TIME: 0.432ms
@@ -64,12 +86,12 @@ package test.performance.coreperf
 	 * TASK: create		Trans	100k	COUNT: 10	TIME: 109.2ms
 	 * TASK: destroy	Trans	100k	COUNT: 10	TIME: 360.2ms
 	 * 
-	 * TASK: create		Models	1.000	COUNT: 10	TIME: 1.600ms
-	 * TASK: destroy	Models	1.000	COUNT: 10	TIME: 10.18ms
-	 * TASK: create		Models	10.000	COUNT: 10	TIME: 11.91ms
-	 * TASK: destroy	Models	10.000	COUNT: 10	TIME: 29.64ms
-	 * TASK: create		Models	100k	COUNT: 10	TIME: 115.2ms
-	 * TASK: destroy	Models	100k	COUNT: 10	TIME: 342.1ms
+	 * TASK: create		Data	1.000	COUNT: 10	TIME: 1.600ms
+	 * TASK: destroy	Data	1.000	COUNT: 10	TIME: 10.18ms
+	 * TASK: create		Data	10.000	COUNT: 10	TIME: 11.91ms
+	 * TASK: destroy	Data	10.000	COUNT: 10	TIME: 29.64ms
+	 * TASK: create		Data	100k	COUNT: 10	TIME: 115.2ms
+	 * TASK: destroy	Data	100k	COUNT: 10	TIME: 342.1ms
 	 * 
 	 * Results: (0.4.5) MVC (Flash Player 11,1,102,63 - Chrome) footprint 9.53kb
 	 * TASK: create		Views	1.000	COUNT: 10	TIME: 1.182ms

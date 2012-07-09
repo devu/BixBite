@@ -26,10 +26,10 @@ package test.integration.behaviours.data
 	import flash.utils.getTimer;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Data;
-	import test.integration.behaviours.Signals;
+	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 */
 	public class MyData extends Data 
@@ -43,12 +43,12 @@ package test.integration.behaviours.data
 		
 		override public function init():void 
 		{
-			addSlot(Signals.TIME_DATA, onTimeDataRequest);
+			addSlot(BehaviourFlow.TIME_DATA, onTimeDataRequest);
 		}
 		
 		private function onTimeDataRequest(s:ISignal):void
 		{
-			responseTo(s.callerUID, Signals.TIME_DATA);
+			responseTo(s.callerUID, BehaviourFlow.TIME_DATA);
 		}
 		
 	}

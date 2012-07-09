@@ -25,10 +25,10 @@ package test.integration.behaviours.transponder
 {
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Transponder;
-	import test.integration.behaviours.Signals;
+	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 */
 	public class MyTransponder extends Transponder 
@@ -47,7 +47,7 @@ package test.integration.behaviours.transponder
 		
 		private function onInput(e:MouseEvent):void
 		{
-			if (findObjectByName("myView")) sendSignal(Signals.REDRAW);
+			if (findObjectByName("myView")) sendSignal(BehaviourFlow.REDRAW);
 		}
 		
 	}

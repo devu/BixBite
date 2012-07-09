@@ -25,10 +25,10 @@ package test.integration.behaviours.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import test.integration.behaviours.Signals;
+	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 */
 	public class Startup extends Behaviour 
@@ -41,8 +41,8 @@ package test.integration.behaviours.behaviour
 		
 		override public function execute(s:ISignal):void 
 		{
-			sendSignal(Signals.REPOSITION);
-			sendSignal(Signals.CHANGE_COLOR, [0x000000]);
+			sendSignal(BehaviourFlow.REPOSITION);
+			sendSignal(BehaviourFlow.CHANGE_COLOR, [0x000000]);
 		}
 		
 	}

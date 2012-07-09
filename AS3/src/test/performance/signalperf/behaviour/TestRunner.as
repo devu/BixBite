@@ -25,7 +25,7 @@ package test.performance.signalperf.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import test.performance.signalperf.Signals;
+	import test.performance.signalperf.SignalPerformance;
 	
 	/**
 	 * @version  compatibility - 0.5.2
@@ -41,7 +41,7 @@ package test.performance.signalperf.behaviour
 		
 		override public function init():void 
 		{
-			slotReference = getSlotReference(Signals.RUN_TEST)[0];
+			slotReference = getSlotReference(SignalPerformance.RUN_TEST)[0];
 		}
 		
 		override public function execute(s:ISignal):void

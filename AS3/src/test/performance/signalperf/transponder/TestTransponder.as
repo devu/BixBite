@@ -26,7 +26,7 @@ package test.performance.signalperf.transponder
 	import flash.events.MouseEvent;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import test.performance.signalperf.Signals;
+	import test.performance.signalperf.SignalPerformance;
 	
 	/**
 	 * @version  compatibility - 0.5.2
@@ -45,19 +45,19 @@ package test.performance.signalperf.transponder
 		
 		override public function init():void 
 		{
-			addSlot(Signals.INIT_TEST, onTestInit);
+			addSlot(SignalPerformance.INIT_TEST, onTestInit);
 		}
 		
 		private function onTestInit(s:ISignal):void 
 		{
 			addSensor(MouseEvent.CLICK, startTest);
-			addSlot(Signals.RUN_TEST, onRunTest);
+			addSlot(SignalPerformance.RUN_TEST, onRunTest);
 		}
 		
 		private function startTest(e:MouseEvent):void
 		{
-			slotReference = getSlotReference(Signals.RUN_TEST)[0];
-			sendSignal(Signals.START_TEST);
+			slotReference = getSlotReference(SignalPerformance.RUN_TEST)[0];
+			sendSignal(SignalPerformance.START_TEST);
 		}
 		
 		private function onRunTest(s:ISignal):void

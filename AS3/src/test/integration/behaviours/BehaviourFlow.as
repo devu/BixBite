@@ -24,6 +24,7 @@ THE SOFTWARE.
 package test.integration.behaviours 
 {
 	import org.bixbite.core.Compound;
+	import org.bixbite.framework.view.StageView;
 	import test.integration.behaviours.behaviour.Redraw;
 	import test.integration.behaviours.behaviour.Startup;
 	import test.integration.behaviours.data.MyData;
@@ -31,31 +32,46 @@ package test.integration.behaviours
 	import test.integration.behaviours.view.MyView;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 * 
-	 * footprint 6.37kb
+	 * footprint 6.64kb
 	 */
 	public class BehaviourFlow extends Compound 
 	{
+		//atom
+		public static const STARTUP			:String = "startup";
+		public static const REPOSITION		:String = "reposition";
+		public static const CHANGE_COLOR	:String = "color";
+		public static const TIME_DATA		:String = "timeData";
+		
+		//transponder
+		public static const REDRAW			:String = "redraw";
 		
 		public function BehaviourFlow() 
 		{
-			var m:MyData 		= new MyData();
-			var t:MyTransponder = new MyTransponder();
+			
+		}
+		
+		override public function init():void 
+		{
+			var m:MyData 			= new MyData();
+			var t:MyTransponder 	= new MyTransponder();
 			var v:MyView;
+			
+			var stageView:StageView = new StageView();
 			
 			for (var i:int = 0; i < 10; i++) {
 				v = new MyView();
 				stageView.addView(v);
 			}
 			
-			addBehaviour(Signals.REDRAW		, Redraw);
-			addBehaviour(Signals.STARTUP	, Startup);
+			addBehaviour(BehaviourFlow.REDRAW		, Redraw);
+			addBehaviour(BehaviourFlow.STARTUP	, Startup);
 			
-			startup(Signals.STARTUP);
+			sendSignal(BehaviourFlow.STARTUP);
 			
-			removeBehaviour(Signals.STARTUP);
+			removeBehaviour(BehaviourFlow.STARTUP);
 		}
 		
 	}

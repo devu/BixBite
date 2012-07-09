@@ -49,6 +49,13 @@ package test.performance.signalperf
 	 * Results (Flash Player 11,1,102,63 - Chrome)
 	 * Signals traveling from View -> Transponder -> Atom -> View. (ADTV);
 	 * 
+	 * v0.5.4 SRS
+	 * 1.000 		- no time:)	(3k signals in circulation)
+	 * 10.000 		- 0.9ms		(30k signals in circulation)
+	 * 100.000		- 9ms		(300k signals in circulation)
+	 * 1.000.000	- 93ms		(3M signals in circulation)
+	 * 10.000.000	- 910ms		(30M signals in circulation)
+	 * 
 	 * v0.5.2 SRS
 	 * 1.000 		- no time:)	(3k signals in circulation)
 	 * 10.000 		- 0.9ms		(30k signals in circulation)
@@ -87,8 +94,17 @@ package test.performance.signalperf
 	 */
 	public class SignalPerformance extends Compound
 	{
+		public static const INIT_TEST	:String = "signalPerfInitTest";
+		public static const START_TEST	:String = "signalPerfStartTest";
+		public static const BEGIN_TEST	:String = "signalPerfBeginTest";
+		public static const RUN_TEST	:String = "signalPerfRunTest";
 		
 		public function SignalPerformance() 
+		{
+			
+		}
+		
+		override public function init():void 
 		{
 			var stageManager	:StageManager = new StageManager();
 			
@@ -98,10 +114,10 @@ package test.performance.signalperf
 			var t:TestTransponder 	= new TestTransponder();
 			var v:TestView 			= new TestView();
 			
-			addBehaviour(Signals.START_TEST	, TestBehaviour);
-			addBehaviour(Signals.RUN_TEST	, TestRunner);
+			addBehaviour(SignalPerformance.START_TEST	, TestBehaviour);
+			addBehaviour(SignalPerformance.RUN_TEST	, TestRunner);
 			
-			startup(Signals.INIT_TEST);
+			sendSignal(SignalPerformance.INIT_TEST);
 		}
 		
 	}

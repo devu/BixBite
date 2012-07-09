@@ -27,10 +27,10 @@ package test.integration.behaviours.behaviour
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 	import test.integration.behaviours.data.MyData;
-	import test.integration.behaviours.Signals;
+	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 */
 	public class Redraw extends Behaviour
@@ -45,7 +45,7 @@ package test.integration.behaviours.behaviour
 		
 		override public function init():void 
 		{
-			addResponder(Signals.TIME_DATA, onMyData, true);
+			addResponder(BehaviourFlow.TIME_DATA, onMyData, true);
 		}
 		
 		private function onMyData(s:ISignal, data:MyData):void 
@@ -67,11 +67,11 @@ package test.integration.behaviours.behaviour
 				} else {
 					color = 0x0000FF;
 				}
-				responseTo(s.callerUID, Signals.CHANGE_COLOR, [color]);
+				responseTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [color]);
 			} else {
 				color = 0x000000;
-				sendSignal(Signals.CHANGE_COLOR, [color]);
-				responseTo(s.callerUID, Signals.CHANGE_COLOR, [0xFF00FF]);
+				sendSignal(BehaviourFlow.CHANGE_COLOR, [color]);
+				responseTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [0xFF00FF]);
 			}
 			
 			phase++;
