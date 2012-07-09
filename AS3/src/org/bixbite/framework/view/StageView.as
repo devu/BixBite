@@ -40,9 +40,9 @@ package org.bixbite.framework.view
 		/**
 		 * Constructor
 		 */
-		public function StageView(stage:Stage)
+		public function StageView()
 		{
-			stage.addChild(context);
+			
 		}
 		
 		/**
@@ -51,6 +51,7 @@ package org.bixbite.framework.view
 		override public function init():void 
 		{
 			setContext("stage", new Sprite());
+			stage.addChild(context);
 		}
 		
 	}

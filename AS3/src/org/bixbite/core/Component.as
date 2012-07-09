@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Component implements IComponent
 	{
@@ -45,25 +45,25 @@ package org.bixbite.core
 		 * @private
 		 * Every Component will invoke this assigment in order to get short reference to Emiter.
 		 */
-		BIXBITE var emiter		:Emiter 	= Emiter.getInstance();
+		BIXBITE var emiter		:Emiter
 		
 		/**
 		 * @private
 		 * Based on Emiter short reference, evey Component will get unique id from observer uid iterator.
 		 */
-		BIXBITE var _uid		:String		= "@" + emiter.uid;
+		BIXBITE var _uid		:String
 		
 		/**
 		 * @private
 		 * Slots reference to provide access to specific channel
 		 */
-		BIXBITE var slots	:Object 		= emiter.slots;
+		BIXBITE var slots	:Object
 		
 		/**
 		 * @private
 		 * Default signal attached to this Component
 		 */
-		public var signal	:ISignal 		= new Signal(uid);
+		public var signal	:ISignal
 		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
@@ -71,6 +71,12 @@ package org.bixbite.core
 		public function Component()
 		{
 			if (Object(this).constructor == Component) throw new IllegalOperationError("Abstract Class");
+			
+			emiter = Emiter.getInstance();
+			slots = emiter.slots;
+			_uid = "@" + emiter.uid;
+			signal = new Signal(uid);
+			
 			init();
 		}
 		

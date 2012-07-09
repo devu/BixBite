@@ -23,14 +23,14 @@ THE SOFTWARE.
 
 package examples.helloworld.view 
 {
-	import examples.helloworld.Signals;
+	import examples.helloworld.MainHelloWorld;
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class HelloView extends DisplayView 
 	{
@@ -55,15 +55,15 @@ package examples.helloworld.view
 			
 			setContext("myTextField", container);
 			
-			addSlot(Signals.INIT		, onInit);
-			addSlot(Signals.SET_COPY	, onSetCopy);
+			addSlot(MainHelloWorld.INIT		, onInit);
+			addSlot(MainHelloWorld.SET_COPY	, onSetCopy);
 		}
 		
 		private function onInit(s:ISignal):void
 		{
 			context.x = Math.random() * 600;
 			context.y = Math.random() * 600;
-			sendSignal(Signals.GET_DEFAULT_COPY);
+			sendSignal(MainHelloWorld.GET_DEFAULT_COPY);
 		}
 		
 		private function onSetCopy(s:ISignal):void 

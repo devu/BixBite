@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework.modules.assetloader.transponder
+{
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.modules.assetloader.AssetLoader;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class AssetLoaderTrans extends Transponder
+	{
+		public function AssetLoaderTrans ();
+
+		public function init () : void;
+
+		private function onGetAsset (s:ISignal) : void;
+	}
+}

@@ -30,9 +30,9 @@ package examples.mudularstructure
 	import org.bixbite.framework.modules.stats.Stats;
 	
 	/**
-     * @version compatibility 0.5.2
+     * @version compatibility 0.5.4
      * @since 0.4.3
-     * total footprint 11.8kb
+     * total footprint 12.2kb
      *
      * Purpose of this example is to show you true power of BixBite framework.
      * Due to architecture arrangement, Crystal pattern and Signal/Slot system that keeps all classes perfectly decoupled, let you create number of small functional applications (Compounds) and put them together in no time, to create brand new application.
@@ -49,6 +49,11 @@ package examples.mudularstructure
        
         public function MyApplication()
         {
+			
+        }
+		
+		override public function init():void 
+		{
 			var stageManager :StageManager 		= new StageManager();
 			
             var helloworld   :MainHelloWorld 	= new MainHelloWorld();
@@ -56,7 +61,7 @@ package examples.mudularstructure
             var stats        :Stats      		= new Stats();
 		   
             //That's it!, all examples working in perfect harmony together.
-        }
+		}
        
         /**
          * Now, this is something worth consideration. Each functional Compound might have some public methods exposed to control internal functional modules.

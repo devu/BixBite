@@ -9,7 +9,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.3
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 *   
 	 *     footprint 8.73kb
@@ -19,6 +19,8 @@
 		private var data : StageData;
 
 		public function StageManager ();
+
+		public function init () : void;
 
 		public function setStage (align:String="TL", scaleMode:String="noScale") : void;
 	}

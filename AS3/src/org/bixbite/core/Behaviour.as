@@ -37,7 +37,7 @@ package org.bixbite.core
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Behaviour 
 	{
@@ -48,8 +48,6 @@ package org.bixbite.core
 		private var uid			:String;
 		private var type		:String;
 		private var slots		:Object;
-		
-		//private var dataExec	:Function;
 		
 		public function Behaviour() 
 		{

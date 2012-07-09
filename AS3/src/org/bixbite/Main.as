@@ -53,18 +53,22 @@ package org.bixbite
 	import org.bixbite.framework.modules.stats.Stats;
 	
 	/**
-	 * @version 0.5.2
-	 * footprint 3.96kb
+	 * @version 0.5.4
+	 * footprint 2.69kb
 	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains collection of framework modules.
 	 * 
 	 * TODO
-	 * 0.5.4
+	 * 0.5.5
 	 * - framework UI components
 	 * - more examples, integration and performance tests
 	 * 
 	 * LOG:
+	 * 0.5.4
+	 * - core/framework separation, stageView no longer integrated into compound
+	 * - abstract init method in Compound
+	 * - now swf with compiled with bixbite can be loaded into non bixbite project
 	 * 0.5.3
 	 * - behaviours - individual signals on Atom channel
 	 * - behaviours - bug fix with removal
@@ -103,6 +107,11 @@ package org.bixbite
 	{
 		
 		public function Main() 
+		{
+			
+		}
+		
+		override public function init():void
 		{
 			CONFIG::debug {
 				var stageManager	:StageManager 	= new StageManager();

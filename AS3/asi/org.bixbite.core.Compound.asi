@@ -19,7 +19,7 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Compound extends Sprite implements ICompound
 	{
@@ -27,24 +27,24 @@
 		private var slots : Object;
 		private var _uid : String;
 		private var _module : Boolean;
-		private var _stageView : StageView;
 		private var signal : ISignal;
 		private var behaviours : Object;
-
-		public function get module () : Boolean;
-		function set module (value:Boolean) : void;
 
 		/**
 		 * Unique identifier of this Compound
 		 */
 		public function get uid () : String;
 
-		/**
-		 * Build in top view as a base for Composite View Pattern.
-		 */
-		public function get stageView () : StageView;
+		public function get module () : Boolean;
 
 		public function Compound ();
+
+		function initialise (emiter:Emiter, module:Boolean=false) : void;
+
+		/**
+		 *  Abstract method
+		 */
+		public function init () : void;
 
 		/**
 		 * Add Behaviour into your Atom. 
@@ -66,6 +66,6 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function startup (type:String, params:Array=null) : void;
+		public function sendSignal (type:String, params:Array=null) : void;
 	}
 }

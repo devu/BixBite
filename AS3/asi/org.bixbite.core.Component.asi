@@ -11,7 +11,7 @@
 	 *   <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
 	 * As well as provide set of commonly shared methods for communication</p>
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Component implements IComponent
 	{

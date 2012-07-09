@@ -31,7 +31,7 @@ package org.bixbite.core.interfaces
 		 * Reference to native flash stage as an system I/O provider for your Application.
 		 * 
 		 * @langversion	3.0
-		 * @version 0.5.0
+		 * @version 0.5.4
 		 */
 		function get stage():Stage 
 	}

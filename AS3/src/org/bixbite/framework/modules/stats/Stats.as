@@ -32,6 +32,7 @@ package org.bixbite.framework.modules.stats
 	import org.bixbite.framework.modules.stats.view.TracerView;
 	import org.bixbite.framework.signals.StageSignal;
 	import org.bixbite.framework.signals.StatsSignal;
+	import org.bixbite.framework.view.StageView;
 	
 	/**
 	 * @version  compatibility - 0.5.3
@@ -49,15 +50,23 @@ package org.bixbite.framework.modules.stats
 		private var tracer	:TracerView;
 		
 		private var isMonitored	:Boolean = false;
+		private var stageView	:StageView;
 		
 		/**
 		 * Constructor
 		 */
 		public function Stats() 
 		{
+			
+		}
+		
+		override public function init():void 
+		{
 			data 	= new StatsData();
 			trans 	= new StatsTransponder();
 			monitor = new StatsMonitor();
+			
+			stageView = new StageView();
 			stageView.addView(monitor);
 			
 			addBehaviour(StatsSignal.CALCULATE, Calculate);

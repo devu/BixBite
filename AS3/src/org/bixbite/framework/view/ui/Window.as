@@ -11,10 +11,8 @@ package org.bixbite.framework.view.ui
 		private var xpos:Number;
 		private var ypos:Number;
 		
-		public function Window(parentView:DisplayViewContainer, xpos:Number = 0, ypos:Number = 0) 
+		public function Window(xpos:Number = 0, ypos:Number = 0) 
 		{
-			this.parentView = parentView;
-			
 			this.xpos = xpos;
 			this.ypos = ypos;
 			
@@ -25,8 +23,6 @@ package org.bixbite.framework.view.ui
 		{
 			trace(this, "init");
 			super.init();
-			
-			parentView.addView(this);
 			
 			draw();
 		}

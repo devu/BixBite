@@ -23,12 +23,12 @@ THE SOFTWARE.
 
 package examples.helloworld.data
 {
-	import examples.helloworld.Signals;
+	import examples.helloworld.MainHelloWorld;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * 
 	 * This Data component is a copy holder that will reponse to Atom on reqeted data.
 	 * Data component don't care who is calling, will respond as soon as a signal has been recieved.
@@ -49,12 +49,12 @@ package examples.helloworld.data
 		
 		override public function init():void
 		{
-			addSlot(Signals.COPY_REQUEST, onCopyRequest);
+			addSlot(MainHelloWorld.COPY_REQUEST, onCopyRequest);
 		}
 		
 		private function onCopyRequest(s:ISignal):void
 		{
-			responseTo(s.callerUID, Signals.COPY_REQUEST);
+			responseTo(s.callerUID, MainHelloWorld.COPY_REQUEST);
 		}
 	
 	}

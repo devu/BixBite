@@ -23,14 +23,14 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
-	import examples.helloflash.Signals;
+	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class MainView extends DisplayViewContainer 
 	{
@@ -54,9 +54,9 @@ package examples.helloflash.view
 			
 			setContext("main", container);
 			
-			addSlot(Signals.CREATE_BALL, onCreateBall);
-			addSlot(Signals.INIT, createBall);
-			addSlot(Signals.DIRECT_RESPONSE, onDirectResponse);
+			addSlot(HelloFlash.CREATE_BALL, onCreateBall);
+			addSlot(HelloFlash.INIT, createBall);
+			addSlot(HelloFlash.DIRECT_RESPONSE, onDirectResponse);
 		}
 		
 		private function onDirectResponse(s:ISignal):void 

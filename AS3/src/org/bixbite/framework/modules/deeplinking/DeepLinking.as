@@ -20,6 +20,11 @@ package org.bixbite.framework.modules.deeplinking
 		
 		public function DeepLinking() 
 		{
+			
+		}
+		
+		override public function init():void 
+		{
 			var d:DeepLinkingData 	= new DeepLinkingData();
 			var t:DeepLinkingTrans 	= new DeepLinkingTrans();
 			
@@ -27,7 +32,7 @@ package org.bixbite.framework.modules.deeplinking
 			addBehaviour(DeepLinking.ON_CHANGE, OnChange);
 			addBehaviour(DeepLinking.SET_ADDRESS, SetAddress);
 			
-			startup(DeepLinking.INIT, ["bixbite"]);
+			sendSignal(DeepLinking.INIT, ["bixbite"]);
 			//startup(DeepLinking.SET_ADDRESS, ["http://www.flaemo.com"]);
 		}
 		

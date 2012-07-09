@@ -6,6 +6,7 @@
 	import org.bixbite.framework.modules.activeGrid.view.ActiveGridView;
 	import org.bixbite.framework.modules.stageManager.StageManager;
 	import org.bixbite.framework.signals.StageSignal;
+	import org.bixbite.framework.view.StageView;
 
 	/**
 	 *
@@ -15,5 +16,7 @@
 	public class ActiveGridLayout extends Compound
 	{
 		public function ActiveGridLayout ();
+
+		public function init () : void;
 	}
 }

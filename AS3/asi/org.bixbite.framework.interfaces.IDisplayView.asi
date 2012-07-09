@@ -6,7 +6,7 @@
 	/**
 	 *
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public interface IDisplayView extends IView
 	{

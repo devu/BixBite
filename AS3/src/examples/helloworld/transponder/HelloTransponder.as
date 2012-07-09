@@ -23,14 +23,14 @@ THE SOFTWARE.
 
 package examples.helloworld.transponder 
 {
-	import examples.helloworld.Signals;
-	import flash.events.MouseEvent;
-	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.core.Transponder;
+import examples.helloworld.MainHelloWorld;
+import flash.events.MouseEvent;
+import flash.text.TextField;
+import org.bixbite.core.interfaces.ISignal;
+import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * 
      * This Trasponder will detect if any text field has been clicked.
      * If so, will send signal demands to change the copy.
@@ -51,18 +51,18 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			addSlot(Signals.GET_DEFAULT_COPY, onGetDefaultCopy);
+			addSlot(MainHelloWorld.GET_DEFAULT_COPY, onGetDefaultCopy);
 		}
 		
 		private function onGetDefaultCopy(s:ISignal):void 
 		{
-			sendSignal(Signals.UPDATE_COPY, [true]);
+			sendSignal(MainHelloWorld.UPDATE_COPY, [true]);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			if (findObjectByType(TextField)) 
-				sendSignal(Signals.UPDATE_COPY, [false]);
+				sendSignal(MainHelloWorld.UPDATE_COPY, [false]);
 		}
 		
 	}

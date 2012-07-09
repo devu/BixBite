@@ -2,8 +2,8 @@
 {
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import flash.events.Event;
 	import flash.geom.Point;
-	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
@@ -17,7 +17,7 @@
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
 	 * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Emiter
 	{
@@ -48,7 +48,9 @@
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
-		public function Emiter (compound:ICompound);
+		public function Emiter (compound:Compound);
+
+		private function onAddedToStage (e:Event) : void;
 
 		/**
 		 *
@@ -173,7 +175,7 @@
 		 * @param    referrer
 		 * @return   reference to Emiter
 		 */
-		public static function register (referrer:ICompound) : Emiter;
+		public static function register (referrer:Compound) : void;
 
 		/**
 		 *

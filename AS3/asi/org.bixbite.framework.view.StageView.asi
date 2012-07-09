@@ -15,7 +15,7 @@
 		/**
 		 * Constructor
 		 */
-		public function StageView (stage:Stage);
+		public function StageView ();
 
 		/**
 		 * Overrides actor abstract method and place content directly on native stage of the Flash Player.

@@ -25,8 +25,8 @@ package org.bixbite.core
 {
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import flash.events.Event;
 	import flash.geom.Point;
-	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
@@ -41,7 +41,7 @@ package org.bixbite.core
      * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Emiter
 	{
@@ -63,11 +63,28 @@ package org.bixbite.core
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
-		public function Emiter(compound:ICompound) 
+		public function Emiter(compound:Compound) 
 		{
 			if (_instance) throw IllegalOperationError("Singleton");
 			
-			_stage		= compound.stage;
+			_instance = this;
+			isRunning = true;
+			
+			if (compound.stage) {
+				_stage	= compound.stage;
+				compound.BIXBITE::initialise(this);
+			} else {
+				compound.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			}
+			
+		}
+		
+		private function onAddedToStage(e:Event):void 
+		{
+			e.target.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			
+			_stage = e.target.stage;
+			Compound(e.target).BIXBITE::initialise(this);
 		}
 		
 		/**
@@ -239,16 +256,12 @@ package org.bixbite.core
          * @param    referrer
          * @return   reference to Emiter
          */
-		static public function register(referrer:ICompound):Emiter 
+		static public function register(referrer:Compound):void 
 		{
-			if(!isRunning){
-				_instance 	= new Emiter(referrer);
-				isRunning 	= true;
-			} else {
-				referrer.BIXBITE::module = true;
-			}
-			
-			return _instance;
+			if(!isRunning)
+				_instance = new Emiter(referrer);
+			else 
+				referrer.BIXBITE::initialise(_instance, true);
 		}
 		
 		/**

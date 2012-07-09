@@ -28,33 +28,46 @@ package examples.helloworld
 	import examples.helloworld.transponder.HelloTransponder;
 	import examples.helloworld.view.HelloView;
 	import org.bixbite.core.Compound;
+	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.4.2
-	 * footprint 6.57kb.
+	 * footprint 6.79kb.
 	 * 
 	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
 	public class MainHelloWorld extends Compound
 	{
+		public static const INIT				:String = "helloWorldInit";
+		public static const COPY_REQUEST		:String = "helloWorldCopyRequest";
+		public static const UPDATE_COPY			:String = "helloWorldUpdateCopy";
+		public static const GET_DEFAULT_COPY	:String = "helloWorldGetDefaultCopy";
+		public static const SET_COPY			:String = "helloWorldSetCopy";
+		
 		/**
 		 * Set your default triad.
 		 */
 		public function MainHelloWorld() 
 		{
+			
+		}
+		
+		override public function init():void 
+		{
 			var t:HelloTransponder 	= new HelloTransponder();
 			var d:HelloData 		= new HelloData();
+			var sv:StageView 		= new StageView();
 			var v:HelloView;
 			
 			for ( var i:int = 0; i < 20; i++){
 				v = new HelloView();
-				stageView.addView(v);
+				sv.addView(v);
 			}
 			
-			addBehaviour(Signals.UPDATE_COPY, CopyHandler);
+			addBehaviour(MainHelloWorld.UPDATE_COPY, CopyHandler);
 			
-			startup(Signals.INIT);
+			sendSignal(MainHelloWorld.INIT);
 		}
 		
 	}

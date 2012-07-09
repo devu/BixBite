@@ -36,7 +36,7 @@ package org.bixbite.core
      * Because former Model has been split for Atom and Data components, do not use Data component to hold any kind of business logic.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
      */
 	public class Data extends Component implements IData
 	{

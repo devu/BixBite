@@ -23,13 +23,13 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
-	import examples.helloflash.Signals;
+	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
 
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class Ball extends DisplayView 
 	{
@@ -56,9 +56,9 @@ package examples.helloflash.view
 			
 			setContext("ball", ball);
 			
-			addSlot(Signals.SHUFFLE, shuffle);
-			addSlot(Signals.RED_BALL, onMakeBallRed);
-			addSlot(Signals.DIRECT_RESPONSE, onDirectResponse);
+			addSlot(HelloFlash.SHUFFLE, shuffle);
+			addSlot(HelloFlash.RED_BALL, onMakeBallRed);
+			addSlot(HelloFlash.DIRECT_RESPONSE, onDirectResponse);
 		}
 		
 		private function onDirectResponse(s:ISignal):void 

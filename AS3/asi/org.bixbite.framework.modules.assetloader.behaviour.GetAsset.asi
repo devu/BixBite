@@ -1,0 +1,22 @@
+﻿package org.bixbite.framework.modules.assetloader.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.assetloader.AssetLoader;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class GetAsset extends Behaviour
+	{
+		public function GetAsset ();
+
+		public function init () : void;
+
+		private function onAssetReady (s:ISignal, data:IData) : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

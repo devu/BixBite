@@ -19,5 +19,7 @@
 		public static const ON_CHANGE : String = "DeepLinking_onChange";
 
 		public function DeepLinking ();
+
+		public function init () : void;
 	}
 }

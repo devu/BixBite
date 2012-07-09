@@ -1,0 +1,16 @@
+﻿package org.bixbite.framework.modules.assetloader.view
+{
+	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.framework.view.SWFAsset;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class TestView extends DisplayViewContainer
+	{
+		public function TestView ();
+
+		public function init () : void;
+	}
+}

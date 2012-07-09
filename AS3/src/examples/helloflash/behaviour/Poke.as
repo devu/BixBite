@@ -23,12 +23,12 @@ THE SOFTWARE.
 
 package examples.helloflash.behaviour 
 {
-	import examples.helloflash.Signals;
+	import examples.helloflash.HelloFlash;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class Poke extends Behaviour 
 	{
@@ -48,12 +48,12 @@ package examples.helloflash.behaviour
 		{
 			count++;
 			
-			sendSignal(Signals.CREATE_BALL, [count]);
+			sendSignal(HelloFlash.CREATE_BALL, [count]);
 			
 			if ((count % 10) == 0){
-				sendSignal(Signals.RED_BALL);
+				sendSignal(HelloFlash.RED_BALL);
 			} else {
-				sendSignal(Signals.SHUFFLE);
+				sendSignal(HelloFlash.SHUFFLE);
 			}
 		}
 		

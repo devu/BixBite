@@ -34,7 +34,7 @@ package org.bixbite.core
      * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
      */
 	public class Transponder extends Component implements ITransponder 
 	{

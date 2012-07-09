@@ -21,20 +21,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloflash 
+package org.bixbite.framework.interfaces 
 {
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @langversion	3.0
+	 * @version 0.5.4
 	 */
-	public class Signals
+	public interface IAsset 
 	{
-		public static const INIT				:String = "helloFlashInit";
-		public static const CREATE_BALL			:String = "helloFlashCreateBall";
-		public static const RED_BALL			:String = "helloFlashRedBall";
-		public static const POKE				:String = "helloFlashPoke";
-		public static const SHUFFLE				:String = "helloFlashShuffle";
-		public static const DIRECT_RESPONSE		:String = "helloFlashDirectResponse";
+		
 	}
-
+	
 }

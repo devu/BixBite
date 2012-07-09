@@ -55,5 +55,7 @@
 	public class Main extends Compound
 	{
 		public function Main ();
+
+		public function init () : void;
 	}
 }

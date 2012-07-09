@@ -29,7 +29,7 @@ package org.bixbite.framework.modules.stageManager.data
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.3
+	 * @version  compatibility - 0.5.4
 	 * @since 0.4.1
 	 */
 	public class StageData extends Data 
@@ -42,13 +42,15 @@ package org.bixbite.framework.modules.stageManager.data
 		
 		public function StageData()
 		{
-			stage = system;
-			stage.align = "TL";
-			stage.scaleMode = "noScale";
+			
 		}
 		
 		override public function init():void 
 		{
+			stage = system;
+			stage.align = "TL";
+			stage.scaleMode = "noScale";
+			
 			addSlot(StageSignal.DATA_REQUEST, onDataRequest);
 		}
 		

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_framework_0.5.3.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_framework_0.5.4.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Framework.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -31,14 +31,6 @@
     <string>src\test\integration\behaviours\data\mydata.as</string>
     <string>src\test\integration\behaviours\behaviour\startup.as</string>
     <string>src\test\integration\behaviours\behaviour\redraw.as</string>
-    <string>src\org\bixbite\core\view.as</string>
-    <string>src\org\bixbite\core\transponder.as</string>
-    <string>src\org\bixbite\core\signal.as</string>
-    <string>src\org\bixbite\core\emiter.as</string>
-    <string>src\org\bixbite\core\data.as</string>
-    <string>src\org\bixbite\core\compound.as</string>
-    <string>src\org\bixbite\core\component.as</string>
-    <string>src\org\bixbite\core\behaviour.as</string>
     <string>src\org\bixbite\namespaces\bixbite.as</string>
     <string>src\org\bixbite\main.as</string>
     <string>src\examples\userinterface\mainui.as</string>
@@ -55,6 +47,27 @@
     <string>src\examples\helloflash\view\ball.as</string>
     <string>src\examples\helloflash\transponder\balltransponder.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
+    <string>src\org\bixbite\framework\view\swfasset.as</string>
+    <string>src\org\bixbite\framework\view\iasset.as</string>
+    <string>src\org\bixbite\framework\view\ui\window.as</string>
+    <string>src\org\bixbite\framework\signals\activegridsignal.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\activegridlayout.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\view\activegridview.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\data\activegriddata.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\behaviour\calculategrid.as</string>
+    <string>src\org\bixbite\framework\factories\textfactory.as</string>
+    <string>src\org\bixbite\framework\factories\graphicsfactory.as</string>
+    <string>src\org\bixbite\framework\factories\graphics.as</string>
+    <string>src\test\integration\loaded\mainloader.as</string>
+    <string>src\org\bixbite\framework\interfaces\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\assetloader.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\view\testview.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\transponder\assetloadertrans.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetsdata.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -75,14 +88,6 @@
     <string>src\test\integration\behaviours\data\mydata.as</string>
     <string>src\test\integration\behaviours\behaviour\startup.as</string>
     <string>src\test\integration\behaviours\behaviour\redraw.as</string>
-    <string>src\org\bixbite\core\view.as</string>
-    <string>src\org\bixbite\core\transponder.as</string>
-    <string>src\org\bixbite\core\signal.as</string>
-    <string>src\org\bixbite\core\emiter.as</string>
-    <string>src\org\bixbite\core\data.as</string>
-    <string>src\org\bixbite\core\compound.as</string>
-    <string>src\org\bixbite\core\component.as</string>
-    <string>src\org\bixbite\core\behaviour.as</string>
     <string>src\org\bixbite\namespaces\bixbite.as</string>
     <string>src\org\bixbite\main.as</string>
     <string>src\examples\userinterface\mainui.as</string>
@@ -99,6 +104,27 @@
     <string>src\examples\helloflash\view\ball.as</string>
     <string>src\examples\helloflash\transponder\balltransponder.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
+    <string>src\org\bixbite\framework\view\swfasset.as</string>
+    <string>src\org\bixbite\framework\view\iasset.as</string>
+    <string>src\org\bixbite\framework\view\ui\window.as</string>
+    <string>src\org\bixbite\framework\signals\activegridsignal.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\activegridlayout.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\view\activegridview.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\data\activegriddata.as</string>
+    <string>src\org\bixbite\framework\modules\activegrid\behaviour\calculategrid.as</string>
+    <string>src\org\bixbite\framework\factories\textfactory.as</string>
+    <string>src\org\bixbite\framework\factories\graphicsfactory.as</string>
+    <string>src\org\bixbite\framework\factories\graphics.as</string>
+    <string>src\test\integration\loaded\mainloader.as</string>
+    <string>src\org\bixbite\framework\interfaces\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\assetloader.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\view\testview.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\transponder\assetloadertrans.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetsdata.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

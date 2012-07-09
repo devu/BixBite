@@ -31,7 +31,7 @@ package org.bixbite.framework.modules.stageManager
 	import org.bixbite.framework.signals.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.5.3
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.0
 	 * 
 	 * footprint 8.73kb
@@ -41,6 +41,11 @@ package org.bixbite.framework.modules.stageManager
 		private var data:StageData;
 		
 		public function StageManager()
+		{
+			
+		}
+		
+		override public function init():void 
 		{
 			data 	= new StageData();
 			var t:StageTransponder 	= new StageTransponder();

@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * <p>The View itself is just a subclass of Component to provide base abstract class ready to extend and work with.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class View extends Component implements IView
 	{

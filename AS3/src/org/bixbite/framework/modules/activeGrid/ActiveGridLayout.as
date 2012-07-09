@@ -29,15 +29,21 @@ package org.bixbite.framework.modules.activeGrid
 	import org.bixbite.framework.modules.activeGrid.view.ActiveGridView;
 	import org.bixbite.framework.modules.stageManager.StageManager;
 	import org.bixbite.framework.signals.StageSignal;
+	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version  compatibility - 0.5.3
+	 * @version  compatibility - 0.5.4
 	 * @since 0.5.3
 	 */
 	public class ActiveGridLayout extends Compound 
 	{
 		
 		public function ActiveGridLayout() 
+		{
+			
+		}
+		
+		override public function init():void 
 		{
 			var stageManager	:StageManager 	= new StageManager();
 			
@@ -48,6 +54,8 @@ package org.bixbite.framework.modules.activeGrid
 			data.addBox(3, 6, 0xFFFF11);
 			data.addBox(3, 3, 0xFF11FF);
 			data.addBox(3, 6, 0x00FFFF);
+			
+			var stageView		:StageView = new StageView();
 			
 			var debugView		:ActiveGridView = new ActiveGridView();
 			stageView.addView(debugView);

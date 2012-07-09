@@ -43,40 +43,51 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class Compound extends Sprite implements ICompound
 	{
 		use namespace BIXBITE
 		
-		private var emiter		:Emiter 	= Emiter.register(ICompound(this));
-		
-		private var slots		:Object 	= emiter.slots;
-		
-		private var _uid		:String		= "@" + emiter.uid;
-		
+		private var emiter		:Emiter;
+		private var slots		:Object// 	= emiter.slots;
+		private var _uid		:String//		= "@" + emiter.uid;
 		private var _module		:Boolean 	= false;
-		
-		private var _stageView	:StageView;
-		
-		private var signal		:ISignal 	= new Signal(_uid);
-		
-		private var behaviours	:Object = { };
+		private var signal		:ISignal// 	= new Signal(_uid);
+		private var behaviours	:Object// = { };
 		
 		public function Compound()
 		{
-			_stageView = new StageView(emiter.stage);
-			if(Object(this).constructor == Compound) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Compound) throw new IllegalOperationError("Abstract Class");
+			Emiter.register(Compound(this));
 		}
 		
-		public function get module():Boolean 
+		BIXBITE function initialise(emiter:Emiter, module:Boolean = false):void
 		{
-			return _module;
+			/*
+			CONFIG::debug {
+				if (module) trace(this, "initialise as module");
+				else trace(this, "initialise");
+			}*/
+			
+			this.emiter = emiter;
+			_module 	= module;
+			this.slots 	= emiter.slots
+			_uid 		= "@" + emiter.uid;
+			
+			signal = new Signal(_uid);
+			behaviours = { };
+			
+			init();
+			
 		}
 		
-		BIXBITE function set module(value:Boolean):void 
+		/**
+		 *  Abstract method
+		 */
+		public function init():void
 		{
-			_module = value;
+			
 		}
 		
 		/**
@@ -112,25 +123,22 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Build in top view as a base for Composite View Pattern.
-		 */
-		public function get stageView():StageView 
-		{
-			return _stageView;
-		}
-		
-		/**
 		 * Start Compound with a specific signal type.
 		 * @param	type
 		 * @param	params
 		 */
-		public function startup(type:String, params:Array = null):void
+		public function sendSignal(type:String, params:Array = null):void
 		{
 			if (params) signal.params = params;
 			
 			emiter.broadcast(slots.a, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 			emiter.broadcast(slots.c, type, signal);
+		}
+		
+		public function get module():Boolean 
+		{
+			return _module;
 		}
 	}
 

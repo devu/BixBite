@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.5.3.swc</FlexBinPath>
-  <FlashBinPath>.\bin\BIXBITE.flash.swc</FlashBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.5.4.swc</FlexBinPath>
+  <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
   <MakeMXI>false</MakeMXI>
@@ -14,9 +14,11 @@
   <MXIUIAccessText />
   <Flex_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
-    <string>src\org\bixbite\framework\view\displayview.as</string>
-    <string>src\org\bixbite\framework\view\displayviewcontainer.as</string>
+    <string>src\org\bixbite\framework\view\swfasset.as</string>
     <string>src\org\bixbite\framework\view\stageview.as</string>
+    <string>src\org\bixbite\framework\view\iasset.as</string>
+    <string>src\org\bixbite\framework\view\displayviewcontainer.as</string>
+    <string>src\org\bixbite\framework\view\displayview.as</string>
     <string>src\org\bixbite\framework\view\ui\window.as</string>
     <string>src\org\bixbite\framework\signals\statssignal.as</string>
     <string>src\org\bixbite\framework\signals\stagesignal.as</string>
@@ -26,8 +28,8 @@
     <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
     <string>src\org\bixbite\framework\modules\stats\transponder\statstransponder.as</string>
     <string>src\org\bixbite\framework\modules\stats\data\statsdata.as</string>
-    <string>src\org\bixbite\framework\modules\stats\behaviour\calculate.as</string>
     <string>src\org\bixbite\framework\modules\stats\behaviour\trace.as</string>
+    <string>src\org\bixbite\framework\modules\stats\behaviour\calculate.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\stagemanager.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\transponder\stagetransponder.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\data\stagedata.as</string>
@@ -40,33 +42,23 @@
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\setaddress.as</string>
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\onchange.as</string>
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\initialisedeeplinking.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\assetloader.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\view\testview.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\transponder\assetloadertrans.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetsdata.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\activegridlayout.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\view\activegridview.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\data\activegriddata.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\behaviour\calculategrid.as</string>
-    <string>src\org\bixbite\framework\interfaces\idisplayview.as</string>
     <string>src\org\bixbite\framework\interfaces\idisplayviewcontainer.as</string>
+    <string>src\org\bixbite\framework\interfaces\idisplayview.as</string>
     <string>src\org\bixbite\framework\factories\textfactory.as</string>
     <string>src\org\bixbite\framework\factories\graphicsfactory.as</string>
     <string>src\org\bixbite\framework\factories\graphics.as</string>
-    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
-    <string>src\test\integration\behaviours\behaviour\startup.as</string>
-    <string>src\test\integration\behaviours\data\mydata.as</string>
-    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
-    <string>src\test\integration\behaviours\view\myview.as</string>
-    <string>src\test\integration\behaviours\behaviourflow.as</string>
-    <string>src\test\integration\behaviours\signals.as</string>
-    <string>src\test\performance\coreperf\data\testdata.as</string>
-    <string>src\test\performance\coreperf\transponder\tester.as</string>
-    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
-    <string>src\test\performance\coreperf\coreperformance.as</string>
-    <string>src\test\performance\coreperf\view\testview.as</string>
-    <string>src\test\performance\signalperf\signals.as</string>
-    <string>src\test\performance\signalperf\signalperformance.as</string>
-    <string>src\test\performance\signalperf\view\testview.as</string>
-    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
-    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
-    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
     <string>src\examples\userinterface\mainui.as</string>
     <string>src\examples\mudularstructure\myapplication.as</string>
     <string>src\examples\helloworld\signals.as</string>
@@ -77,15 +69,39 @@
     <string>src\examples\helloworld\behaviour\copyhandler.as</string>
     <string>src\examples\helloflash\signals.as</string>
     <string>src\examples\helloflash\helloflash.as</string>
-    <string>src\examples\helloflash\view\mainview.as</string>
     <string>src\examples\helloflash\view\ball.as</string>
+    <string>src\examples\helloflash\view\mainview.as</string>
     <string>src\examples\helloflash\transponder\balltransponder.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
+    <string>src\mainbixbite.as</string>
+    <string>src\mainloader.as</string>
+    <string>src\test\performance\coreperf\data\testdata.as</string>
+    <string>src\test\performance\coreperf\transponder\tester.as</string>
+    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\coreperf\view\testview.as</string>
+    <string>src\test\performance\coreperf\coreperformance.as</string>
+    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
+    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\signalperf\view\testview.as</string>
+    <string>src\test\performance\signalperf\signalperformance.as</string>
+    <string>src\test\performance\signalperf\signals.as</string>
+    <string>src\test\integration\behaviours\signals.as</string>
+    <string>src\test\integration\behaviours\behaviourflow.as</string>
+    <string>src\test\integration\behaviours\view\myview.as</string>
+    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\integration\behaviours\data\mydata.as</string>
+    <string>src\test\integration\behaviours\behaviour\startup.as</string>
+    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
+    <string>src\test\integration\loaded\mainloader.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
+    <string>src\org\bixbite\framework\view\swfasset.as</string>
     <string>src\org\bixbite\framework\view\stageview.as</string>
+    <string>src\org\bixbite\framework\view\iasset.as</string>
     <string>src\org\bixbite\framework\view\displayviewcontainer.as</string>
+    <string>src\org\bixbite\framework\view\displayview.as</string>
     <string>src\org\bixbite\framework\view\ui\window.as</string>
     <string>src\org\bixbite\framework\signals\statssignal.as</string>
     <string>src\org\bixbite\framework\signals\stagesignal.as</string>
@@ -95,8 +111,8 @@
     <string>src\org\bixbite\framework\modules\stats\view\statsmonitor.as</string>
     <string>src\org\bixbite\framework\modules\stats\transponder\statstransponder.as</string>
     <string>src\org\bixbite\framework\modules\stats\data\statsdata.as</string>
-    <string>src\org\bixbite\framework\modules\stats\behaviour\calculate.as</string>
     <string>src\org\bixbite\framework\modules\stats\behaviour\trace.as</string>
+    <string>src\org\bixbite\framework\modules\stats\behaviour\calculate.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\stagemanager.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\transponder\stagetransponder.as</string>
     <string>src\org\bixbite\framework\modules\stagemanager\data\stagedata.as</string>
@@ -109,33 +125,23 @@
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\setaddress.as</string>
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\onchange.as</string>
     <string>src\org\bixbite\framework\modules\deeplinking\behaviour\initialisedeeplinking.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\assetloader.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\view\testview.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\transponder\assetloadertrans.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\iasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetsdata.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
+    <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\activegridlayout.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\view\activegridview.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\data\activegriddata.as</string>
     <string>src\org\bixbite\framework\modules\activegrid\behaviour\calculategrid.as</string>
-    <string>src\org\bixbite\framework\interfaces\idisplayview.as</string>
     <string>src\org\bixbite\framework\interfaces\idisplayviewcontainer.as</string>
+    <string>src\org\bixbite\framework\interfaces\idisplayview.as</string>
     <string>src\org\bixbite\framework\factories\textfactory.as</string>
     <string>src\org\bixbite\framework\factories\graphicsfactory.as</string>
     <string>src\org\bixbite\framework\factories\graphics.as</string>
-    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
-    <string>src\test\integration\behaviours\behaviour\startup.as</string>
-    <string>src\test\integration\behaviours\data\mydata.as</string>
-    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
-    <string>src\test\integration\behaviours\view\myview.as</string>
-    <string>src\test\integration\behaviours\behaviourflow.as</string>
-    <string>src\test\integration\behaviours\signals.as</string>
-    <string>src\test\performance\coreperf\data\testdata.as</string>
-    <string>src\test\performance\coreperf\transponder\tester.as</string>
-    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
-    <string>src\test\performance\coreperf\coreperformance.as</string>
-    <string>src\test\performance\coreperf\view\testview.as</string>
-    <string>src\test\performance\signalperf\signals.as</string>
-    <string>src\test\performance\signalperf\signalperformance.as</string>
-    <string>src\test\performance\signalperf\view\testview.as</string>
-    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
-    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
-    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
     <string>src\examples\userinterface\mainui.as</string>
     <string>src\examples\mudularstructure\myapplication.as</string>
     <string>src\examples\helloworld\signals.as</string>
@@ -146,11 +152,31 @@
     <string>src\examples\helloworld\behaviour\copyhandler.as</string>
     <string>src\examples\helloflash\signals.as</string>
     <string>src\examples\helloflash\helloflash.as</string>
-    <string>src\examples\helloflash\view\mainview.as</string>
     <string>src\examples\helloflash\view\ball.as</string>
+    <string>src\examples\helloflash\view\mainview.as</string>
     <string>src\examples\helloflash\transponder\balltransponder.as</string>
     <string>src\examples\helloflash\behaviour\poke.as</string>
-    <string>src\org\bixbite\framework\view\displayview.as</string>
+    <string>src\mainbixbite.as</string>
+    <string>src\mainloader.as</string>
+    <string>src\test\performance\coreperf\data\testdata.as</string>
+    <string>src\test\performance\coreperf\transponder\tester.as</string>
+    <string>src\test\performance\coreperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\coreperf\view\testview.as</string>
+    <string>src\test\performance\coreperf\coreperformance.as</string>
+    <string>src\test\performance\signalperf\behaviour\testbehaviour.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunner.as</string>
+    <string>src\test\performance\signalperf\transponder\testtransponder.as</string>
+    <string>src\test\performance\signalperf\view\testview.as</string>
+    <string>src\test\performance\signalperf\signalperformance.as</string>
+    <string>src\test\performance\signalperf\signals.as</string>
+    <string>src\test\integration\behaviours\signals.as</string>
+    <string>src\test\integration\behaviours\behaviourflow.as</string>
+    <string>src\test\integration\behaviours\view\myview.as</string>
+    <string>src\test\integration\behaviours\transponder\mytransponder.as</string>
+    <string>src\test\integration\behaviours\data\mydata.as</string>
+    <string>src\test\integration\behaviours\behaviour\startup.as</string>
+    <string>src\test\integration\behaviours\behaviour\redraw.as</string>
+    <string>src\test\integration\loaded\mainloader.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

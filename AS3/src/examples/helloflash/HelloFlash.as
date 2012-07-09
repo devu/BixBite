@@ -27,15 +27,16 @@ package examples.helloflash
 	import examples.helloflash.transponder.BallTransponder;
 	import examples.helloflash.view.MainView;
 	import org.bixbite.core.Compound;
+	import org.bixbite.framework.view.StageView;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 * @since 0.4.0
 	 * 
 	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 6.25 kb
+	 * Footprint 6.58 kb
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb
@@ -51,11 +52,11 @@ package examples.helloflash
 	 * + Type safe API.
 	 * + Completly loosely decoupled classes.
 	 * + Less classes to get job done.
-	 * + Smallest Footprint fully functional core has below 4.0 kb footprint.
+	 * + Smallest Footprint fully functional core has below 3.0 kb footprint.
 	 * + Very low memory consumption
 	 * + Faster execution any part of the system.
 	 * + Smallest startup lag.
-	 * + Cleaner no Boiler-plate code.
+	 * + Cleaner no boiler-plate code.
 	 * + Only 1 level of abstraction
 	 * + The best framework for game developers and mobile platform in terms of performance.
 	 *
@@ -65,7 +66,8 @@ package examples.helloflash
 	 * - Not unit testing yet.
 	 
 	 * Robotlegs
-	 * +/- Breaks rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. It might not be concidered as an issue. Is just the way it is. As long as rule of the game is clear and not abused by developers. 
+	 * +/- Breaks rules of Original MVC paradigm and moved logic/behaviour into commands fully controlled by Controllers. 
+	 * It might not be concidered as an issue. Is just the way it is. As long as rule of the game is clear and not abused by developers. 
 	 *
 	 * + Good support, active development and documentation.
 	 * + Very well solves Dependency injection implementation. 
@@ -88,16 +90,28 @@ package examples.helloflash
 	 */
 	public class HelloFlash extends Compound
 	{
+		public static const INIT				:String = "helloFlashInit";
+		public static const CREATE_BALL			:String = "helloFlashCreateBall";
+		public static const RED_BALL			:String = "helloFlashRedBall";
+		public static const POKE				:String = "helloFlashPoke";
+		public static const SHUFFLE				:String = "helloFlashShuffle";
+		public static const DIRECT_RESPONSE		:String = "helloFlashDirectResponse";
 		
 		public function HelloFlash() 
 		{
-			var t:BallTransponder 	= new BallTransponder();
-			var v:MainView 			= new MainView();
+			
+		}
+		
+		override public function init():void 
+		{
+			var t			:BallTransponder 	= new BallTransponder();
+			var v			:MainView 			= new MainView();
+			var stageView	:StageView 			= new StageView();
 			stageView.addView(v);
 			
-			addBehaviour(Signals.POKE, Poke);
+			addBehaviour(HelloFlash.POKE, Poke);
 			
-			startup(Signals.INIT);
+			sendSignal(HelloFlash.INIT);
 			
 			// And we're done ;)
 		}
