@@ -24,7 +24,7 @@ THE SOFTWARE.
 package test.integration.behaviours 
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.view.StageView;
+	import org.bixbite.framework.view.RootView;
 	import test.integration.behaviours.behaviour.Redraw;
 	import test.integration.behaviours.behaviour.Startup;
 	import test.integration.behaviours.data.MyData;
@@ -59,7 +59,7 @@ package test.integration.behaviours
 			var t:MyTransponder 	= new MyTransponder();
 			var v:MyView;
 			
-			var stageView:StageView = new StageView();
+			var stageView:RootView = new RootView();
 			
 			for (var i:int = 0; i < 10; i++) {
 				v = new MyView();
