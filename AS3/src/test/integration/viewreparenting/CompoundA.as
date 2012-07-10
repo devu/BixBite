@@ -2,7 +2,7 @@ package test.integration.viewreparenting
 {
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.view.DisplayViewContainer;
-	import org.bixbite.framework.view.RootView;
+	import org.bixbite.framework.view.StageView;
 	import test.integration.viewreparenting.view.MyViewA;
 	
 	/**
@@ -11,7 +11,8 @@ package test.integration.viewreparenting
 	 */
 	public class CompoundA extends Compound 
 	{
-		private var _rootView:RootView;
+		private var stageView	:StageView;
+		private var _myView		:MyViewA;
 		
 		public function CompoundA() 
 		{
@@ -20,15 +21,15 @@ package test.integration.viewreparenting
 		
 		override public function init():void 
 		{
-			var myView:MyViewA 	= new MyViewA();
+			stageView 	= new StageView();
 			
-			_rootView 	= new RootView();
-			_rootView.addView(myView);
+			_myView 	= new MyViewA();
+			stageView.addView(_myView);
 		}
 		
-		public function get rootView():RootView 
+		public function get rootView():DisplayViewContainer 
 		{
-			return _rootView;
+			return _myView;
 		}
 		
 	}

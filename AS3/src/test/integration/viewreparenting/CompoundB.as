@@ -2,7 +2,7 @@ package test.integration.viewreparenting
 {
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.view.DisplayViewContainer;
-	import test.integration.viewreparenting.transponder.MyTransponder;
+	import test.integration.viewreparenting.transponder.ViewTransponder;
 	import test.integration.viewreparenting.view.MyViewB;
 	
 	/**
@@ -19,14 +19,13 @@ package test.integration.viewreparenting
 		
 		override public function init():void 
 		{
-			var compoundA	:CompoundA = new CompoundA();
+			var trans		:ViewTransponder 	= new ViewTransponder();
+			var compoundA	:CompoundA 			= new CompoundA();
 			
-			var myView		:MyViewB 	= new MyViewB();
+			var myViewB		:MyViewB 			= new MyViewB();
 			
 			var rootView:DisplayViewContainer = compoundA.rootView;
-			rootView.addView(myView);
-			rootView.context.x = 300;
-			rootView.context.rotation = 40;
+			rootView.addView(myViewB);
 		}
 		
 	}

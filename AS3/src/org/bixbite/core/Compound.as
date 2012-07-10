@@ -27,7 +27,7 @@ package org.bixbite.core
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.RootView;
+	import org.bixbite.framework.view.StageView;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**

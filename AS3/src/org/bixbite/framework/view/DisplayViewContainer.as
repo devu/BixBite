@@ -34,7 +34,7 @@ package org.bixbite.framework.view
 	 * Provides set of methods to handle children DisplayView of every DisplayObjectContainer.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class DisplayViewContainer extends DisplayView implements IDisplayViewContainer
 	{
@@ -69,8 +69,12 @@ package org.bixbite.framework.view
 		public function addView(view:IDisplayView):IDisplayView
 		{
 			view.parentView = this;
+			if (!view.stageView) view.stageView = stageView;
+			
 			addViewContent(view);
 			children[children.length] = view;
+			
+			sendSignal(ViewSignal.ADDED, [this, view]);
 			return view
 		}
 		
@@ -120,9 +124,10 @@ package org.bixbite.framework.view
 		 */
 		public function removeViewAt(id:int):IDisplayView
 		{
-			var view:IDisplayView = children[id];
+			var view:DisplayView = children[id];
 			children.splice(id, 1);
 			DisplayObjectContainer(context).removeChild(view.context);
+			sendSignal(ViewSignal.REMOVED, [this, view]);
 			return view
 		}
 		
@@ -135,7 +140,7 @@ package org.bixbite.framework.view
 		public function removeViewsAt(from:int, howMany:int):Array
 		{
 			var a:Array = children.splice(from, howMany);
-			for each(var view:IDisplayView in a) DisplayObjectContainer(context).removeChild(view.context);
+			for each(var view:DisplayView in a) removeView(view);
 			return a
 		}
 		

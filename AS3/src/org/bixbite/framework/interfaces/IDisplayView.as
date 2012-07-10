@@ -25,6 +25,8 @@ package org.bixbite.framework.interfaces
 {
 	import flash.display.DisplayObject;
 	import org.bixbite.core.interfaces.IView;
+	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.framework.view.StageView;
 	
 	/**
 	 * @langversion	3.0
@@ -35,8 +37,14 @@ package org.bixbite.framework.interfaces
 		/**
 		 * Parent view of this view
 		 */
-		function get parentView():IDisplayViewContainer;
-		function set parentView(value:IDisplayViewContainer):void;
+		function get parentView():DisplayViewContainer;
+		function set parentView(value:DisplayViewContainer):void;
+		
+		/**
+		 * 
+		 */
+		function get stageView():StageView;
+		function set stageView(value:StageView):void;
 		
 		/**
 		 * Reference to native Flash DisplayObject attached to any IDisplayView. Acts as dependency injector.

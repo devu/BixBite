@@ -25,23 +25,24 @@ package org.bixbite.framework.view
 {
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import org.bixbite.framework.interfaces.IDisplayView;
 	
 	/**
-	 * RootView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
+	 * StageView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
 	 * This class serve this purpose. Directly extends DisplayViewContainer as the highest in display list hierarchy of the Compound you are in. 
-	 * In fact the only diference between RootView and DisplayViewContainer is, where its context is added during View component initialistion.
+	 * In fact the only diference between StageView and DisplayViewContainer is, where its context is added during View component initialistion.
 	 * Within each Compound you can point at diferent node to achieve nested structure across multiple Compounds.
 	 * 
 	 * @langversion	3.0
 	 * @version 0.5.4
 	 */
-	public class RootView extends DisplayViewContainer 
+	public class StageView extends DisplayViewContainer 
 	{
 		
 		/**
 		 * Constructor
 		 */
-		public function RootView()
+		public function StageView()
 		{
 			
 		}
@@ -51,8 +52,17 @@ package org.bixbite.framework.view
 		 */
 		override public function init():void 
 		{
+			trace(this, "init");
 			setContext("RootView", new Sprite());
 			stage.addChild(context);
+		}
+		
+		override public function addView(view:IDisplayView):IDisplayView 
+		{
+			view.stageView = stageView = this;
+			
+			super.addView(view);
+			return view
 		}
 		
 	}

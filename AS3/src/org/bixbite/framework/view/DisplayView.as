@@ -37,13 +37,14 @@ package org.bixbite.framework.view
 	 * Solution built upon Decoration pattern, to wrap up native Display Objects into BixBite View structure.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.5.4
 	 */
 	public class DisplayView extends View implements IDisplayView
 	{
-		private var _context		:DisplayObject;
-		private var _parentView		:IDisplayViewContainer;
-		private var _graphics		:Graphics;
+		private var _context	:DisplayObject;
+		private var _parentView	:DisplayViewContainer;
+		private var _rootView	:StageView;
+		private var _graphics	:Graphics;
 		
 		/**
 		 * Constructor
@@ -77,17 +78,24 @@ package org.bixbite.framework.view
 		/**
 		 * Parent view of this view
 		 */
-		public function get parentView():IDisplayViewContainer { return _parentView; }
-		public function set parentView(value:IDisplayViewContainer):void { _parentView = value; }
+		public function get parentView():DisplayViewContainer { return _parentView; }
+		public function set parentView(value:DisplayViewContainer):void { _parentView = value; }
+		
+		/**
+		 * Parent view of this view
+		 */
+		public function get stageView():StageView { return _rootView; }
+		public function set stageView(value:StageView):void { _rootView = value; }
 		
 		/**
 		 * Native Flash DisplayObject attached to this view
 		 */
-		public function get context():DisplayObject { return _context; }
-		//public function set context(value:DisplayObject):void { _context = value; _graphics = context['graphics'] }
 		
 		public function get graphics():Graphics { return _graphics; }
-		public function set graphics(value:Graphics):void { _graphics = value; }
+		//public function set graphics(value:Graphics):void { _graphics = value; }
+		
+		public function get context():DisplayObject { return _context; }
+		//public function set context(value:DisplayObject):void { _context = value; }
 	}
 
 }

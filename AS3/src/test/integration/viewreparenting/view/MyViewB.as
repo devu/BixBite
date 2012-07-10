@@ -1,6 +1,8 @@
 package test.integration.viewreparenting.view 
 {
+	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.framework.view.ViewSignal;
 	
 	/**
 	 * ...
@@ -18,14 +20,22 @@ package test.integration.viewreparenting.view
 		{
 			super.init();
 			
+			context.name = "ViewB";
+			context.x = 150;
+			context.y = 150;
+			
 			graphics.clear();
 			graphics.beginFill(0x008800);
 			graphics.drawRect(0, 0, 100, 100);
 			
-			context.x = 150;
-			context.y = 150;
+			trace(this, "init", stageView);
 			
-			setContext("ViewB", context);
+			addSlot(ViewSignal.ADDED, onViewAdded);
+		}
+		
+		private function onViewAdded(s:ISignal):void 
+		{
+			trace(this, "added", stageView);
 		}
 		
 	}
