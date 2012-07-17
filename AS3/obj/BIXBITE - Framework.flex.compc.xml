@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.5.4.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.0.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -32,37 +32,31 @@
     <class>org.bixbite.core.Transponder</class>
     <class>org.bixbite.core.Behaviour</class>
     <class>org.bixbite.core.Compound</class>
+    <class>org.bixbite.core.BixBite</class>
     <class>org.bixbite.core.interfaces.IComponent</class>
     <class>org.bixbite.core.interfaces.ITransponder</class>
     <class>org.bixbite.core.interfaces.IData</class>
-    <class>org.bixbite.core.interfaces.ISignal</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
-    <class>org.bixbite.framework.view.DisplayView</class>
-    <class>org.bixbite.framework.view.DisplayViewContainer</class>
+    <class>org.bixbite.framework.DisplayListManager</class>
+    <class>org.bixbite.framework.Stats</class>
+    <class>org.bixbite.framework.StageManager</class>
     <class>org.bixbite.framework.view.StageView</class>
-    <class>org.bixbite.framework.signals.StageSignal</class>
-    <class>org.bixbite.framework.signals.StatsSignal</class>
-    <class>org.bixbite.framework.interfaces.IDisplayView</class>
-    <class>org.bixbite.framework.interfaces.IDisplayViewContainer</class>
-    <class>org.bixbite.framework.modules.stats.Stats</class>
-    <class>org.bixbite.framework.modules.stats.transponder.StatsTransponder</class>
-    <class>org.bixbite.framework.modules.stats.data.StatsData</class>
-    <class>org.bixbite.framework.modules.stats.view.StatsMonitor</class>
-    <class>org.bixbite.framework.modules.stats.view.TracerView</class>
-    <class>org.bixbite.framework.modules.stats.behaviour.Calculate</class>
-    <class>org.bixbite.framework.modules.stats.behaviour.Trace</class>
-    <class>org.bixbite.framework.modules.stageManager.StageManager</class>
-    <class>org.bixbite.framework.modules.stageManager.data.StageData</class>
-    <class>org.bixbite.framework.modules.stageManager.behaviour.StageResize</class>
-    <class>org.bixbite.framework.modules.stageManager.transponder.StageTransponder</class>
-    <class>org.bixbite.framework.modules.inputManager.UserInputManager</class>
-    <class>org.bixbite.framework.modules.inputManager.transponder.UserInputTransponder</class>
-    <class>org.bixbite.framework.modules.deeplinking.DeepLinking</class>
-    <class>org.bixbite.framework.modules.deeplinking.transponder.DeepLinkingTrans</class>
-    <class>org.bixbite.framework.modules.deeplinking.behaviour.SetAddress</class>
-    <class>org.bixbite.framework.modules.deeplinking.behaviour.InitialiseDeepLinking</class>
-    <class>org.bixbite.framework.modules.deeplinking.behaviour.OnChange</class>
-    <class>org.bixbite.framework.modules.deeplinking.data.DeepLinkingData</class>
+    <class>org.bixbite.framework.view.StatsMonitorView</class>
+    <class>org.bixbite.framework.signal.StatsSignal</class>
+    <class>org.bixbite.framework.signal.ActiveGridSignal</class>
+    <class>org.bixbite.framework.signal.DisplaySignal</class>
+    <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
+    <class>org.bixbite.framework.transponder.StatsTransponder</class>
+    <class>org.bixbite.framework.transponder.StageTransponder</class>
+    <class>org.bixbite.framework.behaviour.SetDisplayContext</class>
+    <class>org.bixbite.framework.behaviour.Calculate</class>
+    <class>org.bixbite.framework.behaviour.SetStage</class>
+    <class>org.bixbite.framework.behaviour.ResizeStage</class>
+    <class>org.bixbite.framework.behaviour.AddDisplayContext</class>
+    <class>org.bixbite.framework.behaviour.GetDisplayList</class>
+    <class>org.bixbite.framework.data.StatsData</class>
+    <class>org.bixbite.framework.data.StageData</class>
+    <class>org.bixbite.framework.data.DisplayListData</class>
   </include-classes>
 </flex-config>

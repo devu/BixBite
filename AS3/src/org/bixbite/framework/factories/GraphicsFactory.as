@@ -23,21 +23,75 @@ THE SOFTWARE.
 
 package org.bixbite.framework.factories 
 {
+	import flash.display.Graphics;
+	
 	/**
-	 * Not Implemented yet
+	 * @version 0.6.0
+	 * @since 0.5.5
 	 */
-	public class GraphicsFactory extends Graphics
+	public class GraphicsFactory
 	{
 		private static var _instance:GraphicsFactory = new GraphicsFactory();
 		
+		private var hexCmd:Vector.<int>;
+		private var tpzCmd:Vector.<int>;
+		
 		public function GraphicsFactory() 
+		{
+			hexCmd = new <int>[1, 2, 2, 2, 2, 2, 2];
+			hexCmd.fixed = true;
+			
+			tpzCmd = new <int>[1, 2, 2, 2];
+			tpzCmd.fixed = true;
+		}
+		
+		public static function getInstance():GraphicsFactory
+		{
+			return _instance
+		}
+		
+		public function drawHex(g:Graphics):void
 		{
 			
 		}
 		
-		public static function getInstance():Graphics
+		public function drawTrapezoid(g:Graphics, x:Number, y:Number, topWidth:Number, bottomWidth:Number, height:Number, color:uint = 0x00000, alpha:Number = 1):void
 		{
-			return _instance
+			var dif:Number;
+			var tl:Number;
+			var tr:Number;
+			var bl:Number;
+			var br:Number;
+			
+			if (topWidth < bottomWidth){
+				dif = (bottomWidth - topWidth) * 0.5;
+				tl = dif + x;
+				tr = bottomWidth - dif + x;
+				bl = x;
+				br = bottomWidth + x;
+			} else {
+				dif = (topWidth - bottomWidth) * 0.5;
+				tl = x;
+				tr = topWidth;
+				bl = dif;
+				br = topWidth - dif;
+			}
+			
+			var data:Vector.<Number> = new <Number>[tl,y, tr,y, br,height, bl,height];
+			
+			g.beginFill(color, alpha);
+			g.drawPath(tpzCmd, data);
+		}
+		
+		public function drawBox(g:Graphics, x:Number, y:Number, width:Number, height:Number, color:uint = 0x000000, alpha:Number = 1):void
+		{
+			g.beginFill(color, alpha);
+			g.drawRect(x, y, width, height);
+		}
+		
+		public function clear(g:Graphics):void 
+		{
+			g.clear();
 		}
 		
 	}

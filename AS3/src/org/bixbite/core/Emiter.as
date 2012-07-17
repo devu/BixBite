@@ -25,10 +25,9 @@ package org.bixbite.core
 {
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
-	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -41,7 +40,7 @@ package org.bixbite.core
      * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Emiter
 	{
@@ -53,9 +52,13 @@ package org.bixbite.core
 		
 		private var _stage				:Stage;
 		
-		private var _slots				:Object = { a: { }, m: { }, v: { }, c: { } };
+		private var _slots				:Object = { c: { }, d: { }, t: { }, v: { } };
 		
 		private var p					:Point = new Point(0, 0);
+		
+		private var components			:Dictionary = new Dictionary();
+		//temp solution to forward
+		private var _type				:String;
 		
 		use namespace BIXBITE
 		
@@ -63,30 +66,32 @@ package org.bixbite.core
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
-		public function Emiter(compound:Compound) 
+		public function Emiter(stage:Stage)
 		{
 			if (_instance) throw IllegalOperationError("Singleton");
-			
-			_instance = this;
-			isRunning = true;
-			
-			if (compound.stage) {
-				_stage	= compound.stage;
-				compound.BIXBITE::initialise(this);
-			} else {
-				compound.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
-			}
-			
+			_stage = stage;
 		}
 		
-		private function onAddedToStage(e:Event):void 
+		/**
+		 * 
+		 * @param	stage
+		 */
+		static public function startup(stage:Stage):void 
 		{
-			e.target.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
-			
-			_stage = e.target.stage;
-			Compound(e.target).BIXBITE::initialise(this);
+			_instance = new Emiter(stage);
 		}
 		
+		/**
+		 * 
+		 * @param	component
+		 */
+		BIXBITE function registerComponent(component:Class):void
+		{
+			if (components[component] != null)
+			components[component] = new component();
+		}
+		
+		// TODO - move to transponder
 		/**
 		 * 
 		 * @param	type
@@ -97,6 +102,7 @@ package org.bixbite.core
 			_stage.addEventListener(type, callback);
 		}
 		
+		// TODO - move to transponder
 		/**
 		 * 
 		 * @param	type
@@ -107,6 +113,7 @@ package org.bixbite.core
 			_stage.removeEventListener(type, callback);
 		}
 		
+		// TODO - move to transponder
 		/**
 		 * 
 		 * @return
@@ -132,6 +139,8 @@ package org.bixbite.core
 		{
 			if (!channel[type]) channel[type] = { };
 			channel[type][callerUID] = callback;
+			
+			//console.addSlot(type);
 		}
 		
 		/**
@@ -183,9 +192,24 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function broadcast(channel:Object, type:String, signal:ISignal):void 
+		BIXBITE function dataBroadcast(channel:Object, type:String, signal:Signal, data:IData):void 
 		{
 			if (!channel[type]) return;
+			_type = type;
+			for each (var f:Function in channel[type]) f(signal, data);
+		}
+		
+		/**
+		 * @private
+		 * Broadcast signal in Multi-cast mode on specific channel
+		 * @param   channel, slot channel
+		 * @param	type
+		 * @param	signal
+		 */
+		BIXBITE function broadcast(channel:Object, type:String, signal:Signal):void 
+		{
+			if (!channel[type]) return;
+			_type = type;
 			for each (var f:Function in channel[type]) f(signal);
 		}
 		
@@ -197,10 +221,11 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function response(channel:Object, targetUID:String, type:String, signal:ISignal, data:IData = null):void 
+		BIXBITE function response(channel:Object, targetUID:String, type:String, signal:Signal):void 
 		{
 			if (!channel[type]) return;
-			channel[type][targetUID](signal, data);
+			if (!channel[type][targetUID]) throw Error("object uid " + targetUID + " has no slot associated with this type of event");
+			channel[type][targetUID](signal);
 		}
 		
 		/**
@@ -211,12 +236,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function responseTo(channel:Object, targetUID:String, type:String, signal:ISignal):void 
+		BIXBITE function dataResponse(channel:Object, targetUID:String, type:String, signal:Signal, data:IData):void 
 		{
 			if (!channel[type]) return;
-			if (!channel[type][targetUID]) throw Error("object uid " + targetUID + " has no slot associated with this type of event");
-			
-			channel[type][targetUID](signal);
+			channel[type][targetUID](signal, data);
 		}
 		
 		/**
@@ -242,26 +265,11 @@ package org.bixbite.core
 		 * @param	type
 		 * @return	signal, interface of signal
 		 */
-		BIXBITE function getSignal(channel:Object, type:String):ISignal
+		BIXBITE function getSignal(channel:Object, type:String):Signal
 		{
 			if (!channel[type]) return null
 			for each (var f:Function in channel[type]) return f();
 			return null
-		}
-		
-		/**
-		 * @private
-         * Each Compound will invoke this method in order to register itself within Emiter.
-         * Only first one will become root application, any next one will run as a module and get reference to same instance of Emiter.
-         * @param    referrer
-         * @return   reference to Emiter
-         */
-		static public function register(referrer:Compound):void 
-		{
-			if(!isRunning)
-				_instance = new Emiter(referrer);
-			else 
-				referrer.BIXBITE::initialise(_instance, true);
 		}
 		
 		/**
@@ -310,6 +318,14 @@ package org.bixbite.core
 		public function get slots():Object 
 		{
 			return _slots;
+		}
+		
+		/**
+		 * 
+		 */
+		BIXBITE function get type():String 
+		{
+			return _type;
 		}
 	}
 }

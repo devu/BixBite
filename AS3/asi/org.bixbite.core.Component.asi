@@ -2,7 +2,6 @@
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IComponent;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -11,7 +10,7 @@
 	 *   <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
 	 * As well as provide set of commonly shared methods for communication</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Component implements IComponent
 	{
@@ -41,7 +40,7 @@
 		 * @private
 		 *   Default signal attached to this Component
 		 */
-		public var signal : ISignal;
+		public var signal : Signal;
 
 		/**
 		 * Unique Component identifier

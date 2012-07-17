@@ -2,10 +2,9 @@
 {
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
-	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -17,7 +16,7 @@
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
 	 * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Emiter
 	{
@@ -27,6 +26,8 @@
 		private var _stage : Stage;
 		private var _slots : Object;
 		private var p : Point;
+		private var components : Dictionary;
+		private var _type : String;
 
 		/**
 		 * Privides getter to unique id for all Components.
@@ -45,12 +46,27 @@
 		public function get slots () : Object;
 
 		/**
+		 *
+		 */
+		function get type () : String;
+
+		/**
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
-		public function Emiter (compound:Compound);
+		public function Emiter (stage:Stage);
 
-		private function onAddedToStage (e:Event) : void;
+		/**
+		 *
+		 * @param	stage
+		 */
+		public static function startup (stage:Stage) : void;
+
+		/**
+		 *
+		 * @param	component
+		 */
+		function registerComponent (component:Class) : void;
 
 		/**
 		 *
@@ -123,7 +139,17 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		function broadcast (channel:Object, type:String, signal:ISignal) : void;
+		function dataBroadcast (channel:Object, type:String, signal:Signal, data:IData) : void;
+
+		/**
+		 *
+		 * @private
+		 *   Broadcast signal in Multi-cast mode on specific channel
+		 * @param   channel, slot channel
+		 * @param	type
+		 * @param	signal
+		 */
+		function broadcast (channel:Object, type:String, signal:Signal) : void;
 
 		/**
 		 *
@@ -134,7 +160,7 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		function response (channel:Object, targetUID:String, type:String, signal:ISignal, data:IData=null) : void;
+		function response (channel:Object, targetUID:String, type:String, signal:Signal) : void;
 
 		/**
 		 *
@@ -145,7 +171,7 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		function responseTo (channel:Object, targetUID:String, type:String, signal:ISignal) : void;
+		function dataResponse (channel:Object, targetUID:String, type:String, signal:Signal, data:IData) : void;
 
 		/**
 		 *
@@ -165,17 +191,7 @@
 		 * @param	type
 		 * @return	signal, interface of signal
 		 */
-		function getSignal (channel:Object, type:String) : ISignal;
-
-		/**
-		 *
-		 * @private
-		 *   Each Compound will invoke this method in order to register itself within Emiter.
-		 *   Only first one will become root application, any next one will run as a module and get reference to same instance of Emiter.
-		 * @param    referrer
-		 * @return   reference to Emiter
-		 */
-		public static function register (referrer:Compound) : void;
+		function getSignal (channel:Object, type:String) : Signal;
 
 		/**
 		 *

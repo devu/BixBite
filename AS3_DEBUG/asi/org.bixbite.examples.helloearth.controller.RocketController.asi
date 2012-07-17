@@ -1,0 +1,15 @@
+﻿package org.bixbite.examples.helloearth.controller
+{
+	import org.bixbite.core.Controller;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 */
+	public class RocketController extends Controller
+	{
+		public function RocketController ();
+
+		public function init () : void;
+	}
+}

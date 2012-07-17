@@ -1,0 +1,68 @@
+﻿package org.bixbite.core
+{
+	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.IComponent;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * <p>The Component is a abstract base class for View, Transporder and Data components</p>
+	 * 
+	 *   <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
+	 * As well as provide set of commonly shared methods for communication</p>
+	 * @langversion	3.0
+	 * @version 0.5.4
+	 */
+	public class Component implements IComponent
+	{
+		/**
+		 *
+		 * @private
+		 *   Every Component will invoke this assigment in order to get short reference to Emiter.
+		 */
+		var emiter : Emiter;
+
+		/**
+		 *
+		 * @private
+		 *   Based on Emiter short reference, evey Component will get unique id from observer uid iterator.
+		 */
+		var _uid : String;
+
+		/**
+		 *
+		 * @private
+		 *   Slots reference to provide access to specific channel
+		 */
+		var slots : Object;
+
+		/**
+		 *
+		 * @private
+		 *   Default signal attached to this Component
+		 */
+		public var signal : ISignal;
+
+		/**
+		 * Unique Component identifier
+		 */
+		public function get uid () : String;
+
+		/**
+		 * Constructor, Component is an abstract class, cannot be directly instatiated.
+		 */
+		public function Component ();
+
+		/**
+		 * Abstract method init must be overriden in subclasses.
+		 */
+		public function init () : void;
+
+		/**
+		 * Deconstructor of Component. 
+		 * Will detach/unregister all registered signals form Emiter and clear all nesesary references.
+		 * Subclasses should override this method and call super.destroy().
+		 */
+		public function destroy () : void;
+	}
+}

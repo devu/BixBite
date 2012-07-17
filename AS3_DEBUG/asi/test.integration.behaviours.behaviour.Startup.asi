@@ -1,0 +1,18 @@
+﻿package test.integration.behaviours.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+	import test.integration.behaviours.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 * @since 0.5.0
+	 */
+	public class Startup extends Behaviour
+	{
+		public function Startup ();
+
+		public function execute (s:ISignal) : void;
+	}
+}

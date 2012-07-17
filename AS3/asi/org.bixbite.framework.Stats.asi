@@ -1,0 +1,28 @@
+﻿package org.bixbite.framework
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.behaviour.Calculate;
+	import org.bixbite.framework.data.StatsData;
+	import org.bixbite.framework.transponder.StatsTransponder;
+	import org.bixbite.framework.view.StatsMonitorView;
+	import org.bixbite.framework.signal.StatsSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.4.1
+	 *   footprint 5.43kb (8.08kb at 0.5.5);
+	 *   
+	 *     This is fork of stats by mrdoob implemented within BixBite framework.
+	 *   
+	 */
+	public class Stats extends Compound
+	{
+		/**
+		 * Constructor
+		 */
+		public function Stats ();
+
+		public function init () : void;
+	}
+}

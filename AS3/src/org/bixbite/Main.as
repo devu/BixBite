@@ -48,75 +48,56 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
-	import org.bixbite.core.Compound;
-	import org.bixbite.framework.modules.stageManager.StageManager;
-	import org.bixbite.framework.modules.stats.Stats;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version 0.5.4
-	 * footprint 2.69kb
+	 * @version 0.6.0
+	 * footprint 
+	 * core: 2.80kb, 
+	 * framework functional modules+core: 9.01kb
 	 * 
 	 * Main BixBite frmework document class for development purposes.
-	 * Contains collection of framework modules.
+	 * Contains a core of the framework.
 	 * 
-	 * TODO
-	 * 0.5.5
-	 * - framework UI components
-	 * - more examples, integration and performance tests
-	 * 
-	 * LOG:
-	 * 0.5.4
-	 * - core/framework separation, stageView no longer integrated into compound
-	 * - abstract init method in Compound
-	 * - now swf with compiled with bixbite can be loaded into non bixbite project
-	 * 0.5.3
-	 * - behaviours - individual signals on Atom channel
-	 * - behaviours - bug fix with removal
-	 * - transponder - ability to broadcast signals on view channel
-	 * - sendRequest - methods parameters added
-	 * 0.5.2
-	 * - Improved framework modules.
-	 * - deconstructors, GC improvements.
-     * - DEBUG::config when necessary to preserve resources in RELEASE mode, and give developer more information in DEBUG mode.
-	 * 0.5.1
-	 * - sync/async data request/response.
-	 * - type safe data on response.
-	 * 0.5.0
-	 * - rebuild docs, libs, modules and all examples based on new architecture.
-	 * 0.4.9
-	 * - Behaviour mechanism and communication model.
-	 * - no need for bi-directional communication.
-	 * 0.4.8
-	 * - Move away from MVC pattern.
-	 * - Compound Crystal Pattern name conventions.
-	 * - Attach Signal obsolete, no more reatachment.
-	 * - Signals are no longer value objects, use Data Components instead to carry informations.
-	 * 0.4.7
-	 * - Model divided to Atom and Data components.
-	 * - Improved communication model.
-	 * - response/request
-	 * 0.4.6
-	 * -each actor specific methods to access system, remove systemIO.
-	 * 0.4.5 
-	 * - Controller renamed to Transponder to indicate its proper role.
-	 * - Constants for signal types.
-	 * 0.4.4
-	 * - signal channels implemented(MVC specific routes).
+	 * cor
 	 */
-	public class Main extends Compound
+	
+	public class Main extends Sprite
 	{
 		
 		public function Main() 
 		{
-			
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		override public function init():void
+		private function init(e:Event):void 
 		{
-			CONFIG::debug {
-				var stageManager	:StageManager 	= new StageManager();
-				var stats			:Stats 			= new Stats(); 
-			}
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			var core:BixBite = new BixBite(stage);
+			
+			/**
+			 * DisplayListManager Module
+			 */
+			core.register(DisplayListManager);
+			
+			/**
+			 * StageManager Module
+			 */
+			core.register(StageManager);
+			core.sendSignal(StageManager.SET_STAGE, { align:"TL", scaleMode:"noScale" } );
+			
+			/**
+			 * Stats Module
+			 */
+			core.register(Stats);
+			core.sendSignal(StatsSignal.START);
 		}
 		
 	}

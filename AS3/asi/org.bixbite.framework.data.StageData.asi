@@ -1,0 +1,27 @@
+﻿package org.bixbite.framework.data
+{
+	import flash.display.Stage;
+	import org.bixbite.core.Data;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.StageManager;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.4.1
+	 */
+	public class StageData extends Data
+	{
+		public static const PORTRAIT : String = "PORTRAIT";
+		public static const LANDSCAPE : String = "LANDSCAPE";
+		public var orientation : String;
+
+		public function StageData ();
+
+		public function init () : void;
+
+		private function onDataRequest (s:Signal) : void;
+
+		private function onStageSet (s:Signal) : void;
+	}
+}

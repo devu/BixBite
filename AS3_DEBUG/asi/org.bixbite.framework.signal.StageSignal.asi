@@ -1,0 +1,20 @@
+﻿package org.bixbite.framework.signal
+{
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.4.5
+	 */
+	public class StageSignal extends Signal
+	{
+		public static const RESIZE : String = "stageResize";
+		public static const UPDATE : String = "stageUpdate";
+		public static const UPDATE_REQUEST : String = "stageUpdateRequest";
+		public var centerWidth : Number;
+		public var centerHeight : Number;
+		public var orientation : String;
+		public var screenFactor : String;
+	}
+}

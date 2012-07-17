@@ -23,12 +23,12 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.ICompound;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.StageView;
 	import org.bixbite.namespaces.BIXBITE;
+	//import org.bixbite.debug.Console;
 	
 	/**
      * <p>The Compound represents default class you should subclass your Document Class with.</br>
@@ -43,53 +43,32 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
-	public class Compound extends Sprite implements ICompound
+	public class Compound extends Component implements ICompound
 	{
-		use namespace BIXBITE
+		use namespace BIXBITE;
 		
-		private var emiter		:Emiter;
-		private var slots		:Object// 	= emiter.slots;
-		private var _uid		:String//		= "@" + emiter.uid;
-		private var _module		:Boolean 	= false;
-		private var signal		:ISignal// 	= new Signal(_uid);
-		private var behaviours	:Object// = { };
+		private var behaviours:Object = { };
 		
 		public function Compound()
 		{
 			if (Object(this).constructor == Compound) throw new IllegalOperationError("Abstract Class");
-			Emiter.register(Compound(this));
 		}
 		
-		BIXBITE function initialise(emiter:Emiter, module:Boolean = false):void
+		override public function init():void 
 		{
-			/*
-			CONFIG::debug {
-				if (module) trace(this, "initialise as module");
-				else trace(this, "initialise");
-			}*/
-			
-			this.mouseEnabled = false;
-			
-			this.emiter = emiter;
-			_module 	= module;
-			this.slots 	= emiter.slots
-			_uid 		= "@" + emiter.uid;
-			
-			signal = new Signal(_uid);
-			behaviours = { };
-			
-			init();
-			
+			//console.register(this);
 		}
 		
 		/**
-		 *  Abstract method
+		 * 
+		 * @param	compound
 		 */
-		public function init():void
+		public function register(component:Class):void
 		{
-			
+			//console.setScope(this);
+			emiter.registerComponent(component);
 		}
 		
 		/**
@@ -117,31 +96,16 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Unique identifier of this Compound
-		 */
-		public function get uid():String 
-		{
-			return _uid;
-		}
-		
-		/**
-		 * Start Compound with a specific signal type.
+		 * 
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:Array = null):void
+		public function sendSignal(type:String, params:Object = null):void
 		{
-			if (params) signal.params = params;
-			
-			emiter.broadcast(slots.a, type, signal);
-			emiter.broadcast(slots.v, type, signal);
-			emiter.broadcast(slots.c, type, signal);
+			signal.params = params;
+			emiter.broadcast(slots.t, type, signal);
 		}
 		
-		public function get module():Boolean 
-		{
-			return _module;
-		}
 	}
 
 }

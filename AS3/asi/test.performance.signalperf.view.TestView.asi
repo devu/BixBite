@@ -4,11 +4,11 @@
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signals.StatsSignal;
-	import test.performance.signalperf.Signals;
+	import test.performance.signalperf.SignalPerformance;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class TestView extends View
 	{

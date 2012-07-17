@@ -1,6 +1,5 @@
 ﻿package org.bixbite.core
 {
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -10,12 +9,12 @@
 	 * 
 	 *   <p>In case you need to send more valuable informations within an signal you can use build in params array.</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
-	public class Signal implements ISignal
+	public class Signal
 	{
 		private var _callerUID : String;
-		private var _params : Array;
+		private var _params : Object;
 
 		/**
 		 * Unique identifier of the caller.
@@ -33,11 +32,11 @@
 		/**
 		 *
 		 */
-		public function get params () : Array;
+		public function get params () : Object;
 		/**
 		 *
 		 */
-		public function set params (value:Array) : void;
+		public function set params (params:Object) : void;
 
 		public function Signal (uid:String);
 

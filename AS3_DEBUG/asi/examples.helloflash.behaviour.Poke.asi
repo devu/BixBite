@@ -1,0 +1,21 @@
+﻿package examples.helloflash.behaviour
+{
+	import examples.helloflash.Signals;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 */
+	public class Poke extends Behaviour
+	{
+		private var count : int;
+
+		public function Poke ();
+
+		public function init () : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

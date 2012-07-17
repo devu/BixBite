@@ -1,0 +1,27 @@
+﻿package examples.helloflash.view
+{
+	import examples.helloflash.Signals;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.view.DisplayViewContainer;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 */
+	public class MainView extends DisplayViewContainer
+	{
+		private var textField : TextField;
+
+		public function MainView ();
+
+		public function init () : void;
+
+		private function onDirectResponse (s:ISignal) : void;
+
+		private function onCreateBall (s:ISignal) : void;
+
+		private function createBall (s:ISignal) : void;
+	}
+}

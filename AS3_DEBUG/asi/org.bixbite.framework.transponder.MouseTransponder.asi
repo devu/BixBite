@@ -1,0 +1,20 @@
+﻿package org.bixbite.framework.transponder
+{
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Transponder;
+
+	/**
+	 * Not implemented yet
+	 */
+	public class MouseTransponder extends Transponder
+	{
+		/**
+		 * Constructor
+		 */
+		public function MouseTransponder ();
+
+		public function init () : void;
+
+		private function onMouseDown (e:MouseEvent) : void;
+	}
+}

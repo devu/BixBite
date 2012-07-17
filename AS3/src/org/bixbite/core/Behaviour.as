@@ -23,8 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	use namespace BIXBITE;
@@ -37,11 +35,11 @@ package org.bixbite.core
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Behaviour 
 	{
-		public var signal		:ISignal;
+		public var signal		:Signal;
 		public var remove		:Function;
 		
 		private var emiter		:Emiter;
@@ -62,8 +60,7 @@ package org.bixbite.core
 			this.type 			= type;
 			this.slots 			= slots;
 			
-			emiter.addSlot(slots.a, uid, type, exe);
-			
+			emiter.addSlot(slots.c, uid, type, exe);
 			init();
 		}
 		
@@ -71,7 +68,7 @@ package org.bixbite.core
 		 * Internal pre-execute method.
 		 * @param	s
 		 */
-		private function exe(s:ISignal):void
+		private function exe(s:Signal):void
 		{
 			execute(s);
 			if (remove != null) remove(type);
@@ -86,12 +83,12 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Abstract method to hold executable block of code, that perform some logic.
+		 * Abstract method to hold executable block of code, that performs some business logic.
 		 * @param	s signal being sent by coresponding Transponder
 		 */
-		public function execute(s:ISignal):void
+		public function execute(s:Signal):void
 		{
-			//abstract
+			//abstract but not mendatory
 		}
 		
 		/**
@@ -99,7 +96,7 @@ package org.bixbite.core
 		 */
 		public function dispose():void
 		{
-			emiter.removeSlot(slots.a, uid, type);
+			emiter.removeSlot(slots.c, uid, type);
 			
 			signal 	= null;
 			emiter 	= null;
@@ -117,7 +114,7 @@ package org.bixbite.core
 		 */
 		public function addResponder(type:String, callback:Function, autoRequest:Boolean = false):void
 		{
-			emiter.addSlot(slots.a, uid, type, callback);
+			emiter.addSlot(slots.c, uid, type, callback);
 			if (autoRequest) sendRequest(type);
 		}
 		
@@ -125,10 +122,10 @@ package org.bixbite.core
 		 * Request data component by type.
 		 * @param	type
 		 */
-		public function sendRequest(type:String, params:Array = null):void
+		public function sendRequest(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.m, type, signal);
+			emiter.broadcast(slots.d, type, signal);
 		}
 		
 		/**
@@ -136,10 +133,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:Array = null):void
+		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.a, type, signal);
+			emiter.broadcast(slots.c, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 		}
 		
@@ -149,10 +146,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo(uid:String, type:String, params:Array = null, data:IData = null):void
+		public function responseTo(uid:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.response(slots.v, uid, type, signal, data);
+			emiter.response(slots.v, uid, type, signal);
 		}
 		
 		/**

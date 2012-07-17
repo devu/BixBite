@@ -1,0 +1,30 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import flash.system.System;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.StatsData;
+	import org.bixbite.framework.signal.StatsSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.5.0
+	 */
+	public class Calculate extends Behaviour
+	{
+		private var data : StatsData;
+		private var fps : int;
+		private var timer : int;
+		private var ms_prev : int;
+
+		public function Calculate ();
+
+		public function init () : void;
+
+		private function onData (s:Signal, data:StatsData) : void;
+
+		public function execute (s:Signal) : void;
+	}
+}

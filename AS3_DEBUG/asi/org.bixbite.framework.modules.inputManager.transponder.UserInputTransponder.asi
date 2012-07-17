@@ -1,0 +1,21 @@
+﻿package org.bixbite.framework.modules.inputManager.transponder
+{
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class UserInputTransponder extends Transponder
+	{
+		public function UserInputTransponder ();
+
+		public function init () : void;
+
+		private function onInputDown (e:MouseEvent) : void;
+
+		private function onInputUp (e:MouseEvent) : void;
+	}
+}

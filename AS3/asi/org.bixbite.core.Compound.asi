@@ -1,10 +1,9 @@
 ﻿package org.bixbite.core
 {
+	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.ICompound;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.StageView;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -19,32 +18,21 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
-	public class Compound extends Sprite implements ICompound
+	public class Compound extends Component implements ICompound
 	{
-		private var emiter : Emiter;
-		private var slots : Object;
-		private var _uid : String;
-		private var _module : Boolean;
-		private var signal : ISignal;
 		private var behaviours : Object;
-
-		/**
-		 * Unique identifier of this Compound
-		 */
-		public function get uid () : String;
-
-		public function get module () : Boolean;
 
 		public function Compound ();
 
-		function initialise (emiter:Emiter, module:Boolean=false) : void;
+		public function init () : void;
 
 		/**
-		 *  Abstract method
+		 *
+		 * @param	compound
 		 */
-		public function init () : void;
+		public function register (component:Class) : void;
 
 		/**
 		 * Add Behaviour into your Atom. 
@@ -62,10 +50,10 @@
 		public function removeBehaviour (type:String) : void;
 
 		/**
-		 * Start Compound with a specific signal type.
+		 *
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:Array=null) : void;
+		public function sendSignal (type:String, params:Object=null) : void;
 	}
 }

@@ -1,0 +1,21 @@
+﻿package test.performance.signalperf.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+	import test.performance.signalperf.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 */
+	public class TestRunner extends Behaviour
+	{
+		private var slotReference : Function;
+
+		public function TestRunner ();
+
+		public function init () : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

@@ -8,11 +8,5 @@
 	 *     Ordered by sender
 	 */
 	public class Signals
-	{
-		public static const STARTUP : String = "startup";
-		public static const REPOSITION : String = "reposition";
-		public static const CHANGE_COLOR : String = "color";
-		public static const TIME_DATA : String = "timeData";
-		public static const REDRAW : String = "redraw";
-	}
+	{	}
 }

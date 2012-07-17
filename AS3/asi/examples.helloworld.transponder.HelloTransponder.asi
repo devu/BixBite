@@ -1,6 +1,6 @@
 ﻿package examples.helloworld.transponder
 {
-	import examples.helloworld.Signals;
+	import examples.helloworld.MainHelloWorld;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
@@ -8,7 +8,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 *   
 	 *     This Trasponder will detect if any text field has been clicked.
 	 *   If so, will send signal demands to change the copy.

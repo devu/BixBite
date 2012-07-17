@@ -1,0 +1,26 @@
+﻿package test.performance.signalperf.transponder
+{
+	import flash.events.MouseEvent;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Transponder;
+	import test.performance.signalperf.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 */
+	public class TestTransponder extends Transponder
+	{
+		private var slotReference : Function;
+
+		public function TestTransponder ();
+
+		public function init () : void;
+
+		private function onTestInit (s:ISignal) : void;
+
+		private function startTest (e:MouseEvent) : void;
+
+		private function onRunTest (s:ISignal) : void;
+	}
+}

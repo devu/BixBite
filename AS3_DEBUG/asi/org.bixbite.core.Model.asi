@@ -1,0 +1,60 @@
+﻿package org.bixbite.core
+{
+	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.IModel;
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * <p><i>"According to the standard model billions of years ago some little quantum fluctuation, perhaps a slightly
+	 * lower density of matter, maybe right where we’re sitting right now, caused our galaxy to start collapsing around here.
+	 * — Seth Lloyd"</i></p>
+	 * 
+	 *   <p>The <code>Model</code> manages the behavior (business logic) and data of the application to manage the state of the application. 
+	 * Same way as you cannot control laws of physics, you shouldn't try to put this responsibility into Controllers. 
+	 * You can control many objects that are under defined laws of physics, but it is the Model that defines and manages them.</p>
+	 * @langversion	3.0
+	 * @version 0.4.5
+	 */
+	public class Model extends Actor implements IModel
+	{
+		private var emiter : Emiter;
+		private var slots : Object;
+
+		/**
+		 * Constructor - this class cannot be directly instantiated.
+		 */
+		public function Model ();
+
+		/**
+		 * Add Slot / register callbacks of specific type of signal and asociate them with Actors.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot (type:String, callback:Function) : void;
+
+		/**
+		 * Remove Slot / unregister this specific actor from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 */
+		public function sendSignal (type:String) : void;
+
+		/**
+		 *
+		 * @param	type
+		 * @return
+		 */
+		public function getSlotReference (type:String) : Array;
+
+		/**
+		 *
+		 * @inheritDoc
+		 */
+		public function destroy () : void;
+	}
+}

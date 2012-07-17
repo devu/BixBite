@@ -1,0 +1,45 @@
+﻿package org.bixbite.framework.modules.deeplinking.data
+{
+	import flash.external.ExternalInterface;
+	import flash.utils.setInterval;
+	import org.bixbite.core.Data;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.deeplinking.DeepLinking;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class DeepLinkingData extends Data
+	{
+		private var movieID : String;
+		public var location : Location;
+
+		public function DeepLinkingData ();
+
+		public function init () : void;
+
+		private function onInitAPI (s:ISignal) : void;
+
+		private function setJSAPI () : void;
+
+		private function onLocationUpdated (data:Object) : void;
+	}
+	private class Location
+	{
+		public var hash : String;
+		public var href : String;
+		public var host : String;
+		public var hostname : String;
+		public var pathname : String;
+		public var port : String;
+		public var protocol : String;
+		public var search : String;
+
+		public function Location ();
+
+		public function cast (object:Object) : void;
+
+		public function toString () : String;
+	}
+}

@@ -1,0 +1,18 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.StageManager;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.5.5
+	 */
+	public class SetStage extends Behaviour
+	{
+		public function SetStage ();
+
+		public function execute (s:Signal) : void;
+	}
+}

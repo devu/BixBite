@@ -1,0 +1,19 @@
+﻿package test.integration.viewreparenting.view
+{
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.framework.view.ViewSignal;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class MyViewA extends DisplayViewContainer
+	{
+		public function MyViewA ();
+
+		public function init () : void;
+
+		private function onViewAdded (s:Signal) : void;
+	}
+}

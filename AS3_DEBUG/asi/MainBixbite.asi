@@ -1,0 +1,18 @@
+﻿package
+{
+	import com.hm.campaign.ICampaign;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.Compound;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class MainBixbite extends Compound implements ICampaign
+	{
+		public function MainBixbite ();
+
+		public function start () : void;
+	}
+}

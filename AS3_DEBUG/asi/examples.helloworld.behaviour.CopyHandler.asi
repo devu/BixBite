@@ -1,0 +1,26 @@
+﻿package examples.helloworld.behaviour
+{
+	import examples.helloworld.data.HelloData;
+	import examples.helloworld.Signals;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.2
+	 */
+	public class CopyHandler extends Behaviour
+	{
+		private var copy : HelloData;
+		private var languages : Array;
+		private var lang : int;
+
+		public function CopyHandler ();
+
+		public function init () : void;
+
+		private function onCopyData (s:ISignal, data:HelloData) : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

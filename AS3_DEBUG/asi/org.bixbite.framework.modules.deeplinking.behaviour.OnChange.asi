@@ -1,0 +1,22 @@
+﻿package org.bixbite.framework.modules.deeplinking.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.framework.modules.deeplinking.data.DeepLinkingData;
+	import org.bixbite.framework.modules.deeplinking.DeepLinking;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class OnChange extends Behaviour
+	{
+		public function OnChange ();
+
+		public function init () : void;
+
+		private function onData (s:ISignal) : void;
+
+		public function execute (s:ISignal) : void;
+	}
+}

@@ -1,0 +1,15 @@
+﻿package org.bixbite.examples.helloearth.model
+{
+	import org.bixbite.core.Model;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 */
+	public class EarthModel extends Model
+	{
+		public function EarthModel ();
+
+		public function init () : void;
+	}
+}

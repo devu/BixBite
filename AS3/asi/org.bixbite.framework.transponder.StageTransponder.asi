@@ -1,64 +1,24 @@
 ﻿package org.bixbite.framework.transponder
 {
-	import flash.display.Stage;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import flash.events.Event;
-	import flash.events.FullScreenEvent;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.interfaces.ICompound;
+	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
 
 	/**
-	 * StageController, controls common and basic native flash player stage behaviour for displayable objects. 
-	 * Provides additional values such as center of the stage and orientation.
-	 * @langversion	3.0
-	 * @version 0.4.4
-	 * @since 0.2.9
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.4.1
 	 */
 	public class StageTransponder extends Transponder
 	{
-		public static const ORIENTATION_PORTRAIT : String = "stageOrientationPortrait";
-		public static const ORIENTATION_LANDSCAPE : String = "stageOrientationLandscape";
-		public static const SCREEN_FACTOR_DESKTOP : String = "stageScreenFactorDesktop";
-		public static const SCREEN_FACTOR_DESKTOP_HD : String = "stageScreenFactorDesktopHD";
-		public static const SCREEN_FACTOR_TABLET : String = "stageScreenFactorTablet";
-		public static const SCREEN_FACTOR_MOBILE : String = "stageScreenFactorMobile";
-		public static const SCREEN_FACTOR_MOBILE_LARGE : String = "stageScreenFactorMobileLarge";
-		private var stageSignal : StageSignal;
-		private var orientation : String;
-		private var screenFactor : String;
-		private var stage : Stage;
+		public function StageTransponder ();
 
-		/**
-		 * Constructor, provides injection for common settings.
-		 */
-		public function StageTransponder (align:String=StageAlign.TOP_LEFT, scaleMode:String=StageScaleMode.NO_SCALE);
-
-		/**
-		 * Initialise functionality of this controller.
-		 * Attach custom signal, apply listeners into I/O provider (stage) and addSlot for eventual requests.
-		 */
 		public function init () : void;
 
-		private function onUpdateRequest (s:ISignal) : StageSignal;
-
-		/**
-		 * When Stage will change its displayState will broadcast StageSignal.UPDATE signal
-		 * @param	e, native Event recieved from stage.
-		 */
-		private function onStageFullScreen (e:FullScreenEvent) : void;
-
-		/**
-		 * When Stage will change its size will broadcast StageSignal.RESIZE signal. 
-		 * If size of stage will affect orientation StageSignal.UPDATE will be fired.
-		 * @param	e, native Event recieved from stage.
-		 */
 		private function onStageResize (e:Event) : void;
 
-		/**
-		 * Update all values needed to be send within a signal.
-		 */
-		private function invalidate () : void;
+		private function onStageSet (s:Signal) : void;
 	}
 }

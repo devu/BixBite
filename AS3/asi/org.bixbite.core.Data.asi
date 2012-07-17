@@ -12,14 +12,14 @@
 	 * This way BixBite gained lot's of speed by decreasing chain of accessibility for data and avoids signal reattachments.
 	 * Because former Model has been split for Atom and Data components, do not use Data component to hold any kind of business logic.</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Data extends Component implements IData
 	{
 		/**
 		 *
 		 */
-		public function get system () : Stage;
+		public function get stage () : Stage;
 
 		/**
 		 * Constructor - this class cannot be directly instantiated.
@@ -45,14 +45,14 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo (targetUID:String, type:String) : void;
+		public function responseTo (targetUID:String, type:String, params:Object=null) : void;
 
 		/**
 		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:Array=null) : void;
+		public function responseAll (type:String, params:Object=null) : void;
 
 		/**
 		 *

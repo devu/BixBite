@@ -1,0 +1,23 @@
+﻿package test.performance.behaviours.data
+{
+	import flash.utils.getTimer;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Data;
+	import test.performance.behaviours.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
+	 */
+	public class MyData extends Data
+	{
+		public var prevTime : int;
+
+		public function MyData ();
+
+		public function init () : void;
+
+		private function onTimeDataRequest () : Data;
+	}
+}

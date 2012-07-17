@@ -1,0 +1,30 @@
+﻿package org.bixbite.framework.modules.stats.view
+{
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import org.bixbite.framework.modules.stats.signal.StatsSignal;
+	import org.bixbite.framework.view.DisplayViewContainer;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.5
+	 * @since 0.4.2
+	 *   
+	 *     This is subview of StatsMonitor to extend its functionality for runtime trace output.
+	 */
+	public class StatsTracer extends DisplayViewContainer
+	{
+		private var info_trace : TextField;
+
+		/**
+		 * Constructor
+		 */
+		public function StatsTracer ();
+
+		public function init () : void;
+
+		private function onUpdateTrace (s:StatsSignal) : void;
+
+		private function createText (posX:Number, posY:Number, color:uint=0xFFFFFF, w:Number=70, h:Number=18) : TextField;
+	}
+}

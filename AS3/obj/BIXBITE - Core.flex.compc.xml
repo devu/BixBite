@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.5.4.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.6.0.swc</output>
   <use-network>true</use-network>
-  <target-player>10.1</target-player>
+  <target-player>11.2</target-player>
   <warnings>true</warnings>
   <benchmark>false</benchmark>
   <compiler>
@@ -33,11 +33,30 @@
     <class>org.bixbite.core.Transponder</class>
     <class>org.bixbite.core.Behaviour</class>
     <class>org.bixbite.core.Compound</class>
+    <class>org.bixbite.core.BixBite</class>
     <class>org.bixbite.core.interfaces.IComponent</class>
     <class>org.bixbite.core.interfaces.ITransponder</class>
     <class>org.bixbite.core.interfaces.IData</class>
-    <class>org.bixbite.core.interfaces.ISignal</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
+    <class>org.bixbite.framework.DisplayListManager</class>
+    <class>org.bixbite.framework.Stats</class>
+    <class>org.bixbite.framework.StageManager</class>
+    <class>org.bixbite.framework.view.StatsMonitorView</class>
+    <class>org.bixbite.framework.signal.StatsSignal</class>
+    <class>org.bixbite.framework.signal.ActiveGridSignal</class>
+    <class>org.bixbite.framework.signal.DisplaySignal</class>
+    <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
+    <class>org.bixbite.framework.transponder.StatsTransponder</class>
+    <class>org.bixbite.framework.transponder.StageTransponder</class>
+    <class>org.bixbite.framework.behaviour.SetDisplayContext</class>
+    <class>org.bixbite.framework.behaviour.Calculate</class>
+    <class>org.bixbite.framework.behaviour.SetStage</class>
+    <class>org.bixbite.framework.behaviour.ResizeStage</class>
+    <class>org.bixbite.framework.behaviour.AddDisplayContext</class>
+    <class>org.bixbite.framework.behaviour.GetDisplayList</class>
+    <class>org.bixbite.framework.data.StatsData</class>
+    <class>org.bixbite.framework.data.StageData</class>
+    <class>org.bixbite.framework.data.DisplayListData</class>
   </include-classes>
 </flex-config>

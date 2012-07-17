@@ -1,14 +1,12 @@
 ﻿package examples.helloflash.transponder
 {
-	import flash.display.DisplayObject;
+	import examples.helloflash.HelloFlash;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Transponder;
-	import examples.helloflash.Signals;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class BallTransponder extends Transponder
 	{

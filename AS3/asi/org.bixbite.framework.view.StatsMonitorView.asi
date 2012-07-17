@@ -1,0 +1,50 @@
+﻿package org.bixbite.framework.view
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.factories.TextFactory;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.StageManager;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.4.2
+	 *   
+	 *     StatsMonitor
+	 */
+	public class StatsMonitorView extends View
+	{
+		private var mem_graph : Number;
+		private var max_graph : Number;
+		private var fps_graph : Number;
+		private var monitor : Bitmap;
+		private var graph : BitmapData;
+		private var panel : Sprite;
+		private var info_fps : TextField;
+		private var info_ms : TextField;
+		private var info_mem : TextField;
+		private var info_max : TextField;
+		private var info_orient : TextField;
+
+		/**
+		 * Constructor
+		 */
+		public function StatsMonitorView ();
+
+		public function init () : void;
+
+		private function drawGraph (s:Signal) : void;
+
+		private function update (s:Signal) : void;
+
+		private function updateRealtime (s:Signal) : void;
+
+		private function onOrietnationChanged (s:Signal) : void;
+	}
+}

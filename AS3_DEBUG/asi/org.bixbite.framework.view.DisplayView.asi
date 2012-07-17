@@ -1,0 +1,56 @@
+﻿package org.bixbite.framework.view
+{
+	import flash.display.DisplayObject;
+	import flash.display.Graphics;
+	import flash.display.Shape;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.interfaces.IDisplayView;
+	import org.bixbite.framework.interfaces.IDisplayViewContainer;
+
+	/**
+	 * <p>DisplayView, part of Composite pattern of the display list. It is a leaf, end point of tree structure, so children cannot be added into it.
+	 * We recomend to use native Shape class most of the time when your context is simple and not required further extentions.
+	 * This is basic View extention to work with flash native DisplayObjects.
+	 * Solution built upon Decoration pattern, to wrap up native Display Objects into BixBite View structure.</p>
+	 * @langversion	3.0
+	 * @version 0.5.2
+	 */
+	public class DisplayView extends View implements IDisplayView
+	{
+		private var _context : DisplayObject;
+		private var _parentView : IDisplayViewContainer;
+		private var _graphics : Graphics;
+
+		/**
+		 * Parent view of this view
+		 */
+		public function get parentView () : IDisplayViewContainer;
+		public function set parentView (value:IDisplayViewContainer) : void;
+
+		/**
+		 * Native Flash DisplayObject attached to this view
+		 */
+		public function get context () : DisplayObject;
+
+		public function get graphics () : Graphics;
+		public function set graphics (value:Graphics) : void;
+
+		/**
+		 * Constructor
+		 * @param	content, optional injector allow you pass custom and already prepared component from subclass as a content attached to this View.
+		 */
+		public function DisplayView ();
+
+		/**
+		 * Initialise DisplayView with a default native DisplayObject (by default Shape);
+		 */
+		public function init () : void;
+
+		/**
+		 * Set context of this view, it can be any kind of native DisplayObject.
+		 * @param	name
+		 * @param	DisplayObject
+		 */
+		public function setContext (name:String, object:DisplayObject) : void;
+	}
+}

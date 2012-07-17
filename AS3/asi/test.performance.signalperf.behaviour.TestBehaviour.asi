@@ -2,7 +2,7 @@
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.ISignal;
-	import test.performance.signalperf.Signals;
+	import test.performance.signalperf.SignalPerformance;
 
 	/**
 	 *

@@ -27,7 +27,7 @@ package org.bixbite.core.interfaces
 	 * Primary reason for this interface is for polymorphism purposes.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public interface IData extends IComponent
 	{

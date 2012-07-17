@@ -1,0 +1,29 @@
+﻿package examples.stats
+{
+	import examples.stats.model.StatsModel;
+	import examples.stats.view.StatsView;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.modules.stats.transponder.StatsTransponder;
+	import org.bixbite.framework.transponder.StageTransponder;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.5
+	 * @since 0.4.1
+	 *   footprint 7.04kb
+	 *   
+	 *     This is example of how famous stats by mrdoob can be implemented within Bixbite mvc framework.
+	 *   It is also a fork of my fork, MobileStats.as.
+	 *   
+	 *     IMPORTANT: This is just an example to show a flow, do not use it for development purposes.
+	 *   There will be proper optimised version provided as a functional module as a part of framework.
+	 */
+	public class MainStats extends Compound
+	{
+		/**
+		 * Constructor, set a triad (StageController is a temporary controller if this project runs as independend Application. 
+		 * In fact Stats by nature will run as module always, so they can use already added StageController.
+		 */
+		public function MainStats ();
+	}
+}

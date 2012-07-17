@@ -26,29 +26,41 @@ package org.bixbite.framework.factories
 	import flash.display.DisplayObjectContainer;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.6.0
 	 * @since 0.5.0
 	 */
 	public class TextFactory 
 	{
 		private static var _instance:TextFactory = new TextFactory();
 		
+		private var formats:Dictionary = new Dictionary();
+		
 		public function TextFactory() 
 		{
+			setTextFormat("default");
+		}
+		
+		public static function getInstance():TextFactory
+		{
+			return _instance
+		}
+		
+		public function setTextFormat(id:String, font:String="tahoma", size:int = 8, color:uint = 0xFFFFFF, align:String = "center"):void
+		{
+			var tf:TextFormat = new TextFormat(font, size, color);
 			
+			tf.align = align;
+			formats[id] = tf;
 		}
 		
-		static public function get instance():TextFactory 
+		public function createText(container:DisplayObjectContainer, format:String, x:Number, y:Number, w:Number = 100, h:Number = 100, color:uint = 0xFFFFFF):TextField
 		{
-			return _instance;
-		}
-		
-		public function createSimpleText(container:DisplayObjectContainer, x:Number, y:Number, w:Number = 100, h:Number = 100, color:uint = 0xFFFFFF):TextField
-		{
-			var tf:TextFormat = new TextFormat("tahoma", 9, color);
+			if (formats[format] == null) format = "default";
+			formats[format].color = color;
 			
 			var t:TextField = new TextField();
 			t.mouseEnabled = false;
@@ -57,7 +69,27 @@ package org.bixbite.framework.factories
 			t.y = y;
 			t.width = w;
 			t.height = h;
-			t.defaultTextFormat = tf;
+			t.defaultTextFormat = formats[format];
+			
+			container.addChild(t);
+			
+			return t;
+		}
+		
+		public function createEmbededText(container:DisplayObjectContainer, format:String, x:Number, y:Number, w:Number = 100, h:Number = 100, color:uint = 0xFFFFFF):TextField
+		{
+			if (formats[format] == null) format = "default";
+			formats[format].color = color;
+			
+			var t:TextField = new TextField();
+			t.mouseEnabled = false;
+			t.selectable = false;
+			t.embedFonts = true;
+			t.x = x;
+			t.y = y;
+			t.width = w;
+			t.height = h;
+			t.defaultTextFormat = formats[format];
 			
 			container.addChild(t);
 			

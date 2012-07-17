@@ -25,7 +25,6 @@ package org.bixbite.core
 {
 	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IComponent;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -35,7 +34,7 @@ package org.bixbite.core
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Component implements IComponent
 	{
@@ -45,13 +44,13 @@ package org.bixbite.core
 		 * @private
 		 * Every Component will invoke this assigment in order to get short reference to Emiter.
 		 */
-		BIXBITE var emiter		:Emiter
+		BIXBITE var emiter	:Emiter
 		
 		/**
 		 * @private
 		 * Based on Emiter short reference, evey Component will get unique id from observer uid iterator.
 		 */
-		BIXBITE var _uid		:String
+		BIXBITE var _uid	:String
 		
 		/**
 		 * @private
@@ -60,10 +59,15 @@ package org.bixbite.core
 		BIXBITE var slots	:Object
 		
 		/**
+		 * Debuging
+		 */
+		//BIXBITE var console	:Console;
+		
+		/**
 		 * @private
 		 * Default signal attached to this Component
 		 */
-		public var signal	:ISignal
+		public var signal	:Signal
 		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
@@ -76,6 +80,10 @@ package org.bixbite.core
 			slots = emiter.slots;
 			_uid = "@" + emiter.uid;
 			signal = new Signal(uid);
+			
+			//DEBUG
+			//console = emiter.console;
+			//console.setScope(this);
 			
 			init();
 		}
@@ -111,7 +119,6 @@ package org.bixbite.core
 		{
 			return _uid;
 		}
-		
 	}
 
 }

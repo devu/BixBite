@@ -1,0 +1,37 @@
+﻿package org.bixbite.examples.stats.signal
+{
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsSignal as value object contains all needed values to update state of StatsView
+	 *   Set of static constants indicates how we can use it.
+	 */
+	public class StatsSignal extends Signal
+	{
+		public static const START : String = "statsStart";
+		public static const PAUSE : String = "statsPause";
+		public static const DRAW : String = "statsDraw";
+		public static const UPDATE : String = "statsUpdate";
+		public static const TRACE : String = "statsTrace";
+		public static const DISPLAY_TRACE : String = "statsDisplayTrace";
+		public var fps : int;
+		public var timer : int;
+		public var ms : int;
+		public var mem : Number;
+		public var max : Number;
+		public var infoFPS : String;
+		public var infoMEM : String;
+		public var infoMAX : String;
+		public var infoMS : String;
+		public var infoTRACE : String;
+
+		/**
+		 * When model is deconstructed will ivoke dispose() function automatially. 
+		 * This is developer opportunity to make sure his custom signals will clean up all values and feferences.
+		 */
+		public function dispose () : void;
+	}
+}

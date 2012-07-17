@@ -1,0 +1,14 @@
+﻿package org.bixbite.core
+{
+	import flash.display.Stage;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.6.0
+	 */
+	public class BixBite extends Compound
+	{
+		public function BixBite (stage:Stage);
+	}
+}

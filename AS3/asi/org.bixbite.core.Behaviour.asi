@@ -1,7 +1,5 @@
 ﻿package org.bixbite.core
 {
-	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -11,11 +9,11 @@
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Behaviour
 	{
-		public var signal : ISignal;
+		public var signal : Signal;
 		public var remove : Function;
 		private var emiter : Emiter;
 		private var uid : String;
@@ -30,7 +28,7 @@
 		 * Internal pre-execute method.
 		 * @param	s
 		 */
-		private function exe (s:ISignal) : void;
+		private function exe (s:Signal) : void;
 
 		/**
 		 * Abstract method to perform initial preparation before execute() is triggered.
@@ -38,10 +36,10 @@
 		public function init () : void;
 
 		/**
-		 * Abstract method to hold executable block of code, that perform some logic.
+		 * Abstract method to hold executable block of code, that performs some business logic.
 		 * @param	s signal being sent by coresponding Transponder
 		 */
-		public function execute (s:ISignal) : void;
+		public function execute (s:Signal) : void;
 
 		/**
 		 * Deconstructor of behaviour.
@@ -60,14 +58,14 @@
 		 * Request data component by type.
 		 * @param	type
 		 */
-		public function sendRequest (type:String, params:Array=null) : void;
+		public function sendRequest (type:String, params:Object=null) : void;
 
 		/**
 		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:Array=null) : void;
+		public function sendSignal (type:String, params:Object=null) : void;
 
 		/**
 		 * Signle-cast method to send signal to speific View component.
@@ -75,7 +73,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo (uid:String, type:String, params:Array=null, data:IData=null) : void;
+		public function responseTo (uid:String, type:String, params:Object=null) : void;
 
 		/**
 		 * SRS - Slot Reference System

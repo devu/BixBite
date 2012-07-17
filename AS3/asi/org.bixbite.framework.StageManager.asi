@@ -1,0 +1,28 @@
+﻿package org.bixbite.framework
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.behaviour.ResizeStage;
+	import org.bixbite.framework.behaviour.SetStage;
+	import org.bixbite.framework.data.StageData;
+	import org.bixbite.framework.transponder.StageTransponder;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.5.0
+	 *   
+	 *     footprint 2.15kb (8.73kb at 0.5.5);
+	 */
+	public class StageManager extends Compound
+	{
+		public static const SET_STAGE : String = "StageSignal.SET_STAGE";
+		public static const DATA_REQUEST : String = "StageSignal.DATA_REQUEST";
+		public static const RESIZE : String = "StageSignal.RESIZE";
+		public static const ON_ORIENTATION_CHANGED : String = "StageSignal.ON_ORIENTATION_CHANGED";
+		public static const ON_RESIZE : String = "StageSignal.ON_RESIZE";
+
+		public function StageManager ();
+
+		public function init () : void;
+	}
+}

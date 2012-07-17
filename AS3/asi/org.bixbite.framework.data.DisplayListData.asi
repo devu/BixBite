@@ -1,0 +1,27 @@
+﻿package org.bixbite.framework.data
+{
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
+	import flash.utils.Dictionary;
+	import org.bixbite.core.Data;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.6.0
+	 */
+	public class DisplayListData extends Data
+	{
+		public var list : Dictionary;
+
+		public function DisplayListData ();
+
+		public function init () : void;
+
+		private function onGetDisplayList (s:Signal) : void;
+
+		public function addContenxt (context:DisplayObject, container:DisplayObjectContainer) : void;
+	}
+}

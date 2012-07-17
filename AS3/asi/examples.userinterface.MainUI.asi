@@ -2,14 +2,19 @@
 {
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.modules.inputManager.UserInputManager;
+	import org.bixbite.framework.view.StageView;
 	import org.bixbite.framework.view.ui.Window;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version compatibility 0.5.4
+	 * @since 0.5.4
+	 *   total footprint //kb
 	 */
 	public class MainUI extends Compound
 	{
 		public function MainUI ();
+
+		public function init () : void;
 	}
 }

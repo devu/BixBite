@@ -1,0 +1,23 @@
+﻿package org.bixbite.framework
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.behaviour.AddDisplayContext;
+	import org.bixbite.framework.behaviour.GetDisplayList;
+	import org.bixbite.framework.behaviour.SetDisplayContext;
+	import org.bixbite.framework.data.DisplayListData;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.transponder.DisplayListTransponder;
+	import org.bixbite.framework.view.StageView;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.6.0
+	 *   
+	 *     footprint 2.55kb
+	 */
+	public class DisplayListManager extends Compound
+	{
+		public function DisplayListManager ();
+	}
+}

@@ -1,6 +1,6 @@
 ﻿package examples.helloworld.view
 {
-	import examples.helloworld.Signals;
+	import examples.helloworld.MainHelloWorld;
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import org.bixbite.core.interfaces.ISignal;
@@ -8,7 +8,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class HelloView extends DisplayView
 	{

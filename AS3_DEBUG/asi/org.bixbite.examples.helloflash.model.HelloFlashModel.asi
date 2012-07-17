@@ -1,0 +1,27 @@
+﻿package org.bixbite.examples.helloflash.model
+{
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Model;
+	import org.bixbite.examples.helloflash.signal.BallSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 */
+	public class HelloFlashModel extends Model
+	{
+		private var ballSignal : BallSignal;
+		private var count : int;
+
+		/**
+		 * In RL original example there is no Model of application provided. 
+		 * Bixbite It's a Model responsibility to describe environment that application live in. 
+		 * Model is not only data provider! By definition modelling things, so it must specify some rules of the game.
+		 */
+		public function HelloFlashModel ();
+
+		public function init () : void;
+
+		private function onPoke (s:ISignal) : void;
+	}
+}

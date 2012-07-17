@@ -1,25 +1,28 @@
 ﻿package org.bixbite.framework.view
 {
 	import flash.display.Sprite;
-	import flash.display.Stage;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.DisplaySignal;
 
 	/**
-	 * StageView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
-	 * This class serve this purpose. Directly extends DisplayViewContainer as the highest in display list hierarchy. 
-	 * In fact the only diference between StageView and DisplayViewContainer is where content is added during View component initialistion.
+	 * TODO needs to be redefined due to new concept:
+	 * 
+	 *   StageView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
+	 * This class serve this purpose. Directly extends DisplayViewContainer as the highest in display list hierarchy of the Compound you are in. 
+	 * In fact the only diference between StageView and DisplayViewContainer is, where its context is added during View component initialistion.
+	 * Within each Compound you can point at diferent node to achieve nested structure across multiple Compounds.
 	 * @langversion	3.0
-	 * @version 0.5.2
+	 * @version 0.6.0
 	 */
-	public class StageView extends DisplayViewContainer
+	public class StageView extends View
 	{
+		private var context : Sprite;
+
 		/**
 		 * Constructor
 		 */
 		public function StageView ();
 
-		/**
-		 * Overrides actor abstract method and place content directly on native stage of the Flash Player.
-		 */
 		public function init () : void;
 	}
 }

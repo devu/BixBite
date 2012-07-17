@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework.transponder
+{
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class DisplayListTransponder extends Transponder
+	{
+		public function DisplayListTransponder ();
+
+		public function init () : void;
+
+		private function transmit (s:Signal) : void;
+	}
+}

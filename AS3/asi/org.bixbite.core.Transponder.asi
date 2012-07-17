@@ -10,7 +10,7 @@
 	 * <p>In computer science interrogate means transmit a signal for setting off an appropriate response.
 	 * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
 	 * @langversion	3.0
-	 * @version 0.5.4
+	 * @version 0.6.0
 	 */
 	public class Transponder extends Component implements ITransponder
 	{
@@ -38,21 +38,28 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:Array=null) : void;
+		public function sendSignal (type:String, params:Object=null) : void;
+
+		/**
+		 *
+		 * @param	s
+		 */
+		public function forward (s:Signal) : void;
 
 		/**
 		 * Multicast (one-to-many) method to broadcast signals on View communication channel.
 		 * @param	type
 		 * @param	params
 		 */
-		public function response (type:String, params:Array=null) : void;
+		public function response (type:String, params:Object=null) : void;
 
 		/**
 		 * Signlecast (one-to-one) method to send direct signal on View communication channel.
+		 * @param	target any display object of view context
 		 * @param	type
-		 * @param	params
+		 * @param	...rest
 		 */
-		public function responseTo (target:Object, type:String, params:Array=null) : void;
+		public function responseTo (target:Object, type:String, params:Object=null) : void;
 
 		/**
 		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.

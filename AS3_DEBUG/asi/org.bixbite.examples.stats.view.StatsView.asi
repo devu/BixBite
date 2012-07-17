@@ -1,0 +1,59 @@
+﻿package org.bixbite.examples.stats.view
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import org.bixbite.core.View;
+	import org.bixbite.examples.stats.signal.StatsSignal;
+	import org.bixbite.framework.signal.StageSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.4.1
+	 *   
+	 *     StatsView, visual representation of data comning from StatsModel.
+	 *   Now you can let your imagination fly. Create your custom views as you like it without changing Model and Controller at all.
+	 *   You can even have multiple views reacting on the same set of signals.
+	 *   Look at StatsTraceView for instance. In MobileStats fork we had all functionality build into one class. 
+	 *   Here we have proper modular system that is more convinient to manage, change and extend.
+	 *   
+	 *     In this example we also shows how we can construct additional subview on demand.
+	 */
+	public class StatsView extends View
+	{
+		private var mem_graph : Number;
+		private var max_graph : Number;
+		private var fps_graph : Number;
+		private var monitor : Bitmap;
+		private var graph : BitmapData;
+		private var info_fps : TextField;
+		private var info_ms : TextField;
+		private var info_mem : TextField;
+		private var info_max : TextField;
+		private var info_orient : TextField;
+		private var panel : Sprite;
+		private var frameRate : int;
+
+		/**
+		 * Constructor, there is one important thing about constructors in Bixbite worth to remember.
+		 * In any subclass of any Actor method init() will fire before constructor! 
+		 * This is very convinient in many situations, but sometimes you maight want to reverse this order, especialy when using injectors via constructor signature.
+		 * The way to do so, is to assign your values, and at the end of constructor (after all referencing is done) call super();.
+		 * Because of reverse order, you need to remember that stage will not be available at this point within constructor. Just init() can do the job.
+		 * @param	useTracer, turn on/off tracer sub view.
+		 */
+		public function StatsView (useTracer:Boolean=true);
+
+		public function init () : void;
+
+		private function drawGraph (s:StatsSignal) : void;
+
+		private function updateText (s:StatsSignal) : void;
+
+		private function onStageUpdate (s:StageSignal) : void;
+
+		private function createText (posX:Number, posY:Number, color:uint=0xFFFFFF, w:Number=70, h:Number=18) : TextField;
+	}
+}

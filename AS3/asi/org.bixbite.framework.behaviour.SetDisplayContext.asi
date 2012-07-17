@@ -1,0 +1,18 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import flash.display.DisplayObject;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.6.0
+	 */
+	public class SetDisplayContext extends GetDisplayList
+	{
+		public function SetDisplayContext ();
+
+		public function execute (s:Signal) : void;
+	}
+}

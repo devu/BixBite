@@ -1,0 +1,27 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import flash.display.Stage;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.data.StageData;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.0
+	 * @since 0.4.1
+	 */
+	public class ResizeStage extends Behaviour
+	{
+		private var stageData : StageData;
+		private var stage : Stage;
+
+		public function ResizeStage ();
+
+		public function init () : void;
+
+		private function onData (s:Signal, data:StageData) : void;
+
+		public function execute (s:Signal) : void;
+	}
+}

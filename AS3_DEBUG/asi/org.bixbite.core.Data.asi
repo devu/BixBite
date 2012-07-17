@@ -1,0 +1,63 @@
+﻿package org.bixbite.core
+{
+	import flash.display.Stage;
+	import flash.errors.IllegalOperationError;
+	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * <p>The Data component is a stateless data holder. Data can be directly requested by Atom, or strictly speaking its Behaviours.
+	 * Data components can be nested aka Composite Pattern provides convenient way of sending only needed portions of requested data.</p>
+	 * <p>In current version of BixBite Data took the role of Signals as Value Objects. Signals are no longer VO.
+	 * This way BixBite gained lot's of speed by decreasing chain of accessibility for data and avoids signal reattachments.
+	 * Because former Model has been split for Atom and Data components, do not use Data component to hold any kind of business logic.</p>
+	 * @langversion	3.0
+	 * @version 0.5.4
+	 */
+	public class Data extends Component implements IData
+	{
+		/**
+		 *
+		 */
+		public function get system () : Stage;
+
+		/**
+		 * Constructor - this class cannot be directly instantiated.
+		 */
+		public function Data ();
+
+		/**
+		 * Add Slot / register callbacks of specific type of Signal and asociate with Data component.
+		 * @param	type
+		 * @param	callback
+		 */
+		public function addSlot (type:String, callback:Function) : void;
+
+		/**
+		 * Remove Slot / unregister specific Data component from being able to recieve any signals of specific type
+		 * @param	type
+		 */
+		public function removeSlot (type:String) : void;
+
+		/**
+		 *
+		 * @param	uid
+		 * @param	type
+		 * @param	params
+		 */
+		public function responseTo (targetUID:String, type:String) : void;
+
+		/**
+		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function sendSignal (type:String, params:Array=null) : void;
+
+		/**
+		 *
+		 * @inheritDoc
+		 */
+		public function destroy () : void;
+	}
+}

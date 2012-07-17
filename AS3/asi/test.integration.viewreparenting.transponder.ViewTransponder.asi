@@ -1,0 +1,27 @@
+﻿package test.integration.viewreparenting.transponder
+{
+	import flash.display.Stage;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.view.ViewSignal;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class ViewTransponder extends Transponder
+	{
+		public function ViewTransponder ();
+
+		public function init () : void;
+
+		private function onMouseDown (e:MouseEvent) : void;
+
+		private function onMouseUp (e:MouseEvent) : void;
+
+		private function onViewAdded (s:Signal) : void;
+
+		private function onViewRemoved (s:Signal) : void;
+	}
+}

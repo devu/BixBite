@@ -1,13 +1,13 @@
 ﻿package examples.helloflash.view
 {
-	import examples.helloflash.Signals;
+	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
 	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.framework.view.DisplayView;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.5.4
 	 */
 	public class Ball extends DisplayView
 	{

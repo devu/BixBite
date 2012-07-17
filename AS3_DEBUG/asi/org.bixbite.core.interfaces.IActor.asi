@@ -1,0 +1,23 @@
+﻿package org.bixbite.core.interfaces
+{
+	import flash.display.Stage;
+	import org.bixbite.core.SystemIO;
+
+	/**
+	 * Primary reason for this interface is for polymorphism purposes and provide access to common shared properties of all actors.
+	 * @langversion	3.0
+	 * @version 0.4.5
+	 */
+	public interface IActor
+	{
+		/**
+		 * Unique identifier of your Actor class
+		 */
+		function get uid () : String;
+
+		/**
+		 * Reference to systemIO for your Actor
+		 */
+		function get system () : SystemIO;
+	}
+}

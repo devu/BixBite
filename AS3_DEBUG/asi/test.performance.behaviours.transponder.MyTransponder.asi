@@ -1,0 +1,22 @@
+﻿package test.performance.behaviours.transponder
+{
+	import flash.display.DisplayObject;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Transponder;
+	import test.performance.behaviours.Signals;
+
+	/**
+	 *
+	 * @version  compatibility - 0.5.0
+	 * @since 0.5.0
+	 */
+	public class MyTransponder extends Transponder
+	{
+		public function MyTransponder ();
+
+		public function init () : void;
+
+		private function onInput (e:MouseEvent) : void;
+	}
+}
