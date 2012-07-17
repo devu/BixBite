@@ -23,12 +23,13 @@ THE SOFTWARE.
 
 package examples.helloflash.transponder 
 {
-	import examples.helloflash.HelloFlash;
+	import examples.HelloFlash;
 	import flash.events.MouseEvent;
+	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
 	public class BallTransponder extends Transponder 
 	{
@@ -39,6 +40,8 @@ package examples.helloflash.transponder
 		
 		override public function init():void 
 		{
+			trace(this, "init");
+			
 			addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		
@@ -49,12 +52,9 @@ package examples.helloflash.transponder
 				//response(Signals.DIRECT_RESPONSE);
 				
 				//One to One on view channel
-				responseTo(e.target, HelloFlash.DIRECT_RESPONSE);
+				//responseTo(e.target, HelloFlash.DIRECT_RESPONSE);
 				
-				//One to One on view channel to parent of the target
-				responseTo(e.target.parent, HelloFlash.DIRECT_RESPONSE);
-				
-				//One to Many on Atom channel
+				//One to Many on Compound channel
 				sendSignal(HelloFlash.POKE);
 			}
 		}

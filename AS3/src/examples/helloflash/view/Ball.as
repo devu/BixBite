@@ -23,19 +23,22 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
-	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
+	import org.bixbite.framework.signal.DisplaySignal;
+	
+	import examples.HelloFlash;
+	
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
-	public class Ball extends DisplayView 
+	public class Ball extends View 
 	{
 		private var radius		:int = 10;
 		private var color		:uint = 0x000000;
-		private var ball		:Sprite;
+		private var _ball		:Sprite;
 		
 		/**
 		 * Constructor
@@ -47,47 +50,50 @@ package examples.helloflash.view
 		
 		override public function init():void 
 		{
-			ball = new Sprite();
-			ball.alpha = 0.75;
-			ball.useHandCursor = true;
-			ball.buttonMode = true;
+			createContext();
+		}
+		
+		private function createContext():void 
+		{
+			_ball = new Sprite();
+			_ball.name = "ball";
+			_ball.alpha = 0.75;
+			_ball.useHandCursor = true;
+			_ball.buttonMode = true;
 			
 			draw(0x000000, 10);
 			
-			setContext("ball", ball);
-			
 			addSlot(HelloFlash.SHUFFLE, shuffle);
 			addSlot(HelloFlash.RED_BALL, onMakeBallRed);
-			addSlot(HelloFlash.DIRECT_RESPONSE, onDirectResponse);
 		}
 		
-		private function onDirectResponse(s:ISignal):void 
-		{
-			trace("Transponder fast response");
-		}
-		
-		private function onMakeBallRed(s:ISignal):void
+		private function onMakeBallRed(s:Signal):void
 		{
 			draw(0xFF1100, radius++);
 		}
 		
-		private function shuffle(s:ISignal):void
+		private function shuffle(s:Signal):void
 		{
 			draw(Math.random() * uint.MAX_VALUE, radius++);
 		}
 		
 		private function draw(color:uint, radius:int):void
 		{
-			ball.graphics.clear();
-			ball.graphics.beginFill(color);
-			ball.graphics.drawCircle(0, 0, radius);
+			_ball.graphics.clear();
+			_ball.graphics.beginFill(color);
+			_ball.graphics.drawCircle(0, 0, radius);
 		}
 		
-		public function get x():Number { return context.x };
-		public function set x(value:Number):void { context.x = value };
+		public function get x():Number { return _ball.x };
+		public function set x(value:Number):void { _ball.x = value };
 		
-		public function get y():Number { return context.y };
-		public function set y(value:Number):void { context.y = value };
+		public function get y():Number { return _ball.y };
+		public function set y(value:Number):void { _ball.y = value };
+		
+		public function get context():Sprite 
+		{
+			return _ball;
+		}
 		
 	}
 

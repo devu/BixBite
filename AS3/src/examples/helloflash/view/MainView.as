@@ -23,18 +23,20 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
-	import examples.helloflash.HelloFlash;
+	import examples.HelloFlash;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayViewContainer;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
-	public class MainView extends DisplayViewContainer 
+	public class MainView extends View 
 	{
-		private var textField:TextField;
+		private var main		:Sprite;
+		private var textField	:TextField;
 		
 		public function MainView() 
 		{
@@ -43,39 +45,36 @@ package examples.helloflash.view
 		
 		override public function init():void 
 		{
-			super.init();
-			
-			var container:Sprite = new Sprite();
+			createContext();
+			createBall();
+		}
+		
+		private function createContext():void 
+		{
+			main = new Sprite();
 			
 			textField = new TextField();
 			textField.selectable = false;
 			textField.text = "Click count: 1";
-			container.addChild(textField);
-			
-			setContext("main", container);
+			main.addChild(textField);
 			
 			addSlot(HelloFlash.CREATE_BALL, onCreateBall);
-			addSlot(HelloFlash.INIT, createBall);
-			addSlot(HelloFlash.DIRECT_RESPONSE, onDirectResponse);
+			
+			stage.addChild(main);
 		}
 		
-		private function onDirectResponse(s:ISignal):void 
-		{
-			trace("Transponder fast response to parent of ball");
-		}
-		
-		private function onCreateBall(s:ISignal):void
+		private function onCreateBall(s:Signal):void
 		{
 			textField.text = "Click count:" + s.params[0];
-			createBall(s);
+			createBall();
 		}
 		
-		private function createBall(s:ISignal):void 
+		private function createBall():void
 		{
 			var ball:Ball = new Ball();
 			ball.x = Math.random() * 500;
 			ball.y = Math.random() * 375;
-			addView(ball);
+			main.addChild(ball.context);
 		}
 		
 	}

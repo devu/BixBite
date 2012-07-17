@@ -23,12 +23,13 @@ THE SOFTWARE.
 
 package examples.helloflash.behaviour 
 {
-	import examples.helloflash.HelloFlash;
+	import examples.HelloFlash;
+	
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
 	public class Poke extends Behaviour 
 	{
@@ -44,7 +45,7 @@ package examples.helloflash.behaviour
 			count = 1;
 		}
 		
-		override public function execute(s:ISignal):void 
+		override public function execute(s:Signal):void 
 		{
 			count++;
 			

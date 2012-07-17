@@ -21,29 +21,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloflash 
+package examples 
 {
 	import examples.helloflash.behaviour.Poke;
 	import examples.helloflash.transponder.BallTransponder;
+	import examples.helloflash.view.Ball;
 	import examples.helloflash.view.MainView;
-	import org.bixbite.core.Compound;
-	import org.bixbite.framework.view.StageView;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 * @since 0.4.0
 	 * 
-	 * This imlementation is based on Robotlegs HelloFlash example. To show you diferences in how we dealing with stuff.
+	 * This implementation is based on RobotLegs HelloFlash example. To show you diferences in how we dealing with stuff.
 	 * 
 	 * Bixbite
-	 * Footprint 6.58 kb
+	 * Footprint 5.22kb (was 0.5.5 - 6.58 kb)
 	 * 
 	 * Robotlegs
 	 * Footprint 16.7 kb
 	 * 
-	 * General coparison an conclusions:
+	 * General comparison an conclusions:
 	 * Bixbite
-	 * +/- ADTV paradigm (Atom, Data, Transponder, View). Considering popularity of other frameworks based on MVC paradigm it might be hard to change habbits.
+	 * +/- CDTV paradigm (Compound, Data, Transponder, View). Considering popularity of other frameworks based on MVC paradigm it might be hard to change habbits.
 	 *
 	 * + Self registered system
 	 * + Signal/Slot and Request/Response notification system inspired by QT4
@@ -54,7 +56,7 @@ package examples.helloflash
 	 * + Less classes to get job done.
 	 * + Smallest Footprint fully functional core has below 3.0 kb footprint.
 	 * + Very low memory consumption
-	 * + Faster execution any part of the system.
+	 * + Faster execution of any part of the system.
 	 * + Smallest startup lag.
 	 * + Cleaner no boiler-plate code.
 	 * + Only 1 level of abstraction
@@ -88,32 +90,33 @@ package examples.helloflash
 	 * - To much influenced by PureMVC on architecture level trying to compete with already overdone architecture by mimics it.
 
 	 */
-	public class HelloFlash extends Compound
+	public class HelloFlash extends Sprite
 	{
-		public static const INIT				:String = "helloFlashInit";
-		public static const CREATE_BALL			:String = "helloFlashCreateBall";
-		public static const RED_BALL			:String = "helloFlashRedBall";
-		public static const POKE				:String = "helloFlashPoke";
-		public static const SHUFFLE				:String = "helloFlashShuffle";
-		public static const DIRECT_RESPONSE		:String = "helloFlashDirectResponse";
+		public static const CREATE_BALL			:String = "HelloFlash.CREATE_BALL";
+		public static const RED_BALL			:String = "HelloFlash.RED_BALL";
+		public static const POKE				:String = "HelloFlash.POKE";
+		public static const SHUFFLE				:String = "HelloFlash.SHUFFLE";
 		
 		public function HelloFlash() 
 		{
-			
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		override public function init():void 
+		private function init(e:Event):void 
 		{
-			var t			:BallTransponder 	= new BallTransponder();
-			var v			:MainView 			= new MainView();
-			var stageView	:StageView 			= new StageView();
-			stageView.addView(v);
+			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			addBehaviour(HelloFlash.POKE, Poke);
+			// Initalise a core
+			var core:BixBite = new BixBite(stage);
 			
-			sendSignal(HelloFlash.INIT);
+			core.register(BallTransponder);
+			core.register(MainView);
+			core.register(Ball);
+			
+			core.addBehaviour(HelloFlash.POKE, Poke);
 			
 			// And we're done ;)
+			
 		}
 	}
 

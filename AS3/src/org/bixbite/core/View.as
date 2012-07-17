@@ -57,7 +57,6 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			//console.setScope(this);
 			emiter.addSlot(slots.v, uid, type, callback);
 		}
 		
@@ -76,8 +75,6 @@ package org.bixbite.core
 		 */
 		public function sendSignal(type:String, params:Object = null):void
 		{
-			//console.send(type, params);
-			
 			signal.params = params;
 			emiter.broadcast(slots.t, type, signal);
 		}

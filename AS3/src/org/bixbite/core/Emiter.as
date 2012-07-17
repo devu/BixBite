@@ -87,7 +87,7 @@ package org.bixbite.core
 		 */
 		BIXBITE function registerComponent(component:Class):void
 		{
-			if (components[component] != null)
+			if (components[component] != null) return
 			components[component] = new component();
 		}
 		

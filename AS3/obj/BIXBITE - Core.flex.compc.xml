@@ -58,5 +58,6 @@
     <class>org.bixbite.framework.data.StatsData</class>
     <class>org.bixbite.framework.data.StageData</class>
     <class>org.bixbite.framework.data.DisplayListData</class>
+    <class>examples.HelloFlash</class>
   </include-classes>
 </flex-config>
