@@ -5,11 +5,12 @@
 	import flash.utils.Dictionary;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.namespaces.DSP_MGR;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
 	public class DisplayListData extends Data
@@ -23,5 +24,7 @@
 		private function onGetDisplayList (s:Signal) : void;
 
 		public function addContenxt (context:DisplayObject, container:DisplayObjectContainer) : void;
+
+		public function destroy () : void;
 	}
 }

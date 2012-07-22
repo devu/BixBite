@@ -1,13 +1,13 @@
 ﻿package examples.helloworld.behaviour
 {
 	import examples.helloworld.data.HelloData;
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
 	public class CopyHandler extends Behaviour
 	{
@@ -19,8 +19,8 @@
 
 		public function init () : void;
 
-		private function onCopyData (s:ISignal, data:HelloData) : void;
+		private function onCopyData (s:Signal, data:HelloData) : void;
 
-		public function execute (s:ISignal) : void;
+		public function execute (s:Signal) : void;
 	}
 }

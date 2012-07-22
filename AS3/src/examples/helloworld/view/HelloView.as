@@ -23,18 +23,20 @@ THE SOFTWARE.
 
 package examples.helloworld.view 
 {
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
-	public class HelloView extends DisplayView 
+	public class HelloView extends View 
 	{
-		private var textField:TextField;
+		private var textField	:TextField;
+		private var _context	:Sprite;
 		
 		public function HelloView() 
 		{
@@ -43,7 +45,7 @@ package examples.helloworld.view
 		
 		override public function init():void 
 		{
-			var container:Sprite = new Sprite();
+			_context = new Sprite();
 			
 			textField = new TextField();
 			textField.autoSize = "left";
@@ -51,29 +53,28 @@ package examples.helloworld.view
 			textField.x = 100;
 			textField.y = 100;
 			
-			container.addChild(textField);
-			
-			setContext("myTextField", container);
-			
-			addSlot(MainHelloWorld.INIT		, onInit);
-			addSlot(MainHelloWorld.SET_COPY	, onSetCopy);
-		}
-		
-		private function onInit(s:ISignal):void
-		{
 			context.x = Math.random() * 600;
 			context.y = Math.random() * 600;
-			sendSignal(MainHelloWorld.GET_DEFAULT_COPY);
+			
+			context.addChild(textField);
+			
+			addSlot(HelloWorld.SET_COPY	, onSetCopy);
+			sendSignal(HelloWorld.GET_DEFAULT_COPY);
 		}
 		
-		private function onSetCopy(s:ISignal):void 
+		private function onSetCopy(s:Signal):void 
 		{
-			applyCopy(s.params[0]);
+			applyCopy(s.params.copy);
 		}
 		
 		private function applyCopy(copy:String):void 
 		{
 			textField.htmlText = copy;
+		}
+		
+		public function get context():Sprite 
+		{
+			return _context;
 		}
 	}
 

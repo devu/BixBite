@@ -24,18 +24,54 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
+	import flash.utils.describeType;
+	import org.bixbite.namespaces.BIXBITE;
+	import org.bixbite.utils.ClassUtil;
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
-	public class BixBite extends Compound 
+	public class BixBite
 	{
+		use namespace BIXBITE;
+		
+		public static var instance	:BixBite;
+		
+		BIXBITE var emiter		:Emiter;
+		
+		BIXBITE var uid			:String;
+		
+		BIXBITE var slotsT		:Object;
+		
+		public var signal		:Signal;
+		
 		public function BixBite(stage:Stage) 
 		{
-			Emiter.startup(stage);
+			instance = this;
 			
+			emiter = Emiter.startup(stage);
+			
+			slotsT = emiter.slots.t;
+			uid = "@" + emiter.uid;
+			signal = new Signal(uid);
 			super();
+		}
+		
+		public function register(compound:Class):void
+		{
+			emiter.registerComponent(compound);
+		}
+		
+		public function unregister(component:Class):void
+		{
+			emiter.unregisterComponent(component);
+		}
+		
+		public function sendSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.broadcast(slotsT, type, signal);
 		}
 	}
 

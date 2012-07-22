@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.6.0.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.6.1.swc</output>
   <use-network>true</use-network>
   <target-player>11.2</target-player>
   <warnings>true</warnings>
@@ -21,6 +21,7 @@
     </source-path>
     <library-path>
       <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_logos.swc</path-element>
+      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\theminer_en.swc</path-element>
     </library-path>
   </compiler>
   <include-classes>
@@ -39,25 +40,6 @@
     <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
-    <class>org.bixbite.framework.DisplayListManager</class>
-    <class>org.bixbite.framework.Stats</class>
-    <class>org.bixbite.framework.StageManager</class>
-    <class>org.bixbite.framework.view.StatsMonitorView</class>
-    <class>org.bixbite.framework.signal.StatsSignal</class>
-    <class>org.bixbite.framework.signal.ActiveGridSignal</class>
-    <class>org.bixbite.framework.signal.DisplaySignal</class>
-    <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
-    <class>org.bixbite.framework.transponder.StatsTransponder</class>
-    <class>org.bixbite.framework.transponder.StageTransponder</class>
-    <class>org.bixbite.framework.behaviour.SetDisplayContext</class>
-    <class>org.bixbite.framework.behaviour.Calculate</class>
-    <class>org.bixbite.framework.behaviour.SetStage</class>
-    <class>org.bixbite.framework.behaviour.ResizeStage</class>
-    <class>org.bixbite.framework.behaviour.AddDisplayContext</class>
-    <class>org.bixbite.framework.behaviour.GetDisplayList</class>
-    <class>org.bixbite.framework.data.StatsData</class>
-    <class>org.bixbite.framework.data.StageData</class>
-    <class>org.bixbite.framework.data.DisplayListData</class>
-    <class>examples.HelloFlash</class>
+    <class>org.bixbite.utils.ClassUtil</class>
   </include-classes>
 </flex-config>

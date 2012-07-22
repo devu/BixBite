@@ -4,16 +4,18 @@
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.StageManager;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.2
 	 *   
 	 *     StatsMonitor
@@ -46,5 +48,7 @@
 		private function updateRealtime (s:Signal) : void;
 
 		private function onOrietnationChanged (s:Signal) : void;
+
+		public function destroy () : void;
 	}
 }

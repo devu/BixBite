@@ -23,17 +23,17 @@ THE SOFTWARE.
 
 package examples.helloworld.data
 {
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Data;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 * 
-	 * This Data component is a copy holder that will reponse to Atom on reqeted data.
+	 * This Data component is a copy holder that will reponse to Compound on reqest being sent from Behaviour data.
 	 * Data component don't care who is calling, will respond as soon as a signal has been recieved.
 	 *
-	 * The main purpose od the Data component is to react on specific signal from Atom and response with Data set that privides.
+	 * The main purpose od the Data component is to react on specific signal from Behaviour and response with Data set that provides.
 	 */
 	public class HelloData extends Data
 	{
@@ -49,12 +49,19 @@ package examples.helloworld.data
 		
 		override public function init():void
 		{
-			addSlot(MainHelloWorld.COPY_REQUEST, onCopyRequest);
+			addSlot(HelloWorld.COPY_REQUEST, onCopyRequest);
 		}
 		
-		private function onCopyRequest(s:ISignal):void
+		private function onCopyRequest(s:Signal):void
 		{
-			responseTo(s.callerUID, MainHelloWorld.COPY_REQUEST);
+			responseTo(s.callerUID, HelloWorld.COPY_REQUEST);
+		}
+		
+		override public function destroy():void 
+		{
+			removeSlot(HelloWorld.COPY_REQUEST);
+			
+			super.destroy();
 		}
 	
 	}

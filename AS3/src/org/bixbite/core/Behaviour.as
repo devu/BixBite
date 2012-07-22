@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Behaviour 
 	{
@@ -68,7 +68,7 @@ package org.bixbite.core
 		 * Internal pre-execute method.
 		 * @param	s
 		 */
-		private function exe(s:Signal):void
+		BIXBITE function exe(s:Signal):void
 		{
 			execute(s);
 			if (remove != null) remove(type);
@@ -98,7 +98,9 @@ package org.bixbite.core
 		{
 			emiter.removeSlot(slots.c, uid, type);
 			
-			signal 	= null;
+			signal.BIXBITE::dispose();
+			signal = null;
+			
 			emiter 	= null;
 			uid 	= null;
 			type 	= null;
@@ -116,6 +118,15 @@ package org.bixbite.core
 		{
 			emiter.addSlot(slots.c, uid, type, callback);
 			if (autoRequest) sendRequest(type);
+		}
+		
+		/**
+		 * 
+		 * @param	object
+		 */
+		public function removeResponder(type:String):void 
+		{
+			emiter.removeAllSlots(slots.c, type);
 		}
 		
 		/**
@@ -146,7 +157,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo(uid:String, type:String, params:Object = null):void
+		public function sendSignalTo(uid:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
 			emiter.response(slots.v, uid, type, signal);

@@ -23,7 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -34,11 +33,16 @@ package org.bixbite.core
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Component implements IComponent
 	{
 		use namespace BIXBITE;
+		
+		/**
+		 * 
+		 */
+		BIXBITE var copies	:int = 0;
 		
 		/**
 		 * @private
@@ -59,11 +63,6 @@ package org.bixbite.core
 		BIXBITE var slots	:Object
 		
 		/**
-		 * Debuging
-		 */
-		//BIXBITE var console	:Console;
-		
-		/**
 		 * @private
 		 * Default signal attached to this Component
 		 */
@@ -74,16 +73,12 @@ package org.bixbite.core
 		 */
 		public function Component()
 		{
-			if (Object(this).constructor == Component) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Component) throw new Error("Abstract Class");
 			
 			emiter = Emiter.getInstance();
 			slots = emiter.slots;
 			_uid = "@" + emiter.uid;
 			signal = new Signal(uid);
-			
-			//DEBUG
-			//console = emiter.console;
-			//console.setScope(this);
 			
 			init();
 		}
@@ -93,7 +88,7 @@ package org.bixbite.core
 		 */
 		public function init():void
 		{
-			throw new IllegalOperationError("Abstract Method");
+			throw new Error("Abstract Method");
 		}
 		
 		/**
@@ -103,6 +98,8 @@ package org.bixbite.core
 		 */
 		public function destroy():void
 		{
+			//trace("Destroy", this);
+			
 			emiter 	= null;
 			
 			signal.BIXBITE::dispose();

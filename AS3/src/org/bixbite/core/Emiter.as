@@ -24,11 +24,11 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
-	import flash.geom.Point;
+	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
+	import org.bixbite.utils.ClassUtil;
 	
 	/**
      * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
@@ -40,10 +40,12 @@ package org.bixbite.core
      * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Emiter
 	{
+		use namespace BIXBITE
+		
 		static private var _instance	:Emiter;
 		
 		static private var isRunning	:Boolean;
@@ -54,13 +56,7 @@ package org.bixbite.core
 		
 		private var _slots				:Object = { c: { }, d: { }, t: { }, v: { } };
 		
-		private var p					:Point = new Point(0, 0);
-		
-		private var components			:Dictionary = new Dictionary();
-		//temp solution to forward
-		private var _type				:String;
-		
-		use namespace BIXBITE
+		private var components			:Dictionary = new Dictionary(true);
 		
 		/**
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
@@ -68,7 +64,7 @@ package org.bixbite.core
 		 */
 		public function Emiter(stage:Stage)
 		{
-			if (_instance) throw IllegalOperationError("Singleton");
+			if (_instance) throw Error("This Class is a Singleton");
 			_stage = stage;
 		}
 		
@@ -76,53 +72,57 @@ package org.bixbite.core
 		 * 
 		 * @param	stage
 		 */
-		static public function startup(stage:Stage):void 
+		static public function startup(stage:Stage):Emiter 
 		{
 			_instance = new Emiter(stage);
+			return _instance
 		}
 		
 		/**
 		 * 
 		 * @param	component
 		 */
-		BIXBITE function registerComponent(component:Class):void
+		BIXBITE function registerComponent(component:Class, referal:Compound = null ):void
 		{
-			if (components[component] != null) return
-			components[component] = new component();
+			var type:String = describeType(component).@name;
+			
+			if (components[type] != null) {
+				components[type].copies++;
+				//trace("use duplicate of", component);
+				return
+			}
+			/*
+			if (ClassUtil.extendsClass(component, "Compound")) {
+				//trace("registerModule", component);
+			} else {
+				//trace("registerComponent", component);
+			}*/
+			
+			var c:Component = new component();
+			components[type] = c;
 		}
 		
-		// TODO - move to transponder
 		/**
 		 * 
-		 * @param	type
-		 * @param	callback
+		 * @param	component
 		 */
-		BIXBITE function addSensor(type:String, callback:Function):void
+		BIXBITE function unregisterComponent(component:Class, referal:Compound = null):void 
 		{
-			_stage.addEventListener(type, callback);
-		}
-		
-		// TODO - move to transponder
-		/**
-		 * 
-		 * @param	type
-		 * @param	callback
-		 */
-		BIXBITE function removeSensor(type:String, callback:Function):void
-		{
-			_stage.removeEventListener(type, callback);
-		}
-		
-		// TODO - move to transponder
-		/**
-		 * 
-		 * @return
-		 */
-		BIXBITE function getObjects():Array
-		{
-			p.x = _stage.mouseX;
-			p.y = _stage.mouseY;
-			return _stage.getObjectsUnderPoint(p);
+			var type:String = describeType(component).@name;
+			
+			if (!components[type]) return;
+			
+			if (components[type].copies > 0) {
+				//trace("keep duplicate", component);
+				components[type].copies--;
+				return
+			}
+			
+			var uid:String = components[type].uid;
+			
+			components[type].destroy();
+			components[type] = null;
+			delete components[type];
 		}
 		
 		/**
@@ -139,8 +139,6 @@ package org.bixbite.core
 		{
 			if (!channel[type]) channel[type] = { };
 			channel[type][callerUID] = callback;
-			
-			//console.addSlot(type);
 		}
 		
 		/**
@@ -155,6 +153,7 @@ package org.bixbite.core
 		{
 			if (!channel[type]) return;
 			delete channel[type][callerUID];
+			if (isEmpty(channel[type])) delete channel[type];
 		}
 		
 		/**
@@ -179,10 +178,7 @@ package org.bixbite.core
 		 */
 		BIXBITE function removeAllSlotsOf(channel:Object, uid:String):void
 		{
-			for (var p:String in channel) {
-				removeSlot(channel, uid, p);
-				if (isEmpty(channel[p])) delete channel[p];
-			}
+			for (var p:String in channel) removeSlot(channel, uid, p);
 		}
 		
 		/**
@@ -195,7 +191,6 @@ package org.bixbite.core
 		BIXBITE function dataBroadcast(channel:Object, type:String, signal:Signal, data:IData):void 
 		{
 			if (!channel[type]) return;
-			_type = type;
 			for each (var f:Function in channel[type]) f(signal, data);
 		}
 		
@@ -209,7 +204,6 @@ package org.bixbite.core
 		BIXBITE function broadcast(channel:Object, type:String, signal:Signal):void 
 		{
 			if (!channel[type]) return;
-			_type = type;
 			for each (var f:Function in channel[type]) f(signal);
 		}
 		
@@ -289,6 +283,7 @@ package org.bixbite.core
 		 * @param	object to check
 		 * @return 	boolean
 		 */
+		
 		private function isEmpty(object:Object):Boolean 
 		{
 			for (var p:String in object) return false;
@@ -318,14 +313,6 @@ package org.bixbite.core
 		public function get slots():Object 
 		{
 			return _slots;
-		}
-		
-		/**
-		 * 
-		 */
-		BIXBITE function get type():String 
-		{
-			return _type;
 		}
 	}
 }

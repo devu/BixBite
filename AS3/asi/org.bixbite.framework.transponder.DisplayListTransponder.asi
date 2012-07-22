@@ -5,8 +5,9 @@
 	import org.bixbite.framework.signal.DisplaySignal;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.0
 	 */
 	public class DisplayListTransponder extends Transponder
 	{
@@ -14,6 +15,6 @@
 
 		public function init () : void;
 
-		private function transmit (s:Signal) : void;
+		public function destroy () : void;
 	}
 }

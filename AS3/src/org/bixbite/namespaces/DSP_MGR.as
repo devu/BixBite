@@ -21,42 +21,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.behaviour 
+package org.bixbite.namespaces 
 {
-	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.DisplayListData;
-	import org.bixbite.framework.signal.DisplaySignal;
+	public namespace DSP_MGR
 	
-	/**
-	 * @version  compatibility - 0.6.0
-	 * @since 0.6.0
-	 */
-	public class GetDisplayList extends Behaviour 
-	{
-		internal var dsp:DisplayListData;
-		
-		public function GetDisplayList() 
-		{
-			
-		}
-		
-		override public function init():void 
-		{
-			addResponder(DisplaySignal.GET_DISPLAY_LIST, onDisplayList);
-		}
-		
-		private function onDisplayList(s:Signal, data:DisplayListData):void 
-		{
-			this.dsp = data;
-		}
-		
-		override public function execute(s:Signal):void 
-		{
-			
-			sendRequest(DisplaySignal.GET_DISPLAY_LIST);
-		}
-		
-	}
-
 }

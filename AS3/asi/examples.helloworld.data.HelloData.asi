@@ -1,17 +1,17 @@
 ﻿package examples.helloworld.data
 {
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Data;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 *   
-	 *     This Data component is a copy holder that will reponse to Atom on reqeted data.
+	 *     This Data component is a copy holder that will reponse to Compound on reqest being sent from Behaviour data.
 	 *   Data component don't care who is calling, will respond as soon as a signal has been recieved.
 	 *   
-	 *     The main purpose od the Data component is to react on specific signal from Atom and response with Data set that privides.
+	 *     The main purpose od the Data component is to react on specific signal from Behaviour and response with Data set that provides.
 	 */
 	public class HelloData extends Data
 	{
@@ -24,6 +24,8 @@
 
 		public function init () : void;
 
-		private function onCopyRequest (s:ISignal) : void;
+		private function onCopyRequest (s:Signal) : void;
+
+		public function destroy () : void;
 	}
 }

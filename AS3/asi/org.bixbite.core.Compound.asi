@@ -2,7 +2,6 @@
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
-	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -18,7 +17,7 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Compound extends Component implements ICompound
 	{
@@ -35,13 +34,19 @@
 		public function register (component:Class) : void;
 
 		/**
+		 *
+		 * @param	component
+		 */
+		public function unregister (component:Class) : void;
+
+		/**
 		 * Add Behaviour into your Atom. 
 		 * Atom implementation does't exist. It's only contractual and virtual name convention. It has been build into Compound for performance reason.
 		 * @param	type
 		 * @param	behaviour
 		 * @param	autoDispose, dispose your Behaviour after being executed first time.
 		 */
-		public function addBehaviour (type:String, behaviour:Class, autoDispose:Boolean=false) : void;
+		public function addBehaviour (type:String, behaviour:Class, autoDispose:Boolean=false, autoExecute:Boolean=false) : void;
 
 		/**
 		 *
@@ -55,5 +60,7 @@
 		 * @param	params
 		 */
 		public function sendSignal (type:String, params:Object=null) : void;
+
+		public function destroy () : void;
 	}
 }

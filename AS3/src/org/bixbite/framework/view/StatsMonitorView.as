@@ -27,23 +27,27 @@ package org.bixbite.framework.view
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.StageManager;
 	
+	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.2
 	 * 
 	 * StatsMonitor
 	 */
 	public class StatsMonitorView extends View 
 	{
+		use namespace STATS
+		
 		private var mem_graph		:Number = 0;
 		private var max_graph		:Number = 0;
 		private var fps_graph		:Number = 0;
@@ -88,11 +92,11 @@ package org.bixbite.framework.view
 			info_max 	= tFactory.createText(panel, "stats", 3, 26, 70, 18, 0xFF25F0);
 			info_orient = tFactory.createText(panel, "stats", 3, 34, 70, 18, 0xDEDEDE);
 			
-			addSlot(StatsSignal.DRAW, drawGraph);
-			addSlot(StatsSignal.UPDATE, update);
-			addSlot(StatsSignal.UPDATE_REALTIME, updateRealtime);
+			addSlot(Stats.DRAW, drawGraph);
+			addSlot(Stats.UPDATE, update);
+			addSlot(Stats.UPDATE_REALTIME, updateRealtime);
 			
-			addSlot(StageManager.ON_ORIENTATION_CHANGED, onOrietnationChanged);
+			addSlot(StageSignal.ON_ORIENTATION_CHANGED, onOrietnationChanged);
 			
 			sendSignal(DisplaySignal.SET_CONTEXT, { name:"statsPanel", context:panel } );
 			sendSignal(DisplaySignal.ADD_CONTEXT, { name:"statsPanel", container:"stage" } );
@@ -138,6 +142,25 @@ package org.bixbite.framework.view
 		private function onOrietnationChanged(s:Signal):void 
 		{
 			info_orient.text = s.params.orientation;
+		}
+		
+		override public function destroy():void 
+		{
+			panel.graphics.clear();
+			graph.dispose();
+			graph = null;
+			monitor = null;
+			
+			while (panel.numChildren > 0) panel.removeChildAt(0);
+			stage.removeChild(panel);
+			panel = null;
+			
+			removeSlot(Stats.DRAW);
+			removeSlot(Stats.UPDATE);
+			removeSlot(Stats.UPDATE_REALTIME);
+			removeSlot(StageSignal.ON_ORIENTATION_CHANGED);
+			
+			super.destroy();
 		}
 		
 	}

@@ -21,19 +21,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.signal 
+package examples
 {
+	import examples.helloworld.HelloWorld;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	
 	/**
-	 * @langversion	3.0
-	 * @version 0.5.3
-	 * @since 0.5.3
+	 * @version  compatibility - 0.5.4
+	 * @since 0.4.2
+	 * footprint 6.79kb.
+	 * 
+	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
 	 */
-	public class ActiveGridSignal 
+	public class MainHelloWorld extends Sprite
 	{
-		public static const DATA_REQUEST	:String = "activeGridDataRequest";
-		public static const SET_GRID		:String = "activeGridSetGrid";
-		public static const DISTRIBUTE		:String = "activeGridDistribute";
+		/**
+		 * Set your default triad.
+		 */
+		public function MainHelloWorld() 
+		{
+			addEventListener(Event.ADDED_TO_STAGE, init);
+		}
 		
+		private function init(e:Event):void 
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			var core:BixBite = new BixBite(stage);
+			core.register(HelloWorld);
+		}
 	}
-
+	
 }

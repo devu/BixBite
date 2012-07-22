@@ -28,14 +28,17 @@ package org.bixbite.framework.data
 	import flash.utils.Dictionary;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
 	public class DisplayListData extends Data 
 	{
+		use namespace DSP_MGR
+		
 		public var list:Dictionary = new Dictionary();
 		
 		public function DisplayListData() 
@@ -45,17 +48,26 @@ package org.bixbite.framework.data
 		
 		override public function init():void 
 		{
-			addSlot(DisplaySignal.GET_DISPLAY_LIST, onGetDisplayList);
+			list["stage"] = stage;
+			addSlot(DisplayListManager.GET_DISPLAY_LIST, onGetDisplayList);
 		}
 		
 		private function onGetDisplayList(s:Signal):void 
 		{
-			responseAll(DisplaySignal.GET_DISPLAY_LIST);
+			responseAll(DisplayListManager.GET_DISPLAY_LIST);
 		}
 		
 		public function addContenxt(context:DisplayObject, container:DisplayObjectContainer):void
 		{
 			
+		}
+		
+		override public function destroy():void 
+		{
+			removeSlot(DisplayListManager.GET_DISPLAY_LIST);
+			list = null;
+			
+			super.destroy();
 		}
 		
 	}

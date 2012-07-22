@@ -31,10 +31,10 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
-	public class AddDisplayContext extends GetDisplayList 
+	public class AddDisplayContext extends GetDisplayList
 	{
 		
 		public function AddDisplayContext() 
@@ -44,8 +44,8 @@ package org.bixbite.framework.behaviour
 		
 		override public function execute(s:Signal):void 
 		{
-			var context:DisplayObject = dsp.list[s.params.name];
-			var container:DisplayObjectContainer = dsp.list[s.params.container];
+			var context:DisplayObject = list[s.params.name];
+			var container:DisplayObjectContainer = list[s.params.container];
 			
 			container.addChild(context);
 		}

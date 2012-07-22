@@ -23,21 +23,26 @@ THE SOFTWARE.
 
 package org.bixbite.framework.data 
 {
-	import flash.display.Stage;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
+	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StageData extends Data
 	{
+		
+		
 		public static const PORTRAIT	:String = "PORTRAIT";
 		public static const LANDSCAPE	:String = "LANDSCAPE";
 		
-		public var orientation:String;
+		public var orientation			:String;
+		
+		use namespace STAGE_MGR
 		
 		public function StageData()
 		{
@@ -47,7 +52,7 @@ package org.bixbite.framework.data
 		override public function init():void 
 		{
 			addSlot(StageManager.DATA_REQUEST, onDataRequest);
-			addSlot(StageManager.SET_STAGE, onStageSet);
+			addSlot(StageSignal.SET_STAGE, onStageSet);
 		}
 		
 		private function onDataRequest(s:Signal):void
@@ -59,6 +64,16 @@ package org.bixbite.framework.data
 		{
 			stage.align 		= s.params.align;
 			stage.scaleMode 	= s.params.scaleMode;
+		}
+		
+		override public function destroy():void 
+		{
+			removeSlot(StageManager.DATA_REQUEST);
+			removeSlot(StageSignal.SET_STAGE);
+			
+			orientation = null;
+			
+			super.destroy();
 		}
 		
 	}

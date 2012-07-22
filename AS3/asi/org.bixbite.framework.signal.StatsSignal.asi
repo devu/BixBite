@@ -3,19 +3,19 @@
 	/**
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StatsSignal
 	{
-		public static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
-		public static const CALCULATE : String = "Stats.CALCULATE";
+		/**
+		 * IN
+		 */
 		public static const START : String = "Stats.START";
+
+		/**
+		 * OUT
+		 */
 		public static const PAUSE : String = "Stats.PAUSE";
-		public static const DRAW : String = "Stats.DRAW";
-		public static const UPDATE : String = "Stats.UPDATE";
-		public static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
-		public static const TRACE : String = "Stats.TRACE";
-		public static const DISPLAY_TRACE : String = "Stats.DISPLAY_TRACE";
 	}
 }

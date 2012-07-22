@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'7/7/2012'</value>
+      <value>'7/20/2012'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
@@ -26,7 +26,7 @@
     <library-path append="true" />
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\examples\mudularstructure\MyApplication.as</path-element>
+    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\examples\MyModularApp.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

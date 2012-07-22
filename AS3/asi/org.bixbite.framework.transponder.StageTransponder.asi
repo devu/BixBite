@@ -4,11 +4,13 @@
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
+	import org.bixbite.namespaces.STAGE_MGR;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StageTransponder extends Transponder
@@ -19,6 +21,6 @@
 
 		private function onStageResize (e:Event) : void;
 
-		private function onStageSet (s:Signal) : void;
+		public function destroy () : void;
 	}
 }

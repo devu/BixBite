@@ -33,9 +33,9 @@ package org.bixbite.core
      * <p>In case you need to send more valuable informations within an signal you can use build in params array.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
      */
-	public class Signal
+	public dynamic class Signal
 	{
 		private var _callerUID		:String;
 		private var _params			:Object;
@@ -86,6 +86,7 @@ package org.bixbite.core
 		BIXBITE function dispose():void
 		{
 			_callerUID = null;
+			for (var p:String in _params) _params[p] = null;
 			_params = null;
 		}
 	}

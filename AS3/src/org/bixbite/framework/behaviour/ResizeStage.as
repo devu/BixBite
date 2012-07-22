@@ -27,16 +27,19 @@ package org.bixbite.framework.behaviour
 	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.data.StageData;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class ResizeStage extends Behaviour 
 	{
+		use namespace STAGE_MGR;
+		
 		private var stageData	:StageData;
 		private var stage		:Stage;
 		
@@ -52,6 +55,8 @@ package org.bixbite.framework.behaviour
 		
 		private function onData(s:Signal, data:StageData):void
 		{
+			removeResponder(StageManager.DATA_REQUEST);
+			
 			this.stageData = data;
 			stage = stageData.stage;
 			stageData.orientation = (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
@@ -63,10 +68,20 @@ package org.bixbite.framework.behaviour
 			
 			if (stageData.orientation != currentOrientation){
 				stageData.orientation = currentOrientation;
-				sendSignal(StageManager.ON_ORIENTATION_CHANGED, { orientation:currentOrientation } );
+				sendSignal(StageSignal.ON_ORIENTATION_CHANGED, { orientation:currentOrientation } );
 			}
 			
-			sendSignal(StageManager.ON_RESIZE, { width:stage.stageWidth, height:stage.stageHeight } );
+			sendSignal(StageSignal.ON_RESIZE, { width:stage.stageWidth, height:stage.stageHeight } );
+		}
+		
+		override public function dispose():void 
+		{
+			removeResponder(StageManager.DATA_REQUEST);
+			
+			stageData = null;
+			stage = null;
+			
+			super.dispose();
 		}
 		
 	}

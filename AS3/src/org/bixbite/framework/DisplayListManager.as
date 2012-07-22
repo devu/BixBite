@@ -30,16 +30,19 @@ package org.bixbite.framework
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.DisplayListTransponder;
-	import org.bixbite.framework.view.StageView;
+	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 * 
 	 * footprint 2.55kb
 	 */
 	public class DisplayListManager extends Compound 
 	{
+		use namespace DSP_MGR
+		
+		DSP_MGR static const GET_DISPLAY_LIST:String	= "DisplayListManager.GET_DSP_LIST";
 		
 		public function DisplayListManager() 
 		{
@@ -48,11 +51,18 @@ package org.bixbite.framework
 			
 			addBehaviour(DisplaySignal.ADD_CONTEXT, AddDisplayContext);
 			addBehaviour(DisplaySignal.SET_CONTEXT, SetDisplayContext);
+		}
+		
+		override public function destroy():void 
+		{
+			removeBehaviour(DisplaySignal.ADD_CONTEXT);
+			removeBehaviour(DisplaySignal.SET_CONTEXT);
 			
-			addBehaviour("DisplayListManager.INIT", GetDisplayList);
-			sendSignal("DisplayListManager.INIT");
+			unregister(DisplayListData);
+			unregister(DisplayListTransponder);
 			
-			register(StageView);
+			
+			super.destroy();
 		}
 		
 	}

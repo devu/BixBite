@@ -2,11 +2,12 @@
 {
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 
 	/**
 	 *
-	 * @version compatibility - 0.6.0
+	 * @version compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StatsData extends Data
@@ -27,5 +28,7 @@
 		public function init () : void;
 
 		private function onDataRequest (s:Signal) : void;
+
+		public function destroy () : void;
 	}
 }

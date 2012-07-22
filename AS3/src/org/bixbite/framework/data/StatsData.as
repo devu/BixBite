@@ -25,15 +25,18 @@ package org.bixbite.framework.data
 {
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 	
 	/**
-	 * @version compatibility - 0.6.0
+	 * @version compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	
 	public class StatsData extends Data 
 	{
+		use namespace STATS
+		
 		public var mem				:Number = 0;
 		public var max				:Number = 0;
 		public var fps				:Number = 0;
@@ -55,12 +58,20 @@ package org.bixbite.framework.data
 		
 		override public function init():void
 		{
-			addSlot(StatsSignal.DATA_REQUEST, onDataRequest);
+			addSlot(Stats.DATA_REQUEST, onDataRequest);
 		}
 		
 		private function onDataRequest(s:Signal):void
 		{
-			responseTo(s.callerUID, StatsSignal.DATA_REQUEST);
+			responseTo(s.callerUID, Stats.DATA_REQUEST);
+			removeSlot(Stats.DATA_REQUEST);
+		}
+		
+		override public function destroy():void 
+		{
+			removeSlot(Stats.DATA_REQUEST);
+			
+			super.destroy();
 		}
 		
 	}

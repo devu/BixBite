@@ -2,14 +2,15 @@
 {
 	import flash.system.System;
 	import flash.utils.getTimer;
+	import org.bixbite.namespaces.STATS;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.StatsData;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour
@@ -26,5 +27,7 @@
 		private function onData (s:Signal, data:StatsData) : void;
 
 		public function execute (s:Signal) : void;
+
+		public function dispose () : void;
 	}
 }

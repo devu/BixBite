@@ -23,14 +23,15 @@ THE SOFTWARE.
 
 package examples.helloworld.transponder 
 {
-import examples.helloworld.MainHelloWorld;
-import flash.events.MouseEvent;
-import flash.text.TextField;
-import org.bixbite.core.interfaces.ISignal;
-import org.bixbite.core.Transponder;
+
+	import examples.helloworld.HelloWorld;
+	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 * 
      * This Trasponder will detect if any text field has been clicked.
      * If so, will send signal demands to change the copy.
@@ -38,7 +39,6 @@ import org.bixbite.core.Transponder;
      */
 	public class HelloTransponder extends Transponder 
 	{
-		
 		
 		public function HelloTransponder() 
 		{
@@ -51,18 +51,26 @@ import org.bixbite.core.Transponder;
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			addSlot(MainHelloWorld.GET_DEFAULT_COPY, onGetDefaultCopy);
+			
+			addSlot(HelloWorld.INIT, onInit);
+			addSlot(HelloWorld.GET_DEFAULT_COPY, onGetDefaultCopy);
 		}
 		
-		private function onGetDefaultCopy(s:ISignal):void 
+		private function onInit(s:Signal):void
 		{
-			sendSignal(MainHelloWorld.UPDATE_COPY, [true]);
+			var max:int = s.params.max;
+			response(HelloWorld.INIT, { max:max } );
+		}
+		
+		private function onGetDefaultCopy(s:Signal):void 
+		{
+			sendSignal(HelloWorld.UPDATE_COPY, { isDefault:true } );
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			if (findObjectByType(TextField)) 
-				sendSignal(MainHelloWorld.UPDATE_COPY, [false]);
+				sendSignal(HelloWorld.UPDATE_COPY, { isDefault:false } );
 		}
 		
 	}

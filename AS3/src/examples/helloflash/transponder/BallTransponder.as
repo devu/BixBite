@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 package examples.helloflash.transponder 
 {
-	import examples.HelloFlash;
+	import examples.helloflash.HelloFlash;
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;

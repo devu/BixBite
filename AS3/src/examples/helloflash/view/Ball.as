@@ -23,13 +23,11 @@ THE SOFTWARE.
 
 package examples.helloflash.view 
 {
+	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
-	import org.bixbite.framework.signal.DisplaySignal;
-	
-	import examples.HelloFlash;
-	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	
 
 	/**
 	 * @version  compatibility - 0.6.0

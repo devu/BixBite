@@ -24,7 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
+	
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -36,7 +36,7 @@ package org.bixbite.core
      * Because former Model has been split for Atom and Data components, do not use Data component to hold any kind of business logic.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
      */
 	public class Data extends Component implements IData
 	{
@@ -47,7 +47,7 @@ package org.bixbite.core
          */
 		public function Data() 
 		{
-			if (Object(this).constructor == Data) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Data) throw new Error("Abstract Class");
 		}
 		
 		/**
@@ -77,8 +77,6 @@ package org.bixbite.core
 		 */
 		public function responseTo(targetUID:String, type:String, params:Object = null):void
 		{
-			//console.send(type, params);
-			
 			signal.params = params;
 			emiter.dataResponse(slots.c, targetUID, type, signal, this);
 		}
@@ -90,8 +88,6 @@ package org.bixbite.core
 		 */
 		public function responseAll(type:String, params:Object = null):void 
 		{
-			//console.send(type, params);
-			
 			signal.params = params;
 			emiter.dataBroadcast(slots.c, type, signal, this);
 		}

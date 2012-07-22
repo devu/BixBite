@@ -7,17 +7,21 @@
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.DisplayListTransponder;
-	import org.bixbite.framework.view.StageView;
+	import org.bixbite.namespaces.DSP_MGR;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 *   
 	 *     footprint 2.55kb
 	 */
 	public class DisplayListManager extends Compound
 	{
+		static const GET_DISPLAY_LIST : String = "DisplayListManager.GET_DSP_LIST";
+
 		public function DisplayListManager ();
+
+		public function destroy () : void;
 	}
 }

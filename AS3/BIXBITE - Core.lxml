@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.6.0.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.6.1.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -94,6 +94,33 @@
     <string>src\test\integration\behaviours\behaviour\startup.as</string>
     <string>src\test\integration\behaviours\behaviour\redraw.as</string>
     <string>src\test\integration\loaded\mainloader.as</string>
+    <string>src\org\bixbite\framework\behaviour\adddisplaycontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\calculate.as</string>
+    <string>src\org\bixbite\framework\behaviour\getdisplaylist.as</string>
+    <string>src\org\bixbite\framework\behaviour\resizestage.as</string>
+    <string>src\org\bixbite\framework\behaviour\setdisplaycontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\setstage.as</string>
+    <string>src\org\bixbite\framework\data\displaylistdata.as</string>
+    <string>src\org\bixbite\framework\data\stagedata.as</string>
+    <string>src\org\bixbite\framework\data\statsdata.as</string>
+    <string>src\org\bixbite\framework\signal\displaysignal.as</string>
+    <string>src\org\bixbite\framework\signal\stagesignal.as</string>
+    <string>src\org\bixbite\framework\signal\statssignal.as</string>
+    <string>src\org\bixbite\framework\transponder\displaylisttransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\stagetransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\statstransponder.as</string>
+    <string>src\org\bixbite\framework\view\statsmonitorview.as</string>
+    <string>src\org\bixbite\framework\displaylistmanager.as</string>
+    <string>src\org\bixbite\framework\stagemanager.as</string>
+    <string>src\org\bixbite\framework\stats.as</string>
+    <string>src\org\bixbite\namespaces\dsp_mgr.as</string>
+    <string>src\org\bixbite\namespaces\stage_mgr.as</string>
+    <string>src\org\bixbite\namespaces\stats.as</string>
+    <string>src\examples\mymodularapp.as</string>
+    <string>src\examples\mainhelloworld.as</string>
+    <string>src\examples\mainhelloflash.as</string>
+    <string>src\examples\helloworld\helloworld.as</string>
+    <string>src\examples\helloworld\view\rootview.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -177,6 +204,33 @@
     <string>src\test\integration\behaviours\behaviour\startup.as</string>
     <string>src\test\integration\behaviours\behaviour\redraw.as</string>
     <string>src\test\integration\loaded\mainloader.as</string>
+    <string>src\org\bixbite\framework\behaviour\adddisplaycontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\calculate.as</string>
+    <string>src\org\bixbite\framework\behaviour\getdisplaylist.as</string>
+    <string>src\org\bixbite\framework\behaviour\resizestage.as</string>
+    <string>src\org\bixbite\framework\behaviour\setdisplaycontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\setstage.as</string>
+    <string>src\org\bixbite\framework\data\displaylistdata.as</string>
+    <string>src\org\bixbite\framework\data\stagedata.as</string>
+    <string>src\org\bixbite\framework\data\statsdata.as</string>
+    <string>src\org\bixbite\framework\signal\displaysignal.as</string>
+    <string>src\org\bixbite\framework\signal\stagesignal.as</string>
+    <string>src\org\bixbite\framework\signal\statssignal.as</string>
+    <string>src\org\bixbite\framework\transponder\displaylisttransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\stagetransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\statstransponder.as</string>
+    <string>src\org\bixbite\framework\view\statsmonitorview.as</string>
+    <string>src\org\bixbite\framework\displaylistmanager.as</string>
+    <string>src\org\bixbite\framework\stagemanager.as</string>
+    <string>src\org\bixbite\framework\stats.as</string>
+    <string>src\org\bixbite\namespaces\dsp_mgr.as</string>
+    <string>src\org\bixbite\namespaces\stage_mgr.as</string>
+    <string>src\org\bixbite\namespaces\stats.as</string>
+    <string>src\examples\mymodularapp.as</string>
+    <string>src\examples\mainhelloworld.as</string>
+    <string>src\examples\mainhelloflash.as</string>
+    <string>src\examples\helloworld\helloworld.as</string>
+    <string>src\examples\helloworld\view\rootview.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

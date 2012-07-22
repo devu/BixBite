@@ -1,14 +1,29 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.Stage;
+	import flash.utils.describeType;
+	import org.bixbite.namespaces.BIXBITE;
+	import org.bixbite.utils.ClassUtil;
 
 	/**
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
-	public class BixBite extends Compound
+	public class BixBite
 	{
+		public static var instance : BixBite;
+		var emiter : Emiter;
+		var uid : String;
+		var slotsT : Object;
+		public var signal : Signal;
+
 		public function BixBite (stage:Stage);
+
+		public function register (compound:Class) : void;
+
+		public function unregister (component:Class) : void;
+
+		public function sendSignal (type:String, params:Object=null) : void;
 	}
 }

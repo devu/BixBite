@@ -1,6 +1,6 @@
 ﻿package examples.helloflash.behaviour
 {
-	import examples.HelloFlash;
+	import examples.helloflash.HelloFlash;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 

@@ -6,10 +6,11 @@
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
 	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.namespaces.STATS;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 *   footprint 5.43kb (8.08kb at 0.5.5);
 	 *   
@@ -18,11 +19,19 @@
 	 */
 	public class Stats extends Compound
 	{
+		static const CALCULATE : String = "Stats.CALCULATE";
+		static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
+		static const DRAW : String = "Stats.DRAW";
+		static const UPDATE : String = "Stats.UPDATE";
+		static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
+
 		/**
 		 * Constructor
 		 */
 		public function Stats ();
 
 		public function init () : void;
+
+		public function destroy () : void;
 	}
 }

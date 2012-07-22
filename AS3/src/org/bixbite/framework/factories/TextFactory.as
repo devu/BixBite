@@ -30,7 +30,7 @@ package org.bixbite.framework.factories
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 * @since 0.5.0
 	 */
 	public class TextFactory 

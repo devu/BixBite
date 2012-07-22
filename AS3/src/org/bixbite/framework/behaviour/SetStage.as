@@ -25,10 +25,10 @@ package org.bixbite.framework.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.5
 	 */
 	public class SetStage extends Behaviour 
@@ -41,7 +41,7 @@ package org.bixbite.framework.behaviour
 		
 		override public function execute(s:Signal):void
 		{
-			sendRequest(StageManager.SET_STAGE, s.params);
+			sendRequest(StageSignal.SET_STAGE, s.params);
 		}
 		
 	}

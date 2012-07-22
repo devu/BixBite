@@ -1,11 +1,11 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
-	import flash.geom.Point;
+	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
+	import org.bixbite.utils.ClassUtil;
 
 	/**
 	 * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
@@ -16,7 +16,7 @@
 	 * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
 	 * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Emiter
 	{
@@ -25,9 +25,7 @@
 		private var _uid : int;
 		private var _stage : Stage;
 		private var _slots : Object;
-		private var p : Point;
 		private var components : Dictionary;
-		private var _type : String;
 
 		/**
 		 * Privides getter to unique id for all Components.
@@ -46,11 +44,6 @@
 		public function get slots () : Object;
 
 		/**
-		 *
-		 */
-		function get type () : String;
-
-		/**
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
@@ -60,33 +53,19 @@
 		 *
 		 * @param	stage
 		 */
-		public static function startup (stage:Stage) : void;
+		public static function startup (stage:Stage) : Emiter;
 
 		/**
 		 *
 		 * @param	component
 		 */
-		function registerComponent (component:Class) : void;
+		function registerComponent (component:Class, referal:Compound=null) : void;
 
 		/**
 		 *
-		 * @param	type
-		 * @param	callback
+		 * @param	component
 		 */
-		function addSensor (type:String, callback:Function) : void;
-
-		/**
-		 *
-		 * @param	type
-		 * @param	callback
-		 */
-		function removeSensor (type:String, callback:Function) : void;
-
-		/**
-		 *
-		 * @return
-		 */
-		function getObjects () : Array;
+		function unregisterComponent (component:Class, referal:Compound=null) : void;
 
 		/**
 		 *

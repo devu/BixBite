@@ -25,19 +25,21 @@ package org.bixbite.framework.behaviour
 {
 	import flash.system.System;
 	import flash.utils.getTimer;
+	import org.bixbite.namespaces.STATS;
 	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	
 	import org.bixbite.framework.data.StatsData;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour 
 	{
+		use namespace STATS
+		
 		private var data		:StatsData;
 		
 		private var fps			:int;
@@ -51,12 +53,13 @@ package org.bixbite.framework.behaviour
 		
 		override public function init():void
 		{
-			addResponder(StatsSignal.DATA_REQUEST, onData, true);
+			addResponder(Stats.DATA_REQUEST, onData, true);
 		}
 		
 		private function onData(s:Signal, data:StatsData):void 
 		{
 			this.data = data;
+			removeResponder(Stats.DATA_REQUEST);
 		}
 		
 		override public function execute(s:Signal):void 
@@ -76,13 +79,13 @@ package org.bixbite.framework.behaviour
 				data.max = max > mem ? max : mem;
 				data.fps = fps;
 				
-				sendSignal(StatsSignal.DRAW, data);
+				sendSignal(Stats.DRAW, data);
 				
 				data.infoFPS = "FPS: " + fps + " / " + frameRate;
 				data.infoMEM = "MEM: " + mem;
 				data.infoMAX = "MAX: " + data.max;
 				
-				sendSignal(StatsSignal.UPDATE, { infoFPS:data.infoFPS, infoMEM:data.infoMEM, infoMAX:data.infoMAX } );
+				sendSignal(Stats.UPDATE, { infoFPS:data.infoFPS, infoMEM:data.infoMEM, infoMAX:data.infoMAX } );
 				
 				fps = 0;
 			}
@@ -90,11 +93,20 @@ package org.bixbite.framework.behaviour
 			fps++;
 			
 			data.infoMS  = "MS: " + (timer - ms);
-			sendSignal(StatsSignal.UPDATE_REALTIME, { infoMS:data.infoMS } );
+			sendSignal(Stats.UPDATE_REALTIME, { infoMS:data.infoMS } );
 			
 			data.ms = timer;
 		}
 		
+		override public function dispose():void 
+		{
+			removeResponder(Stats.DATA_REQUEST);
+			
+			data = null;
+			fps	= timer	= ms_prev = NaN;
+			
+			super.dispose();
+		}
 		
 	}
 

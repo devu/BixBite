@@ -25,10 +25,9 @@ package org.bixbite.core
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
-	import flash.errors.IllegalOperationError;
+	
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
-	//import org.bixbite.debug.Console;
 	
 	/**
      * <p>The Compound represents default class you should subclass your Document Class with.</br>
@@ -43,7 +42,7 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Compound extends Component implements ICompound
 	{
@@ -53,12 +52,12 @@ package org.bixbite.core
 		
 		public function Compound()
 		{
-			if (Object(this).constructor == Compound) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Compound) throw new Error("Abstract Class");
 		}
 		
 		override public function init():void 
 		{
-			//console.register(this);
+			
 		}
 		
 		/**
@@ -67,8 +66,16 @@ package org.bixbite.core
 		 */
 		public function register(component:Class):void
 		{
-			//console.setScope(this);
-			emiter.registerComponent(component);
+			emiter.registerComponent(component, this);
+		}
+		
+		/**
+		 * 
+		 * @param	component
+		 */
+		public function unregister(component:Class):void
+		{
+			emiter.unregisterComponent(component, this);
 		}
 		
 		/**
@@ -78,11 +85,13 @@ package org.bixbite.core
 		 * @param	behaviour
 		 * @param	autoDispose, dispose your Behaviour after being executed first time.
 		 */
-		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false):void
+		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false, autoExecute:Boolean = false):void
 		{
 			behaviours[type] = new behaviour();
 			behaviours[type].initialise(emiter, type, slots);
+			
 			if (autoDispose) behaviours[type].remove = removeBehaviour;
+			if (autoExecute) behaviours[type].exe(signal);
 		}
 		
 		/**
@@ -104,6 +113,12 @@ package org.bixbite.core
 		{
 			signal.params = params;
 			emiter.broadcast(slots.t, type, signal);
+		}
+		
+		override public function destroy():void 
+		{
+			behaviours = null;
+			super.destroy();
 		}
 		
 	}

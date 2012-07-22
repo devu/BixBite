@@ -1,26 +1,27 @@
 ﻿package examples.helloworld.view
 {
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
-	public class HelloView extends DisplayView
+	public class HelloView extends View
 	{
 		private var textField : TextField;
+		private var _context : Sprite;
+
+		public function get context () : Sprite;
 
 		public function HelloView ();
 
 		public function init () : void;
 
-		private function onInit (s:ISignal) : void;
-
-		private function onSetCopy (s:ISignal) : void;
+		private function onSetCopy (s:Signal) : void;
 
 		private function applyCopy (copy:String) : void;
 	}

@@ -6,10 +6,12 @@
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StatsTransponder extends Transponder
@@ -30,5 +32,7 @@
 		private function onMouseDown (e:MouseEvent) : void;
 
 		private function onMouseUp (e:MouseEvent) : void;
+
+		public function destroy () : void;
 	}
 }

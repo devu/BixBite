@@ -27,14 +27,17 @@ package org.bixbite.framework.transponder
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
+	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 */
 	public class StageTransponder extends Transponder 
 	{
+		use namespace STAGE_MGR
 		
 		public function StageTransponder() 
 		{
@@ -44,7 +47,8 @@ package org.bixbite.framework.transponder
 		override public function init():void 
 		{
 			addSensor(Event.RESIZE, onStageResize);
-			addSlot(StageManager.SET_STAGE, onStageSet);
+			
+			transmit(StageSignal.SET_STAGE);
 		}
 		
 		private function onStageResize(e:Event):void 
@@ -52,9 +56,12 @@ package org.bixbite.framework.transponder
 			sendSignal(StageManager.RESIZE);
 		}
 		
-		private function onStageSet(s:Signal):void 
+		override public function destroy():void 
 		{
-			sendSignal(StageManager.SET_STAGE, s.params);
+			removeSensor(Event.RESIZE, onStageResize);
+			removeSlot(StageSignal.SET_STAGE);
+			
+			super.destroy();
 		}
 	}
 

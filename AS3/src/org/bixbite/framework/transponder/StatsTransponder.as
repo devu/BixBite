@@ -30,13 +30,17 @@ package org.bixbite.framework.transponder
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.namespaces.STATS;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
      */
 	public class StatsTransponder extends Transponder 
 	{
+		use namespace STATS
+		
 		private var panel		:Sprite;
 		private var calculate	:Function;
 		
@@ -56,7 +60,7 @@ package org.bixbite.framework.transponder
 		
 		private function onStart(s:Signal):void 
 		{
-			calculate = getSlotReference(StatsSignal.CALCULATE)[0];
+			calculate = getSlotReference(Stats.CALCULATE)[0];
 			addSensor(Event.ENTER_FRAME		, onEnterFrame);
 		}
 		
@@ -86,6 +90,22 @@ package org.bixbite.framework.transponder
 				panel.stopDrag();
 				panel = null;
 			}
+		}
+		
+		override public function destroy():void 
+		{
+			removeSensor(Event.ENTER_FRAME		, onEnterFrame);
+			removeSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
+			removeSensor(MouseEvent.MOUSE_UP	, onMouseUp);
+			
+			removeSlot(Stats.CALCULATE);
+			removeSlot(StatsSignal.START);
+			removeSlot(StatsSignal.PAUSE);
+			
+			calculate = null;
+			panel = null;
+			
+			super.destroy();
 		}
 	}
 

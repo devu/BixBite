@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_framework_0.6.0.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_framework_0.6.1.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Framework.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -68,6 +68,11 @@
     <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
     <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
     <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
+    <string>src\examples\mymodularapp.as</string>
+    <string>src\examples\mainhelloworld.as</string>
+    <string>src\examples\mainhelloflash.as</string>
+    <string>src\examples\helloworld\helloworld.as</string>
+    <string>src\examples\helloworld\view\rootview.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -125,6 +130,11 @@
     <string>src\org\bixbite\framework\modules\assetloader\data\assetitem.as</string>
     <string>src\org\bixbite\framework\modules\assetloader\behaviour\getasset.as</string>
     <string>src\org\bixbite\framework\modules\assetloader\behaviour\registerasset.as</string>
+    <string>src\examples\mymodularapp.as</string>
+    <string>src\examples\mainhelloworld.as</string>
+    <string>src\examples\mainhelloflash.as</string>
+    <string>src\examples\helloworld\helloworld.as</string>
+    <string>src\examples\helloworld\view\rootview.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

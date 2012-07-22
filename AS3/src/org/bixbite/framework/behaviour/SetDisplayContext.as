@@ -28,7 +28,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
 	public class SetDisplayContext extends GetDisplayList 
@@ -45,7 +45,7 @@ package org.bixbite.framework.behaviour
 			var context:DisplayObject = s.params.context;
 			context.name = name;
 			
-			dsp.list[name] = context;
+			list[name] = context;
 		}
 	}
 

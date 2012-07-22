@@ -27,24 +27,22 @@ package org.bixbite.framework
 	import org.bixbite.framework.behaviour.ResizeStage;
 	import org.bixbite.framework.behaviour.SetStage;
 	import org.bixbite.framework.data.StageData;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.transponder.StageTransponder;
+	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.0
 	 * 
 	 * footprint 2.15kb (8.73kb at 0.5.5);
 	 */
 	public class StageManager extends Compound
 	{
-		//requests
-		public static const SET_STAGE			:String = "StageSignal.SET_STAGE";
-		public static const DATA_REQUEST		:String = "StageSignal.DATA_REQUEST";
-		public static const RESIZE				:String = "StageSignal.RESIZE";
+		use namespace STAGE_MGR
 		
-		//responses
-		public static const ON_ORIENTATION_CHANGED	:String = "StageSignal.ON_ORIENTATION_CHANGED";
-		public static const ON_RESIZE				:String = "StageSignal.ON_RESIZE";
+		STAGE_MGR static const DATA_REQUEST		:String = "StageSignal.DATA_REQUEST";
+		STAGE_MGR static const RESIZE			:String = "StageSignal.RESIZE";
 		
 		public function StageManager()
 		{
@@ -56,8 +54,19 @@ package org.bixbite.framework
 			register(StageData);
 			register(StageTransponder);
 			
-			addBehaviour(StageManager.SET_STAGE, SetStage);
+			addBehaviour(StageSignal.SET_STAGE, SetStage);
 			addBehaviour(StageManager.RESIZE, ResizeStage);
+		}
+		
+		override public function destroy():void 
+		{
+			removeBehaviour(StageSignal.SET_STAGE);
+			removeBehaviour(StageManager.RESIZE);
+			
+			unregister(StageData);
+			unregister(StageTransponder);
+			
+			super.destroy();
 		}
 	}
 

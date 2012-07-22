@@ -24,7 +24,9 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.DisplayObject;
+	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -34,11 +36,15 @@ package org.bixbite.core
      * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
      */
 	public class Transponder extends Component implements ITransponder 
 	{
 		use namespace BIXBITE
+		
+		private var p:Point = new Point(0, 0);
+		
+		private var stage:Stage;
 		
 		/**
          * Constructor - this class cannot be directly instantiated.
@@ -75,19 +81,20 @@ package org.bixbite.core
 		 */
 		public function sendSignal(type:String, params:Object = null):void 
 		{
-			//console.send(type, params);
-			
 			signal.params = params;
 			emiter.broadcast(slots.c, type, signal);
 		}
 		
 		/**
 		 * 
-		 * @param	s
+		 * @param	type
 		 */
-		public function forward(s:Signal):void
+		public function transmit(type:String):void
 		{
-			emiter.broadcast(slots.c, emiter.type, s);
+			emiter.addSlot(slots.t, uid, type, function forward(s:Signal):void
+			{
+				emiter.broadcast(slots.c, type, s);
+			});
 		}
 		
 		/**
@@ -97,8 +104,6 @@ package org.bixbite.core
 		 */
 		public function response(type:String, params:Object = null):void 
 		{
-			//console.send(type, params);
-			
 			signal.params = params;
 			emiter.broadcast(slots.v, type, signal);
 		}
@@ -109,11 +114,9 @@ package org.bixbite.core
 		  * @param	type
 		  * @param	...rest
 		  */
-		public function responseTo(target:Object, type:String, params:Object = null):void 
+		public function responseTo(uid:String, type:String, params:Object = null):void 
 		{
-			var uid:String = "@" + target.name.split("@")[1];
-			
-			//console.send(type, params);
+			//var uid:String = "@" + target.name.split("@")[1];
 			
 			signal.params = params;
 			emiter.response(slots.v, uid, type, signal);
@@ -137,7 +140,7 @@ package org.bixbite.core
 		 */
 		public function addSensor(type:String, callback:Function):void
 		{
-			emiter.addSensor(type, callback);
+			emiter.stage.addEventListener(type, callback);
 		}
 		
 		/**
@@ -147,30 +150,24 @@ package org.bixbite.core
 		 */
 		public function removeSensor(type:String, callback:Function):void
 		{
-			emiter.removeSensor(type, callback);
+			emiter.stage.removeEventListener(type, callback);
 		}
 		
 		/**
-		 * Return array of all ubject under the point
+		 * 
 		 * @return
 		 */
-		public function getAllObjects():Array
+		public function getObjects():Array
 		{
-			return emiter.getObjects().reverse();
+			stage = emiter.BIXBITE::stage;
+			p.x = stage.mouseX;
+			p.y = stage.mouseY;
+			return stage.getObjectsUnderPoint(p);
 		}
 		
-		/**
-		 * Find display objects (context of Views) by name under the current input point. 
-		 * If object has been found transponder's signal will take over target uid. Otherwise will restore its own.
-		 * @param	name
-		 * @return
-		 */
 		public function findObjectByName(name:String):Boolean
 		{
-			var objects:Array = emiter.getObjects();
-			objects.reverse();
-			
-			for each(var o:DisplayObject in objects){
+			for each(var o:DisplayObject in getObjects()){
 				var a:Array = o.name.split("@");
 				if (a[0] == name){
 					signal.BIXBITE::callerUID = "@" + a[1];
@@ -184,10 +181,7 @@ package org.bixbite.core
 		
 		public function getObjectByName(name:String):DisplayObject
 		{
-			var objects:Array = emiter.getObjects();
-			objects.reverse();
-			
-			for each(var o:DisplayObject in objects){
+			for each(var o:DisplayObject in getObjects()){
 				var a:Array = o.name.split("@");
 				if (a[0] == name) return o;
 			}
@@ -197,10 +191,7 @@ package org.bixbite.core
 		
 		public function findObjectByType(object:Class):Boolean
 		{
-			var objects:Array = emiter.getObjects();
-			objects.reverse();
-			
-			for each(var o:Object in objects){
+			for each(var o:Object in getObjects()){
 				if (o is object) return true;
 			}
 			
@@ -213,6 +204,7 @@ package org.bixbite.core
 		override public function destroy():void 
 		{
 			emiter.removeAllSlotsOf(slots.c, uid);
+			stage = null;
 			super.destroy();
 		}
 	}

@@ -9,7 +9,7 @@
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Behaviour
 	{
@@ -28,7 +28,7 @@
 		 * Internal pre-execute method.
 		 * @param	s
 		 */
-		private function exe (s:Signal) : void;
+		function exe (s:Signal) : void;
 
 		/**
 		 * Abstract method to perform initial preparation before execute() is triggered.
@@ -55,6 +55,12 @@
 		public function addResponder (type:String, callback:Function, autoRequest:Boolean=false) : void;
 
 		/**
+		 *
+		 * @param	object
+		 */
+		public function removeResponder (type:String) : void;
+
+		/**
 		 * Request data component by type.
 		 * @param	type
 		 */
@@ -73,7 +79,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo (uid:String, type:String, params:Object=null) : void;
+		public function sendSignalTo (uid:String, type:String, params:Object=null) : void;
 
 		/**
 		 * SRS - Slot Reference System

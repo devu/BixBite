@@ -1,25 +1,25 @@
 ﻿package org.bixbite.framework.behaviour
 {
+	import flash.utils.Dictionary;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.DisplayListData;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.namespaces.DSP_MGR;
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
 	public class GetDisplayList extends Behaviour
 	{
-		var dsp : DisplayListData;
+		var list : Dictionary;
 
 		public function GetDisplayList ();
 
 		public function init () : void;
 
 		private function onDisplayList (s:Signal, data:DisplayListData) : void;
-
-		public function execute (s:Signal) : void;
 	}
 }

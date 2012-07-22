@@ -1,7 +1,9 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.DisplayObject;
+	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
+	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -10,10 +12,13 @@
 	 * <p>In computer science interrogate means transmit a signal for setting off an appropriate response.
 	 * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
 	 * @langversion	3.0
-	 * @version 0.6.0
+	 * @version 0.6.1
 	 */
 	public class Transponder extends Component implements ITransponder
 	{
+		private var p : Point;
+		private var stage : Stage;
+
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
@@ -42,9 +47,9 @@
 
 		/**
 		 *
-		 * @param	s
+		 * @param	type
 		 */
-		public function forward (s:Signal) : void;
+		public function transmit (type:String) : void;
 
 		/**
 		 * Multicast (one-to-many) method to broadcast signals on View communication channel.
@@ -59,7 +64,7 @@
 		 * @param	type
 		 * @param	...rest
 		 */
-		public function responseTo (target:Object, type:String, params:Object=null) : void;
+		public function responseTo (uid:String, type:String, params:Object=null) : void;
 
 		/**
 		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.
@@ -84,17 +89,11 @@
 		public function removeSensor (type:String, callback:Function) : void;
 
 		/**
-		 * Return array of all ubject under the point
+		 *
 		 * @return
 		 */
-		public function getAllObjects () : Array;
+		public function getObjects () : Array;
 
-		/**
-		 * Find display objects (context of Views) by name under the current input point. 
-		 * If object has been found transponder's signal will take over target uid. Otherwise will restore its own.
-		 * @param	name
-		 * @return
-		 */
 		public function findObjectByName (name:String) : Boolean;
 
 		public function getObjectByName (name:String) : DisplayObject;

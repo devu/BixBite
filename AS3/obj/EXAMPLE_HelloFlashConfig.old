@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'7/17/2012'</value>
+      <value>'7/20/2012'</value>
     </define>
     <optimize>true</optimize>
     <omit-trace-statements>true</omit-trace-statements>
@@ -28,7 +28,7 @@
     <library-path append="true" />
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\examples\HelloFlash.as</path-element>
+    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\examples\MainHelloFlash.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

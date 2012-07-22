@@ -29,9 +29,10 @@ package org.bixbite.framework
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
 	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.namespaces.STATS;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.1
 	 * footprint 5.43kb (8.08kb at 0.5.5);
 	 * 
@@ -40,6 +41,14 @@ package org.bixbite.framework
 	 */
 	public class Stats extends Compound 
 	{
+		use namespace STATS
+		
+		STATS static const CALCULATE		:String = "Stats.CALCULATE";
+		STATS static const DATA_REQUEST		:String = "Stats.DATA_REQUEST";
+		STATS static const DRAW				:String = "Stats.DRAW";
+		STATS static const UPDATE			:String = "Stats.UPDATE";
+		STATS static const UPDATE_REALTIME	:String = "Stats.UPDATE_REALTIME";
+		
 		/**
 		 * Constructor
 		 */
@@ -50,11 +59,32 @@ package org.bixbite.framework
 		
 		override public function init():void 
 		{
+			// modules required to run
+			register(DisplayListManager);
+			register(StageManager);
+			
+			// compound modules
 			register(StatsData);
 			register(StatsTransponder);
 			register(StatsMonitorView);
 			
-			addBehaviour(StatsSignal.CALCULATE, Calculate);
+			addBehaviour(Stats.CALCULATE, Calculate);
+		}
+		
+		override public function destroy():void 
+		{
+			sendSignal(StatsSignal.PAUSE);
+			
+			removeBehaviour(Stats.CALCULATE);
+			
+			unregister(DisplayListManager);
+			unregister(StageManager);
+			
+			unregister(StatsData);
+			unregister(StatsTransponder);
+			unregister(StatsMonitorView);
+			
+			super.destroy();
 		}
 	}
 

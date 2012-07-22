@@ -48,28 +48,44 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
+	import com.sociodox.theminer.TheMiner;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import org.bixbite.core.BixBite;
+	import flash.events.MouseEvent;
+	import flash.events.TimerEvent;
+	import flash.system.System;
+	import flash.utils.getTimer;
+	import flash.utils.Timer;
+	import org.bixbite.core.Emiter;
 	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
+	//import flash.events.MouseEvent;
+	//import flash.system.System;
+	import org.bixbite.core.BixBite;
+	//import org.bixbite.framework.DisplayListManager;
+	//import org.bixbite.framework.signal.StatsSignal;
+	//import org.bixbite.framework.StageManager;
+	//import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version 0.6.0
-	 * footprint 
-	 * core: 2.80kb, 
-	 * framework functional modules+core: 9.01kb
+	 * @version 0.6.1
 	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.
 	 * 
-	 * cor
+	 * footprint 2.92kb
+	 * 
 	 */
 	
 	public class Main extends Sprite
 	{
+		//private var core	:BixBite;
+		
+		//private var step	:int = 0;
+		//private var round	:int = 0;
 		
 		public function Main() 
 		{
@@ -79,26 +95,82 @@ package org.bixbite
 		private function init(e:Event):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
 			var core:BixBite = new BixBite(stage);
+			//var miner:TheMiner = new TheMiner();
+			//miner.x = 400;
+			//addChild(miner);
 			
-			/**
-			 * DisplayListManager Module
-			 */
-			core.register(DisplayListManager);
-			
-			/**
-			 * StageManager Module
-			 */
-			core.register(StageManager);
-			core.sendSignal(StageManager.SET_STAGE, { align:"TL", scaleMode:"noScale" } );
-			
-			/**
-			 * Stats Module
-			 */
-			core.register(Stats);
-			core.sendSignal(StatsSignal.START);
+			//var timer:Timer = new Timer(30, 0);
+			//timer.addEventListener(TimerEvent.TIMER, tick);
+			//timer.start();
 		}
+		/*
+		private function tick(e:TimerEvent):void 
+		{
+			nextStep(e);
+		}
+		
+		private function nextStep(e:Event):void 
+		{
+			var t:int = getTimer();
+			
+			step++;
+			
+			switch(step)
+			{
+				case 1:
+					//Framework
+					core = new BixBite(stage);
+					trace("create BixBite", getTimer()-t);
+					break;
+				case 4:
+					//DisplayListManager Module
+					core.register(DisplayListManager);
+					trace("create DisplayListManager", getTimer()-t);
+					break;
+				case 7:
+					//StageManager Module
+					core.register(StageManager);
+					trace("create StageManager", getTimer()-t);
+					core.sendSignal(StageSignal.SET_STAGE, { align:"TL", scaleMode:"noScale" } );
+					break;
+				case 10:
+					 //Stats Module
+					core.register(Stats);
+					trace("create Stats", getTimer()-t);
+					core.sendSignal(StatsSignal.START);
+					break;
+				case 13:
+					core.unregister(DisplayListManager);
+					trace("unregister DisplayListManager", getTimer() - t);
+					break;
+				case 16:
+					core.unregister(StageManager);
+					trace("unregister StageManager", getTimer()-t);
+					break;
+				case 19:
+					core.unregister(Stats);
+					trace("unregister Stats", getTimer()-t);
+					break;
+				case 22:
+					
+					if (round < 10) {
+						trace("---reset---", round);
+						step = 3;
+					} else {
+						Emiter.getInstance();
+					}
+					
+					round++;
+					
+					break;
+				default:
+					System.gc();
+					trace("System.gc", System.totalMemory / 1024, getTimer()-t);
+					break;
+				
+			}
+		}*/
 		
 	}
 

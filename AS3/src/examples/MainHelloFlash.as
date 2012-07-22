@@ -23,16 +23,13 @@ THE SOFTWARE.
 
 package examples 
 {
-	import examples.helloflash.behaviour.Poke;
-	import examples.helloflash.transponder.BallTransponder;
-	import examples.helloflash.view.Ball;
-	import examples.helloflash.view.MainView;
+	import examples.helloflash.HelloFlash;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.0
 	 * 
 	 * This implementation is based on RobotLegs HelloFlash example. To show you diferences in how we dealing with stuff.
@@ -90,14 +87,10 @@ package examples
 	 * - To much influenced by PureMVC on architecture level trying to compete with already overdone architecture by mimics it.
 
 	 */
-	public class HelloFlash extends Sprite
+	public class MainHelloFlash extends Sprite
 	{
-		public static const CREATE_BALL			:String = "HelloFlash.CREATE_BALL";
-		public static const RED_BALL			:String = "HelloFlash.RED_BALL";
-		public static const POKE				:String = "HelloFlash.POKE";
-		public static const SHUFFLE				:String = "HelloFlash.SHUFFLE";
 		
-		public function HelloFlash() 
+		public function MainHelloFlash() 
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
@@ -109,13 +102,8 @@ package examples
 			// Initalise a core
 			var core:BixBite = new BixBite(stage);
 			
-			core.register(BallTransponder);
-			core.register(MainView);
-			core.register(Ball);
-			
-			core.addBehaviour(HelloFlash.POKE, Poke);
-			
-			// And we're done ;)
+			//add Compound as Functional Module to the framework
+			core.register(HelloFlash);
 			
 		}
 	}

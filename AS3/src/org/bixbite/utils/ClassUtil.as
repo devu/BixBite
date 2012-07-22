@@ -21,43 +21,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.view
+package org.bixbite.utils 
 {
-	import flash.display.Sprite;
-	import org.bixbite.core.View;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import flash.utils.describeType;
 	
 	/**
-	 * TODO needs to be redefined due to new concept:
-	 * 
-	 * StageView, is a classic implementation of Top View in Composite Design Pattern, when views can be nested and they need a root or 'Top View' class to start from.
-	 * This class serve this purpose. Directly extends DisplayViewContainer as the highest in display list hierarchy of the Compound you are in. 
-	 * In fact the only diference between StageView and DisplayViewContainer is, where its context is added during View component initialistion.
-	 * Within each Compound you can point at diferent node to achieve nested structure across multiple Compounds.
-	 * 
-	 * @langversion	3.0
-	 * @version 0.6.0
-	 */
-	public class StageView extends View 
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
+     */
+	public class ClassUtil 
 	{
-		private var context:Sprite;
 		
-		/**
-		 * Constructor
-		 */
-		public function StageView()
+		public function ClassUtil() 
 		{
 			
 		}
 		
-		override public function init():void 
+		/**
+		 * 
+		 * @param	object, Class to check
+		 * @param	value, Extended Class to search
+		 * @return
+		 */
+		public static function extendsClass(object:Class, search:String):Boolean 
 		{
-			context = new Sprite();
-			context.mouseEnabled = false;
+			var xmllist:XMLList = describeType(object).factory;
+			var type:String;
+			for each(var value:String in xmllist.extendsClass.@type) {
+				type = value.split("::")[1];
+				if (type == search) return true;
+			}
 			
-			sendSignal(DisplaySignal.SET_CONTEXT, { name:"stage", context:context } );
-			
-			stage.addChild(context);
+			return false;
 		}
 		
 	}

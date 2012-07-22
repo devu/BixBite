@@ -24,12 +24,12 @@ THE SOFTWARE.
 package examples.helloworld.behaviour 
 {
 	import examples.helloworld.data.HelloData;
-	import examples.helloworld.MainHelloWorld;
+	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.0
 	 */
 	public class CopyHandler extends Behaviour 
 	{
@@ -51,20 +51,20 @@ package examples.helloworld.behaviour
 			languages[2] = "french";
 			languages[3] = "german";
 			
-			addResponder(MainHelloWorld.COPY_REQUEST, onCopyData, true);
+			addResponder(HelloWorld.COPY_REQUEST, onCopyData, true);
 		}
 		
-		private function onCopyData(s:ISignal, data:HelloData):void 
+		private function onCopyData(s:Signal, data:HelloData):void 
 		{
 			copy = data;
 		}
 		
-		override public function execute(s:ISignal):void 
+		override public function execute(s:Signal):void 
 		{
-			var isDefault:Boolean = s.params[0];
+			var isDefault:Boolean = s.params.isDefault;
 			
 			if (isDefault){
-				sendSignal(MainHelloWorld.SET_COPY, [copy.english]);
+				sendSignal(HelloWorld.SET_COPY, { copy:copy.english } );
 				return
 			}
 			
@@ -86,7 +86,7 @@ package examples.helloworld.behaviour
 					break;
 			}
 			
-			sendSignal(MainHelloWorld.SET_COPY, [copyString]);
+			sendSignal(HelloWorld.SET_COPY, { copy:copyString } );
 			
 			if (lang < 3){
 				lang++;
