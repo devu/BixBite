@@ -21,37 +21,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples
+package org.bixbite.framework.behaviour 
 {
-	import examples.helloworld.HelloWorld;
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.5.4
-	 * @since 0.4.2
-	 * footprint 6.79kb.
-	 * 
-	 * Hello World Example, will show you simplicity and a basic flow within BixBite framework.
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
 	 */
-	public class MainHelloWorld extends Sprite
+	public class YTVideoPlay extends YTPlayerInit 
 	{
-		/**
-		 * Set your default triad.
-		 */
-		public function MainHelloWorld() 
+		
+		public function YTVideoPlay() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void 
+		override public function execute(s:Signal):void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			var core:BixBite = new BixBite(stage);
-			core.register(HelloWorld);
+			var p:Object = s.params;
+			data.play(p.videoId, p.startSeconds, p.suggestedQuality);
 		}
+		
 	}
-	
+
 }

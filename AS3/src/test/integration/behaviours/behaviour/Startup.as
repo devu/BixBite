@@ -24,7 +24,7 @@ THE SOFTWARE.
 package test.integration.behaviours.behaviour 
 {
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
@@ -39,7 +39,7 @@ package test.integration.behaviours.behaviour
 			
 		}
 		
-		override public function execute(s:ISignal):void 
+		override public function execute(s:Signal):void 
 		{
 			sendSignal(BehaviourFlow.REPOSITION);
 			sendSignal(BehaviourFlow.CHANGE_COLOR, [0x000000]);

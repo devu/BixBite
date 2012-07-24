@@ -29,7 +29,7 @@ package examples.helloflash.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 */
 	public class BallTransponder extends Transponder 
 	{
@@ -40,8 +40,6 @@ package examples.helloflash.transponder
 		
 		override public function init():void 
 		{
-			trace(this, "init");
-			
 			addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		

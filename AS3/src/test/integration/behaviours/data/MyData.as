@@ -24,8 +24,8 @@ THE SOFTWARE.
 package test.integration.behaviours.data 
 {
 	import flash.utils.getTimer;
-	import org.bixbite.core.interfaces.ISignal;
 	import org.bixbite.core.Data;
+	import org.bixbite.core.Signal;
 	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
@@ -46,7 +46,7 @@ package test.integration.behaviours.data
 			addSlot(BehaviourFlow.TIME_DATA, onTimeDataRequest);
 		}
 		
-		private function onTimeDataRequest(s:ISignal):void
+		private function onTimeDataRequest(s:Signal):void
 		{
 			responseTo(s.callerUID, BehaviourFlow.TIME_DATA);
 		}

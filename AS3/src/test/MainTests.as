@@ -21,39 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package test 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.RootView;
-	import org.bixbite.core.Compound;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	import test.performance.signalperf.SignalPerformance;
 	
 	/**
 	 * @version  compatibility - 0.6.1
 	 */
-	public class HelloWorld extends Compound 
+	public class MainTests extends Sprite 
 	{
-		public static const INIT				:String = "HelloWorld.INIT";
-		public static const COPY_REQUEST		:String = "HelloWorld.COPY_REQUEST";
-		public static const UPDATE_COPY			:String = "HelloWorld.UPDATE_COPY";
-		public static const GET_DEFAULT_COPY	:String = "HelloWorld.GET_DEFAULT_COPY";
-		public static const SET_COPY			:String = "HelloWorld.SET_COPY";
+		private var core:BixBite;
 		
-		public function HelloWorld() 
+		public function MainTests() 
 		{
-			
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		override public function init():void 
+		private function init(e:Event):void 
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(RootView);
+			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			addBehaviour(HelloWorld.UPDATE_COPY, CopyHandler);
+			core = new BixBite(stage);
 			
-			sendSignal(HelloWorld.INIT, { max:20 } );
+			//Signal performance test
+			core.register(SignalPerformance);
 		}
 		
 	}

@@ -24,15 +24,13 @@ THE SOFTWARE.
 package test.performance.signalperf 
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.modules.stageManager.StageManager;
-	import org.bixbite.framework.modules.stats.Stats;
 	import test.performance.signalperf.behaviour.TestBehaviour;
 	import test.performance.signalperf.behaviour.TestRunner;
 	import test.performance.signalperf.transponder.TestTransponder;
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
 	 * @since 0.4.2
 	 * footprint 10.0kb
 	 * 
@@ -47,14 +45,21 @@ package test.performance.signalperf
 	 * View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
 	 * 
 	 * Results (Flash Player 11,1,102,63 - Chrome)
-	 * Signals traveling from View -> Transponder -> Atom -> View. (ADTV);
+	 * Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
+	 * 
+	 * v0.6.1 SRS	PC				Laptop
+	 * 1.000 		- no time:)		-//-	(3k signals in circulation)
+	 * 10.000 		- 1ms					(30k signals in circulation)
+	 * 100.000		- 11ms					(300k signals in circulation)
+	 * 1.000.000	- 112ms			188ms	(3M signals in circulation) 	
+	 * 10.000.000	- 1091ms				(30M signals in circulation)
 	 * 
 	 * v0.5.4 SRS
-	 * 1.000 		- no time:)	(3k signals in circulation)
-	 * 10.000 		- 0.9ms		(30k signals in circulation)
-	 * 100.000		- 9ms		(300k signals in circulation)
-	 * 1.000.000	- 93ms		(3M signals in circulation)
-	 * 10.000.000	- 910ms		(30M signals in circulation)
+	 * 1.000 		- no time:)				(3k signals in circulation)
+	 * 10.000 		- 0.9ms					(30k signals in circulation)
+	 * 100.000		- 9ms					(300k signals in circulation)
+	 * 1.000.000	- 93ms					(3M signals in circulation)
+	 * 10.000.000	- 910ms					(30M signals in circulation)
 	 * 
 	 * v0.5.2 SRS
 	 * 1.000 		- no time:)	(3k signals in circulation)
@@ -69,7 +74,7 @@ package test.performance.signalperf
 	 * 100.000		- 125ms		(300k signals in circulation)
 	 * 1.000.000	- 1289ms	(3M signals in circulation)
 	 * 
-	 * Signals traveling from View -> Controller -> Model -> View. (MVC)
+	 * Signals traveling from View -> Transponder -> Model -> View. (MVC)
 	 * v0.4.4 SRS in use!
 	 * 1.000 		- no time:)	(3k signals in circulation)
 	 * 10.000 		- 1ms		(30k signals in circulation)
@@ -104,18 +109,13 @@ package test.performance.signalperf
 			
 		}
 		
-		override public function init():void 
+		override public function init():void
 		{
-			var stageManager	:StageManager = new StageManager();
-			
-			var stats			:Stats = new Stats();
-			stats.enableTracer();
-			
-			var t:TestTransponder 	= new TestTransponder();
-			var v:TestView 			= new TestView();
+			register(TestTransponder);
+			register(TestView);
 			
 			addBehaviour(SignalPerformance.START_TEST	, TestBehaviour);
-			addBehaviour(SignalPerformance.RUN_TEST	, TestRunner);
+			addBehaviour(SignalPerformance.RUN_TEST		, TestRunner);
 			
 			sendSignal(SignalPerformance.INIT_TEST);
 		}

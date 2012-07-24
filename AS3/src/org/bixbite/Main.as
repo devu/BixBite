@@ -48,23 +48,12 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
-	import com.sociodox.theminer.TheMiner;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.events.TimerEvent;
-	import flash.system.System;
-	import flash.utils.getTimer;
-	import flash.utils.Timer;
-	import org.bixbite.core.Emiter;
-	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.StageManager;
-	import org.bixbite.framework.Stats;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.YTPlayer;
 	//import flash.events.MouseEvent;
 	//import flash.system.System;
-	import org.bixbite.core.BixBite;
 	//import org.bixbite.framework.DisplayListManager;
 	//import org.bixbite.framework.signal.StatsSignal;
 	//import org.bixbite.framework.StageManager;
@@ -95,7 +84,11 @@ package org.bixbite
 		private function init(e:Event):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
 			var core:BixBite = new BixBite(stage);
+			core.register(YTPlayer);
+			core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
+			
 			//var miner:TheMiner = new TheMiner();
 			//miner.x = 400;
 			//addChild(miner);
@@ -104,6 +97,7 @@ package org.bixbite
 			//timer.addEventListener(TimerEvent.TIMER, tick);
 			//timer.start();
 		}
+		
 		/*
 		private function tick(e:TimerEvent):void 
 		{

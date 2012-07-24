@@ -21,39 +21,39 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package org.bixbite.framework.view 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.RootView;
-	import org.bixbite.core.Compound;
+	import flash.display.Sprite;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.YTPlayer;
 	
 	/**
 	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
 	 */
-	public class HelloWorld extends Compound 
+	public class YTPlayerBaseView extends View 
 	{
-		public static const INIT				:String = "HelloWorld.INIT";
-		public static const COPY_REQUEST		:String = "HelloWorld.COPY_REQUEST";
-		public static const UPDATE_COPY			:String = "HelloWorld.UPDATE_COPY";
-		public static const GET_DEFAULT_COPY	:String = "HelloWorld.GET_DEFAULT_COPY";
-		public static const SET_COPY			:String = "HelloWorld.SET_COPY";
+		private var context:Sprite;
 		
-		public function HelloWorld() 
+		public function YTPlayerBaseView() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function init():void
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(RootView);
+			context = new Sprite();
+			context.mouseEnabled = false;
 			
-			addBehaviour(HelloWorld.UPDATE_COPY, CopyHandler);
+			stage.addChild(context);
 			
-			sendSignal(HelloWorld.INIT, { max:20 } );
+			addSlot(YTPlayer.PLAYER_READY, onPlayerReady);
+		}
+		
+		private function onPlayerReady(s:Signal):void 
+		{
+			context.addChild(s.params.player);
 		}
 		
 	}

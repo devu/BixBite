@@ -31,7 +31,7 @@ package examples.helloworld.view
 	
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 */
 	public class HelloView extends View 
 	{

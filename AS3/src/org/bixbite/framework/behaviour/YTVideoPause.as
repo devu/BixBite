@@ -21,13 +21,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf 
+package org.bixbite.framework.behaviour 
 {
+	import org.bixbite.core.Signal;
+	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
 	 */
-	public class Signals 
+	public class YTVideoPause extends YTPlayerInit 
 	{
+		
+		public function YTVideoPause() 
+		{
+			
+		}
+		
+		override public function execute(s:Signal):void 
+		{
+			data.pause();
+		}
 		
 	}
 

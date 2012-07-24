@@ -23,13 +23,9 @@
       <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
-    <library-path append="true">
-      <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\lib\bixbite_logos.swc</path-element>
-    </library-path>
+    <library-path append="true" />
   </compiler>
-  <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\org\bixbite\Main.as</path-element>
-  </file-specs>
+  <file-specs />
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>

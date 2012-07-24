@@ -21,39 +21,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package org.bixbite.framework.transponder 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.RootView;
-	import org.bixbite.core.Compound;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.YTPlayer;
 	
 	/**
 	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
 	 */
-	public class HelloWorld extends Compound 
+	public class YTPlayerTransponder extends Transponder 
 	{
-		public static const INIT				:String = "HelloWorld.INIT";
-		public static const COPY_REQUEST		:String = "HelloWorld.COPY_REQUEST";
-		public static const UPDATE_COPY			:String = "HelloWorld.UPDATE_COPY";
-		public static const GET_DEFAULT_COPY	:String = "HelloWorld.GET_DEFAULT_COPY";
-		public static const SET_COPY			:String = "HelloWorld.SET_COPY";
-		
-		public function HelloWorld() 
+		public function YTPlayerTransponder() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(RootView);
-			
-			addBehaviour(HelloWorld.UPDATE_COPY, CopyHandler);
-			
-			sendSignal(HelloWorld.INIT, { max:20 } );
+			addSlot(YTPlayer.INIT, onInit);
+			addSlot(YTPlayer.PLAY, onPlay);
+			addSlot(YTPlayer.PAUSE, onPause);
+			addSlot(YTPlayer.STOP, onStop);
+		}
+		
+		private function onInit(s:Signal):void 
+		{
+			sendSignal(YTPlayer.INIT, s.params);
+		}
+		
+		private function onPlay(s:Signal):void 
+		{
+			sendSignal(YTPlayer.PLAY, s.params);
+		}
+		
+		private function onPause(s:Signal):void
+		{
+			sendSignal(YTPlayer.STOP, s.params);
+		}
+		
+		private function onStop(s:Signal):void
+		{
+			sendSignal(YTPlayer.STOP, s.params);
 		}
 		
 	}

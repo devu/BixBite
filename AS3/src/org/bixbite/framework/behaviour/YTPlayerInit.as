@@ -21,41 +21,47 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package org.bixbite.framework.behaviour 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.RootView;
-	import org.bixbite.core.Compound;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.YTPlayerData;
+	import org.bixbite.framework.YTPlayer;
 	
 	/**
 	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
 	 */
-	public class HelloWorld extends Compound 
+	public class YTPlayerInit extends Behaviour 
 	{
-		public static const INIT				:String = "HelloWorld.INIT";
-		public static const COPY_REQUEST		:String = "HelloWorld.COPY_REQUEST";
-		public static const UPDATE_COPY			:String = "HelloWorld.UPDATE_COPY";
-		public static const GET_DEFAULT_COPY	:String = "HelloWorld.GET_DEFAULT_COPY";
-		public static const SET_COPY			:String = "HelloWorld.SET_COPY";
+		internal var data:YTPlayerData;
 		
-		public function HelloWorld() 
+		public function YTPlayerInit() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function init():void
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(RootView);
-			
-			addBehaviour(HelloWorld.UPDATE_COPY, CopyHandler);
-			
-			sendSignal(HelloWorld.INIT, { max:20 } );
+			addResponder(YTPlayer.ON_INIT, onInitalise);
 		}
 		
+		private function onInitalise(s:Signal, data:YTPlayerData):void
+		{
+			this.data = data;
+			
+			setup();
+		}
+		
+		public function setup():void 
+		{
+			
+		}
+		
+		override public function execute(s:Signal):void 
+		{
+			sendRequest(YTPlayer.INIT, s.params);
+		}
 	}
 
 }

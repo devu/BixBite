@@ -4,7 +4,7 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="bin\ModularStructure.swf" />
+    <movie path="bin\examples.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -70,7 +70,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\examples\MyModularApp.as" />
+    <compile path="src\examples\MainExamples.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

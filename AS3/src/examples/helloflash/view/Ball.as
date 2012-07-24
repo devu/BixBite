@@ -27,10 +27,9 @@ package examples.helloflash.view
 	import flash.display.Sprite;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	
 
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 */
 	public class Ball extends View 
 	{

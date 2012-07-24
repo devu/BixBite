@@ -25,7 +25,7 @@ package test.integration.behaviours.behaviour
 {
 	import flash.utils.getTimer;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.integration.behaviours.data.MyData;
 	import test.integration.behaviours.BehaviourFlow;
 	
@@ -48,12 +48,12 @@ package test.integration.behaviours.behaviour
 			addResponder(BehaviourFlow.TIME_DATA, onMyData, true);
 		}
 		
-		private function onMyData(s:ISignal, data:MyData):void 
+		private function onMyData(s:Signal, data:MyData):void 
 		{
 			this.data = data;
 		}
 		
-		override public function execute(s:ISignal):void
+		override public function execute(s:Signal):void
 		{
 			var dif:int = getTimer() - data.prevTime;
 			data.prevTime = getTimer();
@@ -67,11 +67,11 @@ package test.integration.behaviours.behaviour
 				} else {
 					color = 0x0000FF;
 				}
-				responseTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [color]);
+				sendSignalTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [color]);
 			} else {
 				color = 0x000000;
 				sendSignal(BehaviourFlow.CHANGE_COLOR, [color]);
-				responseTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [0xFF00FF]);
+				sendSignalTo(s.callerUID, BehaviourFlow.CHANGE_COLOR, [0xFF00FF]);
 			}
 			
 			phase++;

@@ -25,18 +25,18 @@ package test.integration.behaviours.view
 {
 	import flash.display.Shape;
 	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.0
 	 * 
 	 */
-	public class MyView extends DisplayView 
+	public class MyView extends View 
 	{
-		private var content:Shape;
+		private var context:Shape;
 		
 		public function MyView() 
 		{
@@ -45,29 +45,29 @@ package test.integration.behaviours.view
 		
 		override public function init():void 
 		{
-			content = new Shape();
-			setContext("myView", content);
+			context = new Shape();
+			stage.addChild(context);
 			
-			addSlot(BehaviourFlow.REPOSITION		, onReposition);
+			addSlot(BehaviourFlow.REPOSITION	, onReposition);
 			addSlot(BehaviourFlow.CHANGE_COLOR	, onChangeColor);
 		}
 		
-		private function onReposition(s:ISignal):void 
+		private function onReposition(s:Signal):void 
 		{
 			context.x = Math.random() * 600;
 			context.y = Math.random() * 600;
 		}
 		
-		private function onChangeColor(s:ISignal, data:IData = null):void
+		private function onChangeColor(s:Signal, data:IData = null):void
 		{
 			draw(s.params[0]);
 		}
 		
 		private function draw(color:uint):void 
 		{
-			content.graphics.clear();
-			content.graphics.beginFill(color, 1);
-			content.graphics.drawRect(0, 0, 100, 100);
+			context.graphics.clear();
+			context.graphics.beginFill(color, 1);
+			context.graphics.drawRect(0, 0, 100, 100);
 		}
 		
 	}

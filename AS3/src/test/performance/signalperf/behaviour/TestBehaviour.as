@@ -24,11 +24,11 @@ THE SOFTWARE.
 package test.performance.signalperf.behaviour 
 {
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
 	 */
 	public class TestBehaviour extends Behaviour 
 	{
@@ -38,12 +38,7 @@ package test.performance.signalperf.behaviour
 			
 		}
 		
-		override public function init():void 
-		{
-			
-		}
-		
-		override public function execute(s:ISignal):void
+		override public function execute(s:Signal):void
 		{
 			sendSignal(SignalPerformance.BEGIN_TEST);
 		}

@@ -16,19 +16,17 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'7/23/2012'</value>
+      <value>'7/24/2012'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
-    <library-path append="true">
-      <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\lib\bixbite_logos.swc</path-element>
-    </library-path>
+    <library-path append="true" />
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\org\bixbite\Main.as</path-element>
+    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\test\MainTests.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

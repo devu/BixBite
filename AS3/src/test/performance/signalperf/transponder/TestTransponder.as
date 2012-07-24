@@ -24,12 +24,12 @@ THE SOFTWARE.
 package test.performance.signalperf.transponder 
 {
 	import flash.events.MouseEvent;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
 	 */
 	public class TestTransponder extends Transponder 
 	{
@@ -48,7 +48,7 @@ package test.performance.signalperf.transponder
 			addSlot(SignalPerformance.INIT_TEST, onTestInit);
 		}
 		
-		private function onTestInit(s:ISignal):void 
+		private function onTestInit(s:Signal):void 
 		{
 			addSensor(MouseEvent.CLICK, startTest);
 			addSlot(SignalPerformance.RUN_TEST, onRunTest);
@@ -60,10 +60,10 @@ package test.performance.signalperf.transponder
 			sendSignal(SignalPerformance.START_TEST);
 		}
 		
-		private function onRunTest(s:ISignal):void
+		private function onRunTest(s:Signal):void
 		{
 			//standard
-			//sendSignal(Signals.RUN_TEST);
+			//sendSignal(SignalPerformance.RUN_TEST);
 			//SRS
 			slotReference(signal);
 		}

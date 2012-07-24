@@ -24,11 +24,11 @@ THE SOFTWARE.
 package test.performance.signalperf.behaviour 
 {
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
 	 */
 	public class TestRunner extends Behaviour 
 	{
@@ -44,10 +44,10 @@ package test.performance.signalperf.behaviour
 			slotReference = getSlotReference(SignalPerformance.RUN_TEST)[0];
 		}
 		
-		override public function execute(s:ISignal):void
+		override public function execute(s:Signal):void
 		{
 			//standard
-			//sendSignal(Signals.RUN_TEST);
+			//sendSignal(SignalPerformance.RUN_TEST);
 			//SRS
 			slotReference(signal);
 		}

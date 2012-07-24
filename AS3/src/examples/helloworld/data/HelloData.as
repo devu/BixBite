@@ -28,7 +28,7 @@ package examples.helloworld.data
 	import org.bixbite.core.Signal;
 	
 	/**
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 * 
 	 * This Data component is a copy holder that will reponse to Compound on reqest being sent from Behaviour data.
 	 * Data component don't care who is calling, will respond as soon as a signal has been recieved.

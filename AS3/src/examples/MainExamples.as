@@ -21,41 +21,57 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package examples 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.RootView;
-	import org.bixbite.core.Compound;
+	import examples.helloflash.HelloFlash;
+	import examples.helloworld.HelloWorld;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	
 	/**
 	 * @version  compatibility - 0.6.1
 	 */
-	public class HelloWorld extends Compound 
+	public class MainExamples extends Sprite
 	{
-		public static const INIT				:String = "HelloWorld.INIT";
-		public static const COPY_REQUEST		:String = "HelloWorld.COPY_REQUEST";
-		public static const UPDATE_COPY			:String = "HelloWorld.UPDATE_COPY";
-		public static const GET_DEFAULT_COPY	:String = "HelloWorld.GET_DEFAULT_COPY";
-		public static const SET_COPY			:String = "HelloWorld.SET_COPY";
-		
-		public function HelloWorld() 
+		/**
+		 * Uncomment out example in order to run it.
+		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
+		 */
+		public function MainExamples() 
 		{
-			
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		override public function init():void 
+		private function init(e:Event):void
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(RootView);
+			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			addBehaviour(HelloWorld.UPDATE_COPY, CopyHandler);
+			/**
+			* Initalise a core
+			*/
+			var core:BixBite = new BixBite(stage);
 			
-			sendSignal(HelloWorld.INIT, { max:20 } );
+			/**
+			* Robot Legs Implementation of HelloFlash example whithin BixBite
+			* footprint
+			*/
+			core.register(HelloFlash);
+			
+			/**
+			* Basic BixBite example to show workflow
+			* footprint
+			*/
+			core.register(HelloWorld);
+			
+			/**
+			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);
+			 */
+			core.register(Stats);
+			core.sendSignal(StatsSignal.START);
 		}
-		
 	}
 
 }
