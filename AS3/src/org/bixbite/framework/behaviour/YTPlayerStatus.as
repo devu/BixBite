@@ -39,6 +39,8 @@ package org.bixbite.framework.behaviour
 		private static const STATE_PAUSED	:int = 2;
 		private static const STATE_CUED		:int = 5;
 		
+		private var isPlaying:Boolean = false;
+		
 		public function YTPlayerStatus()
 		{
 		
@@ -57,6 +59,8 @@ package org.bixbite.framework.behaviour
 			{
 				case STATE_READY:
 					trace("YTPlayer::STATE_READY");
+					isPlaying = false;
+					
 					sendSignal(YTPlayer.PLAYER_READY, { player:e.target } );
 					if (data.autoPlay && data.videoId){
 						data.play();
@@ -65,16 +69,19 @@ package org.bixbite.framework.behaviour
 					
 				case STATE_ENDED: 
 					trace("YTVideo::STATE_ENDED");
+					isPlaying = false;
 					sendSignal(YTPlayer.MOVIE_ENDED);
 					break;
 				
 				case STATE_PLAYING: 
 					trace("YTVideo::STATE_PLAYING");
+					isPlaying = true;
 					sendSignal(YTPlayer.MOVIE_PLAYING);
 					break;
 				
 				case STATE_PAUSED: 
 					trace("YTVideo::STATE_PAUSED");
+					isPlaying = false;
 					sendSignal(YTPlayer.MOVIE_PAUSED);
 					break;
 				

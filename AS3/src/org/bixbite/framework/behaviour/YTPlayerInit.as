@@ -48,6 +48,7 @@ package org.bixbite.framework.behaviour
 		
 		private function onInitalise(s:Signal, data:YTPlayerData):void
 		{
+			removeResponder(YTPlayer.ON_INIT);
 			this.data = data;
 			
 			setup();
@@ -61,6 +62,14 @@ package org.bixbite.framework.behaviour
 		override public function execute(s:Signal):void 
 		{
 			sendRequest(YTPlayer.INIT, s.params);
+		}
+		
+		override public function dispose():void 
+		{
+			removeResponder(YTPlayer.ON_INIT);
+			
+			data = null;
+			super.dispose();
 		}
 	}
 

@@ -88,6 +88,8 @@ package org.bixbite.core
 		 */
 		public function responseAll(type:String, params:Object = null):void 
 		{
+			if (!signal) return;
+			
 			signal.params = params;
 			emiter.dataBroadcast(slots.c, type, signal, this);
 		}

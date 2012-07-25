@@ -67,8 +67,21 @@ package org.bixbite.framework
 			addBehaviour(INIT, YTPlayerInit);
 			addBehaviour(PLAY, YTVideoPlay);
 			addBehaviour(PAUSE, YTVideoPause);
-			
 			addBehaviour(STATUS, YTPlayerStatus);
+		}
+		
+		override public function destroy():void 
+		{
+			removeBehaviour(INIT);
+			removeBehaviour(PLAY);
+			removeBehaviour(PAUSE);
+			removeBehaviour(STATUS);
+			
+			unregister(YTPlayerData);
+			unregister(YTPlayerTransponder);
+			unregister(YTPlayerBaseView);
+			
+			super.destroy();
 		}
 		
 	}

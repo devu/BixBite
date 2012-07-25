@@ -42,7 +42,6 @@ package org.bixbite.framework.behaviour
 			var p:Object = s.params;
 			data.play(p.videoId, p.startSeconds, p.suggestedQuality);
 		}
-		
 	}
 
 }

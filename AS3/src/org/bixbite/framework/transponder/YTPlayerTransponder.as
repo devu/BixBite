@@ -66,6 +66,16 @@ package org.bixbite.framework.transponder
 			sendSignal(YTPlayer.STOP, s.params);
 		}
 		
+		override public function destroy():void 
+		{
+			removeSlot(YTPlayer.INIT);
+			removeSlot(YTPlayer.PLAY);
+			removeSlot(YTPlayer.PAUSE);
+			removeSlot(YTPlayer.STOP);
+			
+			super.destroy();
+		}
+		
 	}
 
 }

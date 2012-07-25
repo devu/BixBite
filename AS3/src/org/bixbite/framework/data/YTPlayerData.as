@@ -42,8 +42,9 @@ package org.bixbite.framework.data
 		private static const PLAYER_URL			:String = "http://www.youtube.com/apiplayer?version=3";
 		private static const SECURITY_DOMAIN	:String = "http://www.youtube.com";
 		
-		private var targetUID	:String;
 		private var loader		:Loader;
+		private var isLoading	:Boolean = false;
+		private var markToDestroy:Boolean;
 		
 		public var player		:Object;
 		public var videoId		:String;
@@ -61,6 +62,8 @@ package org.bixbite.framework.data
 		
 		private function initPlayer(s:Signal):void 
 		{
+			isLoading = true;
+			
 			var p:Object = s.params;
 			
 			if (p.videoId) videoId = p.videoId;
@@ -80,6 +83,15 @@ package org.bixbite.framework.data
 		
 		private function onPlayerReady(e:Event):void 
 		{
+			loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, onPlayerReady);
+			
+			if (markToDestroy) {
+				loader.unloadAndStop();
+				loader = null;
+				return;
+			}
+			trace("loaded anyway")
+			
 			player = loader.content;
 			player.mouseEnabled = false;
 			player.mouseChildren = false;
@@ -110,7 +122,15 @@ package org.bixbite.framework.data
 		
 		override public function destroy():void 
 		{
-			player.destroy();
+			markToDestroy = true;
+			
+			player = null;
+			if (player) player.destroy();
+			
+			if(!isLoading){
+				loader.unloadAndStop();
+				loader = null;
+			}
 			
 			super.destroy();
 		}

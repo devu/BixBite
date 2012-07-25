@@ -24,6 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
+	import flash.system.System;
 	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
@@ -123,6 +124,21 @@ package org.bixbite.core
 			components[type].destroy();
 			components[type] = null;
 			delete components[type];
+		}
+		
+		public function checkComponents():void
+		{
+			System.gc();
+			System.gc();
+			var num:int = 0;
+			
+			for each(var o:Object in components)
+			{
+				trace("REGISTERED:", o);
+				num++
+			}
+			
+			trace(num);
 		}
 		
 		/**

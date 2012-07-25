@@ -48,9 +48,14 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
+	import com.sociodox.theminer.TheMiner;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.YTPlayer;
 	//import flash.events.MouseEvent;
 	//import flash.system.System;
@@ -71,7 +76,7 @@ package org.bixbite
 	
 	public class Main extends Sprite
 	{
-		//private var core	:BixBite;
+		private var core	:BixBite;
 		
 		//private var step	:int = 0;
 		//private var round	:int = 0;
@@ -85,25 +90,36 @@ package org.bixbite
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			var core:BixBite = new BixBite(stage);
-			core.register(YTPlayer);
-			core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
-			
 			//var miner:TheMiner = new TheMiner();
 			//miner.x = 400;
 			//addChild(miner);
 			
-			//var timer:Timer = new Timer(30, 0);
-			//timer.addEventListener(TimerEvent.TIMER, tick);
-			//timer.start();
+			core = new BixBite(stage);
+			core.register(YTPlayer);
+			core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
+			
+			core.register(Stats);
+			core.sendSignal(StatsSignal.START);
+			
+			core.track();
+			
+			core.unregister(YTPlayer);
+			core.unregister(Stats);
+			
+			
+			
+			var timer:Timer = new Timer(1000, 0);
+			timer.addEventListener(TimerEvent.TIMER, tick);
+			timer.start();
+		}
+		
+		private function tick(e:TimerEvent):void 
+		{
+			core.track();
+			//nextStep(e);
 		}
 		
 		/*
-		private function tick(e:TimerEvent):void 
-		{
-			nextStep(e);
-		}
-		
 		private function nextStep(e:Event):void 
 		{
 			var t:int = getTimer();
