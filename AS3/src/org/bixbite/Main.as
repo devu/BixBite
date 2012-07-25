@@ -101,22 +101,8 @@ package org.bixbite
 			core.register(Stats);
 			core.sendSignal(StatsSignal.START);
 			
-			core.track();
-			
-			core.unregister(YTPlayer);
-			core.unregister(Stats);
-			
-			
-			
-			var timer:Timer = new Timer(1000, 0);
-			timer.addEventListener(TimerEvent.TIMER, tick);
-			timer.start();
-		}
-		
-		private function tick(e:TimerEvent):void 
-		{
-			core.track();
-			//nextStep(e);
+			//core.unregister(YTPlayer);
+			//core.unregister(Stats);
 		}
 		
 		/*

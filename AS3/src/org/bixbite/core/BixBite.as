@@ -73,11 +73,6 @@ package org.bixbite.core
 			signal.params = params;
 			emiter.broadcast(slotsT, type, signal);
 		}
-		
-		public function track():void 
-		{
-			emiter.checkComponents();
-		}
 	}
 
 }

@@ -123,22 +123,8 @@ package org.bixbite.core
 			
 			components[type].destroy();
 			components[type] = null;
+			
 			delete components[type];
-		}
-		
-		public function checkComponents():void
-		{
-			System.gc();
-			System.gc();
-			var num:int = 0;
-			
-			for each(var o:Object in components)
-			{
-				trace("REGISTERED:", o);
-				num++
-			}
-			
-			trace(num);
 		}
 		
 		/**
