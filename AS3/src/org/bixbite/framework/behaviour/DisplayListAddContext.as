@@ -23,37 +23,38 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour 
 {
-	import flash.utils.Dictionary;
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.DisplayListData;
-	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.namespaces.DSP_MGR;
+	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
-	public class GetDisplayList extends Behaviour 
+	public class DisplayListAddContext extends DisplayListGet
 	{
-		use namespace DSP_MGR
 		
-		internal var list:Dictionary;
-		
-		public function GetDisplayList() 
+		public function DisplayListAddContext() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function execute(s:Signal):void 
 		{
-			addResponder(DisplayListManager.GET_DISPLAY_LIST, onDisplayList, true);
-		}
-		
-		private function onDisplayList(s:Signal, data:DisplayListData):void 
-		{
-			removeResponder(DisplayListManager.GET_DISPLAY_LIST);
-			list = data.list;
+			var p:Object = s.params;
+			var context:DisplayObject 				= list[p.name];
+			if (!context) trace("There is no context", p.name, "registered yet");
+			
+			var container:DisplayObjectContainer 	= list[p.container];
+			if (!container) trace("There is no available container", p.container, "registered yet");
+			
+			var contextViewUID:String = p.viewUID;
+			
+			container.addChild(context);
+			sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_ADDED, { name:p.name, container:p.container } );
 		}
 		
 	}

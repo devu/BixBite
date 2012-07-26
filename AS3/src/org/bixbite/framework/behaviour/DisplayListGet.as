@@ -23,30 +23,39 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour 
 {
-	import flash.display.DisplayObject;
+	import flash.utils.Dictionary;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.DisplayListData;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
 	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
-	public class SetDisplayContext extends GetDisplayList 
+	public class DisplayListGet extends Behaviour 
 	{
+		use namespace DSP_MGR
 		
-		public function SetDisplayContext() 
+		internal var list:Dictionary;
+		
+		public function DisplayListGet() 
 		{
 			
 		}
 		
-		override public function execute(s:Signal):void 
+		override public function init():void 
 		{
-			var name:String = s.params.name;
-			var context:DisplayObject = s.params.context;
-			context.name = name;
-			
-			list[name] = context;
+			addResponder(DisplayListManager.GET_DISPLAY_LIST, onDisplayList, true);
 		}
+		
+		private function onDisplayList(s:Signal, data:DisplayListData):void 
+		{
+			removeResponder(DisplayListManager.GET_DISPLAY_LIST);
+			list = data.list;
+		}
+		
 	}
 
 }

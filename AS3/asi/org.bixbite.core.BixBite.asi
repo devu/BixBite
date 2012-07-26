@@ -24,6 +24,6 @@
 
 		public function unregister (component:Class) : void;
 
-		public function sendSignal (type:String, params:Object=null) : void;
+		public function sendSignal (type:String, params:*=null) : void;
 	}
 }

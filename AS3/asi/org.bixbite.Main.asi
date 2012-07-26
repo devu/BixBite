@@ -3,18 +3,13 @@
 	import com.sociodox.theminer.TheMiner;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
-	import flash.system.System;
-	import flash.utils.getTimer;
 	import flash.utils.Timer;
-	import org.bixbite.core.Emiter;
-	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.StageManager;
-	import org.bixbite.framework.Stats;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import org.bixbite.framework.YTPlayer;
 
 	/**
 	 *
@@ -28,6 +23,8 @@
 	 */
 	public class Main extends Sprite
 	{
+		private var core : BixBite;
+
 		public function Main ();
 
 		private function init (e:Event) : void;

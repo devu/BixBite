@@ -27,6 +27,7 @@
     <class>org.bixbite.namespaces.STATS</class>
     <class>org.bixbite.namespaces.STAGE_MGR</class>
     <class>org.bixbite.namespaces.DSP_MGR</class>
+    <class>org.bixbite.namespaces.YT_PLAYER</class>
     <class>org.bixbite.core.Signal</class>
     <class>org.bixbite.core.Component</class>
     <class>org.bixbite.core.Emiter</class>
@@ -44,22 +45,32 @@
     <class>org.bixbite.framework.DisplayListManager</class>
     <class>org.bixbite.framework.Stats</class>
     <class>org.bixbite.framework.StageManager</class>
+    <class>org.bixbite.framework.YTPlayer</class>
     <class>org.bixbite.framework.view.StatsMonitorView</class>
+    <class>org.bixbite.framework.view.YTPlayerBaseView</class>
     <class>org.bixbite.framework.signal.StatsSignal</class>
     <class>org.bixbite.framework.signal.DisplaySignal</class>
     <class>org.bixbite.framework.signal.StageSignal</class>
     <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
     <class>org.bixbite.framework.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.transponder.StageTransponder</class>
-    <class>org.bixbite.framework.behaviour.SetDisplayContext</class>
+    <class>org.bixbite.framework.transponder.YTPlayerTransponder</class>
     <class>org.bixbite.framework.behaviour.Calculate</class>
     <class>org.bixbite.framework.behaviour.SetStage</class>
     <class>org.bixbite.framework.behaviour.ResizeStage</class>
-    <class>org.bixbite.framework.behaviour.AddDisplayContext</class>
-    <class>org.bixbite.framework.behaviour.GetDisplayList</class>
+    <class>org.bixbite.framework.behaviour.DisplayListAddContext</class>
+    <class>org.bixbite.framework.behaviour.DisplayListGet</class>
+    <class>org.bixbite.framework.behaviour.YTVideoPlay</class>
+    <class>org.bixbite.framework.behaviour.YTPlayerInit</class>
+    <class>org.bixbite.framework.behaviour.YTVideoPause</class>
+    <class>org.bixbite.framework.behaviour.YTPlayerStatus</class>
+    <class>org.bixbite.framework.behaviour.DisplayListRemoveContext</class>
+    <class>org.bixbite.framework.behaviour.DisplayListSetContext</class>
+    <class>org.bixbite.framework.behaviour.DisplayListRegisterView</class>
     <class>org.bixbite.framework.data.StatsData</class>
     <class>org.bixbite.framework.data.StageData</class>
     <class>org.bixbite.framework.data.DisplayListData</class>
+    <class>org.bixbite.framework.data.YTPlayerData</class>
     <class>org.bixbite.utils.ClassUtil</class>
   </include-classes>
 </flex-config>

@@ -79,9 +79,9 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:Object = null):void 
+		public function sendSignal(type:String, params:* = null):void 
 		{
-			signal.params = params;
+			if (params) signal.params = params;
 			emiter.broadcast(slots.c, type, signal);
 		}
 		
@@ -102,7 +102,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function response(type:String, params:Object = null):void 
+		public function responseToAll(type:String, params:Object = null):void 
 		{
 			signal.params = params;
 			emiter.broadcast(slots.v, type, signal);
@@ -157,7 +157,7 @@ package org.bixbite.core
 		 * 
 		 * @return
 		 */
-		public function getObjects():Array
+		public function getDisplayObjects():Array
 		{
 			stage = emiter.BIXBITE::stage;
 			p.x = stage.mouseX;
@@ -165,37 +165,39 @@ package org.bixbite.core
 			return stage.getObjectsUnderPoint(p);
 		}
 		
-		public function findObjectByName(name:String):Boolean
+		public function getDisplayObjectByUID(uid:String):DisplayObject
 		{
-			for each(var o:DisplayObject in getObjects()){
-				var a:Array = o.name.split("@");
-				if (a[0] == name){
-					signal.BIXBITE::callerUID = "@" + a[1];
-					return true;
-				}
+			var a:Array;
+			for each(var o:DisplayObject in getDisplayObjects()){
+				if (o.name == uid) return o;
 			}
 			
-			signal.BIXBITE::callerUID = uid;
-			return false;
+			return null
 		}
 		
-		public function getObjectByName(name:String):DisplayObject
+		public function getDisplayObjectByName(name:String):DisplayObject
 		{
-			for each(var o:DisplayObject in getObjects()){
-				var a:Array = o.name.split("@");
+			var a:Array;
+			for each(var o:DisplayObject in getDisplayObjects()){
+				a = o.name.split("@");
 				if (a[0] == name) return o;
 			}
 			
 			return null
 		}
 		
-		public function findObjectByType(object:Class):Boolean
+		public function getDisplayObjectByType(object:Class):Boolean
 		{
-			for each(var o:Object in getObjects()){
+			for each(var o:Object in getDisplayObjects()){
 				if (o is object) return true;
 			}
 			
 			return false;
+		}
+		
+		public function getDisplayObjectName(object:Object):String
+		{
+			return (object.name) ? object.name.split("@")[0] : null;
 		}
 		
 		/**

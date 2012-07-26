@@ -68,7 +68,7 @@ package org.bixbite.core
 			emiter.unregisterComponent(component);
 		}
 		
-		public function sendSignal(type:String, params:Object = null):void
+		public function sendSignal(type:String, params:* = null):void
 		{
 			signal.params = params;
 			emiter.broadcast(slotsT, type, signal);

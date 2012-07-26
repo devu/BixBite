@@ -1,0 +1,29 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.YTPlayerData;
+	import org.bixbite.framework.YTPlayer;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
+	 */
+	public class YTPlayerInit extends Behaviour
+	{
+		var data : YTPlayerData;
+
+		public function YTPlayerInit ();
+
+		public function init () : void;
+
+		private function onInitalise (s:Signal, data:YTPlayerData) : void;
+
+		public function setup () : void;
+
+		public function execute (s:Signal) : void;
+
+		public function dispose () : void;
+	}
+}

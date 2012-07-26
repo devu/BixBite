@@ -33,22 +33,38 @@ package org.bixbite.framework.signal
 		/**
 		 * OUT
 		 */
+		public static const CONTEXT_ADDED		:String 	= "DisplaySignal.ADDED";
 		
-		public static const ADDED				:String 	= "DisplaySignal.ADDED";
 		/**
 		 * OUT
 		 */
-		public static const REMOVED				:String 	= "DisplaySignal.REMOVED";
+		public static const CONTEXT_REMOVED		:String 	= "DisplaySignal.REMOVED";
+		
+		/**
+		 * OUT
+		 */
+		public static const CONTEXT_SET			:String 	= "DisplaySignal.CONTEXT_SET";
 		
 		/**
 		 * IN { name:String, context:DisplayObject }
 		 */
-		public static const SET_CONTEXT:String 	= "DisplaySignal.SET_CONTEXT";
+		public static const SET_CONTEXT			:String 	= "DisplaySignal.SET_CONTEXT";
 		
 		/**
 		 * IN { name:String, container:String }
 		 */
-		public static const ADD_CONTEXT:String 	= "DisplaySignal.ADD_CONTEXT";
+		public static const ADD_CONTEXT			:String 	= "DisplaySignal.ADD_CONTEXT";
+		
+		/**
+		 * IN { name:String }
+		 */
+		public static const REMOVE_CONTEXT		:String 	= "DisplaySignal.REMOVE_CONTEXT";
+		
+		/**
+		 * IN { view:View }
+		 */
+		//public static const REGISTER_VIEW		:String 	= "DisplaySignal.REGISTER_VIEW";
+		
 		
 	}
 

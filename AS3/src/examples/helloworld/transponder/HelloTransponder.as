@@ -59,7 +59,7 @@ package examples.helloworld.transponder
 		private function onInit(s:Signal):void
 		{
 			var max:int = s.params.max;
-			response(HelloWorld.INIT, { max:max } );
+			responseToAll(HelloWorld.INIT, { max:max } );
 		}
 		
 		private function onGetDefaultCopy(s:Signal):void 

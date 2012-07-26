@@ -99,7 +99,7 @@ package org.bixbite.framework.data
 			loader.unloadAndStop();
 			loader = null;
 			
-			responseAll(YTPlayer.ON_INIT);
+			responseToAll(YTPlayer.ON_INIT);
 		}
 		
 		public function play(videoId:String = null, startSeconds:Number = 0, suggestedQuality:String = "default"):void

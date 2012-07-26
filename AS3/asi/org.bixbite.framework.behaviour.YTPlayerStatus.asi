@@ -1,0 +1,29 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import flash.events.Event;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.YTPlayer;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
+	 */
+	public class YTPlayerStatus extends YTPlayerInit
+	{
+		private static const STATE_READY : int = -1;
+		private static const STATE_ENDED : int = 0;
+		private static const STATE_PLAYING : int = 1;
+		private static const STATE_PAUSED : int = 2;
+		private static const STATE_CUED : int = 5;
+		private var isPlaying : Boolean;
+
+		public function YTPlayerStatus ();
+
+		public function setup () : void;
+
+		private function onPlayerStateChange (e:Event) : void;
+
+		public function execute (s:Signal) : void;
+	}
+}

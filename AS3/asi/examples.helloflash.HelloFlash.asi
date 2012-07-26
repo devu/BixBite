@@ -7,8 +7,8 @@
 	import org.bixbite.core.Compound;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.1
 	 */
 	public class HelloFlash extends Compound
 	{

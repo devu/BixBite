@@ -1,7 +1,7 @@
 ﻿package test.integration.behaviours.behaviour
 {
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.integration.behaviours.BehaviourFlow;
 
 	/**
@@ -13,6 +13,6 @@
 	{
 		public function Startup ();
 
-		public function execute (s:ISignal) : void;
+		public function execute (s:Signal) : void;
 	}
 }

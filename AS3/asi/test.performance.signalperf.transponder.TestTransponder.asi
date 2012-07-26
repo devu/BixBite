@@ -1,13 +1,13 @@
 ﻿package test.performance.signalperf.transponder
 {
 	import flash.events.MouseEvent;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import test.performance.signalperf.SignalPerformance;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.2
+	 * @version  compatibility - 0.6.1
 	 */
 	public class TestTransponder extends Transponder
 	{
@@ -17,10 +17,10 @@
 
 		public function init () : void;
 
-		private function onTestInit (s:ISignal) : void;
+		private function onTestInit (s:Signal) : void;
 
 		private function startTest (e:MouseEvent) : void;
 
-		private function onRunTest (s:ISignal) : void;
+		private function onRunTest (s:Signal) : void;
 	}
 }

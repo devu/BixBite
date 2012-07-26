@@ -1,0 +1,29 @@
+﻿package examples.hellodisplaylist.view
+{
+	import flash.display.Sprite;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class MainView extends View
+	{
+		private var context : Sprite;
+		private var subcontext : Sprite;
+
+		public function MainView ();
+
+		public function init () : void;
+
+		private function createContext () : void;
+
+		private function onContextSet (s:Signal) : void;
+
+		private function onContextAdded (s:Signal) : void;
+
+		private function onContextRemoved (s:Signal) : void;
+	}
+}

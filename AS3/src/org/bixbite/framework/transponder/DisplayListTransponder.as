@@ -40,8 +40,20 @@ package org.bixbite.framework.transponder
 		
 		override public function init():void 
 		{
-			transmit(DisplaySignal.SET_CONTEXT);
-			transmit(DisplaySignal.ADD_CONTEXT);
+			addSlot(DisplaySignal.SET_CONTEXT, onSetContext);
+			addSlot(DisplaySignal.ADD_CONTEXT, onAddContext);
+		}
+		
+		private function onSetContext(s:Signal):void
+		{
+			s.params.viewUID = s.callerUID;
+			sendSignal(DisplaySignal.SET_CONTEXT, s.params);
+		}
+		
+		private function onAddContext(s:Signal):void 
+		{
+			s.params.viewUID = s.callerUID;
+			sendSignal(DisplaySignal.ADD_CONTEXT, s.params);
 		}
 		
 		override public function destroy():void 

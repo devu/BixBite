@@ -1,6 +1,7 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.Stage;
+	import flash.system.System;
 	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;

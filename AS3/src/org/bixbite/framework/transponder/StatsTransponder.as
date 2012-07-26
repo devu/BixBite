@@ -78,10 +78,8 @@ package org.bixbite.framework.transponder
 		
 		private function onMouseDown(e:MouseEvent):void
 		{
-			if (findObjectByName("statsPanel")){
-				panel = getObjectByName("statsPanel") as Sprite;
-				panel.startDrag();
-			}
+			panel = getDisplayObjectByName("statsPanel") as Sprite;
+			if (panel) panel.startDrag();
 		}
 		
 		private function onMouseUp(e:MouseEvent):void 

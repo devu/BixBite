@@ -2,27 +2,27 @@
 {
 	import flash.display.Shape;
 	import org.bixbite.core.interfaces.IData;
-	import org.bixbite.core.interfaces.ISignal;
-	import org.bixbite.framework.view.DisplayView;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 	import test.integration.behaviours.BehaviourFlow;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.1
 	 * @since 0.5.0
 	 *   
 	 */
-	public class MyView extends DisplayView
+	public class MyView extends View
 	{
-		private var content : Shape;
+		private var context : Shape;
 
 		public function MyView ();
 
 		public function init () : void;
 
-		private function onReposition (s:ISignal) : void;
+		private function onReposition (s:Signal) : void;
 
-		private function onChangeColor (s:ISignal, data:IData=null) : void;
+		private function onChangeColor (s:Signal, data:IData=null) : void;
 
 		private function draw (color:uint) : void;
 	}

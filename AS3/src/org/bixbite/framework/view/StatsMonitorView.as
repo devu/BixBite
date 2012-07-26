@@ -27,6 +27,7 @@ package org.bixbite.framework.view
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.namespaces.STATS;

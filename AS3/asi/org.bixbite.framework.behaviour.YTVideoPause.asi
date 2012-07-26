@@ -1,0 +1,16 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.1
+	 * @since 0.6.1
+	 */
+	public class YTVideoPause extends YTPlayerInit
+	{
+		public function YTVideoPause ();
+
+		public function execute (s:Signal) : void;
+	}
+}

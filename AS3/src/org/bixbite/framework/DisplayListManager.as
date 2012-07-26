@@ -24,9 +24,7 @@ THE SOFTWARE.
 package org.bixbite.framework 
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.behaviour.AddDisplayContext;
-	import org.bixbite.framework.behaviour.GetDisplayList;
-	import org.bixbite.framework.behaviour.SetDisplayContext;
+	import org.bixbite.framework.behaviour.*;
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.DisplayListTransponder;
@@ -49,8 +47,13 @@ package org.bixbite.framework
 			register(DisplayListData);
 			register(DisplayListTransponder);
 			
-			addBehaviour(DisplaySignal.ADD_CONTEXT, AddDisplayContext);
-			addBehaviour(DisplaySignal.SET_CONTEXT, SetDisplayContext);
+			
+			addBehaviour(DisplaySignal.SET_CONTEXT		, DisplayListSetContext);
+			addBehaviour(DisplaySignal.ADD_CONTEXT		, DisplayListAddContext);
+			addBehaviour(DisplaySignal.REMOVE_CONTEXT	, DisplayListRemoveContext);
+			
+			//addBehaviour(DisplaySignal.REGISTER_VIEW	, DisplayListRegisterView);
+			//addBehaviour(DisplaySignal.UNREGISTER_VIEW	, DisplayListUnregisterView);
 		}
 		
 		override public function destroy():void 

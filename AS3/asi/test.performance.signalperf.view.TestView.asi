@@ -1,25 +1,27 @@
 ﻿package test.performance.signalperf.view
 {
+	import flash.display.Sprite;
+	import flash.text.TextField;
 	import flash.utils.getTimer;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.signals.StatsSignal;
 	import test.performance.signalperf.SignalPerformance;
 
 	/**
 	 *
-	 * @version  compatibility - 0.5.4
+	 * @version  compatibility - 0.6.1
 	 */
 	public class TestView extends View
 	{
 		private var slotReference : Function;
+		private var output : TextField;
 
 		public function TestView ();
 
 		public function init () : void;
 
-		private function onRunTest (s:ISignal) : void;
+		private function onRunTest (s:Signal) : void;
 
-		private function onBeginTest (s:ISignal) : void;
+		private function onBeginTest (s:Signal) : void;
 	}
 }

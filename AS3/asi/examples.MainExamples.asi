@@ -1,0 +1,26 @@
+﻿package examples
+{
+	import examples.hellodisplaylist.HelloDisplayList;
+	import examples.helloflash.HelloFlash;
+	import examples.helloworld.HelloWorld;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.1
+	 */
+	public class MainExamples extends Sprite
+	{
+		/**
+		 * Uncomment out example in order to run it.
+		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
+		 */
+		public function MainExamples ();
+
+		private function init (e:Event) : void;
+	}
+}

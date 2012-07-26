@@ -39,9 +39,9 @@ package org.bixbite.framework.data
 	{
 		use namespace DSP_MGR
 		
-		public var list:Dictionary = new Dictionary();
+		public var list:Dictionary = new Dictionary(true);
 		
-		public function DisplayListData() 
+		public function DisplayListData()
 		{
 			
 		}
@@ -54,7 +54,7 @@ package org.bixbite.framework.data
 		
 		private function onGetDisplayList(s:Signal):void 
 		{
-			responseAll(DisplayListManager.GET_DISPLAY_LIST);
+			responseToAll(DisplayListManager.GET_DISPLAY_LIST);
 		}
 		
 		public function addContenxt(context:DisplayObject, container:DisplayObjectContainer):void

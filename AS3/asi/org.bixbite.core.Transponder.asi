@@ -43,7 +43,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:Object=null) : void;
+		public function sendSignal (type:String, params:*=null) : void;
 
 		/**
 		 *
@@ -56,7 +56,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function response (type:String, params:Object=null) : void;
+		public function responseToAll (type:String, params:Object=null) : void;
 
 		/**
 		 * Signlecast (one-to-one) method to send direct signal on View communication channel.
@@ -92,13 +92,15 @@
 		 *
 		 * @return
 		 */
-		public function getObjects () : Array;
+		public function getDisplayObjects () : Array;
 
-		public function findObjectByName (name:String) : Boolean;
+		public function getDisplayObjectByUID (uid:String) : DisplayObject;
 
-		public function getObjectByName (name:String) : DisplayObject;
+		public function getDisplayObjectByName (name:String) : DisplayObject;
 
-		public function findObjectByType (object:Class) : Boolean;
+		public function getDisplayObjectByType (object:Class) : Boolean;
+
+		public function getDisplayObjectName (object:Object) : String;
 
 		/**
 		 *

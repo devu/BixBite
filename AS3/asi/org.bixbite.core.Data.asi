@@ -51,7 +51,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseAll (type:String, params:Object=null) : void;
+		public function responseToAll (type:String, params:Object=null) : void;
 
 		/**
 		 *

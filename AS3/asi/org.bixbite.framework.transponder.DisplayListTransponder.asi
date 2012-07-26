@@ -15,6 +15,10 @@
 
 		public function init () : void;
 
+		private function onSetContext (s:Signal) : void;
+
+		private function onAddContext (s:Signal) : void;
+
 		public function destroy () : void;
 	}
 }

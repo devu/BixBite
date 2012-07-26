@@ -54,6 +54,7 @@ package org.bixbite
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.DisplayListManager;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.YTPlayer;
@@ -95,14 +96,13 @@ package org.bixbite
 			//addChild(miner);
 			
 			core = new BixBite(stage);
-			core.register(YTPlayer);
-			core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
 			
-			core.register(Stats);
-			core.sendSignal(StatsSignal.START);
+			//youtube player
+			//core.register(YTPlayer);
+			//core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
 			
-			//core.unregister(YTPlayer);
-			//core.unregister(Stats);
+			//core.register(Stats);
+			//core.sendSignal(StatsSignal.START);
 		}
 		
 		/*

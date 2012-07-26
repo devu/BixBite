@@ -121,6 +121,26 @@
     <string>src\examples\mainhelloflash.as</string>
     <string>src\examples\helloworld\helloworld.as</string>
     <string>src\examples\helloworld\view\rootview.as</string>
+    <string>src\examples\hellodisplaylist\hellodisplaylist.as</string>
+    <string>src\examples\hellodisplaylist\view\mainview.as</string>
+    <string>src\examples\hellodisplaylist\view\subview.as</string>
+    <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
+    <string>src\examples\mainexamples.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistaddcontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistget.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistregisterview.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistremovecontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistsetcontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytplayerinit.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytplayerstatus.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytvideopause.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytvideoplay.as</string>
+    <string>src\org\bixbite\framework\data\ytplayerdata.as</string>
+    <string>src\org\bixbite\framework\transponder\ytplayertransponder.as</string>
+    <string>src\org\bixbite\framework\view\ytplayerbaseview.as</string>
+    <string>src\org\bixbite\framework\ytplayer.as</string>
+    <string>src\org\bixbite\namespaces\yt_player.as</string>
+    <string>src\test\maintests.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -231,6 +251,26 @@
     <string>src\examples\mainhelloflash.as</string>
     <string>src\examples\helloworld\helloworld.as</string>
     <string>src\examples\helloworld\view\rootview.as</string>
+    <string>src\examples\hellodisplaylist\hellodisplaylist.as</string>
+    <string>src\examples\hellodisplaylist\view\mainview.as</string>
+    <string>src\examples\hellodisplaylist\view\subview.as</string>
+    <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
+    <string>src\examples\mainexamples.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistaddcontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistget.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistregisterview.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistremovecontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\displaylistsetcontext.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytplayerinit.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytplayerstatus.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytvideopause.as</string>
+    <string>src\org\bixbite\framework\behaviour\ytvideoplay.as</string>
+    <string>src\org\bixbite\framework\data\ytplayerdata.as</string>
+    <string>src\org\bixbite\framework\transponder\ytplayertransponder.as</string>
+    <string>src\org\bixbite\framework\view\ytplayerbaseview.as</string>
+    <string>src\org\bixbite\framework\ytplayer.as</string>
+    <string>src\org\bixbite\namespaces\yt_player.as</string>
+    <string>src\test\maintests.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

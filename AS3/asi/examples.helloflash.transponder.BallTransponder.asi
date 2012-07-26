@@ -7,7 +7,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.0
+	 * @version  compatibility - 0.6.1
 	 */
 	public class BallTransponder extends Transponder
 	{

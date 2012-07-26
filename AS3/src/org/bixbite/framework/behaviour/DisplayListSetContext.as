@@ -21,35 +21,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.behaviour 
+package org.bixbite.framework.behaviour
 {
 	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.1
 	 * @since 0.6.0
 	 */
-	public class AddDisplayContext extends GetDisplayList
+	public class DisplayListSetContext extends DisplayListGet
 	{
 		
-		public function AddDisplayContext() 
+		public function DisplayListSetContext() 
 		{
 			
 		}
 		
 		override public function execute(s:Signal):void 
 		{
-			var context:DisplayObject = list[s.params.name];
-			var container:DisplayObjectContainer = list[s.params.container];
+			var name	:String 		= s.params.name;
+			var context	:DisplayObject 	= s.params.context;
 			
-			container.addChild(context);
+			if (!context){
+				Error("there is no context provided");
+			}
+			
+			var contextViewUID:String = s.params.viewUID;
+			context.name = name + contextViewUID;
+			
+			list[name] = context;
+			sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_SET, { name:name, contextUID:context.name } );
 		}
-		
 	}
 
 }

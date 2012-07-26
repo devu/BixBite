@@ -49,10 +49,10 @@ package test.performance.signalperf
 	 * 
 	 * v0.6.1 SRS	PC				Laptop
 	 * 1.000 		- no time:)		-//-	(3k signals in circulation)
-	 * 10.000 		- 1ms					(30k signals in circulation)
-	 * 100.000		- 11ms					(300k signals in circulation)
-	 * 1.000.000	- 112ms			188ms	(3M signals in circulation) 	
-	 * 10.000.000	- 1091ms				(30M signals in circulation)
+	 * 10.000 		- 1ms			2ms		(30k signals in circulation)
+	 * 100.000		- 11ms			19ms	(300k signals in circulation)
+	 * 1.000.000	- 109ms			188ms	(3M signals in circulation) 	
+	 * 10.000.000	- 1060ms		1900ms	(30M signals in circulation)
 	 * 
 	 * v0.5.4 SRS
 	 * 1.000 		- no time:)				(3k signals in circulation)

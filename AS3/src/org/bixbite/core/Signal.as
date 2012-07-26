@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * @langversion	3.0
 	 * @version 0.6.1
      */
-	public dynamic class Signal
+	public class Signal
 	{
 		private var _callerUID		:String;
 		private var _params			:Object;
@@ -86,7 +86,7 @@ package org.bixbite.core
 		BIXBITE function dispose():void
 		{
 			_callerUID = null;
-			for (var p:String in _params) _params[p] = null;
+			_params.dispose();
 			_params = null;
 		}
 	}

@@ -89,15 +89,8 @@ package org.bixbite.core
 			
 			if (components[type] != null) {
 				components[type].copies++;
-				//trace("use duplicate of", component);
 				return
 			}
-			/*
-			if (ClassUtil.extendsClass(component, "Compound")) {
-				//trace("registerModule", component);
-			} else {
-				//trace("registerComponent", component);
-			}*/
 			
 			var c:Component = new component();
 			components[type] = c;
@@ -114,7 +107,6 @@ package org.bixbite.core
 			if (!components[type]) return;
 			
 			if (components[type].copies > 0) {
-				//trace("keep duplicate", component);
 				components[type].copies--;
 				return
 			}
@@ -219,8 +211,7 @@ package org.bixbite.core
 		 */
 		BIXBITE function response(channel:Object, targetUID:String, type:String, signal:Signal):void 
 		{
-			if (!channel[type]) return;
-			if (!channel[type][targetUID]) throw Error("object uid " + targetUID + " has no slot associated with this type of event");
+			if (!channel[type] || !channel[type][targetUID] ) return;
 			channel[type][targetUID](signal);
 		}
 		

@@ -86,7 +86,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseAll(type:String, params:Object = null):void 
+		public function responseToAll(type:String, params:Object = null):void 
 		{
 			if (!signal) return;
 			

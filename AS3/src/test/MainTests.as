@@ -26,6 +26,8 @@ package test
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
@@ -45,6 +47,9 @@ package test
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			core = new BixBite(stage);
+			
+			//core.register(Stats);
+			//core.sendSignal(StatsSignal.START);
 			
 			//Signal performance test
 			core.register(SignalPerformance);

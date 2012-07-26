@@ -73,6 +73,12 @@
     <string>src\examples\mainhelloflash.as</string>
     <string>src\examples\helloworld\helloworld.as</string>
     <string>src\examples\helloworld\view\rootview.as</string>
+    <string>src\test\maintests.as</string>
+    <string>src\examples\mainexamples.as</string>
+    <string>src\examples\hellodisplaylist\hellodisplaylist.as</string>
+    <string>src\examples\hellodisplaylist\view\subview.as</string>
+    <string>src\examples\hellodisplaylist\view\mainview.as</string>
+    <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -135,6 +141,12 @@
     <string>src\examples\mainhelloflash.as</string>
     <string>src\examples\helloworld\helloworld.as</string>
     <string>src\examples\helloworld\view\rootview.as</string>
+    <string>src\test\maintests.as</string>
+    <string>src\examples\mainexamples.as</string>
+    <string>src\examples\hellodisplaylist\hellodisplaylist.as</string>
+    <string>src\examples\hellodisplaylist\view\subview.as</string>
+    <string>src\examples\hellodisplaylist\view\mainview.as</string>
+    <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

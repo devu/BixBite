@@ -2,7 +2,7 @@
 {
 	import flash.utils.getTimer;
 	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.interfaces.ISignal;
+	import org.bixbite.core.Signal;
 	import test.integration.behaviours.data.MyData;
 	import test.integration.behaviours.BehaviourFlow;
 
@@ -20,8 +20,8 @@
 
 		public function init () : void;
 
-		private function onMyData (s:ISignal, data:MyData) : void;
+		private function onMyData (s:Signal, data:MyData) : void;
 
-		public function execute (s:ISignal) : void;
+		public function execute (s:Signal) : void;
 	}
 }
