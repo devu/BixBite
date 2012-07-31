@@ -31,7 +31,7 @@ package examples.helloworld.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * 
      * This Trasponder will detect if any text field has been clicked.
      * If so, will send signal demands to change the copy.
@@ -69,7 +69,7 @@ package examples.helloworld.transponder
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			if (findObjectByType(TextField)) 
+			if (getDisplayObjectByType(TextField)) 
 				sendSignal(HelloWorld.UPDATE_COPY, { isDefault:false } );
 		}
 		

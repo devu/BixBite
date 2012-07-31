@@ -6,8 +6,8 @@
 	import org.bixbite.framework.signal.DisplaySignal;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.2
 	 */
 	public class MainView extends View
 	{

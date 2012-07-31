@@ -42,7 +42,7 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Compound extends Component implements ICompound
 	{
@@ -88,7 +88,7 @@ package org.bixbite.core
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false, autoExecute:Boolean = false):void
 		{
 			behaviours[type] = new behaviour();
-			behaviours[type].initialise(emiter, type, slots);
+			behaviours[type].initialise(emiter, type, slots, this);
 			
 			if (autoDispose) behaviours[type].remove = removeBehaviour;
 			if (autoExecute) behaviours[type].exe(signal);

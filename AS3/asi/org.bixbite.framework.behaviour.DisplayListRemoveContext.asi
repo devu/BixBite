@@ -5,8 +5,9 @@
 	import org.bixbite.core.Signal;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.0
 	 */
 	public class DisplayListRemoveContext extends DisplayListGet
 	{

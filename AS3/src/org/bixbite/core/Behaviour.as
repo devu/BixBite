@@ -35,7 +35,7 @@ package org.bixbite.core
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Behaviour 
 	{
@@ -46,19 +46,21 @@ package org.bixbite.core
 		private var uid			:String;
 		private var type		:String;
 		private var slots		:Object;
+		private var compound	:Compound;
 		
 		public function Behaviour() 
 		{
 			
 		}
 		
-		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object):void
+		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object, compound:Compound):void
 		{
 			this.emiter 		= emiter;
 			this.uid 			= "@" + emiter.uid;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
 			this.slots 			= slots;
+			this.compound 		= compound;
 			
 			emiter.addSlot(slots.c, uid, type, exe);
 			init();
@@ -89,6 +91,24 @@ package org.bixbite.core
 		public function execute(s:Signal):void
 		{
 			//abstract but not mendatory
+		}
+		
+		/**
+		 * 
+		 * @param	compound
+		 */
+		public function register(component:Class):void
+		{
+			emiter.registerComponent(component, this.compound);
+		}
+		
+		/**
+		 * 
+		 * @param	component
+		 */
+		public function unregister(component:Class):void
+		{
+			emiter.unregisterComponent(component, this.compound);
 		}
 		
 		/**
@@ -140,14 +160,25 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.
+		 * Multi-cast method to broadcast one singal on entire Compound channel.
+		 * This is also an output of any functional module, means any other Compound or Behaviour registered with can capture it.
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.broadcast(slots.c, type, signal);
+		}
+		
+		/**
+		 * Multi-cast method to broadcast one singal on entire View channel.
 		 * @param	type
 		 * @param	params
 		 */
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.c, type, signal);
 			emiter.broadcast(slots.v, type, signal);
 		}
 		

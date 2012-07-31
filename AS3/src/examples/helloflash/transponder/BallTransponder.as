@@ -29,7 +29,7 @@ package examples.helloflash.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class BallTransponder extends Transponder 
 	{
@@ -45,7 +45,7 @@ package examples.helloflash.transponder
 		
 		private function onMouseClick(e:MouseEvent):void 
 		{
-			if (findObjectByName("ball")) {
+			if (getDisplayObjectByName("ball")) {
 				// One to many on view channel
 				//response(Signals.DIRECT_RESPONSE);
 				

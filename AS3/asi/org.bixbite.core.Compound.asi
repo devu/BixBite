@@ -17,7 +17,7 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Compound extends Component implements ICompound
 	{

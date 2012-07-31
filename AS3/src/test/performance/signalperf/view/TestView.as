@@ -31,7 +31,7 @@ package test.performance.signalperf.view
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class TestView extends View
 	{
@@ -73,7 +73,7 @@ package test.performance.signalperf.view
 			//standard
 			//for (var i:int = 0 ; i < 1000000; i++) sendSignal(SignalPerformance.RUN_TEST);
 			//SRS
-			for (var i:int = 0 ; i < 100000; i++) slotReference(signal);
+			for (var i:int = 0 ; i < 11400000; i++) slotReference(signal);
 			
 			output.text = "Time:" + String(getTimer() - startTime);
 			//sendSignal(StatsSignal.TRACE, [0, "Time:", String(getTimer() - startTime)]);

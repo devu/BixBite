@@ -29,7 +29,7 @@ package org.bixbite.framework.data
 	import org.bixbite.namespaces.STATS;
 	
 	/**
-	 * @version compatibility - 0.6.1
+	 * @version compatibility - 0.6.2
 	 * @since 0.4.1
 	 */
 	

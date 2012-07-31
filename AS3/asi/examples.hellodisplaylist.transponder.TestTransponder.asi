@@ -1,20 +1,26 @@
 ﻿package examples.hellodisplaylist.transponder
 {
+	import examples.hellodisplaylist.HelloDisplayList;
 	import flash.display.DisplayObject;
+	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.DisplaySignal;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.2
 	 */
 	public class TestTransponder extends Transponder
 	{
+		private var mainView : Sprite;
+
 		public function TestTransponder ();
 
 		public function init () : void;
 
 		private function onInputDown (e:MouseEvent) : void;
+
+		private function onInputUp (e:MouseEvent) : void;
 	}
 }

@@ -30,7 +30,7 @@ package org.bixbite.core
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class BixBite
 	{

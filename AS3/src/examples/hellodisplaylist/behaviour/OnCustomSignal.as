@@ -21,56 +21,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.behaviour 
+package examples.hellodisplaylist.behaviour 
 {
+	import examples.hellodisplaylist.view.SubView;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.YTPlayerData;
-	import org.bixbite.framework.YTPlayer;
 	
 	/**
 	 * @version  compatibility - 0.6.2
-	 * @since 0.6.1
 	 */
-	public class YTPlayerInit extends Behaviour 
+	public class OnCustomSignal extends Behaviour 
 	{
-		internal var data:YTPlayerData;
 		
-		public function YTPlayerInit() 
-		{
-			
-		}
-		
-		override public function init():void
-		{
-			addResponder(YTPlayer.ON_INIT, onInitalise);
-		}
-		
-		private function onInitalise(s:Signal, data:YTPlayerData):void
-		{
-			removeResponder(YTPlayer.ON_INIT);
-			this.data = data;
-			
-			setup();
-		}
-		
-		public function setup():void 
+		public function OnCustomSignal() 
 		{
 			
 		}
 		
 		override public function execute(s:Signal):void 
 		{
-			sendRequest(YTPlayer.INIT, s.params);
+			trace(this, "This behaviour will unregister SubView Class and destroy itself");
+			
+			unregister(SubView);
+			dispose();
 		}
 		
-		override public function dispose():void 
-		{
-			removeResponder(YTPlayer.ON_INIT);
-			
-			data = null;
-			super.dispose();
-		}
 	}
 
 }

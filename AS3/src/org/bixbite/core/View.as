@@ -36,7 +36,7 @@ package org.bixbite.core
 	 * <p>The View itself is just a subclass of Component to provide base abstract class ready to extend and work with.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class View extends Component implements IView
 	{
@@ -70,13 +70,24 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Multi-cast method to broadcast one singal on entire Transponder channel.
 		 * @param	type
 		 */
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
 			emiter.broadcast(slots.t, type, signal);
+		}
+		
+		/**
+		 * Multi-cast method to broadcast one singal on entire View channel.
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.broadcast(slots.v, type, signal);
 		}
 		
 		/**

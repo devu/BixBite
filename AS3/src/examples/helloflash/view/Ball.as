@@ -29,7 +29,7 @@ package examples.helloflash.view
 	import org.bixbite.core.View;
 
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class Ball extends View 
 	{

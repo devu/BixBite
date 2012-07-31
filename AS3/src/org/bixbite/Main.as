@@ -48,25 +48,13 @@ THE SOFTWARE.
 
 package org.bixbite 
 {
-	import com.sociodox.theminer.TheMiner;
+
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import org.bixbite.framework.YTPlayer;
-	//import flash.events.MouseEvent;
-	//import flash.system.System;
-	//import org.bixbite.framework.DisplayListManager;
-	//import org.bixbite.framework.signal.StatsSignal;
-	//import org.bixbite.framework.StageManager;
-	//import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.

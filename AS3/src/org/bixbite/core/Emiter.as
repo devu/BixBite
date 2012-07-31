@@ -41,7 +41,7 @@ package org.bixbite.core
      * Current version of BixBite is capable of sending over 30.000.000 signals per second (AMD 955 Quad Core)</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Emiter
 	{

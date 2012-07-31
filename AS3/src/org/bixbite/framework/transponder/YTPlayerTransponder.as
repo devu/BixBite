@@ -28,7 +28,7 @@ package org.bixbite.framework.transponder
 	import org.bixbite.framework.YTPlayer;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.6.1
 	 */
 	public class YTPlayerTransponder extends Transponder 

@@ -26,7 +26,7 @@ package org.bixbite.utils
 	import flash.utils.describeType;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.6.1
      */
 	public class ClassUtil 

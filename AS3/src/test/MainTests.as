@@ -31,7 +31,7 @@ package test
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class MainTests extends Sprite 
 	{
@@ -42,7 +42,7 @@ package test
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		private function init(e:Event):void 
+		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			

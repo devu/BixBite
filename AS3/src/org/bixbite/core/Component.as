@@ -33,7 +33,7 @@ package org.bixbite.core
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Component implements IComponent
 	{

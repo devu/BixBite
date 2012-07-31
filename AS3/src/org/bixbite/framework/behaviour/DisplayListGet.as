@@ -31,7 +31,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.6.0
 	 */
 	public class DisplayListGet extends Behaviour 

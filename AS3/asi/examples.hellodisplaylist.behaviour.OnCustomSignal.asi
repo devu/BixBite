@@ -1,0 +1,17 @@
+﻿package examples.hellodisplaylist.behaviour
+{
+	import examples.hellodisplaylist.view.SubView;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class OnCustomSignal extends Behaviour
+	{
+		public function OnCustomSignal ();
+
+		public function execute (s:Signal) : void;
+	}
+}

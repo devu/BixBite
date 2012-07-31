@@ -1,5 +1,6 @@
 ﻿package examples.hellodisplaylist
 {
+	import examples.hellodisplaylist.behaviour.OnCustomSignal;
 	import examples.hellodisplaylist.transponder.TestTransponder;
 	import examples.hellodisplaylist.view.MainView;
 	import examples.hellodisplaylist.view.SubView;
@@ -7,11 +8,13 @@
 	import org.bixbite.framework.DisplayListManager;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @version  compatibility - 0.6.2
 	 */
 	public class HelloDisplayList extends Compound
 	{
+		public static const CUSTOM_SIGNAL : String = "HelloDisplayList.CUSTOM_SIGNAL";
+
 		public function HelloDisplayList ();
 
 		public function init () : void;

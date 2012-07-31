@@ -40,7 +40,7 @@ package org.bixbite.framework.view
 	
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.4.2
 	 * 
 	 * StatsMonitor

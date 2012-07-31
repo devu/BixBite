@@ -31,7 +31,7 @@ package org.bixbite.framework
 	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.6.0
 	 * 
 	 * footprint 2.55kb
@@ -47,19 +47,16 @@ package org.bixbite.framework
 			register(DisplayListData);
 			register(DisplayListTransponder);
 			
-			
 			addBehaviour(DisplaySignal.SET_CONTEXT		, DisplayListSetContext);
 			addBehaviour(DisplaySignal.ADD_CONTEXT		, DisplayListAddContext);
 			addBehaviour(DisplaySignal.REMOVE_CONTEXT	, DisplayListRemoveContext);
-			
-			//addBehaviour(DisplaySignal.REGISTER_VIEW	, DisplayListRegisterView);
-			//addBehaviour(DisplaySignal.UNREGISTER_VIEW	, DisplayListUnregisterView);
 		}
 		
 		override public function destroy():void 
 		{
 			removeBehaviour(DisplaySignal.ADD_CONTEXT);
 			removeBehaviour(DisplaySignal.SET_CONTEXT);
+			removeBehaviour(DisplaySignal.REMOVE_CONTEXT);
 			
 			unregister(DisplayListData);
 			unregister(DisplayListTransponder);

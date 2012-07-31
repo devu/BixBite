@@ -33,7 +33,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.5.0
 	 */
 	public class Calculate extends Behaviour 

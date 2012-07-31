@@ -9,7 +9,7 @@
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
 	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
 	 * @langversion	3.0
-	 * @version 0.6.1
+	 * @version 0.6.2
 	 */
 	public class Behaviour
 	{
@@ -19,10 +19,11 @@
 		private var uid : String;
 		private var type : String;
 		private var slots : Object;
+		private var compound : Compound;
 
 		public function Behaviour ();
 
-		function initialise (emiter:Emiter, type:String, slots:Object) : void;
+		function initialise (emiter:Emiter, type:String, slots:Object, compound:Compound) : void;
 
 		/**
 		 * Internal pre-execute method.
@@ -40,6 +41,18 @@
 		 * @param	s signal being sent by coresponding Transponder
 		 */
 		public function execute (s:Signal) : void;
+
+		/**
+		 *
+		 * @param	compound
+		 */
+		public function register (component:Class) : void;
+
+		/**
+		 *
+		 * @param	component
+		 */
+		public function unregister (component:Class) : void;
 
 		/**
 		 * Deconstructor of behaviour.
@@ -67,7 +80,15 @@
 		public function sendRequest (type:String, params:Object=null) : void;
 
 		/**
-		 * Multi-cast method to broadcast one singal to multiple Atoms and Views components.
+		 * Multi-cast method to broadcast one singal on entire Compound channel.
+		 * This is also an output of any functional module, means any other Compound or Behaviour registered with can capture it.
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignal (type:String, params:Object=null) : void;
+
+		/**
+		 * Multi-cast method to broadcast one singal on entire View channel.
 		 * @param	type
 		 * @param	params
 		 */

@@ -31,7 +31,7 @@ package org.bixbite.framework
 	import org.bixbite.namespaces.YT_PLAYER;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 * @since 0.6.1
 	 */
 	public class YTPlayer extends Compound 
