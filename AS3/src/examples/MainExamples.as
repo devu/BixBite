@@ -26,6 +26,7 @@ package examples
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
+	import examples.imagegallery.ImageGallery;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
@@ -33,7 +34,7 @@ package examples
 	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class MainExamples extends Sprite
 	{
@@ -59,24 +60,32 @@ package examples
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
 			* footprint
 			*/
-			core.register(HelloFlash);
+			//core.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
 			* footprint
 			*/
-			core.register(HelloWorld);
+			//core.register(HelloWorld);
 			
 			/**
 			 * Example of DisplayListManager use
 			 */
-			core.register(HelloDisplayList);
+			//core.register(HelloDisplayList);
+			
+			/**
+			 * Example of Image Gallery
+			 */
+			core.register(ImageGallery);
+			core.sendSignal(ImageGallery.INIT, { 
+				path:"http://www.bixbite.org/immagegallery/" 
+			} );
 			
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);
 			 */
-			core.register(Stats);
-			core.sendSignal(StatsSignal.START);
+			//core.register(Stats);
+			//core.sendSignal(StatsSignal.START);
 		}
 	}
 

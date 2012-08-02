@@ -24,11 +24,12 @@ THE SOFTWARE.
 package examples.helloworld.view 
 {
 	import examples.helloworld.HelloWorld;
+	
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	
 	
 	/**
 	 * @version  compatibility - 0.6.2

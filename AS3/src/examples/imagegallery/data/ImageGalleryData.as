@@ -21,38 +21,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package examples.imagegallery.data 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.performance.signalperf.SignalPerformance;
+	import org.bixbite.core.Data;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 */
-	public class MainTests extends Sprite 
+	public class ImageGalleryData extends Data 
 	{
-		private var core:BixBite;
 		
-		public function MainTests()
+		public function ImageGalleryData() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void
+		override public function init():void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			core = new BixBite(stage);
-			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
-			//Signal performance test
-			core.register(SignalPerformance);
+			trace(this, "init");
 		}
 		
 	}
