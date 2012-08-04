@@ -25,6 +25,7 @@ package examples.imagegallery.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -45,6 +46,8 @@ package examples.imagegallery.behaviour
 		override public function execute(s:Signal):void 
 		{
 			trace(this, "execute", s.params.path);
+			
+			emitSignal(DisplaySignal.ADD_CONTEXT, { name:"mainView", container:"stage" } );
 		}
 		
 	}

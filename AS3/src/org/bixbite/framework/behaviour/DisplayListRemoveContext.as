@@ -26,6 +26,8 @@ package org.bixbite.framework.behaviour
 	import flash.display.DisplayObject;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.utils.ClassUtil;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -41,8 +43,11 @@ package org.bixbite.framework.behaviour
 		
 		override public function execute(s:Signal):void 
 		{
-			var context:DisplayObject = list[s.params.name];
+			var context			:DisplayObject = list[s.params.name];
+			var contextViewUID	:String = ClassUtil.retrieveUID(context);
+			
 			context.parent.removeChild(context);
+			sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_REMOVED);
 		}
 		
 	}

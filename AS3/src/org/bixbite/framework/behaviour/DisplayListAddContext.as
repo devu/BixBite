@@ -29,6 +29,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.utils.ClassUtil;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -45,13 +46,17 @@ package org.bixbite.framework.behaviour
 		override public function execute(s:Signal):void 
 		{
 			var p:Object = s.params;
-			var context:DisplayObject 				= list[p.name];
-			if (!context) trace("There is no context", p.name, "registered yet");
+			var context:DisplayObject = list[p.name];
 			
-			var container:DisplayObjectContainer 	= list[p.container];
-			if (!container) trace("There is no available container", p.container, "registered yet");
+			if (!context) 
+				Error("There is no context " + p.name + " registered yet");
 			
-			var contextViewUID:String = p.viewUID;
+			var container:DisplayObjectContainer = list[p.container];
+			
+			if (!container) 
+				Error("There is no available container " + p.container + "registered yet");
+			
+			var contextViewUID:String = ClassUtil.retrieveUID(context);
 			
 			container.addChild(context);
 			sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_ADDED, { name:p.name, container:p.container } );

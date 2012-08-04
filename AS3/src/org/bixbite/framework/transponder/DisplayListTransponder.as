@@ -42,6 +42,7 @@ package org.bixbite.framework.transponder
 		{
 			addSlot(DisplaySignal.SET_CONTEXT, onSetContext);
 			addSlot(DisplaySignal.ADD_CONTEXT, onAddContext);
+			addSlot(DisplaySignal.REMOVE_CONTEXT, onRemoveContext);
 		}
 		
 		private function onSetContext(s:Signal):void
@@ -56,10 +57,17 @@ package org.bixbite.framework.transponder
 			sendSignal(DisplaySignal.ADD_CONTEXT, s.params);
 		}
 		
+		private function onRemoveContext(s:Signal):void 
+		{
+			s.params.viewUID = s.callerUID;
+			sendSignal(DisplaySignal.REMOVE_CONTEXT, s.params);
+		}
+		
 		override public function destroy():void 
 		{
 			removeSlot(DisplaySignal.SET_CONTEXT);
 			removeSlot(DisplaySignal.ADD_CONTEXT);
+			removeSlot(DisplaySignal.REMOVE_CONTEXT);
 			
 			super.destroy();
 		}

@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.utils 
 {
+	import flash.display.DisplayObject;
 	import flash.utils.describeType;
 	
 	/**
@@ -53,6 +54,11 @@ package org.bixbite.utils
 			}
 			
 			return false;
+		}
+		
+		public static function retrieveUID(context:DisplayObject):String
+		{
+			return "@" + context.name.split("@")[1];
 		}
 		
 	}

@@ -26,7 +26,8 @@ package examples.imagegallery
 	import examples.imagegallery.behaviour.InitImageGallery;
 	import examples.imagegallery.data.ImageGalleryData;
 	import examples.imagegallery.transponder.ImageGalleryTransponder;
-	import examples.imagegallery.view.ImageGalleryMainView;
+	import examples.imagegallery.view.MainView;
+	import org.bixbite.framework.DisplayListManager;
 	
 	import org.bixbite.core.Compound;
 	
@@ -44,9 +45,11 @@ package examples.imagegallery
 		
 		override public function init():void 
 		{
+			register(DisplayListManager);
+			
 			register(ImageGalleryData);
 			register(ImageGalleryTransponder);
-			register(ImageGalleryMainView);
+			register(MainView);
 			
 			addBehaviour(INIT, InitImageGallery);
 		}
