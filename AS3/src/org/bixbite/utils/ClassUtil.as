@@ -33,7 +33,7 @@ package org.bixbite.utils
 	public class ClassUtil 
 	{
 		
-		public function ClassUtil() 
+		public function ClassUtil()
 		{
 			
 		}

@@ -60,11 +60,6 @@ package org.bixbite.framework.signal
 		 */
 		public static const REMOVE_CONTEXT		:String 	= "DisplaySignal.REMOVE_CONTEXT";
 		
-		/**
-		 * IN { view:View }
-		 */
-		//public static const REGISTER_VIEW		:String 	= "DisplaySignal.REGISTER_VIEW";
-		
 		
 	}
 

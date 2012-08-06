@@ -21,44 +21,56 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package test.integration.assetloader.view 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.assetloader.TestAssetManager;
-	import test.performance.signalperf.SignalPerformance;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.AssetSignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 */
-	public class MainTests extends Sprite 
+	public class BaseView extends View 
 	{
-		private var core:BixBite;
+		private var loadContextSRS		:Function;
 		
-		public function MainTests()
+		public function BaseView() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void
+		override public function init():void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			core = new BixBite(stage);
-			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
-			//Signal performance test
-			//core.register(SignalPerformance);
-			
-			// AssetManager test
-			core.register(TestAssetManager);
+			addSlot(AssetSignal.CONTEXT_LOADED		, onContextLoaded);
+			loadContextSRS = getSlotReference(AssetSignal.LOAD_CONTEXT)[0];
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @param	path
+		 * @param	async
+		 */
+		public function loadContext(name:String, path:String, async:Boolean = false):void
+		{
+			// SRS
+			signal.params = { name:name, path:path, async:async };
+			loadContextSRS(signal);
+		}
+		
+		/**
+		 * Internal abstract method
+		 * @param	s
+		 */
+		internal function onContextLoaded(s:Signal):void { }
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function destroy():void 
+		{
+			loadContextSRS 		= null;
+			super.destroy();
+		}
 	}
-
 }

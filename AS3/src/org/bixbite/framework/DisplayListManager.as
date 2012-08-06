@@ -44,12 +44,18 @@ package org.bixbite.framework
 		
 		public function DisplayListManager() 
 		{
+			
+		}
+		
+		override public function init():void 
+		{
 			register(DisplayListData);
-			register(DisplayListTransponder);
 			
 			addBehaviour(DisplaySignal.SET_CONTEXT		, DisplayListSetContext);
 			addBehaviour(DisplaySignal.ADD_CONTEXT		, DisplayListAddContext);
 			addBehaviour(DisplaySignal.REMOVE_CONTEXT	, DisplayListRemoveContext);
+			
+			register(DisplayListTransponder);
 		}
 		
 		override public function destroy():void 

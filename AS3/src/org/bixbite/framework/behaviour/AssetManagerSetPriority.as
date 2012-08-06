@@ -21,42 +21,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package org.bixbite.framework.behaviour 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.assetloader.TestAssetManager;
-	import test.performance.signalperf.SignalPerformance;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
 	 */
-	public class MainTests extends Sprite 
+	public class AssetManagerSetPriority extends Behaviour 
 	{
-		private var core:BixBite;
 		
-		public function MainTests()
+		public function AssetManagerSetPriority() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void
+		override public function execute(s:Signal):void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			core = new BixBite(stage);
-			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
-			//Signal performance test
-			//core.register(SignalPerformance);
-			
-			// AssetManager test
-			core.register(TestAssetManager);
+			trace(this, "execute");
 		}
 		
 	}

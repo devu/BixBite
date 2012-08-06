@@ -38,7 +38,7 @@ package examples.imagegallery.data
 		
 		override public function init():void 
 		{
-			trace(this, "init");
+			
 		}
 		
 	}

@@ -21,42 +21,43 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package org.bixbite.framework 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.assetloader.TestAssetManager;
-	import test.performance.signalperf.SignalPerformance;
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.behaviour.AssetManagerLoadContext;
+	import org.bixbite.framework.behaviour.AssetManagerSetPriority;
+	import org.bixbite.framework.data.AssetManagerData;
+	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.transponder.AssetManagerTransponder;
 	
 	/**
 	 * @version  compatibility - 0.6.2
-	 */
-	public class MainTests extends Sprite 
+	 * @since 0.6.2
+	 * */
+	public class AssetManager extends Compound 
 	{
-		private var core:BixBite;
 		
-		public function MainTests()
+		public function AssetManager() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void
+		override public function init():void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
+			register(AssetManagerData);
+			register(AssetManagerTransponder);
 			
-			core = new BixBite(stage);
+			addBehaviour(AssetSignal.LOAD_CONTEXT	, AssetManagerLoadContext);
+			addBehaviour(AssetSignal.SET_PRIORITY	, AssetManagerSetPriority);
+		}
+		
+		override public function destroy():void 
+		{
+			unregister(AssetManagerData);
+			unregister(AssetManagerTransponder);
 			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
-			//Signal performance test
-			//core.register(SignalPerformance);
-			
-			// AssetManager test
-			core.register(TestAssetManager);
+			removeBehaviour(AssetSignal.LOAD_CONTEXT);
+			removeBehaviour(AssetSignal.SET_PRIORITY);
 		}
 		
 	}

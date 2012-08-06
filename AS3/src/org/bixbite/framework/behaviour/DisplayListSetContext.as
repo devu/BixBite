@@ -45,10 +45,6 @@ package org.bixbite.framework.behaviour
 			var name	:String 		= s.params.name;
 			var context	:DisplayObject 	= s.params.context;
 			
-			if (!context){
-				Error("there is no context provided");
-			}
-			
 			var contextViewUID:String = s.params.viewUID;
 			context.name = name + contextViewUID;
 			

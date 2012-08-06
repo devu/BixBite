@@ -21,19 +21,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.imagegallery.view 
+package test.integration.assetloader.view 
 {
+	import flash.display.Bitmap;
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.AssetSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
+	 * 4 images 5000px x 3750px 4.27 MB to load in total
 	 */
 	public class MainView extends BaseView 
 	{
 		private var mainViewContext:Sprite;
+		private var xpos:int = 0;
 		
 		public function MainView() 
 		{
@@ -44,50 +49,41 @@ package examples.imagegallery.view
 		{
 			super.init();
 			
-			mainViewContext = new Sprite();
-			
-			setContext("mainView", mainViewContext);
+			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress)
 			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			
-			// async loading 5782ms
-			//loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
-			//loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
-			//loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
-			//loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
+			// async loading 4878ms
+			
+			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
+			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
+			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
+			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
+			
 			
 			// queue loading 13412ms
+			/*
 			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
 			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache);
 			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache);
 			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache);
-			
+			*/
 			// this is nothing to do with this or any other framework, this is how much flash loaders sucks
 		}
 		
-		override internal function onContextSet(s:Signal):void 
+		private function onProgress(s:Signal):void 
 		{
-			trace(this, "onContextSet:", s.params.name);
-			
-			mainViewContext.graphics.clear();
-			mainViewContext.graphics.beginFill(0xFF0000, 1);
-			mainViewContext.graphics.drawRect(0, 0, 200, 200);
-		}
-		
-		override internal function onContextAdded(s:Signal):void 
-		{
-			trace(this, "onContextAdded:", s.params.name);
-		}
-		
-		override internal function onContextRemoved(s:Signal):void 
-		{
-			trace(this, "onContextRemoved:", s.params.name);
+			trace("PROGRESS:: ", s.params.itemName, "TOTAL:", s.params.totalProgress , "ITEM", s.params.itemProgress );
 		}
 		
 		override internal function onContextLoaded(s:Signal):void 
 		{
 			trace(this, "onContextLoaded:", s.params.name);
-			addContext(s.params.name, "mainView");
+			var img:Bitmap = Loader(s.params.context).content as Bitmap;
+			img.x = xpos;
+			img.scaleX = img.scaleY = .02;
+			xpos += 100;
+			stage.addChild(img);
 		}
 	}
 

@@ -21,43 +21,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package org.bixbite.framework.signal 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.assetloader.TestAssetManager;
-	import test.performance.signalperf.SignalPerformance;
-	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
+	 * @version 0.6.2
+	 * @since 0.6.2
 	 */
-	public class MainTests extends Sprite 
+	public class AssetSignal 
 	{
-		private var core:BixBite;
+		/**
+		 * IN {name:String, path:String}
+		 */
+		static public const LOAD_CONTEXT			:String 	= "AssetSignal.LOAD_CONTEXT";
+		static public const SET_PRIORITY			:String 	= "AssetSignal.SET_PRIORITY";
 		
-		public function MainTests()
-		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-		
-		private function init(e:Event):void
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			core = new BixBite(stage);
-			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
-			//Signal performance test
-			//core.register(SignalPerformance);
-			
-			// AssetManager test
-			core.register(TestAssetManager);
-		}
+		/**
+		 * OUT
+		 */
+		static public const CONTEXT_LOADED			:String 	= "AssetSignal.CONTEXT_LOADED";
+		static public const CONTEXT_LOAD_PROGRESS	:String 	= "AssetSignal.CONTEXT_LOAD_PROGRESS";
+		static public const QUEUE_COMPLETED			:String 	= "AssetSignal.QUEUE_COMPLETED";
 		
 	}
 

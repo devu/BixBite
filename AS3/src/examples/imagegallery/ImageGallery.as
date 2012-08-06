@@ -27,9 +27,13 @@ package examples.imagegallery
 	import examples.imagegallery.data.ImageGalleryData;
 	import examples.imagegallery.transponder.ImageGalleryTransponder;
 	import examples.imagegallery.view.MainView;
-	import org.bixbite.framework.DisplayListManager;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
 	
 	import org.bixbite.core.Compound;
+	import org.bixbite.framework.AssetManager;
+	import org.bixbite.framework.DisplayListManager;
+	
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -45,7 +49,11 @@ package examples.imagegallery
 		
 		override public function init():void 
 		{
+			register(StageManager);
+			sendSignal(StageSignal.SET_STAGE, { align:"TL", scaleMode:"noScale" } );
+			
 			register(DisplayListManager);
+			register(AssetManager);
 			
 			register(ImageGalleryData);
 			register(ImageGalleryTransponder);
