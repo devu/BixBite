@@ -33,14 +33,14 @@ package org.bixbite.framework.data
 	import flash.utils.Dictionary;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.vo.AssetItem;
-	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.data.vo.ContextLoaderItem;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 * @since 0.6.2
 	 */
-	public class AssetManagerData extends Data 
+	public class ContextLoaderData extends Data 
 	{
 		private var loaderContext	:LoaderContext;
 		
@@ -53,15 +53,15 @@ package org.bixbite.framework.data
 		private var totalProgress	:Number = 0;
 		private var max				:int = 0;
 		
-		public function AssetManagerData()
+		public function ContextLoaderData()
 		{
 			loaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
 		}
 		
 		override public function init():void 
 		{
-			addSlot(AssetSignal.LOAD_CONTEXT	, onLoadContext);
-			addSlot(AssetSignal.SET_PRIORITY	, onSetPriority);
+			addSlot(ContextLoaderSignal.LOAD_CONTEXT	, onLoadContext);
+			addSlot(ContextLoaderSignal.SET_PRIORITY	, onSetPriority);
 		}
 		
 		private function onSetPriority(s:Signal):void
@@ -69,7 +69,7 @@ package org.bixbite.framework.data
 			var name		:String = s.params.name;
 			var priority	:String = s.params.priority;
 			
-			for each(var item:AssetItem in queue) {
+			for each(var item:ContextLoaderItem in queue) {
 				if (item.name == name) {
 					trace("detected");
 				} else {
@@ -81,18 +81,17 @@ package org.bixbite.framework.data
 		private function onLoadContext(s:Signal):void 
 		{
 			var p:Object = s.params;
-			var item:AssetItem;
+			var item:ContextLoaderItem;
 			
 			//if not in the cache
 			if (cache[p.name] == undefined){
 				
-				item = new AssetItem(p.cache, p.viewUID, p.name, p.path, p.container);
+				item = new ContextLoaderItem(p.cache, p.viewUID, p.name, p.path, p.container);
 				item.setCallbacks(onItemProgress, onItemComplete, onIOError);
 				
 				if (item.cache) cache[item.name] = item;
 				
 				if (p.async){
-					trace("async");
 					item.async = true;
 					item.load(loaderContext);
 					return
@@ -124,15 +123,15 @@ package org.bixbite.framework.data
 				max = 0;
 				totalProgress = 0;
 				
-				responseToAll(AssetSignal.QUEUE_COMPLETED);
+				responseToAll(ContextLoaderSignal.QUEUE_COMPLETED);
 			}
 		}
 		
-		private function onItemProgress(item:AssetItem, percent:Number):void
+		private function onItemProgress(item:ContextLoaderItem, percent:Number):void
 		{
 			var total:Number = totalProgress + item.percent;
 			
-			responseToAll(AssetSignal.CONTEXT_LOAD_PROGRESS, 
+			responseToAll(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, 
 			{
 				totalProgress	:Number(total / max * 100).toPrecision(4), 
 				itemName		:String(item.name),
@@ -140,7 +139,7 @@ package org.bixbite.framework.data
 			});
 		}
 		
-		private function onItemComplete(item:AssetItem):void
+		private function onItemComplete(item:ContextLoaderItem):void
 		{
 			trace(this, "asset loaded", item.name);
 			
@@ -149,11 +148,11 @@ package org.bixbite.framework.data
 				queue.shift();
 			}
 			
-			responseToAll(AssetSignal.CONTEXT_LOADED, { viewUID:item.viewUID, name:item.name, context:item.context } );
+			responseToAll(ContextLoaderSignal.CONTEXT_LOADED, { viewUID:item.viewUID, name:item.name, context:item.context } );
 			doNext();
 		}
 		
-		private function onIOError(item:AssetItem):void
+		private function onIOError(item:ContextLoaderItem):void
 		{
 			trace(this, "onIOError", item.name);
 			queue.shift();

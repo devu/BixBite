@@ -13,7 +13,7 @@ package org.bixbite.framework.data.vo
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class AssetItem 
+	public class ContextLoaderItem 
 	{
 		private var loader		:Loader;
 		public var cache		:Boolean = false;
@@ -34,7 +34,7 @@ package org.bixbite.framework.data.vo
 		public var onProgress	:Function;
 		
 		
-		public function AssetItem(cache:Boolean, viewUID:String, name:String, path:String, containerId:String) 
+		public function ContextLoaderItem(cache:Boolean, viewUID:String, name:String, path:String, containerId:String) 
 		{
 			this.cache 			= cache;
 			this.viewUID 		= viewUID;

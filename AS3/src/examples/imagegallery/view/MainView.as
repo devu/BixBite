@@ -26,7 +26,7 @@ package examples.imagegallery.view
 	import flash.display.Sprite;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
@@ -46,7 +46,7 @@ package examples.imagegallery.view
 			super.init();
 			
 			mainViewContext = new Sprite();
-			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
 			
 			setContext("mainView", mainViewContext);
 			

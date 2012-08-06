@@ -26,7 +26,7 @@ package examples.imagegallery.view
 	import flash.display.DisplayObject;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
@@ -46,15 +46,15 @@ package examples.imagegallery.view
 		
 		override public function init():void 
 		{
-			addSlot(DisplaySignal.CONTEXT_SET		, onContextSet);
-			addSlot(DisplaySignal.CONTEXT_ADDED		, onContextAdded);
-			addSlot(DisplaySignal.CONTEXT_REMOVED	, onContextRemoved);
-			addSlot(AssetSignal.CONTEXT_LOADED		, onContextLoaded);
+			addSlot(DisplaySignal.CONTEXT_SET			, onContextSet);
+			addSlot(DisplaySignal.CONTEXT_ADDED			, onContextAdded);
+			addSlot(DisplaySignal.CONTEXT_REMOVED		, onContextRemoved);
+			addSlot(ContextLoaderSignal.CONTEXT_LOADED	, onContextLoaded);
 			
 			setContextSRS 		= getSlotReference(DisplaySignal.SET_CONTEXT)[0];
 			addContextSRS 		= getSlotReference(DisplaySignal.ADD_CONTEXT)[0];
 			removeContextSRS 	= getSlotReference(DisplaySignal.REMOVE_CONTEXT)[0];
-			loadContextSRS 		= getSlotReference(AssetSignal.LOAD_CONTEXT)[0];
+			loadContextSRS 		= getSlotReference(ContextLoaderSignal.LOAD_CONTEXT)[0];
 		}
 		
 		/**

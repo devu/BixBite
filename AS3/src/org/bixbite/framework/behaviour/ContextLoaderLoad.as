@@ -27,18 +27,16 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 * @since 0.6.2
 	 */
-	public class AssetManagerLoadContext extends Behaviour 
+	public class ContextLoaderLoad extends Behaviour 
 	{
-		private var startTime:int;
-		
-		public function AssetManagerLoadContext()
+		public function ContextLoaderLoad()
 		{
 			
 		}
@@ -47,32 +45,31 @@ package org.bixbite.framework.behaviour
 		{
 			super.init();
 			
-			addResponder(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress);
-			addResponder(AssetSignal.CONTEXT_LOADED, onContextLoaded);
-			addResponder(AssetSignal.QUEUE_COMPLETED, onQueueCompleted);
+			addResponder(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addResponder(ContextLoaderSignal.CONTEXT_LOADED, onContextLoaded);
+			addResponder(ContextLoaderSignal.QUEUE_COMPLETED, onQueueCompleted);
 		}
 		
 		private function onQueueCompleted(s:Signal, data:IData):void 
 		{
-			sendSignal(AssetSignal.QUEUE_COMPLETED);
+			sendSignal(ContextLoaderSignal.QUEUE_COMPLETED);
 		}
 		
 		private function onProgress(s:Signal, data:IData):void 
 		{
-			sendSignal(AssetSignal.CONTEXT_LOAD_PROGRESS, { itemName:s.params.itemName, itemProgress:s.params.itemProgress, totalProgress:s.params.totalProgress } );
+			sendSignal(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, { itemName:s.params.itemName, itemProgress:s.params.itemProgress, totalProgress:s.params.totalProgress } );
 		}
 		
 		private function onContextLoaded(s:Signal, data:IData):void 
 		{
 			var p:Object = s.params;
 			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
-			sendSignalTo(p.viewUID, AssetSignal.CONTEXT_LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
+			sendSignalTo(p.viewUID, ContextLoaderSignal.CONTEXT_LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
 		}
 		
 		override public function execute(s:Signal):void 
 		{
-			startTime = getTimer();
-			sendRequest(AssetSignal.LOAD_CONTEXT, s.params);
+			sendRequest(ContextLoaderSignal.LOAD_CONTEXT, s.params);
 		}
 		
 	}

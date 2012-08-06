@@ -28,7 +28,7 @@ package org.bixbite.framework.signal
 	 * @version 0.6.2
 	 * @since 0.6.2
 	 */
-	public class AssetSignal 
+	public class ContextLoaderSignal 
 	{
 		/**
 		 * IN {name:String, path:String}

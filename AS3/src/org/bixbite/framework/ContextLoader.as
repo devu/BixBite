@@ -24,44 +24,46 @@ THE SOFTWARE.
 package org.bixbite.framework 
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.behaviour.AssetManagerLoadContext;
-	import org.bixbite.framework.behaviour.AssetManagerSetPriority;
-	import org.bixbite.framework.data.AssetManagerData;
-	import org.bixbite.framework.signal.AssetSignal;
-	import org.bixbite.framework.transponder.AssetManagerTransponder;
+	import org.bixbite.framework.behaviour.ContextLoaderLoad;
+	import org.bixbite.framework.behaviour.ContextLoaderSetPriority;
+	import org.bixbite.framework.data.ContextLoaderData;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+	import org.bixbite.framework.transponder.ContextLoaderTransponder;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 * @since 0.6.2
 	 * */
-	public class AssetManager extends Compound 
+	public class ContextLoader extends Compound 
 	{
 		
-		public function AssetManager() 
+		public function ContextLoader() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
+			// relies on:
 			register(DisplayListManager);
 			
-			register(AssetManagerData);
-			register(AssetManagerTransponder);
+			// module components
+			register(ContextLoaderData);
+			register(ContextLoaderTransponder);
 			
-			addBehaviour(AssetSignal.LOAD_CONTEXT	, AssetManagerLoadContext);
-			addBehaviour(AssetSignal.SET_PRIORITY	, AssetManagerSetPriority);
+			addBehaviour(ContextLoaderSignal.LOAD_CONTEXT	, ContextLoaderLoad);
+			addBehaviour(ContextLoaderSignal.SET_PRIORITY	, ContextLoaderSetPriority);
 		}
 		
 		override public function destroy():void 
 		{
 			unregister(DisplayListManager);
 			
-			unregister(AssetManagerData);
-			unregister(AssetManagerTransponder);
+			unregister(ContextLoaderData);
+			unregister(ContextLoaderTransponder);
 			
-			removeBehaviour(AssetSignal.LOAD_CONTEXT);
-			removeBehaviour(AssetSignal.SET_PRIORITY);
+			removeBehaviour(ContextLoaderSignal.LOAD_CONTEXT);
+			removeBehaviour(ContextLoaderSignal.SET_PRIORITY);
 		}
 		
 	}

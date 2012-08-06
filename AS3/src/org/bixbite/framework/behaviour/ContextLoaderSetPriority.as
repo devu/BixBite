@@ -21,34 +21,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.transponder 
+package org.bixbite.framework.behaviour 
 {
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.signal.AssetSignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
 	 * @since 0.6.2
 	 */
-	public class AssetManagerTransponder extends Transponder 
+	public class ContextLoaderSetPriority extends Behaviour 
 	{
 		
-		public function AssetManagerTransponder() 
+		public function ContextLoaderSetPriority() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function execute(s:Signal):void 
 		{
-			addSlot(AssetSignal.LOAD_CONTEXT, onLoadContext);
-			transmit(AssetSignal.SET_PRIORITY);
-		}
-		
-		private function onLoadContext(s:Signal):void 
-		{
-			s.params.viewUID = s.callerUID;
-			sendSignal(AssetSignal.LOAD_CONTEXT, s.params);
+			trace(this, "execute");
 		}
 		
 	}
