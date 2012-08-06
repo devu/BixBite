@@ -21,25 +21,56 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.integration.assetloader 
+package test.integration.contextloader.view 
 {
-	import org.bixbite.core.Compound;
-	import org.bixbite.framework.AssetManager;
-	import test.integration.assetloader.view.MainView;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
 	 */
-	public class TestAssetManager extends Compound 
+	public class BaseView extends View 
 	{
+		private var loadContextSRS		:Function;
+		
+		public function BaseView() 
+		{
+			
+		}
 		
 		override public function init():void 
 		{
-			register(AssetManager);
-			register(MainView);
+			addSlot(ContextLoaderSignal.CONTEXT_LOADED		, onContextLoaded);
+			loadContextSRS = getSlotReference(ContextLoaderSignal.LOAD_CONTEXT)[0];
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @param	path
+		 * @param	async
+		 */
+		public function loadContext(name:String, path:String, async:Boolean = false):void
+		{
+			// SRS
+			signal.params = { name:name, path:path, async:async };
+			loadContextSRS(signal);
+		}
+		
+		/**
+		 * Internal abstract method
+		 * @param	s
+		 */
+		internal function onContextLoaded(s:Signal):void { }
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function destroy():void 
+		{
+			loadContextSRS 		= null;
+			super.destroy();
+		}
 	}
-
 }

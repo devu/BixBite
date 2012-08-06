@@ -26,10 +26,7 @@ package test
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.assetloader.TestAssetManager;
-	import test.performance.signalperf.SignalPerformance;
+	import test.integration.contextloader.TestContextLoader;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -56,7 +53,7 @@ package test
 			//core.register(SignalPerformance);
 			
 			// AssetManager test
-			core.register(TestAssetManager);
+			core.register(TestContextLoader);
 		}
 		
 	}

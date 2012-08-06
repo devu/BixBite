@@ -21,14 +21,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.integration.assetloader.view 
+package test.integration.contextloader.view 
 {
 	import flash.display.Bitmap;
 	import flash.display.Loader;
 	import flash.display.Sprite;
+	import flash.utils.getTimer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.signal.AssetSignal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
@@ -39,6 +40,7 @@ package test.integration.assetloader.view
 	{
 		private var mainViewContext:Sprite;
 		private var xpos:int = 0;
+		private var startTime:int;
 		
 		public function MainView() 
 		{
@@ -49,26 +51,34 @@ package test.integration.assetloader.view
 		{
 			super.init();
 			
-			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.QUEUE_COMPLETED, onAllCompleted);
 			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			
-			// async loading 4878ms
-			
+			// async loading 5848ms
+			/*
 			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
 			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
 			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
 			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
+			*/
 			
+			// queue loading 16551ms
 			
-			// queue loading 13412ms
-			/*
 			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
 			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache);
 			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache);
 			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache);
-			*/
+			
 			// this is nothing to do with this or any other framework, this is how much flash loaders sucks
+			
+			startTime = getTimer();
+		}
+		
+		private function onAllCompleted(s:Signal):void 
+		{
+			trace("TOTAL TIME", getTimer() - startTime);
 		}
 		
 		private function onProgress(s:Signal):void 
