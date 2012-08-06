@@ -44,6 +44,8 @@ package org.bixbite.framework
 		
 		override public function init():void 
 		{
+			register(DisplayListManager);
+			
 			register(AssetManagerData);
 			register(AssetManagerTransponder);
 			
@@ -53,6 +55,8 @@ package org.bixbite.framework
 		
 		override public function destroy():void 
 		{
+			unregister(DisplayListManager);
+			
 			unregister(AssetManagerData);
 			unregister(AssetManagerTransponder);
 			

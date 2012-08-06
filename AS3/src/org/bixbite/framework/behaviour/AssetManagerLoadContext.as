@@ -65,7 +65,7 @@ package org.bixbite.framework.behaviour
 		private function onContextLoaded(s:Signal, data:IData):void 
 		{
 			var p:Object = s.params;
-			//emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
+			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
 			sendSignalTo(p.viewUID, AssetSignal.CONTEXT_LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
 		}
 		

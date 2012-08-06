@@ -49,7 +49,7 @@ package test.integration.assetloader.view
 		{
 			super.init();
 			
-			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress)
+			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress);
 			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			

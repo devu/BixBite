@@ -26,6 +26,7 @@ package examples.imagegallery.view
 	import flash.display.Sprite;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.AssetSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
@@ -45,6 +46,7 @@ package examples.imagegallery.view
 			super.init();
 			
 			mainViewContext = new Sprite();
+			addSlot(AssetSignal.CONTEXT_LOAD_PROGRESS, onProgress);
 			
 			setContext("mainView", mainViewContext);
 			
@@ -57,12 +59,18 @@ package examples.imagegallery.view
 			//loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
 			
 			// queue loading 13412ms
+			
 			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
 			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache);
 			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache);
 			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache);
 			
 			// this is nothing to do with this or any other framework, this is how much flash loaders sucks
+		}
+		
+		private function onProgress(s:Signal):void 
+		{
+			trace("PROGRESS:: ", s.params.itemName, "TOTAL:", s.params.totalProgress , "ITEM", s.params.itemProgress );
 		}
 		
 		override internal function onContextSet(s:Signal):void 

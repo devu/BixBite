@@ -39,7 +39,6 @@ package org.bixbite.utils
 		}
 		
 		/**
-		 * 
 		 * @param	object, Class to check
 		 * @param	value, Extended Class to search
 		 * @return
