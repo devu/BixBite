@@ -49,12 +49,12 @@ package examples.imagegallery.view
 			addSlot(DisplaySignal.CONTEXT_SET			, onContextSet);
 			addSlot(DisplaySignal.CONTEXT_ADDED			, onContextAdded);
 			addSlot(DisplaySignal.CONTEXT_REMOVED		, onContextRemoved);
-			addSlot(ContextLoaderSignal.CONTEXT_LOADED	, onContextLoaded);
+			addSlot(ContextLoaderSignal.LOADED			, onContextLoaded);
 			
 			setContextSRS 		= getSlotReference(DisplaySignal.SET_CONTEXT)[0];
 			addContextSRS 		= getSlotReference(DisplaySignal.ADD_CONTEXT)[0];
 			removeContextSRS 	= getSlotReference(DisplaySignal.REMOVE_CONTEXT)[0];
-			loadContextSRS 		= getSlotReference(ContextLoaderSignal.LOAD_CONTEXT)[0];
+			loadContextSRS 		= getSlotReference(ContextLoaderSignal.LOAD)[0];
 		}
 		
 		/**

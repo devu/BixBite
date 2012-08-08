@@ -41,14 +41,14 @@ package org.bixbite.framework.transponder
 		
 		override public function init():void 
 		{
-			addSlot(ContextLoaderSignal.LOAD_CONTEXT, onLoadContext);
+			addSlot(ContextLoaderSignal.LOAD, onLoadContext);
 			transmit(ContextLoaderSignal.SET_PRIORITY);
 		}
 		
 		private function onLoadContext(s:Signal):void 
 		{
 			s.params.viewUID = s.callerUID;
-			sendSignal(ContextLoaderSignal.LOAD_CONTEXT, s.params);
+			sendSignal(ContextLoaderSignal.LOAD, s.params);
 		}
 		
 	}

@@ -51,7 +51,7 @@ package org.bixbite.framework
 			register(ContextLoaderData);
 			register(ContextLoaderTransponder);
 			
-			addBehaviour(ContextLoaderSignal.LOAD_CONTEXT	, ContextLoaderLoad);
+			addBehaviour(ContextLoaderSignal.LOAD			, ContextLoaderLoad);
 			addBehaviour(ContextLoaderSignal.SET_PRIORITY	, ContextLoaderSetPriority);
 		}
 		
@@ -62,7 +62,7 @@ package org.bixbite.framework
 			unregister(ContextLoaderData);
 			unregister(ContextLoaderTransponder);
 			
-			removeBehaviour(ContextLoaderSignal.LOAD_CONTEXT);
+			removeBehaviour(ContextLoaderSignal.LOAD);
 			removeBehaviour(ContextLoaderSignal.SET_PRIORITY);
 		}
 		

@@ -78,7 +78,7 @@ package examples.hellodisplaylist.view
 		
 		private function onContextRemoved(s:Signal):void
 		{
-			trace("context of", this, "has been removed from", s.params.container);
+			trace("context of", this, "has been removed");
 			
 			context.graphics.clear();
 		}

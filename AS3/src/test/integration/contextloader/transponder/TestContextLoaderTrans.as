@@ -21,29 +21,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.framework.signal 
+package test.integration.contextloader.transponder 
 {
+	import com.greensock.loading.LoaderMax;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+	
 	/**
-	 * @langversion	3.0
-	 * @version 0.6.2
-	 * @since 0.6.2
+	 * @version  compatibility - 0.6.2
 	 */
-	public class ContextLoaderSignal 
+	public class TestContextLoaderTrans extends Transponder 
 	{
-		/**
-		 * IN {name:String, path:String}
-		 */
-		static public const LOAD				:String 	= "ContextLoaderSignal.LOAD";
-		static public const GET					:String 	= "ContextLoaderSignal.GET";
-		static public const SET_PRIORITY		:String 	= "ContextLoaderSignal.SET_PRIORITY";
 		
-		/**
-		 * OUT
-		 */
-		static public const LOADED				:String 	= "ContextLoaderSignal.LOADED";
-		static public const SKIPPED				:String 	= "ContextLoaderSignal.SKIPPED";
-		static public const ON_PROGRESS			:String 	= "ContextLoaderSignal.ON_PROGRESS";
-		static public const QUEUE_COMPLETED		:String 	= "ContextLoaderSignal.QUEUE_COMPLETED";
+		public function TestContextLoaderTrans() 
+		{
+			
+		}
+		
+		override public function init():void 
+		{
+			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
+		}
+		
+		private function onMouseDown(e:MouseEvent):void 
+		{
+			//if testing BixBite
+			sendSignal(ContextLoaderSignal.SET_PRIORITY, { name:"myImage4", priority:"highest" } );
+			
+			//if testing LoaderMax
+			//LoaderMax.prioritize("myImage4");
+		}
 		
 	}
 

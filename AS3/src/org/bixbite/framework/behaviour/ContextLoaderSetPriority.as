@@ -25,6 +25,7 @@ package org.bixbite.framework.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -40,7 +41,7 @@ package org.bixbite.framework.behaviour
 		
 		override public function execute(s:Signal):void 
 		{
-			trace(this, "execute");
+			sendRequest(ContextLoaderSignal.SET_PRIORITY, s.params);
 		}
 		
 	}

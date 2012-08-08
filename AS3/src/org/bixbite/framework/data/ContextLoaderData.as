@@ -60,7 +60,7 @@ package org.bixbite.framework.data
 		
 		override public function init():void 
 		{
-			addSlot(ContextLoaderSignal.LOAD_CONTEXT	, onLoadContext);
+			addSlot(ContextLoaderSignal.LOAD			, onLoadContext);
 			addSlot(ContextLoaderSignal.SET_PRIORITY	, onSetPriority);
 		}
 		
@@ -68,13 +68,25 @@ package org.bixbite.framework.data
 		{
 			var name		:String = s.params.name;
 			var priority	:String = s.params.priority;
+			var index		:int 	= 0;
+			
+			trace(this, "onSetPriority", name, priority);
 			
 			for each(var item:ContextLoaderItem in queue) {
 				if (item.name == name) {
-					trace("detected");
+					trace("detected", index);
+					queue.splice(0, 0, queue.splice(index, 1)[0]);
+					item.load(loaderContext);
 				} else {
+					trace("pause", index);
 					item.pause();
 				}
+				index++
+			}
+			
+			//reasume async loaders
+			for each(item in queue) {
+				if (item.async) item.load(loaderContext);
 			}
 		}
 		
@@ -88,14 +100,9 @@ package org.bixbite.framework.data
 				
 				item = new ContextLoaderItem(p.cache, p.viewUID, p.name, p.path, p.container);
 				item.setCallbacks(onItemProgress, onItemComplete, onIOError);
+				item.async = p.async;
 				
 				if (item.cache) cache[item.name] = item;
-				
-				if (p.async){
-					item.async = true;
-					item.load(loaderContext);
-					return
-				}
 				
 				queue.push(item);
 				
@@ -106,12 +113,19 @@ package org.bixbite.framework.data
 				} else {
 					max++;
 				}
+				
+				//start all async items
+				if (item.async) item.load(loaderContext);
 			}
 		}
 		
 		private function runQueue():void 
 		{
 			queue[0].load(loaderContext);
+			/*
+			for each(var item:ContextLoaderItem in queue) {
+				if (item.async) item.load(loaderContext);
+			}*/
 		}
 		
 		private function doNext():void
@@ -131,7 +145,7 @@ package org.bixbite.framework.data
 		{
 			var total:Number = totalProgress + item.percent;
 			
-			responseToAll(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, 
+			responseToAll(ContextLoaderSignal.ON_PROGRESS, 
 			{
 				totalProgress	:Number(total / max * 100).toPrecision(4), 
 				itemName		:String(item.name),
@@ -141,21 +155,18 @@ package org.bixbite.framework.data
 		
 		private function onItemComplete(item:ContextLoaderItem):void
 		{
-			trace(this, "asset loaded", item.name);
+			totalProgress += item.percent;
+			queue.shift();
 			
-			if (!item.async) {
-				totalProgress += item.percent;
-				queue.shift();
-			}
-			
-			responseToAll(ContextLoaderSignal.CONTEXT_LOADED, { viewUID:item.viewUID, name:item.name, context:item.context } );
+			responseToAll(ContextLoaderSignal.LOADED, { viewUID:item.viewUID, name:item.name, context:item.context } );
 			doNext();
 		}
 		
 		private function onIOError(item:ContextLoaderItem):void
 		{
-			trace(this, "onIOError", item.name);
 			queue.shift();
+			
+			responseToAll(ContextLoaderSignal.SKIPPED, { viewUID:item.viewUID, name:item.name } );
 			doNext();
 		}
 		

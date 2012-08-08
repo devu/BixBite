@@ -60,26 +60,26 @@ package examples
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
 			* footprint
 			*/
-			//core.register(HelloFlash);
+			core.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
 			* footprint
 			*/
-			//core.register(HelloWorld);
+			core.register(HelloWorld);
 			
 			/**
 			 * Example of DisplayListManager use
 			 */
-			//core.register(HelloDisplayList);
+			core.register(HelloDisplayList);
 			
 			/**
 			 * Example of Image Gallery
 			 */
-			core.register(ImageGallery);
-			core.sendSignal(ImageGallery.INIT, { 
-				path:"http://www.bixbite.org/immagegallery/" 
-			} );
+			//core.register(ImageGallery);
+			//core.sendSignal(ImageGallery.INIT, { 
+				//path:"http://www.bixbite.org/immagegallery/" 
+			//} );
 			
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);

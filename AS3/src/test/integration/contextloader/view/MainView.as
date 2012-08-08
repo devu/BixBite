@@ -23,6 +23,11 @@ THE SOFTWARE.
 
 package test.integration.contextloader.view 
 {
+	//import com.greensock.events.LoaderEvent;
+	//import com.greensock.loading.display.ContentDisplay;
+	//import com.greensock.loading.ImageLoader;
+	//import com.greensock.loading.LoaderMax;
+	
 	import flash.display.Bitmap;
 	import flash.display.Loader;
 	import flash.display.Sprite;
@@ -35,6 +40,7 @@ package test.integration.contextloader.view
 	/**
 	 * @version  compatibility - 0.6.2
 	 * 4 images 5000px x 3750px 4.27 MB to load in total
+	 * Tested under same real broadband performance conditions (78.86Mbps, 12ms ping), timing is the best achieved after 10 runs.
 	 */
 	public class MainView extends BaseView 
 	{
@@ -51,27 +57,44 @@ package test.integration.contextloader.view
 		{
 			super.init();
 			
-			addSlot(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.ON_PROGRESS, onProgress);
 			addSlot(ContextLoaderSignal.QUEUE_COMPLETED, onAllCompleted);
 			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			
-			// async loading 5848ms
+			loadContext("test1", "examples.swf");
+			
+			// *async loading 4535ms
+			
+			//loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
+			//loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
+			//loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
+			//loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
+			
+			// *queue loading 15250ms
 			/*
-			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
-			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
-			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
-			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
-			*/
-			
-			// queue loading 16551ms
-			
 			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
 			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache);
 			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache);
 			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache);
-			
+			*/
 			// this is nothing to do with this or any other framework, this is how much flash loaders sucks
+			
+			// *LoaderMax 7994ms
+			/*
+			var queue:LoaderMax = new LoaderMax( { name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
+			
+			//append several loaders
+			queue.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, {name:"myImage1", container:stage}) );
+			queue.append( new ImageLoader("http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, {name:"myImage2", container:stage}) );
+			queue.append( new ImageLoader("http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, {name:"myImage3", container:stage}) );
+			queue.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, {name:"myImage4", container:stage}) );
+			
+			//prioritize the loader named "myImage4"
+			
+			//start loading
+			queue.load();
+			*/
 			
 			startTime = getTimer();
 		}
@@ -89,12 +112,36 @@ package test.integration.contextloader.view
 		override internal function onContextLoaded(s:Signal):void 
 		{
 			trace(this, "onContextLoaded:", s.params.name);
-			var img:Bitmap = Loader(s.params.context).content as Bitmap;
-			img.x = xpos;
-			img.scaleX = img.scaleY = .02;
-			xpos += 100;
-			stage.addChild(img);
+			
+			if(Loader(s.params.context).content is Bitmap){
+				var img:Bitmap = Loader(s.params.context).content as Bitmap;
+				img.x = xpos;
+				img.scaleX = img.scaleY = .02;
+				xpos += 100;
+				stage.addChild(img);
+			}
+			
+			stage.addChild(Loader(s.params.context).content);
+			
 		}
+		
+		/*
+		//LoaderMax handlers
+		private function progressHandler(e:LoaderEvent):void 
+		{
+			trace("progress: " + e.target.progress);
+		}
+
+		private function completeHandler(e:LoaderEvent):void 
+		{
+			var image:ContentDisplay = LoaderMax.getContent("photo1");
+			trace(e.target + " is complete in", getTimer() - startTime);
+		}
+		 
+		private function errorHandler(e:LoaderEvent):void 
+		{
+			trace("error occured with " + e.target + ": " + e.text);
+		}*/
 	}
 
 }

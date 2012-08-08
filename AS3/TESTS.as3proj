@@ -51,6 +51,7 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\bixbite_0.2.9.swc" />
+    <element path="lib\greensock.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

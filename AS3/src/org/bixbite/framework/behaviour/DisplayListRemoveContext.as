@@ -46,8 +46,10 @@ package org.bixbite.framework.behaviour
 			var context			:DisplayObject = list[s.params.name];
 			var contextViewUID	:String = ClassUtil.retrieveUID(context);
 			
-			context.parent.removeChild(context);
-			sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_REMOVED);
+			if(context.parent){
+				context.parent.removeChild(context);
+				sendSignalTo(contextViewUID, DisplaySignal.CONTEXT_REMOVED);
+			}
 		}
 		
 	}

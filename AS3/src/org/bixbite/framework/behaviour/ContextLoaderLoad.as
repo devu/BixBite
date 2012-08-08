@@ -45,8 +45,8 @@ package org.bixbite.framework.behaviour
 		{
 			super.init();
 			
-			addResponder(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
-			addResponder(ContextLoaderSignal.CONTEXT_LOADED, onContextLoaded);
+			addResponder(ContextLoaderSignal.ON_PROGRESS, onProgress);
+			addResponder(ContextLoaderSignal.LOADED, onContextLoaded);
 			addResponder(ContextLoaderSignal.QUEUE_COMPLETED, onQueueCompleted);
 		}
 		
@@ -57,19 +57,19 @@ package org.bixbite.framework.behaviour
 		
 		private function onProgress(s:Signal, data:IData):void 
 		{
-			sendSignal(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, { itemName:s.params.itemName, itemProgress:s.params.itemProgress, totalProgress:s.params.totalProgress } );
+			sendSignal(ContextLoaderSignal.ON_PROGRESS, { itemName:s.params.itemName, itemProgress:s.params.itemProgress, totalProgress:s.params.totalProgress } );
 		}
 		
 		private function onContextLoaded(s:Signal, data:IData):void 
 		{
 			var p:Object = s.params;
 			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
-			sendSignalTo(p.viewUID, ContextLoaderSignal.CONTEXT_LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
+			sendSignalTo(p.viewUID, ContextLoaderSignal.LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
 		}
 		
 		override public function execute(s:Signal):void 
 		{
-			sendRequest(ContextLoaderSignal.LOAD_CONTEXT, s.params);
+			sendRequest(ContextLoaderSignal.LOAD, s.params);
 		}
 		
 	}

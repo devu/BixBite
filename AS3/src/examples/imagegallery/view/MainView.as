@@ -46,7 +46,7 @@ package examples.imagegallery.view
 			super.init();
 			
 			mainViewContext = new Sprite();
-			addSlot(ContextLoaderSignal.CONTEXT_LOAD_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.ON_PROGRESS, onProgress);
 			
 			setContext("mainView", mainViewContext);
 			

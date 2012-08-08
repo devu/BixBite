@@ -41,8 +41,8 @@ package test.integration.contextloader.view
 		
 		override public function init():void 
 		{
-			addSlot(ContextLoaderSignal.CONTEXT_LOADED		, onContextLoaded);
-			loadContextSRS = getSlotReference(ContextLoaderSignal.LOAD_CONTEXT)[0];
+			addSlot(ContextLoaderSignal.LOADED, onContextLoaded);
+			loadContextSRS = getSlotReference(ContextLoaderSignal.LOAD)[0];
 		}
 		
 		/**

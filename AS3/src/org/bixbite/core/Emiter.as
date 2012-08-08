@@ -75,8 +75,17 @@ package org.bixbite.core
 		 */
 		static public function startup(stage:Stage):Emiter 
 		{
-			_instance = new Emiter(stage);
+			if (!_instance)_instance = new Emiter(stage);
 			return _instance
+		}
+		
+		/**
+		 * Reference to a Singleton instance of Emiter class.
+		 * @return
+		 */
+		static public function getInstance():Emiter 
+		{
+			return _instance;
 		}
 		
 		/**
@@ -257,16 +266,6 @@ package org.bixbite.core
 			if (!channel[type]) return null
 			for each (var f:Function in channel[type]) return f();
 			return null
-		}
-		
-		/**
-		 * @private
-		 * Reference to a Singleton instance of Emiter class.
-		 * @return
-		 */
-		static public function getInstance():Emiter 
-		{
-			return _instance;
 		}
 		
 		/**
