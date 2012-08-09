@@ -70,15 +70,11 @@ package org.bixbite.framework.data
 			var priority	:String = s.params.priority;
 			var index		:int 	= 0;
 			
-			trace(this, "onSetPriority", name, priority);
-			
 			for each(var item:ContextLoaderItem in queue) {
 				if (item.name == name) {
-					trace("detected", index);
 					queue.splice(0, 0, queue.splice(index, 1)[0]);
 					item.load(loaderContext);
 				} else {
-					trace("pause", index);
 					item.pause();
 				}
 				index++
@@ -122,10 +118,6 @@ package org.bixbite.framework.data
 		private function runQueue():void 
 		{
 			queue[0].load(loaderContext);
-			/*
-			for each(var item:ContextLoaderItem in queue) {
-				if (item.async) item.load(loaderContext);
-			}*/
 		}
 		
 		private function doNext():void
@@ -162,11 +154,11 @@ package org.bixbite.framework.data
 			doNext();
 		}
 		
-		private function onIOError(item:ContextLoaderItem):void
+		private function onIOError(item:ContextLoaderItem, error:String):void
 		{
 			queue.shift();
 			
-			responseToAll(ContextLoaderSignal.SKIPPED, { viewUID:item.viewUID, name:item.name } );
+			responseToAll(ContextLoaderSignal.SKIPPED, { viewUID:item.viewUID, name:item.name, error:error } );
 			doNext();
 		}
 		

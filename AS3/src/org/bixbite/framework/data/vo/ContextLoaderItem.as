@@ -89,10 +89,10 @@ package org.bixbite.framework.data.vo
 			onComplete(this);
 		}
 		
-		private function onIOErrorHandler(e:Event):void 
+		private function onIOErrorHandler(e:IOErrorEvent):void 
 		{
 			loading = false;
-			onIOError(this);
+			onIOError(this, e.text);
 		}
 		
 	}

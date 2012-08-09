@@ -47,6 +47,7 @@ package org.bixbite.framework.behaviour
 			
 			addResponder(ContextLoaderSignal.ON_PROGRESS, onProgress);
 			addResponder(ContextLoaderSignal.LOADED, onContextLoaded);
+			addResponder(ContextLoaderSignal.SKIPPED, onContextSkipped);
 			addResponder(ContextLoaderSignal.QUEUE_COMPLETED, onQueueCompleted);
 		}
 		
@@ -57,7 +58,7 @@ package org.bixbite.framework.behaviour
 		
 		private function onProgress(s:Signal, data:IData):void 
 		{
-			sendSignal(ContextLoaderSignal.ON_PROGRESS, { itemName:s.params.itemName, itemProgress:s.params.itemProgress, totalProgress:s.params.totalProgress } );
+			sendSignal(ContextLoaderSignal.ON_PROGRESS, s.params );
 		}
 		
 		private function onContextLoaded(s:Signal, data:IData):void 
@@ -65,6 +66,11 @@ package org.bixbite.framework.behaviour
 			var p:Object = s.params;
 			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
 			sendSignalTo(p.viewUID, ContextLoaderSignal.LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
+		}
+		
+		private function onContextSkipped(s:Signal, data:IData):void 
+		{
+			sendSignal(ContextLoaderSignal.SKIPPED, s.params);
 		}
 		
 		override public function execute(s:Signal):void 

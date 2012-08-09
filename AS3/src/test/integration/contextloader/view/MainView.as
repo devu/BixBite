@@ -58,11 +58,14 @@ package test.integration.contextloader.view
 			super.init();
 			
 			addSlot(ContextLoaderSignal.ON_PROGRESS, onProgress);
+			addSlot(ContextLoaderSignal.SKIPPED, onItemSkipped);
 			addSlot(ContextLoaderSignal.QUEUE_COMPLETED, onAllCompleted);
 			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			
 			loadContext("test1", "examples.swf");
+			loadContext("test2", "videos/example.flv");
+			loadContext("test3", "images/example.jpg");
 			
 			// *async loading 4535ms
 			
@@ -70,15 +73,6 @@ package test.integration.contextloader.view
 			//loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
 			//loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
 			//loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
-			
-			// *queue loading 15250ms
-			/*
-			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
-			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache);
-			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache);
-			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache);
-			*/
-			// this is nothing to do with this or any other framework, this is how much flash loaders sucks
 			
 			// *LoaderMax 7994ms
 			/*
@@ -97,6 +91,11 @@ package test.integration.contextloader.view
 			*/
 			
 			startTime = getTimer();
+		}
+		
+		private function onItemSkipped(s:Signal):void 
+		{
+			trace("Item not loaded:", s.params.name, s.params.error)
 		}
 		
 		private function onAllCompleted(s:Signal):void 
