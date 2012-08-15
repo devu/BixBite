@@ -1,0 +1,12 @@
+﻿package org.bixbite.framework.data.vo
+{
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
+	 */
+	public class ContextLoaderQueue
+	{
+		public function ContextLoaderQueue ();
+	}
+}

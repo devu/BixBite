@@ -23,10 +23,12 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour 
 {
+	import flash.display.DisplayObject;
 	import flash.utils.getTimer;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.vo.ContextItem;
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
@@ -64,8 +66,9 @@ package org.bixbite.framework.behaviour
 		private function onContextLoaded(s:Signal, data:IData):void 
 		{
 			var p:Object = s.params;
-			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:p.context } );
-			sendSignalTo(p.viewUID, ContextLoaderSignal.LOADED, { viewUID:p.viewUID, name:p.name, context:p.context } );
+			var context:ContextItem = p.contextItem;
+			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:context } );
+			sendSignalTo(p.viewUID, ContextLoaderSignal.LOADED, { viewUID:p.viewUID, name:p.name, contextItem:p.contextItem } );
 		}
 		
 		private function onContextSkipped(s:Signal, data:IData):void 

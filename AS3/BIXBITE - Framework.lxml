@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_framework_0.6.2.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_framework_0.6.3.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Framework.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -79,6 +79,17 @@
     <string>src\examples\hellodisplaylist\view\subview.as</string>
     <string>src\examples\hellodisplaylist\view\mainview.as</string>
     <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
+    <string>src\test\integration\contextloader\testcontextloader.as</string>
+    <string>src\test\integration\contextloader\view\mainview.as</string>
+    <string>src\test\integration\contextloader\view\baseview.as</string>
+    <string>src\test\integration\contextloader\transponder\testcontextloadertrans.as</string>
+    <string>src\examples\hellodisplaylist\behaviour\oncustomsignal.as</string>
+    <string>src\examples\imagegallery\imagegallery.as</string>
+    <string>src\examples\imagegallery\view\mainview.as</string>
+    <string>src\examples\imagegallery\view\baseview.as</string>
+    <string>src\examples\imagegallery\transponder\imagegallerytransponder.as</string>
+    <string>src\examples\imagegallery\data\imagegallerydata.as</string>
+    <string>src\examples\imagegallery\behaviour\initimagegallery.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -147,6 +158,17 @@
     <string>src\examples\hellodisplaylist\view\subview.as</string>
     <string>src\examples\hellodisplaylist\view\mainview.as</string>
     <string>src\examples\hellodisplaylist\transponder\testtransponder.as</string>
+    <string>src\test\integration\contextloader\testcontextloader.as</string>
+    <string>src\test\integration\contextloader\view\mainview.as</string>
+    <string>src\test\integration\contextloader\view\baseview.as</string>
+    <string>src\test\integration\contextloader\transponder\testcontextloadertrans.as</string>
+    <string>src\examples\hellodisplaylist\behaviour\oncustomsignal.as</string>
+    <string>src\examples\imagegallery\imagegallery.as</string>
+    <string>src\examples\imagegallery\view\mainview.as</string>
+    <string>src\examples\imagegallery\view\baseview.as</string>
+    <string>src\examples\imagegallery\transponder\imagegallerytransponder.as</string>
+    <string>src\examples\imagegallery\data\imagegallerydata.as</string>
+    <string>src\examples\imagegallery\behaviour\initimagegallery.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

@@ -1,0 +1,46 @@
+﻿package org.bixbite.framework.data
+{
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
+	import flash.utils.Dictionary;
+	import org.bixbite.core.Data;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.vo.ContextLoaderItem;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
+	 */
+	public class ContextLoaderData extends Data
+	{
+		private var maxSimConnections : int;
+		private var openedConnections : int;
+		private var loaderContext : LoaderContext;
+		private var cache : Dictionary;
+		private var queues : Dictionary;
+		private var queue : Array;
+		private var inProgress : Boolean;
+		private var totalProgress : Number;
+		private var max : int;
+		private var queueLoadedIndex : int;
+		private var queueCompleteIndex : int;
+
+		public function ContextLoaderData ();
+
+		public function init () : void;
+
+		private function onLoadContext (s:Signal) : void;
+
+		private function executeQueue () : void;
+
+		private function onSetPriority (s:Signal) : void;
+
+		private function onItemProgress (item:ContextLoaderItem, percent:Number) : void;
+
+		private function onItemComplete (index:int) : void;
+
+		private function onIOError (item:ContextLoaderItem, error:String) : void;
+	}
+}

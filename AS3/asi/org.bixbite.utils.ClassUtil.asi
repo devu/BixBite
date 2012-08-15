@@ -1,5 +1,6 @@
 ﻿package org.bixbite.utils
 {
+	import flash.display.DisplayObject;
 	import flash.utils.describeType;
 
 	/**
@@ -18,5 +19,7 @@
 		 * @return
 		 */
 		public static function extendsClass (object:Class, search:String) : Boolean;
+
+		public static function retrieveUID (context:DisplayObject) : String;
 	}
 }

@@ -19,6 +19,8 @@
 
 		private function onAddContext (s:Signal) : void;
 
+		private function onRemoveContext (s:Signal) : void;
+
 		public function destroy () : void;
 	}
 }

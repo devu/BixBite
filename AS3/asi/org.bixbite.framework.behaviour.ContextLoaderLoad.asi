@@ -1,0 +1,33 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import flash.display.DisplayObject;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.vo.ContextItem;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
+	 */
+	public class ContextLoaderLoad extends Behaviour
+	{
+		public function ContextLoaderLoad ();
+
+		public function init () : void;
+
+		private function onQueueCompleted (s:Signal, data:IData) : void;
+
+		private function onProgress (s:Signal, data:IData) : void;
+
+		private function onContextLoaded (s:Signal, data:IData) : void;
+
+		private function onContextSkipped (s:Signal, data:IData) : void;
+
+		public function execute (s:Signal) : void;
+	}
+}

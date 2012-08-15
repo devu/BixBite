@@ -21,35 +21,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.integration.contextloader 
+package org.bixbite.framework.data.vo 
 {
-	import com.greensock.events.LoaderEvent;
-	import com.greensock.loading.display.ContentDisplay;
-	import com.greensock.loading.ImageLoader;
-	import com.greensock.loading.LoaderMax;
-	import flash.utils.getTimer;
-	import org.bixbite.core.Compound;
-	import org.bixbite.framework.ContextLoader;
-	import test.integration.contextloader.transponder.TestContextLoaderTrans;
-	import test.integration.contextloader.view.MainView;
-	
 	/**
 	 * @version  compatibility - 0.6.2
 	 * @since 0.6.2
-	 * 
-	 * See notes inside MainView
 	 */
-	public class TestContextLoader extends Compound 
+	public class ContextLoaderQueue 
 	{
-		private var startTime:int;
 		
-		override public function init():void 
+		public function ContextLoaderQueue() 
 		{
-			register(ContextLoader);
-			register(TestContextLoaderTrans);
 			
-			register(MainView);
 		}
+		
 	}
 
 }

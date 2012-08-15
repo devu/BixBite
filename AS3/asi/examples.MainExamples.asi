@@ -3,6 +3,7 @@
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
+	import examples.imagegallery.ImageGallery;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
@@ -11,7 +12,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.1
+	 * @version  compatibility - 0.6.2
 	 */
 	public class MainExamples extends Sprite
 	{

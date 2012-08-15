@@ -28,14 +28,14 @@ package test.integration.contextloader.view
 	//import com.greensock.loading.ImageLoader;
 	//import com.greensock.loading.LoaderMax;
 	
+	import com.greensock.events.LoaderEvent;
 	import flash.display.Bitmap;
-	import flash.display.Loader;
 	import flash.display.Sprite;
+	import flash.text.TextField;
 	import flash.utils.getTimer;
 	import org.bixbite.core.Signal;
-	import org.bixbite.core.View;
+	import org.bixbite.framework.data.vo.ContextBitmap;
 	import org.bixbite.framework.signal.ContextLoaderSignal;
-	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @version  compatibility - 0.6.2
@@ -47,6 +47,7 @@ package test.integration.contextloader.view
 		private var mainViewContext:Sprite;
 		private var xpos:int = 0;
 		private var startTime:int;
+		private var output:TextField;
 		
 		public function MainView() 
 		{
@@ -61,35 +62,56 @@ package test.integration.contextloader.view
 			addSlot(ContextLoaderSignal.SKIPPED, onItemSkipped);
 			addSlot(ContextLoaderSignal.QUEUE_COMPLETED, onAllCompleted);
 			
+			output = new TextField();
+			output.width = 300;
+			output.x = 10;
+			output.y = 300;
+			stage.addChild(output);
+			
 			var anticache:Number = Math.random() * 0xFFFFFF;
 			
+			// total 5773ms
+			
 			loadContext("test1", "examples.swf");
-			loadContext("test2", "videos/example.flv");
-			loadContext("test3", "images/example.jpg");
+			loadContext("test2", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
 			
-			// *async loading 4535ms
+			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true, "queue1");
 			
-			//loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true);
-			//loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true);
-			//loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true);
-			//loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true);
+			//this queue will reuse items from cache
+			loadContext("myImage5", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage6", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage7", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage8", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, false, "queue2");
 			
-			// *LoaderMax 7994ms
+			
+			//Same task with LoaderMax
+			// *LoaderMax 11170ms
 			/*
-			var queue:LoaderMax = new LoaderMax( { name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
+			var queue:LoaderMax = new LoaderMax( { name:"queue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
+			queue.append(new SWFLoader("examples.swf", {name:"mySwf", container:stage}));
+			queue.load();
+			
+			var queue1:LoaderMax = new LoaderMax( { name:"queue1", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
 			
 			//append several loaders
-			queue.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, {name:"myImage1", container:stage}) );
-			queue.append( new ImageLoader("http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, {name:"myImage2", container:stage}) );
-			queue.append( new ImageLoader("http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, {name:"myImage3", container:stage}) );
-			queue.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, {name:"myImage4", container:stage}) );
+			queue1.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, {name:"myImage1", container:stage}) );
+			queue1.append( new ImageLoader("http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, {name:"myImage2", container:stage}) );
+			queue1.append( new ImageLoader("http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, {name:"myImage3", container:stage}) );
+			queue1.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, {name:"myImage4", container:stage}) );
+			queue1.load();
 			
-			//prioritize the loader named "myImage4"
+			var queue2:LoaderMax = new LoaderMax( { name:"queue2", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
 			
-			//start loading
-			queue.load();
+			//append several loaders
+			queue2.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, {name:"myImage1", container:stage}) );
+			queue2.append( new ImageLoader("http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, {name:"myImage2", container:stage}) );
+			queue2.append( new ImageLoader("http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, {name:"myImage3", container:stage}) );
+			queue2.append( new ImageLoader("http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, {name:"myImage4", container:stage}) );
+			queue2.load();
 			*/
-			
 			startTime = getTimer();
 		}
 		
@@ -100,31 +122,31 @@ package test.integration.contextloader.view
 		
 		private function onAllCompleted(s:Signal):void 
 		{
-			trace("TOTAL TIME", getTimer() - startTime);
+			output.text = "TOTAL TIME: " + String(getTimer() - startTime);
 		}
 		
 		private function onProgress(s:Signal):void 
 		{
-			trace("PROGRESS:: ", s.params.itemName, "TOTAL:", s.params.totalProgress , "ITEM", s.params.itemProgress );
+			output.text = s.params.totalProgress + "%";
+			//trace("PROGRESS:: ", s.params.itemName, "TOTAL:", s.params.totalProgress , "ITEM", s.params.itemProgress );
 		}
 		
 		override internal function onContextLoaded(s:Signal):void 
 		{
-			trace(this, "onContextLoaded:", s.params.name);
+			var p:Object = s.params;
 			
-			if(Loader(s.params.context).content is Bitmap){
-				var img:Bitmap = Loader(s.params.context).content as Bitmap;
+			if(p.contextItem is ContextBitmap){
+				var img:Bitmap = p.contextItem.bitmap;
 				img.x = xpos;
 				img.scaleX = img.scaleY = .02;
 				xpos += 100;
 				stage.addChild(img);
 			}
 			
-			stage.addChild(Loader(s.params.context).content);
+			stage.addChild(p.contextItem);
 			
 		}
 		
-		/*
 		//LoaderMax handlers
 		private function progressHandler(e:LoaderEvent):void 
 		{
@@ -133,14 +155,15 @@ package test.integration.contextloader.view
 
 		private function completeHandler(e:LoaderEvent):void 
 		{
-			var image:ContentDisplay = LoaderMax.getContent("photo1");
-			trace(e.target + " is complete in", getTimer() - startTime);
+			//var image:ContentDisplay = LoaderMax.getContent("photo1");
+			output.text = "TOTAL TIME: " + String(getTimer() - startTime);
+			stage.addChild(output);
 		}
 		 
 		private function errorHandler(e:LoaderEvent):void 
 		{
 			trace("error occured with " + e.target + ": " + e.text);
-		}*/
+		}
 	}
 
 }

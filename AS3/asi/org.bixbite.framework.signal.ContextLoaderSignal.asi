@@ -1,0 +1,26 @@
+﻿package org.bixbite.framework.signal
+{
+	/**
+	 *
+	 * @langversion	3.0
+	 * @version 0.6.2
+	 * @since 0.6.2
+	 */
+	public class ContextLoaderSignal
+	{
+		/**
+		 * IN {name:String, path:String}
+		 */
+		public static const LOAD : String = "ContextLoaderSignal.LOAD";
+		public static const GET : String = "ContextLoaderSignal.GET";
+		public static const SET_PRIORITY : String = "ContextLoaderSignal.SET_PRIORITY";
+
+		/**
+		 * OUT
+		 */
+		public static const LOADED : String = "ContextLoaderSignal.LOADED";
+		public static const SKIPPED : String = "ContextLoaderSignal.SKIPPED";
+		public static const ON_PROGRESS : String = "ContextLoaderSignal.ON_PROGRESS";
+		public static const QUEUE_COMPLETED : String = "ContextLoaderSignal.QUEUE_COMPLETED";
+	}
+}

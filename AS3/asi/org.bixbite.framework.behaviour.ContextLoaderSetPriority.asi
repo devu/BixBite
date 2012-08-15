@@ -1,0 +1,18 @@
+﻿package org.bixbite.framework.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
+	 */
+	public class ContextLoaderSetPriority extends Behaviour
+	{
+		public function ContextLoaderSetPriority ();
+
+		public function execute (s:Signal) : void;
+	}
+}

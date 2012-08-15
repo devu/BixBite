@@ -1,0 +1,15 @@
+﻿package examples.imagegallery.data
+{
+	import org.bixbite.core.Data;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class ImageGalleryData extends Data
+	{
+		public function ImageGalleryData ();
+
+		public function init () : void;
+	}
+}

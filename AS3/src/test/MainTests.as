@@ -26,6 +26,8 @@ package test
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	import test.integration.contextloader.TestContextLoader;
 	
 	/**

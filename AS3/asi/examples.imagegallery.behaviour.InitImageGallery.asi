@@ -1,0 +1,17 @@
+﻿package examples.imagegallery.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class InitImageGallery extends Behaviour
+	{
+		public function InitImageGallery ();
+
+		public function execute (s:Signal) : void;
+	}
+}

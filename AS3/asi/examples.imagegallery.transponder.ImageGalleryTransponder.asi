@@ -1,0 +1,16 @@
+﻿package examples.imagegallery.transponder
+{
+	import examples.imagegallery.ImageGallery;
+	import org.bixbite.core.Transponder;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class ImageGalleryTransponder extends Transponder
+	{
+		public function ImageGalleryTransponder ();
+
+		public function init () : void;
+	}
+}

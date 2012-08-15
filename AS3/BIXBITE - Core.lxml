@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.6.2.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.6.3.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -141,6 +141,28 @@
     <string>src\org\bixbite\framework\ytplayer.as</string>
     <string>src\org\bixbite\namespaces\yt_player.as</string>
     <string>src\test\maintests.as</string>
+    <string>src\test\integration\contextloader\testcontextloader.as</string>
+    <string>src\test\integration\contextloader\view\mainview.as</string>
+    <string>src\test\integration\contextloader\view\baseview.as</string>
+    <string>src\test\integration\contextloader\transponder\testcontextloadertrans.as</string>
+    <string>src\org\bixbite\framework\behaviour\contextloaderload.as</string>
+    <string>src\org\bixbite\framework\behaviour\contextloadersetpriority.as</string>
+    <string>src\org\bixbite\framework\data\contextloaderdata.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextbitmap.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextitem.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextloaderitem.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextloaderqueue.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextsprite.as</string>
+    <string>src\org\bixbite\framework\signal\contextloadersignal.as</string>
+    <string>src\org\bixbite\framework\transponder\contextloadertransponder.as</string>
+    <string>src\org\bixbite\framework\contextloader.as</string>
+    <string>src\examples\imagegallery\imagegallery.as</string>
+    <string>src\examples\imagegallery\view\mainview.as</string>
+    <string>src\examples\imagegallery\view\baseview.as</string>
+    <string>src\examples\imagegallery\transponder\imagegallerytransponder.as</string>
+    <string>src\examples\imagegallery\data\imagegallerydata.as</string>
+    <string>src\examples\imagegallery\behaviour\initimagegallery.as</string>
+    <string>src\examples\hellodisplaylist\behaviour\oncustomsignal.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -271,6 +293,28 @@
     <string>src\org\bixbite\framework\ytplayer.as</string>
     <string>src\org\bixbite\namespaces\yt_player.as</string>
     <string>src\test\maintests.as</string>
+    <string>src\test\integration\contextloader\testcontextloader.as</string>
+    <string>src\test\integration\contextloader\view\mainview.as</string>
+    <string>src\test\integration\contextloader\view\baseview.as</string>
+    <string>src\test\integration\contextloader\transponder\testcontextloadertrans.as</string>
+    <string>src\org\bixbite\framework\behaviour\contextloaderload.as</string>
+    <string>src\org\bixbite\framework\behaviour\contextloadersetpriority.as</string>
+    <string>src\org\bixbite\framework\data\contextloaderdata.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextbitmap.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextitem.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextloaderitem.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextloaderqueue.as</string>
+    <string>src\org\bixbite\framework\data\vo\contextsprite.as</string>
+    <string>src\org\bixbite\framework\signal\contextloadersignal.as</string>
+    <string>src\org\bixbite\framework\transponder\contextloadertransponder.as</string>
+    <string>src\org\bixbite\framework\contextloader.as</string>
+    <string>src\examples\imagegallery\imagegallery.as</string>
+    <string>src\examples\imagegallery\view\mainview.as</string>
+    <string>src\examples\imagegallery\view\baseview.as</string>
+    <string>src\examples\imagegallery\transponder\imagegallerytransponder.as</string>
+    <string>src\examples\imagegallery\data\imagegallerydata.as</string>
+    <string>src\examples\imagegallery\behaviour\initimagegallery.as</string>
+    <string>src\examples\hellodisplaylist\behaviour\oncustomsignal.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

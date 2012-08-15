@@ -1,0 +1,24 @@
+﻿package org.bixbite.framework
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.framework.behaviour.ContextLoaderLoad;
+	import org.bixbite.framework.behaviour.ContextLoaderSetPriority;
+	import org.bixbite.framework.data.ContextLoaderData;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+	import org.bixbite.framework.transponder.ContextLoaderTransponder;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 * @since 0.6.2
+	 *   
+	 */
+	public class ContextLoader extends Compound
+	{
+		public function ContextLoader ();
+
+		public function init () : void;
+
+		public function destroy () : void;
+	}
+}

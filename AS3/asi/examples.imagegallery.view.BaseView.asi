@@ -1,0 +1,71 @@
+﻿package examples.imagegallery.view
+{
+	import flash.display.DisplayObject;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class BaseView extends View
+	{
+		private var setContextSRS : Function;
+		private var addContextSRS : Function;
+		private var removeContextSRS : Function;
+		private var loadContextSRS : Function;
+
+		public function BaseView ();
+
+		public function init () : void;
+
+		/**
+		 * Create context of this view and register it within DisplayListManager module
+		 * You can create multiple contexts per view.
+		 * @param	name
+		 * @param	context
+		 */
+		public function setContext (name:String, context:DisplayObject) : void;
+
+		/**
+		 *
+		 * @param	name
+		 * @param	container
+		 */
+		public function addContext (name:String, container:String) : void;
+
+		/**
+		 *
+		 * @param	name
+		 * @param	container
+		 */
+		public function removeContext (name:String) : void;
+
+		/**
+		 *
+		 * @param	name
+		 * @param	path
+		 */
+		public function loadContext (name:String, path:String, async:Boolean=false) : void;
+
+		/**
+		 * Internal abstract methods
+		 * @param	s
+		 */
+		function onContextSet (s:Signal) : void;
+
+		function onContextAdded (s:Signal) : void;
+
+		function onContextRemoved (s:Signal) : void;
+
+		function onContextLoaded (s:Signal) : void;
+
+		/**
+		 *
+		 * @inheritDoc
+		 */
+		public function destroy () : void;
+	}
+}

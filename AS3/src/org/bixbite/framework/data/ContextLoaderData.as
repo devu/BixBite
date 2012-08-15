@@ -23,11 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.framework.data 
 {
-	import flash.display.DisplayObject;
-	import flash.display.Loader;
-	import flash.events.Event;
-	import flash.events.IOErrorEvent;
-	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.Dictionary;
@@ -42,16 +37,22 @@ package org.bixbite.framework.data
 	 */
 	public class ContextLoaderData extends Data 
 	{
-		private var loaderContext	:LoaderContext;
+		private var maxSimConnections	:int = 10;
+		private var openedConnections	:int = 0;
 		
-		private var cache			:Dictionary = new Dictionary();
+		private var loaderContext		:LoaderContext;
 		
-		private var queue			:Array = [];
+		private var cache				:Dictionary = new Dictionary();
+		private var queues				:Dictionary = new Dictionary();
 		
-		private var inProgress		:Boolean = false;
+		private var queue				:Array = [];
 		
-		private var totalProgress	:Number = 0;
-		private var max				:int = 0;
+		private var inProgress			:Boolean = false;
+		
+		private var totalProgress		:Number = 0;
+		private var max					:int = 0;
+		private var queueLoadedIndex	:int = 0;
+		private var queueCompleteIndex	:int = 0;
 		
 		public function ContextLoaderData()
 		{
@@ -64,78 +65,100 @@ package org.bixbite.framework.data
 			addSlot(ContextLoaderSignal.SET_PRIORITY	, onSetPriority);
 		}
 		
-		private function onSetPriority(s:Signal):void
-		{
-			var name		:String = s.params.name;
-			var priority	:String = s.params.priority;
-			var index		:int 	= 0;
-			
-			for each(var item:ContextLoaderItem in queue) {
-				if (item.name == name) {
-					queue.splice(0, 0, queue.splice(index, 1)[0]);
-					item.load(loaderContext);
-				} else {
-					item.pause();
-				}
-				index++
-			}
-			
-			//reasume async loaders
-			for each(item in queue) {
-				if (item.async) item.load(loaderContext);
-			}
-		}
-		
 		private function onLoadContext(s:Signal):void 
 		{
 			var p:Object = s.params;
-			var item:ContextLoaderItem;
 			
 			//if not in the cache
 			if (cache[p.name] == undefined){
 				
-				item = new ContextLoaderItem(p.cache, p.viewUID, p.name, p.path, p.container);
+				var item:ContextLoaderItem = new ContextLoaderItem(max, p.queueID, p.cache, p.viewUID, p.name, p.path, p.container);
 				item.setCallbacks(onItemProgress, onItemComplete, onIOError);
-				item.async = p.async;
 				
 				if (item.cache) cache[item.name] = item;
 				
 				queue.push(item);
+				max++;
 				
-				if (!inProgress){
-					inProgress = true;
-					runQueue();
-					max = 1;
+				executeQueue();
+			} else {
+				trace("item in cache");
+			}
+		}
+		
+		private function executeQueue():void 
+		{
+			var item	:ContextLoaderItem;
+			var loaded	:int = 0;
+			openedConnections = 0;
+			
+			for each(item in queue) 
+			{
+				if (item.completed){
+					loaded++
+				} else if (item.loading){
+					openedConnections++
 				} else {
-					max++;
+					trace("load item:", item.name)
+					item.load(loaderContext);
+					openedConnections++
 				}
 				
-				//start all async items
-				if (item.async) item.load(loaderContext);
-			}
-		}
-		
-		private function runQueue():void 
-		{
-			queue[0].load(loaderContext);
-		}
-		
-		private function doNext():void
-		{
-			if (queue.length > 0){
-				runQueue();
-			} else {
-				inProgress = false;
-				max = 0;
-				totalProgress = 0;
+				if (openedConnections == maxSimConnections) return
 				
-				responseToAll(ContextLoaderSignal.QUEUE_COMPLETED);
 			}
+			
+			if (loaded == max){
+				trace("ALL COMPLETE");
+				responseToAll(ContextLoaderSignal.QUEUE_COMPLETED);
+				for each(item in queue) {
+					queue.shift();
+					item = null;
+				}
+			}
+			
+		}
+		
+		private function onSetPriority(s:Signal):void
+		{
+			var item		:ContextLoaderItem
+			var p			:Object 	= s.params;
+			var name		:String 	= p.name;
+			var priority	:String 	= p.priority;
+			var index		:int 		= 0;
+			var present		:Boolean 	= false;
+			
+			for each(item in queue) {
+				if (item.name == name) {
+					present = true;
+					break;
+				}
+			}
+			
+			if (!present) return
+			
+			for each(item in queue) {
+				if (item.name == name) {
+					queue.splice(queueCompleteIndex, 0, queue.splice(index, 1)[0]);
+					queue[queueCompleteIndex].index = 0;
+				} else {
+					item.pause();
+				}
+				
+				index++
+			}
+			
+			for (var i:int = item.index; i < max; i++) queue[i].index = i;
+			
+			executeQueue();
 		}
 		
 		private function onItemProgress(item:ContextLoaderItem, percent:Number):void
 		{
-			var total:Number = totalProgress + item.percent;
+			var total:Number = 0;
+			for each(var i:ContextLoaderItem in queue){
+				total += i.percent;
+			}
 			
 			responseToAll(ContextLoaderSignal.ON_PROGRESS, 
 			{
@@ -145,21 +168,31 @@ package org.bixbite.framework.data
 			});
 		}
 		
-		private function onItemComplete(item:ContextLoaderItem):void
+		private function onItemComplete(index:int):void
 		{
-			totalProgress += item.percent;
-			queue.shift();
+			queueLoadedIndex++;
 			
-			responseToAll(ContextLoaderSignal.LOADED, { viewUID:item.viewUID, name:item.name, context:item.context } );
-			doNext();
+			var item:ContextLoaderItem
+			for (var i:int = queueCompleteIndex; i < queueLoadedIndex; i++) {
+				item = queue[i];
+				
+				if (!item || !item.loaded) return;
+				
+				if (!item.completed) {
+					item.completed = true;
+					queueCompleteIndex++;
+					//trace("COMPLETE::ContextLoaderItem Index", i);
+					responseToAll(ContextLoaderSignal.LOADED, { viewUID:item.viewUID, name:item.name, contextItem:item.context } );
+				}
+			}
+			
+			executeQueue();
 		}
 		
 		private function onIOError(item:ContextLoaderItem, error:String):void
 		{
-			queue.shift();
-			
 			responseToAll(ContextLoaderSignal.SKIPPED, { viewUID:item.viewUID, name:item.name, error:error } );
-			doNext();
+			executeQueue();
 		}
 		
 	}

@@ -57,6 +57,12 @@
 		public static function startup (stage:Stage) : Emiter;
 
 		/**
+		 * Reference to a Singleton instance of Emiter class.
+		 * @return
+		 */
+		public static function getInstance () : Emiter;
+
+		/**
 		 *
 		 * @param	component
 		 */
@@ -172,14 +178,6 @@
 		 * @return	signal, interface of signal
 		 */
 		function getSignal (channel:Object, type:String) : Signal;
-
-		/**
-		 *
-		 * @private
-		 *   Reference to a Singleton instance of Emiter class.
-		 * @return
-		 */
-		public static function getInstance () : Emiter;
 
 		/**
 		 *

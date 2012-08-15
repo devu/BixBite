@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.2.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.3.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -46,15 +46,18 @@
     <class>org.bixbite.framework.Stats</class>
     <class>org.bixbite.framework.StageManager</class>
     <class>org.bixbite.framework.YTPlayer</class>
+    <class>org.bixbite.framework.ContextLoader</class>
     <class>org.bixbite.framework.view.StatsMonitorView</class>
     <class>org.bixbite.framework.view.YTPlayerBaseView</class>
     <class>org.bixbite.framework.signal.StatsSignal</class>
     <class>org.bixbite.framework.signal.DisplaySignal</class>
     <class>org.bixbite.framework.signal.StageSignal</class>
+    <class>org.bixbite.framework.signal.ContextLoaderSignal</class>
     <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
     <class>org.bixbite.framework.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.transponder.StageTransponder</class>
     <class>org.bixbite.framework.transponder.YTPlayerTransponder</class>
+    <class>org.bixbite.framework.transponder.ContextLoaderTransponder</class>
     <class>org.bixbite.framework.behaviour.Calculate</class>
     <class>org.bixbite.framework.behaviour.SetStage</class>
     <class>org.bixbite.framework.behaviour.ResizeStage</class>
@@ -66,11 +69,18 @@
     <class>org.bixbite.framework.behaviour.YTPlayerStatus</class>
     <class>org.bixbite.framework.behaviour.DisplayListRemoveContext</class>
     <class>org.bixbite.framework.behaviour.DisplayListSetContext</class>
+    <class>org.bixbite.framework.behaviour.ContextLoaderLoad</class>
+    <class>org.bixbite.framework.behaviour.ContextLoaderSetPriority</class>
     <class>org.bixbite.framework.data.StatsData</class>
     <class>org.bixbite.framework.data.StageData</class>
     <class>org.bixbite.framework.data.DisplayListData</class>
     <class>org.bixbite.framework.data.YTPlayerData</class>
+    <class>org.bixbite.framework.data.ContextLoaderData</class>
+    <class>org.bixbite.framework.data.vo.ContextLoaderItem</class>
+    <class>org.bixbite.framework.data.vo.ContextLoaderQueue</class>
+    <class>org.bixbite.framework.data.vo.ContextItem</class>
+    <class>org.bixbite.framework.data.vo.ContextBitmap</class>
+    <class>org.bixbite.framework.data.vo.ContextSprite</class>
     <class>org.bixbite.utils.ClassUtil</class>
-    <class>examples.hellodisplaylist.behaviour.OnCustomSignal</class>
   </include-classes>
 </flex-config>

@@ -3,6 +3,8 @@
 	import flash.display.DisplayObject;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.utils.ClassUtil;
 
 	/**
 	 *

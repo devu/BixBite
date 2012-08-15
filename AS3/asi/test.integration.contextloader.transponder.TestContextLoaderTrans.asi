@@ -1,0 +1,20 @@
+﻿package test.integration.contextloader.transponder
+{
+	import com.greensock.loading.LoaderMax;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.ContextLoaderSignal;
+
+	/**
+	 *
+	 * @version  compatibility - 0.6.2
+	 */
+	public class TestContextLoaderTrans extends Transponder
+	{
+		public function TestContextLoaderTrans ();
+
+		public function init () : void;
+
+		private function onMouseDown (e:MouseEvent) : void;
+	}
+}

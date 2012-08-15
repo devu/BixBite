@@ -1,0 +1,20 @@
+﻿package org.bixbite.framework.data.vo
+{
+	import flash.display.Bitmap;
+	import flash.display.DisplayObject;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class ContextBitmap extends ContextItem
+	{
+		public var bitmap : Bitmap;
+
+		public function set content (child:DisplayObject) : void;
+
+		public function ContextBitmap ();
+
+		public function clone () : Bitmap;
+	}
+}

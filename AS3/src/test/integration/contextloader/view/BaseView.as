@@ -51,10 +51,10 @@ package test.integration.contextloader.view
 		 * @param	path
 		 * @param	async
 		 */
-		public function loadContext(name:String, path:String, async:Boolean = false):void
+		public function loadContext(name:String, path:String, cache:Boolean = false, queueID:String = "async"):void
 		{
 			// SRS
-			signal.params = { name:name, path:path, async:async };
+			signal.params = { name:name, path:path, cache:cache, queueID:queueID };
 			loadContextSRS(signal);
 		}
 		

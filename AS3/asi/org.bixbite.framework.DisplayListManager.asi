@@ -20,6 +20,8 @@
 
 		public function DisplayListManager ();
 
+		public function init () : void;
+
 		public function destroy () : void;
 	}
 }

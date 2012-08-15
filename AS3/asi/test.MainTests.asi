@@ -5,7 +5,7 @@
 	import org.bixbite.core.BixBite;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
-	import test.performance.signalperf.SignalPerformance;
+	import test.integration.contextloader.TestContextLoader;
 
 	/**
 	 *
