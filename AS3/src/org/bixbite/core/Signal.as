@@ -30,10 +30,9 @@ package org.bixbite.core
      * Provides all necessary getters in read-only mode, and setters automatically controlled by framework.
      * In this same time helping you solve all architectural problems without referencing objects and keep your Components and Compounds completely decoupled, unaware of each other makes a perfect modular system to work with and more importantly easy to maintain.</p>
      *
-     * <p>In case you need to send more valuable informations within an signal you can use build in params array.</p>
+     * <p>In case you need to send more valuable informations within an signal you can use build in params object.</p>
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.2
      */
 	public class Signal
 	{
@@ -47,8 +46,8 @@ package org.bixbite.core
 		
 		/**
          * Unique identifier of the caller.
-         * This method will provide unique id of the Actor that sending particular signal.
-         * This will give you opportunity to respond directly to involved classes without cross-referencing them.
+         * This method will provide unique id of the Component that sending particular signal.
+         * This will give you opportunity to respond directly to the sender without cross-referencing them.
          */
 		public function get callerUID():String
 		{
@@ -65,23 +64,18 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Params Object holder getter
 		 */
-		public function get params():Object
-		{
-			return _params;
-		}
+		public function get params():Object { return _params; }
 		
 		/**
-		 * 
+		 * Params Object holder setter
 		 */
-		public function set params(params:Object):void 
-		{
-			_params = params;
-		}
+		public function set params(params:Object):void { _params = params; }
 		
 		/**
-		 * Public method to deconstruct signal
+		 * @private
+		 * system controlled method to automatically deconstruct signal
 		 */
 		BIXBITE function dispose():void
 		{

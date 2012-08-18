@@ -23,13 +23,8 @@ THE SOFTWARE.
 
 package org.bixbite.core.interfaces 
 {
-	import flash.display.Stage;
-	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes and provide access to common shared properties of all actors.
-	 * 
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public interface IComponent
 	{

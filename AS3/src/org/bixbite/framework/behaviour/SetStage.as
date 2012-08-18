@@ -28,8 +28,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.framework.signal.StageSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.5.5
+	 * @langversion	3.0
 	 */
 	public class SetStage extends Behaviour 
 	{

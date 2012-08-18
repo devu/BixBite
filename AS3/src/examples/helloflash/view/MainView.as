@@ -30,7 +30,7 @@ package examples.helloflash.view
 	import org.bixbite.core.View;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class MainView extends View 
 	{

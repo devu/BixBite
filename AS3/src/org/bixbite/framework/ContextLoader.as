@@ -31,9 +31,8 @@ package org.bixbite.framework
 	import org.bixbite.framework.transponder.ContextLoaderTransponder;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
-	 * */
+	 * @langversion	3.0
+	 */
 	public class ContextLoader extends Compound 
 	{
 		

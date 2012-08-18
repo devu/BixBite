@@ -30,8 +30,7 @@ package org.bixbite.framework.data
 	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.4.1
+	 * @langversion	3.0
 	 */
 	public class StageData extends Data
 	{

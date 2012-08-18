@@ -38,8 +38,7 @@ package test.performance.coreperf
 	
 	
 	/**
-	 * @version  compatibility - 0.5.4
-	 * @since 0.4.3
+	 * @langversion	3.0
 	 * footprint 11.0kb
 	 * 
      * Purpose of this test is to keep track on speed of MVC actor creations. Since Bixbite is self-registered system there is much more going on under the hood.

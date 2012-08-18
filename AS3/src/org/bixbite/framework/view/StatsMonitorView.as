@@ -40,10 +40,7 @@ package org.bixbite.framework.view
 	
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.4.2
-	 * 
-	 * StatsMonitor
+	 * @langversion	3.0
 	 */
 	public class StatsMonitorView extends View 
 	{

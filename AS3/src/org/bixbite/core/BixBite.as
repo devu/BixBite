@@ -30,7 +30,6 @@ package org.bixbite.core
 	
 	/**
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class BixBite
 	{
@@ -41,8 +40,8 @@ package org.bixbite.core
 		BIXBITE var emiter		:Emiter;
 		
 		BIXBITE var uid			:String;
-		
-		BIXBITE var slotsT		:Object;
+		BIXBITE var channelC	:Object;
+		BIXBITE var channelT	:Object;
 		
 		public var signal		:Signal;
 		
@@ -52,7 +51,9 @@ package org.bixbite.core
 			
 			emiter = Emiter.startup(stage);
 			
-			slotsT = emiter.slots.t;
+			channelT = emiter.slots.t;
+			channelC = emiter.slots.t;
+			
 			uid = "@" + emiter.uid;
 			signal = new Signal(uid);
 			super();
@@ -68,10 +69,16 @@ package org.bixbite.core
 			emiter.unregisterComponent(component);
 		}
 		
-		public function sendSignal(type:String, params:* = null):void
+		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slotsT, type, signal);
+			emiter.broadcast(channelT, type, signal);
+		}
+		
+		public function emitSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.broadcast(channelC, type, signal);
 		}
 	}
 

@@ -31,7 +31,7 @@ package test
 	import test.integration.contextloader.TestContextLoader;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class MainTests extends Sprite 
 	{

@@ -32,9 +32,7 @@ package org.bixbite.framework
 	import org.bixbite.namespaces.STATS;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.4.1
-	 * footprint 5.43kb (8.08kb at 0.5.5);
+	 * @langversion	3.0
 	 * 
 	 * This is fork of stats by mrdoob implemented within BixBite framework.
 	 * 

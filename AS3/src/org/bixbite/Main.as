@@ -52,9 +52,10 @@ package org.bixbite
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version 0.6.2
 	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.
@@ -89,8 +90,8 @@ package org.bixbite
 			//core.register(YTPlayer);
 			//core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
 			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
+			core.register(Stats);
+			core.sendSignal(StatsSignal.START);
 		}
 		
 		/*

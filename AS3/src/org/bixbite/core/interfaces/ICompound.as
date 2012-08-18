@@ -23,17 +23,14 @@ THE SOFTWARE.
 
 package org.bixbite.core.interfaces 
 {
-	import flash.display.Stage;
-	
-	public interface ICompound
+	/**
+	 * @langversion	3.0
+	 */
+	public interface ICompound extends IComponent
 	{
-		/**
-		 * Reference to native flash stage as an system I/O provider for your Application.
-		 * 
-		 * @langversion	3.0
-		 * @version 0.6.2
-		 */
-		//function get stage():Stage 
+		function register(component:Class):void;
+		
+		function unregister(component:Class):void;
 	}
 	
 }

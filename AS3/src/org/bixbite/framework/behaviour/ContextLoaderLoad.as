@@ -33,8 +33,7 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ContextLoaderLoad extends Behaviour 
 	{

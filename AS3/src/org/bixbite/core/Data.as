@@ -29,14 +29,12 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-     * <p>The Data component is a stateless data holder. Data can be directly requested by Atom, or strictly speaking its Behaviours.
+     * <p>The Data component is a stateless data holder. Data can be directly requested by Behaviours and only.
      * Data components can be nested aka Composite Pattern provides convenient way of sending only needed portions of requested data.</p>
      * <p>In current version of BixBite Data took the role of Signals as Value Objects. Signals are no longer VO.
-     * This way BixBite gained lot's of speed by decreasing chain of accessibility for data and avoids signal reattachments.
-     * Because former Model has been split for Atom and Data components, do not use Data component to hold any kind of business logic.</p>
+     * This way BixBite gained lot's of speed by decreasing chain of accessibility for data and avoids signal reattachments.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.2
      */
 	public class Data extends Component implements IData
 	{
@@ -108,7 +106,7 @@ package org.bixbite.core
 		 */
 		public function get stage():Stage
 		{
-			return emiter.BIXBITE::stage;
+			return emiter.stage;
 		}
 	}
 

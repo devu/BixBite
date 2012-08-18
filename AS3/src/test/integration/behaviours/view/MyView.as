@@ -30,9 +30,7 @@ package test.integration.behaviours.view
 	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.6.1
-	 * @since 0.5.0
-	 * 
+	 * @langversion	3.0
 	 */
 	public class MyView extends View 
 	{

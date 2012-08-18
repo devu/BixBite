@@ -34,10 +34,7 @@ package test.integration.contextloader
 	import test.integration.contextloader.view.MainView;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
-	 * 
-	 * See notes inside MainView
+	 * @langversion	3.0
 	 */
 	public class TestContextLoader extends Compound 
 	{

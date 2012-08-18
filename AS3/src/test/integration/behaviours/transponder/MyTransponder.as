@@ -28,8 +28,7 @@ package test.integration.behaviours.transponder
 	import test.integration.behaviours.BehaviourFlow;
 	
 	/**
-	 * @version  compatibility - 0.5.4
-	 * @since 0.5.0
+	 * @langversion	3.0
 	 */
 	public class MyTransponder extends Transponder 
 	{

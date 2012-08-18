@@ -25,8 +25,6 @@ package org.bixbite.framework.signal
 {
 	/**
 	 * @langversion	3.0
-	 * @version 0.6.2
-	 * @since 0.6.0
 	 */
 	public class DisplaySignal 
 	{

@@ -9,8 +9,7 @@ package test.integration.loaded
 	import flash.system.SecurityDomain;
 	
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 * @langversion	3.0
 	 */
 	public class MainLoader extends Sprite 
 	{

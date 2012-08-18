@@ -29,7 +29,7 @@ package test.performance.signalperf.transponder
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class TestTransponder extends Transponder 
 	{

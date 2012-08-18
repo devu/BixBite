@@ -31,7 +31,7 @@ package examples.hellodisplaylist
 	import org.bixbite.framework.DisplayListManager;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class HelloDisplayList extends Compound 
 	{

@@ -42,7 +42,6 @@ package org.bixbite.core
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class Compound extends Component implements ICompound
 	{
@@ -55,14 +54,9 @@ package org.bixbite.core
 			if (Object(this).constructor == Compound) throw new Error("Abstract Class");
 		}
 		
-		override public function init():void 
-		{
-			
-		}
-		
 		/**
 		 * 
-		 * @param	compound
+		 * @param	component
 		 */
 		public function register(component:Class):void
 		{
@@ -79,8 +73,8 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Add Behaviour into your Atom. 
-		 * Atom implementation does't exist. It's only contractual and virtual name convention. It has been build into Compound for performance reason.
+		 * Add Behaviour into your Compound to controll business logic of your module 
+		 * 
 		 * @param	type
 		 * @param	behaviour
 		 * @param	autoDispose, dispose your Behaviour after being executed first time.
@@ -115,8 +109,14 @@ package org.bixbite.core
 			emiter.broadcast(slots.t, type, signal);
 		}
 		
+		/**
+		 * deconstructor
+		 */
 		override public function destroy():void 
 		{
+			for each(var behaviour:Behaviour in behaviours) {
+				behaviour.dispose();
+			}
 			behaviours = null;
 			super.destroy();
 		}

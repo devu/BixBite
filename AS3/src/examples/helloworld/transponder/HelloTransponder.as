@@ -31,7 +31,7 @@ package examples.helloworld.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 * 
      * This Trasponder will detect if any text field has been clicked.
      * If so, will send signal demands to change the copy.

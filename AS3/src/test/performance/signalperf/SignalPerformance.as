@@ -30,8 +30,7 @@ package test.performance.signalperf
 	import test.performance.signalperf.view.TestView;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.4.2
+	 * @langversion	3.0
 	 * footprint 10.0kb
 	 * 
 	 * Subject of this test is to check performance of the current BixBite signal flow implementation.

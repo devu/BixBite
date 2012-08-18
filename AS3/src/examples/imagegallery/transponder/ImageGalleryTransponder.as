@@ -27,7 +27,7 @@ package examples.imagegallery.transponder
 	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ImageGalleryTransponder extends Transponder 
 	{

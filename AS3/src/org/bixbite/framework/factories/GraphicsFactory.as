@@ -26,8 +26,7 @@ package org.bixbite.framework.factories
 	import flash.display.Graphics;
 	
 	/**
-	 * @version 0.6.2
-	 * @since 0.5.5
+	 * @langversion	3.0
 	 */
 	public class GraphicsFactory
 	{

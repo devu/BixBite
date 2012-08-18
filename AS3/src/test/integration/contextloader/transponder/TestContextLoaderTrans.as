@@ -29,7 +29,7 @@ package test.integration.contextloader.transponder
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class TestContextLoaderTrans extends Transponder 
 	{
@@ -48,6 +48,7 @@ package test.integration.contextloader.transponder
 		{
 			//if testing BixBite
 			sendSignal(ContextLoaderSignal.SET_PRIORITY, { name:"myImage4", priority:"highest" } );
+			removeSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
 			
 			//if testing LoaderMax
 			//LoaderMax.prioritize("myImage4");

@@ -32,10 +32,7 @@ package org.bixbite.framework
 	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.5.0
-	 * 
-	 * footprint 2.15kb (8.73kb at 0.5.5);
+	 * @langversion	3.0
 	 */
 	public class StageManager extends Compound
 	{

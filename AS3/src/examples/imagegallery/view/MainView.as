@@ -30,7 +30,7 @@ package examples.imagegallery.view
 	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class MainView extends BaseView 
 	{

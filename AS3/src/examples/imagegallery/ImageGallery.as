@@ -34,7 +34,7 @@ package examples.imagegallery
 	import org.bixbite.framework.StageManager;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ImageGallery extends Compound 
 	{

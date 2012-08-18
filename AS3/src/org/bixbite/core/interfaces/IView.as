@@ -23,13 +23,8 @@ THE SOFTWARE.
 
 package org.bixbite.core.interfaces 
 {
-	import flash.display.DisplayObjectContainer;
-	
 	/**
-	 * Primary reason for this interface is for polymorphism purposes.
-	 * 
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public interface IView extends IComponent
 	{

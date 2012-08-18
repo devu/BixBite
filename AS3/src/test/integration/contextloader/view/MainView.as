@@ -38,8 +38,7 @@ package test.integration.contextloader.view
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * 4 images 5000px x 3750px 4.27 MB to load in total
+	 * @langversion	3.0
 	 * Tested under same real broadband performance conditions (78.86Mbps, 12ms ping), timing is the best achieved after 10 runs.
 	 */
 	public class MainView extends BaseView 
@@ -73,18 +72,18 @@ package test.integration.contextloader.view
 			// total 5773ms
 			
 			loadContext("test1", "examples.swf");
-			loadContext("test2", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache);
+			loadContext("test2", "http://bixbite.org/images/test1.jpg?cache=" + anticache);
 			
-			loadContext("myImage1", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, true, "queue1");
-			loadContext("myImage2", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, true, "queue1");
-			loadContext("myImage3", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, true, "queue1");
-			loadContext("myImage4", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage1", "http://bixbite.org/images/test1.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage2", "http://bixbite.org/images/test2.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage3", "http://bixbite.org/images/test3.jpg?cache=" + anticache, true, "queue1");
+			loadContext("myImage4", "http://bixbite.org/images/test4.jpg?cache=" + anticache, true, "queue1");
 			
 			//this queue will reuse items from cache
-			loadContext("myImage5", "http://www.psdgraphics.com/file/abstract-background.jpg?cache=" + anticache, false, "queue2");
-			loadContext("myImage6", "http://abstractwallpapers.biz/wp-content/uploads/2012/04/blue-wallpaper.jpg?cache=" + anticache, false, "queue2");
-			loadContext("myImage7", "http://torimartin.com/wp-content/uploads/2010/11/abstract-light.jpg?cache=" + anticache, false, "queue2");
-			loadContext("myImage8", "http://www.psdgraphics.com/file/abstract-rings-background.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage5", "http://bixbite.org/images/test1.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage6", "http://bixbite.org/images/test2.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage7", "http://bixbite.org/images/test3.jpg?cache=" + anticache, false, "queue2");
+			loadContext("myImage8", "http://bixbite.org/images/test4.jpg?cache=" + anticache, false, "queue2");
 			
 			
 			//Same task with LoaderMax

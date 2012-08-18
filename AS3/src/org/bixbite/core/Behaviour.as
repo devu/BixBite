@@ -28,14 +28,13 @@ package org.bixbite.core
 	use namespace BIXBITE;
 	
 	/**
-	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Atom in response to stimuli, such as user input (Transponder). 
+	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Compound in response to stimuli, such as user input (Transponder) or other Behaviours. 
 	 * Also, "a behavior" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
-	 * In BixBite Behaviours can broadcast signals only to Views in Multi-cast and Signle-Cast mode. 
+	 * In BixBite Behaviours can broadcast signals to Views in Multi-cast and Signle-Cast mode.
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
-	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
+	 * Built in to Compound are the only bridge between application Data and View components.
 	 * 
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class Behaviour 
 	{

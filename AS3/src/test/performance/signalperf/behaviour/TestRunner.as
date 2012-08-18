@@ -28,7 +28,7 @@ package test.performance.signalperf.behaviour
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class TestRunner extends Behaviour 
 	{

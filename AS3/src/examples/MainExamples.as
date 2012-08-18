@@ -34,7 +34,7 @@ package examples
 	import org.bixbite.framework.Stats;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class MainExamples extends Sprite
 	{

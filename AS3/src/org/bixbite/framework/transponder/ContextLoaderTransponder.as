@@ -28,8 +28,7 @@ package org.bixbite.framework.transponder
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ContextLoaderTransponder extends Transponder 
 	{

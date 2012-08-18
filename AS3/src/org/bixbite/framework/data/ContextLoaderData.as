@@ -24,7 +24,9 @@ THE SOFTWARE.
 package org.bixbite.framework.data 
 {
 	import flash.system.ApplicationDomain;
+	import flash.system.SecurityDomain;
 	import flash.system.LoaderContext;
+	import flash.system.Security;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
@@ -32,8 +34,7 @@ package org.bixbite.framework.data
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ContextLoaderData extends Data 
 	{
@@ -53,10 +54,18 @@ package org.bixbite.framework.data
 		private var max					:int = 0;
 		private var queueLoadedIndex	:int = 0;
 		private var queueCompleteIndex	:int = 0;
+		private var isLocal:Boolean;
 		
 		public function ContextLoaderData()
 		{
-			loaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+			isLocal = new RegExp("file://").test(stage.loaderInfo.url);
+			
+			if (isLocal){
+				loaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+			} else {
+				Security.loadPolicyFile("www.bixbite.org/crossdomain.xml");
+				loaderContext = new LoaderContext(false, ApplicationDomain.currentDomain, SecurityDomain.currentDomain);
+			}
 		}
 		
 		override public function init():void 

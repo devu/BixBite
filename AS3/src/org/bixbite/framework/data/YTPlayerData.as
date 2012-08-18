@@ -34,8 +34,7 @@ package org.bixbite.framework.data
 	import org.bixbite.framework.YTPlayer;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.1
+	 * @langversion	3.0
 	 */
 	public class YTPlayerData extends Data 
 	{
@@ -90,7 +89,6 @@ package org.bixbite.framework.data
 				loader = null;
 				return;
 			}
-			trace("loaded anyway")
 			
 			player = loader.content;
 			player.mouseEnabled = false;

@@ -26,7 +26,7 @@ package examples.imagegallery.data
 	import org.bixbite.core.Data;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ImageGalleryData extends Data 
 	{

@@ -27,13 +27,12 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * <p>The Component is a abstract base class for View, Transporder and Data components</p>
+	 * <p>The Component is a abstract base class for all actors of CDTV Compound pattern, Compound, Data, Transporder and View components</p>
 	 * 
 	 * <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
 	 * As well as provide set of commonly shared methods for communication</p>
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class Component implements IComponent
 	{
@@ -98,8 +97,6 @@ package org.bixbite.core
 		 */
 		public function destroy():void
 		{
-			//trace("Destroy", this);
-			
 			emiter 	= null;
 			
 			signal.BIXBITE::dispose();

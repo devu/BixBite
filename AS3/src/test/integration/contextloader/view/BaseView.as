@@ -28,7 +28,7 @@ package test.integration.contextloader.view
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class BaseView extends View 
 	{

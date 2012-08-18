@@ -30,7 +30,7 @@ package examples.helloflash
 	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class HelloFlash extends Compound 
 	{

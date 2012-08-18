@@ -30,7 +30,7 @@ package examples.helloworld
 	import org.bixbite.core.Compound;
 	
 	/**
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 */
 	public class HelloWorld extends Compound 
 	{

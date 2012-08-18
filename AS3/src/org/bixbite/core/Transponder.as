@@ -33,10 +33,9 @@ package org.bixbite.core
 	/**
      * <p>The Transponder is a abstract class that emits an identifying signal in response to an interrogating received signals.</p>
      * <p>In computer science interrogate means transmit a signal for setting off an appropriate response.
-     * Handles mouse and keyboard inputs from the user, mediator between Views and Atom.</p>
+     * Handles mouse and keyboard inputs from the user, mediator between Views and Behaviours.</p>
      * 
 	 * @langversion	3.0
-	 * @version 0.6.2
      */
 	public class Transponder extends Component implements ITransponder 
 	{
@@ -74,8 +73,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
-		 * TODO - test with multiple compounds if all atoms can recieve same signal from one Transponder.
+		 * Multicast (one-to-many) method to broadcast signals on Compound communication channel.
 		 * @param	type
 		 * @param	params
 		 */
@@ -86,7 +84,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Multicast (one-to-many) method to broadcast signals on its own communication channel.
 		 * @param	type
 		 */
 		public function transmit(type:String):void
@@ -165,6 +163,11 @@ package org.bixbite.core
 			return stage.getObjectsUnderPoint(p);
 		}
 		
+		/**
+		 * 
+		 * @param	uid
+		 * @return
+		 */
 		public function getDisplayObjectByUID(uid:String):DisplayObject
 		{
 			var a:Array;
@@ -175,6 +178,11 @@ package org.bixbite.core
 			return null
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @return
+		 */
 		public function getDisplayObjectByName(name:String):DisplayObject
 		{
 			var a:Array;
@@ -186,6 +194,11 @@ package org.bixbite.core
 			return null
 		}
 		
+		/**
+		 * 
+		 * @param	object
+		 * @return
+		 */
 		public function getDisplayObjectByType(object:Class):Boolean
 		{
 			for each(var o:Object in getDisplayObjects()){
@@ -195,6 +208,11 @@ package org.bixbite.core
 			return false;
 		}
 		
+		/**
+		 * 
+		 * @param	object
+		 * @return
+		 */
 		public function getDisplayObjectName(object:Object):String
 		{
 			return (object.name) ? object.name.split("@")[0] : null;

@@ -32,8 +32,7 @@ package org.bixbite.framework.data
 	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.0
+	 * @langversion	3.0
 	 */
 	public class DisplayListData extends Data 
 	{
