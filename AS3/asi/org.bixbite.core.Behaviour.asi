@@ -3,13 +3,12 @@
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
-	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Atom in response to stimuli, such as user input (Transponder). 
+	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Compound in response to stimuli, such as user input (Transponder) or other Behaviours. 
 	 * Also, "a behavior" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
-	 * In BixBite Behaviours can broadcast signals only to Views in Multi-cast and Signle-Cast mode. 
+	 * In BixBite Behaviours can broadcast signals to Views in Multi-cast and Signle-Cast mode.
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
-	 * They are part of Atom build in to Compond and the only bridge between application Data and View components.
+	 * Built in to Compound are the only bridge between application Data and View components.
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class Behaviour
 	{
@@ -23,13 +22,20 @@
 
 		public function Behaviour ();
 
-		function initialise (emiter:Emiter, type:String, slots:Object, compound:Compound) : void;
+		/**
+		 * System controlled Internal emthod to initialise behaviour
+		 * @param	emiter
+		 * @param	type
+		 * @param	slots
+		 * @param	compound
+		 */
+		function __initialise (emiter:Emiter, type:String, slots:Object, compound:Compound) : void;
 
 		/**
-		 * Internal pre-execute method.
+		 * System controlled Internal pre-execute method.
 		 * @param	s
 		 */
-		function exe (s:Signal) : void;
+		function __exe (s:Signal) : void;
 
 		/**
 		 * Abstract method to perform initial preparation before execute() is triggered.
@@ -43,13 +49,13 @@
 		public function execute (s:Signal) : void;
 
 		/**
-		 *
-		 * @param	compound
+		 * Proxy method for behaviour to register any component within belonging Compound
+		 * @param	component
 		 */
 		public function register (component:Class) : void;
 
 		/**
-		 *
+		 * Proxy method for behaviour to unregister any component from belonging Compound
 		 * @param	component
 		 */
 		public function unregister (component:Class) : void;
@@ -68,13 +74,13 @@
 		public function addResponder (type:String, callback:Function, autoRequest:Boolean=false) : void;
 
 		/**
-		 *
+		 * Remove responder by signal type
 		 * @param	object
 		 */
 		public function removeResponder (type:String) : void;
 
 		/**
-		 * Request data component by type.
+		 * Request data component by signal type.
 		 * @param	type
 		 */
 		public function sendRequest (type:String, params:Object=null) : void;

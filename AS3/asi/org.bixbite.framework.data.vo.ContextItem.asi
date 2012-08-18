@@ -5,8 +5,8 @@
 	import flash.display.Sprite;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @langversion	3.0
 	 */
 	public class ContextItem extends Sprite
 	{

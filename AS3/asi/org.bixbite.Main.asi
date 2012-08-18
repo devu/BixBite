@@ -3,16 +3,16 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
 
 	/**
-	 *
-	 * @version 0.6.2
-	 *   
-	 *     Main BixBite frmework document class for development purposes.
-	 *   Contains a core of the framework.
-	 *   
-	 *     footprint 2.92kb
-	 *   
+	 * 
+	 * Main BixBite frmework document class for development purposes.
+	 * Contains a core of the framework.
+	 * 
+	 *   footprint 2.92kb
+	 * 
 	 */
 	public class Main extends Sprite
 	{

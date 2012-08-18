@@ -8,14 +8,14 @@
 	/**
 	 *
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class BixBite
 	{
 		public static var instance : BixBite;
 		var emiter : Emiter;
 		var uid : String;
-		var slotsT : Object;
+		var channelC : Object;
+		var channelT : Object;
 		public var signal : Signal;
 
 		public function BixBite (stage:Stage);
@@ -24,6 +24,8 @@
 
 		public function unregister (component:Class) : void;
 
-		public function sendSignal (type:String, params:*=null) : void;
+		public function sendSignal (type:String, params:Object=null) : void;
+
+		public function emitSignal (type:String, params:Object=null) : void;
 	}
 }

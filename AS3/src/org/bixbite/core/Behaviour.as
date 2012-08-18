@@ -25,8 +25,6 @@ package org.bixbite.core
 {
 	import org.bixbite.namespaces.BIXBITE;
 	
-	use namespace BIXBITE;
-	
 	/**
 	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Compound in response to stimuli, such as user input (Transponder) or other Behaviours. 
 	 * Also, "a behavior" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
@@ -38,6 +36,8 @@ package org.bixbite.core
 	 */
 	public class Behaviour 
 	{
+		use namespace BIXBITE;
+		
 		public var signal		:Signal;
 		public var remove		:Function;
 		
@@ -52,6 +52,13 @@ package org.bixbite.core
 			
 		}
 		
+		/**
+		 * System controlled Internal emthod to initialise behaviour
+		 * @param	emiter
+		 * @param	type
+		 * @param	slots
+		 * @param	compound
+		 */
 		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object, compound:Compound):void
 		{
 			this.emiter 		= emiter;
@@ -66,7 +73,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Internal pre-execute method.
+		 * System controlled Internal pre-execute method.
 		 * @param	s
 		 */
 		BIXBITE function exe(s:Signal):void
@@ -93,8 +100,8 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
-		 * @param	compound
+		 * Proxy method for behaviour to register any component within belonging Compound
+		 * @param	component
 		 */
 		public function register(component:Class):void
 		{
@@ -102,7 +109,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Proxy method for behaviour to unregister any component from belonging Compound
 		 * @param	component
 		 */
 		public function unregister(component:Class):void
@@ -140,7 +147,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Remove responder by signal type
 		 * @param	object
 		 */
 		public function removeResponder(type:String):void 
@@ -149,7 +156,7 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Request data component by type.
+		 * Request data component by signal type.
 		 * @param	type
 		 */
 		public function sendRequest(type:String, params:Object = null):void

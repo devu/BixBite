@@ -4,8 +4,8 @@
 	import flash.display.DisplayObject;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @langversion	3.0
 	 */
 	public class ContextBitmap extends ContextItem
 	{

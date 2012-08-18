@@ -11,8 +11,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.2
-	 *   4 images 5000px x 3750px 4.27 MB to load in total
+	 * @langversion	3.0
 	 *   Tested under same real broadband performance conditions (78.86Mbps, 12ms ping), timing is the best achieved after 10 runs.
 	 */
 	public class MainView extends BaseView

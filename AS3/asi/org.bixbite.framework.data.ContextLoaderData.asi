@@ -1,7 +1,9 @@
 ﻿package org.bixbite.framework.data
 {
 	import flash.system.ApplicationDomain;
+	import flash.system.SecurityDomain;
 	import flash.system.LoaderContext;
+	import flash.system.Security;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
@@ -10,8 +12,7 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.2
-	 * @since 0.6.2
+	 * @langversion	3.0
 	 */
 	public class ContextLoaderData extends Data
 	{
@@ -26,6 +27,7 @@
 		private var max : int;
 		private var queueLoadedIndex : int;
 		private var queueCompleteIndex : int;
+		private var isLocal : Boolean;
 
 		public function ContextLoaderData ();
 

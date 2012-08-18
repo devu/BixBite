@@ -28,8 +28,16 @@ package org.bixbite.core.interfaces
 	 */
 	public interface ICompound extends IComponent
 	{
+		/**
+		 * Register any component within current compound
+		 * @param	component
+		 */
 		function register(component:Class):void;
 		
+		/**
+		 * Unregister any component from current compound
+		 * @param	component
+		 */
 		function unregister(component:Class):void;
 	}
 	

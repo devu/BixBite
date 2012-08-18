@@ -17,7 +17,6 @@
 	 * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
 	 * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
 	 * @langversion	3.0
-	 * @version 0.6.2
 	 */
 	public class Compound extends Component implements ICompound
 	{
@@ -25,11 +24,9 @@
 
 		public function Compound ();
 
-		public function init () : void;
-
 		/**
 		 *
-		 * @param	compound
+		 * @param	component
 		 */
 		public function register (component:Class) : void;
 
@@ -40,8 +37,7 @@
 		public function unregister (component:Class) : void;
 
 		/**
-		 * Add Behaviour into your Atom. 
-		 * Atom implementation does't exist. It's only contractual and virtual name convention. It has been build into Compound for performance reason.
+		 * Add Behaviour into your Compound to controll business logic of your module
 		 * @param	type
 		 * @param	behaviour
 		 * @param	autoDispose, dispose your Behaviour after being executed first time.
@@ -61,6 +57,9 @@
 		 */
 		public function sendSignal (type:String, params:Object=null) : void;
 
+		/**
+		 * deconstructor
+		 */
 		public function destroy () : void;
 	}
 }

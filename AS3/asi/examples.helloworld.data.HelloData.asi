@@ -6,10 +6,10 @@
 
 	/**
 	 *
-	 * @version  compatibility - 0.6.2
+	 * @langversion	3.0
 	 *   
-	 *     This Data component is a copy holder that will reponse to Compound on reqest being sent from Behaviour data.
-	 *   Data component don't care who is calling, will respond as soon as a signal has been recieved.
+	 *     This Data component is a copy holder that will reponse to Compound on request being sent from Behaviour.
+	 *   Data component doesn't care who is calling, will respond as soon as a signal has been recieved.
 	 *   
 	 *     The main purpose od the Data component is to react on specific signal from Behaviour and response with Data set that provides.
 	 */
