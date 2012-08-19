@@ -110,6 +110,17 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * 
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.broadcast(slots.c, type, signal);
+		}
+		
+		/**
 		 * deconstructor
 		 */
 		override public function destroy():void 

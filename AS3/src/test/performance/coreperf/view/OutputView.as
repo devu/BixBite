@@ -21,46 +21,45 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test 
+package test.performance.coreperf.view 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
-	import test.integration.contextloader.TestContextLoader;
-	import test.performance.coreperf.CorePerformance;
-	import test.performance.signalperf.SignalPerformance;
+	import flash.text.TextField;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class MainTests extends Sprite 
+	public class OutputView extends View 
 	{
-		private var core:BixBite;
+		private var output		:TextField;
+		private var outputData	:Array;
 		
-		public function MainTests()
+		public function OutputView() 
 		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
-		private function init(e:Event):void
+		override public function init():void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
+			output = new TextField(); 
+			output.y = 100;
+			output.autoSize = "left";
+			stage.addChild(output);
 			
-			core = new BixBite(stage);
+			outputData = [];
 			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
+			addSlot("traceOutput", onTraceOutput);
+		}
+		
+		private function onTraceOutput(s:Signal):void 
+		{
+			outputData[s.params.id] = s.params;
+			output.text = "";
 			
-			//Signal performance test
-			//core.register(SignalPerformance);
-			
-			//Core performance test
-			core.register(CorePerformance);
-			
-			// AssetManager test
-			//core.register(TestContextLoader);
+			for each(var data:Object in outputData){
+				output.appendText(data.row + "\n");
+			}
 		}
 		
 	}

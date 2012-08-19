@@ -25,7 +25,6 @@ package org.bixbite.core
 {
 	import flash.display.Stage;
 	import flash.system.System;
-	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
@@ -94,15 +93,13 @@ package org.bixbite.core
 		 */
 		BIXBITE function registerComponent(component:Class, referal:Compound = null ):void
 		{
-			var type:String = describeType(component).@name;
-			
-			if (components[type] != null) {
-				components[type].copies++;
+			if (components[component] != null) {
+				components[component].copies++;
 				return
 			}
 			
 			var c:Component = new component();
-			components[type] = c;
+			components[component] = c;
 		}
 		
 		/**
@@ -111,21 +108,19 @@ package org.bixbite.core
 		 */
 		BIXBITE function unregisterComponent(component:Class, referal:Compound = null):void 
 		{
-			var type:String = describeType(component).@name;
+			if (!components[component]) return;
 			
-			if (!components[type]) return;
-			
-			if (components[type].copies > 0) {
-				components[type].copies--;
+			if (components[component].copies > 0) {
+				components[component].copies--;
 				return
 			}
 			
-			var uid:String = components[type].uid;
+			var uid:String = components[component].uid;
 			
-			components[type].destroy();
-			components[type] = null;
+			components[component].destroy();
+			components[component] = null;
 			
-			delete components[type];
+			delete components[component];
 		}
 		
 		/**

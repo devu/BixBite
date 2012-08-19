@@ -21,24 +21,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.coreperf.transponder 
+package test.performance.coreperf.behaviour 
 {
-	import org.bixbite.core.Transponder;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class Tester extends Transponder 
+	public class TraceOutput extends Behaviour 
 	{
 		
-		public function Tester() 
+		public function TraceOutput() 
 		{
 			
 		}
 		
-		override public function init():void 
+		override public function execute(s:Signal):void 
 		{
-			
+			sendSignal("traceOutput", s.params);
 		}
 		
 	}
