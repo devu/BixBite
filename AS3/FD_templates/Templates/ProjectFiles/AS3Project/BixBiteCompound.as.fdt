@@ -1,6 +1,6 @@
 /**The MIT License
 
-@copy (c) 2012 Devu Design Limited, @author $(DefaultUser)
+@copy (c) 2012 Devu Design Limited, $(DefaultUser)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,26 +23,23 @@ THE SOFTWARE.
 
 package $(Package) $(CSLB){
 	
-	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Compound;
 	import org.bixbite.core.Signal;
 	
 	/**
 	$(CBI)* ...
 	$(CBI)* @langversion 3.0
 	$(CBI)*/
-	public class $(FileName) extends Behaviour $(CSLB){
+	public class $(FileName) extends Compound $(CSLB){
 		
 		override public function init():void $(CSLB){
+			trace(this, "init");
 			$(EntryPoint)
 		}
 		
-		override public function execute(s:Signal):void $(CSLB){
-			
-		}
-		
-		override public function dispose():void $(CSLB){
+		override public function destroy():void $(CSLB){
 			//clean up this class here and then:
-			super.dispose();
+			super.destroy();
 		}
 		
 	}

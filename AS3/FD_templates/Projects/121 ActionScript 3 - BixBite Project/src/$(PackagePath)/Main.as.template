@@ -21,24 +21,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package $(Package) $(CSLB){
-	
-	import org.bixbite.core.Transponder;
+package $(PackageName)$(CSLB){
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
 	
 	/**
 	$(CBI)* ...
 	$(CBI)* @langversion 3.0
 	$(CBI)*/
-	public class $(FileName) extends Transponder $(CSLB){
+	public class Main extends Sprite $(CSLB){
 		
-		override public function init():void $(CSLB){
-			trace(this, "init");
-			$(EntryPoint)
+		public function Main():void $(CSLB){
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		override public function destroy():void $(CSLB){
-			//clean up this class here and then:
-			super.destroy();
+		private function init(e:Event = null):void $(CSLB){
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			var core:BixBite = new BixBite(stage);
+			//core.reguster(MainCompound);
+			$(EntryPoint)
 		}
 		
 	}
