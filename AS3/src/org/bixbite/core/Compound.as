@@ -60,7 +60,7 @@ package org.bixbite.core
 		 */
 		public function register(component:Class):void
 		{
-			emiter.registerComponent(component, this);
+			emiter.registerComponent(component);
 		}
 		
 		/**
@@ -69,7 +69,7 @@ package org.bixbite.core
 		 */
 		public function unregister(component:Class):void
 		{
-			emiter.unregisterComponent(component, this);
+			emiter.unregisterComponent(component);
 		}
 		
 		/**
@@ -82,9 +82,8 @@ package org.bixbite.core
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false, autoExecute:Boolean = false):void
 		{
 			behaviours[type] = new behaviour();
-			behaviours[type].initialise(emiter, type, slots, this);
+			behaviours[type].initialise(emiter, type, slots, autoDispose, this);
 			
-			if (autoDispose) behaviours[type].remove = removeBehaviour;
 			if (autoExecute) behaviours[type].exe(signal);
 		}
 		
@@ -95,6 +94,7 @@ package org.bixbite.core
 		public function removeBehaviour(type:String):void
 		{
 			behaviours[type].dispose();
+			behaviours[type] = null;
 			delete behaviours[type]
 		}
 		

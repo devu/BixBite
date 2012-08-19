@@ -88,10 +88,10 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Register component within BixBite
 		 * @param	component
 		 */
-		BIXBITE function registerComponent(component:Class, referal:Compound = null ):void
+		BIXBITE function registerComponent(component:Class):void
 		{
 			if (components[component] != null) {
 				components[component].copies++;
@@ -103,10 +103,10 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Unregister component within BixBite
 		 * @param	component
 		 */
-		BIXBITE function unregisterComponent(component:Class, referal:Compound = null):void 
+		BIXBITE function unregisterComponent(component:Class):void 
 		{
 			if (!components[component]) return;
 			

@@ -39,12 +39,13 @@ package org.bixbite.core
 		use namespace BIXBITE;
 		
 		public var signal		:Signal;
-		public var remove		:Function;
 		
 		private var emiter		:Emiter;
 		private var uid			:String;
 		private var type		:String;
 		private var slots		:Object;
+		
+		private var autoDispose	:Boolean = false;
 		private var compound	:Compound;
 		
 		public function Behaviour() 
@@ -59,13 +60,14 @@ package org.bixbite.core
 		 * @param	slots
 		 * @param	compound
 		 */
-		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object, compound:Compound):void
+		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object, autoDispose:Boolean, compound:Compound):void
 		{
 			this.emiter 		= emiter;
 			this.uid 			= "@" + emiter.uid;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
 			this.slots 			= slots;
+			this.autoDispose 	= autoDispose;
 			this.compound 		= compound;
 			
 			emiter.addSlot(slots.c, uid, type, exe);
@@ -79,7 +81,7 @@ package org.bixbite.core
 		BIXBITE function exe(s:Signal):void
 		{
 			execute(s);
-			if (remove != null) remove(type);
+			if (autoDispose) compound.removeBehaviour(type);
 		}
 		
 		/**
@@ -105,7 +107,7 @@ package org.bixbite.core
 		 */
 		public function register(component:Class):void
 		{
-			emiter.registerComponent(component, this.compound);
+			emiter.registerComponent(component);
 		}
 		
 		/**
@@ -114,24 +116,7 @@ package org.bixbite.core
 		 */
 		public function unregister(component:Class):void
 		{
-			emiter.unregisterComponent(component, this.compound);
-		}
-		
-		/**
-		 * Deconstructor of behaviour.
-		 */
-		public function dispose():void
-		{
-			emiter.removeSlot(slots.c, uid, type);
-			
-			signal.BIXBITE::dispose();
-			signal = null;
-			
-			emiter 	= null;
-			uid 	= null;
-			type 	= null;
-			slots 	= null;
-			remove	= null;
+			emiter.unregisterComponent(component);
 		}
 		
 		/**
@@ -208,6 +193,23 @@ package org.bixbite.core
 		public function getSlotReference(type:String):Array
 		{
 			return emiter.getSlot(slots.v, type);
+		}
+		
+		/**
+		 * Deconstructor of behaviour.
+		 */
+		public function dispose():void
+		{
+			emiter.removeSlot(slots.c, uid, type);
+			
+			signal.dispose();
+			signal 		= null 
+			
+			compound 	= null 
+			emiter 		= null 
+			uid 		= null 
+			type 		= null 
+			slots 		= null;
 		}
 		
 	}

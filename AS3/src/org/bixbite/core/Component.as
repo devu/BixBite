@@ -99,7 +99,7 @@ package org.bixbite.core
 		{
 			emiter 	= null;
 			
-			signal.BIXBITE::dispose();
+			signal.dispose();
 			signal = null;
 			
 			slots 	= null;

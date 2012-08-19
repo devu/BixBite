@@ -30,6 +30,7 @@ package test.performance.coreperf
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
+	import test.performance.coreperf.behaviour.TestBehaviour;
 	import test.performance.coreperf.behaviour.TraceOutput;
 	import test.performance.coreperf.data.TestData;
 	import test.performance.coreperf.transponder.TestTransponder;
@@ -50,18 +51,48 @@ package test.performance.coreperf
 	 * 
 	 * Results: (0.6.3) CDTV (Flash Player 11,1,102,63 - Chrome) footprint 11.0kb
 	 * 
-	 * TASK:register	Views	10k		AVG TIME:1.091
-	 * TASK:unregister	Views	10k		AVG TIME:1.000
-	 * TASK:register	Views	100k	AVG TIME:17.00
-	 * TASK:unregister	Views	100k	AVG TIME:17.00
-	 * TASK:register	Views	1kk		AVG TIME:173.9
-	 * TASK:unregister	Views	1kk		AVG TIME:173.7
-	 * Same for Trans and Data
+		TASK:register	Views			10k			TIME:   1.00
+		TASK:unregister	Views			10k			TIME:   2.00
+		TASK:register	Views			100k		TIME:  17.00
+		TASK:unregister	Views			100k		TIME:  22.00
+		TASK:register	Views			1kk			TIME: 181.64
+		TASK:unregister	Views			1kk			TIME: 235.45
+		
+		TASK:register	Trans			10k			TIME:   1.01
+		TASK:unregister	Trans			10k			TIME:   2.00
+		TASK:register	Trans			100k		TIME:  18.00
+		TASK:unregister	Trans			100k		TIME:  23.27
+		TASK:register	Trans			1kk			TIME: 198.91
+		TASK:unregister	Trans			1kk			TIME: 259.00
+		
+		TASK:register	Data			10k			TIME:   1.01
+		TASK:unregister	Data			10k			TIME:   2.00
+		TASK:register	Data			100k		TIME:  19.00
+		TASK:unregister	Data			100k		TIME:  25.00
+		TASK:register	Data			1kk			TIME: 197.91
+		TASK:unregister	Data			1kk			TIME: 261.45
+		
+		TASK:add/remove Behaviour		1k			TIME:   4.36
+		TASK:add/remove Behaviour		10k			TIME:  54.91
+		TASK:add/remove Behaviour		100k		TIME: 766.91
+		TASK:add/exe/dispose Behaviour	1k			TIME:   4.82
+		TASK:add/exe/dispose Behaviour	10k			TIME:  69.00
+		TASK:add/exe/dispose Behaviour	100k		TIME: 831.09
+		
+		TASK:reg/unreg Views			1k			TIME:   9.90
+		TASK:reg/unreg Views			10k			TIME: 107.55
+		TASK:reg/unreg Views			100k		TIME: 991.00
+		TASK:reg/unreg Trans			1k			TIME:   7.54
+		TASK:reg/unreg Trans			10k			TIME:  83.18
+		TASK:reg/unreg Trans			100k		TIME:1175.0
+		TASK:reg/unreg Data				1k			TIME:   7.09
+		TASK:reg/unreg Data				10k			TIME:  77.00
+		TASK:reg/unreg Data				100k		TIME: 916.55
 	 */
 	
 	public class CorePerformance extends Compound
 	{
-		private var results		:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		private var results		:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		private var tasks		:Array = [];
 		
 		private var iterator	:int = 0;
@@ -104,42 +135,141 @@ package test.performance.coreperf
 			tasks[16] = "register	Data	1kk";
 			tasks[17] = "unregister	Data	1kk";
 			
+			tasks[18] = "add/remove Behaviour	1k";
+			tasks[19] = "add/remove Behaviour	10k";
+			tasks[20] = "add/remove Behaviour	100k";
+			
+			tasks[21] = "add/exe/dispose Behaviour	1k";
+			tasks[22] = "add/exe/dispose Behaviour	10k";
+			tasks[23] = "add/exe/dispose Behaviour	100k";
+			
+			tasks[24] = "reg/unreg Views	1k";
+			tasks[25] = "reg/unreg Views	10k";
+			tasks[26] = "reg/unreg Views	100k";
+			
+			tasks[27] = "reg/unreg Trans	1k";
+			tasks[28] = "reg/unreg Trans	10k";
+			tasks[29] = "reg/unreg Trans	100k";
+			
+			tasks[30] = "reg/unreg Data		1k";
+			tasks[31] = "reg/unreg Data		10k";
+			tasks[32] = "reg/unreg Data		100k";
+			
 			runner = setInterval(run, 500);
 		}
 		
 		private function run():void 
 		{
-			var iterations:int;
+			System.gc();
 			
 			switch(task)
 			{
 				case 0:
+					test1(10000, task);
+					break
 				case 1:
-				case 6:
-				case 7:
-				case 12:
-				case 13:
-					iterations = 10000;
-					break;
+					test2(10000, task);
+					break
 				case 2:
+					test1(100000, task);
+					break
 				case 3:
-				case 8:
-				case 9:
-				case 14:
-				case 15:
-					iterations = 100000;
-					break;
+					test2(100000, task);
+					break
 				case 4:
+					test1(1000000, task);
+					break
 				case 5:
+					test2(1000000, task);
+					break
+				case 6:
+					test3(10000, task);
+					break;
+				case 7:
+					test4(10000, task);
+					break;
+				case 8:
+					test3(100000, task);
+					break;
+				case 9:
+					test4(100000, task);
+					break;
 				case 10:
+					test3(1000000, task);
+					break;
 				case 11:
+					test4(1000000, task);
+					break;
+				case 12:
+					test5(10000, task);
+					break;
+				case 13:
+					test6(10000, task);
+					break;
+				case 14:
+					test5(100000, task);
+					break;
+				case 15:
+					test6(100000, task);
+					break;
 				case 16:
+					test5(1000000, task);
+					break;
 				case 17:
-					iterations = 1000000;
+					test6(1000000, task);
+					break;
+				case 18:
+					test7(1000, task);
+					break;
+				case 19:
+					test7(10000, task);
+					break;
+				case 20:
+					test7(100000, task);
+					break;
+				case 21:
+					test8(1000, task);
+					break;
+				case 22:
+					test8(10000, task);
+					break;
+				case 23:
+					test8(100000, task);
+					break;
+				case 24:
+					test9(1000, task);
+					break;
+				case 25:
+					test9(10000, task);
+					break;
+				case 26:
+					test9(100000, task);
+					break;
+				case 27:
+					test10(1000, task);
+					break;
+				case 28:
+					test10(10000, task);
+					break;
+				case 29:
+					test10(100000, task);
+					break;
+				case 30:
+					test11(1000, task);
+					break;
+				case 31:
+					test11(10000, task);
+					break;
+				case 32:
+					test11(100000, task);
+					break;
+				case 33:
+					emitSignal("traceOutput", { id:33, row:"COMPLETE" } );
+					clearInterval(runner);
+					return
 					break;
 			}
 			
-			test1(iterations, task);
 			output(task);
 			
 			if (iterator < repeat){
@@ -148,12 +278,7 @@ package test.performance.coreperf
 				clearInterval(runner);
 				iterator = 0;
 				task++;
-				
-				if(task == 18){
-					trace( "COMPLETE" );
-				} else {
-					runner = setInterval(run, 500);
-				}
+				runner = setInterval(run, 1000);
 			}
 			
 			System.gc();
@@ -213,9 +338,58 @@ package test.performance.coreperf
 			results[resultsId] += getTimer() - time;
 		}
 		
+		private function test7(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				addBehaviour("testSignal", TestBehaviour);
+				removeBehaviour("testSignal");
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test8(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				addBehaviour("testSignal", TestBehaviour, true, true);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test9(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				register(TestView);
+				unregister(TestView);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test10(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				register(TestTransponder);
+				unregister(TestTransponder);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test11(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				register(TestData);
+				unregister(TestData);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
 		private function output(id:int):void
 		{
-			emitSignal("traceOutput", { id:id, row:"		TASK:" + tasks[id] + "		COUNT:"+ iterator + "		TIME:"+ Number(results[id] / (iterator + 1)).toPrecision(4) } );
+			emitSignal("traceOutput", { id:id, row:"TASK:" + tasks[id] + "			COUNT:"+ iterator + "	TIME:"+ Number(results[id] / (iterator + 1)).toPrecision(5) } );
 		}
 		
 	}

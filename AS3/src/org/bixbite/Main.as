@@ -66,11 +66,6 @@ package org.bixbite
 	
 	public class Main extends Sprite
 	{
-		private var core	:BixBite;
-		
-		//private var step	:int = 0;
-		//private var round	:int = 0;
-		
 		public function Main() 
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
@@ -80,82 +75,11 @@ package org.bixbite
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			//var miner:TheMiner = new TheMiner();
-			//miner.x = 400;
-			//addChild(miner);
-			
-			core = new BixBite(stage);
-			
-			//youtube player
-			//core.register(YTPlayer);
-			//core.sendSignal(YTPlayer.INIT, { videoId:"mN3ITf_gn0g" } );
+			var core:BixBite = new BixBite(stage);
 			
 			core.register(Stats);
 			core.sendSignal(StatsSignal.START);
 		}
-		
-		/*
-		private function nextStep(e:Event):void 
-		{
-			var t:int = getTimer();
-			
-			step++;
-			
-			switch(step)
-			{
-				case 1:
-					//Framework
-					core = new BixBite(stage);
-					trace("create BixBite", getTimer()-t);
-					break;
-				case 4:
-					//DisplayListManager Module
-					core.register(DisplayListManager);
-					trace("create DisplayListManager", getTimer()-t);
-					break;
-				case 7:
-					//StageManager Module
-					core.register(StageManager);
-					trace("create StageManager", getTimer()-t);
-					core.sendSignal(StageSignal.SET_STAGE, { align:"TL", scaleMode:"noScale" } );
-					break;
-				case 10:
-					 //Stats Module
-					core.register(Stats);
-					trace("create Stats", getTimer()-t);
-					core.sendSignal(StatsSignal.START);
-					break;
-				case 13:
-					core.unregister(DisplayListManager);
-					trace("unregister DisplayListManager", getTimer() - t);
-					break;
-				case 16:
-					core.unregister(StageManager);
-					trace("unregister StageManager", getTimer()-t);
-					break;
-				case 19:
-					core.unregister(Stats);
-					trace("unregister Stats", getTimer()-t);
-					break;
-				case 22:
-					
-					if (round < 10) {
-						trace("---reset---", round);
-						step = 3;
-					} else {
-						Emiter.getInstance();
-					}
-					
-					round++;
-					
-					break;
-				default:
-					System.gc();
-					trace("System.gc", System.totalMemory / 1024, getTimer()-t);
-					break;
-				
-			}
-		}*/
 		
 	}
 
