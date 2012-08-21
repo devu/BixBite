@@ -367,7 +367,7 @@ package test.performance.coreperf
 			results[resultsId] += getTimer() - time;
 		}
 		
-		private function test10(max:int, resultsId:int):void 
+		private function test10(max:int, resultsId:int):void
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {

@@ -83,8 +83,8 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="Custom" />
-    <option testMovieCommand="" />
+    <option testMovie="OpenDocument" />
+    <option testMovieCommand="bin/index.html" />
   </options>
   <!-- Plugin storage -->
   <storage />

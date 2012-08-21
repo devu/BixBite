@@ -2,25 +2,49 @@
  * ...
  * @author Daniel Wasilewski
  */
-
 var time = new Date();
+
+Function.prototype.extends = function( parrentClass ){ 
+	this.prototype = new parrentClass;
+	this.prototype.constructor = this;
+	this.prototype.parent = parrentClass.prototype;
+}
+
+trace = function(params){
+	console.log(params);
+}
 
 function Emiter(){
 	
 	//private
-	var isRunning 	= false;
 	var uid 		= -1;
 	var slots		= { a: { }, m: { }, v: { }, c: { } };
+	var components	= new Object();
 	
-	//protected
-	this.addSensor = function(type, callback){
-		document.body.addEventListener(type, callback, false);
+	this.registerComponent = function(component){
+		if (components[component] != null) {
+			components[component].copies++;
+			trace(components[component].copies);
+			return
+		}
+		
+		components[component] = new component();
 	}
 	
-	this.removeSensor = function(type, callback){
-		document.body.removeEventListener(type, callback);
+	this.unregisterComponent = function(component){
+		if (!components[component]) return;
+		
+		if (components[component].copies > 0) {
+			components[component].copies--;
+			return
+		}
+		
+		components[component].destroy();
+		components[component] = null;
+		
+		delete components[component];
 	}
-	
+		
 	this.addSlot = function (channel, callerUID, type, callback){
 		if (!channel[type]) channel[type] = { };
 		channel[type][callerUID] = callback;
@@ -38,13 +62,8 @@ function Emiter(){
 	
 	this.removeAllSlots = function(channel, type){
 		if (!channel[type]) return;
-		//for (var uid:String in channel[type]) removeSlot(channel, uid, type);
+		for (f in channel[type]) removeSlot(channel, uid, type);
 		delete channel[type];
-	}
-	
-	this.register =  function(referrer) {
-		(!isRunning) ? isRunning = true : referrer.module = true;
-		return this;
 	}
 	
 	//getters/setters
@@ -53,22 +72,52 @@ function Emiter(){
 	this.uid = function(){ return ++uid }
 }
 
-Emiter = new Emiter();
+emiter = new Emiter();
+
+function BixBite(){
+	
+	var slots = emiter.getSlots();
+	
+	this.register = function(compound){
+		emiter.registerComponent(compound);
+	}
+	
+	this.unregister = function(compound){
+		emiter.unregisterComponent(compound);
+	}
+	
+	this.sendSignal = function(type, params){
+		signal.params = params;
+		emiter.broadcast(slots.t, type, signal);
+	}
+	
+	this.emitSignal = function(type, params){
+		signal.params = params;
+		emiter.broadcast(slots.c, type, signal);
+	}
+}
+
+function Component(){
+	//private
+	var slots 	= emiter.getSlots();
+	
+	//public
+	this.copies = 0;
+	this.uid = "@" + emiter.uid();
+	this.signal	= new Signal(this.uid);
+}
+
+Component.prototype.destroy = function(){
+	this.uid = null;
+	trace("Component, deconstructor");
+}
 
 function Compound(){ 	
 	
 	//private
-	var emiter 	= Emiter.register(this);
-	var slots 	= emiter.getSlots();
-	var uid		= "@" + emiter.uid();
-	var signal	= new Signal(uid);
-	var module	= false;
-	var behaviours = { };
+	var behaviours = new Object();
 	
-	this.stageView = new StageView();
-	
-	//protected
-	this.addBehaviour = function (type, behaviour, autoDispose){
+	this.addBehaviour = function (type, behaviour, autoDispose, autoExecute){
 		behaviours.type = behaviour;
 		behaviours.type.initialise(emiter, uid, signal, type, slots, autoDispose);
 	}
@@ -78,24 +127,16 @@ function Compound(){
 		delete behaviours.type;
 	}
 	
-	this.startup = function(type){
-		emiter.broadcast(slots.a, type, signal);
-		emiter.broadcast(slots.v, type, signal);
-		emiter.broadcast(slots.c, type, signal);
-		
-		//emiter.removeAllSlots(slots.a, type);
-		//emiter.removeAllSlots(slots.v, type);
-		//emiter.removeAllSlots(slots.c, type);
+	this.destroy = function(){
+		trace("this, Compound, deconstructor");
+		behaviours = null;
+		Component.prototype.destroy.call(this);
 	}
-	
-	//getters/setters
-	this.stage = document.body;
-	this.uid = uid;
 }
 
+Compound.extends(Component);
+
 function View(){
-	var emiter 	= Emiter.getInstance();
-	//this.init = function(){console.log("View.init")}();
 	
 	this.addSlot = function(type, callback){
 		emiter.addSlot(emiter.getSlots().v, emiter.uid(), type, callback);
@@ -111,9 +152,17 @@ function View(){
 	}
 }
 
+View.extends(Component);
+
 function Transponder(){
-	var emiter 	= Emiter.getInstance();
-	//this.init = function(){console.log("Transponder.init")}();
+
+	this.addSensor = function(type, callback){
+		document.body.addEventListener(type, callback, false);
+	}
+	
+	this.removeSensor = function(type, callback){
+		document.body.removeEventListener(type, callback);
+	}
 	
 	this.sendSignal = function(type, params){
 		signal.params = params;
@@ -121,16 +170,18 @@ function Transponder(){
 	}
 }
 
+Transponder.extends(Component);
+
 function Data(){
-	var emiter 	= Emiter.getInstance();
-	//this.init = function(){console.log("Data.init")}();
+	
 }
+
+Data.extends(Component);
 
 function Behaviour(){
 	
 	this.init = function(){}
-	//this.execute = function(s){}
-	
+
 	this.initialise = function(emiter, uid, signal, type, slots, autoDispose){
 		this.emiter 		= emiter;
 		this.uid 			= uid;
@@ -143,11 +194,6 @@ function Behaviour(){
 		
 		this.init();
 	}
-	/*
-	this.exe = function(s){
-		this.execute(s);
-		//if (autoDispose) deconstruct(type);
-	}*/
 	
 	this.sendSignal = function(type, params){
 		signal.params = params;
@@ -170,27 +216,4 @@ function Signal(uid){
 	this.callerUID = uid
 }
 
-//framework
-DisplayView = function(){
-	
-}
-
-DisplayViewContainer = function DisplayViewContainer(){
-	this.addView = function(view){
-		console.log("StageView.addView");
-	}
-	
-	this.removeView = function(view){
-		console.log("StageView.removeView");
-	}
-}
-
-DisplayViewContainer.prototype = new DisplayView();
-
-StageView = function(){
-	
-}
-
-StageView.prototype = new DisplayViewContainer();
-
-console.log("BixBite v0.5.5 - CORE INIT TIME", new Date()-time);
+console.log("BixBite v0.6.4 - CORE INIT TIME", new Date()-time);

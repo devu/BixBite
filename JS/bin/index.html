@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="js/bixbite_core.js"></script>
+	<script src="js/application.js"></script>
+	
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<script>
+		
+		var core = new BixBite();
+		core.register(MyCompound);
+		core.register(MyCompound);
+		core.unregister(MyCompound);
+		core.unregister(MyCompound);
+		
+	</script>
+</body>
+
+</html>
