@@ -1,7 +1,7 @@
 function BoxFactory(){
 	this.register(BoxFactoryTransponder);
 	this.register(MyView);
-	
+
 	this.addBehaviour("createBox", CreateBox);
 }
 
@@ -16,6 +16,7 @@ BoxFactoryTransponder.extends(Transponder);
 function MyView(){
 	
 	var onTest = function(s){
+		trace("MyView.onInit");
 		document.body.style.background = "none repeat scroll 0 0 #012134";
 	}
 
@@ -28,20 +29,27 @@ MyView.extends(View);
 
 function CreateBox(){
 
-	var id = 0;
-
 	this.init = function(){
 		trace("MyBehaviour.init");
 	}
 
 	this.execute = function(s){
 		
-		var style = "position:absolute; background: "+(s.params.color|| "#882222")+"; width:" + s.params.width + "px; height:" + s.params.height + "px; left:" + s.params.x + "px; top:" + s.params.y + "px";
-   		
-   		var div = document.createElement("div");
-   		div.setAttribute("id", "div"+(++id));
-   		div.setAttribute("style", style);
-		
+   		var div = document.createElement('div');
+   		div.setAttribute('id', "myDiv");
+   
+   		div.style.position = "absolute";
+   		div.style.background = s.params.color || "#881111";
+
+	    div.style.width = (s.params.width || 100) + "px";
+	    div.style.height = (s.params.height || 100) + "px";
+	    div.style.left = (s.params.x || 0) + "px";
+	    div.style.top = (s.params.y || 0) + "px";
+	   
+	    if (s.params.html) {
+	        div.innerHTML = html;
+	    }
+	   
 	    document.body.appendChild(div);
 	}
 }

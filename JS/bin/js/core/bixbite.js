@@ -7,10 +7,10 @@ var time = new Date();
 /**
 * SUGAR
 */
-Function.prototype.extends = function(parrentClass){ 
-	this.prototype = new parrentClass;
+Function.prototype.extends = function(Class){ 
+	this.prototype = new Class;
 	this.prototype.constructor = this;
-	this.prototype.parent = parrentClass.prototype;
+	this.prototype.parent = Class.prototype;
 }
 
 var trace = function(p){
@@ -24,9 +24,10 @@ function Emiter(){
 	
 	//private
 	var uid 	= -1
-	var slots	= { c:{}, d:{}, t:{}, v:{} }
-	
-	this.r = function(c){
+	this.slt	= { c:{}, d:{}, t:{}, v:{} }
+
+	//register component
+	this.reg = function(c){
 		if (this[c] != null) {
 			this[c].copies++;
 			return
@@ -34,8 +35,9 @@ function Emiter(){
 		
 		this[c] = new c();
 	}
-	
-	this.u = function(c){
+
+	//unregister component
+	this.unr = function(c){
 		if (!this[c]) return;
 		
 		if (this[c].copies > 0) {
@@ -48,50 +50,53 @@ function Emiter(){
 		
 		delete this[c];
 	}
-		
-	this.a = function (ch, uid, t, cb){
+
+	//add sot
+	this.as = function (ch, uid, t, cb){
 		if (!ch[t]) ch[t] = { };
 		ch[t][uid] = cb;
 	}
-	
-	this.d = function(ch, uid, t){
+
+	//remove slot
+	this.rs = function(ch, uid, t){
 		if (!ch[t]) return;
 		delete ch[t][uid];
 	}
-	
-	this.b = function(ch, t, s, p){
+
+	//broadcast
+	this.brc = function(ch, t, s, p){
 		if(!ch[t]) return;
 		if(p) s.params = p;
-		for (f in ch[t]) ch[t][f](s);
+		for (var f in ch[t]) ch[t][f](s);
 	}
-	
-	this.ra = function(ch, t){
+
+	//remove all slt
+	this.ras = function(ch, t){
 		if (!ch[t]) return;
-		for (f in ch[t]) removeSlot(ch, uid, t);
+		for (var f in ch[t]) removeSlot(ch, uid, t);
 		delete ch[t];
 	}
 	
 	//getters/setters
-	this.getSlots = function(){ return slots; }
-	this.getUID = function(){ return "@"+ ++uid; }
+	this.uid = function(){ return "@"+ ++uid; }
 }
 
-var e = new Emiter();
+var emi = new Emiter();
 
 /**
 * BASE COMPONENT CLASS
 */
-function Component(){	
-	this.slots = e.getSlots();
-	this.uid = e.getUID();
+function Cmp(){
+	this.slt = emi.slt;
+	this.uid = emi.uid();
 	this.signal = new Signal(this.uid);
 }
 
-Component.prototype.destroy = function(){
+Cmp.prototype.destroy = function(){
 	this.signal.dispose();
 
 	this.uid = null;
-	this.slots = null;
+	this.slt = null;
 	this.signal = null;
 }
 
@@ -99,113 +104,113 @@ Component.prototype.destroy = function(){
 * CORE DOCUMENT CLASS
 */
 function BixBite(){}; 
-BixBite.extends(Component);
+BixBite.extends(Cmp);
 
 BixBite.prototype.register = function(c){
-	e.r(c);
+	emi.reg(c);
 } 
 
 BixBite.prototype.unregister = function(c){
-	e.u(c);
+	emi.unr(c);
 }
 
-BixBite.prototype.sendSignal = function(type, p){
-	e.b(this.slots.t, type, this.signal, p);
+BixBite.prototype.sendSignal = function(t, p){
+	emi.brc(this.slt.t, t, this.signal, p);
 }
 
-BixBite.prototype.emitSignal = function(type, p){
-	e.b(this.slots.c, type, this.signal, p);
+BixBite.prototype.emitSignal = function(t, p){
+	emi.brc(this.slt.c, t, this.signal, p);
 }
 
 /**
 * COMPOUND CLASS
 */
 function Compound(){ 	
-	this.behaviours = {};
+	this.bhv = {};
 }
 Compound.extends(BixBite);
 
-Compound.prototype.addBehaviour = function (type, behaviour, autoDispose, autoExecute){
-	this.behaviours[type] = new behaviour();
-	this.behaviours[type].compound = this;
-	this.behaviours[type].initialise(this.uid, this.signal, type, autoDispose, autoExecute);
+Compound.prototype.addBehaviour = function (t, behaviour, autoDispose, autoExecute){
+	this.bhv[t] = new behaviour();
+	this.bhv[t].compound = this;
+	this.bhv[t].initialise(this.uid, this.signal, t, autoDispose, autoExecute);
 
-	if (autoExecute) this.behaviours[type].exe(this.signal);
+	if (autoExecute) this.bhv[t].exe(this.signal);
 }
 
-Compound.prototype.removeBehaviour = function(type){
-	this.behaviours[type].dispose();
-	this.behaviours[type] = null;
-	delete this.behaviours[type];
+Compound.prototype.removeBehaviour = function(t){
+	this.bhv[t].dispose();
+	this.bhv[t] = null;
+	delete this.bhv[t];
 }
 
 Compound.prototype.destroy = function(){
-	this.behaviours = null;
-	Component.prototype.destroy.call(this);
+	this.bhv = null;
+	Cmp.prototype.destroy.call(this);
 }
 
 /**
 * VIEW CLASS
 */
 function View(){}; 
-View.extends(Component);
+View.extends(Cmp);
 
-View.prototype.addSlot = function(type, callback){
-	e.a(this.slots.v, this.uid, type, callback);
+View.prototype.addSlot = function(t, callback){
+	emi.as(this.slt.v, this.uid, t, callback);
 }
 	
-View.prototype.removeSlot = function(type){
-	e.d(this.slots.v, this.uid, type);
+View.prototype.removeSlot = function(t){
+	emi.rs(this.slt.v, this.uid, t);
 }
 	
-View.prototype.sendSignal = function(type, p){
-	e.b(this.slots.t, type, signal, p);
+View.prototype.sendSignal = function(t, p){
+	emi.brc(this.slt.t, t, signal, p);
 }
 
 /**
 * TRANSPONDER CLASS
 */
 function Transponder(){}; 
-Transponder.extends(Component);
+Transponder.extends(Cmp);
 
-Transponder.prototype.addSensor = function(type, callback){
-	document.body.addEventListener(type, callback, false);
+Transponder.prototype.addSensor = function(t, callback){
+	document.body.addEventListener(t, callback, false);
 }
 	
-Transponder.prototype.removeSensor = function(type, callback){
-	document.body.removeEventListener(type, callback);
+Transponder.prototype.removeSensor = function(t, callback){
+	document.body.removeEventListener(t, callback);
 }
 	
-Transponder.prototype.addSlot = function(type, callback){
-	e.a(this.slots.t, this.uid, type, callback, this);
+Transponder.prototype.addSlot = function(t, callback){
+	emi.as(this.slt.t, this.uid, t, callback, this);
 }
 	
 Transponder.prototype.removeSlot = function(type){
-	e.d(this.slots.t, this.uid, type);
+	emi.rs(this.slt.t, this.uid, t);
 }
 	
-Transponder.prototype.sendSignal = function(type, p){
-	e.b(this.slots.c, type, this.signal, p);
+Transponder.prototype.sendSignal = function(t, p){
+	emi.brc(this.slt.c, t, this.signal, p);
 }
 
-Transponder.prototype.transmit = function(type) {
-	e.a(this.slots.t, this.uid, type, function(s){
-		e.b(e.getSlots().c, type, s);
+Transponder.prototype.transmit = function(t) {
+	emi.as(this.slt.t, this.uid, t, function(s){
+		emi.brc(emi.slt.c, t, s);
 	});
 }
 
-Transponder.prototype.responseToAll = function(type, p){
-	e.b(this.slots.v, type, this.signal, p);
+Transponder.prototype.responseToAll = function(t, p){
+	emi.brc(this.slt.v, t, this.signal, p);
 }
 
 /**
 * DATA CLASS
 */
 function Data(){};
-Data.extends(Component);
+Data.extends(Cmp);
 
-Data.prototype.sendSignal = function(type, p){
-	e.b(this.slots.c, type, this.signal, p);
+Data.prototype.sendSignal = function(t, p){
+	e.brc(this.slt.c, t, this.signal, p);
 }
 
 
@@ -214,52 +219,52 @@ Data.prototype.sendSignal = function(type, p){
 */
 function Behaviour(){}
 
-Behaviour.prototype.initialise = function(uid, signal, type, autoDispose, autoExecute){
-	this.type 			= type;
+Behaviour.prototype.initialise = function(uid, signal, t, autoDispose, autoExecute){
+	this.t 			= t;
 	this.uid 			= uid;
 		
 	this.autoExecute 	= autoExecute;
 	this.signal 		= signal;
 	signal.autoDispose  = autoDispose;
 
-	e.a(e.getSlots().c, uid, type, this.execute);
+	emi.as(emi.slt.c, uid, t, this.execute);
 		
 	this.init();
 }
 
-Behaviour.prototype.register = function(component){
-	e.r(component);
+Behaviour.prototype.register = function(c){
+	emi.reg(c);
 }
 
-Behaviour.prototype.unregister = function(component){
-	e.u(component);
+Behaviour.prototype.unregister = function(c){
+	emi.unr(c);
 }
 
-Behaviour.prototype.addResponder = function(type, callback, autoRequest){
-	e.a(this.slots.c, uid, type, callback);
-	if (this.autoRequest) sendRequest(type);
+Behaviour.prototype.addResponder = function(t, callback, autoRequest){
+	emi.as(this.slt.c, uid, t, callback);
+	if (this.autoRequest) sendRequest(t);
 }
 
-Behaviour.prototype.removeResponder = function(type){
-	e.ra(this.slots.c, type);
+Behaviour.prototype.removeResponder = function(t){
+	emi.rs(this.slt.c, t);
 }
 
-Behaviour.prototype.sendRequest = function(type, p){
-	e.b(this.slots.d, type, this.signal, p);
+Behaviour.prototype.sendRequest = function(t, p){
+	emi.brc(this.slt.d, t, this.signal, p);
 }
 
-Behaviour.prototype.sendSignal = function(type, p){
-	e.b(this.slots.v, type, this.signal, p);
+Behaviour.prototype.sendSignal = function(t, p){
+	emi.brc(this.slt.v, t, this.signal, p);
 }
 
-Behaviour.prototype.emitSignal = function(type, p){
-	e.b(this.slots.c, type, this.signal, p);
+Behaviour.prototype.emitSignal = function(t, p){
+	emi.brc(this.slt.c, t, this.signal, p);
 }
 
 Behaviour.prototype.dispose = function(){
-	e.r(this.slots.a, this.uid, this.type);
+	emi.r(this.slt.a, this.uid, this.t);
 	
-	type 				= null;
+	t 				= null;
 	this.autoDispose 	= null;
 	this.autoExecute 	= null;
 
