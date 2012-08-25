@@ -44,8 +44,7 @@ package examples.helloworld.behaviour
 				register(HelloView, false);
 			};
 			
-			trace("Register Time of "+ max +" HelloView "+ (getTimer()-time));
-			
+			sendSignal("Trace", { trace:"Register Time of " + max +" HelloView " + (getTimer() - time) } ); 
 			emitSignal("HelloWorld.UPDATE_COPY", { isDefault:true } );
 		}
 	}

@@ -55,7 +55,7 @@ package org.bixbite.framework.behaviour
 			addResponder(Stats.DATA_REQUEST, onData, true);
 		}
 		
-		private function onData(s:Signal, data:StatsData):void 
+		private function onData(data:StatsData):void 
 		{
 			this.data = data;
 			removeResponder(Stats.DATA_REQUEST);

@@ -45,7 +45,7 @@ package org.bixbite.framework.behaviour
 			addResponder(YTPlayer.ON_INIT, onInitalise);
 		}
 		
-		private function onInitalise(s:Signal, data:YTPlayerData):void
+		private function onInitalise(data:YTPlayerData):void
 		{
 			removeResponder(YTPlayer.ON_INIT);
 			this.data = data;

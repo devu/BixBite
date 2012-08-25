@@ -27,6 +27,7 @@ package examples.helloworld.transponder
 	import examples.helloworld.HelloWorld;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import flash.utils.getTimer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	
@@ -51,11 +52,15 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
+			
+			trace(getSlotReference("HelloWorld.UPDATE_COPY"));
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
+			var time:int = getTimer();
 			sendSignal("HelloWorld.UPDATE_COPY", { isDefault:false } );
+			responseToAll("Trace", { trace:"Update copy of 1000 HelloViews "+ (getTimer()-time) } );
 		}
 		
 	}

@@ -52,25 +52,24 @@ package org.bixbite.framework.behaviour
 			addResponder(ContextLoaderSignal.QUEUE_COMPLETED, onQueueCompleted);
 		}
 		
-		private function onQueueCompleted(s:Signal, data:IData):void 
+		private function onQueueCompleted(data:IData):void 
 		{
 			sendSignal(ContextLoaderSignal.QUEUE_COMPLETED);
 		}
 		
-		private function onProgress(s:Signal, data:IData):void 
+		private function onProgress(data:IData):void 
 		{
 			sendSignal(ContextLoaderSignal.ON_PROGRESS, s.params );
 		}
 		
-		private function onContextLoaded(s:Signal, data:IData):void 
+		private function onContextLoaded(data:IData):void 
 		{
-			var p:Object = s.params;
 			var context:ContextItem = p.contextItem;
 			emitSignal(DisplaySignal.SET_CONTEXT, { viewUID:p.viewUID, name:p.name, context:context } );
 			sendSignalTo(p.viewUID, ContextLoaderSignal.LOADED, { viewUID:p.viewUID, name:p.name, contextItem:p.contextItem } );
 		}
 		
-		private function onContextSkipped(s:Signal, data:IData):void 
+		private function onContextSkipped(data:IData):void 
 		{
 			sendSignal(ContextLoaderSignal.SKIPPED, s.params);
 		}

@@ -54,10 +54,10 @@ package test
 			//core.sendSignal(StatsSignal.START);
 			
 			//Signal performance test
-			//core.register(SignalPerformance);
+			core.register(SignalPerformance);
 			
 			//Core performance test
-			core.register(CorePerformance);
+			//core.register(CorePerformance);
 			
 			// AssetManager test
 			//core.register(TestContextLoader);

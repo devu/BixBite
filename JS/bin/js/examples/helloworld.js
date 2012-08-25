@@ -21,7 +21,9 @@ function HelloTransponder(){
 	}
 	
 	var onMouseDown = function(e){
+		time = new Date();
 		this.sendSignal("HelloWorld.UPDATE_COPY", { isDefault:false } );
+		trace("Update copy of 1000 HelloViews "+ (new Date()-time));
 	}
 }
 

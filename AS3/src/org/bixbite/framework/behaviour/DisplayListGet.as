@@ -49,7 +49,7 @@ package org.bixbite.framework.behaviour
 			addResponder(DisplayListManager.GET_DISPLAY_LIST, onDisplayList, true);
 		}
 		
-		private function onDisplayList(s:Signal, data:DisplayListData):void 
+		private function onDisplayList(data:DisplayListData):void 
 		{
 			removeResponder(DisplayListManager.GET_DISPLAY_LIST);
 			list = data.list;

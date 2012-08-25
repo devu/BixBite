@@ -52,7 +52,7 @@ package org.bixbite.framework.behaviour
 			addResponder(StageManager.DATA_REQUEST, onData, true);
 		}
 		
-		private function onData(s:Signal, data:StageData):void
+		private function onData(data:StageData):void
 		{
 			removeResponder(StageManager.DATA_REQUEST);
 			

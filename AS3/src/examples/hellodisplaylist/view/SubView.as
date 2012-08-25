@@ -43,7 +43,7 @@ package examples.hellodisplaylist.view
 		override public function init():void 
 		{
 			// Yes you right, this is not display object, however stage is available even here
-			trace(stage);
+			//trace(stage);
 			
 			addSlot(DisplaySignal.CONTEXT_SET		, onContextSet);
 			addSlot(DisplaySignal.CONTEXT_ADDED		, onContextAdded);

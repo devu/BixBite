@@ -21,37 +21,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld 
+package examples.helloworld.view 
 {
-	import examples.helloworld.behaviour.CopyHandler;
-	import examples.helloworld.behaviour.Initialise;
-	import examples.helloworld.data.HelloData;
-	import examples.helloworld.transponder.HelloTransponder;
-	import examples.helloworld.view.Output;
-	import org.bixbite.core.Compound;
+	
+	import flash.text.TextField;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class HelloWorld extends Compound 
+	public class Output extends View 
 	{
-		public function HelloWorld() 
-		{
-			
-		}
-		
+		private var tf:TextField;
 		override public function init():void 
 		{
-			register(HelloTransponder);
-			register(HelloData);
-			register(Output);
+			tf = new TextField();
+			tf.autoSize = "left";
+			stage.addChild(tf);
 			
-			addBehaviour("HelloWorld.UPDATE_COPY", CopyHandler);
-			addBehaviour("HelloWorld.INIT", Initialise);
-			
-			emitSignal("HelloWorld.INIT", { max:1000 } );
+			addSlot("Trace", onTrace);
+		}
+		
+		private function onTrace(s:Signal):void 
+		{
+			tf.text = s.params.trace;
 		}
 		
 	}
-
+	
 }
