@@ -51,10 +51,10 @@ package examples.helloworld.behaviour
 			languages[2] = "french";
 			languages[3] = "german";
 			
-			addResponder(HelloWorld.COPY_REQUEST, onCopyData, true);
+			addResponder("HelloWorld.COPY_REQUEST", onCopyData, true);
 		}
 		
-		private function onCopyData(s:Signal, data:HelloData):void 
+		private function onCopyData(data:HelloData):void
 		{
 			copy = data;
 		}
@@ -64,7 +64,7 @@ package examples.helloworld.behaviour
 			var isDefault:Boolean = s.params.isDefault;
 			
 			if (isDefault){
-				sendSignal(HelloWorld.SET_COPY, { copy:copy.english } );
+				sendSignal("HelloWorld.SET_COPY", { copy:copy.english } );
 				return
 			}
 			
@@ -86,7 +86,7 @@ package examples.helloworld.behaviour
 					break;
 			}
 			
-			sendSignal(HelloWorld.SET_COPY, { copy:copyString } );
+			sendSignal("HelloWorld.SET_COPY", { copy:copyString } );
 			
 			if (lang < 3){
 				lang++;

@@ -49,18 +49,17 @@ package examples.helloworld.data
 		
 		override public function init():void
 		{
-			addSlot(HelloWorld.COPY_REQUEST, onCopyRequest);
+			addSlot("HelloWorld.COPY_REQUEST", onCopyRequest);
 		}
 		
 		private function onCopyRequest(s:Signal):void
 		{
-			responseTo(s.callerUID, HelloWorld.COPY_REQUEST);
+			responseTo(s.callerUID, "HelloWorld.COPY_REQUEST");
 		}
 		
 		override public function destroy():void 
 		{
-			removeSlot(HelloWorld.COPY_REQUEST);
-			
+			removeSlot("HelloWorld.COPY_REQUEST");
 			super.destroy();
 		}
 	

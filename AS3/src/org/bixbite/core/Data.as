@@ -73,10 +73,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo(targetUID:String, type:String, params:Object = null):void
+		public function responseTo(targetUID:String, type:String, data:IData = null):void
 		{
-			signal.params = params;
-			emiter.dataResponse(slots.c, targetUID, type, signal, this);
+			var vo:IData = (data) ? data : this;
+			emiter.dataResponse(slots.c, targetUID, type, vo);
 		}
 		
 		/**
@@ -84,12 +84,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseToAll(type:String, params:Object = null):void 
+		public function responseToAll(type:String, data:IData = null):void 
 		{
-			if (!signal) return;
-			
-			signal.params = params;
-			emiter.dataBroadcast(slots.c, type, signal, this);
+			var vo:IData = (data) ? data : this;
+			emiter.dataBroadcast(slots.c, type, vo);
 		}
 		
 		/**

@@ -51,26 +51,11 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			
-			addSlot(HelloWorld.INIT, onInit);
-			addSlot(HelloWorld.GET_DEFAULT_COPY, onGetDefaultCopy);
-		}
-		
-		private function onInit(s:Signal):void
-		{
-			var max:int = s.params.max;
-			responseToAll(HelloWorld.INIT, { max:max } );
-		}
-		
-		private function onGetDefaultCopy(s:Signal):void 
-		{
-			sendSignal(HelloWorld.UPDATE_COPY, { isDefault:true } );
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			if (getDisplayObjectByType(TextField)) 
-				sendSignal(HelloWorld.UPDATE_COPY, { isDefault:false } );
+			sendSignal("HelloWorld.UPDATE_COPY", { isDefault:false } );
 		}
 		
 	}

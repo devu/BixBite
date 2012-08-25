@@ -60,7 +60,7 @@ package examples
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
 			* footprint
 			*/
-			core.register(HelloFlash);
+			//core.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
@@ -71,7 +71,7 @@ package examples
 			/**
 			 * Example of DisplayListManager use
 			 */
-			core.register(HelloDisplayList);
+			//core.register(HelloDisplayList);
 			
 			/**
 			 * Example of Image Gallery

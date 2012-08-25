@@ -48,8 +48,6 @@ package org.bixbite.core
 		
 		static private var _instance	:Emiter;
 		
-		static private var isRunning	:Boolean;
-		
 		private var _uid				:int = -1;
 		
 		private var _stage				:Stage;
@@ -91,9 +89,9 @@ package org.bixbite.core
 		 * Register component within BixBite
 		 * @param	component
 		 */
-		BIXBITE function registerComponent(component:Class):void
+		BIXBITE function registerComponent(component:Class, singleton:Boolean = true):void
 		{
-			if (components[component] != null) {
+			if (singleton && components[component] != null) {
 				components[component].copies++;
 				return
 			}
@@ -186,10 +184,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function dataBroadcast(channel:Object, type:String, signal:Signal, data:IData):void 
+		BIXBITE function dataBroadcast(channel:Object, type:String, data:IData):void 
 		{
 			if (!channel[type]) return;
-			for each (var f:Function in channel[type]) f(signal, data);
+			for each (var f:Function in channel[type]) f(data);
 		}
 		
 		/**
@@ -227,10 +225,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function dataResponse(channel:Object, targetUID:String, type:String, signal:Signal, data:IData):void 
+		BIXBITE function dataResponse(channel:Object, targetUID:String, type:String, data:IData):void 
 		{
 			if (!channel[type]) return;
-			channel[type][targetUID](signal, data);
+			channel[type][targetUID](data);
 		}
 		
 		/**

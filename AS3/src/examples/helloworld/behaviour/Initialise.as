@@ -21,39 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.helloworld.view 
+package examples.helloworld.behaviour 
 {
-	import examples.helloworld.HelloWorld;
+	
+	import examples.helloworld.view.HelloView;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.core.View;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class RootView extends View 
+	public class Initialise extends Behaviour 
 	{
-		
-		public function RootView() 
+		override public function execute(s:Signal):void
 		{
-			
-		}
-		
-		override public function init():void 
-		{
-			addSlot(HelloWorld.INIT, onInit);
-		}
-		
-		private function onInit(s:Signal):void
-		{
-			var view:HelloView;
 			var max:int = s.params.max;
+			var time:int = getTimer();
 			
-			for ( var i:int = 0; i < max; i++){
-				view = new HelloView();
-				stage.addChild(view.context);
-			}
+			for (var i:int = 0; i < max; i++) {
+				register(HelloView, false);
+			};
+			
+			trace("Register Time of "+ max +" HelloView "+ (getTimer()-time));
+			
+			emitSignal("HelloWorld.UPDATE_COPY", { isDefault:true } );
 		}
-		
 	}
-
+	
 }

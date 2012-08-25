@@ -105,9 +105,9 @@ package org.bixbite.core
 		 * Proxy method for behaviour to register any component within belonging Compound
 		 * @param	component
 		 */
-		public function register(component:Class):void
+		public function register(component:Class, singleton:Boolean = true):void
 		{
-			emiter.registerComponent(component);
+			emiter.registerComponent(component, singleton);
 		}
 		
 		/**

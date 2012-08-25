@@ -37,7 +37,7 @@ package examples.helloworld.view
 	public class HelloView extends View 
 	{
 		private var textField	:TextField;
-		private var _context	:Sprite;
+		private var context		:Sprite;
 		
 		public function HelloView() 
 		{
@@ -46,7 +46,7 @@ package examples.helloworld.view
 		
 		override public function init():void 
 		{
-			_context = new Sprite();
+			context = new Sprite();
 			
 			textField = new TextField();
 			textField.autoSize = "left";
@@ -54,13 +54,13 @@ package examples.helloworld.view
 			textField.x = 100;
 			textField.y = 100;
 			
-			context.x = Math.random() * 600;
-			context.y = Math.random() * 600;
+			context.x = Math.random() * 1600;
+			context.y = Math.random() * 900;
 			
 			context.addChild(textField);
+			stage.addChild(context);
 			
-			addSlot(HelloWorld.SET_COPY	, onSetCopy);
-			sendSignal(HelloWorld.GET_DEFAULT_COPY);
+			addSlot("HelloWorld.SET_COPY", onSetCopy);
 		}
 		
 		private function onSetCopy(s:Signal):void 
@@ -71,11 +71,6 @@ package examples.helloworld.view
 		private function applyCopy(copy:String):void 
 		{
 			textField.htmlText = copy;
-		}
-		
-		public function get context():Sprite 
-		{
-			return _context;
 		}
 	}
 

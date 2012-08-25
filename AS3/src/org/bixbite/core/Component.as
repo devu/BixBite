@@ -24,6 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import org.bixbite.core.interfaces.IComponent;
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -77,7 +78,7 @@ package org.bixbite.core
 			emiter = Emiter.getInstance();
 			slots = emiter.slots;
 			_uid = "@" + emiter.uid;
-			signal = new Signal(uid);
+			signal = (this is IData) ? null : new Signal(uid);
 			
 			init();
 		}
@@ -99,8 +100,12 @@ package org.bixbite.core
 		{
 			emiter 	= null;
 			
-			signal.dispose();
-			signal = null;
+			if (this is IData){
+				//
+			} else {
+				signal.dispose();
+				signal = null;
+			}
 			
 			slots 	= null;
 			_uid 	= null;
