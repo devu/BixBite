@@ -1,54 +1,149 @@
 function HelloWorld(){
 	
-	this.register(HelloTransponder);
-	this.register(HelloData);
-	this.register(HelloView);
+	this.init = function(){
 
-	this.addBehaviour("HelloWorld.UPDATE_COPY", CopyHandler);
+		this.register(HelloTransponder);
+		this.register(HelloData);
 
-	this.sendSignal("HelloWorld.INIT", {max:20});
+		this.addBehaviour("HelloWorld.UPDATE_COPY", CopyHandler);
+		this.addBehaviour("HelloWorld.INIT", Initialise);
+
+		this.emitSignal("HelloWorld.INIT", {max:1000});
+	}
 }
 
 HelloWorld.extends(Compound);
 
 function HelloTransponder(){
 	
-	//private
-	var onInit = function (s, self){
-		self.responseToAll("HelloWorld.INIT", s.params );
+	this.init = function(){
+		this.addSensor("mousedown", onMouseDown, this);
 	}
-
-	onInit.self = this;
 	
-	this.addSlot("HelloWorld.INIT", onInit);
+	var onMouseDown = function(e){
+		this.sendSignal("HelloWorld.UPDATE_COPY", { isDefault:false } );
+	}
 }
 
 HelloTransponder.extends(Transponder);
 
 function HelloData(){
-	trace("HelloData.init");
+	
+	this.english = "<font size='2'> Hello world </font>";
+	this.polish = "<font size='2' color='#000000'> Witaj świecie </font>";
+	this.french = "<font size='2' color='#000000'> Bonjour tout le monde </font>";
+	this.german = "<font size='2' color='#000000'> Hallo Welt </font>";
+
+	this.init = function(){
+		this.addSlot("HelloWorld.COPY_REQUEST", onCopyRequest);
+	}
+
+	var onCopyRequest = function(s){
+		this.responseTo(s.callerUID, "HelloWorld.COPY_REQUEST");
+	}
 }
 
 HelloData.extends(Data);
 
 function HelloView(){
 	
-	trace("HelloView.onInit");
+	this.init = function(){
+   		
+		this.div = document.createElement("div");
+	   	this.div.setAttribute("id", "label");
+	   	this.div.style.position = "absolute";
+	   	this.div.style.left = Math.random()*1600 + "px";
+	   	this.div.style.top = Math.random()*900 + "px";
+	   	document.body.appendChild(this.div);
+
+   		this.addSlot("HelloWorld.SET_COPY", onSetCopy);
+   }
+
+   	var onSetCopy = function (s){
+		this.applyCopy(s.params.copy);
+	}
 }
 
 HelloView.extends(View);
 
+HelloView.prototype.applyCopy = function(copy){
+	this.div.innerHTML = copy;
+}
+
+function Initialise(){
+
+	this.init = function(){}
+
+	this.execute = function(s){
+		
+		var max = s.params.max;
+		var time = new Date();
+
+		for (var i = 0; i < max; i++) {
+			this.register(HelloView, true);
+		};
+
+		trace("Register Time of "+ max +" HelloView "+ (new Date()-time));
+
+		this.emitSignal("HelloWorld.UPDATE_COPY", {isDefault:true});
+	}
+}
+
+Initialise.extends(Behaviour);
+
 function CopyHandler(){
 	
-	trace("CopyHandler.onInit");
+	var languages = [];
+	var lang = 1;
+	var copy = null;
 
-	//protected
 	this.init = function(){
-		trace("MyBehaviour.init");
+		languages[0] = "english";
+		languages[1] = "polish";
+		languages[2] = "french";
+		languages[3] = "german";
+
+		this.addResponder("HelloWorld.COPY_REQUEST", onCopyData, true);
+	}
+
+	var onCopyData = function(data){
+		copy = data;
 	}
 
 	this.execute = function(s){
-   		trace("execute");
+   		
+   		var isDefault = s.params.isDefault;
+			
+		if (isDefault){
+			this.sendSignal("HelloWorld.SET_COPY", { copy:copy.english } );
+			return
+		}
+
+		var copyString = "";
+			
+		switch(languages[lang])
+		{
+			case "english":
+				copyString = copy.english;
+				break;
+			case "polish":
+				copyString = copy.polish;
+				break;
+			case "french":
+				copyString = copy.french;
+				break;
+			case "german":
+				copyString = copy.german;
+				break;
+		}
+		
+		this.sendSignal("HelloWorld.SET_COPY", { copy:copyString } );
+		
+		if (lang < 3){
+			lang++;
+		} else {
+			lang = 0;
+		}
 	}
 }
 
