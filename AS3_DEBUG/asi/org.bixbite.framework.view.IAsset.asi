@@ -1,9 +1,0 @@
-﻿package org.bixbite.framework.view
-{
-	/**
-	 * ...
-	 * @author Daniel Wasilewski
-	 */
-	public interface IAsset
-	{	}
-}
