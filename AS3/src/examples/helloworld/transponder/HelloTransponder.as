@@ -52,8 +52,6 @@ package examples.helloworld.transponder
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
-			
-			trace(getSlotReference("HelloWorld.UPDATE_COPY"));
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 

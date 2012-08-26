@@ -35,7 +35,7 @@ package examples.helloflash.view
 	{
 		private var radius		:int = 10;
 		private var color		:uint = 0x000000;
-		private var _ball		:Sprite;
+		private var ball		:Sprite;
 		
 		/**
 		 * Constructor
@@ -52,11 +52,14 @@ package examples.helloflash.view
 		
 		private function createContext():void 
 		{
-			_ball = new Sprite();
-			_ball.name = "ball";
-			_ball.alpha = 0.75;
-			_ball.useHandCursor = true;
-			_ball.buttonMode = true;
+			ball = new Sprite();
+			ball.name = "ball";
+			ball.alpha = 0.75;
+			ball.useHandCursor = true;
+			ball.buttonMode = true;
+			ball.x = Math.random() * 500;
+			ball.y = Math.random() * 375;
+			stage.addChild(ball);
 			
 			draw(0x000000, 10);
 			
@@ -76,22 +79,10 @@ package examples.helloflash.view
 		
 		private function draw(color:uint, radius:int):void
 		{
-			_ball.graphics.clear();
-			_ball.graphics.beginFill(color);
-			_ball.graphics.drawCircle(0, 0, radius);
+			ball.graphics.clear();
+			ball.graphics.beginFill(color);
+			ball.graphics.drawCircle(0, 0, radius);
 		}
-		
-		public function get x():Number { return _ball.x };
-		public function set x(value:Number):void { _ball.x = value };
-		
-		public function get y():Number { return _ball.y };
-		public function set y(value:Number):void { _ball.y = value };
-		
-		public function get context():Sprite 
-		{
-			return _ball;
-		}
-		
 	}
 
 }

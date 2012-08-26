@@ -24,6 +24,7 @@ THE SOFTWARE.
 package examples.helloflash.behaviour 
 {
 	import examples.helloflash.HelloFlash;
+	import examples.helloflash.view.Ball;
 	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
@@ -40,16 +41,12 @@ package examples.helloflash.behaviour
 			
 		}
 		
-		override public function init():void
-		{
-			count = 1;
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			count++;
 			
-			sendSignal(HelloFlash.CREATE_BALL, [count]);
+			register(Ball, false);
+			sendSignal(HelloFlash.CREATE_BALL, count);
 			
 			if ((count % 10) == 0){
 				sendSignal(HelloFlash.RED_BALL);

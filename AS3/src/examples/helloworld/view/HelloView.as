@@ -51,10 +51,8 @@ package examples.helloworld.view
 			textField = new TextField();
 			textField.autoSize = "left";
 			textField.selectable = false;
-			textField.x = 100;
-			textField.y = 100;
 			
-			context.x = Math.random() * 1600;
+			context.x = 200 + Math.random() * 1400;
 			context.y = Math.random() * 900;
 			
 			context.addChild(textField);

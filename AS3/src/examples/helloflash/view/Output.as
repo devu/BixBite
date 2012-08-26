@@ -32,12 +32,12 @@ package examples.helloflash.view
 	/**
 	 * @langversion	3.0
 	 */
-	public class MainView extends View 
+	public class Output extends View 
 	{
 		private var main		:Sprite;
 		private var textField	:TextField;
 		
-		public function MainView() 
+		public function Output() 
 		{
 			
 		}
@@ -45,35 +45,22 @@ package examples.helloflash.view
 		override public function init():void 
 		{
 			createContext();
-			createBall();
 		}
 		
 		private function createContext():void 
 		{
-			main = new Sprite();
-			
 			textField = new TextField();
 			textField.selectable = false;
 			textField.text = "Click count: 1";
-			main.addChild(textField);
 			
-			addSlot(HelloFlash.CREATE_BALL, onCreateBall);
+			addSlot(HelloFlash.CREATE_BALL, updateCount);
 			
-			stage.addChild(main);
+			stage.addChild(textField);
 		}
 		
-		private function onCreateBall(s:Signal):void
+		private function updateCount(s:Signal):void
 		{
-			textField.text = "Click count:" + s.params[0];
-			createBall();
-		}
-		
-		private function createBall():void
-		{
-			var ball:Ball = new Ball();
-			ball.x = Math.random() * 500;
-			ball.y = Math.random() * 375;
-			main.addChild(ball.context);
+			textField.text = "Click count:" + s.params;
 		}
 		
 	}

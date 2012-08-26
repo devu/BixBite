@@ -26,7 +26,7 @@ package examples.helloflash
 	import examples.helloflash.HelloFlash;
 	import examples.helloflash.behaviour.Poke;
 	import examples.helloflash.transponder.BallTransponder;
-	import examples.helloflash.view.MainView;
+	import examples.helloflash.view.Output;
 	import org.bixbite.core.Compound;
 	
 	/**
@@ -47,9 +47,9 @@ package examples.helloflash
 		override public function init():void
 		{
 			register(BallTransponder);
-			register(MainView);
+			register(Output);
 			
-			addBehaviour(HelloFlash.POKE, Poke);
+			addBehaviour(HelloFlash.POKE, Poke, false, true);
 		}
 		
 	}
