@@ -113,11 +113,11 @@ Compound.prototype.addBehaviour = function (t,b,aDis,aExe){
 	var bh = this.bhv[t] = new b();
 	bh.uid = emi.uid();
 	bh.s = new Signal(bh.uid);
-	bh.s.aDis=aDis;
+	//bh.s.aDis=aDis;
 	bh.t=t;
 	bh.initialise();
 
-	if(aExe)bh.exe(bh.s);
+	if(aExe)this.emitSignal(t);
 }
 Compound.prototype.removeBehaviour = function(t){this.bhv[t].dispose();this.bhv[t]=null;delete this.bhv[t]}
 Compound.prototype.destroy = function(){this.bhv=null;Cmp.prototype.destroy.call(this)}

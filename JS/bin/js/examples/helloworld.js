@@ -4,6 +4,7 @@ function HelloWorld(){
 
 		this.register(HelloTransponder);
 		this.register(HelloData);
+		this.register(Output);
 
 		this.addBehaviour("HelloWorld.UPDATE_COPY", CopyHandler);
 		this.addBehaviour("HelloWorld.INIT", Initialise);
@@ -23,7 +24,7 @@ function HelloTransponder(){
 	var onMouseDown = function(e){
 		time = new Date();
 		this.sendSignal("HelloWorld.UPDATE_COPY", { isDefault:false } );
-		trace("Update copy of 1000 HelloViews "+ (new Date()-time));
+		this.responseToAll("Trace", { trace:"Update copy of 1000 HelloViews "+ (new Date()-time) } );
 	}
 }
 
@@ -54,7 +55,7 @@ function HelloView(){
 		this.div = document.createElement("div");
 	   	this.div.setAttribute("id", "label");
 	   	this.div.style.position = "absolute";
-	   	this.div.style.left = Math.random()*1600 + "px";
+	   	this.div.style.left = 200 + Math.random()*1400 + "px";
 	   	this.div.style.top = Math.random()*900 + "px";
 	   	document.body.appendChild(this.div);
 
@@ -72,6 +73,25 @@ HelloView.prototype.applyCopy = function(copy){
 	this.div.innerHTML = copy;
 }
 
+function Output() {
+	
+	this.init = function(){
+
+		this.div = document.createElement("div");
+   		this.div.setAttribute("id", "output");
+		document.body.appendChild(this.div);
+
+		this.addSlot("Trace", onTrace);
+	}
+	
+	var onTrace = function(s){
+		this.div.innerHTML = s.params.trace;
+	}
+	
+}
+
+Output.extends(View);
+
 function Initialise(){
 
 	this.init = function(){}
@@ -85,8 +105,7 @@ function Initialise(){
 			this.register(HelloView, true);
 		};
 
-		trace("Register Time of "+ max +" HelloView "+ (new Date()-time));
-
+		this.sendSignal("Trace", { trace:"Register Time of "+ max +" HelloView "+ (new Date()-time) } ); 
 		this.emitSignal("HelloWorld.UPDATE_COPY", {isDefault:true});
 	}
 }
