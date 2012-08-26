@@ -2,7 +2,7 @@
  * ...
  * @author Daniel Wasilewski
  */
-var time = new Date();
+var time = Date.now();
 
 /**
 * SUGAR
@@ -35,7 +35,7 @@ function Emiter(){
 		this[c]= new c();
 		this[c].slt = this.slt;
 		this[c].uid = this.uid();
-		this[c].s = new Signal(uid);
+		this[c].s = new Signal(this[c].uid);
 		this[c].init();
 	}
 	//unregister component
@@ -57,7 +57,7 @@ function Emiter(){
 	}
 	//remove slot
 	this.rsl = function(ch,uid,t){if(!ch[t]) return;delete ch[t][uid];}
-	//broadcast
+	//signal broadcast
 	this.brc = function(ch,t,s,p){
 		if(!ch[t]) return;
 		if(p)s.params=p;
@@ -65,14 +65,20 @@ function Emiter(){
 			ch[t][f].call(ch[t][f]._c, s);
 		}
 	}
-	//response
-	this.rsp = function(ch, t, dat){
+	//signal send
+	this.snd = function(ch,uid,t,s,p){
 		if(!ch[t] || !ch[t][uid]) return;
+		if(p)s.params=p;
+		ch[t][uid].call(ch[t][uid]._c, s);
+	}
+	//data broadcast
+	this.rsp = function(ch, t, dat){
+		if(!ch[t]) return;
 		for(var f in ch[t]){
 			ch[t][f].call(ch[t][f]._c, dat);
 		}
 	}
-	//data response
+	//data send
 	this.drp = function(ch, uid, t, dat){
 		if(!ch[t] || !ch[t][uid]) return;
 		ch[t][uid].call(ch[t][uid]._c, dat);
@@ -156,6 +162,7 @@ Data.extends(Cmp);
 Data.prototype.addSlot = function(t,cb){emi.asl(this.slt.d,this.uid,t,cb,this)}
 Data.prototype.removeSlot = function(t){emi.rsl(this.slt.d,this.uid,t)}
 Data.prototype.responseTo = function(uid,t){emi.drp(this.slt.c,uid,t,this)}
+Data.prototype.responseToAll = function(t){emi.rsp(this.slt.c,t,this)}
 
 /**
 * BEHAVIOUR CLASS
@@ -174,9 +181,10 @@ Behaviour.prototype.exe = function(s){
 Behaviour.prototype.register = function(c,m){emi.reg(c,m)}
 Behaviour.prototype.unregister = function(c){emi.unr(c)}
 Behaviour.prototype.addResponder = function(t,cb,aReq){emi.asl(emi.slt.c,this.uid,t,cb,this);if(aReq)this.sendRequest(t)}
-Behaviour.prototype.removeResponder = function(t){emi.rs(emi.slt.c,t)}
+Behaviour.prototype.removeResponder = function(t){emi.rsl(emi.slt.c,t)}
 Behaviour.prototype.sendRequest = function(t,p){emi.brc(emi.slt.d,t,this.s,p)}
 Behaviour.prototype.sendSignal = function(t,p){emi.brc(emi.slt.v,t,this.s,p)}
+Behaviour.prototype.sendSignalTo = function(uid,t,p){emi.snd(emi.slt.v,uid,t,this.s,p)}
 Behaviour.prototype.emitSignal = function(t,p){emi.brc(emi.slt.c,t,this.s,p)}
 Behaviour.prototype.dispose = function(){emi.r(this.slt.a,this.uid,this.t);t=null;this.aDis=null;this.aExe=null;Cmp.prototype.destroy.call(this)}
 
@@ -186,4 +194,4 @@ Behaviour.prototype.dispose = function(){emi.r(this.slt.a,this.uid,this.t);t=nul
 function Signal(uid){this.callerUID=uid}
 Signal.prototype.dispose = function(){this.callerUID=null;this.params=null}
 
-trace("BixBite v0.6.4 - CORE INIT TIME: "+ (new Date()-time));
+trace("BixBite v0.6.4 - CORE INIT TIME: "+ (Date.now()-time));

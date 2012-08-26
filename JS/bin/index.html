@@ -5,8 +5,8 @@
 	<title>BixBite</title>
 	<meta name="description" content="" />
 	
-	<script src="js/core/bixbite_min.js"></script>
-	<script src="js/examples/application.js"></script>
+	<script src="js/core/bixbite.js"></script>
+	<script src="js/framework/DOMDspManager.js"></script>
 
 	<style>
 		html, body { height:100%; overflow:hidden; }
@@ -18,19 +18,7 @@
 	<script>
 		
 		var core = new BixBite();
-		core.register(BoxFactory);
-
-		//var time = new Date();
-
-		for (var i = 0; i < 1000; i++) {
-			var xpos = Math.floor(Math.random() * 1200);
-			var ypos = Math.floor(Math.random() * 900);
-			
-			core.sendSignal("createBox", { x:xpos, y:ypos, width:50, height:50, color:"#333333"});
-			core.sendSignal("createBox", { x:xpos+2, y:ypos+2, width:46, height:46} );
-		};
-
-		//trace("TIME: "+ (new Date()-time) + "ms");
+		core.register(DOMDspManager);
 		
 	</script>
 </body>
