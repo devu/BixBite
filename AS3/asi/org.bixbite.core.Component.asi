@@ -1,6 +1,8 @@
 ﻿package org.bixbite.core
 {
+	import flash.display.Stage;
 	import org.bixbite.core.interfaces.IComponent;
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -49,6 +51,8 @@
 		 * Unique Component identifier
 		 */
 		public function get uid () : String;
+
+		public function get stage () : Stage;
 
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated.

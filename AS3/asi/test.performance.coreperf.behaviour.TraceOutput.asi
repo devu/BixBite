@@ -1,0 +1,16 @@
+﻿package test.performance.coreperf.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 */
+	public class TraceOutput extends Behaviour
+	{
+		public function TraceOutput ();
+
+		public function execute (s:Signal) : void;
+	}
+}

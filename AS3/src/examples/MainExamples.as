@@ -23,10 +23,12 @@ THE SOFTWARE.
 
 package examples 
 {
+	import examples.contextloader.ContextLoaderExample;
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
 	import examples.imagegallery.ImageGallery;
+	
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
@@ -86,6 +88,11 @@ package examples
 			 */
 			//core.register(Stats);
 			//core.sendSignal(StatsSignal.START);
+			
+			/*
+			 * 
+			 */
+			core.register(ContextLoaderExample);
 		}
 	}
 

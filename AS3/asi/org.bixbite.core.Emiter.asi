@@ -2,7 +2,6 @@
 {
 	import flash.display.Stage;
 	import flash.system.System;
-	import flash.utils.describeType;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
@@ -22,7 +21,6 @@
 	public class Emiter
 	{
 		private static var _instance : Emiter;
-		private static var isRunning : Boolean;
 		private var _uid : int;
 		private var _stage : Stage;
 		private var _slots : Object;
@@ -63,16 +61,16 @@
 		public static function getInstance () : Emiter;
 
 		/**
-		 *
+		 * Register component within BixBite
 		 * @param	component
 		 */
-		function registerComponent (component:Class, referal:Compound=null) : void;
+		function registerComponent (component:Class, singleton:Boolean=true) : void;
 
 		/**
-		 *
+		 * Unregister component within BixBite
 		 * @param	component
 		 */
-		function unregisterComponent (component:Class, referal:Compound=null) : void;
+		function unregisterComponent (component:Class) : void;
 
 		/**
 		 *
@@ -125,7 +123,7 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		function dataBroadcast (channel:Object, type:String, signal:Signal, data:IData) : void;
+		function dataBroadcast (channel:Object, type:String, data:IData) : void;
 
 		/**
 		 *
@@ -157,7 +155,7 @@
 		 * @param	type
 		 * @param	signal
 		 */
-		function dataResponse (channel:Object, targetUID:String, type:String, signal:Signal, data:IData) : void;
+		function dataResponse (channel:Object, targetUID:String, type:String, data:IData) : void;
 
 		/**
 		 *

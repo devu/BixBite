@@ -21,7 +21,7 @@
 
 		public function init () : void;
 
-		private function onData (s:Signal, data:StageData) : void;
+		private function onData (data:StageData) : void;
 
 		public function execute (s:Signal) : void;
 

@@ -57,7 +57,6 @@ package org.bixbite
 	import org.bixbite.framework.Stats;
 	
 	/**
-	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.
 	 * 
@@ -80,6 +79,8 @@ package org.bixbite
 			
 			core.register(Stats);
 			core.sendSignal(StatsSignal.START);
+			
+			core.register(ContextLoader);
 		}
 		
 	}

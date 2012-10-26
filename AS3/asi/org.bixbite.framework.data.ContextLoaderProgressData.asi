@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework.data
+{
+	import org.bixbite.core.Data;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class ContextLoaderProgressData extends Data
+	{
+		public var totalProgress : Number;
+		public var itemName : String;
+		public var itemProgress : Number;
+
+		public function init () : void;
+
+		public function destroy () : void;
+	}
+}

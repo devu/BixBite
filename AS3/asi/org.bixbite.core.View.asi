@@ -15,11 +15,6 @@
 	public class View extends Component implements IView
 	{
 		/**
-		 * Access to native flash stage
-		 */
-		public function get stage () : Stage;
-
-		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
 		public function View ();
@@ -51,9 +46,9 @@
 		public function emitSignal (type:String, params:Object=null) : void;
 
 		/**
-		 *
+		 * SRS
 		 * @param	type
-		 * @return
+		 * @return 	array of slots
 		 */
 		public function getSlotReference (type:String) : Array;
 

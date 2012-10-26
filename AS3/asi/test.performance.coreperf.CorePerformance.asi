@@ -5,12 +5,13 @@
 	import flash.utils.getTimer;
 	import flash.utils.setInterval;
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.modules.stageManager.StageManager;
-	import org.bixbite.framework.modules.stats.Stats;
-	import org.bixbite.framework.signals.StatsSignal;
+	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.Stats;
+	import test.performance.coreperf.behaviour.TestBehaviour;
+	import test.performance.coreperf.behaviour.TraceOutput;
 	import test.performance.coreperf.data.TestData;
-	import test.performance.coreperf.transponder.Tester;
 	import test.performance.coreperf.transponder.TestTransponder;
+	import test.performance.coreperf.view.OutputView;
 	import test.performance.coreperf.view.TestView;
 
 	/**
@@ -25,72 +26,45 @@
 	 *   
 	 *     Taking under consideration all that, results below are still very satisfactory.
 	 *   
-	 *     Results: (0.5.4) ADTV (Flash Player 11,1,102,63 - Chrome) footprint 11.0kb
-	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 0.272ms
-	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 3.809ms
-	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 10.27ms
-	 *   TASK: destroy	Views	10.000	COUNT: 10	TIME: 52.64ms
-	 *   TASK: create		Views	100k	COUNT: 10	TIME: 118.3ms
-	 *   TASK: destroy	Views	100k	COUNT: 10	TIME: 776.8ms
+	 *     Results: (0.6.3) CDTV (Flash Player 11,1,102,63 - Chrome) footprint 11.0kb
 	 *   
-	 *     TASK: create		Trans	1.000	COUNT: 10	TIME: 1.0ms
-	 *   TASK: destroy	Trans	1.000	COUNT: 10	TIME: 4.318ms
-	 *   TASK: create		Trans	10.000	COUNT: 10	TIME: 11.36ms
-	 *   TASK: destroy	Trans	10.000	COUNT: 10	TIME: 71.73ms
-	 *   TASK: create		Trans	100k	COUNT: 10	TIME: 141.9ms
-	 *   TASK: destroy	Trans	100k	COUNT: 10	TIME: 596.2ms
+	 *     TASK:register	Views			10k			TIME:   1.00
+	 *   TASK:unregister	Views			10k			TIME:   2.00
+	 *   TASK:register	Views			100k		TIME:  17.00
+	 *   TASK:unregister	Views			100k		TIME:  22.00
+	 *   TASK:register	Views			1kk			TIME: 181.64
+	 *   TASK:unregister	Views			1kk			TIME: 235.45
 	 *   
-	 *     TASK: create		Data	1.000	COUNT: 10	TIME: 0.54ms
-	 *   TASK: destroy	Data	1.000	COUNT: 10	TIME: 4.45ms
-	 *   TASK: create		Data	10.000	COUNT: 10	TIME: 9.0ms
-	 *   TASK: destroy	Data	10.000	COUNT: 10	TIME: 98.64ms
-	 *   TASK: create		Data	100k	COUNT: 10	TIME: 177.2ms
-	 *   TASK: destroy	Data	100k	COUNT: 10	TIME: 1003.1ms
+	 *     TASK:register	Trans			10k			TIME:   1.01
+	 *   TASK:unregister	Trans			10k			TIME:   2.00
+	 *   TASK:register	Trans			100k		TIME:  18.00
+	 *   TASK:unregister	Trans			100k		TIME:  23.27
+	 *   TASK:register	Trans			1kk			TIME: 198.91
+	 *   TASK:unregister	Trans			1kk			TIME: 259.00
 	 *   
-	 *     Results: (0.5.0) ADTV (Flash Player 11,1,102,63 - Chrome) footprint 10.1kb
-	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 0.432ms
-	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 3.182ms
-	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 9.909ms
-	 *   TASK: destroy	Views	10.000	COUNT: 10	TIME: 39.70ms
-	 *   TASK: create		Views	100k	COUNT: 10	TIME: 111.3ms
-	 *   TASK: destroy	Views	100k	COUNT: 10	TIME: 381.8ms
+	 *     TASK:register	Data			10k			TIME:   1.01
+	 *   TASK:unregister	Data			10k			TIME:   2.00
+	 *   TASK:register	Data			100k		TIME:  19.00
+	 *   TASK:unregister	Data			100k		TIME:  25.00
+	 *   TASK:register	Data			1kk			TIME: 197.91
+	 *   TASK:unregister	Data			1kk			TIME: 261.45
 	 *   
-	 *     TASK: create		Trans	1.000	COUNT: 10	TIME: 0.368ms
-	 *   TASK: destroy	Trans	1.000	COUNT: 10	TIME: 2.518ms
-	 *   TASK: create		Trans	10.000	COUNT: 10	TIME: 12.91ms
-	 *   TASK: destroy	Trans	10.000	COUNT: 10	TIME: 35.91ms
-	 *   TASK: create		Trans	100k	COUNT: 10	TIME: 109.2ms
-	 *   TASK: destroy	Trans	100k	COUNT: 10	TIME: 360.2ms
+	 *     TASK:add/remove Behaviour		1k			TIME:   4.36
+	 *   TASK:add/remove Behaviour		10k			TIME:  54.91
+	 *   TASK:add/remove Behaviour		100k		TIME: 766.91
+	 *   TASK:add/exe/dispose Behaviour	1k			TIME:   4.82
+	 *   TASK:add/exe/dispose Behaviour	10k			TIME:  69.00
+	 *   TASK:add/exe/dispose Behaviour	100k		TIME: 831.09
 	 *   
-	 *     TASK: create		Data	1.000	COUNT: 10	TIME: 1.600ms
-	 *   TASK: destroy	Data	1.000	COUNT: 10	TIME: 10.18ms
-	 *   TASK: create		Data	10.000	COUNT: 10	TIME: 11.91ms
-	 *   TASK: destroy	Data	10.000	COUNT: 10	TIME: 29.64ms
-	 *   TASK: create		Data	100k	COUNT: 10	TIME: 115.2ms
-	 *   TASK: destroy	Data	100k	COUNT: 10	TIME: 342.1ms
-	 *   
-	 *     Results: (0.4.5) MVC (Flash Player 11,1,102,63 - Chrome) footprint 9.53kb
-	 *   TASK: create		Views	1.000	COUNT: 10	TIME: 1.182ms
-	 *   TASK: destroy	Views	1.000	COUNT: 10	TIME: 2.636ms
-	 *   TASK: create		Views	10.000	COUNT: 10	TIME: 11.64ms
-	 *   TASK: destroy	Views	10.000	COUNT: 10	TIME: 43.18ms
-	 *   TASK: create		Views	100k	COUNT: 10	TIME: 129.9ms
-	 *   TASK: destroy	Views	100k	COUNT: 10	TIME: 533.2ms
-	 *   
-	 *     TASK: create		Trans	1.000	COUNT: 10	TIME: 1.000ms
-	 *   TASK: destroy	Trans	1.000	COUNT: 10	TIME: 6.455ms
-	 *   TASK: create		Trans	10.000	COUNT: 10	TIME: 10.55ms
-	 *   TASK: destroy	Trans	10.000	COUNT: 10	TIME: 52.18ms
-	 *   TASK: create		Trans	100k	COUNT: 10	TIME: 134.3ms
-	 *   TASK: destroy	Trans	100k	COUNT: 10	TIME: 354.0ms
-	 *   
-	 *     TASK: create		Models	1.000	COUNT: 10	TIME: 1.000ms
-	 *   TASK: destroy	Models	1.000	COUNT: 10	TIME: 8.091ms
-	 *   TASK: create		Models	10.000	COUNT: 10	TIME: 11.36ms
-	 *   TASK: destroy	Models	10.000	COUNT: 10	TIME: 54.09ms
-	 *   TASK: create		Models	100k	COUNT: 10	TIME: 134.4ms
-	 *   TASK: destroy	Models	100k	COUNT: 10	TIME: 320.9ms
-	 *   
+	 *     TASK:reg/unreg Views			1k			TIME:   9.90
+	 *   TASK:reg/unreg Views			10k			TIME: 107.55
+	 *   TASK:reg/unreg Views			100k		TIME: 991.00
+	 *   TASK:reg/unreg Trans			1k			TIME:   7.54
+	 *   TASK:reg/unreg Trans			10k			TIME:  83.18
+	 *   TASK:reg/unreg Trans			100k		TIME:1175.0
+	 *   TASK:reg/unreg Data				1k			TIME:   7.09
+	 *   TASK:reg/unreg Data				10k			TIME:  77.00
+	 *   TASK:reg/unreg Data				100k		TIME: 916.55
 	 */
 	public class CorePerformance extends Compound
 	{
@@ -99,16 +73,13 @@
 		private var iterator : int;
 		private var task : int;
 		private var repeat : int;
-		private var testContainer : Array;
-		private var stats : Stats;
 		private var runner : int;
-		private var tester : Tester;
 
 		public function CorePerformance ();
 
-		private function run () : void;
+		public function init () : void;
 
-		private function sendTraceSignal (id:int) : void;
+		private function run () : void;
 
 		private function test1 (max:int, resultsId:int) : void;
 
@@ -121,5 +92,17 @@
 		private function test5 (max:int, resultsId:int) : void;
 
 		private function test6 (max:int, resultsId:int) : void;
+
+		private function test7 (max:int, resultsId:int) : void;
+
+		private function test8 (max:int, resultsId:int) : void;
+
+		private function test9 (max:int, resultsId:int) : void;
+
+		private function test10 (max:int, resultsId:int) : void;
+
+		private function test11 (max:int, resultsId:int) : void;
+
+		private function output (id:int) : void;
 	}
 }

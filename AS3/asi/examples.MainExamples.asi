@@ -1,5 +1,6 @@
 ﻿package examples
 {
+	import examples.contextloader.ContextLoaderExample;
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;

@@ -16,7 +16,6 @@
 	public class Transponder extends Component implements ITransponder
 	{
 		private var p : Point;
-		private var stage : Stage;
 
 		/**
 		 * Constructor - this class cannot be directly instantiated.
@@ -87,38 +86,17 @@
 		public function removeSensor (type:String, callback:Function) : void;
 
 		/**
-		 *
+		 * Get all display objects under the mouse point
 		 * @return
 		 */
 		public function getDisplayObjects () : Array;
 
 		/**
-		 *
-		 * @param	uid
-		 * @return
-		 */
-		public function getDisplayObjectByUID (uid:String) : DisplayObject;
-
-		/**
-		 *
+		 * Get 1st available display object under mouse point by its name
 		 * @param	name
 		 * @return
 		 */
 		public function getDisplayObjectByName (name:String) : DisplayObject;
-
-		/**
-		 *
-		 * @param	object
-		 * @return
-		 */
-		public function getDisplayObjectByType (object:Class) : Boolean;
-
-		/**
-		 *
-		 * @param	object
-		 * @return
-		 */
-		public function getDisplayObjectName (object:Object) : String;
 
 		/**
 		 *

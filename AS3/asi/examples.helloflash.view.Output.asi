@@ -1,0 +1,26 @@
+﻿package examples.helloflash.view
+{
+	import examples.helloflash.HelloFlash;
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 */
+	public class Output extends View
+	{
+		private var main : Sprite;
+		private var textField : TextField;
+
+		public function Output ();
+
+		public function init () : void;
+
+		private function createContext () : void;
+
+		private function updateCount (s:Signal) : void;
+	}
+}

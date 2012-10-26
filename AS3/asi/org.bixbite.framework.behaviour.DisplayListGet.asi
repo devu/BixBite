@@ -19,6 +19,6 @@
 
 		public function init () : void;
 
-		private function onDisplayList (s:Signal, data:DisplayListData) : void;
+		private function onDisplayList (data:DisplayListData) : void;
 	}
 }

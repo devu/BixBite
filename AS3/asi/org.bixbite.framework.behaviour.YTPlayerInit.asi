@@ -17,7 +17,7 @@
 
 		public function init () : void;
 
-		private function onInitalise (s:Signal, data:YTPlayerData) : void;
+		private function onInitalise (data:YTPlayerData) : void;
 
 		public function setup () : void;
 

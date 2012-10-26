@@ -58,6 +58,13 @@
 		public function sendSignal (type:String, params:Object=null) : void;
 
 		/**
+		 *
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignal (type:String, params:Object=null) : void;
+
+		/**
 		 * deconstructor
 		 */
 		public function destroy () : void;

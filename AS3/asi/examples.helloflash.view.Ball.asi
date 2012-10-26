@@ -13,15 +13,7 @@
 	{
 		private var radius : int;
 		private var color : uint;
-		private var _ball : Sprite;
-
-		public function get x () : Number;
-		public function set x (value:Number) : void;
-
-		public function get y () : Number;
-		public function set y (value:Number) : void;
-
-		public function get context () : Sprite;
+		private var ball : Sprite;
 
 		/**
 		 * Constructor

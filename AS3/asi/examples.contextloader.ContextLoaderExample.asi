@@ -1,0 +1,17 @@
+﻿package examples.contextloader
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.ContextLoader;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class ContextLoaderExample extends Compound
+	{
+		public function init () : void;
+
+		public function destroy () : void;
+	}
+}

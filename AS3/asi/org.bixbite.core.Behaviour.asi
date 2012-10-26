@@ -13,11 +13,11 @@
 	public class Behaviour
 	{
 		public var signal : Signal;
-		public var remove : Function;
 		private var emiter : Emiter;
 		private var uid : String;
 		private var type : String;
 		private var slots : Object;
+		private var autoDispose : Boolean;
 		private var compound : Compound;
 
 		public function Behaviour ();
@@ -29,13 +29,13 @@
 		 * @param	slots
 		 * @param	compound
 		 */
-		function __initialise (emiter:Emiter, type:String, slots:Object, compound:Compound) : void;
+		function initialise (emiter:Emiter, type:String, slots:Object, autoDispose:Boolean, compound:Compound) : void;
 
 		/**
 		 * System controlled Internal pre-execute method.
 		 * @param	s
 		 */
-		function __exe (s:Signal) : void;
+		function exe (s:Signal) : void;
 
 		/**
 		 * Abstract method to perform initial preparation before execute() is triggered.
@@ -52,18 +52,13 @@
 		 * Proxy method for behaviour to register any component within belonging Compound
 		 * @param	component
 		 */
-		public function register (component:Class) : void;
+		public function register (component:Class, singleton:Boolean=true) : void;
 
 		/**
 		 * Proxy method for behaviour to unregister any component from belonging Compound
 		 * @param	component
 		 */
 		public function unregister (component:Class) : void;
-
-		/**
-		 * Deconstructor of behaviour.
-		 */
-		public function dispose () : void;
 
 		/**
 		 * Add responder into Atom in order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
@@ -114,5 +109,10 @@
 		 * @return
 		 */
 		public function getSlotReference (type:String) : Array;
+
+		/**
+		 * Deconstructor of behaviour.
+		 */
+		public function dispose () : void;
 	}
 }

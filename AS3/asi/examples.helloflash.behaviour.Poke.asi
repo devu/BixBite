@@ -1,6 +1,7 @@
 ﻿package examples.helloflash.behaviour
 {
 	import examples.helloflash.HelloFlash;
+	import examples.helloflash.view.Ball;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 
@@ -13,8 +14,6 @@
 		private var count : int;
 
 		public function Poke ();
-
-		public function init () : void;
 
 		public function execute (s:Signal) : void;
 	}

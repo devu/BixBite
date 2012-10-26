@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.3.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.5.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -76,11 +76,20 @@
     <class>org.bixbite.framework.data.DisplayListData</class>
     <class>org.bixbite.framework.data.YTPlayerData</class>
     <class>org.bixbite.framework.data.ContextLoaderData</class>
+    <class>org.bixbite.framework.data.ContextLoaderItemData</class>
+    <class>org.bixbite.framework.data.ContextLoaderProgressData</class>
     <class>org.bixbite.framework.data.vo.ContextLoaderItem</class>
     <class>org.bixbite.framework.data.vo.ContextLoaderQueue</class>
     <class>org.bixbite.framework.data.vo.ContextItem</class>
     <class>org.bixbite.framework.data.vo.ContextBitmap</class>
     <class>org.bixbite.framework.data.vo.ContextSprite</class>
     <class>org.bixbite.utils.ClassUtil</class>
+    <class>test.performance.coreperf.view.OutputView</class>
+    <class>test.performance.coreperf.behaviour.TraceOutput</class>
+    <class>test.performance.coreperf.behaviour.TestBehaviour</class>
+    <class>examples.helloworld.view.Output</class>
+    <class>examples.helloworld.behaviour.Initialise</class>
+    <class>examples.helloflash.view.Output</class>
+    <class>examples.contextloader.ContextLoaderExample</class>
   </include-classes>
 </flex-config>

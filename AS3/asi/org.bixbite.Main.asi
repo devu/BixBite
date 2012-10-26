@@ -3,11 +3,11 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.ContextLoader;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
 
 	/**
-	 * 
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.
 	 * 
@@ -16,8 +16,6 @@
 	 */
 	public class Main extends Sprite
 	{
-		private var core : BixBite;
-
 		public function Main ();
 
 		private function init (e:Event) : void;

@@ -3,6 +3,7 @@
 	import examples.helloworld.HelloWorld;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import flash.utils.getTimer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 
@@ -22,10 +23,6 @@
 		 * Add system listener to capture user Input by adding sensors.
 		 */
 		public function init () : void;
-
-		private function onInit (s:Signal) : void;
-
-		private function onGetDefaultCopy (s:Signal) : void;
 
 		private function onMouseDown (e:MouseEvent) : void;
 	}

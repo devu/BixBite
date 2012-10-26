@@ -13,9 +13,7 @@
 	public class HelloView extends View
 	{
 		private var textField : TextField;
-		private var _context : Sprite;
-
-		public function get context () : Sprite;
+		private var context : Sprite;
 
 		public function HelloView ();
 

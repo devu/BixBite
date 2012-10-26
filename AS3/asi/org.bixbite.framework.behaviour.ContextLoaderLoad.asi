@@ -5,6 +5,8 @@
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.data.ContextLoaderItemData;
+	import org.bixbite.framework.data.ContextLoaderProgressData;
 	import org.bixbite.framework.data.vo.ContextItem;
 	import org.bixbite.framework.signal.ContextLoaderSignal;
 	import org.bixbite.framework.signal.DisplaySignal;
@@ -19,13 +21,13 @@
 
 		public function init () : void;
 
-		private function onQueueCompleted (s:Signal, data:IData) : void;
+		private function onQueueCompleted (data:IData) : void;
 
-		private function onProgress (s:Signal, data:IData) : void;
+		private function onProgress (data:ContextLoaderProgressData) : void;
 
-		private function onContextLoaded (s:Signal, data:IData) : void;
+		private function onContextLoaded (data:ContextLoaderItemData) : void;
 
-		private function onContextSkipped (s:Signal, data:IData) : void;
+		private function onContextSkipped (data:IData) : void;
 
 		public function execute (s:Signal) : void;
 	}

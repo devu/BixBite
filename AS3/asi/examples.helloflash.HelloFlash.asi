@@ -3,7 +3,7 @@
 	import examples.helloflash.HelloFlash;
 	import examples.helloflash.behaviour.Poke;
 	import examples.helloflash.transponder.BallTransponder;
-	import examples.helloflash.view.MainView;
+	import examples.helloflash.view.Output;
 	import org.bixbite.core.Compound;
 
 	/**

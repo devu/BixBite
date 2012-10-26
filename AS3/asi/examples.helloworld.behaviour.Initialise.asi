@@ -1,0 +1,16 @@
+﻿package examples.helloworld.behaviour
+{
+	import examples.helloworld.view.HelloView;
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class Initialise extends Behaviour
+	{
+		public function execute (s:Signal) : void;
+	}
+}

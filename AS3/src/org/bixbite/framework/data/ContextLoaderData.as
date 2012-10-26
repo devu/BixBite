@@ -54,7 +54,7 @@ package org.bixbite.framework.data
 		private var max					:int = 0;
 		private var queueLoadedIndex	:int = 0;
 		private var queueCompleteIndex	:int = 0;
-		private var isLocal:Boolean;
+		private var isLocal				:Boolean;
 		
 		public function ContextLoaderData()
 		{
@@ -169,12 +169,12 @@ package org.bixbite.framework.data
 				total += i.percent;
 			}
 			
-			responseToAll(ContextLoaderSignal.ON_PROGRESS, 
-			{
-				totalProgress	:Number(total / max * 100).toPrecision(4), 
-				itemName		:String(item.name),
-				itemProgress	:Number(item.percent * 100).toPrecision(4)
-			});
+			var progressData:ContextLoaderProgressData = new ContextLoaderProgressData();
+			progressData.totalProgress 	= total / max * 100;
+			progressData.itemName 		= item.name;
+			progressData.itemProgress 	= item.percent * 100;
+			
+			responseToAll(ContextLoaderSignal.ON_PROGRESS, progressData);
 		}
 		
 		private function onItemComplete(index:int):void
@@ -190,8 +190,7 @@ package org.bixbite.framework.data
 				if (!item.completed) {
 					item.completed = true;
 					queueCompleteIndex++;
-					//trace("COMPLETE::ContextLoaderItem Index", i);
-					responseToAll(ContextLoaderSignal.LOADED, { viewUID:item.viewUID, name:item.name, contextItem:item.context } );
+					responseToAll(ContextLoaderSignal.LOADED, new ContextLoaderItemData(item) );
 				}
 			}
 			
@@ -200,7 +199,7 @@ package org.bixbite.framework.data
 		
 		private function onIOError(item:ContextLoaderItem, error:String):void
 		{
-			responseToAll(ContextLoaderSignal.SKIPPED, { viewUID:item.viewUID, name:item.name, error:error } );
+			responseToAll(ContextLoaderSignal.SKIPPED, new ContextLoaderItemData(item, error));
 			executeQueue();
 		}
 		

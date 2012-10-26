@@ -29,16 +29,17 @@ package org.bixbite.core
 	import org.bixbite.utils.ClassUtil;
 	
 	/**
+	 * 
 	 * @langversion	3.0
 	 */
 	public class BixBite
 	{
-		use namespace BIXBITE;
-		
+		public static const VERSION	:String = "BixBite v0.6.5";
 		public static var instance	:BixBite;
 		
-		BIXBITE var emiter		:Emiter;
+		use namespace BIXBITE;
 		
+		BIXBITE var emiter		:Emiter;
 		BIXBITE var uid			:String;
 		BIXBITE var channelC	:Object;
 		BIXBITE var channelT	:Object;
@@ -56,6 +57,9 @@ package org.bixbite.core
 			
 			uid = "@" + emiter.uid;
 			signal = new Signal(uid);
+			
+			trace(VERSION);
+			
 			super();
 		}
 		
