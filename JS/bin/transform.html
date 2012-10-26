@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+
+		div {
+		  position: absolute;
+		}
+
+		#thing0 {
+		  width:100px; height:100px;background-color:#FFFF00; top: 100px;
+		}
+
+		#thing1 {
+		  width:100px; height:100px;background-color:#FF0000;
+		  -webkit-transform: translate(200px, 100px) scale(2,2) rotate(45deg);
+		  -moz-transform:    translate(200px, 100px) scale(2,2) rotate(45deg);
+		  -ms-transform:     translate(200px, 100px) scale(2,2) rotate(45deg);
+		  -o-transform:      translate(200px, 100px) scale(2,2) rotate(45deg);
+		}
+
+		#thing2 {
+		  width:100px; height:100px;background-color:#FF00FF;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div id="thing0">my div</div>
+	<div id="thing1">my div</div>
+	<div id="thing2">my div</div>
+	<script>
+		console.log("matrix");
+
+		var uAgent = navigator.userAgent;
+		var prefix;
+		if(uAgent.indexOf("Trident")>=0){
+		  prefix = "-ms-";
+		} else if(uAgent.indexOf("Firefox")>=0){
+		  prefix = "-moz-";
+		} else if(uAgent.indexOf("AppleWebKit")>=0){
+		  prefix = "-webkit-";
+		} else if(uAgent.indexOf("Opera")>=0){
+		  prefix = "-o-";
+		} else {
+		  prefix ="";
+		}
+
+		var deg2radians = Math.PI / 180;
+		var el = document.getElementById("thing2");
+
+		var tranform = function(deg,sx,sy,tx,ty){
+			var rad = deg * deg2radians;
+			cos = Math.cos(rad);
+			sin = Math.sin(rad); 
+			a = cos * sx;
+			c = -sin * sx;
+			b = sin * sy;
+			d = cos * sy;
+
+			el.style.setProperty(prefix+"transform", "matrix("+a+","+b+","+c+","+d+","+tx+","+ty+")");
+		}
+
+		tranform(30,2,2,400,100);
+		
+	</script>
+
+</body>
+
+</html>

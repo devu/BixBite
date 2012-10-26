@@ -29,6 +29,7 @@ package examples.hellodisplaylist.transponder
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.utils.ClassUtil;
 	
 	/**
 	 * @langversion	3.0
@@ -51,9 +52,7 @@ package examples.hellodisplaylist.transponder
 		private function onInputDown(e:MouseEvent):void 
 		{
 			// You can retrieve display object name if is interactive
-			var name:String = getDisplayObjectName(e.target);
-			
-			
+			var name:String = ClassUtil.retrieveName(DisplayObject(e.target));
 			
 			// then perform some action
 			switch(name)

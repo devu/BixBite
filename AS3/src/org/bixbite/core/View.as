@@ -89,9 +89,9 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * SRS
 		 * @param	type
-		 * @return
+		 * @return 	array of slots
 		 */
 		public function getSlotReference(type:String):Array
 		{
@@ -105,14 +105,6 @@ package org.bixbite.core
 		{
 			emiter.removeAllSlotsOf(slots.v, uid);
 			super.destroy();
-		}
-		
-		/**
-		 * Access to native flash stage
-		 */
-		public function get stage():Stage
-		{
-			return emiter.BIXBITE::stage;
 		}
 	}
 

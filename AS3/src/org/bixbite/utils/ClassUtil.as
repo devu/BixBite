@@ -56,7 +56,12 @@ package org.bixbite.utils
 		
 		public static function retrieveUID(context:DisplayObject):String
 		{
-			return "@" + context.name.split("@")[1];
+			return (context.name) ? "@" + context.name.split("@")[1] : null;
+		}
+		
+		public static function retrieveName(context:DisplayObject):String
+		{
+			return (context.name) ? context.name.split("@")[0] : null;
 		}
 		
 	}

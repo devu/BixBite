@@ -52,6 +52,7 @@ package org.bixbite
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.framework.ContextLoader;
 	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
 	

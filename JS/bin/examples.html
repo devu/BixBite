@@ -1,3 +1,5 @@
+<? ob_start("ob_gzhandler"); ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,11 @@
 	<title>BixBite</title>
 	<meta name="description" content="" />
 	
-	<script src="js/core/bixbite.js"></script>
+	<!--<script src="js/core/bixbite.js"></script>-->
 	<!--<script src="js/examples/helloworld.js"></script>-->
-	<script src="js/examples/hellohtml.js"></script>
+	<!--<script src="js/examples/hellohtml.js"></script>-->
+	<!--<script src="js/framework/DOMDspManager.js"></script>-->
+	<!--<script src="js/examples/hellodisplaylist.js"></script>-->
 
 	<style>
 		html, body { height:100%; overflow:hidden; }
@@ -17,12 +21,43 @@
 
 <body>
 	<script>
-		var core = new BixBite();
-		//Hello World example
-		//core.register(HelloWorld);
 
-		//Port of HelloFlash (AS3) example
-		core.register(HelloHTML);
+		var jobspic = new Array("#artist2d", "#artist3d", "#web-designer");
+
+		function sample(a) {
+			var e = document.getElementById(a);
+			if(e){
+				e["onclick"] = function(){
+		      		alert(a);
+		    	}
+			}
+		}
+		for (i = 0; i < jobspic.length; i++) {
+		  sample(i);
+		}
+
+		/*
+		ClassA = function(){trace("ClassA:constructor");};
+		p = ClassA.extend(Class);
+		p.init = function(){trace("ClassA:init")}
+		p.x = 10;
+
+		ClassB = function(){this.sup(ClassA);trace("ClassB:constructor");};
+		p = ClassB.extend(ClassA);
+		p.init = function(){this.sup(ClassA, 'init'); trace("ClassB:init")}
+		p.y = 10;
+
+		ClassC = function(){this.sup(ClassB);trace("ClassC:constructor");};
+		p = ClassC.extend(ClassB);
+		p.init = function(){this.sup(ClassB, 'init'); trace("ClassC:init")}
+		p.z = 10;
+
+		var c = new ClassC();
+		c.init();
+
+		trace(c);
+		*/
+
 	</script>
 </body>
 

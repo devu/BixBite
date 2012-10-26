@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import flash.display.Stage;
 	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
@@ -117,6 +118,11 @@ package org.bixbite.core
 		public function get uid():String 
 		{
 			return _uid;
+		}
+		
+		public function get stage():Stage
+		{
+			return emiter.stage;
 		}
 	}
 

@@ -1,3 +1,4 @@
+HelloHTML.extend(Compound);
 function HelloHTML(){
 	
 	this.init = function(){
@@ -9,8 +10,7 @@ function HelloHTML(){
 	}
 }
 
-HelloHTML.extends(Compound);
-
+BallTransponder.extend(Transponder);
 function BallTransponder(){
 
 	this.init = function(){
@@ -22,8 +22,8 @@ function BallTransponder(){
 	}
 }
 
-BallTransponder.extends(Transponder);
 
+Output.extend(View);
 function Output(){
 
 	this.init = function(){
@@ -42,8 +42,7 @@ function Output(){
 
 }
 
-Output.extends(View);
-
+Ball.extend(View);
 function Ball(){
 
 	var radius = 5;
@@ -86,8 +85,7 @@ function Ball(){
 
 }
 
-Ball.extends(View);
-
+Poke.extend(Behaviour);
 function Poke(){
 	
 	var count = 0;
@@ -108,4 +106,3 @@ function Poke(){
 	}
 }
 
-Poke.extends(Behaviour);

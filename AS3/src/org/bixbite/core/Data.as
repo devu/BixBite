@@ -98,14 +98,6 @@ package org.bixbite.core
 			emiter.removeAllSlotsOf(slots.d, uid);
 			super.destroy();
 		}
-		
-		/**
-		 * 
-		 */
-		public function get stage():Stage
-		{
-			return emiter.stage;
-		}
 	}
 
 }

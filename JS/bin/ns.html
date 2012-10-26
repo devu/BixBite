@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+
+    <script src="js/core/BixBite.js"></script>
+
+</head>
+
+<body>
+	<script>
+        var core = new BixBite();
+        
+        function myView(){
+            this.init = function(){
+                trace(this);
+            }
+        }
+        myView.extend(View);
+
+		core.register(myView);
+	</script>
+</body>
+
+</html>

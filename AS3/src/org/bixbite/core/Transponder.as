@@ -43,8 +43,6 @@ package org.bixbite.core
 		
 		private var p:Point = new Point(0, 0);
 		
-		private var stage:Stage;
-		
 		/**
          * Constructor - this class cannot be directly instantiated.
          */
@@ -114,8 +112,6 @@ package org.bixbite.core
 		  */
 		public function responseTo(uid:String, type:String, params:Object = null):void 
 		{
-			//var uid:String = "@" + target.name.split("@")[1];
-			
 			signal.params = params;
 			emiter.response(slots.v, uid, type, signal);
 		}
@@ -138,7 +134,7 @@ package org.bixbite.core
 		 */
 		public function addSensor(type:String, callback:Function):void
 		{
-			emiter.stage.addEventListener(type, callback);
+			stage.addEventListener(type, callback);
 		}
 		
 		/**
@@ -148,38 +144,22 @@ package org.bixbite.core
 		 */
 		public function removeSensor(type:String, callback:Function):void
 		{
-			emiter.stage.removeEventListener(type, callback);
+			stage.removeEventListener(type, callback);
 		}
 		
 		/**
-		 * 
+		 * Get all display objects under the mouse point
 		 * @return
 		 */
 		public function getDisplayObjects():Array
 		{
-			stage = emiter.BIXBITE::stage;
 			p.x = stage.mouseX;
 			p.y = stage.mouseY;
 			return stage.getObjectsUnderPoint(p);
 		}
 		
 		/**
-		 * 
-		 * @param	uid
-		 * @return
-		 */
-		public function getDisplayObjectByUID(uid:String):DisplayObject
-		{
-			var a:Array;
-			for each(var o:DisplayObject in getDisplayObjects()){
-				if (o.name == uid) return o;
-			}
-			
-			return null
-		}
-		
-		/**
-		 * 
+		 * Get 1st available display object under mouse point by its name
 		 * @param	name
 		 * @return
 		 */
@@ -195,36 +175,11 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
-		 * @param	object
-		 * @return
-		 */
-		public function getDisplayObjectByType(object:Class):Boolean
-		{
-			for each(var o:Object in getDisplayObjects()){
-				if (o is object) return true;
-			}
-			
-			return false;
-		}
-		
-		/**
-		 * 
-		 * @param	object
-		 * @return
-		 */
-		public function getDisplayObjectName(object:Object):String
-		{
-			return (object.name) ? object.name.split("@")[0] : null;
-		}
-		
-		/**
 		 * @inheritDoc
 		 */
 		override public function destroy():void 
 		{
 			emiter.removeAllSlotsOf(slots.c, uid);
-			stage = null;
 			super.destroy();
 		}
 	}

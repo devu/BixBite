@@ -13,51 +13,53 @@ function DOMDspManager(){
 		this.addBehaviour("DspManager.REMOVE_CONTEXT"	, DOMDspRemoveContext);
 
 		this.emitSignal("DspManager.INIT");
-
-		this.register(TestView);
-		this.register(SubView);
 	}
 }
-DOMDspManager.extends(Compound);
+DOMDspManager.extend(Compound);
 
 /*
 DATA
 */
 function DOMDspManagerData(){
 	
+	Data.call(this);
+
 	this.list = {};
 
 	this.init = function(){
 		trace("DOMDspManagerData.init");
-
 		this.list["stage"] = document.body;
 		this.addSlot("DspManager.INIT", onInitDsp);
 	}
 
 	var onInitDsp = function(s){
-		trace("DOMDspManagerData::onInitDsp");
 		this.responseToAll("DspManager.INITIALISED");
 	}
 }
-DOMDspManagerData.extends(Data);
+DOMDspManagerData.extend(Data);
 
 /*
 TRANSPONDER
 */
 function DOMDspManagerTrans(){
 	
+	Transponder.call(this);
+
 	this.init = function(){
+		trace("DOMDspManagerTrans.init");
 		this.addSlot("DspManager.SET_CONTEXT", onSetContext);
 		this.addSlot("DspManager.ADD_CONTEXT", onAddContext);
 		this.addSlot("DspManager.REMOVE_CONTEXT", onRemoveContext);
 	}
 
 	var onSetContext = function(s){
+		trace(this+"::onSetContext");
 		s.params.viewUID = s.callerUID;
 		this.sendSignal("DspManager.SET_CONTEXT", s.params);
 	}
 
 	var onAddContext = function(s){
+		trace(this+"::onAddContext");
 		s.params.viewUID = s.callerUID;
 		this.sendSignal("DspManager.ADD_CONTEXT", s.params);
 	}
@@ -66,20 +68,25 @@ function DOMDspManagerTrans(){
 		
 	}
 }
-DOMDspManagerTrans.extends(Transponder);
+DOMDspManagerTrans.extend(Transponder);
 
 function DOMDspInitialise(){
 	
+	Behaviour.call(this);
+
 	this.init = function(){}
 	this.execute = function(){
 		this.sendRequest("DspManager.INIT");
 	}
 }
-DOMDspInitialise.extends(Behaviour);
+DOMDspInitialise.extend(Behaviour);
 
 function DOMDspInit(){
 	
+	Behaviour.call(this);
+
 	this.list = null;
+	trace("DOMDspInit:CONSTRUCTED");
 
 	this.init = function(){
 		this.addResponder("DspManager.INITIALISED", onDspInit);
@@ -95,23 +102,29 @@ function DOMDspInit(){
 		this.sendRequest("DspManager.INIT");
 	}
 }
-DOMDspInit.extends(Behaviour);
+DOMDspInit.extend(Behaviour);
 
 function DOMDspSetContext(){
+	//this.init = function(){};
+	DOMDspInit.call(this);
+
 	this.execute = function(s){
-		
+		trace("DOMDspSetContext::execute");
 		var name = s.params.name;
 		var context	= s.params.context;
 		var ctxuid = name +s.params.viewUID;
-		context.setAttribute("id", ctxuid);
+		context.setAttribute("uid", ctxuid);
 
 		this.list[name] = context;
 		this.sendSignalTo(s.params.viewUID, "DspManager.CONTEXT_SET", { name:name, contextUID:ctxuid } );
 	}
 }
-DOMDspSetContext.extends(DOMDspInit);
+DOMDspSetContext.extend(DOMDspInit);
 
 function DOMDspAddContext(){
+	//this.init = function(){};
+	DOMDspInit.call(this);
+
 	this.execute = function(s){
 		
 		var ctxName = s.params.name;
@@ -128,52 +141,18 @@ function DOMDspAddContext(){
 
 		container.appendChild(context);
 
-		var vUID = "@"+context.getAttribute("id").split("@")[1];
+		var vUID = "@"+context.getAttribute("uid").split("@")[1];
 		this.sendSignalTo(vUID, "DspManager.CONTEXT_ADDED", { name:ctxName, container:ctnName } );
 	}
 }
-DOMDspAddContext.extends(DOMDspInit);
+DOMDspAddContext.extend(DOMDspInit);
 
 function DOMDspRemoveContext(){
+	//this.init = function(){};
+	DOMDspInit.call(this);
+
 	this.execute = function(s){
 		trace("DOMDspRemoveContext.execute");
 	}
 }
-DOMDspRemoveContext.extends(DOMDspInit);
-
-/*
-TEST VIEWS
-*/
-function TestView(){
-	this.init = function(){
-
-		this.addSlot("DspManager.CONTEXT_SET", onContextSet);
-
-		this.context = document.createElement("div");
-		this.sendSignal("DspManager.SET_CONTEXT", { name:"sprite", context:this.context });
-		this.sendSignal("DspManager.ADD_CONTEXT", { name:"sprite", container:"stage" });
-	}
-
-	var onContextSet = function(){
-		var style = "position:absolute; background:#800000; width:100px; height:100px; left:100px; top:100px;";
-		this.context.setAttribute("style", style);
-	}
-}
-TestView.extends(View);
-
-function SubView(){
-	this.init = function(){
-		
-		this.addSlot("DspManager.CONTEXT_SET", onContextSet);
-
-		this.context = document.createElement("div");
-		this.sendSignal("DspManager.SET_CONTEXT", { name:"shape", context:this.context });
-		this.sendSignal("DspManager.ADD_CONTEXT", { name:"shape", container:"sprite" });
-	}
-
-	var onContextSet = function(){
-		var style = "position:absolute; background:#808000; width:10px; height:10px; left:10px; top:10px;";
-		this.context.setAttribute("style", style);
-	}
-}
-SubView.extends(View);
+DOMDspRemoveContext.extend(DOMDspInit);
