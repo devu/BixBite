@@ -46,6 +46,13 @@
 		public function emitSignal (type:String, params:Object=null) : void;
 
 		/**
+		 * Single-cast method to send one singal to an View.
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignalTo (targetUID:String, type:String, params:Object=null) : void;
+
+		/**
 		 * SRS
 		 * @param	type
 		 * @return 	array of slots

@@ -89,6 +89,17 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * Single-cast method to send one singal to an View.
+		 * @param	type
+		 * @param	params
+		 */
+		public function emitSignalTo(targetUID:String, type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emiter.response(slots.v, targetUID, type, signal);
+		}
+		
+		/**
 		 * SRS
 		 * @param	type
 		 * @return 	array of slots

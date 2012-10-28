@@ -40,6 +40,8 @@
     <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
+    <class>org.bixbite.framework.data.ContextLoaderItemData</class>
+    <class>org.bixbite.framework.data.ContextLoaderProgressData</class>
     <class>org.bixbite.utils.ClassUtil</class>
     <class>test.performance.coreperf.view.OutputView</class>
     <class>test.performance.coreperf.behaviour.TraceOutput</class>
@@ -47,5 +49,6 @@
     <class>examples.helloworld.view.Output</class>
     <class>examples.helloworld.behaviour.Initialise</class>
     <class>examples.helloflash.view.Output</class>
+    <class>examples.contextloader.ContextLoaderExample</class>
   </include-classes>
 </flex-config>
