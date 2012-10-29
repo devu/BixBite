@@ -41,7 +41,8 @@ package org.bixbite.core
 		use namespace BIXBITE;
 		
 		/**
-		 * 
+		 * Number of requests this Component has been registered within a core.
+		 * BixBite by default will keep your components as singletons and just need to know how many times is needed to keep it alive before destructor occures.
 		 */
 		BIXBITE var copies	:int = 0;
 		
@@ -68,6 +69,11 @@ package org.bixbite.core
 		 * Default signal attached to this Component
 		 */
 		public var signal	:Signal
+		
+		/**
+		 * Additional identifier for Components operating as multiple instances of the same Class
+		 */
+		public var id		:String;
 		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
