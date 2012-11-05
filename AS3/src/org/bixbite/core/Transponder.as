@@ -25,7 +25,6 @@ package org.bixbite.core
 {
 	import flash.display.DisplayObject;
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
@@ -48,7 +47,7 @@ package org.bixbite.core
          */
 		public function Transponder() 
 		{
-			if (Object(this).constructor == Transponder) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == Transponder) throw new Error("Abstract Class");
 		}
 		
 		/**

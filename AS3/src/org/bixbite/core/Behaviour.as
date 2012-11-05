@@ -78,7 +78,7 @@ package org.bixbite.core
 		 * System controlled Internal pre-execute method.
 		 * @param	s
 		 */
-		BIXBITE function exe(s:Signal):void
+		internal function exe(s:Signal):void
 		{
 			execute(s);
 			if (autoDispose) compound.removeBehaviour(type);

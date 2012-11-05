@@ -2,7 +2,6 @@
 {
 	import flash.display.DisplayObject;
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;

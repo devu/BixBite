@@ -24,7 +24,6 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -45,7 +44,7 @@ package org.bixbite.core
          */
 		public function View() 
 		{
-			if (Object(this).constructor == View) throw new IllegalOperationError("Abstract Class");
+			if (Object(this).constructor == View) throw new Error("Abstract Class");
  		}
 		
 		/**

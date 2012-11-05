@@ -24,9 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
-	import flash.utils.describeType;
 	import org.bixbite.namespaces.BIXBITE;
-	import org.bixbite.utils.ClassUtil;
 	
 	/**
 	 * 
@@ -34,8 +32,7 @@ package org.bixbite.core
 	 */
 	public class BixBite
 	{
-		public static const VERSION	:String = "BixBite v0.6.5";
-		public static var instance	:BixBite;
+		public static const VERSION	:String = "BixBite v0.6.6";
 		
 		use namespace BIXBITE;
 		
@@ -48,8 +45,6 @@ package org.bixbite.core
 		
 		public function BixBite(stage:Stage) 
 		{
-			instance = this;
-			
 			emiter = Emiter.startup(stage);
 			
 			channelT = emiter.slots.t;
@@ -68,9 +63,9 @@ package org.bixbite.core
 			emiter.registerComponent(compound);
 		}
 		
-		public function unregister(component:Class):void
+		public function unregister(compound:Class):void
 		{
-			emiter.unregisterComponent(component);
+			emiter.unregisterComponent(compound);
 		}
 		
 		public function sendSignal(type:String, params:Object = null):void

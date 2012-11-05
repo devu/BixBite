@@ -1,7 +1,6 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.Stage;
-	import flash.errors.IllegalOperationError;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 
