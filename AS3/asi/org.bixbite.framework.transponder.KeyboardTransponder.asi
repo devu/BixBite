@@ -1,0 +1,35 @@
+﻿package org.bixbite.framework.transponder
+{
+	import flash.events.KeyboardEvent;
+	import flash.utils.Dictionary;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Transponder;
+	import org.bixbite.framework.signal.KeySignal;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class KeyboardTransponder extends Transponder
+	{
+		private var standard : Dictionary;
+		private var shiftKeys : Dictionary;
+		private var ctrlKeys : Dictionary;
+		private var ctrlShiftKeys : Dictionary;
+		private var trigger : Function;
+
+		public function init () : void;
+
+		private function onSetMapping (s:Signal) : void;
+
+		private function onKeyDown (e:KeyboardEvent) : void;
+
+		private function onKeyUp (e:KeyboardEvent) : void;
+
+		private function checkMapping (charCode:uint, dict:Dictionary) : void;
+
+		private function fire (type:String, charCode:uint) : void;
+
+		public function destroy () : void;
+	}
+}

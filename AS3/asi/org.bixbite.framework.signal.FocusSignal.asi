@@ -1,0 +1,24 @@
+﻿package org.bixbite.framework.signal
+{
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class FocusSignal
+	{
+		/**
+		 * OUT {  }
+		 */
+		public static const FOCUS_IN : String = "FocusSignal.FOCUS_IN";
+
+		/**
+		 * OUT {  }
+		 */
+		public static const FOCUS_LOST : String = "FocusSignal.FOCUS_LOST";
+
+		/**
+		 * IN {  }
+		 */
+		public static const SET_FOCUS : String = "FocusSignal.SET_FOCUS";
+	}
+}

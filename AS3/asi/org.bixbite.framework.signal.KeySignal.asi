@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework.signal
+{
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class KeySignal
+	{
+		/**
+		 * IN { type:String, dictionary:Dictionary }
+		 */
+		public static const SET_MAPPING : String = "KeySignal.SET_MAPPING";
+
+		/**
+		 * INTERNAL { name:String, context:DisplayObject }
+		 */
+		public static const TRIGGER : String = "KeySignal.TRIGGER";
+	}
+}

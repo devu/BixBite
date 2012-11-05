@@ -1,0 +1,19 @@
+﻿package org.bixbite.framework
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.behaviour.TriggerKey;
+	import org.bixbite.framework.signal.KeySignal;
+	import org.bixbite.framework.transponder.KeyboardTransponder;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class KeyboardController extends Compound
+	{
+		public function init () : void;
+
+		public function destroy () : void;
+	}
+}
