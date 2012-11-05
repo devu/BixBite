@@ -29,21 +29,13 @@ package org.bixbite.framework.data
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class DisplayListData extends Data 
 	{
-		use namespace DSP_MGR
-		
 		public var list:Dictionary = new Dictionary(true);
-		
-		public function DisplayListData()
-		{
-			
-		}
 		
 		override public function init():void 
 		{

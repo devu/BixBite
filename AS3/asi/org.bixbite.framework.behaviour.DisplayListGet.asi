@@ -5,7 +5,6 @@
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.namespaces.DSP_MGR;
 
 	/**
 	 *
@@ -14,8 +13,6 @@
 	public class DisplayListGet extends Behaviour
 	{
 		var list : Dictionary;
-
-		public function DisplayListGet ();
 
 		public function init () : void;
 

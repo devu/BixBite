@@ -13,8 +13,6 @@
 	 */
 	public class ContextLoader extends Compound
 	{
-		public function ContextLoader ();
-
 		public function init () : void;
 
 		public function destroy () : void;

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.5.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.6.6.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -24,10 +24,6 @@
     </library-path>
   </compiler>
   <include-classes>
-    <class>org.bixbite.namespaces.STATS</class>
-    <class>org.bixbite.namespaces.STAGE_MGR</class>
-    <class>org.bixbite.namespaces.DSP_MGR</class>
-    <class>org.bixbite.namespaces.YT_PLAYER</class>
     <class>org.bixbite.core.Signal</class>
     <class>org.bixbite.core.Component</class>
     <class>org.bixbite.core.Emiter</class>
@@ -47,18 +43,24 @@
     <class>org.bixbite.framework.StageManager</class>
     <class>org.bixbite.framework.YTPlayer</class>
     <class>org.bixbite.framework.ContextLoader</class>
+    <class>org.bixbite.framework.FocusManager</class>
+    <class>org.bixbite.framework.KeyboardController</class>
     <class>org.bixbite.framework.view.StatsMonitorView</class>
     <class>org.bixbite.framework.view.YTPlayerBaseView</class>
-    <class>org.bixbite.framework.signal.StatsSignal</class>
+    <class>org.bixbite.framework.view.BaseView</class>
+    <class>org.bixbite.framework.view.FocusedView</class>
     <class>org.bixbite.framework.signal.DisplaySignal</class>
-    <class>org.bixbite.framework.signal.StageSignal</class>
     <class>org.bixbite.framework.signal.ContextLoaderSignal</class>
+    <class>org.bixbite.framework.signal.KeySignal</class>
+    <class>org.bixbite.framework.signal.FocusSignal</class>
+    <class>org.bixbite.framework.signal.StageSignal</class>
     <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
     <class>org.bixbite.framework.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.transponder.StageTransponder</class>
     <class>org.bixbite.framework.transponder.YTPlayerTransponder</class>
     <class>org.bixbite.framework.transponder.ContextLoaderTransponder</class>
-    <class>org.bixbite.framework.behaviour.Calculate</class>
+    <class>org.bixbite.framework.transponder.KeyboardTransponder</class>
+    <class>org.bixbite.framework.transponder.FocusTransponder</class>
     <class>org.bixbite.framework.behaviour.SetStage</class>
     <class>org.bixbite.framework.behaviour.ResizeStage</class>
     <class>org.bixbite.framework.behaviour.DisplayListAddContext</class>
@@ -71,6 +73,8 @@
     <class>org.bixbite.framework.behaviour.DisplayListSetContext</class>
     <class>org.bixbite.framework.behaviour.ContextLoaderLoad</class>
     <class>org.bixbite.framework.behaviour.ContextLoaderSetPriority</class>
+    <class>org.bixbite.framework.behaviour.StatsCalculate</class>
+    <class>org.bixbite.framework.behaviour.TriggerKey</class>
     <class>org.bixbite.framework.data.StatsData</class>
     <class>org.bixbite.framework.data.StageData</class>
     <class>org.bixbite.framework.data.DisplayListData</class>
@@ -84,12 +88,5 @@
     <class>org.bixbite.framework.data.vo.ContextBitmap</class>
     <class>org.bixbite.framework.data.vo.ContextSprite</class>
     <class>org.bixbite.utils.ClassUtil</class>
-    <class>test.performance.coreperf.view.OutputView</class>
-    <class>test.performance.coreperf.behaviour.TraceOutput</class>
-    <class>test.performance.coreperf.behaviour.TestBehaviour</class>
-    <class>examples.helloworld.view.Output</class>
-    <class>examples.helloworld.behaviour.Initialise</class>
-    <class>examples.helloflash.view.Output</class>
-    <class>examples.contextloader.ContextLoaderExample</class>
   </include-classes>
 </flex-config>

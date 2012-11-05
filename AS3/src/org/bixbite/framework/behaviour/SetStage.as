@@ -33,14 +33,14 @@ package org.bixbite.framework.behaviour
 	public class SetStage extends Behaviour 
 	{
 		
-		public function SetStage() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void
 		{
-			sendRequest(StageSignal.SET_STAGE, s.params);
+			var params:Object = { align:"TL", scaleMode:"noScale", frameRate:30 };
+			
+			if (s.params)
+				for (var p:String in s.params) params[p] = s.params[p];
+			
+			sendRequest(StageSignal.SET_STAGE, params);
 		}
 		
 	}

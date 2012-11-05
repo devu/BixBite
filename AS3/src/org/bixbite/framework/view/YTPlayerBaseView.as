@@ -35,11 +35,6 @@ package org.bixbite.framework.view
 	{
 		private var context:Sprite;
 		
-		public function YTPlayerBaseView() 
-		{
-			
-		}
-		
 		override public function init():void
 		{
 			context = new Sprite();

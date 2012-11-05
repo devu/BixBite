@@ -10,8 +10,6 @@
 	 */
 	public class ContextLoaderTransponder extends Transponder
 	{
-		public function ContextLoaderTransponder ();
-
 		public function init () : void;
 
 		private function onLoadContext (s:Signal) : void;

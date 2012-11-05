@@ -8,8 +8,6 @@
 	 */
 	public class YTVideoPause extends YTPlayerInit
 	{
-		public function YTVideoPause ();
-
 		public function execute (s:Signal) : void;
 	}
 }

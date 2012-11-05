@@ -54,10 +54,6 @@ package org.bixbite.framework.transponder
 	 */
 	public class DisplayListTransponder extends Transponder 
 	{
-		public function DisplayListTransponder() 
-		{
-			
-		}
 		
 		override public function init():void 
 		{

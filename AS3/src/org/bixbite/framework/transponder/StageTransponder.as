@@ -24,24 +24,15 @@ THE SOFTWARE.
 package org.bixbite.framework.transponder 
 {
 	import flash.events.Event;
-	import org.bixbite.core.interfaces.ICompound;
-	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class StageTransponder extends Transponder 
 	{
-		use namespace STAGE_MGR
-		
-		public function StageTransponder() 
-		{
-			
-		}
 		
 		override public function init():void 
 		{

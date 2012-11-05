@@ -4,7 +4,6 @@
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
 
 	/**
 	 *
@@ -16,7 +15,9 @@
 		public static const LANDSCAPE : String = "LANDSCAPE";
 		public var orientation : String;
 
-		public function StageData ();
+		public function get width () : Number;
+
+		public function get height () : Number;
 
 		public function init () : void;
 

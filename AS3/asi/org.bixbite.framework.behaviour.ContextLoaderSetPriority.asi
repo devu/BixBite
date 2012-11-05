@@ -10,8 +10,6 @@
 	 */
 	public class ContextLoaderSetPriority extends Behaviour
 	{
-		public function ContextLoaderSetPriority ();
-
 		public function execute (s:Signal) : void;
 	}
 }

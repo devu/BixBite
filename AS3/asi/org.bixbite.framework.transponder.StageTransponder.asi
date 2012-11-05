@@ -1,12 +1,9 @@
 ﻿package org.bixbite.framework.transponder
 {
 	import flash.events.Event;
-	import org.bixbite.core.interfaces.ICompound;
-	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
 
 	/**
 	 *
@@ -14,8 +11,6 @@
 	 */
 	public class StageTransponder extends Transponder
 	{
-		public function StageTransponder ();
-
 		public function init () : void;
 
 		private function onStageResize (e:Event) : void;

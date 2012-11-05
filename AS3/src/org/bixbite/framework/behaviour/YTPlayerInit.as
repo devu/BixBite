@@ -35,11 +35,6 @@ package org.bixbite.framework.behaviour
 	{
 		internal var data:YTPlayerData;
 		
-		public function YTPlayerInit() 
-		{
-			
-		}
-		
 		override public function init():void
 		{
 			addResponder(YTPlayer.ON_INIT, onInitalise);

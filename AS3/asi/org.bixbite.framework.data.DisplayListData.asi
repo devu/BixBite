@@ -6,7 +6,6 @@
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.namespaces.DSP_MGR;
 
 	/**
 	 *
@@ -15,8 +14,6 @@
 	public class DisplayListData extends Data
 	{
 		public var list : Dictionary;
-
-		public function DisplayListData ();
 
 		public function init () : void;
 

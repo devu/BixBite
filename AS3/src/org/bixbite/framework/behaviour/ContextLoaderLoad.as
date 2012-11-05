@@ -39,11 +39,6 @@ package org.bixbite.framework.behaviour
 	 */
 	public class ContextLoaderLoad extends Behaviour 
 	{
-		public function ContextLoaderLoad()
-		{
-			
-		}
-		
 		override public function init():void 
 		{
 			super.init();

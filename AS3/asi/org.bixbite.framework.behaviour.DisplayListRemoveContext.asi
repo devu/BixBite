@@ -12,8 +12,6 @@
 	 */
 	public class DisplayListRemoveContext extends DisplayListGet
 	{
-		public function DisplayListRemoveContext ();
-
 		public function execute (s:Signal) : void;
 	}
 }

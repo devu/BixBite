@@ -34,11 +34,6 @@ package org.bixbite.framework.behaviour
 	public class DisplayListSetContext extends DisplayListGet
 	{
 		
-		public function DisplayListSetContext() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			var name	:String 		= s.params.name;

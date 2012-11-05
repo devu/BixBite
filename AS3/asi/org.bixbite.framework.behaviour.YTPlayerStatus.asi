@@ -17,8 +17,6 @@
 		private static const STATE_CUED : int = 5;
 		private var isPlaying : Boolean;
 
-		public function YTPlayerStatus ();
-
 		public function setup () : void;
 
 		private function onPlayerStateChange (e:Event) : void;

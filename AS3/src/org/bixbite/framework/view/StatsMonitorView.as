@@ -28,24 +28,19 @@ package org.bixbite.framework.view
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.Stats;
-	import org.bixbite.namespaces.STATS;
-	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	
 	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.signal.DisplaySignal;
-	import org.bixbite.framework.StageManager;
-	
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.Stats;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class StatsMonitorView extends View 
 	{
-		use namespace STATS
-		
 		private var mem_graph		:Number = 0;
 		private var max_graph		:Number = 0;
 		private var fps_graph		:Number = 0;
@@ -60,15 +55,7 @@ package org.bixbite.framework.view
 		private var info_max		:TextField;
 		private var info_orient		:TextField;
 		
-		/**
-		 * Constructor
-		 */
-		public function StatsMonitorView() 
-		{
-			
-		}
-		
-		override public function init():void 
+		override public function init():void
 		{
 			var tFactory:TextFactory = TextFactory.getInstance();
 			
@@ -76,6 +63,7 @@ package org.bixbite.framework.view
 			panel.graphics.beginFill(0x000000, 0.8);
 			panel.graphics.drawRect(0, 0, 310, 56);
 			panel.mouseEnabled = false;
+			panel.mouseChildren = false;
 			
 			graph = new BitmapData(230, 56, true, 0x00000000);
 			monitor = new Bitmap(graph);

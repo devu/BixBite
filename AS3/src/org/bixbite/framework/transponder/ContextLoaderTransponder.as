@@ -33,11 +33,6 @@ package org.bixbite.framework.transponder
 	public class ContextLoaderTransponder extends Transponder 
 	{
 		
-		public function ContextLoaderTransponder() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
 			addSlot(ContextLoaderSignal.LOAD, onLoadContext);

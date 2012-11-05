@@ -17,8 +17,6 @@
 	 */
 	public class ContextLoaderLoad extends Behaviour
 	{
-		public function ContextLoaderLoad ();
-
 		public function init () : void;
 
 		private function onQueueCompleted (data:IData) : void;

@@ -49,13 +49,10 @@ package org.bixbite.framework.data
 		public var videoId		:String;
 		public var autoPlay		:Boolean = true;
 		
-		public function YTPlayerData() 
-		{
-			Security.allowDomain(SECURITY_DOMAIN);
-		}
-		
 		override public function init():void 
 		{
+			Security.allowDomain(SECURITY_DOMAIN);
+			
 			addSlot(YTPlayer.INIT, initPlayer);
 		}
 		

@@ -10,8 +10,6 @@
 	 */
 	public class YTPlayerTransponder extends Transponder
 	{
-		public function YTPlayerTransponder ();
-
 		public function init () : void;
 
 		private function onInit (s:Signal) : void;

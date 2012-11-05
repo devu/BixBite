@@ -24,12 +24,10 @@ THE SOFTWARE.
 package org.bixbite.framework 
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.behaviour.Calculate;
+	import org.bixbite.framework.behaviour.StatsCalculate;
 	import org.bixbite.framework.data.StatsData;
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.namespaces.STATS;
 	
 	/**
 	 * @langversion	3.0
@@ -39,21 +37,16 @@ package org.bixbite.framework
 	 */
 	public class Stats extends Compound 
 	{
-		use namespace STATS
+		//internals
+		static public const CALCULATE		:String = "Stats.CALCULATE";
+		static public const DATA_REQUEST	:String = "Stats.DATA_REQUEST";
+		static public const DRAW			:String = "Stats.DRAW";
+		static public const UPDATE			:String = "Stats.UPDATE";
+		static public const UPDATE_REALTIME	:String = "Stats.UPDATE_REALTIME";
 		
-		STATS static const CALCULATE		:String = "Stats.CALCULATE";
-		STATS static const DATA_REQUEST		:String = "Stats.DATA_REQUEST";
-		STATS static const DRAW				:String = "Stats.DRAW";
-		STATS static const UPDATE			:String = "Stats.UPDATE";
-		STATS static const UPDATE_REALTIME	:String = "Stats.UPDATE_REALTIME";
-		
-		/**
-		 * Constructor
-		 */
-		public function Stats() 
-		{
-			
-		}
+		//in
+		static public const START			:String = "Stats.START";
+		static public const PAUSE			:String = "Stats.PAUSE";
 		
 		override public function init():void 
 		{
@@ -66,12 +59,12 @@ package org.bixbite.framework
 			register(StatsTransponder);
 			register(StatsMonitorView);
 			
-			addBehaviour(Stats.CALCULATE, Calculate);
+			addBehaviour(Stats.CALCULATE, StatsCalculate);
 		}
 		
 		override public function destroy():void 
 		{
-			sendSignal(StatsSignal.PAUSE);
+			sendSignal(Stats.PAUSE);
 			
 			removeBehaviour(Stats.CALCULATE);
 			

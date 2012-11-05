@@ -6,7 +6,6 @@
 	import org.bixbite.framework.data.StageData;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.transponder.StageTransponder;
-	import org.bixbite.namespaces.STAGE_MGR;
 
 	/**
 	 *
@@ -14,10 +13,8 @@
 	 */
 	public class StageManager extends Compound
 	{
-		static const DATA_REQUEST : String = "StageSignal.DATA_REQUEST";
-		static const RESIZE : String = "StageSignal.RESIZE";
-
-		public function StageManager ();
+		public static const DATA_REQUEST : String = "StageManager.DATA_REQUEST";
+		public static const RESIZE : String = "StageManager.RESIZE";
 
 		public function init () : void;
 

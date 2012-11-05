@@ -35,11 +35,6 @@ package org.bixbite.framework.behaviour
 	public class DisplayListRemoveContext extends DisplayListGet 
 	{
 		
-		public function DisplayListRemoveContext() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			var context			:DisplayObject = list[s.params.name];

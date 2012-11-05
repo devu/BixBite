@@ -4,14 +4,12 @@
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.Stats;
-	import org.bixbite.namespaces.STATS;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.factories.TextFactory;
 	import org.bixbite.framework.signal.DisplaySignal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.Stats;
 
 	/**
 	 *
@@ -30,11 +28,6 @@
 		private var info_mem : TextField;
 		private var info_max : TextField;
 		private var info_orient : TextField;
-
-		/**
-		 * Constructor
-		 */
-		public function StatsMonitorView ();
 
 		public function init () : void;
 

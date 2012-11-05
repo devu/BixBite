@@ -8,8 +8,6 @@
 	 */
 	public class YTVideoPlay extends YTPlayerInit
 	{
-		public function YTVideoPlay ();
-
 		public function execute (s:Signal) : void;
 	}
 }

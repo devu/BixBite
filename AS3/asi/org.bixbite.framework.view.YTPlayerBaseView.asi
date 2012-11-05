@@ -13,8 +13,6 @@
 	{
 		private var context : Sprite;
 
-		public function YTPlayerBaseView ();
-
 		public function init () : void;
 
 		private function onPlayerReady (s:Signal) : void;

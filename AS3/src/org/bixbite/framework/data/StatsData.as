@@ -26,7 +26,6 @@ package org.bixbite.framework.data
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.Stats;
-	import org.bixbite.namespaces.STATS;
 	
 	/**
 	 * @langversion	3.0
@@ -34,8 +33,6 @@ package org.bixbite.framework.data
 	
 	public class StatsData extends Data 
 	{
-		use namespace STATS
-		
 		public var mem				:Number = 0;
 		public var max				:Number = 0;
 		public var fps				:Number = 0;
@@ -50,13 +47,10 @@ package org.bixbite.framework.data
 		public var infoMAX			:String;
 		public var infoMS			:String;
 		
-		public function StatsData()
-		{
-			frameRate = stage.frameRate;
-		}
-		
 		override public function init():void
 		{
+			frameRate = stage.frameRate;
+			
 			addSlot(Stats.DATA_REQUEST, onDataRequest);
 		}
 		

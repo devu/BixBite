@@ -33,11 +33,6 @@ package org.bixbite.framework.behaviour
 	public class ContextLoaderSetPriority extends Behaviour 
 	{
 		
-		public function ContextLoaderSetPriority() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			sendRequest(ContextLoaderSignal.SET_PRIORITY, s.params);

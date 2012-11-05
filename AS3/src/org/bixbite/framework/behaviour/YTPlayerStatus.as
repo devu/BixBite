@@ -40,11 +40,6 @@ package org.bixbite.framework.behaviour
 		
 		private var isPlaying:Boolean = false;
 		
-		public function YTPlayerStatus()
-		{
-		
-		}
-		
 		override public function setup():void 
 		{
 			data.player.addEventListener("onStateChange", onPlayerStateChange);

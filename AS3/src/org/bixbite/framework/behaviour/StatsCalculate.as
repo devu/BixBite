@@ -25,7 +25,6 @@ package org.bixbite.framework.behaviour
 {
 	import flash.system.System;
 	import flash.utils.getTimer;
-	import org.bixbite.namespaces.STATS;
 	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
@@ -35,24 +34,25 @@ package org.bixbite.framework.behaviour
 	/**
 	 * @langversion	3.0
 	 */
-	public class Calculate extends Behaviour 
+	public class StatsCalculate extends Behaviour 
 	{
-		use namespace STATS
-		
 		private var data		:StatsData;
 		
 		private var fps			:int;
 		private var timer		:int;
 		private var ms_prev		:int;
 		
-		public function Calculate() 
-		{
-			
-		}
+		private var updateSRS			:Function;
+		private var updateRealtimeSRS	:Function;
+		private var drawSRS				:Function;
 		
 		override public function init():void
 		{
 			addResponder(Stats.DATA_REQUEST, onData, true);
+			
+			updateSRS = getSlotReference(Stats.UPDATE)[0];
+			updateRealtimeSRS = getSlotReference(Stats.UPDATE_REALTIME)[0];
+			drawSRS = getSlotReference(Stats.DRAW)[0]; 
 		}
 		
 		private function onData(data:StatsData):void 
@@ -63,13 +63,14 @@ package org.bixbite.framework.behaviour
 		
 		override public function execute(s:Signal):void 
 		{
-			timer = getTimer();
-			data.timer = timer;
+			data.timer = timer = getTimer();
 			
 			var max			:Number = data.max;
 			var mem			:Number = data.mem;
 			var frameRate	:int 	= data.frameRate;
 			var ms			:int 	= data.ms;
+			
+			signal.params = data;
 			
 			if( timer - 1000 >= ms_prev){
 				ms_prev = timer;
@@ -78,13 +79,13 @@ package org.bixbite.framework.behaviour
 				data.max = max > mem ? max : mem;
 				data.fps = fps;
 				
-				sendSignal(Stats.DRAW, data);
+				drawSRS(signal);
 				
 				data.infoFPS = "FPS: " + fps + " / " + frameRate;
 				data.infoMEM = "MEM: " + mem;
 				data.infoMAX = "MAX: " + data.max;
 				
-				sendSignal(Stats.UPDATE, { infoFPS:data.infoFPS, infoMEM:data.infoMEM, infoMAX:data.infoMAX } );
+				updateSRS(signal);
 				
 				fps = 0;
 			}
@@ -92,7 +93,7 @@ package org.bixbite.framework.behaviour
 			fps++;
 			
 			data.infoMS  = "MS: " + (timer - ms);
-			sendSignal(Stats.UPDATE_REALTIME, { infoMS:data.infoMS } );
+			updateRealtimeSRS(signal);
 			
 			data.ms = timer;
 		}
@@ -103,6 +104,10 @@ package org.bixbite.framework.behaviour
 			
 			data = null;
 			fps	= timer	= ms_prev = NaN;
+			
+			updateSRS = null;
+			updateRealtimeSRS = null;
+			drawSRS = null;
 			
 			super.dispose();
 		}

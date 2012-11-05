@@ -32,11 +32,6 @@ package org.bixbite.framework.transponder
 	 */
 	public class YTPlayerTransponder extends Transponder 
 	{
-		public function YTPlayerTransponder() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
 			addSlot(YTPlayer.INIT, onInit);

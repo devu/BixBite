@@ -5,7 +5,6 @@
 	import org.bixbite.framework.data.YTPlayerData;
 	import org.bixbite.framework.transponder.YTPlayerTransponder;
 	import org.bixbite.framework.view.YTPlayerBaseView;
-	import org.bixbite.namespaces.YT_PLAYER;
 
 	/**
 	 *
@@ -17,15 +16,13 @@
 		public static const PLAY : String = "YTPlayer.PLAY_MOVIE";
 		public static const STOP : String = "YTPlayer.STOP_MOVIE";
 		public static const PAUSE : String = "YTPlayer.PAUSE_MOVIE";
-		static const STATUS : String = "YTPlayer.STATUS";
+		public static const STATUS : String = "YTPlayer.STATUS";
 		public static const ON_INIT : String = "YTPlayer.ON_INIT";
 		public static const PLAYER_READY : String = "YTPlayer.PLAYER_READY";
 		public static const MOVIE_ENDED : String = "YTPlayer.MOVIE_ENDED";
 		public static const MOVIE_PLAYING : String = "YTPlayer.MOVIE_PLAYING";
 		public static const MOVIE_PAUSED : String = "YTPlayer.MOVIE_PAUSED";
 		public static const MOVIE_CUED : String = "YTPlayer.MOVIE_CUED";
-
-		public function YTPlayer ();
 
 		public function init () : void;
 

@@ -11,8 +11,6 @@
 	 */
 	public class DisplayListSetContext extends DisplayListGet
 	{
-		public function DisplayListSetContext ();
-
 		public function execute (s:Signal) : void;
 	}
 }

@@ -28,21 +28,13 @@ package org.bixbite.framework.behaviour
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class DisplayListGet extends Behaviour 
 	{
-		use namespace DSP_MGR
-		
 		internal var list:Dictionary;
-		
-		public function DisplayListGet() 
-		{
-			
-		}
 		
 		override public function init():void 
 		{

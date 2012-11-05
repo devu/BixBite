@@ -24,28 +24,20 @@ THE SOFTWARE.
 package org.bixbite.framework.behaviour 
 {
 	import flash.display.Stage;
-	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.data.StageData;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
+	
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class ResizeStage extends Behaviour 
 	{
-		use namespace STAGE_MGR;
-		
 		private var stageData	:StageData;
 		private var stage		:Stage;
-		
-		public function ResizeStage() 
-		{
-			
-		}
 		
 		override public function init():void
 		{
@@ -58,19 +50,27 @@ package org.bixbite.framework.behaviour
 			
 			this.stageData = data;
 			stage = stageData.stage;
-			stageData.orientation = (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
+			
+			stageData.orientation = "notSet";
 		}
 		
 		override public function execute(s:Signal):void
 		{
-			var currentOrientation:String = (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
+			var currentOrientation:String = checkOrientation();
 			
 			if (stageData.orientation != currentOrientation){
 				stageData.orientation = currentOrientation;
-				sendSignal(StageSignal.ON_ORIENTATION_CHANGED, { orientation:currentOrientation } );
+				emitSignal(StageSignal.ON_ORIENTATION_CHANGED, stageData);
+				sendSignal(StageSignal.ON_ORIENTATION_CHANGED, stageData );
 			}
 			
-			sendSignal(StageSignal.ON_RESIZE, { width:stage.stageWidth, height:stage.stageHeight } );
+			emitSignal(StageSignal.ON_RESIZE, stageData);
+			sendSignal(StageSignal.ON_RESIZE, stageData);
+		}
+		
+		private function checkOrientation():String 
+		{
+			return (stage.stageWidth <= stage.stageHeight) ? StageData.PORTRAIT : StageData.LANDSCAPE;
 		}
 		
 		override public function dispose():void 

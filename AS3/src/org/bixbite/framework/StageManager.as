@@ -29,22 +29,15 @@ package org.bixbite.framework
 	import org.bixbite.framework.data.StageData;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.transponder.StageTransponder;
-	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class StageManager extends Compound
 	{
-		use namespace STAGE_MGR
-		
-		STAGE_MGR static const DATA_REQUEST		:String = "StageSignal.DATA_REQUEST";
-		STAGE_MGR static const RESIZE			:String = "StageSignal.RESIZE";
-		
-		public function StageManager()
-		{
-			
-		}
+		//internals
+		static public const DATA_REQUEST			:String = "StageManager.DATA_REQUEST";
+		static public const RESIZE					:String = "StageManager.RESIZE";
 		
 		override public function init():void 
 		{

@@ -31,11 +31,6 @@ package org.bixbite.framework.behaviour
 	public class YTVideoPause extends YTPlayerInit 
 	{
 		
-		public function YTVideoPause() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			data.pause();

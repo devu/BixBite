@@ -28,21 +28,13 @@ package org.bixbite.framework
 	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.DisplayListTransponder;
-	import org.bixbite.namespaces.DSP_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class DisplayListManager extends Compound 
 	{
-		use namespace DSP_MGR
-		
-		DSP_MGR static const GET_DISPLAY_LIST:String	= "DisplayListManager.GET_DSP_LIST";
-		
-		public function DisplayListManager() 
-		{
-			
-		}
+		static public const GET_DISPLAY_LIST:String	= "DisplayListManager.GET_DSP_LIST";
 		
 		override public function init():void 
 		{
@@ -63,7 +55,6 @@ package org.bixbite.framework
 			
 			unregister(DisplayListData);
 			unregister(DisplayListTransponder);
-			
 			
 			super.destroy();
 		}

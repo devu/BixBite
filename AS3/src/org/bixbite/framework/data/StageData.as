@@ -27,26 +27,16 @@ package org.bixbite.framework.data
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class StageData extends Data
 	{
-		
-		
 		public static const PORTRAIT	:String = "PORTRAIT";
 		public static const LANDSCAPE	:String = "LANDSCAPE";
 		
 		public var orientation			:String;
-		
-		use namespace STAGE_MGR
-		
-		public function StageData()
-		{
-			
-		}
 		
 		override public function init():void 
 		{
@@ -63,6 +53,7 @@ package org.bixbite.framework.data
 		{
 			stage.align 		= s.params.align;
 			stage.scaleMode 	= s.params.scaleMode;
+			stage.frameRate		= s.params.frameRate;
 		}
 		
 		override public function destroy():void 
@@ -73,6 +64,16 @@ package org.bixbite.framework.data
 			orientation = null;
 			
 			super.destroy();
+		}
+		
+		public function get width():Number 
+		{
+			return stage.stageWidth;
+		}
+		
+		public function get height():Number 
+		{
+			return stage.stageHeight;
 		}
 		
 	}

@@ -10,8 +10,6 @@
 	 */
 	public class SetStage extends Behaviour
 	{
-		public function SetStage ();
-
 		public function execute (s:Signal) : void;
 	}
 }

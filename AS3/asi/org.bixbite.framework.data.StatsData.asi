@@ -3,7 +3,6 @@
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.Stats;
-	import org.bixbite.namespaces.STATS;
 
 	/**
 	 *
@@ -21,8 +20,6 @@
 		public var infoMEM : String;
 		public var infoMAX : String;
 		public var infoMS : String;
-
-		public function StatsData ();
 
 		public function init () : void;
 

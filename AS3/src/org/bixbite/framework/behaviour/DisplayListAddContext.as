@@ -37,11 +37,6 @@ package org.bixbite.framework.behaviour
 	public class DisplayListAddContext extends DisplayListGet
 	{
 		
-		public function DisplayListAddContext() 
-		{
-			
-		}
-		
 		override public function execute(s:Signal):void 
 		{
 			var p:Object = s.params;

@@ -28,21 +28,19 @@ package org.bixbite.framework
 	import org.bixbite.framework.data.YTPlayerData;
 	import org.bixbite.framework.transponder.YTPlayerTransponder;
 	import org.bixbite.framework.view.YTPlayerBaseView;
-	import org.bixbite.namespaces.YT_PLAYER;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class YTPlayer extends Compound 
 	{
-		use namespace YT_PLAYER
 		//IN
 		public static const INIT			:String = "YTPlayer.INIT";
 		public static const PLAY			:String = "YTPlayer.PLAY_MOVIE";
 		public static const STOP			:String = "YTPlayer.STOP_MOVIE";
 		public static const PAUSE			:String = "YTPlayer.PAUSE_MOVIE";
 		
-		YT_PLAYER static const STATUS		:String = "YTPlayer.STATUS";
+		public static const STATUS			:String = "YTPlayer.STATUS";
 	
 		//OUT
 		public static const ON_INIT			:String = "YTPlayer.ON_INIT";
@@ -51,11 +49,6 @@ package org.bixbite.framework
 		public static const MOVIE_PLAYING	:String = "YTPlayer.MOVIE_PLAYING";
 		public static const MOVIE_PAUSED	:String = "YTPlayer.MOVIE_PAUSED";
 		public static const MOVIE_CUED		:String = "YTPlayer.MOVIE_CUED";
-		
-		public function YTPlayer() 
-		{
-			
-		}
 		
 		override public function init():void 
 		{

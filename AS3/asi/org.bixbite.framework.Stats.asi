@@ -1,12 +1,10 @@
 ﻿package org.bixbite.framework
 {
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.behaviour.Calculate;
+	import org.bixbite.framework.behaviour.StatsCalculate;
 	import org.bixbite.framework.data.StatsData;
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.namespaces.STATS;
 
 	/**
 	 *
@@ -17,16 +15,13 @@
 	 */
 	public class Stats extends Compound
 	{
-		static const CALCULATE : String = "Stats.CALCULATE";
-		static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
-		static const DRAW : String = "Stats.DRAW";
-		static const UPDATE : String = "Stats.UPDATE";
-		static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
-
-		/**
-		 * Constructor
-		 */
-		public function Stats ();
+		public static const CALCULATE : String = "Stats.CALCULATE";
+		public static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
+		public static const DRAW : String = "Stats.DRAW";
+		public static const UPDATE : String = "Stats.UPDATE";
+		public static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
+		public static const START : String = "Stats.START";
+		public static const PAUSE : String = "Stats.PAUSE";
 
 		public function init () : void;
 

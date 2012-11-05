@@ -3,10 +3,9 @@
 	import flash.display.Stage;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.data.StageData;
+	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
-	import org.bixbite.namespaces.STAGE_MGR;
 
 	/**
 	 *
@@ -17,13 +16,13 @@
 		private var stageData : StageData;
 		private var stage : Stage;
 
-		public function ResizeStage ();
-
 		public function init () : void;
 
 		private function onData (data:StageData) : void;
 
 		public function execute (s:Signal) : void;
+
+		private function checkOrientation () : String;
 
 		public function dispose () : void;
 	}

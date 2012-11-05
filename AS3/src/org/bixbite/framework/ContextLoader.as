@@ -36,11 +36,6 @@ package org.bixbite.framework
 	public class ContextLoader extends Compound 
 	{
 		
-		public function ContextLoader() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
 			// relies on:

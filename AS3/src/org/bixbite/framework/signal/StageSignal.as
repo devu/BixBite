@@ -24,24 +24,21 @@ THE SOFTWARE.
 package org.bixbite.framework.signal 
 {
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
 	public class StageSignal
 	{
 		/**
 		 * IN { align:String, scaleMode:String }
 		 */
-		public static const SET_STAGE				:String = "StageSignal.SET_STAGE";
+		static public const SET_STAGE				:String = "StageSignal.SET_STAGE";
 		
 		/**
-		 * OUT { orientation:String }
+		 * OUT stageData
 		 */
-		public static const ON_ORIENTATION_CHANGED	:String = "StageSignal.ON_ORIENTATION_CHANGED";
-		
-		/**
-		 * OUT { width:Number, height:Number }
-		 */
-		public static const ON_RESIZE				:String = "StageSignal.ON_RESIZE";
+		static public const ON_ORIENTATION_CHANGED	:String = "StageSignal.ON_ORIENTATION_CHANGED";
+		static public const ON_RESIZE				:String = "StageSignal.ON_RESIZE";
 	}
 
 }

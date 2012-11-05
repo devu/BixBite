@@ -10,8 +10,6 @@
 	 */
 	public class DisplayListTransponder extends Transponder
 	{
-		public function DisplayListTransponder ();
-
 		public function init () : void;
 
 		private function onSetContext (s:Signal) : void;

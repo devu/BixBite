@@ -13,8 +13,6 @@
 	{
 		var data : YTPlayerData;
 
-		public function YTPlayerInit ();
-
 		public function init () : void;
 
 		private function onInitalise (data:YTPlayerData) : void;
