@@ -26,7 +26,6 @@ package test
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
 	import test.integration.contextloader.TestContextLoader;
 	import test.performance.coreperf.CorePerformance;
@@ -50,17 +49,17 @@ package test
 			
 			core = new BixBite(stage);
 			
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
+			core.register(Stats);
+			core.sendSignal(Stats.START);
 			
 			//Signal performance test
-			core.register(SignalPerformance);
+			//core.register(SignalPerformance);
 			
 			//Core performance test
 			//core.register(CorePerformance);
 			
 			// AssetManager test
-			//core.register(TestContextLoader);
+			core.register(TestContextLoader);
 		}
 		
 	}

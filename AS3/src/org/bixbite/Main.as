@@ -53,7 +53,8 @@ package org.bixbite
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.framework.ContextLoader;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
 	
 	/**
@@ -77,8 +78,11 @@ package org.bixbite
 			
 			var core:BixBite = new BixBite(stage);
 			
+			core.register(StageManager);
+			core.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			
 			core.register(Stats);
-			core.sendSignal(StatsSignal.START);
+			core.sendSignal(Stats.START);
 			
 			core.register(ContextLoader);
 		}

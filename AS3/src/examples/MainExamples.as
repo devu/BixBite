@@ -27,13 +27,11 @@ package examples
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
-	import examples.imagegallery.ImageGallery;
-	
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
 	import org.bixbite.framework.Stats;
+	
 	
 	/**
 	 * @langversion	3.0
@@ -59,14 +57,18 @@ package examples
 			var core:BixBite = new BixBite(stage);
 			
 			/**
+			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);
+			 */
+			core.register(Stats);
+			core.sendSignal(Stats.START);
+			
+			/**
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
-			* footprint
 			*/
-			core.register(HelloFlash);
+			//core.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
-			* footprint
 			*/
 			//core.register(HelloWorld);
 			
@@ -75,24 +77,10 @@ package examples
 			 */
 			//core.register(HelloDisplayList);
 			
-			/**
-			 * Example of Image Gallery
-			 */
-			//core.register(ImageGallery);
-			//core.sendSignal(ImageGallery.INIT, { 
-				//path:"http://www.bixbite.org/immagegallery/" 
-			//} );
-			
-			/**
-			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);
-			 */
-			//core.register(Stats);
-			//core.sendSignal(StatsSignal.START);
-			
 			/*
 			 * 
 			 */
-			core.register(ContextLoaderExample);
+			//core.register(ContextLoaderExample);
 		}
 	}
 

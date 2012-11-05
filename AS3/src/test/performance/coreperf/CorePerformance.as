@@ -27,9 +27,9 @@ package test.performance.coreperf
 	import flash.utils.clearInterval;
 	import flash.utils.getTimer;
 	import flash.utils.setInterval;
+	
 	import org.bixbite.core.Compound;
-	import org.bixbite.framework.signal.StatsSignal;
-	import org.bixbite.framework.Stats;
+	
 	import test.performance.coreperf.behaviour.TestBehaviour;
 	import test.performance.coreperf.behaviour.TraceOutput;
 	import test.performance.coreperf.data.TestData;
@@ -108,9 +108,6 @@ package test.performance.coreperf
 		
 		override public function init():void 
 		{
-			register(Stats)
-			sendSignal(StatsSignal.START);
-			
 			register(OutputView);
 			addBehaviour("traceOutput", TraceOutput);
 			
