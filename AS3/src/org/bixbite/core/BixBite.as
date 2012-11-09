@@ -36,6 +36,8 @@ package org.bixbite.core
 		
 		use namespace BIXBITE;
 		
+		public static var stage		:Stage;
+		
 		BIXBITE var emiter		:Emiter;
 		BIXBITE var uid			:String;
 		BIXBITE var channelC	:Object;
@@ -45,7 +47,8 @@ package org.bixbite.core
 		
 		public function BixBite(stage:Stage) 
 		{
-			emiter = Emiter.startup(stage);
+			BixBite.stage = stage;
+			emiter = Emiter.startup();
 			
 			channelT = emiter.slots.t;
 			channelC = emiter.slots.t;

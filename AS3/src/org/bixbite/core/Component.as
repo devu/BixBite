@@ -128,7 +128,7 @@ package org.bixbite.core
 		
 		public function get stage():Stage
 		{
-			return emiter.stage;
+			return BixBite.stage;
 		}
 	}
 

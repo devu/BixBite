@@ -50,8 +50,6 @@ package org.bixbite.core
 		
 		private var _uid				:int = -1;
 		
-		private var _stage				:Stage;
-		
 		private var _slots				:Object = { c: { }, d: { }, t: { }, v: { } };
 		
 		private var components			:Dictionary = new Dictionary(true);
@@ -60,19 +58,18 @@ package org.bixbite.core
 		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
 		 * @param	application
 		 */
-		public function Emiter(stage:Stage)
+		public function Emiter()
 		{
 			if (_instance) throw Error("This Class is a Singleton");
-			_stage = stage;
 		}
 		
 		/**
 		 * 
 		 * @param	stage
 		 */
-		static public function startup(stage:Stage):Emiter 
+		static public function startup():Emiter 
 		{
-			if (!_instance)_instance = new Emiter(stage);
+			if (!_instance)_instance = new Emiter();
 			return _instance
 		}
 		
@@ -282,14 +279,6 @@ package org.bixbite.core
 		public function get uid():int 
 		{
 			return ++_uid;
-		}
-		
-		/**
-		 * 
-		 */
-		BIXBITE function get stage():Stage
-		{
-			return _stage;
 		}
 		
 		/**
