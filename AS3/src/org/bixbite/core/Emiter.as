@@ -78,7 +78,7 @@ package org.bixbite.core
 			c.channelD = channelD;
 			c.channelT = channelT;
 			c.channelV = channelV;
-			c._uid = "@" + this.uid + "_" + coreID;
+			c._uid = "@" + this.uid + "::" + coreID;
 			c.signal = (c is IData) ? null : new Signal(c.uid);
 			
 			components[component] = c;

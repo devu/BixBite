@@ -18,7 +18,7 @@ package org.bixbite.core
 		
 		public function Core(id:String) 
 		{
-			trace("core" + id);
+			trace("core " + id);
 			
 			emiter = new Emiter();
 			emiter.coreID = id;
