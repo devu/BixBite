@@ -132,9 +132,11 @@ package org.bixbite.core
 		 */
 		BIXBITE function removeSlot(channel:Channel, callerUID:String, type:String):void
 		{
-			if (!channel[type]) return;
-			delete channel[type][callerUID];
-			if (isEmpty(channel[type])) delete channel[type];
+			var slots:Slots = channel[type];
+			if (!slots || !slots.getSlotByUID(callerUID)) return;
+			
+			slots.removeSlot(callerUID);
+			if (slots.numSlots == 0) delete channel[type];
 		}
 		
 		/**
@@ -226,20 +228,6 @@ package org.bixbite.core
 		BIXBITE function getSlots(channel:Channel, type:String):Slots 
 		{
 			return (channel[type]) ? channel[type] : null;
-		}
-		
-		/**
-		 * @private
-		 * Helper method for quick determination wheter object is empty or not.
-		 * As soon as at least property will be detected will return Boolean otherwise report empty object.
-		 * @param	object to check
-		 * @return 	boolean
-		 */
-		
-		private function isEmpty(object:Object):Boolean 
-		{
-			for (var p:String in object) return false;
-			return true;
 		}
 		
 		/**

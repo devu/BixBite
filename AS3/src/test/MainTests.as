@@ -26,6 +26,7 @@ package test
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Core;
 	import org.bixbite.framework.Stats;
 	import test.integration.contextloader.TestContextLoader;
 	import test.performance.coreperf.CorePerformance;
@@ -36,7 +37,8 @@ package test
 	 */
 	public class MainTests extends Sprite 
 	{
-		private var core:BixBite;
+		private var core1:Core;
+		private var core2:Core;
 		
 		public function MainTests()
 		{
@@ -47,19 +49,18 @@ package test
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			core = new BixBite(stage);
+			var bb:BixBite = new BixBite(stage);
 			
-			core.register(Stats);
-			core.sendSignal(Stats.START);
+			core1 = bb.spawnCore("stats");
+			core1.register(Stats);
+			core1.sendSignal(Stats.START);
 			
+			core2 = bb.spawnCore("test_case");
 			//Signal performance test
-			//core.register(SignalPerformance);
+			//core2.register(SignalPerformance);
 			
 			//Core performance test
-			//core.register(CorePerformance);
-			
-			// AssetManager test
-			core.register(TestContextLoader);
+			core2.register(CorePerformance);
 		}
 		
 	}

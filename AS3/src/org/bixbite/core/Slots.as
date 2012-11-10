@@ -25,6 +25,26 @@ package org.bixbite.core
 			head = current;
 		}
 		
+		public function removeSlot(uid:String):void
+		{
+			var walker:Slot = tail;
+			var prev:Slot;
+			
+			while (walker.next && walker.uid != uid) {
+				prev = walker;
+				walker = walker.next;
+			}
+			
+			if (prev && walker.next) prev.next = walker.next;
+			
+			prev = null;
+			walker.dispose();
+			walker = null;
+			index--;
+			
+			if (index < 0) head = tail = null;
+		}
+		
 		public function broadcast(s:Signal):void
 		{
 			var walker:Slot = tail;
@@ -51,15 +71,18 @@ package org.bixbite.core
 		
 		public function removeAllSlots():void
 		{
+			var walker:Slot = tail;
 			var next:Slot;
 			
-			while(tail.next){
-				next = tail.next;
-				this[tail.uid] = tail = null;
+			while(walker.next){
+				next = walker.next;
+				walker.dispose();
+				walker = null;
 				index--;
-				tail = next;
+				walker = next;
 			}
 			
+			tail.dispose();
 			tail = head = null;
 			index--;
 		}
@@ -67,8 +90,11 @@ package org.bixbite.core
 		public function getSlotByUID(uid:String):Slot
 		{
 			var walker:Slot = tail;
-			while(walker.uid != uid) walker = walker.next;
-			return walker;
+			while (walker.next) {
+				if (walker.uid == uid) return walker
+				walker = walker.next;
+			}
+			return (walker.uid == uid) ? walker : null;
 		}
 		
 		public function getSlotByIndex(index:uint):Slot

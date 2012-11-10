@@ -90,7 +90,7 @@ package test.performance.signalperf.view
 			
 			startTime = getTimer();
 			for (i = 0 ; i < max; i++) slot.send(signal);
-			output.appendText("STRONG SRS: " + String(getTimer() - startTime + "ms \n"));
+			output.appendText("SRS: " + String(getTimer() - startTime + "ms \n"));
 		}
 	}
 

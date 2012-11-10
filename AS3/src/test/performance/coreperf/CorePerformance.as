@@ -38,6 +38,8 @@ package test.performance.coreperf
 	import test.performance.coreperf.view.TestView;
 	
 	
+	
+	
 	/**
 	 * @langversion	3.0
 	 * footprint 11.0kb
@@ -49,45 +51,54 @@ package test.performance.coreperf
      *
      * Taking under consideration all that, results below are still very satisfactory.
 	 * 
-	 * Results: (0.6.3) CDTV (Flash Player 11,1,102,63 - Chrome) footprint 11.0kb
-	 * 
-		TASK:register	Views			10k			TIME:   1.00
-		TASK:unregister	Views			10k			TIME:   2.00
-		TASK:register	Views			100k		TIME:  17.00
-		TASK:unregister	Views			100k		TIME:  22.00
-		TASK:register	Views			1kk			TIME: 181.64
-		TASK:unregister	Views			1kk			TIME: 235.45
+	 * Results: 
+	 
+		0.6.3	(Flash Player 11,1,102,63 - Chrome) max Mem 8.873 MB													
+		0.8.0 	(Flash PLayer 11,5,31,101 - Chrome) max Mem 4.615 MB 2x less mem 
+		footprint 11.0kb
 		
-		TASK:register	Trans			10k			TIME:   1.01
-		TASK:unregister	Trans			10k			TIME:   2.00
-		TASK:register	Trans			100k		TIME:  18.00
-		TASK:unregister	Trans			100k		TIME:  23.27
-		TASK:register	Trans			1kk			TIME: 198.91
-		TASK:unregister	Trans			1kk			TIME: 259.00
+		versions									0.6.3			0.8.0		 	speed ratio (1.0 equal speed)
+		TASK:register	Views			10k			TIME:   1.00	TIME:   1.20
+		TASK:unregister	Views			10k			TIME:   2.00	TIME:   2.18
+		TASK:register	Views			100k		TIME:  17.00	TIME:  20.45
+		TASK:unregister	Views			100k		TIME:  22.00	TIME:  26.90
+		TASK:register	Views			1kk			TIME: 181.64	TIME: 216.82
+		TASK:unregister	Views			1kk			TIME: 235.45	TIME: 271.55
 		
-		TASK:register	Data			10k			TIME:   1.01
-		TASK:unregister	Data			10k			TIME:   2.00
-		TASK:register	Data			100k		TIME:  19.00
-		TASK:unregister	Data			100k		TIME:  25.00
-		TASK:register	Data			1kk			TIME: 197.91
-		TASK:unregister	Data			1kk			TIME: 261.45
+		TASK:register	Trans			10k			TIME:   1.01	TIME:   1.18
+		TASK:unregister	Trans			10k			TIME:   2.00	TIME:   2.00
+		TASK:register	Trans			100k		TIME:  18.00	TIME:  19.90
+		TASK:unregister	Trans			100k		TIME:  23.27	TIME:  26.00
+		TASK:register	Trans			1kk			TIME: 198.91	TIME: 207.82
+		TASK:unregister	Trans			1kk			TIME: 259.00	TIME: 269.55
 		
-		TASK:add/remove Behaviour		1k			TIME:   4.36
-		TASK:add/remove Behaviour		10k			TIME:  54.91
-		TASK:add/remove Behaviour		100k		TIME: 766.91
-		TASK:add/exe/dispose Behaviour	1k			TIME:   4.82
-		TASK:add/exe/dispose Behaviour	10k			TIME:  69.00
-		TASK:add/exe/dispose Behaviour	100k		TIME: 831.09
+		TASK:register	Data			10k			TIME:   1.01	TIME:   1.09
+		TASK:unregister	Data			10k			TIME:   2.00	TIME:   2.00
+		TASK:register	Data			100k		TIME:  19.00	TIME:  20.00
+		TASK:unregister	Data			100k		TIME:  25.00	TIME:  25.00
+		TASK:register	Data			1kk			TIME: 197.91	TIME: 208.91
+		TASK:unregister	Data			1kk			TIME: 261.45	TIME: 265.45 	0.98 : slower
 		
-		TASK:reg/unreg Views			1k			TIME:   9.90
-		TASK:reg/unreg Views			10k			TIME: 107.55
-		TASK:reg/unreg Views			100k		TIME: 991.00
-		TASK:reg/unreg Trans			1k			TIME:   7.54
-		TASK:reg/unreg Trans			10k			TIME:  83.18
-		TASK:reg/unreg Trans			100k		TIME:1175.0
-		TASK:reg/unreg Data				1k			TIME:   7.09
-		TASK:reg/unreg Data				10k			TIME:  77.00
-		TASK:reg/unreg Data				100k		TIME: 916.55
+		Above tests virtualy unchanged - difrent flash version slowed it down a bit.
+		Despite this obstacle stress tests below shows big improvements:
+		
+		TASK:add/remove Behaviour		1k			TIME:   4.36	TIME:   3.09 	1.4 : faster
+		TASK:add/remove Behaviour		10k			TIME:  54.91	TIME:  39.00 	1.4 : faster
+		TASK:add/remove Behaviour		100k		TIME: 766.91	TIME: 402.18 	1.9 : faster
+		
+		TASK:add/exe/dispose Behaviour	1k			TIME:   4.82	TIME:   4.27 	1.1 : faster
+		TASK:add/exe/dispose Behaviour	10k			TIME:  69.00	TIME:  42.45 	1.6 : faster
+		TASK:add/exe/dispose Behaviour	100k		TIME: 831.09	TIME: 417.91 	2.0 : faster
+		
+		TASK:reg/unreg Views			1k			TIME:   9.90	TIME:   2.09	4.7 : faster
+		TASK:reg/unreg Views			10k			TIME: 107.55	TIME:  27.36	3.9 : faster
+		TASK:reg/unreg Views			100k		TIME: 991.00	TIME: 271.55 	4.0 : faster
+		TASK:reg/unreg Trans			1k			TIME:   7.54	TIME:   2.90	2.6 : faster
+		TASK:reg/unreg Trans			10k			TIME:  83.18	TIME:  28.90	2.8	: faster
+		TASK:reg/unreg Trans			100k		TIME: 1175.0	TIME: 297.09 	4.0 : faster
+		TASK:reg/unreg Data				1k			TIME:   7.09	TIME:    2.0	3.5 : faster
+		TASK:reg/unreg Data				10k			TIME:  77.00	TIME:  21.72	3.5 : faster
+		TASK:reg/unreg Data				100k		TIME: 916.55	TIME: 219.91 	4.1 : faster
 	 */
 	
 	public class CorePerformance extends Compound
