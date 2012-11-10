@@ -21,52 +21,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf.transponder 
+package test.performance.signalperf.behaviour 
 {
-	import flash.events.MouseEvent;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.core.Transponder;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class TestTransponder extends Transponder 
+	public class TestRunnerStandard extends Behaviour 
 	{
-		private var slotReference:Function;
-		
-		public function TestTransponder() 
-		{
-			
-		}
-		
-		override public function init():void 
-		{
-			addSlot(SignalPerformance.INIT_TEST, onTestInit);
-		}
-		
-		private function onTestInit(s:Signal):void 
-		{
-			addSensor(MouseEvent.CLICK, startTest);
-			addSlot(SignalPerformance.RUN_TEST_SRS, onRunTestSrs);
-			addSlot(SignalPerformance.RUN_TEST_STANDARD, onRunTestStandard);
-		}
-		
-		private function startTest(e:MouseEvent):void
-		{
-			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
-			sendSignal(SignalPerformance.START_TEST);
-		}
-		
-		private function onRunTestSrs(s:Signal):void
-		{
-			slotReference(signal);
-		}
-		
-		private function onRunTestStandard(s:Signal):void 
+		override public function execute(s:Signal):void
 		{
 			sendSignal(SignalPerformance.RUN_TEST_STANDARD);
 		}
+		
 	}
 
 }

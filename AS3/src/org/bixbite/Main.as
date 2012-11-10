@@ -56,6 +56,7 @@ package org.bixbite
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
+	import test.performance.signalperf.SignalPerformance;
 	
 	/**
 	 * Main BixBite frmework document class for development purposes.
@@ -81,10 +82,10 @@ package org.bixbite
 			core.register(StageManager);
 			core.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
-			core.register(Stats);
-			core.sendSignal(Stats.START);
+			//core.register(Stats);
+			//core.sendSignal(Stats.START);
 			
-			core.register(ContextLoader);
+			core.register(SignalPerformance);
 		}
 		
 	}

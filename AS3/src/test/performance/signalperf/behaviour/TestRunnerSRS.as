@@ -30,25 +30,17 @@ package test.performance.signalperf.behaviour
 	/**
 	 * @langversion	3.0
 	 */
-	public class TestRunner extends Behaviour 
+	public class TestRunnerSRS extends Behaviour 
 	{
 		private var slotReference:Function;
 		
-		public function TestRunner() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
-			slotReference = getSlotReference(SignalPerformance.RUN_TEST)[0];
+			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
 		}
 		
 		override public function execute(s:Signal):void
 		{
-			//standard
-			//sendSignal(SignalPerformance.RUN_TEST);
-			//SRS
 			slotReference(signal);
 		}
 		

@@ -25,7 +25,8 @@ package test.performance.signalperf
 {
 	import org.bixbite.core.Compound;
 	import test.performance.signalperf.behaviour.TestBehaviour;
-	import test.performance.signalperf.behaviour.TestRunner;
+	import test.performance.signalperf.behaviour.TestRunnerSRS;
+	import test.performance.signalperf.behaviour.TestRunnerStandard;
 	import test.performance.signalperf.transponder.TestTransponder;
 	import test.performance.signalperf.view.TestView;
 	
@@ -43,18 +44,35 @@ package test.performance.signalperf
 	 * Once 1 Phase is finished View will send X number of times signals going through full triade following the flow:
 	 * View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
 	 * 
-	 * Results (Flash Player 11,1,102,63 - Chrome)
 	 * Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
 	 * 
+	 * Results (Flash Player 11,5,31,101 - Chrome)
+	 * 
+	 * v0.6.7 SRS	PC				Laptop
+	 * 1.000 		- <0ms			-//-	(3k signals in circulation)
+	 * 10.000 		- 2ms			?		(30k signals in circulation)
+	 * 100.000		- 12ms			?		(300k signals in circulation)
+	 * 1.000.000	- 106ms			?		(3M signals in circulation) 	
+	 * 10.000.000	- 1250ms		?		(30M signals in circulation)
+	 * 
+	 * v0.6.7
+	 * 1.000 		- 1ms					(3k signals in circulation)
+	 * 10.000 		- 12ms					(30k signals in circulation)
+	 * 100.000		- 124ms					(300k signals in circulation)
+	 * 1.000.000	- 1223ms				(3M signals in circulation)
+	 * 10.000.000	- 12283ms				(3M signals in circulation)
+	 * 
+	 * Results (Flash Player 11,1,102,63 - Chrome)
+	 * 
 	 * v0.6.1 SRS	PC				Laptop
-	 * 1.000 		- no time:)		-//-	(3k signals in circulation)
+	 * 1.000 		- <0ms			-//-	(3k signals in circulation)
 	 * 10.000 		- 1ms			?		(30k signals in circulation)
 	 * 100.000		- 9ms			?		(300k signals in circulation)
 	 * 1.000.000	- 88ms			?		(3M signals in circulation) 	
 	 * 10.000.000	- 889ms			?		(30M signals in circulation)
 	 * 
 	 * v0.5.4 SRS
-	 * 1.000 		- no time:)				(3k signals in circulation)
+	 * 1.000 		- <0ms					(3k signals in circulation)
 	 * 10.000 		- 0.9ms					(30k signals in circulation)
 	 * 100.000		- 9ms					(300k signals in circulation)
 	 * 1.000.000	- 93ms					(3M signals in circulation)
@@ -98,10 +116,11 @@ package test.performance.signalperf
 	 */
 	public class SignalPerformance extends Compound
 	{
-		public static const INIT_TEST	:String = "signalPerfInitTest";
-		public static const START_TEST	:String = "signalPerfStartTest";
-		public static const BEGIN_TEST	:String = "signalPerfBeginTest";
-		public static const RUN_TEST	:String = "signalPerfRunTest";
+		public static const INIT_TEST			:String = "SignalPerformance.INIT_TEST";
+		public static const START_TEST			:String = "SignalPerformance.START_TEST";
+		public static const BEGIN_TEST			:String = "SignalPerformance.BEGIN_TEST";
+		public static const RUN_TEST_SRS		:String = "SignalPerformance.RUN_TEST_SRS";
+		static public const RUN_TEST_STANDARD	:String = "SignalPerformance.RUN_TEST_STANDARD";
 		
 		public function SignalPerformance() 
 		{
@@ -113,8 +132,9 @@ package test.performance.signalperf
 			register(TestTransponder);
 			register(TestView);
 			
-			addBehaviour(SignalPerformance.START_TEST	, TestBehaviour);
-			addBehaviour(SignalPerformance.RUN_TEST		, TestRunner);
+			addBehaviour(SignalPerformance.START_TEST			, TestBehaviour);
+			addBehaviour(SignalPerformance.RUN_TEST_SRS			, TestRunnerSRS);
+			addBehaviour(SignalPerformance.RUN_TEST_STANDARD	, TestRunnerStandard);
 			
 			sendSignal(SignalPerformance.INIT_TEST);
 		}

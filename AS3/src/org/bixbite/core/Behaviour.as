@@ -43,10 +43,14 @@ package org.bixbite.core
 		private var emiter		:Emiter;
 		private var uid			:String;
 		private var type		:String;
-		private var slots		:Object;
 		
 		private var autoDispose	:Boolean = false;
 		private var compound	:Compound;
+		
+		BIXBITE var channelC	:Object;
+		BIXBITE var channelD	:Object;
+		BIXBITE var channelT	:Object;
+		BIXBITE var channelV	:Object;
 		
 		public function Behaviour() 
 		{
@@ -60,17 +64,20 @@ package org.bixbite.core
 		 * @param	slots
 		 * @param	compound
 		 */
-		BIXBITE function initialise(emiter:Emiter, type:String, slots:Object, autoDispose:Boolean, compound:Compound):void
+		BIXBITE function initialise(emiter:Emiter, type:String, autoDispose:Boolean, compound:Compound):void
 		{
 			this.emiter 		= emiter;
 			this.uid 			= "@" + emiter.uid;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
-			this.slots 			= slots;
+			this.channelC 		= emiter.channelC;
+			this.channelD 		= emiter.channelD;
+			this.channelT 		= emiter.channelT;
+			this.channelV 		= emiter.channelV;
 			this.autoDispose 	= autoDispose;
 			this.compound 		= compound;
 			
-			emiter.addSlot(slots.c, uid, type, exe);
+			emiter.addSlot(channelC, uid, type, exe);
 			init();
 		}
 		
@@ -127,7 +134,7 @@ package org.bixbite.core
 		 */
 		public function addResponder(type:String, callback:Function, autoRequest:Boolean = false):void
 		{
-			emiter.addSlot(slots.c, uid, type, callback);
+			emiter.addSlot(channelC, uid, type, callback);
 			if (autoRequest) sendRequest(type);
 		}
 		
@@ -137,7 +144,7 @@ package org.bixbite.core
 		 */
 		public function removeResponder(type:String):void 
 		{
-			emiter.removeAllSlots(slots.c, type);
+			emiter.removeAllSlots(channelC, type);
 		}
 		
 		/**
@@ -147,7 +154,7 @@ package org.bixbite.core
 		public function sendRequest(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.d, type, signal);
+			emiter.broadcast(channelD, type, signal);
 		}
 		
 		/**
@@ -159,7 +166,7 @@ package org.bixbite.core
 		public function emitSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.c, type, signal);
+			emiter.broadcast(channelC, type, signal);
 		}
 		
 		/**
@@ -170,7 +177,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.v, type, signal);
+			emiter.broadcast(channelV, type, signal);
 		}
 		
 		/**
@@ -182,7 +189,7 @@ package org.bixbite.core
 		public function sendSignalTo(uid:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.response(slots.v, uid, type, signal);
+			emiter.response(channelV, uid, type, signal);
 		}
 		
 		/**
@@ -190,9 +197,9 @@ package org.bixbite.core
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReference(type:String):Array
+		public function getSlotReferences(type:String):Array
 		{
-			return emiter.getSlot(slots.v, type);
+			return emiter.getSlots(channelV, type);
 		}
 		
 		/**
@@ -200,7 +207,7 @@ package org.bixbite.core
 		 */
 		public function dispose():void
 		{
-			emiter.removeSlot(slots.c, uid, type);
+			emiter.removeSlot(channelC, uid, type);
 			
 			signal.dispose();
 			signal 		= null 
@@ -209,7 +216,11 @@ package org.bixbite.core
 			emiter 		= null 
 			uid 		= null 
 			type 		= null 
-			slots 		= null;
+			
+			channelC 	= null
+			channelD 	= null
+			channelT 	= null
+			channelV 	= null
 		}
 		
 	}

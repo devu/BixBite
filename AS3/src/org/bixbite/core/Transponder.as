@@ -24,7 +24,6 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.DisplayObject;
-	import flash.display.Stage;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
@@ -57,7 +56,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			emiter.addSlot(slots.t, uid, type, callback);
+			emiter.addSlot(channelT, uid, type, callback);
 		}
 		
 		/**
@@ -66,7 +65,7 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			emiter.removeSlot(slots.t, uid, type);
+			emiter.removeSlot(channelT, uid, type);
 		}
 		
 		/**
@@ -77,7 +76,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:* = null):void 
 		{
 			if (params) signal.params = params;
-			emiter.broadcast(slots.c, type, signal);
+			emiter.broadcast(channelC, type, signal);
 		}
 		
 		/**
@@ -86,9 +85,9 @@ package org.bixbite.core
 		 */
 		public function transmit(type:String):void
 		{
-			emiter.addSlot(slots.t, uid, type, function forward(s:Signal):void
+			emiter.addSlot(channelT, uid, type, function forward(s:Signal):void
 			{
-				emiter.broadcast(slots.c, type, s);
+				emiter.broadcast(channelC, type, s);
 			});
 		}
 		
@@ -100,7 +99,7 @@ package org.bixbite.core
 		public function responseToAll(type:String, params:Object = null):void 
 		{
 			signal.params = params;
-			emiter.broadcast(slots.v, type, signal);
+			emiter.broadcast(channelV, type, signal);
 		}
 		
 		 /**
@@ -112,7 +111,7 @@ package org.bixbite.core
 		public function responseTo(uid:String, type:String, params:Object = null):void 
 		{
 			signal.params = params;
-			emiter.response(slots.v, uid, type, signal);
+			emiter.response(channelV, uid, type, signal);
 		}
 		
 		/**
@@ -121,9 +120,9 @@ package org.bixbite.core
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReference(type:String):Array
+		public function getSlotReferences(type:String):Array
 		{
-			return emiter.getSlot(slots.c, type);
+			return emiter.getSlots(channelC, type);
 		}
 		
 		/**
@@ -178,7 +177,7 @@ package org.bixbite.core
 		 */
 		override public function destroy():void 
 		{
-			emiter.removeAllSlotsOf(slots.c, uid);
+			emiter.removeAllSlotsOf(channelC, uid);
 			super.destroy();
 		}
 	}

@@ -62,7 +62,7 @@ package org.bixbite.core
 		 * @private
 		 * Slots reference to provide access to specific channel
 		 */
-		BIXBITE var slots	:Object
+		//BIXBITE var slots	:Object
 		
 		/**
 		 * @private
@@ -75,6 +75,11 @@ package org.bixbite.core
 		 */
 		public var id		:String;
 		
+		BIXBITE var channelC	:Object;
+		BIXBITE var channelD	:Object;
+		BIXBITE var channelT	:Object;
+		BIXBITE var channelV	:Object;
+		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 
 		 */
@@ -83,7 +88,12 @@ package org.bixbite.core
 			if (Object(this).constructor == Component) throw new Error("Abstract Class");
 			
 			emiter = Emiter.getInstance();
-			slots = emiter.slots;
+			
+			channelC = emiter.channelC;
+			channelD = emiter.channelD;
+			channelT = emiter.channelT;
+			channelV = emiter.channelV;
+		
 			_uid = "@" + emiter.uid;
 			signal = (this is IData) ? null : new Signal(uid);
 			
@@ -114,7 +124,7 @@ package org.bixbite.core
 				signal = null;
 			}
 			
-			slots 	= null;
+			//slots 	= null;
 			_uid 	= null;
 		}
 		

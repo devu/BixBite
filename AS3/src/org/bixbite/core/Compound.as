@@ -23,11 +23,9 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
-	
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
+	
 	
 	/**
      * <p>The Compound represents default class you should subclass your Document Class with.</br>
@@ -82,7 +80,7 @@ package org.bixbite.core
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false, autoExecute:Boolean = false):void
 		{
 			behaviours[type] = new behaviour();
-			behaviours[type].initialise(emiter, type, slots, autoDispose, this);
+			behaviours[type].initialise(emiter, type, autoDispose, this);
 			
 			if (autoExecute) behaviours[type].exe(signal);
 		}
@@ -106,7 +104,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.t, type, signal);
+			emiter.broadcast(channelT, type, signal);
 		}
 		
 		/**
@@ -117,7 +115,7 @@ package org.bixbite.core
 		public function emitSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.c, type, signal);
+			emiter.broadcast(channelC, type, signal);
 		}
 		
 		/**

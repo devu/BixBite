@@ -23,7 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -54,7 +53,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			emiter.addSlot(slots.v, uid, type, callback);
+			emiter.addSlot(channelV, uid, type, callback);
 		}
 		
 		/**
@@ -63,7 +62,7 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			emiter.removeSlot(slots.v, uid, type);
+			emiter.removeSlot(channelV, uid, type);
 		}
 		
 		/**
@@ -73,7 +72,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.t, type, signal);
+			emiter.broadcast(channelT, type, signal);
 		}
 		
 		/**
@@ -84,7 +83,7 @@ package org.bixbite.core
 		public function emitSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(slots.v, type, signal);
+			emiter.broadcast(channelV, type, signal);
 		}
 		
 		/**
@@ -95,7 +94,7 @@ package org.bixbite.core
 		public function emitSignalTo(targetUID:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.response(slots.v, targetUID, type, signal);
+			emiter.response(channelV, targetUID, type, signal);
 		}
 		
 		/**
@@ -103,9 +102,9 @@ package org.bixbite.core
 		 * @param	type
 		 * @return 	array of slots
 		 */
-		public function getSlotReference(type:String):Array
+		public function getSlotReferences(type:String):Array
 		{
-			return emiter.getSlot(slots.t, type);
+			return emiter.getSlots(channelT, type);
 		}
 		
 		/**
@@ -113,7 +112,7 @@ package org.bixbite.core
 		 */
 		override public function destroy():void 
 		{
-			emiter.removeAllSlotsOf(slots.v, uid);
+			emiter.removeAllSlotsOf(channelV, uid);
 			super.destroy();
 		}
 	}

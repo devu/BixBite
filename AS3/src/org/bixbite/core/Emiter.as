@@ -23,12 +23,9 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
-	import flash.system.System;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
-	import org.bixbite.utils.ClassUtil;
 	
 	/**
      * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
@@ -50,7 +47,10 @@ package org.bixbite.core
 		
 		private var _uid				:int = -1;
 		
-		private var _slots				:Object = { c: { }, d: { }, t: { }, v: { } };
+		public var channelC				:Object = { };
+		public var channelD				:Object = { };
+		public var channelT				:Object = { };
+		public var channelV				:Object = { };
 		
 		private var components			:Dictionary = new Dictionary(true);
 		
@@ -181,10 +181,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function dataBroadcast(channel:Object, type:String, data:IData):void 
+		BIXBITE function broadcast(channel:Object, type:String, signal:Signal):void 
 		{
 			if (!channel[type]) return;
-			for each (var f:Function in channel[type]) f(data);
+			for each (var f:Function in channel[type]) f(signal);
 		}
 		
 		/**
@@ -194,10 +194,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function broadcast(channel:Object, type:String, signal:Signal):void 
+		BIXBITE function dataBroadcast(channel:Object, type:String, data:IData):void 
 		{
 			if (!channel[type]) return;
-			for each (var f:Function in channel[type]) f(signal);
+			for each (var f:Function in channel[type]) f(data);
 		}
 		
 		/**
@@ -235,7 +235,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @return  array, of registered callbacks
 		 */
-		BIXBITE function getSlot(channel:Object, type:String):Array 
+		BIXBITE function getSlots(channel:Object, type:String):Array 
 		{
 			if (!channel[type]) return null
 			
@@ -284,9 +284,10 @@ package org.bixbite.core
 		/**
 		 * Retruns reference to all slot channels
 		 */
+		/*
 		public function get slots():Object 
 		{
 			return _slots;
-		}
+		}*/
 	}
 }

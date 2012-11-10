@@ -26,6 +26,7 @@ package test.performance.signalperf.view
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.utils.getTimer;
+	import flash.utils.setTimeout;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import test.performance.signalperf.SignalPerformance;
@@ -50,33 +51,45 @@ package test.performance.signalperf.view
 			stage.addChild(context);
 			
 			output = new TextField();
+			output.autoSize = "left";
 			output.text = "Click to test";
 			context.addChild(output);
 			
 			addSlot(SignalPerformance.BEGIN_TEST, onBeginTest);
-			addSlot(SignalPerformance.RUN_TEST, onRunTest);
+			addSlot(SignalPerformance.RUN_TEST_SRS, onRunTestSRS);
+			addSlot(SignalPerformance.RUN_TEST_STANDARD, onRunTestStandard);
 		}
 		
-		private function onRunTest(s:Signal):void 
+		private function onRunTestSRS(s:Signal):void 
+		{
+			
+		}
+		
+		private function onRunTestStandard(s:Signal):void 
 		{
 			
 		}
 		
 		private function onBeginTest(s:Signal):void
 		{
-			output.text = "Running";
+			output.text = "Running...";
+			setTimeout(startTest, 1000);
+		}
+		
+		private function startTest():void
+		{
+			var max:int = 1000000;
+			output.text = max + " iterations, " + String(max * 3) + " signals\n";
 			
-			slotReference = getSlotReference(SignalPerformance.RUN_TEST)[0];
+			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
 			
 			var startTime:int = getTimer();
+			for (var i:int = 0 ; i < max; i++) sendSignal(SignalPerformance.RUN_TEST_STANDARD);
+			output.appendText("STANDARD: " + String(getTimer() - startTime + "ms \n"));
 			
-			//standard
-			//for (var i:int = 0 ; i < 1000000; i++) sendSignal(SignalPerformance.RUN_TEST);
-			//SRS
-			for (var i:int = 0 ; i < 11400000; i++) slotReference(signal);
-			
-			output.text = "Time:" + String(getTimer() - startTime);
-			//sendSignal(StatsSignal.TRACE, [0, "Time:", String(getTimer() - startTime)]);
+			startTime = getTimer();
+			for (i = 0 ; i < max; i++) slotReference(signal);
+			output.appendText("SRS: " + String(getTimer() - startTime + "ms \n"));
 		}
 	}
 

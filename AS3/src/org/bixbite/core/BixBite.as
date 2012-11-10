@@ -50,8 +50,8 @@ package org.bixbite.core
 			BixBite.stage = stage;
 			emiter = Emiter.startup();
 			
-			channelT = emiter.slots.t;
-			channelC = emiter.slots.t;
+			channelT = emiter.channelT;
+			channelC = emiter.channelC;
 			
 			uid = "@" + emiter.uid;
 			signal = new Signal(uid);

@@ -23,10 +23,9 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
-	
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
+	
 	
 	/**
      * <p>The Data component is a stateless data holder. Data can be directly requested by Behaviours and only.
@@ -55,7 +54,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			emiter.addSlot(slots.d, uid, type, callback);
+			emiter.addSlot(channelD, uid, type, callback);
 		}
 		
 		/**
@@ -64,7 +63,7 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			emiter.removeSlot(slots.d, uid, type);
+			emiter.removeSlot(channelD, uid, type);
 		}
 		
 		/**
@@ -76,7 +75,7 @@ package org.bixbite.core
 		public function responseTo(targetUID:String, type:String, data:IData = null):void
 		{
 			var vo:IData = (data) ? data : this;
-			emiter.dataResponse(slots.c, targetUID, type, vo);
+			emiter.dataResponse(channelC, targetUID, type, vo);
 		}
 		
 		/**
@@ -87,7 +86,7 @@ package org.bixbite.core
 		public function responseToAll(type:String, data:IData = null):void 
 		{
 			var vo:IData = (data) ? data : this;
-			emiter.dataBroadcast(slots.c, type, vo);
+			emiter.dataBroadcast(channelC, type, vo);
 		}
 		
 		/**
@@ -95,7 +94,7 @@ package org.bixbite.core
 		 */
 		override public function destroy():void 
 		{
-			emiter.removeAllSlotsOf(slots.d, uid);
+			emiter.removeAllSlotsOf(channelD, uid);
 			super.destroy();
 		}
 	}
