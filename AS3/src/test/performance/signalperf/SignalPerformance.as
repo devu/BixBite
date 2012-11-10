@@ -50,14 +50,15 @@ package test.performance.signalperf
 	 * (FP 11,5,31,101 - Chrome)		(FP 11,4,402,287 - FF)
 	 * 
 	 * (strongly typed SRS implementation)
-	 * v0.6.7 SRS	PC				
+	 * v0.8.0 SRS	PC				
 	 * 1.000 		- <0ms				- <0ms					(3k signals in circulation)
 	 * 10.000 		- 1ms				- 1ms 					(30k signals in circulation)
 	 * 100.000		- 12ms				- 11ms					(300k signals in circulation)
 	 * 1.000.000	- 125ms				- 111ms					(3M signals in circulation) 	
 	 * 10.000.000	- 1260ms			- 1100ms				(30M signals in circulation)
 	 * 
-	 * v0.6.7(linked list implementation)
+	 * (linked list implementation)
+	 * v0.8.0
 	 * 1.000 		- 1ms				- <0ms					(3k signals in circulation)
 	 * 10.000 		- 11ms				- 10ms					(30k signals in circulation)
 	 * 100.000		- 110ms				- 105ms					(300k signals in circulation)

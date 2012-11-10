@@ -79,7 +79,7 @@ package test.performance.signalperf.view
 		
 		private function startTest():void
 		{
-			var max:int = 10000;
+			var max:int = 100000;
 			output.text = max + " iterations, " + String(max * 3) + " signals\n";
 			
 			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);

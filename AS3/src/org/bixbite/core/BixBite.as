@@ -27,7 +27,6 @@ package org.bixbite.core
 	import flash.utils.Dictionary;
 	
 	/**
-	 * 
 	 * @langversion	3.0
 	 */
 	public class BixBite

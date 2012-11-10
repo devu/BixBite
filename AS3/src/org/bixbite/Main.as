@@ -60,11 +60,19 @@ package org.bixbite
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * Main BixBite frmework document class for development purposes.
-	 * Contains a core of the framework.
+	 * Main BixBite frmework document class for development purposes
 	 * 
 	 * footprint 3.03kb (signle core); +0.02kb per additional core
 	 * 
+	 * Dev Notes
+	 * 
+	 * Next milestone 0.9.0
+	 * - cross core communication (Multithreading-like architucture w/o Workers when each core has its own set of signals/slots and components)
+	 * - AS3 workers will also have a go. That will be final step and this microarchitecture complete. I am very happy with the overal structure now.
+	 * Having Strongly Typed SRS and linked list for Slot implemented was the biggest problem I was trying to solve in elegant way.
+	 * 
+	 * Before it will reach 1.0.0 all iteration will be about compatibility tests, bug fixing, etc. No further changes to the core after that.
+	 * But before we hit 0.9.0 I need to do the same with the current 0.8.0 version :) stay tuned.
 	 */
 	
 	public class Main extends Sprite
