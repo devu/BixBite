@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.6.6.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.8.0.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -182,6 +182,10 @@
     <string>src\org\bixbite\framework\view\focusedview.as</string>
     <string>src\org\bixbite\framework\focusmanager.as</string>
     <string>src\org\bixbite\framework\keyboardcontroller.as</string>
+    <string>src\accesstest.as</string>
+    <string>src\test\multicore.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnerstandard.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnersrs.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -353,6 +357,10 @@
     <string>src\org\bixbite\framework\view\focusedview.as</string>
     <string>src\org\bixbite\framework\focusmanager.as</string>
     <string>src\org\bixbite\framework\keyboardcontroller.as</string>
+    <string>src\accesstest.as</string>
+    <string>src\test\multicore.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnerstandard.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnersrs.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />
