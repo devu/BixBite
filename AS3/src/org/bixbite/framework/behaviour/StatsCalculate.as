@@ -50,9 +50,9 @@ package org.bixbite.framework.behaviour
 		{
 			addResponder(Stats.DATA_REQUEST, onData, true);
 			
-			updateSRS = getSlotReference(Stats.UPDATE)[0];
-			updateRealtimeSRS = getSlotReference(Stats.UPDATE_REALTIME)[0];
-			drawSRS = getSlotReference(Stats.DRAW)[0]; 
+			updateSRS = getSlots(Stats.UPDATE).getSlotByIndex(0).send;
+			updateRealtimeSRS = getSlots(Stats.UPDATE_REALTIME).getSlotByIndex(0).send;
+			drawSRS = getSlots(Stats.DRAW).getSlotByIndex(0).send;
 		}
 		
 		private function onData(data:StatsData):void 

@@ -52,6 +52,7 @@ package org.bixbite
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Core;
 	import org.bixbite.framework.ContextLoader;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
@@ -62,12 +63,15 @@ package org.bixbite
 	 * Main BixBite frmework document class for development purposes.
 	 * Contains a core of the framework.
 	 * 
-	 * footprint 2.92kb
+	 * footprint 3.03kb (signle core); +0.02kb per additional core
 	 * 
 	 */
 	
 	public class Main extends Sprite
 	{
+		private var core1:Core;
+		private var core2:Core;
+		
 		public function Main() 
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
@@ -77,15 +81,18 @@ package org.bixbite
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			var core:BixBite = new BixBite(stage);
+			var bb:BixBite = new BixBite(stage);
 			
-			core.register(StageManager);
-			core.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			core1 = bb.spawnCore("1");
 			
-			//core.register(Stats);
-			//core.sendSignal(Stats.START);
+			core1.register(StageManager);
+			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:60 } );
 			
-			core.register(SignalPerformance);
+			core1.register(Stats);
+			core1.sendSignal(Stats.START);
+			
+			core2 = bb.spawnCore("2");
+			core2.register(SignalPerformance);
 		}
 		
 	}

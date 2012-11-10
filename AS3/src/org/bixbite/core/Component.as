@@ -86,18 +86,6 @@ package org.bixbite.core
 		public function Component()
 		{
 			if (Object(this).constructor == Component) throw new Error("Abstract Class");
-			
-			emiter = Emiter.getInstance();
-			
-			channelC = emiter.channelC;
-			channelD = emiter.channelD;
-			channelT = emiter.channelT;
-			channelV = emiter.channelV;
-		
-			_uid = "@" + emiter.uid;
-			signal = (this is IData) ? null : new Signal(uid);
-			
-			init();
 		}
 		
 		/**

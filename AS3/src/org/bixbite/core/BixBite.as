@@ -24,7 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.display.Stage;
-	import org.bixbite.namespaces.BIXBITE;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * 
@@ -32,55 +32,29 @@ package org.bixbite.core
 	 */
 	public class BixBite
 	{
-		public static const VERSION	:String = "BixBite v0.6.7";
-		
-		use namespace BIXBITE;
-		
+		public static const VERSION	:String = "BixBite v0.8.0";
 		public static var stage		:Stage;
 		
-		BIXBITE var emiter		:Emiter;
-		BIXBITE var uid			:String;
-		BIXBITE var channelC	:Channel;
-		BIXBITE var channelT	:Channel;
-		
-		public var signal		:Signal;
+		private var cores			:Dictionary = new Dictionary(true);
 		
 		public function BixBite(stage:Stage) 
 		{
 			BixBite.stage = stage;
-			emiter = Emiter.startup();
-			
-			channelT = emiter.channelT;
-			channelC = emiter.channelC;
-			
-			uid = "@" + emiter.uid;
-			signal = new Signal(uid);
 			
 			trace(VERSION);
-			
-			super();
 		}
 		
-		public function register(compound:Class):void
+		public function spawnCore(id:String):Core 
 		{
-			emiter.registerComponent(compound);
+			return cores[id] = new Core(id);
 		}
 		
-		public function unregister(compound:Class):void
+		public function destroyCore(id:String):void 
 		{
-			emiter.unregisterComponent(compound);
-		}
-		
-		public function sendSignal(type:String, params:Object = null):void
-		{
-			signal.params = params;
-			emiter.broadcast(channelT, type, signal);
-		}
-		
-		public function emitSignal(type:String, params:Object = null):void
-		{
-			signal.params = params;
-			emiter.broadcast(channelC, type, signal);
+			if(cores[id]){
+				cores[id].destroy();
+				delete cores[id];
+			}
 		}
 	}
 

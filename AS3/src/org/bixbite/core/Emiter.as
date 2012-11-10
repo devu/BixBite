@@ -28,14 +28,14 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-     * <p>The Emiter, singleton, core of the Signal/Slot notification system of this framework.</p>
-     * <p>Provides set of methods for Components and keeps it dead simple, fast and straight forward. First as well as second dimension relies on native AS3 Object only. Speed of accessibility, creation and deletion was the main important factor behind design decisions. 
+     * <p>The Emiter, core of the Signal/Slot notification system of this framework.</p>
+     * <p>Provides set of methods for Components and keeps it dead simple, fast and straight forward.
 	 * If you want to get closer to the native speed of execution, Emiter provides methods to cross-reference callbacks base on type of the signal called SRS.</p>
      * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3.
-     * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with the same seeped as a native local method speed accession.
+     * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with almost the same seeped as a native local method speed accession.
      * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed or refactored</p>
      * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
-     * Current version of BixBite is capable of sending over 34.000.000 signals per second (AMD Athlon II 955 Quad Core)</p>
+     * Current version of BixBite is capable of sending around 30.000.000 signals per second using SRS, and 3.000.000 per second using standard API (PC AMD Athlon II 955 Quad Core) </p>
      * 
 	 * @langversion	3.0
 	 */
@@ -43,43 +43,22 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE
 		
-		static private var _instance	:Emiter;
-		
 		private var _uid				:int = -1;
 		
 		public var channelC				:Channel = new Channel();
 		public var channelD				:Channel = new Channel();
 		public var channelT				:Channel = new Channel();
 		public var channelV				:Channel = new Channel();
+		public var coreID				:String;
 		
 		private var components			:Dictionary = new Dictionary(true);
 		
 		/**
-		 * The Emiter is a singleton, by default and only once via constructor will pass references to the main Compound.
-		 * @param	application
+		 * The Emiter is an communication HUB as well as registration point for all coresponding components for each Core.
 		 */
 		public function Emiter()
 		{
-			if (_instance) throw Error("This Class is a Singleton");
-		}
-		
-		/**
-		 * 
-		 * @param	stage
-		 */
-		static public function startup():Emiter 
-		{
-			if (!_instance)_instance = new Emiter();
-			return _instance
-		}
-		
-		/**
-		 * Reference to a Singleton instance of Emiter class.
-		 * @return
-		 */
-		static public function getInstance():Emiter 
-		{
-			return _instance;
+			
 		}
 		
 		/**
@@ -94,7 +73,16 @@ package org.bixbite.core
 			}
 			
 			var c:Component = new component();
+			c.emiter = this;
+			c.channelC = channelC;
+			c.channelD = channelD;
+			c.channelT = channelT;
+			c.channelV = channelV;
+			c._uid = "@" + this.uid + "_" + coreID;
+			c.signal = (c is IData) ? null : new Signal(c.uid);
+			
 			components[component] = c;
+			c.init();
 		}
 		
 		/**
@@ -255,10 +243,28 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * Deconstructor
+		 */
+		public function destroy():void
+		{
+			var slots:Slots;
+			for each(slots in channelC) slots.removeAllSlots();
+			channelC = null;
+			for each(slots in channelD) slots.removeAllSlots();
+			channelD = null;
+			for each(slots in channelT) slots.removeAllSlots();
+			channelT = null;
+			for each(slots in channelV) slots.removeAllSlots();
+			channelV = null;
+			for each(var c:Class in components) unregisterComponent(c);
+			components = null;
+		}
+		
+		/**
 		 * Privides getter to unique id for all Components.
 		 * Each Component will invoke this method on construction time. Emiter's uid getter act as a fast system iterator.
 		 */
-		public function get uid():int 
+		BIXBITE function get uid():int 
 		{
 			return ++_uid;
 		}

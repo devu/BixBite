@@ -50,7 +50,7 @@ package org.bixbite.framework.transponder
 		
 		private function onStart(s:Signal):void 
 		{
-			calculateSRS = getSlotReference(Stats.CALCULATE)[0];
+			calculateSRS = getSlots(Stats.CALCULATE).getSlotByIndex(0).send;
 			addSensor(Event.ENTER_FRAME		, onEnterFrame);
 		}
 		
