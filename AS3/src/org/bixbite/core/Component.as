@@ -75,10 +75,10 @@ package org.bixbite.core
 		 */
 		public var id		:String;
 		
-		BIXBITE var channelC	:Object;
-		BIXBITE var channelD	:Object;
-		BIXBITE var channelT	:Object;
-		BIXBITE var channelV	:Object;
+		BIXBITE var channelC	:Channel;
+		BIXBITE var channelD	:Channel;
+		BIXBITE var channelT	:Channel;
+		BIXBITE var channelV	:Channel;
 		
 		/**
 		 * Constructor, Component is an abstract class, cannot be directly instatiated. 

@@ -28,6 +28,7 @@ package test.performance.signalperf.view
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
 	import org.bixbite.core.Signal;
+	import org.bixbite.core.Slot;
 	import org.bixbite.core.View;
 	import test.performance.signalperf.SignalPerformance;
 	
@@ -36,7 +37,7 @@ package test.performance.signalperf.view
 	 */
 	public class TestView extends View
 	{
-		private var slotReference:Function;
+		private var slot:Slot;
 		private var output:TextField;
 		
 		public function TestView() 
@@ -78,18 +79,18 @@ package test.performance.signalperf.view
 		
 		private function startTest():void
 		{
-			var max:int = 1000000;
+			var max:int = 10000;
 			output.text = max + " iterations, " + String(max * 3) + " signals\n";
 			
-			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
+			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);
 			
 			var startTime:int = getTimer();
 			for (var i:int = 0 ; i < max; i++) sendSignal(SignalPerformance.RUN_TEST_STANDARD);
 			output.appendText("STANDARD: " + String(getTimer() - startTime + "ms \n"));
 			
 			startTime = getTimer();
-			for (i = 0 ; i < max; i++) slotReference(signal);
-			output.appendText("SRS: " + String(getTimer() - startTime + "ms \n"));
+			for (i = 0 ; i < max; i++) slot.send(signal);
+			output.appendText("STRONG SRS: " + String(getTimer() - startTime + "ms \n"));
 		}
 	}
 

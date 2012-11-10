@@ -32,7 +32,7 @@ package org.bixbite.core
 	 */
 	public class BixBite
 	{
-		public static const VERSION	:String = "BixBite v0.6.6";
+		public static const VERSION	:String = "BixBite v0.6.7";
 		
 		use namespace BIXBITE;
 		
@@ -40,8 +40,8 @@ package org.bixbite.core
 		
 		BIXBITE var emiter		:Emiter;
 		BIXBITE var uid			:String;
-		BIXBITE var channelC	:Object;
-		BIXBITE var channelT	:Object;
+		BIXBITE var channelC	:Channel;
+		BIXBITE var channelT	:Channel;
 		
 		public var signal		:Signal;
 		

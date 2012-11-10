@@ -25,6 +25,7 @@ package test.performance.signalperf.transponder
 {
 	import flash.events.MouseEvent;
 	import org.bixbite.core.Signal;
+	import org.bixbite.core.Slot;
 	import org.bixbite.core.Transponder;
 	import test.performance.signalperf.SignalPerformance;
 	
@@ -33,7 +34,7 @@ package test.performance.signalperf.transponder
 	 */
 	public class TestTransponder extends Transponder 
 	{
-		private var slotReference:Function;
+		private var slot:Slot;
 		
 		public function TestTransponder() 
 		{
@@ -54,13 +55,13 @@ package test.performance.signalperf.transponder
 		
 		private function startTest(e:MouseEvent):void
 		{
-			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
+			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);
 			sendSignal(SignalPerformance.START_TEST);
 		}
 		
 		private function onRunTestSrs(s:Signal):void
 		{
-			slotReference(signal);
+			slot.send(signal);
 		}
 		
 		private function onRunTestStandard(s:Signal):void 

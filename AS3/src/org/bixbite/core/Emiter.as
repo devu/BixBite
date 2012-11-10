@@ -47,10 +47,10 @@ package org.bixbite.core
 		
 		private var _uid				:int = -1;
 		
-		public var channelC				:Object = { };
-		public var channelD				:Object = { };
-		public var channelT				:Object = { };
-		public var channelV				:Object = { };
+		public var channelC				:Channel = new Channel();
+		public var channelD				:Channel = new Channel();
+		public var channelT				:Channel = new Channel();
+		public var channelV				:Channel = new Channel();
 		
 		private var components			:Dictionary = new Dictionary(true);
 		
@@ -128,10 +128,10 @@ package org.bixbite.core
          * @param    type, type of signal
          * @param    callback, listener of the caller that will be added to the slot of certain type and channel
          */
-		BIXBITE function addSlot(channel:Object, callerUID:String, type:String, callback:Function):void
+		BIXBITE function addSlot(channel:Channel, callerUID:String, type:String, callback:Function):void
 		{
-			if (!channel[type]) channel[type] = { };
-			channel[type][callerUID] = callback;
+			if (!channel[type]) channel[type] = new Slots();
+			Slots(channel[type]).addSlot(callerUID, callback);
 		}
 		
 		/**
@@ -142,7 +142,7 @@ package org.bixbite.core
 		 * @param	callerUID, unique id of the caller
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeSlot(channel:Object, callerUID:String, type:String):void
+		BIXBITE function removeSlot(channel:Channel, callerUID:String, type:String):void
 		{
 			if (!channel[type]) return;
 			delete channel[type][callerUID];
@@ -156,10 +156,10 @@ package org.bixbite.core
 		 * @param   channel, slot channel
 		 * @param	type, type of signal
 		 */
-		BIXBITE function removeAllSlots(channel:Object, type:String):void
+		BIXBITE function removeAllSlots(channel:Channel, type:String):void
 		{
 			if (!channel[type]) return;
-			for (var uid:String in channel[type]) removeSlot(channel, uid, type);
+			Slots(channel[type]).removeAllSlots();
 			delete channel[type];
 		}
 		
@@ -169,7 +169,7 @@ package org.bixbite.core
 		 * @param   channel, slot channel
 		 * @param	uid, unique id of the caller
 		 */
-		BIXBITE function removeAllSlotsOf(channel:Object, uid:String):void
+		BIXBITE function removeAllSlotsOf(channel:Channel, uid:String):void
 		{
 			for (var p:String in channel) removeSlot(channel, uid, p);
 		}
@@ -181,10 +181,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function broadcast(channel:Object, type:String, signal:Signal):void 
+		BIXBITE function broadcast(channel:Channel, type:String, signal:Signal):void 
 		{
 			if (!channel[type]) return;
-			for each (var f:Function in channel[type]) f(signal);
+			Slots(channel[type]).broadcast(signal);
 		}
 		
 		/**
@@ -194,10 +194,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function dataBroadcast(channel:Object, type:String, data:IData):void 
+		BIXBITE function dataBroadcast(channel:Channel, type:String, data:IData):void 
 		{
 			if (!channel[type]) return;
-			for each (var f:Function in channel[type]) f(data);
+			Slots(channel[type]).broadcastData(data);
 		}
 		
 		/**
@@ -208,10 +208,10 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function response(channel:Object, targetUID:String, type:String, signal:Signal):void 
+		BIXBITE function response(channel:Channel, targetUID:String, type:String, signal:Signal):void 
 		{
-			if (!channel[type] || !channel[type][targetUID] ) return;
-			channel[type][targetUID](signal);
+			if (!channel[type]) return;
+			Slots(channel[type]).getSlotByUID(targetUID).send(signal);
 		}
 		
 		/**
@@ -222,46 +222,28 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	signal
 		 */
-		BIXBITE function dataResponse(channel:Object, targetUID:String, type:String, data:IData):void 
+		BIXBITE function dataResponse(channel:Channel, targetUID:String, type:String, data:IData):void 
 		{
 			if (!channel[type]) return;
-			channel[type][targetUID](data);
+			Slots(channel[type]).getSlotByUID(targetUID).send(data);
 		}
 		
 		/**
 		 * @private
-		 * Reference Signal Mechanism - get reference to slot of specific type.
+		 * Slot Reference Signal mechanism - get reference to slots by type.
 		 * @param	channel
 		 * @param	type
-		 * @return  array, of registered callbacks
+		 * @return  Slots
 		 */
-		BIXBITE function getSlots(channel:Object, type:String):Array 
+		BIXBITE function getSlots(channel:Channel, type:String):Slots 
 		{
-			if (!channel[type]) return null
-			
-			var a:Array = [];
-			for each (var f:Function in channel[type]) a.push(f);
-			return a
+			return (channel[type]) ? channel[type] : null;
 		}
 		
 		/**
 		 * @private
-		 * Reference Signal Mechanism - get reference to Signal of specific type.
-		 * @param	channel
-		 * @param	type
-		 * @return	signal, interface of signal
-		 */
-		BIXBITE function getSignal(channel:Object, type:String):Signal
-		{
-			if (!channel[type]) return null
-			for each (var f:Function in channel[type]) return f();
-			return null
-		}
-		
-		/**
-		 * @private
-		 * Helper method to quick determination wheter object is empty or not.
-		 * As soon as at least one property will be detected will return Boolean otherwise repor about empty object.
+		 * Helper method for quick determination wheter object is empty or not.
+		 * As soon as at least property will be detected will return Boolean otherwise report empty object.
 		 * @param	object to check
 		 * @return 	boolean
 		 */
@@ -280,14 +262,5 @@ package org.bixbite.core
 		{
 			return ++_uid;
 		}
-		
-		/**
-		 * Retruns reference to all slot channels
-		 */
-		/*
-		public function get slots():Object 
-		{
-			return _slots;
-		}*/
 	}
 }

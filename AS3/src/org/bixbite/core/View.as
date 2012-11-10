@@ -102,7 +102,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @return 	array of slots
 		 */
-		public function getSlotReferences(type:String):Array
+		public function getSlots(type:String):Slots
 		{
 			return emiter.getSlots(channelT, type);
 		}

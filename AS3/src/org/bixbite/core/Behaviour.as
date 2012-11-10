@@ -47,10 +47,10 @@ package org.bixbite.core
 		private var autoDispose	:Boolean = false;
 		private var compound	:Compound;
 		
-		BIXBITE var channelC	:Object;
-		BIXBITE var channelD	:Object;
-		BIXBITE var channelT	:Object;
-		BIXBITE var channelV	:Object;
+		BIXBITE var channelC	:Channel;
+		BIXBITE var channelD	:Channel;
+		BIXBITE var channelT	:Channel;
+		BIXBITE var channelV	:Channel;
 		
 		public function Behaviour() 
 		{
@@ -197,7 +197,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReferences(type:String):Array
+		public function getSlots(type:String):Slots
 		{
 			return emiter.getSlots(channelV, type);
 		}

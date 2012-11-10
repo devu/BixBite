@@ -46,21 +46,25 @@ package test.performance.signalperf
 	 * 
 	 * Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
 	 * 
-	 * Results (Flash Player 11,5,31,101 - Chrome)
+	 * Results 
+	 * (FP 11,5,31,101 - Chrome)		(FP 11,4,402,287 - FF)
 	 * 
-	 * v0.6.7 SRS	PC				Laptop
-	 * 1.000 		- <0ms			-//-	(3k signals in circulation)
-	 * 10.000 		- 2ms			?		(30k signals in circulation)
-	 * 100.000		- 12ms			?		(300k signals in circulation)
-	 * 1.000.000	- 106ms			?		(3M signals in circulation) 	
-	 * 10.000.000	- 1250ms		?		(30M signals in circulation)
+	 * (strongly typed SRS implementation)
+	 * v0.6.7 SRS	PC				
+	 * 1.000 		- <0ms				- <0ms					(3k signals in circulation)
+	 * 10.000 		- 1ms				- 1ms 					(30k signals in circulation)
+	 * 100.000		- 12ms				- 11ms					(300k signals in circulation)
+	 * 1.000.000	- 125ms				- 111ms					(3M signals in circulation) 	
+	 * 10.000.000	- 1260ms			- 1100ms				(30M signals in circulation)
 	 * 
-	 * v0.6.7
-	 * 1.000 		- 1ms					(3k signals in circulation)
-	 * 10.000 		- 12ms					(30k signals in circulation)
-	 * 100.000		- 124ms					(300k signals in circulation)
-	 * 1.000.000	- 1223ms				(3M signals in circulation)
-	 * 10.000.000	- 12283ms				(3M signals in circulation)
+	 * v0.6.7(linked list implementation)
+	 * 1.000 		- 1ms				- <0ms					(3k signals in circulation)
+	 * 10.000 		- 11ms				- 10ms					(30k signals in circulation)
+	 * 100.000		- 110ms				- 105ms					(300k signals in circulation)
+	 * 1.000.000	- 1109ms			- 1092ms				(3M signals in circulation)
+	 * 10.000.000	- 11253ms			- 10339ms				(30M signals in circulation)
+	 * 
+	 * (Yes flash player slowing down from version to version, but we trying hard to speed up BixBite anyway :) )
 	 * 
 	 * Results (Flash Player 11,1,102,63 - Chrome)
 	 * 

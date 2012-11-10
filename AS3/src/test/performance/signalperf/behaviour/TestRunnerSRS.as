@@ -25,6 +25,7 @@ package test.performance.signalperf.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
+	import org.bixbite.core.Slot;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
@@ -32,16 +33,16 @@ package test.performance.signalperf.behaviour
 	 */
 	public class TestRunnerSRS extends Behaviour 
 	{
-		private var slotReference:Function;
+		private var slot:Slot;
 		
 		override public function init():void 
 		{
-			slotReference = getSlotReferences(SignalPerformance.RUN_TEST_SRS)[0];
+			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);
 		}
 		
 		override public function execute(s:Signal):void
 		{
-			slotReference(signal);
+			slot.send(s);
 		}
 		
 	}
