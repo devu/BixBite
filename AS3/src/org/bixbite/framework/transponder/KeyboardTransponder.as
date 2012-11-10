@@ -51,7 +51,7 @@ package org.bixbite.framework.transponder
 			
 			addSlot(KeySignal.SET_MAPPING, onSetMapping);
 			
-			trigger = getSlotReference(KeySignal.TRIGGER)[0];
+			trigger = getSlots(KeySignal.TRIGGER).getSlotByIndex(0).send;
 		}
 		
 		private function onSetMapping(s:Signal):void 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_framework_0.6.6.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_framework_0.8.0.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Framework.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -97,6 +97,9 @@
     <string>src\test\performance\coreperf\view\outputview.as</string>
     <string>src\test\performance\coreperf\behaviour\testbehaviour.as</string>
     <string>src\test\performance\coreperf\behaviour\traceoutput.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnerstandard.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnersrs.as</string>
+    <string>src\test\multicore.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -183,6 +186,9 @@
     <string>src\test\performance\coreperf\view\outputview.as</string>
     <string>src\test\performance\coreperf\behaviour\testbehaviour.as</string>
     <string>src\test\performance\coreperf\behaviour\traceoutput.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnerstandard.as</string>
+    <string>src\test\performance\signalperf\behaviour\testrunnersrs.as</string>
+    <string>src\test\multicore.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

@@ -30,6 +30,7 @@ package examples
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Core;
 	import org.bixbite.framework.Stats;
 	
 	
@@ -38,6 +39,7 @@ package examples
 	 */
 	public class MainExamples extends Sprite
 	{
+		private var core1:Core;
 		/**
 		 * Uncomment out example in order to run it.
 		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
@@ -54,33 +56,34 @@ package examples
 			/**
 			* Initalise a core
 			*/
-			var core:BixBite = new BixBite(stage);
+			var bb:BixBite = new BixBite(stage);
+			core1 = bb.spawnCore("examples");
 			
 			/**
-			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of framework);
+			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
 			 */
-			core.register(Stats);
-			core.sendSignal(Stats.START);
+			//core1.register(Stats);
+			//core1.sendSignal(Stats.START);
 			
 			/**
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
 			*/
-			//core.register(HelloFlash);
+			//core1.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
 			*/
-			//core.register(HelloWorld);
+			//core1.register(HelloWorld);
 			
 			/**
 			 * Example of DisplayListManager use
 			 */
-			//core.register(HelloDisplayList);
+			//core1.register(HelloDisplayList);
 			
 			/*
-			 * 
+			 * TODO
 			 */
-			//core.register(ContextLoaderExample);
+			//core1.register(ContextLoaderExample);
 		}
 	}
 

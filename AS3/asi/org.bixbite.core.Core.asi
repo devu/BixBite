@@ -1,0 +1,29 @@
+﻿package org.bixbite.core
+{
+	import org.bixbite.namespaces.BIXBITE;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class Core
+	{
+		var emiter : Emiter;
+		var uid : String;
+		var channelC : Channel;
+		var channelT : Channel;
+		public var signal : Signal;
+
+		public function Core (id:String);
+
+		public function register (compound:Class) : void;
+
+		public function unregister (compound:Class) : void;
+
+		public function sendSignal (type:String, params:Object=null) : void;
+
+		public function emitSignal (type:String, params:Object=null) : void;
+
+		public function destroy () : void;
+	}
+}

@@ -1,0 +1,18 @@
+﻿package org.bixbite.core
+{
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class Slot
+	{
+		public var uid : String;
+		public var send : Function;
+		var index : int;
+		var next : Slot;
+
+		public function Slot (uid:String, callback:Function);
+
+		public function dispose () : void;
+	}
+}

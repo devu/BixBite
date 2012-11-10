@@ -4,11 +4,10 @@
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
-	import examples.imagegallery.ImageGallery;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.core.Core;
 	import org.bixbite.framework.Stats;
 
 	/**
@@ -17,6 +16,8 @@
 	 */
 	public class MainExamples extends Sprite
 	{
+		private var core1 : Core;
+
 		/**
 		 * Uncomment out example in order to run it.
 		 * Uncomment them all or in random order to see adventage of modular structure of BixBite

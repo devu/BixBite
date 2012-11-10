@@ -3,7 +3,7 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.framework.signal.StatsSignal;
+	import org.bixbite.core.Core;
 	import org.bixbite.framework.Stats;
 	import test.integration.contextloader.TestContextLoader;
 	import test.performance.coreperf.CorePerformance;
@@ -15,7 +15,8 @@
 	 */
 	public class MainTests extends Sprite
 	{
-		private var core : BixBite;
+		private var core1 : Core;
+		private var core2 : Core;
 
 		public function MainTests ();
 

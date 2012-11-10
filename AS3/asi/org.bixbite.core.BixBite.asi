@@ -1,7 +1,7 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.Stage;
-	import org.bixbite.namespaces.BIXBITE;
+	import flash.utils.Dictionary;
 
 	/**
 	 *
@@ -9,21 +9,14 @@
 	 */
 	public class BixBite
 	{
-		public static const VERSION : String = "BixBite v0.6.6";
-		var emiter : Emiter;
-		var uid : String;
-		var channelC : Object;
-		var channelT : Object;
-		public var signal : Signal;
+		public static const VERSION : String = "BixBite v0.8.0";
+		public static var stage : Stage;
+		private var cores : Dictionary;
 
 		public function BixBite (stage:Stage);
 
-		public function register (compound:Class) : void;
+		public function spawnCore (id:String) : Core;
 
-		public function unregister (compound:Class) : void;
-
-		public function sendSignal (type:String, params:Object=null) : void;
-
-		public function emitSignal (type:String, params:Object=null) : void;
+		public function destroyCore (id:String) : void;
 	}
 }

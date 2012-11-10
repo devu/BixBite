@@ -94,7 +94,7 @@ package org.bixbite
 			core1 = bb.spawnCore("1");
 			
 			core1.register(StageManager);
-			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:60 } );
+			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
 			core1.register(Stats);
 			core1.sendSignal(Stats.START);

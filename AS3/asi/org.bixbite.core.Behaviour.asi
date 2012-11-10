@@ -16,9 +16,12 @@
 		private var emiter : Emiter;
 		private var uid : String;
 		private var type : String;
-		private var slots : Object;
 		private var autoDispose : Boolean;
 		private var compound : Compound;
+		var channelC : Channel;
+		var channelD : Channel;
+		var channelT : Channel;
+		var channelV : Channel;
 
 		public function Behaviour ();
 
@@ -29,7 +32,7 @@
 		 * @param	slots
 		 * @param	compound
 		 */
-		function initialise (emiter:Emiter, type:String, slots:Object, autoDispose:Boolean, compound:Compound) : void;
+		function initialise (emiter:Emiter, type:String, autoDispose:Boolean, compound:Compound) : void;
 
 		/**
 		 * System controlled Internal pre-execute method.
@@ -108,7 +111,7 @@
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReference (type:String) : Array;
+		public function getSlots (type:String) : Slots;
 
 		/**
 		 * Deconstructor of behaviour.

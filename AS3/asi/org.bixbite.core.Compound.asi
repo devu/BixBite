@@ -1,7 +1,5 @@
 ﻿package org.bixbite.core
 {
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
 

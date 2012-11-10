@@ -29,7 +29,7 @@ package examples.contextloader
 	import org.bixbite.framework.ContextLoader;
 	
 	/**
-	 * ...
+	 * TODO
 	 * @langversion 3.0
 	 */
 	public class ContextLoaderExample extends Compound 

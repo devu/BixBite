@@ -37,13 +37,6 @@
 		/**
 		 *
 		 * @private
-		 *   Slots reference to provide access to specific channel
-		 */
-		var slots : Object;
-
-		/**
-		 *
-		 * @private
 		 *   Default signal attached to this Component
 		 */
 		public var signal : Signal;
@@ -52,6 +45,10 @@
 		 * Additional identifier for Components operating as multiple instances of the same Class
 		 */
 		public var id : String;
+		var channelC : Channel;
+		var channelD : Channel;
+		var channelT : Channel;
+		var channelV : Channel;
 
 		/**
 		 * Unique Component identifier

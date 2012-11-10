@@ -2,7 +2,8 @@
 {
 	import org.bixbite.core.Compound;
 	import test.performance.signalperf.behaviour.TestBehaviour;
-	import test.performance.signalperf.behaviour.TestRunner;
+	import test.performance.signalperf.behaviour.TestRunnerSRS;
+	import test.performance.signalperf.behaviour.TestRunnerStandard;
 	import test.performance.signalperf.transponder.TestTransponder;
 	import test.performance.signalperf.view.TestView;
 
@@ -21,18 +22,40 @@
 	 *   Once 1 Phase is finished View will send X number of times signals going through full triade following the flow:
 	 *   View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
 	 *   
+	 *     Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
+	 *   
+	 *     Results 
+	 *   (FP 11,5,31,101 - Chrome)		(FP 11,4,402,287 - FF)
+	 *   
+	 *     (strongly typed SRS implementation)
+	 *   v0.8.0 SRS	PC				
+	 *   1.000 		- <0ms				- <0ms					(3k signals in circulation)
+	 *   10.000 		- 1ms				- 1ms 					(30k signals in circulation)
+	 *   100.000		- 12ms				- 11ms					(300k signals in circulation)
+	 *   1.000.000	- 125ms				- 111ms					(3M signals in circulation) 	
+	 *   10.000.000	- 1260ms			- 1100ms				(30M signals in circulation)
+	 *   
+	 *     (linked list implementation)
+	 *   v0.8.0
+	 *   1.000 		- 1ms				- <0ms					(3k signals in circulation)
+	 *   10.000 		- 11ms				- 10ms					(30k signals in circulation)
+	 *   100.000		- 110ms				- 105ms					(300k signals in circulation)
+	 *   1.000.000	- 1109ms			- 1092ms				(3M signals in circulation)
+	 *   10.000.000	- 11253ms			- 10339ms				(30M signals in circulation)
+	 *   
+	 *     (Yes flash player slowing down from version to version, but we trying hard to speed up BixBite anyway :) )
+	 *   
 	 *     Results (Flash Player 11,1,102,63 - Chrome)
-	 *   Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
 	 *   
 	 *     v0.6.1 SRS	PC				Laptop
-	 *   1.000 		- no time:)		-//-	(3k signals in circulation)
+	 *   1.000 		- <0ms			-//-	(3k signals in circulation)
 	 *   10.000 		- 1ms			?		(30k signals in circulation)
 	 *   100.000		- 9ms			?		(300k signals in circulation)
 	 *   1.000.000	- 88ms			?		(3M signals in circulation) 	
 	 *   10.000.000	- 889ms			?		(30M signals in circulation)
 	 *   
 	 *     v0.5.4 SRS
-	 *   1.000 		- no time:)				(3k signals in circulation)
+	 *   1.000 		- <0ms					(3k signals in circulation)
 	 *   10.000 		- 0.9ms					(30k signals in circulation)
 	 *   100.000		- 9ms					(300k signals in circulation)
 	 *   1.000.000	- 93ms					(3M signals in circulation)
@@ -76,10 +99,11 @@
 	 */
 	public class SignalPerformance extends Compound
 	{
-		public static const INIT_TEST : String = "signalPerfInitTest";
-		public static const START_TEST : String = "signalPerfStartTest";
-		public static const BEGIN_TEST : String = "signalPerfBeginTest";
-		public static const RUN_TEST : String = "signalPerfRunTest";
+		public static const INIT_TEST : String = "SignalPerformance.INIT_TEST";
+		public static const START_TEST : String = "SignalPerformance.START_TEST";
+		public static const BEGIN_TEST : String = "SignalPerformance.BEGIN_TEST";
+		public static const RUN_TEST_SRS : String = "SignalPerformance.RUN_TEST_SRS";
+		public static const RUN_TEST_STANDARD : String = "SignalPerformance.RUN_TEST_STANDARD";
 
 		public function SignalPerformance ();
 

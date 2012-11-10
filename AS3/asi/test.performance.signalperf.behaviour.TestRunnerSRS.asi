@@ -1,0 +1,20 @@
+﻿package test.performance.signalperf.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.Slot;
+	import test.performance.signalperf.SignalPerformance;
+
+	/**
+	 *
+	 * @langversion	3.0
+	 */
+	public class TestRunnerSRS extends Behaviour
+	{
+		private var slot : Slot;
+
+		public function init () : void;
+
+		public function execute (s:Signal) : void;
+	}
+}

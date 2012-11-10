@@ -1,7 +1,6 @@
 ﻿package org.bixbite.core
 {
 	import flash.display.DisplayObject;
-	import flash.display.Stage;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
@@ -68,7 +67,7 @@
 		 * @param	type
 		 * @return
 		 */
-		public function getSlotReference (type:String) : Array;
+		public function getSlots (type:String) : Slots;
 
 		/**
 		 * Add platform native listeners in oreder to gather user/system inputs.

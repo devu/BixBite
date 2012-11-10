@@ -1,6 +1,5 @@
 ﻿package org.bixbite.core
 {
-	import flash.display.Stage;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -56,7 +55,7 @@
 		 * @param	type
 		 * @return 	array of slots
 		 */
-		public function getSlotReference (type:String) : Array;
+		public function getSlots (type:String) : Slots;
 
 		/**
 		 *

@@ -3,7 +3,9 @@
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.utils.getTimer;
+	import flash.utils.setTimeout;
 	import org.bixbite.core.Signal;
+	import org.bixbite.core.Slot;
 	import org.bixbite.core.View;
 	import test.performance.signalperf.SignalPerformance;
 
@@ -13,15 +15,19 @@
 	 */
 	public class TestView extends View
 	{
-		private var slotReference : Function;
+		private var slot : Slot;
 		private var output : TextField;
 
 		public function TestView ();
 
 		public function init () : void;
 
-		private function onRunTest (s:Signal) : void;
+		private function onRunTestSRS (s:Signal) : void;
+
+		private function onRunTestStandard (s:Signal) : void;
 
 		private function onBeginTest (s:Signal) : void;
+
+		private function startTest () : void;
 	}
 }
