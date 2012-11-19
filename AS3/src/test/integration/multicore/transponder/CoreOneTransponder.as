@@ -21,50 +21,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core 
+package test.integration.multicore.transponder 
 {
-	import flash.display.Stage;
-	import flash.utils.Dictionary;
-	import org.bixbite.namespaces.BIXBITE;
+	
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.Transponder;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class BixBite
+	public class CoreOneTransponder extends Transponder 
 	{
-		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.8.1";
-		public static var stage		:Stage;
-		
-		private var cores			:Dictionary = new Dictionary(true);
-		
-		public function BixBite(stage:Stage) 
+		override public function init():void 
 		{
-			BixBite.stage = stage;
-			
-			trace(VERSION);
+			addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		
-		public function spawnCore(id:String):Core 
+		private function onMouseClick(e:MouseEvent):void 
 		{
-			var c:Core = new Core(id);
-			c.emiter.channelE = incomingSignal;
-			return cores[id] = c;
+			sendSignal("Multicore.crosscore_test");
 		}
 		
-		private function incomingSignal(cid:String, type:String, signal:Signal):void 
+		override public function destroy():void 
 		{
-			for each(var c:Core in cores) c.broadcast(cid, type, signal);
+			//clean up this class here and then:
+			super.destroy();
 		}
 		
-		public function destroyCore(id:String):void 
-		{
-			if(cores[id]){
-				cores[id].destroy();
-				delete cores[id];
-			}
-		}
 	}
-
+	
 }

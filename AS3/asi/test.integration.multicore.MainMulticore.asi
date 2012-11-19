@@ -1,0 +1,32 @@
+﻿package test.integration.multicore
+{
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Core;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.Stats;
+	import test.performance.coreperf.CorePerformance;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class MainMulticore extends Sprite
+	{
+		private var core1 : Core;
+		private var core2 : Core;
+		private var core3 : Core;
+
+		public function MainMulticore ();
+
+		private function init (e:Event) : void;
+
+		private function setCoreOne () : void;
+
+		private function setCoreTwo () : void;
+
+		private function setCoreThree () : void;
+	}
+}

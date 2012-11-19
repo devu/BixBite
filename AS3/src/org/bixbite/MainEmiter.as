@@ -20,50 +20,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-
-package org.bixbite.core 
+package org.bixbite 
 {
-	import flash.display.Stage;
-	import flash.utils.Dictionary;
-	import org.bixbite.namespaces.BIXBITE;
+	import flash.display.Sprite;
+	import org.bixbite.core.Emiter;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class BixBite
+	public class MainEmiter extends Sprite 
 	{
-		use namespace BIXBITE;
+		public var emiter		:Emiter;
 		
-		public static const VERSION	:String = "BixBite v0.8.1";
-		public static var stage		:Stage;
-		
-		private var cores			:Dictionary = new Dictionary(true);
-		
-		public function BixBite(stage:Stage) 
+		public function MainEmiter() 
 		{
-			BixBite.stage = stage;
-			
-			trace(VERSION);
-		}
-		
-		public function spawnCore(id:String):Core 
-		{
-			var c:Core = new Core(id);
-			c.emiter.channelE = incomingSignal;
-			return cores[id] = c;
-		}
-		
-		private function incomingSignal(cid:String, type:String, signal:Signal):void 
-		{
-			for each(var c:Core in cores) c.broadcast(cid, type, signal);
-		}
-		
-		public function destroyCore(id:String):void 
-		{
-			if(cores[id]){
-				cores[id].destroy();
-				delete cores[id];
-			}
+			emiter = new Emiter();
 		}
 	}
 

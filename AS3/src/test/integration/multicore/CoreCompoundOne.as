@@ -21,50 +21,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core 
+package test.integration.multicore 
 {
-	import flash.display.Stage;
-	import flash.utils.Dictionary;
-	import org.bixbite.namespaces.BIXBITE;
+	
+	import org.bixbite.core.Compound;
+	import org.bixbite.core.Signal;
+	import test.integration.multicore.behaviour.CrossBroadcastTest;
+	import test.integration.multicore.behaviour.CrossEmitTest;
+	import test.integration.multicore.transponder.CoreOneTransponder;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class BixBite
+	public class CoreCompoundOne extends Compound 
 	{
-		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.8.1";
-		public static var stage		:Stage;
-		
-		private var cores			:Dictionary = new Dictionary(true);
-		
-		public function BixBite(stage:Stage) 
+		override public function init():void 
 		{
-			BixBite.stage = stage;
+			trace(this, "init");
+			register(CoreOneTransponder);
 			
-			trace(VERSION);
+			addBehaviour("Multicore.crosscore_test", CrossBroadcastTest);
+			addBehaviour("emit", CrossEmitTest);
 		}
 		
-		public function spawnCore(id:String):Core 
+		override public function destroy():void 
 		{
-			var c:Core = new Core(id);
-			c.emiter.channelE = incomingSignal;
-			return cores[id] = c;
+			//clean up this class here and then:
+			super.destroy();
 		}
 		
-		private function incomingSignal(cid:String, type:String, signal:Signal):void 
-		{
-			for each(var c:Core in cores) c.broadcast(cid, type, signal);
-		}
-		
-		public function destroyCore(id:String):void 
-		{
-			if(cores[id]){
-				cores[id].destroy();
-				delete cores[id];
-			}
-		}
 	}
-
+	
 }

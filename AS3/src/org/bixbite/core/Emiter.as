@@ -49,6 +49,7 @@ package org.bixbite.core
 		public var channelD				:Channel = new Channel();
 		public var channelT				:Channel = new Channel();
 		public var channelV				:Channel = new Channel();
+		public var channelE				:Function;
 		public var coreID				:String;
 		
 		private var components			:Dictionary = new Dictionary(true);
@@ -175,6 +176,18 @@ package org.bixbite.core
 		{
 			if (!channel[type]) return;
 			Slots(channel[type]).broadcast(signal);
+		}
+		
+		/**
+		 * @private
+		 * Broadcast signal in Multi-cast mode on specific channel across multiple cores
+		 * @param   cid, slot channel identifier
+		 * @param	type
+		 * @param	signal
+		 */
+		BIXBITE function broadcastM(cid:String, type:String, signal:Signal):void 
+		{
+			channelE(cid, type, signal);
 		}
 		
 		/**

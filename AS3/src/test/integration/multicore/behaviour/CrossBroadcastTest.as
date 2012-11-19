@@ -21,50 +21,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package org.bixbite.core 
+package test.integration.multicore.behaviour 
 {
-	import flash.display.Stage;
-	import flash.utils.Dictionary;
-	import org.bixbite.namespaces.BIXBITE;
+	
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class BixBite
+	public class CrossBroadcastTest extends Behaviour 
 	{
-		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.8.1";
-		public static var stage		:Stage;
-		
-		private var cores			:Dictionary = new Dictionary(true);
-		
-		public function BixBite(stage:Stage) 
+		override public function init():void 
 		{
-			BixBite.stage = stage;
 			
-			trace(VERSION);
 		}
 		
-		public function spawnCore(id:String):Core 
+		override public function execute(s:Signal):void
 		{
-			var c:Core = new Core(id);
-			c.emiter.channelE = incomingSignal;
-			return cores[id] = c;
+			trace(this, "on Core A emit signal across all active cores");
+			emitSignal("emit", null, true);
 		}
 		
-		private function incomingSignal(cid:String, type:String, signal:Signal):void 
+		override public function dispose():void 
 		{
-			for each(var c:Core in cores) c.broadcast(cid, type, signal);
+			super.dispose();
 		}
 		
-		public function destroyCore(id:String):void 
-		{
-			if(cores[id]){
-				cores[id].destroy();
-				delete cores[id];
-			}
-		}
 	}
-
+	
 }

@@ -1,0 +1,16 @@
+﻿package test.integration.multicore.behaviour
+{
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.Signal;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class CrossEmitTest extends Behaviour
+	{
+		public function execute (s:Signal) : void;
+
+		public function dispose () : void;
+	}
+}

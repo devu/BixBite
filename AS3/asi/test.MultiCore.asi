@@ -1,0 +1,27 @@
+﻿package test
+{
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.net.URLRequest;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class MultiCore extends Sprite
+	{
+		private var core1 : Loader;
+		private var core2 : Loader;
+
+		public function MultiCore ();
+
+		private function init (e:Event) : void;
+
+		private function create () : void;
+
+		private function onCore1Loaded (e:Event) : void;
+
+		private function onCore2Loaded (e:Event) : void;
+	}
+}

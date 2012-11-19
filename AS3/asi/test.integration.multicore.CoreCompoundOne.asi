@@ -1,0 +1,19 @@
+﻿package test.integration.multicore
+{
+	import org.bixbite.core.Compound;
+	import org.bixbite.core.Signal;
+	import test.integration.multicore.behaviour.CrossBroadcastTest;
+	import test.integration.multicore.behaviour.CrossEmitTest;
+	import test.integration.multicore.transponder.CoreOneTransponder;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class CoreCompoundOne extends Compound
+	{
+		public function init () : void;
+
+		public function destroy () : void;
+	}
+}

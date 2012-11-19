@@ -10,9 +10,9 @@ package org.bixbite.core
 		use namespace BIXBITE;
 		
 		BIXBITE var emiter		:Emiter;
-		BIXBITE var uid			:String;
-		BIXBITE var channelC	:Channel;
-		BIXBITE var channelT	:Channel;
+		private var uid			:String;
+		private var channelC	:Channel;
+		private var channelT	:Channel;
 		
 		public var signal		:Signal;
 		
@@ -28,6 +28,29 @@ package org.bixbite.core
 			
 			uid = "@" + emiter.uid;
 			signal = new Signal(uid);
+		}
+		
+		internal function broadcast(cid:String, type:String, signal:Signal):void
+		{
+			var c:Channel;
+			
+			switch(cid)
+			{
+				case "C":
+					c = emiter.channelC;
+					break;
+				case "D":
+					c = emiter.channelD;
+					break;
+				case "T":
+					c = emiter.channelT;
+					break;
+				case "V":
+					c = emiter.channelV;
+					break;
+			}
+			
+			emiter.broadcast(c, type, signal);
 		}
 		
 		public function register(compound:Class):void
@@ -46,10 +69,11 @@ package org.bixbite.core
 			emiter.broadcast(channelT, type, signal);
 		}
 		
-		public function emitSignal(type:String, params:Object = null):void
+		public function emitSignal(type:String, params:Object = null, multicore:Boolean = false):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelC, type, signal);
+			if (!multicore) emiter.broadcast(channelC, type, signal);
+			else emiter.broadcastM("C", type, signal);
 		}
 		
 		public function destroy():void

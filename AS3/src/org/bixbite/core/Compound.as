@@ -112,10 +112,11 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function emitSignal(type:String, params:Object = null):void
+		public function emitSignal(type:String, params:Object = null, multicore:Boolean = false):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelC, type, signal);
+			if (!multicore) emiter.broadcast(channelC, type, signal);
+			else emiter.broadcastM("C", type, signal);
 		}
 		
 		/**
