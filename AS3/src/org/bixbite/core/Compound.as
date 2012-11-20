@@ -26,16 +26,11 @@ package org.bixbite.core
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
 	
-	
 	/**
-     * <p>The Compound represents default class you should subclass your Document Class with.</br>
-     * This is required to initialise Emiter and signal/slot system.</p>
+     * <p>The Compound represents a container you can build your functional module within. You can register as many Components as you need to achive your goal. 
+	 * As well add Behaviours into it to controll a business logic of the module. However it is strongly recomented to keep them small and clear. If 1 Compound performs multiple unrelated functions, consider refactoring it into set of smaller Compounds registered toogether.</p>
      *
-     * <p>Due to AS3 Document Class restrictions it must subclass DisplayObjectContainer this is why extends Sprite.</br>
-     * The only thing we need from it, is to access the system features. And implementation of this class may vary depends of target platforms.
-     * This is platform specific implementation when the Stage is the main system IO provider.</p>
-     *
-     * <p>In case you have more than one Compound running at the same time any following Compound will run as module, using the same reference of Emiter singleton to make shared signal/slot communication possible.
+     * <p>In case you have more than one instance of this Compound running at the same time any following Compound will run as module, using the same reference of Emiter to make shared signal/slot communication possible.
      * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
      * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
      * 
