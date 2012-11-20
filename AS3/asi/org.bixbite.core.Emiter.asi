@@ -22,6 +22,7 @@
 		public var channelD : Channel;
 		public var channelT : Channel;
 		public var channelV : Channel;
+		public var channelE : Function;
 		public var coreID : String;
 		private var components : Dictionary;
 
@@ -100,6 +101,16 @@
 		 * @param	signal
 		 */
 		function broadcast (channel:Channel, type:String, signal:Signal) : void;
+
+		/**
+		 *
+		 * @private
+		 *   Broadcast signal in Multi-cast mode on specific channel across multiple cores
+		 * @param   cid, slot channel identifier
+		 * @param	type
+		 * @param	signal
+		 */
+		function broadcastM (cid:String, type:String, signal:Signal) : void;
 
 		/**
 		 *

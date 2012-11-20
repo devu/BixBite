@@ -1,0 +1,22 @@
+﻿package examples.starling.behaviour
+{
+	import examples.starling.view.Stage2D;
+	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.DisplayListManager;
+	import starling.core.Starling;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class InitialiseStarling extends Behaviour
+	{
+		private var starling : Starling;
+
+		public function execute (s:Signal) : void;
+
+		public function dispose () : void;
+	}
+}

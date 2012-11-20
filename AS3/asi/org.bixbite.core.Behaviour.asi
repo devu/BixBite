@@ -89,7 +89,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function emitSignal (type:String, params:Object=null) : void;
+		public function emitSignal (type:String, params:Object=null, multicore:Boolean=false) : void;
 
 		/**
 		 * Multi-cast method to broadcast one singal on entire View channel.

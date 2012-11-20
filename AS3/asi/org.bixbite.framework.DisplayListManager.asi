@@ -13,6 +13,7 @@
 	public class DisplayListManager extends Compound
 	{
 		public static const GET_DISPLAY_LIST : String = "DisplayListManager.GET_DSP_LIST";
+		public static const ADD_ROOT : String = "DisplayListManager.ADD_ROOT";
 
 		public function init () : void;
 

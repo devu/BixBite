@@ -1,0 +1,28 @@
+﻿package examples.starling.view
+{
+	import org.bixbite.core.Signal;
+	import org.bixbite.framework.view.BaseStarlingView;
+	import starling.display.Quad;
+	import starling.display.Sprite;
+	import starling.text.TextField;
+
+	/**
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class StarlingTestView extends BaseStarlingView
+	{
+		private var context2D : Sprite;
+		private var quadA : Quad;
+		private var quadB : Quad;
+		private var textField : TextField;
+
+		public function init () : void;
+
+		private function onMouseDown (s:Signal) : void;
+
+		public function stage2DReady () : void;
+
+		public function destroy () : void;
+	}
+}

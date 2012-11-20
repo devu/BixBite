@@ -2,6 +2,7 @@
 {
 	import flash.display.Stage;
 	import flash.utils.Dictionary;
+	import org.bixbite.namespaces.BIXBITE;
 
 	/**
 	 *
@@ -9,13 +10,15 @@
 	 */
 	public class BixBite
 	{
-		public static const VERSION : String = "BixBite v0.8.0";
+		public static const VERSION : String = "BixBite v0.8.1";
 		public static var stage : Stage;
 		private var cores : Dictionary;
 
 		public function BixBite (stage:Stage);
 
 		public function spawnCore (id:String) : Core;
+
+		private function incomingSignal (cid:String, type:String, signal:Signal) : void;
 
 		public function destroyCore (id:String) : void;
 	}

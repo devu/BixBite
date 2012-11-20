@@ -22,11 +22,5 @@
 		public function MainMulticore ();
 
 		private function init (e:Event) : void;
-
-		private function setCoreOne () : void;
-
-		private function setCoreTwo () : void;
-
-		private function setCoreThree () : void;
 	}
 }

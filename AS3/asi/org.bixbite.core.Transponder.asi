@@ -6,9 +6,9 @@
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
-	 * <p>The Transponder is a abstract class that emits an identifying signal in response to an interrogating received signals.</p>
+	 * <p>The Transponder is an component that emits an identifying signal in response to an interrogating received signals.</p>
 	 * <p>In computer science interrogate means transmit a signal for setting off an appropriate response.
-	 * Handles mouse and keyboard inputs from the user, mediator between Views and Behaviours.</p>
+	 * It handles mouse and keyboard inputs from the user, mediator between Views and Behaviours.</p>
 	 * @langversion	3.0
 	 */
 	public class Transponder extends Component implements ITransponder

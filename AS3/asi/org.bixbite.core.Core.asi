@@ -9,12 +9,14 @@
 	public class Core
 	{
 		var emiter : Emiter;
-		var uid : String;
-		var channelC : Channel;
-		var channelT : Channel;
+		private var uid : String;
+		private var channelC : Channel;
+		private var channelT : Channel;
 		public var signal : Signal;
 
 		public function Core (id:String);
+
+		function broadcast (cid:String, type:String, signal:Signal) : void;
 
 		public function register (compound:Class) : void;
 
@@ -22,7 +24,7 @@
 
 		public function sendSignal (type:String, params:Object=null) : void;
 
-		public function emitSignal (type:String, params:Object=null) : void;
+		public function emitSignal (type:String, params:Object=null, multicore:Boolean=false) : void;
 
 		public function destroy () : void;
 	}

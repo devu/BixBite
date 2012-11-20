@@ -1,0 +1,49 @@
+﻿package org.bixbite.framework.view
+{
+	import org.bixbite.core.Signal;
+	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.signal.StageSignal;
+	import starling.display.DisplayObject;
+	import starling.display.Stage;
+
+	/**
+	 * This is abstract Class for Views, 2nd level of abstraction to encapsulate common set of methods
+	 * It works with connection with DisplayListManager Module and StageManager
+	 * @langversion 3.0
+	 */
+	public class BaseStarlingView extends View
+	{
+		private var _stage2D : Stage;
+
+		public function get stage2D () : Stage;
+
+		public function init () : void;
+
+		private function onStage2d (s:Signal) : void;
+
+		private function onContext2DAdded (s:Signal) : void;
+
+		private function onContext2DRemoved (s:Signal) : void;
+
+		private function onStageResize (s:Signal) : void;
+
+		public function stage2DReady () : void;
+
+		public function context2DAdded () : void;
+
+		public function context2DRemoved () : void;
+
+		public function resize () : void;
+
+		public function draw () : void;
+
+		public function setContext2D (name:String, context:DisplayObject, container:String=null) : void;
+
+		public function addContext2D (name:String, container:String="stage2D") : void;
+
+		public function removeContext2D (name:String) : void;
+
+		public function destroy () : void;
+	}
+}

@@ -19,8 +19,8 @@
 		 */
 		public static function extendsClass (object:Class, search:String) : Boolean;
 
-		public static function retrieveUID (context:DisplayObject) : String;
+		public static function retrieveUID (context:Object) : String;
 
-		public static function retrieveName (context:DisplayObject) : String;
+		public static function retrieveName (context:Object) : String;
 	}
 }

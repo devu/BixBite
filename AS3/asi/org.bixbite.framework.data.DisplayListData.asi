@@ -17,9 +17,9 @@
 
 		public function init () : void;
 
-		private function onGetDisplayList (s:Signal) : void;
+		private function onAddRoot (s:Signal) : void;
 
-		public function addContenxt (context:DisplayObject, container:DisplayObjectContainer) : void;
+		private function onGetDisplayList (s:Signal) : void;
 
 		public function destroy () : void;
 	}
