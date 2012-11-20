@@ -54,12 +54,12 @@ package org.bixbite.utils
 			return false;
 		}
 		
-		public static function retrieveUID(context:DisplayObject):String
+		public static function retrieveUID(context:Object):String
 		{
 			return (context.name) ? "@" + context.name.split("@")[1] : null;
 		}
 		
-		public static function retrieveName(context:DisplayObject):String
+		public static function retrieveName(context:Object):String
 		{
 			return (context.name) ? context.name.split("@")[0] : null;
 		}

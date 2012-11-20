@@ -23,8 +23,6 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour
 {
-	import flash.display.DisplayObject;
-	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.signal.DisplaySignal;
 	
@@ -37,9 +35,9 @@ package org.bixbite.framework.behaviour
 		override public function execute(s:Signal):void 
 		{
 			var name	:String 		= s.params.name;
-			var context	:DisplayObject 	= s.params.context;
+			var context	:* 				= s.params.context;
 			
-			var contextViewUID:String = s.params.viewUID;
+			var contextViewUID:String 	= s.params.viewUID;
 			context.name = name + contextViewUID;
 			
 			list[name] = context;

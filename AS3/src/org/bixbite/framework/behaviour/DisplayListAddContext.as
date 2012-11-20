@@ -23,11 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour 
 {
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.DisplayListData;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.utils.ClassUtil;
 	
@@ -40,12 +36,12 @@ package org.bixbite.framework.behaviour
 		override public function execute(s:Signal):void 
 		{
 			var p:Object = s.params;
-			var context:DisplayObject = list[p.name];
+			var context:* = list[p.name];
 			
 			if (!context) 
 				Error("There is no context " + p.name + " registered yet");
 			
-			var container:DisplayObjectContainer = list[p.container];
+			var container:* = list[p.container];
 			
 			if (!container) 
 				Error("There is no available container " + p.container + "registered yet");

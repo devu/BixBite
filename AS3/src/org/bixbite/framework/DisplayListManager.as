@@ -34,7 +34,8 @@ package org.bixbite.framework
 	 */
 	public class DisplayListManager extends Compound 
 	{
-		static public const GET_DISPLAY_LIST:String	= "DisplayListManager.GET_DSP_LIST";
+		static public const GET_DISPLAY_LIST	:String	= "DisplayListManager.GET_DSP_LIST";
+		static public const ADD_ROOT			:String = "DisplayListManager.ADD_ROOT";
 		
 		override public function init():void 
 		{

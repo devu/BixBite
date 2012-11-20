@@ -41,16 +41,18 @@ package org.bixbite.framework.data
 		{
 			list["stage"] = stage;
 			addSlot(DisplayListManager.GET_DISPLAY_LIST, onGetDisplayList);
+			addSlot(DisplayListManager.ADD_ROOT, onAddRoot);
+		}
+		
+		private function onAddRoot(s:Signal):void 
+		{
+			var p:Object = s.params;
+			if (!list[p.name]) list[p.name] = p.root;
 		}
 		
 		private function onGetDisplayList(s:Signal):void 
 		{
 			responseToAll(DisplayListManager.GET_DISPLAY_LIST);
-		}
-		
-		public function addContenxt(context:DisplayObject, container:DisplayObjectContainer):void
-		{
-			
 		}
 		
 		override public function destroy():void 
