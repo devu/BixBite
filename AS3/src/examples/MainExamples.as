@@ -27,10 +27,13 @@ package examples
 	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
+	import examples.starling.HelloStarling;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
 	
 	
@@ -39,7 +42,10 @@ package examples
 	 */
 	public class MainExamples extends Sprite
 	{
+		private var core0:Core;
 		private var core1:Core;
+		private var core2:Core;
+		
 		/**
 		 * Uncomment out example in order to run it.
 		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
@@ -57,13 +63,19 @@ package examples
 			* Initalise a core
 			*/
 			var bb:BixBite = new BixBite(stage);
-			core1 = bb.spawnCore("examples");
+			core0 = bb.spawnCore("framework");
+			core1 = bb.spawnCore("performance");
+			core2 = bb.spawnCore("starling");
 			
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
 			 */
-			//core1.register(Stats);
-			//core1.sendSignal(Stats.START);
+			
+			core0.register(StageManager);
+			core0.sendSignal(StageSignal.SET_STAGE, { frameRate:60 } );
+			
+			core1.register(Stats);
+			core1.sendSignal(Stats.START);
 			
 			/**
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
@@ -79,6 +91,11 @@ package examples
 			 * Example of DisplayListManager use
 			 */
 			//core1.register(HelloDisplayList);
+			
+			/**
+			 * Example of Starling Integration
+			 */
+			core2.register(HelloStarling);
 			
 			/*
 			 * TODO
