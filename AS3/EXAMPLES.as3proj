@@ -52,6 +52,7 @@
   <libraryPaths>
     <element path="lib\bixbite_0.2.9.swc" />
     <element path="lib\starling.swc" />
+    <element path="lib\Genome2D-v0.9.1.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

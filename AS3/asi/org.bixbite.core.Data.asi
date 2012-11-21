@@ -5,7 +5,7 @@
 
 	/**
 	 * <p>The Data component is a stateless data holder. Data can be directly requested by Behaviours and only.
-	 * Data components can be nested aka Composite Pattern provides convenient way of sending only needed portions of requested data.</p>
+	 * Data components can be nested aka Composite Pattern provides convenient way of sending only needed portions of requested informations.</p>
 	 * @langversion	3.0
 	 */
 	public class Data extends Component implements IData
@@ -16,20 +16,20 @@
 		public function Data ();
 
 		/**
-		 * Add Slot / register callbacks of specific type of Signal and asociate with Data component.
+		 * Add Slot / register callbacks of specific type of Signal and asociate it with a Data component.
 		 * @param	type
 		 * @param	callback
 		 */
 		public function addSlot (type:String, callback:Function) : void;
 
 		/**
-		 * Remove Slot / unregister specific Data component from being able to recieve any signals of specific type
+		 * Remove Slot / unregister specific Data component from Emitter and prevent from being able to recieve any signals of specific type
 		 * @param	type
 		 */
 		public function removeSlot (type:String) : void;
 
 		/**
-		 *
+		 * Signle-cast (one-to-one) method to send a Data directly to requestor
 		 * @param	uid
 		 * @param	type
 		 * @param	params
@@ -37,7 +37,7 @@
 		public function responseTo (targetUID:String, type:String, data:IData=null) : void;
 
 		/**
-		 * Multicast (one-to-many) method to broadcast signals on Atom communication channel.
+		 * Multi-cast (one-to-many) method to broadcast Data on Compound communication channel.
 		 * @param	type
 		 * @param	params
 		 */

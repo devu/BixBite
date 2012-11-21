@@ -56,7 +56,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			emiter.addSlot(channelT, uid, type, callback);
+			emitter.addSlot(channelT, uid, type, callback);
 		}
 		
 		/**
@@ -65,45 +65,45 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			emiter.removeSlot(channelT, uid, type);
+			emitter.removeSlot(channelT, uid, type);
 		}
 		
 		/**
-		 * Multicast (one-to-many) method to broadcast signals on Compound communication channel.
+		 * Multi-cast (one-to-many) method to broadcast signals on Compound communication channel.
 		 * @param	type
 		 * @param	params
 		 */
 		public function sendSignal(type:String, params:* = null):void 
 		{
 			if (params) signal.params = params;
-			emiter.broadcast(channelC, type, signal);
+			emitter.broadcast(channelC, type, signal);
 		}
 		
 		/**
-		 * Multicast (one-to-many) method to broadcast signals on its own communication channel.
+		 * Helper method to transmit recieved signal from View to Compound communication channel directly, when no action is required by Transponder
 		 * @param	type
 		 */
 		public function transmit(type:String):void
 		{
-			emiter.addSlot(channelT, uid, type, function forward(s:Signal):void
+			emitter.addSlot(channelT, uid, type, function forward(s:Signal):void
 			{
-				emiter.broadcast(channelC, type, s);
+				emitter.broadcast(channelC, type, s);
 			});
 		}
 		
 		/**
-		 * Multicast (one-to-many) method to broadcast signals on View communication channel.
+		 * Multi-cast (one-to-many) method to broadcast signals on View communication channel.
 		 * @param	type
 		 * @param	params
 		 */
 		public function responseToAll(type:String, params:Object = null):void 
 		{
 			signal.params = params;
-			emiter.broadcast(channelV, type, signal);
+			emitter.broadcast(channelV, type, signal);
 		}
 		
 		 /**
-		 * Signlecast (one-to-one) method to send direct signal on View communication channel.
+		 * Signle-cast (one-to-one) method to send direct signal on View communication channel.
 		  * @param	target any display object of view context
 		  * @param	type
 		  * @param	...rest
@@ -111,22 +111,23 @@ package org.bixbite.core
 		public function responseTo(uid:String, type:String, params:Object = null):void 
 		{
 			signal.params = params;
-			emiter.response(channelV, uid, type, signal);
+			emitter.response(channelV, uid, type, signal);
 		}
 		
 		/**
-		 * For performance critical purposes. Using cross-reference slot/signal mechanism will let you send aprox. 30.000.000 signals per second.
-		 * Transponders can only reference slots of Atom.
+		 * For performance critical purposes. Using SRS mechanism will let you send signals aprox. 10x faster.
+		 * Transponders can only reference slots of Compound Channel (Behaviours)
 		 * @param	type
-		 * @return
+		 * @return 	Slots, list of SLots
 		 */
 		public function getSlots(type:String):Slots
 		{
-			return emiter.getSlots(channelC, type);
+			return emitter.getSlots(channelC, type);
 		}
 		
 		/**
 		 * Add platform native listeners in oreder to gather user/system inputs.
+		 * For many platforms this feature may differ, to keep it consistent we call all native communication methods a Sensor.
 		 * @param	type
 		 * @param	callback
 		 */
@@ -146,6 +147,8 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * TODO method are too much platform related, concider refactoring
+		 * 
 		 * Get all display objects under the mouse point
 		 * @return
 		 */
@@ -157,6 +160,8 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * TODO method are too much platform related, concider refactoring
+		 * 
 		 * Get 1st available display object under mouse point by its name
 		 * @param	name
 		 * @return
@@ -177,7 +182,7 @@ package org.bixbite.core
 		 */
 		override public function destroy():void 
 		{
-			emiter.removeAllSlotsOf(channelC, uid);
+			emitter.removeAllSlotsOf(channelC, uid);
 			super.destroy();
 		}
 	}

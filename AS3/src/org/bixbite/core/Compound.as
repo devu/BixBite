@@ -28,11 +28,12 @@ package org.bixbite.core
 	
 	/**
      * <p>The Compound represents a container you can build your functional module within. You can register as many Components as you need to achive your goal. 
-	 * As well add Behaviours into it to controll a business logic of the module. However it is strongly recomented to keep them small and clear. If 1 Compound performs multiple unrelated functions, consider refactoring it into set of smaller Compounds registered toogether.</p>
+	 * As well add Behaviours into it to controll a business logic of the module. However it is strongly recomented to keep them as compact and clear as possible. 
+	 * If 1 Compound performs multiple unrelated functions, consider refactoring it into set of smaller Compounds registered toogether.</p>
      *
-     * <p>In case you have more than one instance of this Compound running at the same time any following Compound will run as module, using the same reference of Emiter to make shared signal/slot communication possible.
-     * This is very useful in modular projects. Consider application, for instance Preloader, that will load external swf build within BixBite framework as well.
-     * Preloader may have already some Components initialised you wish to reuse, so you don't have to repeat yourself.</p>
+     * <p>In case you have more than one instance of this Compound running on the same Core at the same time, system will use currently running to preserve resources.
+     * This is very useful in modular projects. You don't have to worry aboud dependencies or duplicates. 
+	 * By registering the same Compound within anothers you act more like what other set of Compounds is required to run your newly created one.</p>
      * 
 	 * @langversion	3.0
 	 */
@@ -40,48 +41,54 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
+		/**
+		 * list of behaviours (Concider Strongly typed implementation)
+		 */
 		private var behaviours:Object = { };
 		
+		/**
+		 * Constructor of Compound
+		 */
 		public function Compound()
 		{
 			if (Object(this).constructor == Compound) throw new Error("Abstract Class");
 		}
 		
 		/**
-		 * 
+		 * Regsiter component within current Compound
 		 * @param	component
 		 */
 		public function register(component:Class):void
 		{
-			emiter.registerComponent(component);
+			emitter.registerComponent(component);
 		}
 		
 		/**
-		 * 
+		 * Unregsiter component within current Compound
 		 * @param	component
 		 */
 		public function unregister(component:Class):void
 		{
-			emiter.unregisterComponent(component);
+			emitter.unregisterComponent(component);
 		}
 		
 		/**
-		 * Add Behaviour into your Compound to controll business logic of your module 
+		 * Add Behaviour into your Compound to controll business logic of your functional module 
 		 * 
 		 * @param	type
 		 * @param	behaviour
-		 * @param	autoDispose, dispose your Behaviour after being executed first time.
+		 * @param	autoDispose, dispose your Behaviour immediately after being executed first time.
 		 */
 		public function addBehaviour(type:String, behaviour:Class, autoDispose:Boolean = false, autoExecute:Boolean = false):void
 		{
 			behaviours[type] = new behaviour();
-			behaviours[type].initialise(emiter, type, autoDispose, this);
+			behaviours[type].initialise(emitter, type, autoDispose, this);
 			
 			if (autoExecute) behaviours[type].exe(signal);
 		}
 		
 		/**
-		 * 
+		 * Remove behaviour from the list of this Compound
 		 * @param	type
 		 */
 		public function removeBehaviour(type:String):void
@@ -92,37 +99,40 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * 
+		 * Multi-cast method to broadcast one singal on entire View channel.
 		 * @param	type
 		 * @param	params
 		 */
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelT, type, signal);
+			emitter.broadcast(channelT, type, signal);
 		}
 		
 		/**
-		 * 
+		 * Multi-cast method to broadcast one singal on entire Compound channel.
 		 * @param	type
 		 * @param	params
+		 * @param	multicore flag to control communication across multiple cores
 		 */
 		public function emitSignal(type:String, params:Object = null, multicore:Boolean = false):void
 		{
 			signal.params = params;
-			if (!multicore) emiter.broadcast(channelC, type, signal);
-			else emiter.broadcastM("C", type, signal);
+			if (!multicore) emitter.broadcast(channelC, type, signal);
+			else emitter.broadcastM("C", type, signal);
 		}
 		
 		/**
-		 * deconstructor
+		 * deconstructor of Compound
 		 */
 		override public function destroy():void 
 		{
-			for each(var behaviour:Behaviour in behaviours) {
-				behaviour.dispose();
+			for each(var b:Behaviour in behaviours){
+				b.dispose();
+				delete behaviours.b;
 			}
 			behaviours = null;
+			
 			super.destroy();
 		}
 		

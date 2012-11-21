@@ -1,13 +1,9 @@
 ﻿package org.bixbite.core
 {
-	import flash.utils.Dictionary;
-
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 * Emitter channel dynamic class as a Slots holder and root of hierarchy
+	 * @langversion	3.0
 	 */
-	public dynamic class Channel extends Dictionary
-	{
-		public function Channel ();
-	}
+	public dynamic class Channel
+	{	}
 }

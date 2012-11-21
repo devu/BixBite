@@ -37,17 +37,14 @@ package test.performance.coreperf
 	import test.performance.coreperf.view.OutputView;
 	import test.performance.coreperf.view.TestView;
 	
-	
-	
-	
 	/**
 	 * @langversion	3.0
 	 * footprint 11.0kb
 	 * 
      * Purpose of this test is to keep track on speed of MVC actor creations. Since Bixbite is self-registered system there is much more going on under the hood.
-     * During construction each Actor getting references to Emiter and getting default signal attached to it as well as unique identifier controlled by system.
+     * During construction each Actor getting references to Emitter and getting default signal attached to it as well as unique identifier controlled by system.
      * During deconstruction (method destroy()) Object has to release all those references and clean up after itself.
-     * Also Emiter always checking if there is empty slot will destroy it. This is why removal is always much slower.
+     * Also Emitter always checking if there is empty slot will destroy it. This is why removal is always much slower.
      *
      * Taking under consideration all that, results below are still very satisfactory.
 	 * 

@@ -1,8 +1,8 @@
 ﻿package org.bixbite.core
 {
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 * The Slot is a value object to hold references of the callback and unique id associated with a Component
+	 * @langversion	3.0
 	 */
 	public class Slot
 	{

@@ -27,8 +27,8 @@ package org.bixbite.core
 	
 	/**
      * <p>Signal is a base class for all signals being propagated within a system.
-     * Provides all necessary getters in read-only mode, and setters automatically controlled by framework.
-     * In this same time helping you solve all architectural problems without referencing objects and keep your Components and Compounds completely decoupled, unaware of each other makes a perfect modular system to work with and more importantly easy to maintain.</p>
+     * Provides all necessary getters in read-only mode, and setters automatically controlled by system.
+     * At the same time helping you solve all architectural problems without referencing objects and keep your Components and Compounds completely decoupled, unaware of each other makes a perfect modular system to work with and more importantly easy to maintain.</p>
      *
      * <p>In case you need to send more valuable informations within an signal you can use build in params object.</p>
 	 * 
@@ -39,6 +39,10 @@ package org.bixbite.core
 		private var _callerUID		:String;
 		private var _params			:Object;
 		
+		/**
+		 * Constructor
+		 * @param	uid
+		 */
 		public function Signal(uid:String)
 		{
 			_callerUID = uid;

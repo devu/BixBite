@@ -51,7 +51,8 @@
 		public function emitSignalTo (targetUID:String, type:String, params:Object=null) : void;
 
 		/**
-		 * SRS
+		 * For performance critical purposes. Using SRS mechanism will let you send signals aprox. 10x faster.
+		 * Views can only reference slots of Transponder Channel.
 		 * @param	type
 		 * @return 	array of slots
 		 */

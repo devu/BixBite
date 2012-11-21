@@ -6,31 +6,33 @@
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
-	 * <p>The Component is a abstract base class for all actors of CDTV Compound pattern, Compound, Data, Transporder and View components</p>
+	 * <p>The Component is an abstract base class for all actors of CDTV Pattern, Compound, Data, Transporder and View components</p>
 	 * 
-	 *   <p>Purpose of this class is to provide unified way to register the member within Emiter, get unique id and attach default signal into it. 
+	 *   <p>Purpose of this class is to provide unified way to register the member within Emitter, get unique id and attach default signal into it. 
 	 * As well as provide set of commonly shared methods for communication</p>
 	 * @langversion	3.0
 	 */
 	public class Component implements IComponent
 	{
 		/**
-		 * Number of requests this Component has been registered within a core.
-		 * BixBite by default will keep your components as singletons and just need to know how many times is needed to keep it alive before destructor occures.
+		 *
+		 * @private
+		 *   Number of requests this Component has been registered within a core.
+		 *   BixBite by default will keep your components as singletons and just need to know how many times is needed to keep it alive before destructor occures.
 		 */
 		var copies : int;
 
 		/**
 		 *
 		 * @private
-		 *   Every Component will invoke this assigment in order to get short reference to Emiter.
+		 *   Every Component will invoke this assigment in order to get short reference to Emitter.
 		 */
-		var emiter : Emiter;
+		var emitter : Emitter;
 
 		/**
 		 *
 		 * @private
-		 *   Based on Emiter short reference, evey Component will get unique id from observer uid iterator.
+		 *   Based on Emitter short reference, every Component will get unique id from observer uid iterator.
 		 */
 		var _uid : String;
 
@@ -45,6 +47,10 @@
 		 * Additional identifier for Components operating as multiple instances of the same Class
 		 */
 		public var id : String;
+
+		/**
+		 * Set of CDTV channels asociated with Emitter
+		 */
 		var channelC : Channel;
 		var channelD : Channel;
 		var channelT : Channel;
@@ -55,6 +61,9 @@
 		 */
 		public function get uid () : String;
 
+		/**
+		 * Subject to change, there is a better abstraction needed
+		 */
 		public function get stage () : Stage;
 
 		/**
@@ -64,12 +73,14 @@
 
 		/**
 		 * Abstract method init must be overriden in subclasses.
+		 * It has a function of an Constructor for all subclasses of Component. 
+		 * This function will be invoced even before a native constructor.
 		 */
 		public function init () : void;
 
 		/**
 		 * Deconstructor of Component. 
-		 * Will detach/unregister all registered signals form Emiter and clear all nesesary references.
+		 * Will detach/unregister all registered signals form Emitter and clear all nesesary references.
 		 * Subclasses should override this method and call super.destroy().
 		 */
 		public function destroy () : void;

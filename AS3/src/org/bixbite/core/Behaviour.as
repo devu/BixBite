@@ -26,8 +26,8 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-	 * The Behavior is an anthropomorphic construct that assigns "life" to the activities carried out by Compound in response to stimuli, such as user input (Transponder) or other Behaviours. 
-	 * Also, "a behavior" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
+	 * The Behaviour is an anthropomorphic construct that assigns "life" to the activities carried out by Compound in response to stimuli, such as user input (Transponder) or other Behaviours. 
+	 * Also, "a behaviour" is a reusable block of code that, when applied to an object, especially a graphical one, causes it to respond to user input in meaningful patterns or to operate independently.
 	 * In BixBite Behaviours can broadcast signals to Views in Multi-cast and Signle-Cast mode.
 	 * Because entire business logic is realised by set of Behaviours they can also request Data components. 
 	 * Built in to Compound are the only bridge between application Data and View components.
@@ -40,7 +40,7 @@ package org.bixbite.core
 		
 		public var signal		:Signal;
 		
-		private var emiter		:Emiter;
+		private var emitter		:Emitter;
 		private var uid			:String;
 		private var type		:String;
 		
@@ -52,37 +52,32 @@ package org.bixbite.core
 		BIXBITE var channelT	:Channel;
 		BIXBITE var channelV	:Channel;
 		
-		public function Behaviour() 
-		{
-			
-		}
-		
 		/**
-		 * System controlled Internal emthod to initialise behaviour
-		 * @param	emiter
-		 * @param	type
-		 * @param	slots
-		 * @param	compound
+		 * System controlled Internal method to initialise behaviour
+		 * @param	emitter reference to the Emitter
+		 * @param	type type of signal associated with this behaviour
+		 * @param	autoDispose deconstruct-after-execute flag
+		 * @param	compound reference to compound that this behaviour has been registered with
 		 */
-		BIXBITE function initialise(emiter:Emiter, type:String, autoDispose:Boolean, compound:Compound):void
+		BIXBITE function initialise(emitter:Emitter, type:String, autoDispose:Boolean, compound:Compound):void
 		{
-			this.emiter 		= emiter;
-			this.uid 			= "@" + emiter.uid;
+			this.emitter 		= emitter;
+			this.uid 			= "@" + emitter.uid;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
-			this.channelC 		= emiter.channelC;
-			this.channelD 		= emiter.channelD;
-			this.channelT 		= emiter.channelT;
-			this.channelV 		= emiter.channelV;
+			this.channelC 		= emitter.channelC;
+			this.channelD 		= emitter.channelD;
+			this.channelT 		= emitter.channelT;
+			this.channelV 		= emitter.channelV;
 			this.autoDispose 	= autoDispose;
 			this.compound 		= compound;
 			
-			emiter.addSlot(channelC, uid, type, exe);
+			emitter.addSlot(channelC, uid, type, exe);
 			init();
 		}
 		
 		/**
-		 * System controlled Internal pre-execute method.
+		 * Internal pre-execute method.
 		 * @param	s
 		 */
 		internal function exe(s:Signal):void
@@ -94,27 +89,22 @@ package org.bixbite.core
 		/**
 		 * Abstract method to perform initial preparation before execute() is triggered.
 		 */
-		public function init():void
-		{
-			//abstract but not mendatory
-		}
+		/*abstract*/ public function init():void { }
 		
 		/**
 		 * Abstract method to hold executable block of code, that performs some business logic.
 		 * @param	s signal being sent by coresponding Transponder
 		 */
-		public function execute(s:Signal):void
-		{
-			//abstract but not mendatory
-		}
+		/*abstract*/ public function execute(s:Signal):void { }
 		
 		/**
 		 * Proxy method for behaviour to register any component within belonging Compound
 		 * @param	component
+		 * @param	singleton flag for singleton mode
 		 */
 		public function register(component:Class, singleton:Boolean = true):void
 		{
-			emiter.registerComponent(component, singleton);
+			emitter.registerComponent(component, singleton);
 		}
 		
 		/**
@@ -123,18 +113,18 @@ package org.bixbite.core
 		 */
 		public function unregister(component:Class):void
 		{
-			emiter.unregisterComponent(component);
+			emitter.unregisterComponent(component);
 		}
 		
 		/**
-		 * Add responder into Atom in order to request Data. You have opportunity to request data immediately setting autoRequest flag to true.
+		 * Add responder into Behaviour in order to recieve requested Data. You have opportunity to request data immediately setting autoRequest flag to true.
 		 * @param	type
 		 * @param	callback
 		 * @param	autoRequest request data immediately
 		 */
 		public function addResponder(type:String, callback:Function, autoRequest:Boolean = false):void
 		{
-			emiter.addSlot(channelC, uid, type, callback);
+			emitter.addSlot(channelC, uid, type, callback);
 			if (autoRequest) sendRequest(type);
 		}
 		
@@ -144,7 +134,7 @@ package org.bixbite.core
 		 */
 		public function removeResponder(type:String):void 
 		{
-			emiter.removeAllSlots(channelC, type);
+			emitter.removeAllSlots(channelC, type);
 		}
 		
 		/**
@@ -154,20 +144,21 @@ package org.bixbite.core
 		public function sendRequest(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelD, type, signal);
+			emitter.broadcast(channelD, type, signal);
 		}
 		
 		/**
 		 * Multi-cast method to broadcast one singal on entire Compound channel.
-		 * This is also an output of any functional module, means any other Compound or Behaviour registered with can capture it.
+		 * This is also an output of any functional module, means that any other Compound or Behaviour registered within can capture it.
 		 * @param	type
 		 * @param	params
+		 * @param	multicore flag to control communication across multiple cores
 		 */
 		public function emitSignal(type:String, params:Object = null, multicore:Boolean = false):void
 		{
 			signal.params = params;
-			if (!multicore) emiter.broadcast(channelC, type, signal);
-			else emiter.broadcastM("C", type, signal);
+			if (!multicore) emitter.broadcast(channelC, type, signal);
+			else emitter.broadcastM("C", type, signal);
 		}
 		
 		/**
@@ -178,7 +169,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelV, type, signal);
+			emitter.broadcast(channelV, type, signal);
 		}
 		
 		/**
@@ -190,17 +181,18 @@ package org.bixbite.core
 		public function sendSignalTo(uid:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.response(channelV, uid, type, signal);
+			emitter.response(channelV, uid, type, signal);
 		}
 		
 		/**
-		 * SRS - Slot Reference System
+		 * For performance critical purposes. Using SRS mechanism will let you send signals aprox. 10x faster.
+		 * Behaviours can only reference slots of View Channel.
 		 * @param	type
 		 * @return
 		 */
 		public function getSlots(type:String):Slots
 		{
-			return emiter.getSlots(channelV, type);
+			return emitter.getSlots(channelV, type);
 		}
 		
 		/**
@@ -208,13 +200,13 @@ package org.bixbite.core
 		 */
 		public function dispose():void
 		{
-			emiter.removeSlot(channelC, uid, type);
+			emitter.removeSlot(channelC, uid, type);
 			
 			signal.dispose();
 			signal 		= null 
 			
 			compound 	= null 
-			emiter 		= null 
+			emitter 	= null 
 			uid 		= null 
 			type 		= null 
 			

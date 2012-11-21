@@ -53,7 +53,7 @@ package org.bixbite.core
 		 */
 		public function addSlot(type:String, callback:Function):void
 		{
-			emiter.addSlot(channelV, uid, type, callback);
+			emitter.addSlot(channelV, uid, type, callback);
 		}
 		
 		/**
@@ -62,7 +62,7 @@ package org.bixbite.core
 		 */
 		public function removeSlot(type:String):void
 		{
-			emiter.removeSlot(channelV, uid, type);
+			emitter.removeSlot(channelV, uid, type);
 		}
 		
 		/**
@@ -72,7 +72,7 @@ package org.bixbite.core
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelT, type, signal);
+			emitter.broadcast(channelT, type, signal);
 		}
 		
 		/**
@@ -83,7 +83,7 @@ package org.bixbite.core
 		public function emitSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.broadcast(channelV, type, signal);
+			emitter.broadcast(channelV, type, signal);
 		}
 		
 		/**
@@ -94,17 +94,18 @@ package org.bixbite.core
 		public function emitSignalTo(targetUID:String, type:String, params:Object = null):void
 		{
 			signal.params = params;
-			emiter.response(channelV, targetUID, type, signal);
+			emitter.response(channelV, targetUID, type, signal);
 		}
 		
 		/**
-		 * SRS
+		 * For performance critical purposes. Using SRS mechanism will let you send signals aprox. 10x faster.
+		 * Views can only reference slots of Transponder Channel.
 		 * @param	type
 		 * @return 	array of slots
 		 */
 		public function getSlots(type:String):Slots
 		{
-			return emiter.getSlots(channelT, type);
+			return emitter.getSlots(channelT, type);
 		}
 		
 		/**
@@ -112,7 +113,7 @@ package org.bixbite.core
 		 */
 		override public function destroy():void 
 		{
-			emiter.removeAllSlotsOf(channelV, uid);
+			emitter.removeAllSlotsOf(channelV, uid);
 			super.destroy();
 		}
 	}

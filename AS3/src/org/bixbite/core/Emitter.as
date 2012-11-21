@@ -28,18 +28,18 @@ package org.bixbite.core
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
-     * <p>The Emiter, core of the Signal/Slot notification system of this framework.</p>
-     * <p>Provides set of methods for Components and keeps it dead simple, fast and straight forward.
-	 * If you want to get closer to the native speed of execution, Emiter provides methods to cross-reference callbacks base on type of the signal called SRS.</p>
+     * <p>The Emitter, core of the Signal/Slot notification system of this framework.</p>
+     * <p>It is an communication HUB as well as registration point for all coresponding components for each Core. Provides set of methods for Components and keeps it dead simple, fast and straight forward.
+	 * If you want to get closer to the native speed of execution, Emitter provides methods to cross-reference slots based on type of the signal called SRS.</p>
      * <p>This implementation of notification system is the fastest, the simplest and lightest to compare to any other solution known in AS3.
-     * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with almost the same seeped as a native local method speed accession.
+     * This is the only solution that will give you robust structure, perfectly decoupled components and opportunity to execute it with almost the seeped of a native local method call within the same Class.
      * You can't go faster than that. So you don't have to sacrifice anything from performance point of view, and you have very powerful modular system that doesn't require any changes if new component/class will be added/moved/removed or refactored</p>
      * <p>Signal/Slot system has been inspired by QT framework, and we took only essence of it.
-     * Current version of BixBite is capable of sending around 30.000.000 signals per second using SRS, and 3.000.000 per second using standard API (PC AMD Athlon II 955 Quad Core) </p>
+     * Current version of BixBite is capable of sending around 30.000.000 signals per second using SRS, and 3.000.000 per second using standard API (PC AMD Athlon II 955 Quad Core). Even standard way of sending those signals is the fastest implemenation of the Signal/Slot mechanism ever.</p>
      * 
 	 * @langversion	3.0
 	 */
-	public class Emiter
+	public class Emitter
 	{
 		use namespace BIXBITE
 		
@@ -55,15 +55,8 @@ package org.bixbite.core
 		private var components			:Dictionary = new Dictionary(true);
 		
 		/**
-		 * The Emiter is an communication HUB as well as registration point for all coresponding components for each Core.
-		 */
-		public function Emiter()
-		{
-			
-		}
-		
-		/**
-		 * Register component within BixBite
+		 * @private
+		 * Register component within Emitter
 		 * @param	component
 		 */
 		BIXBITE function registerComponent(component:Class, singleton:Boolean = true):void
@@ -74,7 +67,7 @@ package org.bixbite.core
 			}
 			
 			var c:Component = new component();
-			c.emiter = this;
+			c.emitter = this;
 			c.channelC = channelC;
 			c.channelD = channelD;
 			c.channelT = channelT;
@@ -87,7 +80,8 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Unregister component within BixBite
+		 * @private
+		 * Unregister component within Emitter
 		 * @param	component
 		 */
 		BIXBITE function unregisterComponent(component:Class):void 
@@ -109,7 +103,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-         * Internal method to add slot for any Component.
+         * Internal method to add Slot for any Component into this Emitter.
          * This is equivalent of addListener or registerNotification known from different systems and implementations.
          * Can be invoked by any Component, however is encapsulated in subclasses in order to simplify API as well as specify concrete channels of communication.
 		 * @param    channel, slot channel
@@ -125,7 +119,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Internal method to remove specific callback assigned to an Component.
+		 * Internal method to remove specific Slot and its callback assigned to an Component from Emitter.
 		 * Can be invoked by any Component.
 		 * @param   channel, slot channel
 		 * @param	callerUID, unique id of the caller
@@ -142,7 +136,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Remove all registered callbacks within a certain type of signal. 
+		 * Remove all registered callbacks by a type of signal on specific channel. 
 		 * Can be invoked by any Component.
 		 * @param   channel, slot channel
 		 * @param	type, type of signal
@@ -156,7 +150,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Remove all registered signals of concrete Component by his unique id.
+		 * Remove all registered Slots of concrete Component by his unique id on specific channel.
 		 * @param   channel, slot channel
 		 * @param	uid, unique id of the caller
 		 */
@@ -167,7 +161,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Broadcast signal in Multi-cast mode on specific channel
+		 * Broadcast signal in Multi-cast mode on specific channel and type
 		 * @param   channel, slot channel
 		 * @param	type
 		 * @param	signal
@@ -180,7 +174,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Broadcast signal in Multi-cast mode on specific channel across multiple cores
+		 * Broadcast signal in Multi-cast mode on specific channel and type across multiple cores
 		 * @param   cid, slot channel identifier
 		 * @param	type
 		 * @param	signal
@@ -192,10 +186,10 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Broadcast signal in Multi-cast mode on specific channel
+		 * Broadcast data component in Multi-cast mode on specific channel
 		 * @param   channel, slot channel
 		 * @param	type
-		 * @param	signal
+		 * @param	data
 		 */
 		BIXBITE function dataBroadcast(channel:Channel, type:String, data:IData):void 
 		{
@@ -205,7 +199,7 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Send response directly to specific Component base on its unique ID
+		 * Send signal response directly to specific Component base on its unique ID
 		 * @param   channel, slot channel
 		 * @param	callerUID
 		 * @param	type
@@ -219,11 +213,11 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Send response directly to specific Component base on its unique ID
+		 * Send data response directly to specific Component base on its unique ID
 		 * @param   channel, slot channel
 		 * @param	callerUID
 		 * @param	type
-		 * @param	signal
+		 * @param	data
 		 */
 		BIXBITE function dataResponse(channel:Channel, targetUID:String, type:String, data:IData):void 
 		{
@@ -233,10 +227,10 @@ package org.bixbite.core
 		
 		/**
 		 * @private
-		 * Slot Reference Signal mechanism - get reference to slots by type.
+		 * Slot Reference Ssystem (SRS) - get reference to slots by type.
 		 * @param	channel
 		 * @param	type
-		 * @return  Slots
+		 * @return  Slots list of Slots
 		 */
 		BIXBITE function getSlots(channel:Channel, type:String):Slots 
 		{
@@ -262,8 +256,10 @@ package org.bixbite.core
 		}
 		
 		/**
+		 * @private
 		 * Privides getter to unique id for all Components.
-		 * Each Component will invoke this method on construction time. Emiter's uid getter act as a fast system iterator.
+		 * Each Component will invoke this method on construction time. 
+		 * Emitter's uid getter act as a fast system iterator to give each Component unique identifier.
 		 */
 		BIXBITE function get uid():int 
 		{

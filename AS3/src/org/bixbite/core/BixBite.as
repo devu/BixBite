@@ -34,7 +34,8 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.8.1";
+		public static const VERSION	:String = "BixBite v0.9.0";
+		
 		public static var stage		:Stage;
 		
 		private var cores			:Dictionary = new Dictionary(true);
@@ -46,24 +47,39 @@ package org.bixbite.core
 			trace(VERSION);
 		}
 		
+		/**
+		 * Factory method to create a Core
+		 * @param	id
+		 * @return newly created Core class
+		 */
 		public function spawnCore(id:String):Core 
 		{
 			var c:Core = new Core(id);
-			c.emiter.channelE = incomingSignal;
+			c.emitter.channelE = incomingSignal;
 			return cores[id] = c;
 		}
 		
-		private function incomingSignal(cid:String, type:String, signal:Signal):void 
-		{
-			for each(var c:Core in cores) c.broadcast(cid, type, signal);
-		}
-		
+		/**
+		 * Core deconstructor
+		 * @param	id
+		 */
 		public function destroyCore(id:String):void 
 		{
 			if(cores[id]){
 				cores[id].destroy();
 				delete cores[id];
 			}
+		}
+		
+		/**
+		 * Channel for multi-core communication
+		 * @param	cid		core identifier
+		 * @param	type	transmited type of signal
+		 * @param	signal	transmited signal
+		 */
+		private function incomingSignal(cid:String, type:String, signal:Signal):void 
+		{
+			for each(var c:Core in cores) c.broadcast(cid, type, signal);
 		}
 	}
 

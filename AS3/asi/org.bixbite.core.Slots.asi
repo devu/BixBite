@@ -3,8 +3,8 @@
 	import org.bixbite.core.interfaces.IData;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 * Very basic implementation of one directional linked-list to hold all registered Slot of certain type
+	 * @langversion	3.0
 	 */
 	public class Slots
 	{
