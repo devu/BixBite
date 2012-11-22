@@ -1,13 +1,9 @@
 ﻿package examples.starling.transponder
 {
+	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
-	import org.bixbite.core.Signal;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.utils.ClassUtil;
-	import starling.display.DisplayObject;
-	import starling.display.Quad;
-	import starling.display.Stage;
 
 	/**
 	 * ...
@@ -15,13 +11,16 @@
 	 */
 	public class StarlingTransponder extends Transponder
 	{
-		private var stage2D : Stage;
+		private var context : IContext;
+		private var miss : int;
 
 		public function init () : void;
 
-		private function onStage2d (s:Signal) : void;
-
-		private function onMouseDown (e:MouseEvent) : void;
+		/**
+		 * This is a little demonstration how you can utilise Transponder as a UI logic handler to controll View states
+		 * @param	e native event
+		 */
+		private function onMouseDown (e:Event) : void;
 
 		public function destroy () : void;
 	}

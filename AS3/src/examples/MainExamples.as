@@ -23,32 +23,34 @@ THE SOFTWARE.
 
 package examples 
 {
-	import examples.contextloader.ContextLoaderExample;
-	import examples.hellodisplaylist.HelloDisplayList;
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
+	
 	import flash.display.Sprite;
 	import flash.events.Event;
+	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
 	
+	import starling.core.Starling;
+	import starling.display.Sprite;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class MainExamples extends Sprite
+	public class MainExamples extends flash.display.Sprite
 	{
 		private var core0:Core;
 		private var core1:Core;
 		private var core2:Core;
 		
 		/**
-		 * Uncomment out example in order to run it.
-		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
+		 * By default run all examples toogether, don't be terrified by the mess on the screen ;)
+		 * comment/uncomment out examples if you like. Do this in random order to see adventage of modular structure of BixBite
 		 */
 		public function MainExamples() 
 		{
@@ -59,48 +61,55 @@ package examples
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			/**
-			* Initalise a core
-			*/
+			//Instatiate Starling for stage3D
+			Starling.multitouchEnabled = true;
+            Starling.handleLostContext = true;
+			
+			var starling:Starling = new Starling(starling.display.Sprite, stage);
+            starling.simulateMultitouch  = false;
+            starling.enableErrorChecking = false;
+            starling.start();
+			
+			//Instantiate BixBite
 			var bb:BixBite = new BixBite(stage);
+			
+			//Add some roots for display list, it can be any object
+			bb.addContextRoot("stage", stage);
+			bb.addContextRoot("root", this);
+			bb.addContextRoot("stage2D", starling.stage);
+			
+			//Spawn some cores to work with and give it a name
 			core0 = bb.spawnCore("framework");
 			core1 = bb.spawnCore("performance");
 			core2 = bb.spawnCore("starling");
 			
+			//Register functional Compounds with the Core
 			/**
-			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
+			 * Little Compound for basic stage management
 			 */
-			
 			core0.register(StageManager);
 			core0.sendSignal(StageSignal.SET_STAGE, { frameRate:60 } );
 			
-			core1.register(Stats);
-			core1.sendSignal(Stats.START);
+			/**
+			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
+			 */
+			core0.register(Stats);
+			core0.sendSignal(Stats.START);
 			
 			/**
 			* Robot Legs Implementation of HelloFlash example whithin BixBite
 			*/
-			//core1.register(HelloFlash);
+			core1.register(HelloFlash);
 			
 			/**
 			* Basic BixBite example to show workflow
 			*/
-			//core1.register(HelloWorld);
-			
-			/**
-			 * Example of DisplayListManager use
-			 */
-			//core1.register(HelloDisplayList);
+			core1.register(HelloWorld);
 			
 			/**
 			 * Example of Starling Integration
 			 */
 			core2.register(HelloStarling);
-			
-			/*
-			 * TODO
-			 */
-			//core1.register(ContextLoaderExample);
 		}
 	}
 

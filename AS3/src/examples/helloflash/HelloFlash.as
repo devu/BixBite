@@ -23,10 +23,10 @@ THE SOFTWARE.
 
 package examples.helloflash 
 {
-	import examples.helloflash.HelloFlash;
 	import examples.helloflash.behaviour.Poke;
+	import examples.helloflash.HelloFlash;
 	import examples.helloflash.transponder.BallTransponder;
-	import examples.helloflash.view.Output;
+	import examples.helloflash.view.HelloFlashView;
 	import org.bixbite.core.Compound;
 	
 	/**
@@ -47,7 +47,7 @@ package examples.helloflash
 		override public function init():void
 		{
 			register(BallTransponder);
-			register(Output);
+			register(HelloFlashView);
 			
 			addBehaviour(HelloFlash.POKE, Poke, false, true);
 		}

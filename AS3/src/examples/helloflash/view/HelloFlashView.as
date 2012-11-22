@@ -24,43 +24,35 @@ THE SOFTWARE.
 package examples.helloflash.view 
 {
 	import examples.helloflash.HelloFlash;
-	import flash.display.Sprite;
-	import flash.text.TextField;
+	import examples.helloflash.view.context.HelloFlashOutput;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class Output extends View 
+	public class HelloFlashView extends View 
 	{
-		private var main		:Sprite;
-		private var textField	:TextField;
+		private var output:HelloFlashOutput;
 		
-		public function Output() 
+		public function HelloFlashView() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			createContext();
+			output = HelloFlashOutput(registerContext("HelloFlashOutput", HelloFlashOutput));
+			output.x = 100;
+			output.y = 100;
+			addContext("HelloFlashOutput", "stage");
+			
+			addSlot(HelloFlash.CREATE_BALL, onCreateBall);
 		}
 		
-		private function createContext():void 
+		private function onCreateBall(s:Signal):void
 		{
-			textField = new TextField();
-			textField.selectable = false;
-			textField.text = "Click count: 1";
-			
-			addSlot(HelloFlash.CREATE_BALL, updateCount);
-			
-			stage.addChild(textField);
-		}
-		
-		private function updateCount(s:Signal):void
-		{
-			textField.text = "Click count:" + s.params;
+			output.text = "Click count:" + s.params;
 		}
 		
 	}

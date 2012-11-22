@@ -24,6 +24,7 @@ THE SOFTWARE.
 package examples.helloflash.view 
 {
 	import examples.helloflash.HelloFlash;
+	import examples.helloflash.view.context.BallContext;
 	import flash.display.Sprite;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
@@ -31,37 +32,31 @@ package examples.helloflash.view
 	/**
 	 * @langversion	3.0
 	 */
-	public class Ball extends View 
+	public class BallView extends View 
 	{
 		private var radius		:int = 10;
 		private var color		:uint = 0x000000;
-		private var ball		:Sprite;
+		
+		private var context		:BallContext;
 		
 		/**
 		 * Constructor
 		 */
-		public function Ball() 
+		public function BallView() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			createContext();
-		}
-		
-		private function createContext():void 
-		{
-			ball = new Sprite();
-			ball.name = "ball";
-			ball.alpha = 0.75;
-			ball.useHandCursor = true;
-			ball.buttonMode = true;
-			ball.x = Math.random() * 500;
-			ball.y = Math.random() * 375;
-			stage.addChild(ball);
+			context = BallContext(registerContext("ball", BallContext));
+			context.name = "ball";
+			context.x = Math.random() * 500;
+			context.y = Math.random() * 375;
 			
-			draw(0x000000, 10);
+			addContext("ball", "root");
+			
+			context.draw(0x000000, 10);
 			
 			addSlot(HelloFlash.SHUFFLE, shuffle);
 			addSlot(HelloFlash.RED_BALL, onMakeBallRed);
@@ -69,19 +64,12 @@ package examples.helloflash.view
 		
 		private function onMakeBallRed(s:Signal):void
 		{
-			draw(0xFF1100, radius++);
+			context.draw(0xFF1100, radius++);
 		}
 		
 		private function shuffle(s:Signal):void
 		{
-			draw(Math.random() * uint.MAX_VALUE, radius++);
-		}
-		
-		private function draw(color:uint, radius:int):void
-		{
-			ball.graphics.clear();
-			ball.graphics.beginFill(color);
-			ball.graphics.drawCircle(0, 0, radius);
+			context.draw(Math.random() * uint.MAX_VALUE, radius++);
 		}
 	}
 

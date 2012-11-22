@@ -1,0 +1,25 @@
+﻿package examples.starling.view.context
+{
+	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.View;
+	import starling.display.Quad;
+	import starling.display.Sprite;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class StarlingContext extends Sprite implements IContext
+	{
+		private var _id : String;
+		private var _parrentView : View;
+
+		public function get id () : String;
+		public function set id (value:String) : void;
+
+		public function get parrentView () : View;
+		public function set parrentView (value:View) : void;
+
+		public function StarlingContext ();
+	}
+}

@@ -21,42 +21,51 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package examples.starling.behaviour 
+package examples.starling.transponder 
 {
 	
-	import examples.starling.view.Stage2D;
-	import org.bixbite.core.Behaviour;
-	import org.bixbite.core.BixBite;
-	import org.bixbite.core.Signal;
-	import org.bixbite.framework.DisplayListManager;
-	import starling.core.Starling;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.Transponder;
 	
 	/**
 	 * ...
 	 * @langversion 3.0
 	 */
-	public class InitialiseStarling extends Behaviour 
+	public class StarlingTransponder extends Transponder 
 	{
-		private var starling:Starling;
+		private var context:IContext;
+		private var miss:int = 0;
 		
-		override public function execute(s:Signal):void
+		override public function init():void 
 		{
-			Starling.multitouchEnabled = true;
-            Starling.handleLostContext = true;
-			
-			starling = new Starling(Stage2D, BixBite.stage);
-            starling.simulateMultitouch  = false;
-            starling.enableErrorChecking = false;
-			
-			sendRequest(DisplayListManager.ADD_ROOT, { name:"stage2D", root:starling.stage } );
-            starling.start();
-			
-			sendSignal("Starling.Stage2D", starling.stage);
+			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
 		}
 		
-		override public function dispose():void 
+		/**
+		 * This is a little demonstration how you can utilise Transponder as a UI logic handler to controll View states
+		 * @param	e native event
+		 */
+		private function onMouseDown(e:Event):void 
 		{
-			super.dispose();
+			var context:IContext = getContextById("context2D", "stage2D");
+			
+			if (context) {
+				responseTo(context.parrentView.uid, "contextDetected", { text:context.id } );
+				miss = 0;
+			} else {
+				miss++;
+				if(miss<3)
+					responseToAll("contextNotDetected", { text:"There is no Interactive Context" } );
+				else
+					responseToAll("destroyContext");
+			}
+		}
+		
+		override public function destroy():void 
+		{
+			super.destroy();
 		}
 		
 	}

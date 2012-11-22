@@ -45,16 +45,7 @@ package examples.helloflash.transponder
 		
 		private function onMouseClick(e:MouseEvent):void 
 		{
-			if (getDisplayObjectByName("ball")) {
-				// One to many on view channel
-				//response(Signals.DIRECT_RESPONSE);
-				
-				//One to One on view channel
-				//responseTo(e.target, HelloFlash.DIRECT_RESPONSE);
-				
-				//One to Many on Compound channel
-				sendSignal(HelloFlash.POKE);
-			}
+			if (getContextById("ball", "stage")) sendSignal(HelloFlash.POKE);
 		}
 		
 	}

@@ -23,9 +23,11 @@ THE SOFTWARE.
 
 package examples.starling.view 
 {
+	import examples.starling.view.context.StarlingContext;
 	
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.view.BaseStarlingView;
+	import org.bixbite.core.View;
+	
 	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.text.TextField;
@@ -34,53 +36,53 @@ package examples.starling.view
 	 * ...
 	 * @langversion 3.0
 	 */
-	public class StarlingTestView extends BaseStarlingView 
+	public class StarlingTestView extends View 
 	{
-		private var context2D	:Sprite;
-		private var quadA		:Quad;
-		private var quadB		:Quad;
-		private var textField	:TextField;
+		private var context2D:Sprite;
+		private var textField:TextField;
 		
 		override public function init():void 
 		{
-			super.init();
+			context2D = Sprite(registerContext("context2D", StarlingContext));
+			context2D.x = 100;
+			context2D.y = 180;
 			
-			context2D = new Sprite();
+			textField = new TextField(300, 22, "Hello Starling");
+			textField.y = -40;
+			context2D.addChild(textField);
 			
-			textField = new TextField(400, 300, "Welcome to Starling!");
-			textField.name = "text"; 
-			//unfortunatelly this does not work and the Straling TextField is being detected as Image
+			addSlot("contextDetected", onContextDetected);
+			addSlot("contextNotDetected", onContextNotDetected);
+			addSlot("destroyContext", onDestroyContext);
 			
-			quadA = new Quad(100, 100);
-			quadA.x = 100;
-			quadA.y = 180;
-			quadA.setVertexColor(0, 0x1c1191);
-			quadA.setVertexColor(1, 0x1c1191);
-			quadA.setVertexColor(2, 0xea0b0b);
-			quadA.setVertexColor(3, 0xea0b0b);
-			
-			quadB = new Quad(100, 100);
-			quadB.x = 160;
-			quadB.y = 200;
-			quadB.setVertexColor(0, 0x547891);
-			quadB.setVertexColor(1, 0x1c1191);
-			quadB.setVertexColor(2, 0x440b0b);
-			quadB.setVertexColor(3, 0xFF0b0b);
-			
-			addSlot("Starling.MOUSE_DOWN", onMouseDown);
+			addContext("context2D", "stage2D");
 		}
 		
-		private function onMouseDown(s:Signal):void 
+		private function onDestroyContext(s:Signal):void 
+		{
+			removeContext("context2D");
+		}
+		
+		override public function onContextAdded():void 
+		{
+			trace(this, "context has been added");
+			trace(context2D.stage);
+		}
+		
+		override public function onContextRemoved():void 
+		{
+			trace(this, "context has been removed");
+			trace(context2D.stage);
+		}
+		
+		private function onContextDetected(s:Signal):void 
 		{
 			textField.text = s.params.text;
 		}
 		
-		override public function stage2DReady():void 
+		private function onContextNotDetected(s:Signal):void 
 		{
-			setContext2D("test", context2D, "stage2D");
-			setContext2D("myText", textField, "test");
-			setContext2D("myQuadA", quadA, "test");
-			setContext2D("myQuadB", quadB, "test");
+			textField.text = s.params.text;
 		}
 		
 		override public function destroy():void 

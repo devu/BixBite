@@ -24,7 +24,7 @@ THE SOFTWARE.
 package examples.helloflash.behaviour 
 {
 	import examples.helloflash.HelloFlash;
-	import examples.helloflash.view.Ball;
+	import examples.helloflash.view.BallView;
 	
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
@@ -45,7 +45,7 @@ package examples.helloflash.behaviour
 		{
 			count++;
 			
-			register(Ball, false);
+			register(BallView, false);
 			sendSignal(HelloFlash.CREATE_BALL, count);
 			
 			if ((count % 10) == 0){

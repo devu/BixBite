@@ -24,15 +24,9 @@ THE SOFTWARE.
 package examples.starling 
 {
 	
-	import examples.starling.behaviour.InitialiseStarling;
 	import examples.starling.transponder.StarlingTransponder;
 	import examples.starling.view.StarlingTestView;
-	
 	import org.bixbite.core.Compound;
-	import org.bixbite.core.Signal;
-	import org.bixbite.framework.DisplayListManager;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.StageManager;
 	
 	/**
 	 * ...
@@ -40,18 +34,11 @@ package examples.starling
 	 */
 	public class HelloStarling extends Compound 
 	{
-		static public const START:String = "HelloStarling.START";
 		
 		override public function init():void 
 		{
-			//I made it DisplayListManager Compound dependant but you can have many custom ways of dealing with it.
-			register(DisplayListManager);
-			
-			register(StarlingTransponder);
-			
 			register(StarlingTestView);
-			
-			addBehaviour(HelloStarling.START, InitialiseStarling, true, true);
+			register(StarlingTransponder);
 		}
 		
 		override public function destroy():void 

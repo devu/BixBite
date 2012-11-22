@@ -1,7 +1,8 @@
 ﻿package examples.starling.view
 {
+	import examples.starling.view.context.StarlingContext;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.view.BaseStarlingView;
+	import org.bixbite.core.View;
 	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.text.TextField;
@@ -10,18 +11,22 @@
 	 * ...
 	 * @langversion 3.0
 	 */
-	public class StarlingTestView extends BaseStarlingView
+	public class StarlingTestView extends View
 	{
 		private var context2D : Sprite;
-		private var quadA : Quad;
-		private var quadB : Quad;
 		private var textField : TextField;
 
 		public function init () : void;
 
-		private function onMouseDown (s:Signal) : void;
+		private function onDestroyContext (s:Signal) : void;
 
-		public function stage2DReady () : void;
+		public function onContextAdded () : void;
+
+		public function onContextRemoved () : void;
+
+		private function onContextDetected (s:Signal) : void;
+
+		private function onContextNotDetected (s:Signal) : void;
 
 		public function destroy () : void;
 	}

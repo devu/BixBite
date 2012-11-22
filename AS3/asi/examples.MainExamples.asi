@@ -1,9 +1,5 @@
 ﻿package examples
 {
-	import examples.contextloader.ContextLoaderExample;
-	import examples.hellodisplaylist.HelloDisplayList;
-	import examples.helloflash.HelloFlash;
-	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -12,12 +8,14 @@
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
+	import starling.core.Starling;
+	import starling.display.Sprite;
 
 	/**
 	 *
 	 * @langversion	3.0
 	 */
-	public class MainExamples extends Sprite
+	public class MainExamples extends flash.display.Sprite
 	{
 		private var core0 : Core;
 		private var core1 : Core;
