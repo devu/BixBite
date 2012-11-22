@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.9.0.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.9.1.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -199,6 +199,62 @@
     <string>src\examples\starling\transponder\starlingtransponder.as</string>
     <string>src\examples\starling\behaviour\initialisestarling.as</string>
     <string>src\org\bixbite\framework\view\basestarlingview.as</string>
+    <string>src\com\adobe\utils\agalminiassembler.as</string>
+    <string>src\starling\utils\vertexdata.as</string>
+    <string>src\starling\utils\valign.as</string>
+    <string>src\starling\utils\transformcoords.as</string>
+    <string>src\starling\utils\rad2deg.as</string>
+    <string>src\starling\utils\matrixutil.as</string>
+    <string>src\starling\utils\halign.as</string>
+    <string>src\starling\utils\getnextpoweroftwo.as</string>
+    <string>src\starling\utils\formatstring.as</string>
+    <string>src\starling\utils\deg2rad.as</string>
+    <string>src\starling\utils\color.as</string>
+    <string>src\starling\textures\texturesmoothing.as</string>
+    <string>src\starling\textures\textureatlas.as</string>
+    <string>src\starling\textures\texture.as</string>
+    <string>src\starling\textures\subtexture.as</string>
+    <string>src\starling\textures\rendertexture.as</string>
+    <string>src\starling\textures\concretetexture.as</string>
+    <string>src\starling\textures\atfdata.as</string>
+    <string>src\starling\text\bitmapchar.as</string>
+    <string>src\starling\text\bitmapfont.as</string>
+    <string>src\starling\text\textfield.as</string>
+    <string>src\starling\events\enterframeevent.as</string>
+    <string>src\starling\events\event.as</string>
+    <string>src\starling\events\eventdispatcher.as</string>
+    <string>src\starling\events\keyboardevent.as</string>
+    <string>src\starling\events\resizeevent.as</string>
+    <string>src\starling\events\touch.as</string>
+    <string>src\starling\events\touchevent.as</string>
+    <string>src\starling\events\touchphase.as</string>
+    <string>src\starling\errors\abstractclasserror.as</string>
+    <string>src\starling\errors\abstractmethoderror.as</string>
+    <string>src\starling\errors\missingcontexterror.as</string>
+    <string>src\starling\display\blendmode.as</string>
+    <string>src\starling\display\button.as</string>
+    <string>src\starling\display\displayobject.as</string>
+    <string>src\starling\display\displayobjectcontainer.as</string>
+    <string>src\starling\display\image.as</string>
+    <string>src\starling\display\movieclip.as</string>
+    <string>src\starling\display\quad.as</string>
+    <string>src\starling\display\quadbatch.as</string>
+    <string>src\starling\display\sprite.as</string>
+    <string>src\starling\display\stage.as</string>
+    <string>src\starling\core\rendersupport.as</string>
+    <string>src\starling\core\starling.as</string>
+    <string>src\starling\core\starling_internal.as</string>
+    <string>src\starling\core\statsdisplay.as</string>
+    <string>src\starling\core\touchmarker.as</string>
+    <string>src\starling\core\touchprocessor.as</string>
+    <string>src\examples\starling\view\context\starlingcontext.as</string>
+    <string>src\starling\animation\delayedcall.as</string>
+    <string>src\starling\animation\ianimatable.as</string>
+    <string>src\starling\animation\juggler.as</string>
+    <string>src\starling\animation\transitions.as</string>
+    <string>src\starling\animation\tween.as</string>
+    <string>src\org\bixbite\framework\view\context.as</string>
+    <string>src\org\bixbite\framework\view\context\statsmonitor.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -387,6 +443,62 @@
     <string>src\examples\starling\transponder\starlingtransponder.as</string>
     <string>src\examples\starling\behaviour\initialisestarling.as</string>
     <string>src\org\bixbite\framework\view\basestarlingview.as</string>
+    <string>src\com\adobe\utils\agalminiassembler.as</string>
+    <string>src\starling\utils\vertexdata.as</string>
+    <string>src\starling\utils\valign.as</string>
+    <string>src\starling\utils\transformcoords.as</string>
+    <string>src\starling\utils\rad2deg.as</string>
+    <string>src\starling\utils\matrixutil.as</string>
+    <string>src\starling\utils\halign.as</string>
+    <string>src\starling\utils\getnextpoweroftwo.as</string>
+    <string>src\starling\utils\formatstring.as</string>
+    <string>src\starling\utils\deg2rad.as</string>
+    <string>src\starling\utils\color.as</string>
+    <string>src\starling\textures\texturesmoothing.as</string>
+    <string>src\starling\textures\textureatlas.as</string>
+    <string>src\starling\textures\texture.as</string>
+    <string>src\starling\textures\subtexture.as</string>
+    <string>src\starling\textures\rendertexture.as</string>
+    <string>src\starling\textures\concretetexture.as</string>
+    <string>src\starling\textures\atfdata.as</string>
+    <string>src\starling\text\bitmapchar.as</string>
+    <string>src\starling\text\bitmapfont.as</string>
+    <string>src\starling\text\textfield.as</string>
+    <string>src\starling\events\enterframeevent.as</string>
+    <string>src\starling\events\event.as</string>
+    <string>src\starling\events\eventdispatcher.as</string>
+    <string>src\starling\events\keyboardevent.as</string>
+    <string>src\starling\events\resizeevent.as</string>
+    <string>src\starling\events\touch.as</string>
+    <string>src\starling\events\touchevent.as</string>
+    <string>src\starling\events\touchphase.as</string>
+    <string>src\starling\errors\abstractclasserror.as</string>
+    <string>src\starling\errors\abstractmethoderror.as</string>
+    <string>src\starling\errors\missingcontexterror.as</string>
+    <string>src\starling\display\blendmode.as</string>
+    <string>src\starling\display\button.as</string>
+    <string>src\starling\display\displayobject.as</string>
+    <string>src\starling\display\displayobjectcontainer.as</string>
+    <string>src\starling\display\image.as</string>
+    <string>src\starling\display\movieclip.as</string>
+    <string>src\starling\display\quad.as</string>
+    <string>src\starling\display\quadbatch.as</string>
+    <string>src\starling\display\sprite.as</string>
+    <string>src\starling\display\stage.as</string>
+    <string>src\starling\core\rendersupport.as</string>
+    <string>src\starling\core\starling.as</string>
+    <string>src\starling\core\starling_internal.as</string>
+    <string>src\starling\core\statsdisplay.as</string>
+    <string>src\starling\core\touchmarker.as</string>
+    <string>src\starling\core\touchprocessor.as</string>
+    <string>src\examples\starling\view\context\starlingcontext.as</string>
+    <string>src\starling\animation\delayedcall.as</string>
+    <string>src\starling\animation\ianimatable.as</string>
+    <string>src\starling\animation\juggler.as</string>
+    <string>src\starling\animation\transitions.as</string>
+    <string>src\starling\animation\tween.as</string>
+    <string>src\org\bixbite\framework\view\context.as</string>
+    <string>src\org\bixbite\framework\view\context\statsmonitor.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

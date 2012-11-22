@@ -51,6 +51,7 @@ package org.bixbite.core
 		public var channelV				:Channel = new Channel();
 		public var channelE				:Function;
 		public var coreID				:String;
+		public var bixbite				:BixBite;
 		
 		private var components			:Dictionary = new Dictionary(true);
 		

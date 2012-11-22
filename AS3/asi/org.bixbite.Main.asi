@@ -4,14 +4,14 @@
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.Stats;
 
 	/**
 	 * Main BixBite frmework document class for development purposes
 	 * 
-	 *   footprint 3.41kb (signle core);
-	 * 
-	 *   Dev Notes
-	 * Before it will reach 1.0.0 all iteration will be about compatibility tests, bug fixing, etc. No further dramatic changes to the core after that.
+	 *   footprint 4.27kb (signle core);
 	 */
 	public class Main extends Sprite
 	{

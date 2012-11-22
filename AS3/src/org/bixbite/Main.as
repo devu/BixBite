@@ -53,13 +53,14 @@ package org.bixbite
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
 	
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.Stats;
+	
 	/**
 	 * Main BixBite frmework document class for development purposes
 	 * 
-	 * footprint 3.41kb (signle core);
-	 * 
-	 * Dev Notes
-	 * Before it will reach 1.0.0 all iteration will be about compatibility tests, bug fixing, etc. No further dramatic changes to the core after that.
+	 * footprint 4.27kb (signle core);
 	 */
 	
 	public class Main extends Sprite
@@ -76,16 +77,18 @@ package org.bixbite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var bb:BixBite = new BixBite(stage);
+			bb.addContextRoot("stage", this);
 			core1 = bb.spawnCore("1");
-			/*
+			
 			core1.register(StageManager);
 			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
 			core1.register(Stats);
 			core1.sendSignal(Stats.START);
-			
+			/*
 			core2 = bb.spawnCore("2");
-			core2.register(SignalPerformance);*/
+			core2.register(SignalPerformance);
+			*/
 		}
 		
 	}

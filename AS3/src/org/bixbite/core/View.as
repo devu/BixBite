@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -106,6 +107,55 @@ package org.bixbite.core
 		public function getSlots(type:String):Slots
 		{
 			return emitter.getSlots(channelT, type);
+		}
+		
+		/**
+		 * Regsiter Context within a view
+		 * @param	id
+		 * @param	context
+		 * @return  IContext instance of the created context as interface
+		 */
+		public function registerContext(id:String, context:Class):IContext
+		{
+			return emitter.bixbite.registerCtx(this, id, context);
+		}
+		
+		/**
+		 * Unregsiter Context within a view
+		 * @param	id
+		 */
+		public function unregisterContext(id:String):void
+		{
+			emitter.bixbite.unregisterCtx(id);
+		}
+		
+		/**
+		 * Add Context into any Container.
+		 * @param	contextId
+		 * @param	containerId
+		 */
+		public function addContext(contextId:String, containerId:String):void
+		{
+			emitter.bixbite.addCtx(contextId, containerId);
+		}
+		
+		/*abstract*/ public function onContextAdded():void
+		{
+			
+		}
+		
+		/**
+		 * Remove Context from its Container
+		 * @param	contextId
+		 */
+		public function removeContext(contextId:String):void
+		{
+			emitter.bixbite.removeCtx(contextId);
+		}
+		
+		/*abstract*/ public function onContextRemoved():void
+		{
+			
 		}
 		
 		/**

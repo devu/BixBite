@@ -23,8 +23,8 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
-	import flash.display.DisplayObject;
 	import flash.geom.Point;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -147,31 +147,28 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * TODO method are too much platform related, concider refactoring
-		 * 
 		 * Get all display objects under the mouse point
 		 * @return
 		 */
-		public function getDisplayObjects():Array
+		private function getContextArray(containerId:String):Array
 		{
+			var container:* = emitter.bixbite.getContainer(containerId);
+			if (!container) return null;
+			
 			p.x = stage.mouseX;
 			p.y = stage.mouseY;
-			return stage.getObjectsUnderPoint(p);
+			return container.getObjectsUnderPoint(p);
 		}
 		
 		/**
-		 * TODO method are too much platform related, concider refactoring
-		 * 
 		 * Get 1st available display object under mouse point by its name
 		 * @param	name
 		 * @return
 		 */
-		public function getDisplayObjectByName(name:String):DisplayObject
+		public function getContextById(name:String, containerId:String):IContext
 		{
-			var a:Array;
-			for each(var o:DisplayObject in getDisplayObjects()){
-				a = o.name.split("@");
-				if (a[0] == name) return o;
+			for each(var ctx:Object in getContextArray(containerId)){
+				if (ctx is IContext && ctx.id == name) return IContext(ctx);
 			}
 			
 			return null

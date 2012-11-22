@@ -24,6 +24,7 @@
 		public var channelV : Channel;
 		public var channelE : Function;
 		public var coreID : String;
+		public var bixbite : BixBite;
 		private var components : Dictionary;
 
 		/**

@@ -1,0 +1,25 @@
+﻿package org.bixbite.framework.view
+{
+	import flash.display.Sprite;
+	import flash.display.Stage;
+	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.View;
+
+	/**
+	 * ...
+	 * @author Daniel Wasilewski
+	 */
+	public class Context extends Sprite implements IContext
+	{
+		private var _id : String;
+		private var _parrentView : View;
+
+		public function get id () : String;
+		public function set id (value:String) : void;
+
+		public function get parrentView () : View;
+		public function set parrentView (value:View) : void;
+
+		public function Context ();
+	}
+}

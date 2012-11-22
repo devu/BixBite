@@ -1,7 +1,7 @@
 ﻿package org.bixbite.core
 {
-	import flash.display.DisplayObject;
 	import flash.geom.Point;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -85,21 +85,17 @@
 		public function removeSensor (type:String, callback:Function) : void;
 
 		/**
-		 * TODO method are too much platform related, concider refactoring
-		 * 
-		 *   Get all display objects under the mouse point
+		 * Get all display objects under the mouse point
 		 * @return
 		 */
-		public function getDisplayObjects () : Array;
+		private function getContextArray (containerId:String) : Array;
 
 		/**
-		 * TODO method are too much platform related, concider refactoring
-		 * 
-		 *   Get 1st available display object under mouse point by its name
+		 * Get 1st available display object under mouse point by its name
 		 * @param	name
 		 * @return
 		 */
-		public function getDisplayObjectByName (name:String) : DisplayObject;
+		public function getContextById (name:String, containerId:String) : IContext;
 
 		/**
 		 *

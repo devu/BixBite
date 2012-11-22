@@ -2,6 +2,7 @@
 {
 	import flash.display.Stage;
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -10,9 +11,10 @@
 	 */
 	public class BixBite
 	{
-		public static const VERSION : String = "BixBite v0.9.0";
+		public static const VERSION : String = "BixBite v0.9.1";
 		public static var stage : Stage;
 		private var cores : Dictionary;
+		public var list : Dictionary;
 
 		public function BixBite (stage:Stage);
 
@@ -29,6 +31,10 @@
 		 */
 		public function destroyCore (id:String) : void;
 
+		public function addContextRoot (id:String, customRoot:*) : void;
+
+		function getContainer (containerId:String) : *;
+
 		/**
 		 * Channel for multi-core communication
 		 * @param	cid		core identifier
@@ -36,5 +42,34 @@
 		 * @param	signal	transmited signal
 		 */
 		private function incomingSignal (cid:String, type:String, signal:Signal) : void;
+
+		/**
+		 * Internal display list management method, to register a context within the system.
+		 * @param	view
+		 * @param	id
+		 * @param	context
+		 * @return	IContext
+		 */
+		function registerCtx (view:View, id:String, context:Class) : IContext;
+
+		/**
+		 * Internal display list management method, to unregister a context from the system.
+		 * @param	id
+		 */
+		function unregisterCtx (id:String) : void;
+
+		/**
+		 * Internal display list management method. To add a context to any root container by id.
+		 * @param	contextId
+		 * @param	containerId
+		 */
+		function addCtx (contextId:String, containerId:String=null) : void;
+
+		/**
+		 * Internal display list management method. To remove a context by its id.
+		 * @param	contextId
+		 * @param	containerId
+		 */
+		function removeCtx (contextId:String) : void;
 	}
 }

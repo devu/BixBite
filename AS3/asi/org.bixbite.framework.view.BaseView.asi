@@ -29,12 +29,6 @@
 
 		public function draw () : void;
 
-		public function setContext (name:String, context:DisplayObject, container:String=null) : void;
-
-		public function addContext (name:String, container:String="stage") : void;
-
-		public function removeContext (name:String) : void;
-
 		public function destroy () : void;
 	}
 }
