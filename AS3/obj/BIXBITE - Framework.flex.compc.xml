@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.9.0.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.9.1.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -19,9 +19,6 @@
     <source-path>
       <path-element>e:\xampp\htdocs\2012\bixbite\as3\src</path-element>
     </source-path>
-    <library-path>
-      <path-element>e:\xampp\htdocs\2012\bixbite\as3\lib\bixbite_logos.swc</path-element>
-    </library-path>
   </compiler>
   <include-classes>
     <class>org.bixbite.core.Signal</class>
@@ -42,55 +39,23 @@
     <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
-    <class>org.bixbite.framework.DisplayListManager</class>
+    <class>org.bixbite.core.interfaces.IContext</class>
     <class>org.bixbite.framework.Stats</class>
     <class>org.bixbite.framework.StageManager</class>
-    <class>org.bixbite.framework.YTPlayer</class>
-    <class>org.bixbite.framework.ContextLoader</class>
-    <class>org.bixbite.framework.FocusManager</class>
     <class>org.bixbite.framework.KeyboardController</class>
     <class>org.bixbite.framework.view.StatsMonitorView</class>
-    <class>org.bixbite.framework.view.YTPlayerBaseView</class>
-    <class>org.bixbite.framework.view.BaseView</class>
-    <class>org.bixbite.framework.view.FocusedView</class>
-    <class>org.bixbite.framework.signal.DisplaySignal</class>
-    <class>org.bixbite.framework.signal.ContextLoaderSignal</class>
+    <class>org.bixbite.framework.view.Context</class>
+    <class>org.bixbite.framework.view.context.StatsMonitor</class>
     <class>org.bixbite.framework.signal.KeySignal</class>
-    <class>org.bixbite.framework.signal.FocusSignal</class>
     <class>org.bixbite.framework.signal.StageSignal</class>
-    <class>org.bixbite.framework.transponder.DisplayListTransponder</class>
     <class>org.bixbite.framework.transponder.StatsTransponder</class>
     <class>org.bixbite.framework.transponder.StageTransponder</class>
-    <class>org.bixbite.framework.transponder.YTPlayerTransponder</class>
-    <class>org.bixbite.framework.transponder.ContextLoaderTransponder</class>
     <class>org.bixbite.framework.transponder.KeyboardTransponder</class>
-    <class>org.bixbite.framework.transponder.FocusTransponder</class>
     <class>org.bixbite.framework.behaviour.SetStage</class>
     <class>org.bixbite.framework.behaviour.ResizeStage</class>
-    <class>org.bixbite.framework.behaviour.DisplayListAddContext</class>
-    <class>org.bixbite.framework.behaviour.DisplayListGet</class>
-    <class>org.bixbite.framework.behaviour.YTVideoPlay</class>
-    <class>org.bixbite.framework.behaviour.YTPlayerInit</class>
-    <class>org.bixbite.framework.behaviour.YTVideoPause</class>
-    <class>org.bixbite.framework.behaviour.YTPlayerStatus</class>
-    <class>org.bixbite.framework.behaviour.DisplayListRemoveContext</class>
-    <class>org.bixbite.framework.behaviour.DisplayListSetContext</class>
-    <class>org.bixbite.framework.behaviour.ContextLoaderLoad</class>
-    <class>org.bixbite.framework.behaviour.ContextLoaderSetPriority</class>
     <class>org.bixbite.framework.behaviour.StatsCalculate</class>
     <class>org.bixbite.framework.behaviour.TriggerKey</class>
     <class>org.bixbite.framework.data.StatsData</class>
     <class>org.bixbite.framework.data.StageData</class>
-    <class>org.bixbite.framework.data.DisplayListData</class>
-    <class>org.bixbite.framework.data.YTPlayerData</class>
-    <class>org.bixbite.framework.data.ContextLoaderData</class>
-    <class>org.bixbite.framework.data.ContextLoaderItemData</class>
-    <class>org.bixbite.framework.data.ContextLoaderProgressData</class>
-    <class>org.bixbite.framework.data.vo.ContextLoaderItem</class>
-    <class>org.bixbite.framework.data.vo.ContextLoaderQueue</class>
-    <class>org.bixbite.framework.data.vo.ContextItem</class>
-    <class>org.bixbite.framework.data.vo.ContextBitmap</class>
-    <class>org.bixbite.framework.data.vo.ContextSprite</class>
-    <class>org.bixbite.utils.ClassUtil</class>
   </include-classes>
 </flex-config>

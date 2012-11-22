@@ -51,7 +51,6 @@ package org.bixbite.framework
 		override public function init():void 
 		{
 			// modules required to run
-			register(DisplayListManager);
 			register(StageManager);
 			
 			// compound modules
@@ -68,7 +67,6 @@ package org.bixbite.framework
 			
 			removeBehaviour(Stats.CALCULATE);
 			
-			unregister(DisplayListManager);
 			unregister(StageManager);
 			
 			unregister(StatsData);

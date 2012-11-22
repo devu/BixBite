@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.9.0.swc</output>
+  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_core_0.9.1.swc</output>
   <use-network>true</use-network>
   <target-player>11.2</target-player>
   <warnings>true</warnings>
@@ -40,6 +40,6 @@
     <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
-    <class>org.bixbite.utils.ClassUtil</class>
+    <class>org.bixbite.core.interfaces.IContext</class>
   </include-classes>
 </flex-config>
