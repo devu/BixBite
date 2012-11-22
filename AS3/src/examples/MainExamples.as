@@ -73,7 +73,7 @@ package examples
 			//Instantiate BixBite
 			var bb:BixBite = new BixBite(stage);
 			
-			//Add some roots for display list, it can be any object
+			//Add some roots for display list, it can be any object that has addChild method implemented
 			bb.addContextRoot("stage", stage);
 			bb.addContextRoot("root", this);
 			bb.addContextRoot("stage2D", starling.stage);

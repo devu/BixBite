@@ -17,6 +17,11 @@ package org.bixbite.framework.view.context
 			mouseChildren = false;
 		}
 		
+		override public function dispose():void 
+		{
+			graphics.clear();
+		}
+		
 	}
 
 }

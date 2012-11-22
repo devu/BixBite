@@ -139,10 +139,7 @@ package org.bixbite.core
 			emitter.bixbite.addCtx(contextId, containerId);
 		}
 		
-		/*abstract*/ public function onContextAdded():void
-		{
-			
-		}
+		/*abstract*/ public function onContextAdded():void { }
 		
 		/**
 		 * Remove Context from its Container
@@ -153,10 +150,7 @@ package org.bixbite.core
 			emitter.bixbite.removeCtx(contextId);
 		}
 		
-		/*abstract*/ public function onContextRemoved():void
-		{
-			
-		}
+		/*abstract*/ public function onContextRemoved():void { }
 		
 		/**
 		 * @inheritDoc

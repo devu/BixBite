@@ -30,6 +30,7 @@ package test.performance.signalperf.view
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Slot;
 	import org.bixbite.core.View;
+	import org.bixbite.framework.view.context.OutputContext;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
@@ -37,8 +38,8 @@ package test.performance.signalperf.view
 	 */
 	public class TestView extends View
 	{
-		private var slot:Slot;
-		private var output:TextField;
+		private var slot	:Slot;
+		private var output	:OutputContext;
 		
 		public function TestView() 
 		{
@@ -47,14 +48,8 @@ package test.performance.signalperf.view
 		
 		override public function init():void 
 		{
-			var context:Sprite = new Sprite();
-			context.mouseEnabled = false;
-			stage.addChild(context);
-			
-			output = new TextField();
-			output.autoSize = "left";
-			output.text = "Click to test";
-			context.addChild(output);
+			output = OutputContext(registerContext("signalPerf", OutputContext));
+			addContext("signalPerf", "stage");
 			
 			addSlot(SignalPerformance.BEGIN_TEST, onBeginTest);
 			addSlot(SignalPerformance.RUN_TEST_SRS, onRunTestSRS);

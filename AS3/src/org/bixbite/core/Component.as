@@ -66,11 +66,6 @@ package org.bixbite.core
 		public var signal	:Signal
 		
 		/**
-		 * Additional identifier for Components operating as multiple instances of the same Class
-		 */
-		public var id		:String;
-		
-		/**
 		 * Set of CDTV channels asociated with Emitter
 		 */
 		BIXBITE var channelC	:Channel;
@@ -105,15 +100,15 @@ package org.bixbite.core
 		{
 			emitter = null;
 			
-			if (this is IData){
-				//
-			} else {
-				signal.dispose();
-				signal = null;
-			}
+			signal.dispose();
+			signal = null;
 			
-			//slots 	= null;
 			_uid 	= null;
+			
+			channelC = null;
+			channelD = null;
+			channelT = null;
+			channelV = null;
 		}
 		
 		/**

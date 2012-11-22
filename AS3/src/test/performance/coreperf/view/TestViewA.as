@@ -28,17 +28,17 @@ package test.performance.coreperf.view
 	/**
 	 * @langversion	3.0
 	 */
-	public class TestView extends View 
+	public class TestViewA extends View 
 	{
 		
-		public function TestView() 
+		public function TestViewA() 
 		{
 			
 		}
 		
 		override public function init():void 
 		{
-			
+			//empty
 		}
 		
 	}

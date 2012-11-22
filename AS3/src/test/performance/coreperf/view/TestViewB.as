@@ -25,26 +25,36 @@ package test.performance.coreperf.view
 {
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.view.context.OutputContext;
+	import test.performance.coreperf.view.context.TestViewBContext;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class OutputView extends View 
+	public class TestViewB extends View 
 	{
-		private var output		:OutputContext;
+		
+		public function TestViewB() 
+		{
+			
+		}
 		
 		override public function init():void 
 		{
-			output = OutputContext(registerContext("outputText", OutputContext));
-			addContext("outputText", "stage");
+			addSlot("testSignalB", onTestSignalB);
 			
-			addSlot("traceOutput", onTraceOutput);
+			registerContext("testContextB", TestViewBContext);
+			addContext("testContextB", "stage");
 		}
 		
-		private function onTraceOutput(s:Signal):void 
+		private function onTestSignalB(s:Signal):void 
 		{
-			output.text = String(s.params);
+			
+		}
+		
+		override public function destroy():void 
+		{
+			unregisterContext("testContextB");
+			super.destroy();
 		}
 		
 	}

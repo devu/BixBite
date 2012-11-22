@@ -27,6 +27,9 @@ package test.performance.coreperf
 	import flash.utils.clearInterval;
 	import flash.utils.getTimer;
 	import flash.utils.setInterval;
+	import test.performance.coreperf.view.TestViewA;
+	import test.performance.coreperf.view.TestViewB;
+	import test.performance.coreperf.view.TestViewC;
 	
 	import org.bixbite.core.Compound;
 	
@@ -35,7 +38,6 @@ package test.performance.coreperf
 	import test.performance.coreperf.data.TestData;
 	import test.performance.coreperf.transponder.TestTransponder;
 	import test.performance.coreperf.view.OutputView;
-	import test.performance.coreperf.view.TestView;
 	
 	/**
 	 * @langversion	3.0
@@ -51,56 +53,64 @@ package test.performance.coreperf
 	 * Results: 
 	 
 		0.6.3	(Flash Player 11,1,102,63 - Chrome) max Mem 8.873 MB													
-		0.8.0 	(Flash PLayer 11,5,31,101 - Chrome) max Mem 4.615 MB 2x less mem 
+		0.8.0 	(Flash PLayer 11,5,31,101 - Chrome) max Mem 4.615 MB
+		0.9.1 	(Flash PLayer 11,5,31,101 - Chrome) Mem min/max on test complete 20/9 MB
 		footprint 11.0kb
 		
-		versions									0.6.3			0.8.0		 	speed ratio (1.0 equal speed)
-		TASK:register	Views			10k			TIME:   1.00	TIME:   1.20
-		TASK:unregister	Views			10k			TIME:   2.00	TIME:   2.18
-		TASK:register	Views			100k		TIME:  17.00	TIME:  20.45
-		TASK:unregister	Views			100k		TIME:  22.00	TIME:  26.90
-		TASK:register	Views			1kk			TIME: 181.64	TIME: 216.82
-		TASK:unregister	Views			1kk			TIME: 235.45	TIME: 271.55
+		versions									0.6.3	 0.8.0	   0.9.1
+		TASK:register	Views			10k			 1.00	  1.20		1.09
+		TASK:unregister	Views			10k			 2.00	  2.18	    2.00
+		TASK:register	Views			100k		17.00	 20.45	   19.00
+		TASK:unregister	Views			100k		22.00	 26.90	   23.00
+		TASK:register	Views			1kk		   181.64	216.82	  197.55
+		TASK:unregister	Views			1kk		   235.45	271.55	  246.91
 		
-		TASK:register	Trans			10k			TIME:   1.01	TIME:   1.18
-		TASK:unregister	Trans			10k			TIME:   2.00	TIME:   2.00
-		TASK:register	Trans			100k		TIME:  18.00	TIME:  19.90
-		TASK:unregister	Trans			100k		TIME:  23.27	TIME:  26.00
-		TASK:register	Trans			1kk			TIME: 198.91	TIME: 207.82
-		TASK:unregister	Trans			1kk			TIME: 259.00	TIME: 269.55
+		TASK:register	Trans			10k			 1.01	  1.18 	    1.09
+		TASK:unregister	Trans			10k			 2.00	  2.00		2.00
+		TASK:register	Trans			100k		18.00	 19.90	   19.00
+		TASK:unregister	Trans			100k		23.27	 26.00	   23.00
+		TASK:register	Trans			1kk		   198.91	207.82	  196.36
+		TASK:unregister	Trans			1kk		   259.00	269.55	  243.91
 		
-		TASK:register	Data			10k			TIME:   1.01	TIME:   1.09
-		TASK:unregister	Data			10k			TIME:   2.00	TIME:   2.00
-		TASK:register	Data			100k		TIME:  19.00	TIME:  20.00
-		TASK:unregister	Data			100k		TIME:  25.00	TIME:  25.00
-		TASK:register	Data			1kk			TIME: 197.91	TIME: 208.91
-		TASK:unregister	Data			1kk			TIME: 261.45	TIME: 265.45 	0.98 : slower
+		TASK:register	Data			10k			 1.01	  1.09		1.09
+		TASK:unregister	Data			10k			 2.00	  2.00		2.00
+		TASK:register	Data			100k		19.00	 20.00	   19.00
+		TASK:unregister	Data			100k		25.00	 25.00	   23.81
+		TASK:register	Data			1kk		   197.91	208.91	  197.91
+		TASK:unregister	Data			1kk		   261.45	265.45 	  243.64
 		
-		Above tests virtualy unchanged - difrent flash version slowed it down a bit.
-		Despite this obstacle stress tests below shows big improvements:
+		TASK:add/remove Behaviour		1k			 4.36	  3.09 	    3.18
+		TASK:add/remove Behaviour		10k			54.91	 39.00 	   37.45
+		TASK:add/remove Behaviour		100k		766.91	402.18    387.82
 		
-		TASK:add/remove Behaviour		1k			TIME:   4.36	TIME:   3.09 	1.4 : faster
-		TASK:add/remove Behaviour		10k			TIME:  54.91	TIME:  39.00 	1.4 : faster
-		TASK:add/remove Behaviour		100k		TIME: 766.91	TIME: 402.18 	1.9 : faster
+		TASK:add/exe/dispose Behaviour	1k			4.82	  4.27 		3.09
+		TASK:add/exe/dispose Behaviour	10k			69.00	 42.45 	   39.36
+		TASK:add/exe/dispose Behaviour	100k		831.09	417.91 	  403.45
 		
-		TASK:add/exe/dispose Behaviour	1k			TIME:   4.82	TIME:   4.27 	1.1 : faster
-		TASK:add/exe/dispose Behaviour	10k			TIME:  69.00	TIME:  42.45 	1.6 : faster
-		TASK:add/exe/dispose Behaviour	100k		TIME: 831.09	TIME: 417.91 	2.0 : faster
+		TASK:reg/unreg Views			1k			  9.90	  2.09	  	2.00
+		TASK:reg/unreg Views			10k			107.55	 27.36	   24.54
+		TASK:reg/unreg Views			100k		991.00	271.55 	  251.82
+		TASK:reg/unreg Trans			1k			  7.54	  2.90		2.09
+		TASK:reg/unreg Trans			10k			 83.18	 28.90	   27.00
+		TASK:reg/unreg Trans			100k		1175.0	297.09 	  276.27
+		TASK:reg/unreg Data				1k			  7.09	  2.00		2.00
+		TASK:reg/unreg Data				10k			 77.00	 21.72	   20.63
+		TASK:reg/unreg Data				100k		916.55	219.91 	  208.36
 		
-		TASK:reg/unreg Views			1k			TIME:   9.90	TIME:   2.09	4.7 : faster
-		TASK:reg/unreg Views			10k			TIME: 107.55	TIME:  27.36	3.9 : faster
-		TASK:reg/unreg Views			100k		TIME: 991.00	TIME: 271.55 	4.0 : faster
-		TASK:reg/unreg Trans			1k			TIME:   7.54	TIME:   2.90	2.6 : faster
-		TASK:reg/unreg Trans			10k			TIME:  83.18	TIME:  28.90	2.8	: faster
-		TASK:reg/unreg Trans			100k		TIME: 1175.0	TIME: 297.09 	4.0 : faster
-		TASK:reg/unreg Data				1k			TIME:   7.09	TIME:    2.0	3.5 : faster
-		TASK:reg/unreg Data				10k			TIME:  77.00	TIME:  21.72	3.5 : faster
-		TASK:reg/unreg Data				100k		TIME: 916.55	TIME: 219.91 	4.1 : faster
+		//Overloaded with real tasks
+		TASK:reg/unreg Views+Ctx+Slot		1k						   15.54
+		TASK:reg/unreg Views+Ctx+Slot		10k						  164.45
+		TASK:reg/unreg Views+Ctx+Slot		100k				 	 1663.80
+		
+		//Overloaded with real tasks and graphics
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	1k						   19.91
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	10k						  202.00
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	100k					 2012.50
 	 */
 	
 	public class CorePerformance extends Compound
 	{
-		private var results		:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		private var results		:Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		private var tasks		:Array = [];
 		
 		private var iterator	:int = 0;
@@ -108,6 +118,8 @@ package test.performance.coreperf
 		private var repeat		:int = 10;
 		
 		private var runner		:int;
+		
+		private var timeInterval:int = 300;
 		
 		public function CorePerformance() 
 		{
@@ -160,7 +172,15 @@ package test.performance.coreperf
 			tasks[31] = "reg/unreg Data		10k";
 			tasks[32] = "reg/unreg Data		100k";
 			
-			runner = setInterval(run, 500);
+			tasks[33] = "reg/unreg Views+Ctx+Slot	1k";
+			tasks[34] = "reg/unreg Views+Ctx+Slot	10k";
+			tasks[35] = "reg/unreg Views+Ctx+Slot	100k";
+			
+			tasks[36] = "reg/unreg Views+Ctx+Gfx+Slot	1k";
+			tasks[37] = "reg/unreg Views+Ctx+Gfx+Slot	10k";
+			tasks[38] = "reg/unreg Views+Ctx+Gfx+Slot	100k";
+			
+			runner = setInterval(run, timeInterval);
 		}
 		
 		private function run():void 
@@ -224,6 +244,7 @@ package test.performance.coreperf
 					test6(1000000, task);
 					break;
 				case 18:
+					timeInterval = 1000;
 					test7(1000, task);
 					break;
 				case 19:
@@ -269,7 +290,26 @@ package test.performance.coreperf
 					test11(100000, task);
 					break;
 				case 33:
-					emitSignal("traceOutput", { id:33, row:"COMPLETE" } );
+					timeInterval = 2000;
+					test12(1000, task);
+					break;
+				case 34:
+					test12(10000, task);
+					break;
+				case 35:
+					test12(100000, task);
+					break;
+				case 36:
+					test13(1000, task);
+					break;
+				case 37:
+					test13(10000, task);
+					break;
+				case 38:
+					test13(100000, task);
+					break;
+				case 39:
+					emitSignal("traceOutput", { id:40, row:"COMPLETE" } );
 					clearInterval(runner);
 					return
 					break;
@@ -283,7 +323,7 @@ package test.performance.coreperf
 				clearInterval(runner);
 				iterator = 0;
 				task++;
-				runner = setInterval(run, 1000);
+				runner = setInterval(run, timeInterval);
 			}
 			
 			System.gc();
@@ -293,7 +333,7 @@ package test.performance.coreperf
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {
-				register(TestView);
+				register(TestViewA);
 			}
 			results[resultsId] += getTimer() - time;
 		}
@@ -302,7 +342,7 @@ package test.performance.coreperf
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {
-				unregister(TestView);
+				unregister(TestViewA);
 			}
 			results[resultsId] += getTimer() - time;
 		}
@@ -366,8 +406,8 @@ package test.performance.coreperf
 		{
 			var time:int = getTimer();
 			for (var i:int = 0; i < max; i++) {
-				register(TestView);
-				unregister(TestView);
+				register(TestViewA);
+				unregister(TestViewA);
 			}
 			results[resultsId] += getTimer() - time;
 		}
@@ -388,6 +428,26 @@ package test.performance.coreperf
 			for (var i:int = 0; i < max; i++) {
 				register(TestData);
 				unregister(TestData);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test12(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				register(TestViewB);
+				unregister(TestViewB);
+			}
+			results[resultsId] += getTimer() - time;
+		}
+		
+		private function test13(max:int, resultsId:int):void 
+		{
+			var time:int = getTimer();
+			for (var i:int = 0; i < max; i++) {
+				register(TestViewC);
+				unregister(TestViewC);
 			}
 			results[resultsId] += getTimer() - time;
 		}

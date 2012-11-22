@@ -38,6 +38,11 @@ package org.bixbite.framework.view
 			_parrentView = value;
 		}
 		
+		/*abstract*/ public function dispose():void
+		{
+			
+		}
+		
 	}
 
 }
