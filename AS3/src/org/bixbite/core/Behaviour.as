@@ -41,7 +41,7 @@ package org.bixbite.core
 		public var signal		:Signal;
 		
 		private var emitter		:Emitter;
-		private var uid			:String;
+		private var _uid			:String;
 		private var type		:String;
 		
 		private var autoDispose	:Boolean = false;
@@ -62,7 +62,7 @@ package org.bixbite.core
 		BIXBITE function initialise(emitter:Emitter, type:String, autoDispose:Boolean, compound:Compound):void
 		{
 			this.emitter 		= emitter;
-			this.uid 			= "@" + emitter.uid;
+			this._uid 			= "@" + emitter.uid + "::" + emitter.coreID;
 			this.signal 		= new Signal(uid);
 			this.type 			= type;
 			this.channelC 		= emitter.channelC;
@@ -207,13 +207,18 @@ package org.bixbite.core
 			
 			compound 	= null 
 			emitter 	= null 
-			uid 		= null 
+			_uid 		= null 
 			type 		= null 
 			
 			channelC 	= null
 			channelD 	= null
 			channelT 	= null
 			channelV 	= null
+		}
+		
+		public function get uid():String 
+		{
+			return _uid;
 		}
 		
 	}

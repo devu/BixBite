@@ -23,14 +23,21 @@ THE SOFTWARE.
 
 package test 
 {
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
+	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
-	import test.integration.contextloader.TestContextLoader;
+	
+	import test.integration.multicore.CoreCompoundOne;
+	import test.integration.multicore.CoreCompoundTwo;
 	import test.performance.coreperf.CorePerformance;
 	import test.performance.signalperf.SignalPerformance;
 	
@@ -41,6 +48,9 @@ package test
 	{
 		private var core1:Core;
 		private var core2:Core;
+		private var core3:Core;
+		private var core4:Core;
+		private var loader:Loader;
 		
 		public function MainTests()
 		{
@@ -50,6 +60,10 @@ package test
 		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			//check if bixbite can be loaded from outside.
+			//don't worry about following tests, they will run :)
+			//loadBixBiteFromFile();
 			
 			var bb:BixBite = new BixBite(stage);
 			bb.addContextRoot("stage", stage);
@@ -65,10 +79,40 @@ package test
 			core2 = bb.spawnCore("test_cases");
 			
 			//Signal performance test
-			//core2.register(SignalPerformance);
+			
+			core2.register(SignalPerformance);
 			
 			//Core performance test
+			/*
 			core2.register(CorePerformance);
+			*/
+			
+			//Multicore communication test
+			/*
+			core3 = bb.spawnCore("test_core_1");
+			core3.register(CoreCompoundOne);
+			
+			core4 = bb.spawnCore("test_core_2");
+			core4.register(CoreCompoundTwo);
+			*/
+		}
+		
+		private function loadBixBiteFromFile():void 
+		{
+			//local
+			var loaderContext:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+			//on the server
+			//var context:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain, SecurityDomain.currentDomain);
+			
+			loader = new Loader();
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoadComplete);
+			loader.load(new URLRequest("bixbite.swf"), loaderContext);
+		}
+		
+		private function onLoadComplete(e:Event):void 
+		{
+			trace("bixbite module loaded");
+			addChild(loader.content);
 		}
 		
 	}

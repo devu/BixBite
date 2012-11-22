@@ -35,7 +35,8 @@ package test.integration.multicore.behaviour
 	{
 		override public function execute(s:Signal):void
 		{
-			trace(this, "ecexuted");
+			//this Behaviour has been registered within 2 separate cores, when executed it should trace on both
+			trace(this, "ecexuted", this.uid);
 		}
 		
 		override public function dispose():void 
