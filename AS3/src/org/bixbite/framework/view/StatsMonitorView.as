@@ -25,16 +25,15 @@ package org.bixbite.framework.view
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
-	import flash.display.Sprite;
 	import flash.text.TextField;
 	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.Stats;
+	import org.bixbite.framework.view.context.StatsMonitor;
 	
 	/**
 	 * @langversion	3.0
@@ -48,7 +47,8 @@ package org.bixbite.framework.view
 		private var monitor			:Bitmap;
 		private var graph			:BitmapData;
 
-		private var panel			:Sprite;
+		private var panel			:StatsMonitor;
+		
 		private var info_fps		:TextField;
 		private var info_ms			:TextField;
 		private var info_mem		:TextField;
@@ -59,11 +59,7 @@ package org.bixbite.framework.view
 		{
 			var tFactory:TextFactory = TextFactory.getInstance();
 			
-			panel = new Sprite();
-			panel.graphics.beginFill(0x000000, 0.8);
-			panel.graphics.drawRect(0, 0, 310, 56);
-			panel.mouseEnabled = false;
-			panel.mouseChildren = false;
+			panel = registerContext("statsPanel", StatsMonitor) as StatsMonitor;
 			
 			graph = new BitmapData(230, 56, true, 0x00000000);
 			monitor = new Bitmap(graph);
@@ -84,8 +80,7 @@ package org.bixbite.framework.view
 			
 			addSlot(StageSignal.ON_ORIENTATION_CHANGED, onOrietnationChanged);
 			
-			sendSignal(DisplaySignal.SET_CONTEXT, { name:"statsPanel", context:panel } );
-			sendSignal(DisplaySignal.ADD_CONTEXT, { name:"statsPanel", container:"stage" } );
+			addContext("statsPanel", "stage");
 		}
 		
 		private function drawGraph(s:Signal):void

@@ -68,7 +68,7 @@ package org.bixbite.framework.transponder
 		
 		private function onMouseDown(e:MouseEvent):void
 		{
-			panel = Sprite(getDisplayObjectByName("statsPanel"));
+			panel = Sprite(getContextById("statsPanel", "stage"));
 			if (panel) panel.startDrag();
 		}
 		
