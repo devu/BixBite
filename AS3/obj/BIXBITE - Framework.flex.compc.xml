@@ -46,6 +46,7 @@
     <class>org.bixbite.framework.view.StatsMonitorView</class>
     <class>org.bixbite.framework.view.Context</class>
     <class>org.bixbite.framework.view.context.StatsMonitor</class>
+    <class>org.bixbite.framework.view.context.OutputContext</class>
     <class>org.bixbite.framework.signal.KeySignal</class>
     <class>org.bixbite.framework.signal.StageSignal</class>
     <class>org.bixbite.framework.transponder.StatsTransponder</class>

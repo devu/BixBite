@@ -1,5 +1,7 @@
 ﻿package examples
 {
+	import examples.helloflash.HelloFlash;
+	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -22,8 +24,8 @@
 		private var core2 : Core;
 
 		/**
-		 * Uncomment out example in order to run it.
-		 * Uncomment them all or in random order to see adventage of modular structure of BixBite
+		 * By default run all examples toogether, don't be terrified by the mess on the screen ;)
+		 * comment/uncomment out examples if you like. Do this in random order to see adventage of modular structure of BixBite
 		 */
 		public function MainExamples ();
 

@@ -44,11 +44,6 @@
 		public var signal : Signal;
 
 		/**
-		 * Additional identifier for Components operating as multiple instances of the same Class
-		 */
-		public var id : String;
-
-		/**
 		 * Set of CDTV channels asociated with Emitter
 		 */
 		var channelC : Channel;

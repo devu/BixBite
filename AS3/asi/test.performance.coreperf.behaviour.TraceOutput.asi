@@ -9,7 +9,11 @@
 	 */
 	public class TraceOutput extends Behaviour
 	{
+		private var outputData : Array;
+
 		public function TraceOutput ();
+
+		public function init () : void;
 
 		public function execute (s:Signal) : void;
 	}

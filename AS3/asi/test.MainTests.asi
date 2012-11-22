@@ -1,11 +1,18 @@
 ﻿package test
 {
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
-	import test.integration.contextloader.TestContextLoader;
+	import test.integration.multicore.CoreCompoundOne;
+	import test.integration.multicore.CoreCompoundTwo;
 	import test.performance.coreperf.CorePerformance;
 	import test.performance.signalperf.SignalPerformance;
 
@@ -17,9 +24,16 @@
 	{
 		private var core1 : Core;
 		private var core2 : Core;
+		private var core3 : Core;
+		private var core4 : Core;
+		private var loader : Loader;
 
 		public function MainTests ();
 
 		private function init (e:Event) : void;
+
+		private function loadBixBiteFromFile () : void;
+
+		private function onLoadComplete (e:Event) : void;
 	}
 }

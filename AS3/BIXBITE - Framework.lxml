@@ -166,6 +166,15 @@
     <string>src\starling\animation\tween.as</string>
     <string>src\com\adobe\utils\agalminiassembler.as</string>
     <string>src\examples\starling\view\context\starlingcontext.as</string>
+    <string>src\test\performance\coreperf\view\testviewc.as</string>
+    <string>src\test\performance\coreperf\view\testviewb.as</string>
+    <string>src\test\performance\coreperf\view\testviewa.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewbcontext.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewccontext.as</string>
+    <string>src\examples\helloflash\view\helloflashview.as</string>
+    <string>src\examples\helloflash\view\ballview.as</string>
+    <string>src\examples\helloflash\view\context\helloflashoutput.as</string>
+    <string>src\examples\helloflash\view\context\ballcontext.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -321,6 +330,15 @@
     <string>src\starling\animation\tween.as</string>
     <string>src\com\adobe\utils\agalminiassembler.as</string>
     <string>src\examples\starling\view\context\starlingcontext.as</string>
+    <string>src\test\performance\coreperf\view\testviewc.as</string>
+    <string>src\test\performance\coreperf\view\testviewb.as</string>
+    <string>src\test\performance\coreperf\view\testviewa.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewbcontext.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewccontext.as</string>
+    <string>src\examples\helloflash\view\helloflashview.as</string>
+    <string>src\examples\helloflash\view\ballview.as</string>
+    <string>src\examples\helloflash\view\context\helloflashoutput.as</string>
+    <string>src\examples\helloflash\view\context\ballcontext.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

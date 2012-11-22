@@ -14,7 +14,7 @@
 	{
 		public var signal : Signal;
 		private var emitter : Emitter;
-		private var uid : String;
+		private var _uid : String;
 		private var type : String;
 		private var autoDispose : Boolean;
 		private var compound : Compound;
@@ -22,6 +22,8 @@
 		var channelD : Channel;
 		var channelT : Channel;
 		var channelV : Channel;
+
+		public function get uid () : String;
 
 		/**
 		 * System controlled Internal method to initialise behaviour

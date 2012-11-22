@@ -255,6 +255,16 @@
     <string>src\starling\animation\tween.as</string>
     <string>src\org\bixbite\framework\view\context.as</string>
     <string>src\org\bixbite\framework\view\context\statsmonitor.as</string>
+    <string>src\test\performance\coreperf\view\testviewc.as</string>
+    <string>src\test\performance\coreperf\view\testviewb.as</string>
+    <string>src\test\performance\coreperf\view\testviewa.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewccontext.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewbcontext.as</string>
+    <string>src\examples\helloflash\view\helloflashview.as</string>
+    <string>src\examples\helloflash\view\ballview.as</string>
+    <string>src\examples\helloflash\view\context\helloflashoutput.as</string>
+    <string>src\examples\helloflash\view\context\ballcontext.as</string>
+    <string>src\org\bixbite\framework\view\context\outputcontext.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -497,8 +507,18 @@
     <string>src\starling\animation\juggler.as</string>
     <string>src\starling\animation\transitions.as</string>
     <string>src\starling\animation\tween.as</string>
-    <string>src\org\bixbite\framework\view\context.as</string>
     <string>src\org\bixbite\framework\view\context\statsmonitor.as</string>
+    <string>src\test\performance\coreperf\view\testviewc.as</string>
+    <string>src\test\performance\coreperf\view\testviewb.as</string>
+    <string>src\test\performance\coreperf\view\testviewa.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewccontext.as</string>
+    <string>src\test\performance\coreperf\view\context\testviewbcontext.as</string>
+    <string>src\examples\helloflash\view\helloflashview.as</string>
+    <string>src\examples\helloflash\view\ballview.as</string>
+    <string>src\examples\helloflash\view\context\helloflashoutput.as</string>
+    <string>src\examples\helloflash\view\context\ballcontext.as</string>
+    <string>src\org\bixbite\framework\view\context.as</string>
+    <string>src\org\bixbite\framework\view\context\outputcontext.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

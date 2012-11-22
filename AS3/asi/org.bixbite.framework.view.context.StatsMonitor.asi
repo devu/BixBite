@@ -9,5 +9,7 @@
 	public class StatsMonitor extends Context
 	{
 		public function StatsMonitor ();
+
+		public function dispose () : void;
 	}
 }

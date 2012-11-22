@@ -21,5 +21,7 @@
 		public function set parrentView (value:View) : void;
 
 		public function Context ();
+
+		public function dispose () : void;
 	}
 }

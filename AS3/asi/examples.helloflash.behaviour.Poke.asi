@@ -1,7 +1,7 @@
 ﻿package examples.helloflash.behaviour
 {
 	import examples.helloflash.HelloFlash;
-	import examples.helloflash.view.Ball;
+	import examples.helloflash.view.BallView;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 
