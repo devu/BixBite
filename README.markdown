@@ -27,8 +27,8 @@ For more info, please visit the [Bixbite](http://www.bixbite.org)
 
 <b>This is still Beta release of AS3 port of BixBite framework. Use on your own risk.</b>
 
-Release log
-v0.9.2
+- Release log v0.9.2
+-
 
 - Documentation.
 - Swc libraries for AS3.
@@ -57,7 +57,9 @@ Speed of code execution has been pushed to its limits, we were trying hard to ma
 - Framework layer is completely independent from the core. Creates opportunity to have different framework implementations based on native display list, custom as well as Stage3D.
 We've got modified version of Starling to run with BixBite as well.
 
-Planed for future releases
+- Planed for future releases
+-
+
 - More detailed DOCS.
 - More examples.
 - Tutorials.
