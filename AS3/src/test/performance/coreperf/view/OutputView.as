@@ -37,6 +37,7 @@ package test.performance.coreperf.view
 		override public function init():void 
 		{
 			output = OutputContext(registerContext("outputText", OutputContext));
+			output.y = 110;
 			addContext("outputText", "stage");
 			
 			addSlot("traceOutput", onTraceOutput);

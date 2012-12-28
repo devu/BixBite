@@ -71,21 +71,18 @@ package test
 			core1 = bb.spawnCore("stats");
 			
 			core1.register(StageManager);
-			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			core1.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
 			core1.register(Stats);
-			core1.sendSignal(Stats.START);
+			core1.emitSignal(Stats.START);
 			
 			core2 = bb.spawnCore("test_cases");
 			
 			//Signal performance test
-			
 			core2.register(SignalPerformance);
 			
 			//Core performance test
-			/*
-			core2.register(CorePerformance);
-			*/
+			//core2.register(CorePerformance);
 			
 			//Multicore communication test
 			/*

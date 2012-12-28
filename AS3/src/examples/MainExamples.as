@@ -36,8 +36,8 @@ package examples
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
 	
-	import starling.core.Starling;
-	import starling.display.Sprite;
+	//import starling.core.Starling;
+	//import starling.display.Sprite;
 	
 	/**
 	 * @langversion	3.0
@@ -60,7 +60,7 @@ package examples
 		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
+			/*
 			//Instatiate Starling for stage3D
 			Starling.multitouchEnabled = true;
             Starling.handleLostContext = true;
@@ -69,37 +69,32 @@ package examples
             starling.simulateMultitouch  = false;
             starling.enableErrorChecking = false;
             starling.start();
-			
+			*/
 			//Instantiate BixBite
 			var bb:BixBite = new BixBite(stage);
 			
 			//Add some roots for display list, it can be any object that has addChild method implemented
 			bb.addContextRoot("stage", stage);
 			bb.addContextRoot("root", this);
-			bb.addContextRoot("stage2D", starling.stage);
+			//bb.addContextRoot("stage2D", starling.stage);
 			
 			//Spawn some cores to work with and give it a name
 			core0 = bb.spawnCore("framework");
 			core1 = bb.spawnCore("performance");
-			core2 = bb.spawnCore("starling");
+			//core2 = bb.spawnCore("starling");
 			
 			//Register functional Compounds with the Core
 			/**
 			 * Little Compound for basic stage management
 			 */
 			core0.register(StageManager);
-			core0.sendSignal(StageSignal.SET_STAGE, { frameRate:60 } );
+			core0.emitSignal(StageSignal.SET_STAGE, { frameRate:60 } );
 			
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
 			 */
 			core0.register(Stats);
-			core0.sendSignal(Stats.START);
-			
-			/**
-			* Robot Legs Implementation of HelloFlash example whithin BixBite
-			*/
-			core1.register(HelloFlash);
+			core0.emitSignal(Stats.START);
 			
 			/**
 			* Basic BixBite example to show workflow
@@ -107,9 +102,14 @@ package examples
 			core1.register(HelloWorld);
 			
 			/**
+			* Robot Legs Implementation of HelloFlash example whithin BixBite
+			*/
+			core1.register(HelloFlash);
+			
+			/**
 			 * Example of Starling Integration
 			 */
-			core2.register(HelloStarling);
+			//core2.register(HelloStarling);
 		}
 	}
 

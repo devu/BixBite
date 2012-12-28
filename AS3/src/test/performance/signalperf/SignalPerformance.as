@@ -23,7 +23,11 @@ THE SOFTWARE.
 
 package test.performance.signalperf 
 {
+	import flash.events.Event;
+	import flash.utils.getTimer;
 	import org.bixbite.core.Compound;
+	import test.performance.signalperf.behaviour.CallbackTest;
+	import test.performance.signalperf.behaviour.NativeTest;
 	import test.performance.signalperf.behaviour.TestBehaviour;
 	import test.performance.signalperf.behaviour.TestRunnerSRS;
 	import test.performance.signalperf.behaviour.TestRunnerStandard;
@@ -121,16 +125,16 @@ package test.performance.signalperf
 	 */
 	public class SignalPerformance extends Compound
 	{
-		public static const INIT_TEST			:String = "SignalPerformance.INIT_TEST";
-		public static const START_TEST			:String = "SignalPerformance.START_TEST";
-		public static const BEGIN_TEST			:String = "SignalPerformance.BEGIN_TEST";
-		public static const RUN_TEST_SRS		:String = "SignalPerformance.RUN_TEST_SRS";
-		static public const RUN_TEST_STANDARD	:String = "SignalPerformance.RUN_TEST_STANDARD";
+		public static const INIT_TEST				:String = "SignalPerformance.INIT_TEST";
+		public static const START_TEST				:String = "SignalPerformance.START_TEST";
+		public static const BEGIN_TEST				:String = "SignalPerformance.BEGIN_TEST";
+		public static const RUN_TEST_SRS			:String = "SignalPerformance.RUN_TEST_SRS";
+		static public const RUN_TEST_STANDARD		:String = "SignalPerformance.RUN_TEST_STANDARD";
 		
-		public function SignalPerformance() 
-		{
-			
-		}
+		static public const BEGIN_NATIVE_TEST		:String = "SignalPerformance.BEGIN_NATIVE_TEST";
+		static public const NATIVE_TEST_RESULTS		:String = "SignalPerformance.NATIVE_TEST_RESULTS";
+		static public const BEGIN_CALLBACK_TEST		:String = "SignalPerformance.BEGIN_CALLBACK_TEST";
+		static public const CALLBACK_TEST_RESULTS	:String = "SignalPerformance.CALLBACK_TEST_RESULTS";
 		
 		override public function init():void
 		{
@@ -140,8 +144,8 @@ package test.performance.signalperf
 			addBehaviour(SignalPerformance.START_TEST			, TestBehaviour);
 			addBehaviour(SignalPerformance.RUN_TEST_SRS			, TestRunnerSRS);
 			addBehaviour(SignalPerformance.RUN_TEST_STANDARD	, TestRunnerStandard);
-			
-			sendSignal(SignalPerformance.INIT_TEST);
+			addBehaviour(SignalPerformance.BEGIN_NATIVE_TEST	, NativeTest);
+			addBehaviour(SignalPerformance.BEGIN_CALLBACK_TEST	, CallbackTest);
 		}
 		
 	}

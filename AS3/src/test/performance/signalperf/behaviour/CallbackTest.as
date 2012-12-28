@@ -21,50 +21,66 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package test.performance.signalperf.transponder 
+package test.performance.signalperf.behaviour 
 {
-	import flash.events.MouseEvent;
+	
+	import flash.utils.getTimer;
+	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.core.Slot;
-	import org.bixbite.core.Transponder;
 	import test.performance.signalperf.SignalPerformance;
 	
 	/**
-	 * @langversion	3.0
+	 * This is equivalent of signal test represented native way as pure callback crossreferenced structure. 
+	 * @langversion 3.0
 	 */
-	public class TestTransponder extends Transponder 
+	public class CallbackTest extends Behaviour 
 	{
-		private var slot:Slot;
-		
-		public function TestTransponder() 
-		{
-			
-		}
+		private var objectA:ObjectA;
+		private var objectB:ObjectB;
+		private var objectC:ObjectC;
 		
 		override public function init():void 
 		{
-			addSensor(MouseEvent.CLICK, startTest);
-			addSlot(SignalPerformance.RUN_TEST_SRS, onRunTestSrs);
-			addSlot(SignalPerformance.RUN_TEST_STANDARD, onRunTestStandard);
+			objectA = new ObjectA();
+			objectA.onEventTestA = onEventA;
+			objectB = new ObjectB();
+			objectB.onEventTestB = onEventB;
+			objectC = new ObjectC();
+			objectC.onEventTestC = onEventC;
+		}
+		
+		override public function execute(s:Signal):void
+		{
+			var max:int = s.params.max;
 			
-			transmit(SignalPerformance.BEGIN_NATIVE_TEST);
+			var time:int = getTimer();
+			for (var i:int = 0 ; i < max; i++) objectA.onEventTestA();
+			time = getTimer() - time;
+			
+			sendSignal(SignalPerformance.CALLBACK_TEST_RESULTS, { time:time } );
 		}
 		
-		private function startTest(e:MouseEvent):void
+		private function onEventA():void 
 		{
-			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);
-			sendSignal(SignalPerformance.START_TEST);
+			objectB.onEventTestB();
 		}
 		
-		private function onRunTestSrs(s:Signal):void
+		private function onEventB():void
 		{
-			slot.send(signal);
+			objectC.onEventTestC();
 		}
 		
-		private function onRunTestStandard(s:Signal):void 
+		private function onEventC():void
 		{
-			sendSignal(SignalPerformance.RUN_TEST_STANDARD);
+			//trace("recieved");
 		}
+		
+		override public function dispose():void 
+		{
+			//clean up this class here and then:
+			super.dispose();
+		}
+		
 	}
-
+	
 }

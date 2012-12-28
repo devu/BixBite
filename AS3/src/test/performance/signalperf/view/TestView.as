@@ -49,26 +49,38 @@ package test.performance.signalperf.view
 		override public function init():void 
 		{
 			output = OutputContext(registerContext("signalPerf", OutputContext));
+			output.y = 60;
 			addContext("signalPerf", "stage");
 			
+			addSlot(SignalPerformance.NATIVE_TEST_RESULTS, onNativeTest);
+			addSlot(SignalPerformance.CALLBACK_TEST_RESULTS, onCallbackTest);
 			addSlot(SignalPerformance.BEGIN_TEST, onBeginTest);
 			addSlot(SignalPerformance.RUN_TEST_SRS, onRunTestSRS);
 			addSlot(SignalPerformance.RUN_TEST_STANDARD, onRunTestStandard);
 		}
 		
+		private function onNativeTest(s:Signal):void 
+		{
+			output.appendText("NATIVE: " + s.params.time + "ms \n");
+		}
+		
+		private function onCallbackTest(s:Signal):void 
+		{
+			output.appendText("CALLBACK: " + s.params.time + "ms \n");
+		}
+		
 		private function onRunTestSRS(s:Signal):void 
 		{
-			
+			//trace("recieved");
 		}
 		
 		private function onRunTestStandard(s:Signal):void 
 		{
-			
+			//trace("recieved");
 		}
 		
 		private function onBeginTest(s:Signal):void
 		{
-			output.text = "Running...";
 			setTimeout(startTest, 1000);
 		}
 		
@@ -86,6 +98,8 @@ package test.performance.signalperf.view
 			startTime = getTimer();
 			for (i = 0 ; i < max; i++) slot.send(signal);
 			output.appendText("SRS: " + String(getTimer() - startTime + "ms \n"));
+			
+			sendSignal(SignalPerformance.BEGIN_NATIVE_TEST, { max:max } );
 		}
 	}
 
