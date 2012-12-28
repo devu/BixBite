@@ -13,7 +13,6 @@ package org.bixbite.framework.view.context
 		
 		public function OutputContext() 
 		{
-			this.y = 100;
 			mouseEnabled = false;
 			
 			txt = new TextField(); 

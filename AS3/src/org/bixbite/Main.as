@@ -52,10 +52,10 @@ package org.bixbite
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
-	
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
+	
 	
 	/**
 	 * Main BixBite frmework document class for development purposes
@@ -65,7 +65,7 @@ package org.bixbite
 	
 	public class Main extends Sprite
 	{
-		private var core1:Core;
+		private var core1	:Core;
 		
 		public function Main() 
 		{
@@ -77,18 +77,15 @@ package org.bixbite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var bb:BixBite = new BixBite(stage);
-			bb.addContextRoot("stage", this);
+			bb.addContextRoot("stage", stage);
+			
 			core1 = bb.spawnCore("1");
 			
 			core1.register(StageManager);
-			core1.sendSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			core1.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
 			core1.register(Stats);
-			core1.sendSignal(Stats.START);
-			/*
-			core2 = bb.spawnCore("2");
-			core2.register(SignalPerformance);
-			*/
+			core1.emitSignal(Stats.START);
 		}
 		
 	}

@@ -24,46 +24,21 @@ THE SOFTWARE.
 package org.bixbite.framework.transponder 
 {
 	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
-	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.Stats;
+	
 	
 	/**
 	 * @langversion	3.0
      */
 	public class StatsTransponder extends Transponder 
 	{
-		private var panel			:Sprite;
-		private var calculateSRS	:Function;
+		private var panel:Sprite;
 		
 		override public function init():void 
 		{
 			addSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
 			addSensor(MouseEvent.MOUSE_UP	, onMouseUp);
-			
-			addSlot(Stats.START, onStart);
-			addSlot(Stats.PAUSE, onPause);
-		}
-		
-		private function onStart(s:Signal):void 
-		{
-			calculateSRS = getSlots(Stats.CALCULATE).getSlotByIndex(0).send;
-			addSensor(Event.ENTER_FRAME		, onEnterFrame);
-		}
-		
-		private function onPause(s:Signal):void 
-		{
-			removeSensor(Event.ENTER_FRAME	, onEnterFrame);
-			calculateSRS = null;
-		}
-		
-		private function onEnterFrame(e:Event):void 
-		{
-			//SRS
-			calculateSRS(signal);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void
@@ -82,17 +57,10 @@ package org.bixbite.framework.transponder
 		
 		override public function destroy():void 
 		{
-			removeSensor(Event.ENTER_FRAME		, onEnterFrame);
 			removeSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
 			removeSensor(MouseEvent.MOUSE_UP	, onMouseUp);
 			
-			removeSlot(Stats.CALCULATE);
-			removeSlot(Stats.START);
-			removeSlot(Stats.PAUSE);
-			
-			calculateSRS = null;
 			panel = null;
-			
 			super.destroy();
 		}
 	}

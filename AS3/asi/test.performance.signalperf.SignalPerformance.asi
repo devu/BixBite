@@ -1,6 +1,10 @@
 ﻿package test.performance.signalperf
 {
+	import flash.events.Event;
+	import flash.utils.getTimer;
 	import org.bixbite.core.Compound;
+	import test.performance.signalperf.behaviour.CallbackTest;
+	import test.performance.signalperf.behaviour.NativeTest;
 	import test.performance.signalperf.behaviour.TestBehaviour;
 	import test.performance.signalperf.behaviour.TestRunnerSRS;
 	import test.performance.signalperf.behaviour.TestRunnerStandard;
@@ -104,8 +108,10 @@
 		public static const BEGIN_TEST : String = "SignalPerformance.BEGIN_TEST";
 		public static const RUN_TEST_SRS : String = "SignalPerformance.RUN_TEST_SRS";
 		public static const RUN_TEST_STANDARD : String = "SignalPerformance.RUN_TEST_STANDARD";
-
-		public function SignalPerformance ();
+		public static const BEGIN_NATIVE_TEST : String = "SignalPerformance.BEGIN_NATIVE_TEST";
+		public static const NATIVE_TEST_RESULTS : String = "SignalPerformance.NATIVE_TEST_RESULTS";
+		public static const BEGIN_CALLBACK_TEST : String = "SignalPerformance.BEGIN_CALLBACK_TEST";
+		public static const CALLBACK_TEST_RESULTS : String = "SignalPerformance.CALLBACK_TEST_RESULTS";
 
 		public function init () : void;
 	}

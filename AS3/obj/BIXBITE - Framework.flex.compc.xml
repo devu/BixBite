@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2012\BIXBITE\AS3\.\lib\bixbite_framework_0.9.1.swc</output>
+  <output>E:\xampp\htdocs\2013\BIXBITE\AS3\.\lib\bixbite_framework_0.9.2.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -17,7 +17,7 @@
     <use-resource-bundle-metadata>true</use-resource-bundle-metadata>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path>
-      <path-element>e:\xampp\htdocs\2012\bixbite\as3\src</path-element>
+      <path-element>e:\xampp\htdocs\2013\bixbite\as3\src</path-element>
     </source-path>
   </compiler>
   <include-classes>

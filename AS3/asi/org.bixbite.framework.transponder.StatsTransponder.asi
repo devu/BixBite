@@ -1,11 +1,8 @@
 ﻿package org.bixbite.framework.transponder
 {
 	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
-	import org.bixbite.framework.Stats;
 
 	/**
 	 *
@@ -14,15 +11,8 @@
 	public class StatsTransponder extends Transponder
 	{
 		private var panel : Sprite;
-		private var calculateSRS : Function;
 
 		public function init () : void;
-
-		private function onStart (s:Signal) : void;
-
-		private function onPause (s:Signal) : void;
-
-		private function onEnterFrame (e:Event) : void;
 
 		private function onMouseDown (e:MouseEvent) : void;
 

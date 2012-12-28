@@ -1,5 +1,6 @@
 ﻿package org.bixbite.framework.behaviour
 {
+	import flash.events.Event;
 	import flash.system.System;
 	import flash.utils.getTimer;
 	import org.bixbite.core.Behaviour;
@@ -26,6 +27,8 @@
 		private function onData (data:StatsData) : void;
 
 		public function execute (s:Signal) : void;
+
+		private function calculate (e:Event) : void;
 
 		public function dispose () : void;
 	}

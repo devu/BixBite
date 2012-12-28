@@ -23,6 +23,10 @@
 
 		public function init () : void;
 
+		private function onNativeTest (s:Signal) : void;
+
+		private function onCallbackTest (s:Signal) : void;
+
 		private function onRunTestSRS (s:Signal) : void;
 
 		private function onRunTestStandard (s:Signal) : void;

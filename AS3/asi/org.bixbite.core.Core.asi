@@ -29,7 +29,6 @@
 		 * Short refrences to communication channels that this Core can send signals
 		 */
 		private var channelC : Channel;
-		private var channelT : Channel;
 
 		/**
 		 * Constructor
@@ -56,13 +55,6 @@
 		 * @param	compound
 		 */
 		public function unregister (compound:Class) : void;
-
-		/**
-		 * Multi-cast method to broadcast one Singal on entire Transponder channel of this Core.
-		 * @param	type
-		 * @param	params
-		 */
-		public function sendSignal (type:String, params:Object=null) : void;
 
 		/**
 		 * Multi-cast method to broadcast one Singal on entire Compound channel of this Core.

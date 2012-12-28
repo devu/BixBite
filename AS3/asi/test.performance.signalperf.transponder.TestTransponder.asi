@@ -18,8 +18,6 @@
 
 		public function init () : void;
 
-		private function onTestInit (s:Signal) : void;
-
 		private function startTest (e:MouseEvent) : void;
 
 		private function onRunTestSrs (s:Signal) : void;

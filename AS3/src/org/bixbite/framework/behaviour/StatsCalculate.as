@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.framework.behaviour 
 {
+	import flash.events.Event;
 	import flash.system.System;
 	import flash.utils.getTimer;
 	
@@ -62,6 +63,11 @@ package org.bixbite.framework.behaviour
 		}
 		
 		override public function execute(s:Signal):void 
+		{
+			data.stage.addEventListener(Event.ENTER_FRAME, calculate);
+		}
+		
+		private function calculate(e:Event):void 
 		{
 			data.timer = timer = getTimer();
 			

@@ -54,7 +54,7 @@ package org.bixbite.core
 		 * Short refrences to communication channels that this Core can send signals
 		 */
 		private var channelC	:Channel;
-		private var channelT	:Channel;
+		//private var channelT	:Channel;
 		
 		/**
 		 * Constructor
@@ -65,7 +65,7 @@ package org.bixbite.core
 			emitter = new Emitter();
 			emitter.coreID = id;
 			
-			channelT = emitter.channelT;
+			//channelT = emitter.channelT;
 			channelC = emitter.channelC;
 			
 			uid = "@" + emitter.uid;
@@ -126,11 +126,12 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
+		/*
 		public function sendSignal(type:String, params:Object = null):void
 		{
 			signal.params = params;
 			emitter.broadcast(channelT, type, signal);
-		}
+		}*/
 		
 		/**
 		 * Multi-cast method to broadcast one Singal on entire Compound channel of this Core.
@@ -152,7 +153,7 @@ package org.bixbite.core
 			signal = null;
 			
 			channelC = null;
-			channelT = null;
+			//channelT = null;
 			
 			emitter.destroy();
 			emitter = null;

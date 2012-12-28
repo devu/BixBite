@@ -38,7 +38,6 @@ package org.bixbite.framework
 	public class Stats extends Compound 
 	{
 		//internals
-		static public const CALCULATE		:String = "Stats.CALCULATE";
 		static public const DATA_REQUEST	:String = "Stats.DATA_REQUEST";
 		static public const DRAW			:String = "Stats.DRAW";
 		static public const UPDATE			:String = "Stats.UPDATE";
@@ -46,28 +45,19 @@ package org.bixbite.framework
 		
 		//in
 		static public const START			:String = "Stats.START";
-		static public const PAUSE			:String = "Stats.PAUSE";
 		
 		override public function init():void 
 		{
-			// modules required to run
-			register(StageManager);
-			
-			// compound modules
 			register(StatsData);
 			register(StatsTransponder);
 			register(StatsMonitorView);
 			
-			addBehaviour(Stats.CALCULATE, StatsCalculate);
+			addBehaviour(Stats.START, StatsCalculate);
 		}
 		
 		override public function destroy():void 
 		{
-			sendSignal(Stats.PAUSE);
-			
-			removeBehaviour(Stats.CALCULATE);
-			
-			unregister(StageManager);
+			removeBehaviour(Stats.START);
 			
 			unregister(StatsData);
 			unregister(StatsTransponder);

@@ -75,7 +75,7 @@ package org.bixbite.core
 		 */
 		public function sendSignal(type:String, params:* = null):void 
 		{
-			if (params) signal.params = params;
+			signal.params = params;
 			emitter.broadcast(channelC, type, signal);
 		}
 		

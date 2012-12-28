@@ -58,9 +58,9 @@ package org.bixbite.core
 		 * Regsiter component within current Compound
 		 * @param	component
 		 */
-		public function register(component:Class):void
+		public function register(component:Class, singleton:Boolean = true):void
 		{
-			emitter.registerComponent(component);
+			emitter.registerComponent(component, singleton);
 		}
 		
 		/**

@@ -15,13 +15,11 @@
 	 */
 	public class Stats extends Compound
 	{
-		public static const CALCULATE : String = "Stats.CALCULATE";
 		public static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
 		public static const DRAW : String = "Stats.DRAW";
 		public static const UPDATE : String = "Stats.UPDATE";
 		public static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
 		public static const START : String = "Stats.START";
-		public static const PAUSE : String = "Stats.PAUSE";
 
 		public function init () : void;
 
