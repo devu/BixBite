@@ -6,9 +6,9 @@
 	<meta name="description" content="" />
 	
 	<script src="js/core/bixbite.js"></script>
-	<script src="js/framework/DOMDspManager.js"></script>
-	<script src="js/website/Main.js"></script>
-
+	<script src="js/examples/helloworld.js"></script>
+	<script src="js/examples/hellohtml.js"></script>
+	
 	<style>
 		html, body { height:100%; overflow:hidden; }
 		body { margin:0; }
@@ -17,9 +17,32 @@
 
 <body>
 	<script>
+		/*
 		
-		var core = new BixBite();
-		core.register(MainWebsite);
+		BixBite framework exposes very few Classes/Components on the global scope ready to work with and extend your own classes from.
+		It is very shallow and strict structure, deal with it as a set of reserved words:
+		
+		BixBite 	- main Class, in order to initialise framework you need to create one instance of this Class.
+		
+		Behaviour	- executable module with extra method execute();
+		Compound	- functional module
+		Data		- data coponent
+		Transponder	- transponder component
+		View		- view component
+		
+		There are also some helper methods available on the global scope:
+		
+		trace();
+		getTimer();
+		
+		*/
+		
+		var bb = new BixBite();
+		bb.addContextRoot("body", document.body);
+		
+		var core = bb.spawnCore("main");
+		core.register(HelloWorld);
+		core.register(HelloHTML);
 		
 	</script>
 </body>

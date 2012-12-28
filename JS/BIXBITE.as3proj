@@ -17,6 +17,7 @@
   <classpaths>
     <class path="src" />
     <class path="..\AS3\src" />
+    <class path="..\AS3\lib" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -52,6 +53,7 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\bixbite_logos.swc" />
+    <element path="..\AS3\lib\bixbite_framework_0.9.1.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
