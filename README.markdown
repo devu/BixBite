@@ -25,7 +25,7 @@ BixBite is released under the MIT license.
 
 For more info, please visit the [Bixbite](http://www.bixbite.org)
 
-<b>This is still Beta release of AS3 port of BixBite framework. Use on your own risk.</b>
+<b>This is still Beta release of AS3 and JS port of BixBite framework. Use on your own risk.</b>
 
 - Release log v0.9.2
 -
@@ -34,28 +34,29 @@ For more info, please visit the [Bixbite](http://www.bixbite.org)
 - Swc libraries for AS3.
 - Performance tests.
 - Examples of use.
+- Smallest footprint, fully functional core AS3 has only 4kb (JS minified version of framework 6.07KB (1.84KB gzipped))
 - The best framework for game developers and mobile platform in terms of performance and memory consumption.
 - The best framework for web development in general. Using BixBite JS plugin-free version, you can easily develop application that performs well on mobile devices.
 - Using BixBite AS3 you creating lighter and faster structure to compare to any well known frameworks or even pure AS3 using native Events as communication layer.
 Speed of code execution has been pushed to its limits, we were trying hard to make it happen. However, BixBite JS and pure code execution is even faster than on FlashPlayer!
-- Signal/Slot/Request notification system inspired by QT4
-- Signals are faster than native events
-- Send one signal to notify multiple Actors at the same time. (multi-cast)
-- Type safe API on AS3 target.
-- Completely loosely decoupled classes.
-- Less classes to get job done.
-- Smallest footprint, fully functional core AS3 has only 4 kb(JS minified version of framework 5.24KB (1.58KB gzipped))
-- Faster execution of any part of the system.
+- Common API, code written in AS3 and JS is almost identical, there is no need for recompilation or interpretation on architecture level.
+- Signal/Slot notification system inspired by QT4 is currently 4 times faster to compare to native Events. 
+- Request/Response mechanism for Data<->Behaviour components
+- Multi-cast and Signle-cast methods to leverage one-to-many and many-to-one communication routes.
+- Type safe API on AS3 target makes it robust for development and debugging, even if you lack of good tools on JS target, result of AS3 can by trusted and just copy and pasted to JS.
+- Completely loosely decoupled classes, no dependencies and cross references, No needs for public methods at all.
+- Less classes to get the job done.
+- Faster execution of any part of the system. By using a very shallow structure implemented with the best practices on target platform native language.
 - Smallest startup lag.
-- Cleaner code.
-- Only 1 level of abstraction
-- ANMS - Application Nested Modular System - you can create number of small standalone apps and pull them into another application run as modules.
+- Consistent and Cleaner code.
+- Only 1 level of abstraction.
+- AMS - Application Modular System - you can create number of small standalone apps and pull them into another Compound and run as modules.
 - CDTV design pattern (Compound, Data, Transponder, View) supported with Behaviours that acts like executable components and leverage business logic of application.
 - CDTV signal bus to make sure communication between actors is happening in correct order.
 - Core as a micro architecture is ready and fully functioning, (not unit tested yet).
 - Using just a core you can create your own branch or have own idea how you can implement 2nd abstraction level.
 - Framework layer is completely independent from the core. Creates opportunity to have different framework implementations based on native display list, custom as well as Stage3D.
-We've got modified version of Starling to run with BixBite as well.
+We've got modified version of Starling to run with BixBite as well. For JS target you can leverage DOM, SVG or Canvas API without chenging your architecture at all.
 
 - Planed for future releases
 -

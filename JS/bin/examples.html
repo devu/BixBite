@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="js/core/bixbite.js"></script>
+	<script src="js/examples/helloworld.js"></script>
+	<script src="js/examples/hellohtml.js"></script>
+	
+	<script src="js/swfobject.js"></script>
+	<script>
+		var flashvars = {
+		};
+		var params = {
+			menu: "false",
+			scale: "noScale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			//wmode: "direct" // can cause issues with FP settings & webcam
+		};
+		var attributes = {
+			id:"bixbite"
+		};
+		swfobject.embedSWF(
+			"examples.swf", 
+			"flash", "100%", "100%", "10.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes);
+	</script>
+	
+	<style>
+		html, body{ height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<div id="js" style="height:600px;width:800px;float:left;overflow:hidden;"></div>
+	<div id="as" style="height:600px;width:800px;float:left;">
+		<div id="flash"></div>
+	</div>
+	
+	<script>
+		
+		var bb = new BixBite();
+		bb.addContextRoot("stage", document.getElementById("js"));
+		
+		var core = bb.spawnCore("main");
+		core.register(HelloWorld);
+		core.register(HelloHTML);
+		
+	</script>
+</body>
+
+</html>

@@ -52,8 +52,8 @@ package examples.helloworld.view
 			textField.autoSize = "left";
 			textField.selectable = false;
 			
-			context.x = 200 + Math.random() * 1400;
-			context.y = Math.random() * 900;
+			context.x = 200 + Math.random() * 500;
+			context.y = 50 + Math.random() * 600;
 			
 			context.addChild(textField);
 			stage.addChild(context);

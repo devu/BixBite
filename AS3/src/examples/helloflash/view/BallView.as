@@ -51,8 +51,8 @@ package examples.helloflash.view
 		{
 			context = BallContext(registerContext("ball", BallContext));
 			context.name = "ball";
-			context.x = Math.random() * 500;
-			context.y = Math.random() * 375;
+			context.x = 50 + Math.random() * 500;
+			context.y = 50 + Math.random() * 375;
 			
 			addContext("ball", "root");
 			

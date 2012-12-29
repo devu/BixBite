@@ -93,8 +93,8 @@ package examples
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);
 			 */
-			core0.register(Stats);
-			core0.emitSignal(Stats.START);
+			//core0.register(Stats);
+			//core0.emitSignal(Stats.START);
 			
 			/**
 			* Basic BixBite example to show workflow

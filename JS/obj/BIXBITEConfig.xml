@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'12/27/2012'</value>
+      <value>'12/29/2012'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -38,7 +38,7 @@
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>E:\xampp\htdocs\2013\BIXBITE\AS3\lib\bixbite_framework_0.9.1.swc</path-element>
+      <path-element>E:\xampp\htdocs\2013\BIXBITE\AS3\lib\bixbite_framework_0.9.2.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

@@ -53,7 +53,7 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\bixbite_logos.swc" />
-    <element path="..\AS3\lib\bixbite_framework_0.9.1.swc" />
+    <element path="..\AS3\lib\bixbite_framework_0.9.2.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

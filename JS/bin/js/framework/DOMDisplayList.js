@@ -90,8 +90,6 @@ p.setCtx = function(ctx,n){
 
 p.transform = function(){
   if(this.stage) this.style.setProperty(prefix+"transform","rotate("+this._r+"deg) scale("+this._sx+", "+this._sy+")");
-  //if(this.stage) this.style[prefix+"transform"] = "rotate("+this._r+"deg) scale("+this._sx+", "+this._sy+")";
-  //if(this.stage) this.style[prefix+"transform"] = "matrix(0.5,1.1,1.1,0.5,100,200)";
 }
 
 Object.defineProperty(p,"name",{get:function(){return this.ctx.getAttribute("id")},set:function(v){this.ctx.setAttribute("id",v);}});

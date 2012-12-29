@@ -17,16 +17,16 @@
 
 <body>
 	<script>
-		/*
 		
+		/*
 		BixBite framework exposes very few Classes/Components on the global scope ready to work with and extend your own classes from.
 		It is very shallow and strict structure, deal with it as a set of reserved words:
 		
 		BixBite 	- main Class, in order to initialise framework you need to create one instance of this Class.
 		
-		Behaviour	- executable module with extra method execute();
+		Behaviour	- executable component with an extra method execute() to leverage business logic;
 		Compound	- functional module
-		Data		- data coponent
+		Data		- data component
 		Transponder	- transponder component
 		View		- view component
 		
@@ -35,14 +35,107 @@
 		trace();
 		getTimer();
 		
+		From now on all classes you are going to write should extend those components above and have one method implemented within, init();
+		For instance:
+		
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			this.init=function(){
+				//trace(MyCompound has been initialised);
+			}
+		}
+		
+		It is recomended that Behaviour,Data,Transponder and View class definitions are writen inside Compound body to prevent exposing them into global scope.
+		
+		For instance:
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			this.init=function(){
+				//trace(MyCompound has been initialised);
+				this.register(MyView);
+			}
+			
+			MyView.extend(View);
+			function MyView(){
+				this.init=function(){
+					//trace(MyView is up);
+				}
+			}
+		}
+		
+		In BixBite framework you don't have to worry about JS scope issues.
+		if you adding slots and recieving signals or dealing with native events 'this' always refers to the Class you are in.
+		
+		For instance:
+		
+			MyView.extend(View);
+			function MyView(){
+				this.init=function(){
+					addSlot("test", onTest);
+				}
+				
+				onTest = function(signal){
+					trace(this);//output MyView
+				}
+			}
 		*/
 		
-		var bb = new BixBite();
-		bb.addContextRoot("body", document.body);
+		// Here is some Compound(Functional Module) definition with internal Components
+		// In this example we testing View ablity to register, add, remove and unregister its Context
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			
+			this.init=function(){
+				this.register(MyView);
+			}
+			
+			//Every View Class has 2 abstract methods that can be overriden:
+			//this.onContextAdded();
+			//this.onContextRemoved();
+			//This is very convinient to control states and visibility of your graphical context
+			
+			MyView.extend(View);
+			function MyView(){
+				
+				this.init=function(){
+					//Lets create some context JS dynamic way
+					var style = "position:absolute; background:#ff0000; width:10px; height:10px; left:100px; top:10px; border-radius:5px;";
+					var context = document.createElement("div");
+					context.setAttribute("style", style);
+					//Then register it within BixBite virtual display list
+					this.registerContext("test", context);
+					//And add context into previously registered root container
+					this.addContext("test","stage");
+				}
+				
+				//If your context has been added method below will be invoked.
+				this.onContextAdded=function(){
+					trace("added");
+					this.removeContext("test");
+				}
+				
+				//Below method will be invoked as soon as context will be removed from virtual display list.
+				this.onContextRemoved=function(){
+					trace("removed");
+					this.unregisterContext("test");
+				}
+			}
+		}
 		
+		//This is a typical code block to initialise BixBite:
+		//Create Instance of BixBite
+		var bb = new BixBite();
+		//Add a root for DOM displayable elements (it can be any div)
+		bb.addContextRoot("stage", document.body);
+		//Spawn a core(You can spawn multiple cores and register diferent Compounds within them)
 		var core = bb.spawnCore("main");
-		core.register(HelloWorld);
-		core.register(HelloHTML);
+		//Register previusly created Compound
+		core.register(MyCompound);
+		
+		//Compound can start itself if you have some auto executable Behaviours or you can always kick start them with some custom signal
+		//core.emitSignal("kick")
+		//It is usefull if you need to pass some initial parameters to your functional Module/Compound
+		//core.emitSignal("kick", {delay:100});
 		
 	</script>
 </body>

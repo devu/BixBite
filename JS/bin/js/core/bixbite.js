@@ -87,11 +87,12 @@ p.sendSignal=function(t,p){this.s.params=p;this.e.brc(this.chT,t,this.s)}
 p.emitSignal=function(t,p){this.s.params=p;this.e.brc(this.chV,t,this.s)}
 p.emitSignalTo=function(uid,t,p){this.s.params=p;this.e.snd(this.chV,uid,t,this.s)}
 p.getSlots=function(t){return this.chT[t]}
-//TODO
-//p.registerContext(id:String, context:Class)
-//p.unregisterContext(id:String)
-//p.addContext(contextId:String, containerId:String)
-//p.removeContext(contextId:String)
+p.registerContext=function(id,ctx){return this.e.bb.regCtx(this,id,ctx)}
+p.unregisterContext=function(id){this.e.bb.unrCtx(id)}
+p.addContext=function(ctxId,ctnId){this.e.bb.addCtx(ctxId,ctnId)}
+p.onContextAdded=function(){}
+p.removeContext=function(id){this.e.bb.remCtx(id)}
+p.onContextRemoved=function(){}
 
 //Behaviour Class
 function Behaviour(){}
@@ -113,38 +114,137 @@ p.getSlots=function(t){return this.chV[t]}
 function BixBite(){
 
 	//Signal Class
-	function Signal(uid){this.callerUID=uid;}
+	function Signal(uid){
+		this.callerUID=uid
+	}
 
 	//Slot Class
-	function Slot(uid,cb){this.uid=uid;this.send=cb}
+	function Slot(uid,cb){
+		this.uid=uid;
+		this.send=cb
+	}
 
 	//Slots Class
-	function Slots(type){
-		var type=type;
+	function Slots(){
 		var h,t;
 		var i= -1;
-		this.asl=function(uid,cb){var cs=new Slot(uid,cb);cs.i= ++i;(h)?h.n=cs:t=cs;h=cs}
-		this.rsl=function(uid){var w=t;var p;while(w.n && w.uid!=uid){p=w;w=w.n;}if(p && w.n)p.n=w.n;p=null;w.dispose();w=null;i--;if(i<0)h=t=null}
-		this.brc=function(s){var w=t;while(w.n){w.send.call(w.send._c,s);w=w.n;}w.send.call(w.send._c,s)}
-		this.gsl=function(uid){var w=t;while(w.n){if(w.uid==uid)return w;w=w.n;}return(w.uid==uid)?w:null}
-		this.ras=function(){var w=t;var n;while(w.n){n = w.n;dispose(w);i--;w=n;}dispose(t);dispose(h);t=h=null;i--}
-		this.num=function(){return i+1;}
+		this.asl=function(uid,cb){
+			var cs=new Slot(uid,cb);
+			cs.i= ++i;
+			(h)?h.n=cs:t=cs;
+			h=cs
+		}
+		this.rsl=function(uid){
+			var w=t;
+			var p;
+			while(w.n && w.uid!=uid){
+				p=w;
+				w=w.n;
+			}
+			if(p && w.n)p.n=w.n;
+			p=null;
+			w.dispose();
+			w=null;
+			i--;
+			if(i<0)h=t=null
+		}
+		this.brc=function(s){
+			var w=t;
+			while(w.n){
+				w.send.call(w.send._c,s);
+				w=w.n;
+			}
+			w.send.call(w.send._c,s)
+		}
+		this.gsl=function(uid){
+			var w=t;
+			while(w.n){
+				if(w.uid==uid)return w;
+				w=w.n;
+			}
+			return(w.uid==uid)?w:null
+		}
+		this.ras=function(){
+			var w=t;
+			var n;
+			while(w.n){
+				n = w.n;
+				BixBite.dispose(w);
+				i--;w=n;
+			}
+			BixBite.dispose(t);
+			BixBite.dispose(h);
+			t=h=null;
+			i--
+		}
+		this.num=function(){
+			return i+1
+		}
 	}
 
 	//Emitter Class
 	function Emi(){
 		var uid=-1;
-		this.chC={};this.chD={};this.chT={};this.chV={};
-		this.add=function(uid){return new Signal(uid)}
-		this.reg=function(c,sn){if(sn && this[c.uid] != null){this[c.uid].copies++;return}var uid=this.uid();this[uid]=new c();this[uid].uid=uid;this[uid].s=new Signal(uid);this[uid].e=this;this[uid].chC=this.chC;this[uid].chD=this.chD;this[uid].chT=this.chT;this[uid].chV=this.chV;this[uid].init()}
-		this.unr=function(c){if(!this[c]) return;if(this[c].cps > 0){this[c].cps--;return}this[c].destroy();this[c]=null;delete this[c]}
-		this.asl=function(ch,uid,t,cb,c){if (!ch[t]) ch[t]=new Slots(t);cb._c=c;ch[t].asl(uid,cb)}
-		this.rsl=function(ch,uid,t){var sl=ch[t];if (!sl || !sl.gsl(uid))return;sl.rsl(uid);if(sl.num()==0)delete ch[t]}
-		this.brcm=function(cid,t,s){this.chE(cid,t,s)}
-		this.brc=function(ch,t,s){if(!ch[t])return;ch[t].brc(s)}
-		this.snd=function(ch,uid,t,s){if(!ch[t])return;var sl=ch[t].gsl(uid);if(sl)sl.send.call(sl.send._c,s)}
-		this.uid=function(){return "@"+(++uid)+"::"+(this.cid)}
-		this.ras=function(ch,t){if(!ch[t])return ch[t].ras();dispose(ch[t])}
+		this.chC={};
+		this.chD={};
+		this.chT={};
+		this.chV={};
+		this.add=function(uid){
+			return new Signal(uid)
+		}
+		this.reg=function(c,sn){
+			if(sn && this[c.uid] != null){
+				this[c.uid].copies++;
+				return
+			}
+			var uid=this.uid();
+			this[uid]=new c();this[uid].uid=uid;
+			this[uid].s=new Signal(uid);
+			this[uid].e=this;
+			this[uid].chC=this.chC;
+			this[uid].chD=this.chD;
+			this[uid].chT=this.chT;
+			this[uid].chV=this.chV;
+			this[uid].init()
+		}
+		this.unr=function(c){
+			if(!this[c]) return;
+			if(this[c].cps > 0){this[c].cps--;
+			return}this[c].destroy();
+			this[c]=null;
+			delete this[c]
+		}
+		this.asl=function(ch,uid,t,cb,c){
+			if (!ch[t]) ch[t]=new Slots();
+			cb._c=c;
+			ch[t].asl(uid,cb)
+		}
+		this.rsl=function(ch,uid,t){
+			var sl=ch[t];
+			if (!sl || !sl.gsl(uid))return;
+			sl.rsl(uid);
+			if(sl.num()==0)delete ch[t]
+		}
+		this.brcm=function(cid,t,s){
+			this.chE(cid,t,s)
+		}
+		this.brc=function(ch,t,s){
+			if(!ch[t])return;
+			ch[t].brc(s)
+		}
+		this.snd=function(ch,uid,t,s){
+			if(!ch[t])return;
+			var sl=ch[t].gsl(uid);
+			if(sl)sl.send.call(sl.send._c,s)
+		}
+		this.ras=function(ch,t){
+			if(!ch[t])return;
+			ch[t].ras();
+			BixBite.dispose(ch[t])
+		}
+		this.uid=function(){
+			return "@"+(++uid)+"::"+(this.cid)
+		}
 	}
 	
 	//Core Class
@@ -154,35 +254,95 @@ function BixBite(){
 		var chC=e.chC;
 		var uid=e.uid()+id;
 		var s=new Signal(uid);
-		brc=function(cid,t,s){var c=e['ch'+cid];e.brc(c,t,s)}
-		this.register=function(c){e.reg(c,true)}
-		this.unregister=function(c){e.unr(c)}
-		this.emitSignal=function(t,p){s.params=p;e.brc(chC,t,s)}
+		brc=function(cid,t,s){
+			var c=e['ch'+cid];
+			e.brc(c,t,s)
+		}
+		this.register=function(c){
+			e.reg(c,true)
+		}
+		this.unregister=function(c){
+			e.unr(c)
+		}
+		this.emitSignal=function(t,p){
+			s.params=p;
+			e.brc(chC,t,s)
+		}
 	}
 	
-	var cores={};list={};
-	getContainer=function(id){return list[id]}
+	var cores={};
+	var list={};
+	
+	getContainer=function(id){
+		return list[id]
+	}
+	
 	this.spawnCore=function(id){
 		var c=new Core(id);
-		c.e.chE=function(cid,t,s){for (var c in cores)c.brc(cid,t,s)};
+		c.e.chE=function(cid,t,s){
+			for (var c in cores)c.brc(cid,t,s)
+		};
 		c.e.bb=this;
 		return cores[id]=c
 	}
-	this.destroyCore=function(id){if(cores[id]){this.dispose(cores[id]);delete cores[id]}}
-	this.addContextRoot=function(id, root){list[id]=root}
+	this.destroyCore=function(id){
+		if(cores[id]){
+			this.dispose(cores[id]);
+			delete cores[id]
+		}
+	}
+	this.addContextRoot=function(id, root){
+		list[id]=root
+	}
+	
+	this.regCtx=function(v,id,ctx){
+		if (list[id]) alert("Context " + id + "is already registered");
+		
+		ctx.setAttribute("id", id);
+		ctx.parentView = v;
+		list[id] = ctx;
+		return ctx
+	}
+	
+	this.unrCtx=function(id){
+		if (!list[id]) alert("There is no such context: " + id + "registered within display list");
+		
+		this.remCtx(id);
+		this.dispose(list[id]);
+		delete list[id];
+	}
+	
+	this.addCtx=function(ctxId,ctnId){
+		var ctx = list[ctxId];
+		if (!ctx) alert("There is no context " + ctxId + " registered yet");
+		
+		var ctn = list[ctnId];
+		if (!ctn) alert("Container " + ctnId + " cannot be found");
+		
+		list[ctnId].appendChild(ctx);
+		ctx.parentView.onContextAdded();
+	}
+	
+	this.remCtx=function(id) {
+		var ctx = list[id];
+		if (ctx && ctx.parentNode){
+			ctx.parentNode.removeChild(ctx);
+			ctx.parentView.onContextRemoved();
+		}
+	}
 	//TODO
 	//this.incomingSignal
-	//registerCtx
-	//unregisterCtx
-	//addCtx
-	//removeCtx
 };
 
 BixBite.prototype.dispose = function(R){
 	for (var p in R){
-		if(R.hasOwnProperty("destroy")){R.destroy();}
-		if(R.hasOwnProperty(p)){R[p]=null;delete R[p];}
+		if(R.hasOwnProperty("destroy")){
+			R.destroy()
+		}
+		if(R.hasOwnProperty(p)){
+			delete R[p]
+		}
 	}
-	R=null;delete R;
+	R=null;
 }
 	

@@ -47,14 +47,17 @@ function HelloWorld(){
 	function HelloView(){
 		this.init = function(){
 			this.div = document.createElement("div");
-			this.div.setAttribute("id", "label");
 			this.div.style.position = "absolute";
-			this.div.style.left = 200 + Math.random()*1400 + "px";
-			this.div.style.top = Math.random()*900 + "px";
-			document.body.appendChild(this.div);
+			this.div.style.width = "130px";
+			this.div.style.height = "20px";
+			this.registerContext("label"+this.uid, this.div);
+			this.addContext("label"+this.uid, "stage");
+			
+			this.div.style.left = 200 + Math.random()*500 + "px";
+			this.div.style.top = 50 + Math.random()*600 + "px";
 			
 			this.addSlot("HelloWorld.SET_COPY", onSetCopy);
-	   }
+		}
 		var onSetCopy = function (s){
 			this.applyCopy(s.params.copy);
 		}
@@ -68,8 +71,9 @@ function HelloWorld(){
 		
 		this.init = function(){
 			this.div = document.createElement("div");
-			this.div.setAttribute("id","output1");
-			document.body.appendChild(this.div);
+			this.registerContext("output1", this.div);
+			this.addContext("output1", "stage");
+			
 			this.addSlot("Trace", onTrace);
 		}
 		

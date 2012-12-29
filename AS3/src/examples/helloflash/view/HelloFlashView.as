@@ -35,11 +35,6 @@ package examples.helloflash.view
 	{
 		private var output:HelloFlashOutput;
 		
-		public function HelloFlashView() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
 			output = HelloFlashOutput(registerContext("HelloFlashOutput", HelloFlashOutput));
