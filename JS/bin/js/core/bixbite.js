@@ -9,7 +9,7 @@
 /**
 The MIT License
 
-@copy (c) 2012 Devu Design Limited, Daniel Wasilewski
+@copy (c) 2010-2013 Devu Design Limited, Daniel Wasilewski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,30 @@ THE SOFTWARE.
 */
 
 //Sugar
-var trace = function(){console.log(Array.prototype.join.call(arguments, " "))};
+//Browser detection
+var bixbite = {
+    version: "0.9.2"
+};
+
+var uAgent = navigator.userAgent;
+var prefix;
+
+if(uAgent.indexOf("Trident")>=0){
+  prefix = "-ms-";
+} else if (uAgent.indexOf("MSIE")>=0){
+  prefix = "-ms-";
+} else if(uAgent.indexOf("Firefox")>=0){
+  prefix = "-moz-";
+} else if(uAgent.indexOf("AppleWebKit")>=0){
+  prefix = "-webkit-";
+} else if(uAgent.indexOf("Opera")>=0){
+  prefix = "-o-";
+} else {
+  prefix ="";
+}
+
+
+var trace = function(){if(typeof(console) != "undefined")console.log(Array.prototype.join.call(arguments, " "))};
 var getTimer = function(){return Date.now() || new Date()};
 
 var Class = function(s){};
@@ -44,54 +67,185 @@ Function.prototype.extend = function(C){
 	return this.prototype
 };
 
+//Statics
+/*
+MouseEvent = {CLICK:"click", DOUBLE_CLICK:"dblclick",MOUSE_DOWN:"mousedown",MOUSE_MOVE:"mousemove",MOUSE_OUT:"mouseout", MOUSE_OVER:"mouseover",MOUSE_UP:"mouseup"}
+TouchEvent = {TAP:"click", TOUCH_START:"touchstart",TOUCH_MOVE:"touchmove",TOUCH_END:"touchend"}
+*/
 //Compound Class
 function Compound(){}
 p=Compound.prototype;
-p.register=function(c,sn){this.e.reg(c,sn)}
-p.unregister=function(c){this.e.unt(c);}
-p.addBehaviour = function (t,b,aDis,aExe){this[t]=new b();this[t].initialise(this.e,t,aDis,this);if(aExe)this[t].execute(this.s)}
-p.removeBehaviour = function(t){this[t].dispose();this[t]=null;delete this[t]}
-p.sendSignal=function(t,p){this.s.params=p; this.e.brc(this.chT,t,this.s)}
-p.emitSignal=function(t,p,m){this.s.params=p;(!m)? this.e.brc(this.chC,t,this.s,this):this.e.brcm("C",t,this.s,this)}
+p.register=function(c,sn){
+	this.e.reg(c,sn)
+}
+
+p.unregister=function(c){
+	this.e.unt(c);
+}
+
+p.addBehaviour = function(t,b,aDis,aExe){
+	this[t]=new b();
+	this[t].initialise(this.e,t,aDis,this);
+	if(aExe)this[t].execute(this.s)
+}
+
+p.removeBehaviour = function(t){
+	this[t].dispose();
+	this[t]=null;
+	delete this[t]
+}
+
+p.sendSignal=function(t,p){
+	this.s.params=p; 
+	this.e.brc(this.chT,t,this.s)
+}
+
+p.emitSignal=function(t,p,m){
+	this.s.params=p;
+	(!m)?this.e.brc(this.chC,t,this.s,this):this.e.brcm("C",t,this.s,this)
+}
 
 //Data Class
 function Data(){}
 p=Data.prototype;
-p.addSlot=function(t,cb){this.e.asl(this.chD,this.uid,t,cb,this)}
-p.removeSlot=function(t){this.e.rsl(this.chD,this.uid,t)}
-p.responseTo=function(uid,t,d){var vo=(d)?d:this;this.e.snd(this.chC,uid,t,vo)}
-p.responseToAll=function(t,d){var vo=(d)?d:this;this.e.brc(this.chC,t,vo)}
+
+p.addSlot=function(t,cb){	
+	this.e.asl(this.chD,this.uid,t,cb,this)
+}
+
+p.removeSlot=function(t){
+	this.e.rsl(this.chD,this.uid,t)
+}
+
+p.responseTo=function(uid,t,d){
+	var vo=(d)?d:this;
+	this.e.snd(this.chC,uid,t,vo)
+}
+
+p.responseToAll=function(t,d){
+	var vo=(d)?d:this;
+	this.e.brc(this.chC,t,vo)
+}
 
 //Transponder Class
 function Transponder(){}
 p=Transponder.prototype;
-p.addSlot=function(t,cb){this.e.asl(this.chT,this.uid,t,cb,this)}
-p.removeSlot=function(t){this.e.rsl(this.chT,this.uid,t)}
-p.sendSignal=function(t,p){this.s.params=p;this.e.brc(this.chC,t,this.s)}
-p.transmit=function(t){this.e.asl(this.chT,this.uid,t,function(s){this.e.brc(this.chC,t,s)})}
-p.responseToAll=function(t,p){this.s.params=p;this.e.brc(this.chV,t,this.s)}
-p.responseTo=function (uid,t,p){this.s.params=p;this.e.snd(this.chV,uid,t,this.s)}
-p.getSlots=function(t){return this.chC[t]}
-p.addSensor=function(t,cb){var scp=this;document.body.addEventListener(t, function(){return cb.apply(scp, arguments)},false)}
-p.removeSensor=function(t,cb){document.body.removeEventListener(t,cb)}
-//TODO
-//p.getContextArray 
-//p.getContextById
+
+p.addSlot=function(t,cb){
+	this.e.asl(this.chT,this.uid,t,cb,this)
+}
+
+p.removeSlot=function(t){
+	this.e.rsl(this.chT,this.uid,t)
+}
+
+p.sendSignal=function(t,p){
+	this.s.params=p;this.e.brc(this.chC,t,this.s)
+}
+
+p.transmit=function(t){
+	this.e.asl(this.chT,this.uid,t,function(s){
+		this.e.brc(this.chC,t,s)
+	})
+}
+
+p.responseToAll=function(t,p){
+	this.s.params=p;
+	this.e.brc(this.chV,t,this.s)
+}
+
+p.responseTo=function (uid,t,p){
+	this.s.params=p;
+	this.e.snd(this.chV,uid,t,this.s)
+}
+
+p.getSlots=function(t){
+	return this.chC[t]
+}
+
+p.addSensor=function(t,cb){
+	var scp=this;
+	document.body["on"+t] = function(e){
+		e.preventDefault ? e.preventDefault() : e.returnValue = false;
+		return cb.apply(scp, arguments)
+	}
+}
+
+p.removeSensor=function(t,cb){
+	document.body["on"+t] = null;
+}
+
+p.getContextUnderPoint=function(px,py,id,ctn){
+	var ctx=document.elementFromPoint(px,py);
+	if(id==undefined) return ctx
+	
+	while(ctx && ctx.parentNode!=ctn){
+		if(ctx.id==id) return ctx;
+		ctx = ctx.parentNode;
+	}
+	
+	return(ctx && ctx.id==id)?ctx:null;
+}
+
+p.getContext=function(id,px,py){
+	var ctx=document.getElementById(id);
+	if(px==undefined)return ctx
+	
+	var s=ctx.style;
+	var x=parseFloat(s.left) || s.x || 0;
+	var y=parseFloat(s.top) || s.y || 0;
+	var w=parseFloat(s.width);
+	var h=parseFloat(s.height);
+	return (px>x&&px<x+w&&py>y&&py<y+h)?ctx:null;
+}
 
 //View Class
 function View(){}
 p=View.prototype;
-p.addSlot=function(t,cb){this.e.asl(this.chV,this.uid,t,cb,this)}
-p.removeSlot=function(t){this.rsl(this.chV,this.uid,t)}
-p.sendSignal=function(t,p){this.s.params=p;this.e.brc(this.chT,t,this.s)}
-p.emitSignal=function(t,p){this.s.params=p;this.e.brc(this.chV,t,this.s)}
-p.emitSignalTo=function(uid,t,p){this.s.params=p;this.e.snd(this.chV,uid,t,this.s)}
-p.getSlots=function(t){return this.chT[t]}
-p.registerContext=function(id,ctx){return this.e.bb.regCtx(this,id,ctx)}
-p.unregisterContext=function(id){this.e.bb.unrCtx(id)}
-p.addContext=function(ctxId,ctnId){this.e.bb.addCtx(ctxId,ctnId)}
+
+p.addSlot=function(t,cb){
+	this.e.asl(this.chV,this.uid,t,cb,this)
+}
+
+p.removeSlot=function(t){
+	this.rsl(this.chV,this.uid,t)
+}
+
+p.sendSignal=function(t,p){
+	this.s.params=p;
+	this.e.brc(this.chT,t,this.s)
+}
+
+p.emitSignal=function(t,p){
+	this.s.params=p;
+	this.e.brc(this.chV,t,this.s)
+}
+
+p.emitSignalTo=function(uid,t,p){
+	this.s.params=p;this.e.snd(this.chV,uid,t,this.s)
+}
+
+p.getSlots=function(t){
+	return this.chT[t]
+}
+
+p.registerContext=function(id,ctx){
+	return this.e.bb.regCtx(this,id,ctx)
+}
+
+p.unregisterContext=function(id){
+	this.e.bb.unrCtx(id)
+}
+
+p.addContext=function(ctxId,ctnId){
+	this.e.bb.addCtx(ctxId,ctnId)
+}
 p.onContextAdded=function(){}
-p.removeContext=function(id){this.e.bb.remCtx(id)}
+
+p.removeContext=function(id){
+	this.e.bb.remCtx(id)
+}
+
 p.onContextRemoved=function(){}
 
 //Behaviour Class
@@ -273,7 +427,7 @@ function BixBite(){
 	var cores={};
 	var list={};
 	
-	getContainer=function(id){
+	this.getCtn=function(id){
 		return list[id]
 	}
 	
@@ -332,7 +486,7 @@ function BixBite(){
 	}
 	//TODO
 	//this.incomingSignal
-};
+}
 
 BixBite.prototype.dispose = function(R){
 	for (var p in R){
