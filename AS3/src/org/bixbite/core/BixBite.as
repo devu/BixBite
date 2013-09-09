@@ -35,7 +35,7 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.9.1";
+		public static const VERSION	:String = "BixBite v0.9.3";
 		
 		public static var stage		:Stage;
 		

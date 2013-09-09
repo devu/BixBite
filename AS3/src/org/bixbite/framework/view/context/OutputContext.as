@@ -1,13 +1,13 @@
 package org.bixbite.framework.view.context 
 {
 	import flash.text.TextField;
-	import org.bixbite.framework.view.Context;
+	import org.bixbite.framework.view.Context2D;
 	
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class OutputContext extends Context 
+	public class OutputContext extends Context2D 
 	{
 		private var txt:TextField;
 		

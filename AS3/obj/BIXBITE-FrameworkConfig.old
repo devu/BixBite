@@ -8,15 +8,15 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>true</value>
     </define>
     <define append="true">
+      <name>CONFIG::release</name>
+      <value>false</value>
+    </define>
+    <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'11/21/2012'</value>
+      <value>'09/09/2013'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -30,19 +30,14 @@
       <name>CONFIG::desktop</name>
       <value>false</value>
     </define>
-    <optimize>true</optimize>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src</path-element>
+      <path-element>D:\Work\Bixbite\AS3\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
-    <library-path append="true">
-      <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\lib\bixbite_logos.swc</path-element>
-    </library-path>
   </compiler>
   <file-specs>
-    <path-element>E:\xampp\htdocs\2012\BIXBITE\AS3\src\org\bixbite\Main.as</path-element>
+    <path-element>D:\Work\Bixbite\AS3\src\org\bixbite\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

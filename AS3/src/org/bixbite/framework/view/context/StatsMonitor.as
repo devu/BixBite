@@ -1,12 +1,12 @@
 package org.bixbite.framework.view.context 
 {
-	import org.bixbite.framework.view.Context;
+	import org.bixbite.framework.view.Context2D;
 	
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class StatsMonitor extends Context 
+	public class StatsMonitor extends Context2D 
 	{
 		
 		public function StatsMonitor() 
