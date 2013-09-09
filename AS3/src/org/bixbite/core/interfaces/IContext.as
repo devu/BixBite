@@ -8,7 +8,6 @@ package org.bixbite.core.interfaces
 	 */
 	public interface IContext 
 	{
-		
 		function get id():String;
 		function set id(value:String):void;
 		

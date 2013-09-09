@@ -24,6 +24,7 @@ THE SOFTWARE.
 package org.bixbite.core 
 {
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -60,11 +61,11 @@ package org.bixbite.core
 		 * Register component within Emitter
 		 * @param	component
 		 */
-		BIXBITE function registerComponent(component:Class, singleton:Boolean = true):void
+		BIXBITE function registerComponent(component:Class, singleton:Boolean = true):IComponent
 		{
 			if (singleton && components[component] != null) {
 				components[component].copies++;
-				return
+				return null;
 			}
 			
 			var c:Component = new component();
@@ -78,6 +79,7 @@ package org.bixbite.core
 			
 			components[component] = c;
 			c.init();
+			return c;
 		}
 		
 		/**

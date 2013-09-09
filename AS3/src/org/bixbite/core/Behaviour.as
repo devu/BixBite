@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -102,9 +103,9 @@ package org.bixbite.core
 		 * @param	component
 		 * @param	singleton flag for singleton mode
 		 */
-		public function register(component:Class, singleton:Boolean = true):void
+		public function register(component:Class, singleton:Boolean = true):IComponent
 		{
-			emitter.registerComponent(component, singleton);
+			return emitter.registerComponent(component, singleton);
 		}
 		
 		/**

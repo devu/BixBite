@@ -52,6 +52,7 @@ package org.bixbite
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.framework.Application;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
 	import org.bixbite.framework.Stats;
@@ -86,6 +87,8 @@ package org.bixbite
 			
 			core1.register(Stats);
 			core1.emitSignal(Stats.START);
+			
+			core1.register(Application);
 		}
 		
 	}
