@@ -32,7 +32,7 @@ package org.bixbite.core.interfaces
 		 * Register any component within current compound
 		 * @param	component
 		 */
-		function register(component:Class, singleton:Boolean = true):void;
+		function register(component:Class, singleton:Boolean = true):IComponent
 		
 		/**
 		 * Unregister any component from current compound

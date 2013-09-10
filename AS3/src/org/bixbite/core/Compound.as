@@ -23,6 +23,7 @@ THE SOFTWARE.
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -58,9 +59,9 @@ package org.bixbite.core
 		 * Regsiter component within current Compound
 		 * @param	component
 		 */
-		public function register(component:Class, singleton:Boolean = true):void
+		public function register(component:Class, singleton:Boolean = true):IComponent
 		{
-			emitter.registerComponent(component, singleton);
+			return emitter.registerComponent(component, singleton);
 		}
 		
 		/**

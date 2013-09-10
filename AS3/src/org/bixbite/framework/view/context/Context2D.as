@@ -1,4 +1,4 @@
-package org.bixbite.framework.view
+package org.bixbite.framework.view.context
 {
 	import flash.display.Sprite;
 	import flash.display.Stage;

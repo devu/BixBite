@@ -7,24 +7,17 @@ package org.bixbite.framework.behaviour
 	 * ...
 	 * @author devu
 	 */
-	public class CreateWindowApplication extends Behaviour 
+	public class UICloseWindow extends Behaviour 
 	{
-		
-		public function CreateWindowApplication() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
-			
+			trace(this, "init");
 		}
 		
 		override public function execute(s:Signal):void 
 		{
-			
+			trace(this, "execute");
 		}
-		
 	}
 
 }
