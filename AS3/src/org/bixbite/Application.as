@@ -60,7 +60,7 @@ package org.bixbite
 	
 	
 	/**
-	 * Application
+	 * Application x
 	 */
 	
 	public class Application extends Sprite
