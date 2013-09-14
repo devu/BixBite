@@ -56,20 +56,18 @@ package examples.helloflash.view
 			
 			addContext("ball", "root");
 			
-			context.draw(0x000000, 10);
-			
 			addSlot(HelloFlash.SHUFFLE, shuffle);
 			addSlot(HelloFlash.RED_BALL, onMakeBallRed);
 		}
 		
 		private function onMakeBallRed(s:Signal):void
 		{
-			context.draw(0xFF1100, radius++);
+			context.drawCirlce(0xFF1100, radius++);
 		}
 		
 		private function shuffle(s:Signal):void
 		{
-			context.draw(Math.random() * uint.MAX_VALUE, radius++);
+			context.drawCirlce(Math.random() * uint.MAX_VALUE, radius++);
 		}
 	}
 

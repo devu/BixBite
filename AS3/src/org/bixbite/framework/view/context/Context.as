@@ -8,7 +8,7 @@ package org.bixbite.framework.view.context
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class Context2D extends Sprite implements IContext
+	public class Context extends Sprite implements IContext
 	{
 		private var _id				:String;
 		private var _parrentView	:View;
@@ -33,7 +33,20 @@ package org.bixbite.framework.view.context
 			_parrentView = value;
 		}
 		
-		/*abstract*/ public function dispose():void
+		/*abstract*/
+		public function init():void
+		{
+			
+		}
+		
+		/*abstract*/
+		public function draw():void
+		{
+			
+		}
+		
+		/*abstract*/ 
+		public function dispose():void
 		{
 			
 		}

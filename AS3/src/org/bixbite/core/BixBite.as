@@ -46,7 +46,7 @@ package org.bixbite.core
 		public function BixBite(stage:Stage) 
 		{
 			BixBite.stage = stage;
-			
+			list["stage"] = stage;
 			trace(VERSION);
 		}
 		
@@ -111,6 +111,8 @@ package org.bixbite.core
 			ctx.parrentView = view;
 			ctx.id = id;
 			list[id] = ctx;
+			list[id].init();
+			
 			return ctx
 		}
 		

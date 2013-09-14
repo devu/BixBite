@@ -1,7 +1,7 @@
 package examples.helloflash.view.context 
 {
 	import flash.text.TextField;
-	import org.bixbite.framework.view.Context;
+	import org.bixbite.framework.view.context.Context;
 	
 	/**
 	 * ...

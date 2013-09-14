@@ -1,23 +1,27 @@
 package org.bixbite.framework.view.context 
 {
 	import flash.text.TextField;
-	import org.bixbite.framework.view.Context2D;
+	import org.bixbite.framework.view.context.Context;
 	
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class OutputContext extends Context2D 
+	public class OutputContext extends Context
 	{
 		private var txt:TextField;
 		
-		public function OutputContext() 
+		override public function init():void 
 		{
 			mouseEnabled = false;
-			
 			txt = new TextField(); 
 			txt.autoSize = "left";
 			addChild(txt);
+		}
+		
+		override public function draw():void
+		{
+			
 		}
 		
 		public function set text(value:String):void 

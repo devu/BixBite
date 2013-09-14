@@ -66,8 +66,6 @@ package test
 			//loadBixBiteFromFile();
 			
 			var bb:BixBite = new BixBite(stage);
-			bb.addContextRoot("stage", stage);
-			
 			core1 = bb.spawnCore("stats");
 			
 			core1.register(StageManager);

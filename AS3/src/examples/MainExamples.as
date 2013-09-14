@@ -74,7 +74,7 @@ package examples
 			var bb:BixBite = new BixBite(stage);
 			
 			//Add some roots for display list, it can be any object that has addChild method implemented
-			bb.addContextRoot("stage", stage);
+			//bb.addContextRoot("stage", stage); is there by default
 			bb.addContextRoot("root", this);
 			//bb.addContextRoot("stage2D", starling.stage);
 			

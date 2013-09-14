@@ -76,17 +76,17 @@ package org.bixbite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var bb:BixBite = new BixBite(stage);
-			bb.addContextRoot("stage", stage);
+			bb.addContextRoot("app", this);
 			
 			mainCore = bb.spawnCore("main");
 			
 			mainCore.register(StageManager);
 			mainCore.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
-			//mainCore.register(Stats);
-			//mainCore.emitSignal(Stats.START);
-			
 			mainCore.register(UIManager);
+			
+			mainCore.register(Stats);
+			mainCore.emitSignal(Stats.START);
 		}
 		
 	}

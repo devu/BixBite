@@ -83,6 +83,11 @@ package org.bixbite.framework.view
 			addContext("statsPanel", "stage");
 		}
 		
+		override public function onContextAdded():void 
+		{
+			panel.draw();
+		}
+		
 		private function drawGraph(s:Signal):void
 		{
 			var params		:Object 	= s.params;

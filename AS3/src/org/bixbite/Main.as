@@ -77,7 +77,6 @@ package org.bixbite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var bb:BixBite = new BixBite(stage);
-			bb.addContextRoot("stage", stage);
 			
 			core1 = bb.spawnCore("1");
 			

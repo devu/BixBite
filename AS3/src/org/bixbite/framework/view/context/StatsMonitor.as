@@ -1,20 +1,24 @@
 package org.bixbite.framework.view.context 
 {
-	import org.bixbite.framework.view.Context2D;
+	import org.bixbite.framework.view.context.Context;
 	
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
 	 */
-	public class StatsMonitor extends Context2D 
+	public class StatsMonitor extends Context 
 	{
-		
-		public function StatsMonitor() 
+		override public function init():void 
 		{
-			graphics.beginFill(0x000000, 0.8);
-			graphics.drawRect(0, 0, 310, 56);
 			mouseEnabled = false;
 			mouseChildren = false;
+		}
+		
+		override public function draw():void
+		{
+			graphics.clear();
+			graphics.beginFill(0x000000, 0.8);
+			graphics.drawRect(0, 0, 310, 56);
 		}
 		
 		override public function dispose():void 

@@ -14,6 +14,8 @@ package org.bixbite.core.interfaces
 		function set parrentView(value:View):void;
 		function get parrentView():View 
 		
+		function init():void;
+		function draw():void;
 		function dispose():void;
 	}
 	

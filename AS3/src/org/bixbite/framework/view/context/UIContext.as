@@ -4,15 +4,16 @@ package org.bixbite.framework.view.context
 	 * ...
 	 * @author devu
 	 */
-	public class UIContext extends Context2D 
+	public class UIContext extends Context
 	{
 		
-		public function UIContext() 
+		override public function init():void 
 		{
-			
+			mouseEnabled = false;
+			mouseChildren = false;
 		}
 		
-		public function draw():void 
+		override public function draw():void 
 		{
 			
 		}

@@ -36,7 +36,6 @@ package org.bixbite.framework.transponder
 		override public function init():void 
 		{
 			trace(this, "init");
-			
 		}
 		
 		override public function destroy():void 
