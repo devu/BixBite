@@ -30,6 +30,8 @@
 
 		public function init () : void;
 
+		public function onContextAdded () : void;
+
 		private function drawGraph (s:Signal) : void;
 
 		private function update (s:Signal) : void;

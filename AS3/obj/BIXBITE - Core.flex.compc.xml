@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>E:\xampp\htdocs\2013\BIXBITE\AS3\.\lib\bixbite_core_0.9.2.swc</output>
+  <output>I:\BixBite\AS3\.\lib\bixbite_core_0.9.3.swc</output>
   <use-network>true</use-network>
   <target-player>11.2</target-player>
   <warnings>true</warnings>
@@ -17,29 +17,52 @@
     <use-resource-bundle-metadata>true</use-resource-bundle-metadata>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path>
-      <path-element>e:\xampp\htdocs\2013\bixbite\as3\src</path-element>
+      <path-element>i:\bixbite\as3\src</path-element>
     </source-path>
   </compiler>
   <include-classes>
-    <class>org.bixbite.namespaces.BIXBITE</class>
-    <class>org.bixbite.core.Signal</class>
-    <class>org.bixbite.core.Data</class>
-    <class>org.bixbite.core.Channel</class>
-    <class>org.bixbite.core.Slots</class>
-    <class>org.bixbite.core.Slot</class>
+    <class>examples.userinterface.HelloUIApp</class>
+    <class>org.bixbite.Application</class>
     <class>org.bixbite.core.Behaviour</class>
     <class>org.bixbite.core.BixBite</class>
+    <class>org.bixbite.core.Channel</class>
     <class>org.bixbite.core.Component</class>
     <class>org.bixbite.core.Compound</class>
     <class>org.bixbite.core.Core</class>
+    <class>org.bixbite.core.Data</class>
     <class>org.bixbite.core.Emitter</class>
+    <class>org.bixbite.core.Signal</class>
+    <class>org.bixbite.core.Slot</class>
+    <class>org.bixbite.core.Slots</class>
     <class>org.bixbite.core.Transponder</class>
     <class>org.bixbite.core.View</class>
     <class>org.bixbite.core.interfaces.IComponent</class>
-    <class>org.bixbite.core.interfaces.ITransponder</class>
-    <class>org.bixbite.core.interfaces.IData</class>
-    <class>org.bixbite.core.interfaces.IView</class>
     <class>org.bixbite.core.interfaces.ICompound</class>
     <class>org.bixbite.core.interfaces.IContext</class>
+    <class>org.bixbite.core.interfaces.IData</class>
+    <class>org.bixbite.core.interfaces.ITransponder</class>
+    <class>org.bixbite.core.interfaces.IView</class>
+    <class>org.bixbite.framework.UIManager</class>
+    <class>org.bixbite.framework.behaviour.UICloseWindow</class>
+    <class>org.bixbite.framework.behaviour.UICreatePanel</class>
+    <class>org.bixbite.framework.behaviour.UICreateWindow</class>
+    <class>org.bixbite.framework.behaviour.UIDestroyWindow</class>
+    <class>org.bixbite.framework.behaviour.UIInitialise</class>
+    <class>org.bixbite.framework.behaviour.UIOpenWindow</class>
+    <class>org.bixbite.framework.behaviour.UIShow</class>
+    <class>org.bixbite.framework.data.AppData</class>
+    <class>org.bixbite.framework.data.UIData</class>
+    <class>org.bixbite.framework.data.UIStyle</class>
+    <class>org.bixbite.framework.signal.UISignal</class>
+    <class>org.bixbite.framework.transponder.UITransponder</class>
+    <class>org.bixbite.framework.view.UICanvas</class>
+    <class>org.bixbite.framework.view.UIPanel</class>
+    <class>org.bixbite.framework.view.UIWindow</class>
+    <class>org.bixbite.framework.view.context.Canvas</class>
+    <class>org.bixbite.framework.view.context.Context</class>
+    <class>org.bixbite.framework.view.context.Panel</class>
+    <class>org.bixbite.framework.view.context.UIContext</class>
+    <class>org.bixbite.framework.view.context.Window</class>
+    <class>org.bixbite.namespaces.BIXBITE</class>
   </include-classes>
 </flex-config>

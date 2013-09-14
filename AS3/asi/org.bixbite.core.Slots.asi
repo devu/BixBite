@@ -14,8 +14,6 @@
 
 		public function get numSlots () : uint;
 
-		public function Slots ();
-
 		public function addSlot (uid:String, callback:Function) : void;
 
 		public function removeSlot (uid:String) : void;

@@ -1,0 +1,32 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
+package $(Package) $(CSLB){
+	
+	import org.bixbite.core.View;
+	
+	/**
+	$(CBI)* ...
+	$(CBI)* @langversion 3.0
+	$(CBI)*/
+	public class $(FileName) extends Context $(CSLB){
+		
+		override public function init():void $(CSLB){
+			trace(this, "init");
+			$(EntryPoint)
+		}
+		
+		override public function draw():void $(CSLB){
+			trace(this, "draw");
+		}
+		
+		override public function destroy():void $(CSLB){
+			//clean up this class here and then:
+			super.destroy();
+		}
+		
+	}
+	
+}

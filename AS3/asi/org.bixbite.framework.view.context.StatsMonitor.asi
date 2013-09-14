@@ -1,14 +1,16 @@
 ﻿package org.bixbite.framework.view.context
 {
-	import org.bixbite.framework.view.Context;
+	import org.bixbite.framework.view.context.Context;
 
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 *
+	 * @langversion	3.0
 	 */
 	public class StatsMonitor extends Context
 	{
-		public function StatsMonitor ();
+		public function init () : void;
+
+		public function draw () : void;
 
 		public function dispose () : void;
 	}

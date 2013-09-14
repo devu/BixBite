@@ -1,3 +1,8 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
 package org.bixbite.framework.behaviour 
 {
 	import org.bixbite.core.Behaviour;
@@ -8,19 +13,18 @@ package org.bixbite.framework.behaviour
 	
 	/**
 	 * ...
-	 * @author devu
+	 * @langversion 3.0
 	 */
 	public class UIOpenWindow extends Behaviour 
 	{
 		override public function init():void 
 		{
-			trace(this, "init");
 			addResponder(UISignal.ON_DATA, onData);
 		}
 		
 		private function onData(data:UIData):void
 		{
-			trace(this, "onData Response");
+			
 		}
 		
 		override public function execute(s:Signal):void 

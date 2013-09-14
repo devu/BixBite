@@ -1,3 +1,8 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
 package org.bixbite.framework.view 
 {
 	import org.bixbite.core.interfaces.IContext;
@@ -5,9 +10,9 @@ package org.bixbite.framework.view
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Window;
+	
 	/**
-	 * ...
-	 * @author devu
+	 * @langversion	3.0
 	 */
 	public class UIWindow extends View 
 	{
@@ -15,20 +20,29 @@ package org.bixbite.framework.view
 		
 		override public function init():void 
 		{
-			trace(this, "init");
 			addSlot(UISignal.SHOW, onShow);
 			addSlot(UISignal.HIDE, onHide);
+			
+			addSlot(UISignal.CREATE, onWindowCreated);
+			addSlot(UISignal.CLOSE, onWindowClosed);
+			
+			ctx = Window(registerContext("window", Window));
+		}
+		
+		private function onWindowCreated(s:Signal):void 
+		{
+			addContext("window", "canvas");
+			ctx.draw();
+		}
+		
+		private function onWindowClosed(s:Signal):void 
+		{
+			trace(this,"closed");
 		}
 		
 		private function onShow(s:Signal):void 
 		{
-			trace(this, "show");
-			if(ctx == null){
-				ctx = Window(registerContext("window", Window));
-			}
-			
 			ctx.draw();
-			addContext("window", "stage");
 		}
 		
 		private function onHide(s:Signal):void 

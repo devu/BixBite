@@ -1,5 +1,6 @@
 ﻿package org.bixbite.core
 {
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -49,7 +50,7 @@
 		 * @param	component
 		 * @param	singleton flag for singleton mode
 		 */
-		public function register (component:Class, singleton:Boolean=true) : void;
+		public function register (component:Class, singleton:Boolean=true) : IComponent;
 
 		/**
 		 * Proxy method for behaviour to unregister any component from belonging Compound

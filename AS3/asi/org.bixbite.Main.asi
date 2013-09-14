@@ -9,9 +9,9 @@
 	import org.bixbite.framework.Stats;
 
 	/**
-	 * Main BixBite frmework document class for development purposes
+	 * Main BixBite framework document class for development purposes
 	 * 
-	 *   footprint 4.27kb (signle core);
+	 *   footprint 4.27kb (single core);
 	 */
 	public class Main extends Sprite
 	{

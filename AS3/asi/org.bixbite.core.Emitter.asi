@@ -1,6 +1,7 @@
 ﻿package org.bixbite.core
 {
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -42,7 +43,7 @@
 		 *   Register component within Emitter
 		 * @param	component
 		 */
-		function registerComponent (component:Class, singleton:Boolean=true) : void;
+		function registerComponent (component:Class, singleton:Boolean=true) : IComponent;
 
 		/**
 		 *
