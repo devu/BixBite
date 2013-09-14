@@ -60,9 +60,7 @@ package org.bixbite
 	
 	
 	/**
-	 * Main BixBite framework document class for development purposes
-	 * 
-	 * footprint 4.27kb (single core);
+	 * Application
 	 */
 	
 	public class Application extends Sprite
