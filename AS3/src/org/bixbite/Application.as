@@ -59,7 +59,7 @@ package org.bixbite
 	import org.bixbite.framework.UIManager;
 	
 	/**
-	 * Application
+	 * Application x
 	 */
 	
 	public class Application extends Sprite
