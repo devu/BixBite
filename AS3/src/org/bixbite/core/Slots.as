@@ -35,11 +35,6 @@ package org.bixbite.core
 		private var head	:Slot = null;
 		private var tail	:Slot = null;
 		
-		public function Slots() 
-		{
-			
-		}
-		
 		public function addSlot(uid:String, callback:Function):void
 		{
 			var current:Slot = new Slot(uid, callback);

@@ -8,6 +8,7 @@ package org.bixbite.framework
 	import org.bixbite.framework.behaviour.UIOpenWindow;
 	import org.bixbite.framework.data.UIData;
 	import org.bixbite.framework.signal.UISignal;
+	import org.bixbite.framework.transponder.UITransponder;
 	import org.bixbite.framework.view.UICanvas;
 	
 	/**
@@ -25,6 +26,7 @@ package org.bixbite.framework
 		override public function init():void 
 		{
 			register(UIData);
+			register(UITransponder);
 			register(UICanvas);
 			
 			addBehaviour(UISignal.CREATE_WINDOW, UICreateWindow);

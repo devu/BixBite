@@ -19,12 +19,13 @@ package org.bixbite.framework.data
 		override public function init():void 
 		{
 			trace(this, "init");
-			addSlot(UISignal.INIT, onInit);
+			addSlot(UISignal.DATA_REQUEST, onDataRequest);
 		}
 		
-		private function onInit(s:Signal):void 
+		private function onDataRequest(s:Signal):void 
 		{
-			responseToAll(UISignal.INIT);
+			trace(this, "onDataRequest");
+			responseToAll(UISignal.ON_DATA);
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package org.bixbite.framework.behaviour 
 {
 	import org.bixbite.core.Behaviour;
+	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.core.Signal;
 	import org.bixbite.framework.data.UIData;
 	import org.bixbite.framework.signal.UISignal;
@@ -14,12 +15,12 @@ package org.bixbite.framework.behaviour
 		override public function init():void 
 		{
 			trace(this, "init");
-			sendRequest(UISignal.INIT, onDataInit);
+			addResponder(UISignal.ON_DATA, onData);
 		}
 		
-		private function onDataInit(data:UIData):void
+		private function onData(data:UIData):void
 		{
-			trace("onDataInit");
+			trace(this, "onData Response");
 		}
 		
 		override public function execute(s:Signal):void 
