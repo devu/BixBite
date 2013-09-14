@@ -1,8 +1,13 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
 package org.bixbite.framework.signal 
 {
 	/**
 	 * ...
-	 * @author devu
+	 * @langversion 3.0
 	 */
 	public class UISignal 
 	{
@@ -18,6 +23,12 @@ package org.bixbite.framework.signal
 		static public const CLOSE_WINDOW:String = "UISignalCLOSE_WINDOW";
 		static public const DESTROY_WINDOW:String = "UISignal.DESTROY_WINDOW";
 		
+		static public const CREATE_PANEL	:String = "UISignal.CREATE_PANEL";
+		static public const DESTROY_PANEL	:String = "UISignal.DESTROY_PANEL";
+		
+		static public const CLOSE:String = "UISignal.CLOSE";
+		static public const OPEN:String = "UISignal.OPEN";
+		static public const CREATE:String = "UISignal.CREATE";
 		
 	}
 

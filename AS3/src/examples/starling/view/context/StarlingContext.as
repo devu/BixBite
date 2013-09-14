@@ -1,3 +1,8 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
 package examples.starling.view.context 
 {
 	import org.bixbite.core.interfaces.IContext;
@@ -7,7 +12,7 @@ package examples.starling.view.context
 	
 	/**
 	 * ...
-	 * @author Daniel Wasilewski
+	 * @langversion 3.0
 	 */
 	public class StarlingContext extends Sprite implements IContext
 	{

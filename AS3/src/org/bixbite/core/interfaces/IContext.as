@@ -1,10 +1,14 @@
+/**
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
+*/
+
 package org.bixbite.core.interfaces 
 {
 	import org.bixbite.core.View;
 	
 	/**
-	 * ...
-	 * @author Daniel Wasilewski
+	 * @langversion	3.0
 	 */
 	public interface IContext 
 	{

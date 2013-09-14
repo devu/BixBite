@@ -5,18 +5,17 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.view 
 {
-	import org.bixbite.core.interfaces.IContext;
+	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.UISignal;
-	import org.bixbite.framework.view.context.Window;
 	
 	/**
-	 * @langversion	3.0
+	 * ...
+	 * @langversion 3.0
 	 */
-	public class UIWindow extends View 
+	public class UIPanel extends View 
 	{
-		private var ctx:Window;
 		
 		override public function init():void 
 		{
@@ -25,24 +24,22 @@ package org.bixbite.framework.view
 			
 			addSlot(UISignal.CREATE, onWindowCreated);
 			addSlot(UISignal.CLOSE, onWindowClosed);
-			
-			ctx = Window(registerContext("window", Window));
 		}
 		
 		private function onWindowCreated(s:Signal):void 
 		{
-			addContext("window", "canvas");
-			ctx.draw();
+			//addContext("panel", "canvas");
+			//ctx.draw();
 		}
 		
 		private function onWindowClosed(s:Signal):void 
 		{
-			trace(this,"closed");
+			trace(this, "closed");
 		}
 		
 		private function onShow(s:Signal):void 
 		{
-			ctx.draw();
+			trace(this, "show");
 		}
 		
 		private function onHide(s:Signal):void 
@@ -50,6 +47,12 @@ package org.bixbite.framework.view
 			trace(this, "hide");
 		}
 		
+		override public function destroy():void 
+		{
+			//clean up this class here and then:
+			super.destroy();
+		}
+		
 	}
-
+	
 }

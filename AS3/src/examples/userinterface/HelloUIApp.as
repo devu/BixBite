@@ -3,23 +3,26 @@ Licensed under the Apache License, Version 2.0
 @copy (c) See LICENSE.txt
 */
 
-package $(Package) $(CSLB){
+package examples.userinterface 
+{
 	
 	import org.bixbite.core.Compound;
 	import org.bixbite.core.Signal;
 	
 	/**
-	$(CBI)* ...
-	$(CBI)* @langversion 3.0
-	$(CBI)*/
-	public class $(FileName) extends Compound $(CSLB){
+	 * ...
+	 * @langversion 3.0
+	 */
+	public class HelloUIApp extends Compound 
+	{
 		
-		override public function init():void $(CSLB){
+		override public function init():void 
+		{
 			trace(this, "init");
-			$(EntryPoint)
 		}
 		
-		override public function destroy():void $(CSLB){
+		override public function destroy():void 
+		{
 			//clean up this class here and then:
 			super.destroy();
 		}

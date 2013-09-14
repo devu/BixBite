@@ -23,35 +23,19 @@
 ~~~~~~&+++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The MIT License
-
-@copy (c) 2012 Devu Design Limited, Daniel Wasilewski
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Licensed under the Apache License, Version 2.0
+@copy (c) See LICENSE.txt
 */
 
 package org.bixbite 
 {
+	import examples.userinterface.HelloUIApp;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.framework.data.UIStyle;
+	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.UIManager;
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.StageManager;
@@ -59,7 +43,15 @@ package org.bixbite
 	import org.bixbite.framework.UIManager;
 	
 	/**
-	 * Application x
+	 * Application
+	 * 'Think, cores and modules management'
+	 * 
+	 * Application is just an document root, starting point when you hook up BixBite framework with your target platform.
+	 * Define cores, point to the root of display layer and register Compounds within. 
+	 * By emiting a signals on core you can set initial states of your Modules/Compounds.
+	 * 
+	 * In practice your Modules can start itself from inside, but it is for better clarity of the code. 
+	 * So you can easly follow what each module is doing and when.
 	 */
 	
 	public class Application extends Sprite
@@ -75,18 +67,36 @@ package org.bixbite
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
+			//instance of BixBite
 			var bb:BixBite = new BixBite(stage);
+			
+			//declare displayable root of your application. You can have multiple roots.
 			bb.addContextRoot("app", this);
 			
+			//spawn a core
 			mainCore = bb.spawnCore("main");
 			
+			// register modules and fire initial signals
 			mainCore.register(StageManager);
 			mainCore.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
 			
-			mainCore.register(UIManager);
-			
 			mainCore.register(Stats);
 			mainCore.emitSignal(Stats.START);
+			
+			mainCore.register(UIManager);
+			mainCore.emitSignal(UISignal.INIT);
+			
+			//or
+			
+			/*
+			mainCore.register(UIManager);
+			var uiStyle:UIStyle = new UIStyle();
+			uiStyle.canvasColor = 0xFF9988;
+			mainCore.emitSignal(UISignal.INIT, { style:uiStyle } );
+			*/
+			
+			//and finally the module you are working on
+			mainCore.register(HelloUIApp);
 		}
 		
 	}

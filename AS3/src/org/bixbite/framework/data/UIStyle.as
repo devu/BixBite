@@ -5,21 +5,16 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.data 
 {
-	import org.bixbite.core.Data;
-	
 	/**
 	 * ...
 	 * @langversion 3.0
 	 */
-	public class AppData extends Data 
+	public class UIStyle 
 	{
+		public var canvasColor		:uint = 0xB1BBBB;
+		public var canvasOpacity	:uint = 1;
 		
-		public function AppData() 
-		{
-			
-		}
-		
-		override public function init():void 
+		public function UIStyle() 
 		{
 			
 		}
