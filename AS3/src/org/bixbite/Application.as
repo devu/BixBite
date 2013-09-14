@@ -58,7 +58,6 @@ package org.bixbite
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.UIManager;
 	
-	
 	/**
 	 * Application
 	 */
