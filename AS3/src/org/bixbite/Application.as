@@ -78,7 +78,7 @@ package org.bixbite
 			
 			// register modules and fire initial signals
 			mainCore.register(StageManager);
-			mainCore.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			mainCore.emitSignal(StageSignal.SET_STAGE, { frameRate:60 } );
 			
 			mainCore.register(Stats);
 			mainCore.emitSignal(Stats.START);
@@ -97,6 +97,7 @@ package org.bixbite
 			
 			//and finally the module you are working on
 			mainCore.register(HelloUIApp);
+			mainCore.emitSignal(HelloUIApp.INIT);
 		}
 		
 	}

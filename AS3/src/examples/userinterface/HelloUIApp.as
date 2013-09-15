@@ -8,6 +8,8 @@ package examples.userinterface
 	
 	import org.bixbite.core.Compound;
 	import org.bixbite.core.Signal;
+	import org.bixbite.framework.behaviour.UIAppInit;
+	import org.bixbite.framework.signal.UISignal;
 	
 	/**
 	 * ...
@@ -15,13 +17,18 @@ package examples.userinterface
 	 */
 	public class HelloUIApp extends Compound 
 	{
+		static public const INIT:String = "HelloUIApp.INIT";
 		
 		override public function init():void 
 		{
 			trace(this, "init");
+			
+			emitSignal(UISignal.CREATE_PANEL, { x:0, uy:0, w:100, h:100 } );
+			
+			addBehaviour(HelloUIApp.INIT, UIAppInit);
 		}
 		
-		override public function destroy():void 
+		override public function destroy():void
 		{
 			//clean up this class here and then:
 			super.destroy();
