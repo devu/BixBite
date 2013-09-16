@@ -15,8 +15,8 @@ package examples
 	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayManager;
 	import org.bixbite.framework.Stats;
 	
 	//import starling.core.Starling;
@@ -69,8 +69,8 @@ package examples
 			/**
 			 * Little Compound for basic stage management
 			 */
-			core0.register(StageManager);
-			core0.emitSignal(StageSignal.SET_STAGE, { frameRate:60 } );
+			core0.register(DisplayManager);
+			core0.emitSignal(DisplaySignal.SET_DISPLAY, { frameRate:60 } );
 			
 			/**
 			 * Famous mrdoob Stats implemented within BixBite (currenlty as ready to go functional module of the framework);

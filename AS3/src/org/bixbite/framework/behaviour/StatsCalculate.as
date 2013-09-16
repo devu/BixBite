@@ -27,7 +27,6 @@ package org.bixbite.framework.behaviour
 		
 		private var updateSRS			:Function;
 		private var updateRealtimeSRS	:Function;
-		private var drawSRS				:Function;
 		
 		override public function init():void
 		{
@@ -35,7 +34,6 @@ package org.bixbite.framework.behaviour
 			
 			updateSRS = getSlots(Stats.UPDATE).getSlotByIndex(0).send;
 			updateRealtimeSRS = getSlots(Stats.UPDATE_REALTIME).getSlotByIndex(0).send;
-			drawSRS = getSlots(Stats.DRAW).getSlotByIndex(0).send;
 		}
 		
 		private function onData(data:StatsData):void 
@@ -51,7 +49,7 @@ package org.bixbite.framework.behaviour
 		
 		private function calculate(e:Event):void 
 		{
-			data.timer = timer = getTimer();
+			timer = getTimer();
 			
 			var max			:Number = data.max;
 			var mem			:Number = data.mem;
@@ -66,8 +64,6 @@ package org.bixbite.framework.behaviour
 				data.mem = Number((System.totalMemory * 0.000000954).toFixed(3));
 				data.max = max > mem ? max : mem;
 				data.fps = fps;
-				
-				drawSRS(signal);
 				
 				data.infoFPS = "FPS: " + fps + " / " + frameRate;
 				data.infoMEM = "MEM: " + mem;
@@ -95,7 +91,6 @@ package org.bixbite.framework.behaviour
 			
 			updateSRS = null;
 			updateRealtimeSRS = null;
-			drawSRS = null;
 			
 			super.dispose();
 		}

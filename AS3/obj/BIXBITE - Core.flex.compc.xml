@@ -43,7 +43,11 @@
     <class>org.bixbite.core.interfaces.IData</class>
     <class>org.bixbite.core.interfaces.ITransponder</class>
     <class>org.bixbite.core.interfaces.IView</class>
+    <class>org.bixbite.framework.DisplayManager</class>
     <class>org.bixbite.framework.UIManager</class>
+    <class>org.bixbite.framework.behaviour.DisplayGet</class>
+    <class>org.bixbite.framework.behaviour.DisplayResize</class>
+    <class>org.bixbite.framework.behaviour.DisplaySet</class>
     <class>org.bixbite.framework.behaviour.UIAppInit</class>
     <class>org.bixbite.framework.behaviour.UICloseWindow</class>
     <class>org.bixbite.framework.behaviour.UICreatePanel</class>
@@ -53,9 +57,11 @@
     <class>org.bixbite.framework.behaviour.UIOpenWindow</class>
     <class>org.bixbite.framework.behaviour.UIShow</class>
     <class>org.bixbite.framework.data.AppData</class>
+    <class>org.bixbite.framework.data.DisplayData</class>
     <class>org.bixbite.framework.data.UIData</class>
     <class>org.bixbite.framework.data.UIStyle</class>
     <class>org.bixbite.framework.signal.UISignal</class>
+    <class>org.bixbite.framework.transponder.DisplayTransponder</class>
     <class>org.bixbite.framework.transponder.UITransponder</class>
     <class>org.bixbite.framework.view.UICanvas</class>
     <class>org.bixbite.framework.view.UIPanel</class>

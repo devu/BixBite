@@ -7,13 +7,13 @@ package org.bixbite.framework.data
 {
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayManager;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class StageData extends Data
+	public class DisplayData extends Data
 	{
 		public static const PORTRAIT	:String = "PORTRAIT";
 		public static const LANDSCAPE	:String = "LANDSCAPE";
@@ -22,16 +22,16 @@ package org.bixbite.framework.data
 		
 		override public function init():void 
 		{
-			addSlot(StageManager.DATA_REQUEST, onDataRequest);
-			addSlot(StageSignal.SET_STAGE, onStageSet);
+			addSlot(DisplayManager.DATA_REQUEST, onDataRequest);
+			addSlot(DisplaySignal.SET_DISPLAY, onDisplaySet);
 		}
 		
 		private function onDataRequest(s:Signal):void
 		{
-			responseTo(s.callerUID, StageManager.DATA_REQUEST);
+			responseTo(s.callerUID, DisplayManager.DATA_REQUEST);
 		}
 		
-		private function onStageSet(s:Signal):void
+		private function onDisplaySet(s:Signal):void
 		{
 			stage.align 		= s.params.align;
 			stage.scaleMode 	= s.params.scaleMode;
@@ -40,8 +40,8 @@ package org.bixbite.framework.data
 		
 		override public function destroy():void 
 		{
-			removeSlot(StageManager.DATA_REQUEST);
-			removeSlot(StageSignal.SET_STAGE);
+			removeSlot(DisplayManager.DATA_REQUEST);
+			removeSlot(DisplaySignal.SET_DISPLAY);
 			
 			orientation = null;
 			

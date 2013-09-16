@@ -37,8 +37,8 @@ package org.bixbite
 	import org.bixbite.framework.data.UIStyle;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.UIManager;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayManager;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.UIManager;
 	
@@ -77,8 +77,8 @@ package org.bixbite
 			mainCore = bb.spawnCore("main");
 			
 			// register modules and fire initial signals
-			mainCore.register(StageManager);
-			mainCore.emitSignal(StageSignal.SET_STAGE, { frameRate:60 } );
+			mainCore.register(DisplayManager);
+			mainCore.emitSignal(DisplaySignal.SET_DISPLAY, { frameRate:60 } );
 			
 			mainCore.register(Stats);
 			mainCore.emitSignal(Stats.START);

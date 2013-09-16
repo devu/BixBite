@@ -20,7 +20,6 @@
 		private var ms_prev : int;
 		private var updateSRS : Function;
 		private var updateRealtimeSRS : Function;
-		private var drawSRS : Function;
 
 		public function init () : void;
 

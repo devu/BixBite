@@ -27,18 +27,19 @@ package org.bixbite.framework.signal
 	 * ...
 	 * @langversion 3.0
 	 */
-	public class StageSignal
+	public class DisplaySignal
 	{
 		/**
 		 * IN { align:String, scaleMode:String }
 		 */
-		static public const SET_STAGE				:String = "StageSignal.SET_STAGE";
-		
+		static public const SET_DISPLAY				:String = "DisplaySignal.SET_DISPLAY";
+		static public const GET_DISPLAY				:String = "DisplaySignal.GET_DISPLAY";
 		/**
 		 * OUT stageData
 		 */
-		static public const ON_ORIENTATION_CHANGED	:String = "StageSignal.ON_ORIENTATION_CHANGED";
-		static public const ON_RESIZE				:String = "StageSignal.ON_RESIZE";
+		static public const ON_ORIENTATION_CHANGED	:String = "DisplaySignal.ON_ORIENTATION_CHANGED";
+		static public const ON_RESIZE				:String = "DisplaySignal.ON_RESIZE";
+		
 	}
 
 }

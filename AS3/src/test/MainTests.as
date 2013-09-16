@@ -14,8 +14,8 @@ package test
 	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
-	import org.bixbite.framework.signal.StageSignal;
-	import org.bixbite.framework.StageManager;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.DisplayManager;
 	import org.bixbite.framework.Stats;
 	
 	import test.integration.multicore.CoreCompoundOne;
@@ -50,8 +50,8 @@ package test
 			var bb:BixBite = new BixBite(stage);
 			core1 = bb.spawnCore("stats");
 			
-			core1.register(StageManager);
-			core1.emitSignal(StageSignal.SET_STAGE, { frameRate:30 } );
+			core1.register(DisplayManager);
+			core1.emitSignal(DisplaySignal.SET_DISPLAY, { frameRate:30 } );
 			
 			core1.register(Stats);
 			core1.emitSignal(Stats.START);

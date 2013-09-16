@@ -7,12 +7,12 @@ package org.bixbite.framework.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class SetStage extends Behaviour 
+	public class DisplaySet extends Behaviour 
 	{
 		
 		override public function execute(s:Signal):void
@@ -22,7 +22,7 @@ package org.bixbite.framework.behaviour
 			if (s.params)
 				for (var p:String in s.params) params[p] = s.params[p];
 			
-			sendRequest(StageSignal.SET_STAGE, params);
+			sendRequest(DisplaySignal.SET_DISPLAY, params);
 		}
 		
 	}

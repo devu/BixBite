@@ -9,7 +9,7 @@ package org.bixbite.framework.view
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.data.UIStyle;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Canvas;
 	
@@ -24,7 +24,7 @@ package org.bixbite.framework.view
 		override public function init():void 
 		{
 			addSlot(UISignal.INIT, onInit);
-			addSlot(StageSignal.ON_RESIZE, onResize);
+			addSlot(DisplaySignal.ON_RESIZE, onResize);
 		}
 		
 		private function onResize(s:Signal):void 

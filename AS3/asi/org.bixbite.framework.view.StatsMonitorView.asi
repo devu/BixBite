@@ -6,7 +6,7 @@
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.view.context.StatsMonitor;
 
@@ -32,7 +32,7 @@
 
 		public function onContextAdded () : void;
 
-		private function drawGraph (s:Signal) : void;
+		private function onDisplaySet (s:Signal) : void;
 
 		private function update (s:Signal) : void;
 

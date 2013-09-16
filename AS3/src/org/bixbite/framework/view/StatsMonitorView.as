@@ -13,7 +13,7 @@ package org.bixbite.framework.view
 	import org.bixbite.core.View;
 	
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.StageSignal;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.view.context.StatsMonitor;
 	
@@ -56,23 +56,29 @@ package org.bixbite.framework.view
 			info_max 	= tFactory.createText(panel, "stats", 3, 26, 70, 18, 0xFF25F0);
 			info_orient = tFactory.createText(panel, "stats", 3, 34, 70, 18, 0xDEDEDE);
 			
-			addSlot(Stats.DRAW, drawGraph);
+			addSlot(DisplaySignal.SET_DISPLAY, onDisplaySet);
 			addSlot(Stats.UPDATE, update);
 			addSlot(Stats.UPDATE_REALTIME, updateRealtime);
 			
-			addSlot(StageSignal.ON_ORIENTATION_CHANGED, onOrietnationChanged);
+			addSlot(DisplaySignal.ON_ORIENTATION_CHANGED, onOrietnationChanged);
 			
 			addContext("statsPanel", "stage");
 		}
 		
 		override public function onContextAdded():void 
 		{
+			sendSignal(DisplaySignal.GET_DISPLAY);
 			panel.draw();
 		}
 		
-		private function drawGraph(s:Signal):void
+		private function onDisplaySet(s:Signal):void 
 		{
-			var params		:Object 	= s.params;
+			info_orient.text = s.params.orientation;
+		}
+		
+		private function update(s:Signal):void
+		{
+			var params:Object = s.params;
 			
 			var fps			:int 		= params.fps;
 			var mem			:Number 	= params.mem;
@@ -91,11 +97,6 @@ package org.bixbite.framework.view
 			graph.setPixel32( 228, 56 - ( ( timer - ms ) >> 1 ), 0xFF00FF00 );
 			graph.setPixel32( 228, 56 - mem_graph, 0xFF00FFFF);
 			graph.setPixel32( 228, 56 - max_graph,  0xFFFF0000);
-		}
-		
-		private function update(s:Signal):void
-		{
-			var params:Object = s.params;
 			
 			info_fps.text = params.infoFPS;
 			info_mem.text = params.infoMEM;
@@ -123,10 +124,9 @@ package org.bixbite.framework.view
 			stage.removeChild(panel);
 			panel = null;
 			
-			removeSlot(Stats.DRAW);
 			removeSlot(Stats.UPDATE);
 			removeSlot(Stats.UPDATE_REALTIME);
-			removeSlot(StageSignal.ON_ORIENTATION_CHANGED);
+			removeSlot(DisplaySignal.ON_ORIENTATION_CHANGED);
 			
 			super.destroy();
 		}

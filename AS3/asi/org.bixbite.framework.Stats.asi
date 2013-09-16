@@ -3,6 +3,7 @@
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.behaviour.StatsCalculate;
 	import org.bixbite.framework.data.StatsData;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
 
@@ -16,7 +17,6 @@
 	public class Stats extends Compound
 	{
 		public static const DATA_REQUEST : String = "Stats.DATA_REQUEST";
-		public static const DRAW : String = "Stats.DRAW";
 		public static const UPDATE : String = "Stats.UPDATE";
 		public static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
 		public static const START : String = "Stats.START";

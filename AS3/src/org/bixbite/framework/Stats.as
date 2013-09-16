@@ -8,6 +8,7 @@ package org.bixbite.framework
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.behaviour.StatsCalculate;
 	import org.bixbite.framework.data.StatsData;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
 	
@@ -21,7 +22,6 @@ package org.bixbite.framework
 	{
 		//internals
 		static public const DATA_REQUEST	:String = "Stats.DATA_REQUEST";
-		static public const DRAW			:String = "Stats.DRAW";
 		static public const UPDATE			:String = "Stats.UPDATE";
 		static public const UPDATE_REALTIME	:String = "Stats.UPDATE_REALTIME";
 		
