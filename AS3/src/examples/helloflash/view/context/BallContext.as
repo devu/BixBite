@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package examples.helloflash.view.context 
 {
-	import org.bixbite.framework.view.context.Context;
+	import org.bixbite.core.Context;
 	
 	/**
 	 * @langversion	3.0
@@ -27,7 +27,7 @@ package examples.helloflash.view.context
 			graphics.drawCircle(0, 0, radius);
 		}
 		
-		override public function draw():void
+		public function draw():void
 		{
 			drawCirlce(0x000000, 10);
 		}

@@ -12,7 +12,6 @@ package org.bixbite.framework.view
 	import org.bixbite.framework.signal.StageSignal;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Canvas;
-	import org.bixbite.framework.view.context.Context;
 	
 	/**
 	 * @langversion	3.0

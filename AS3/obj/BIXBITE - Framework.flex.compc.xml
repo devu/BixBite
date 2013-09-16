@@ -28,6 +28,7 @@
     <class>org.bixbite.core.Channel</class>
     <class>org.bixbite.core.Component</class>
     <class>org.bixbite.core.Compound</class>
+    <class>org.bixbite.core.Context</class>
     <class>org.bixbite.core.Core</class>
     <class>org.bixbite.core.Data</class>
     <class>org.bixbite.core.Emitter</class>
@@ -50,6 +51,7 @@
     <class>org.bixbite.framework.behaviour.SetStage</class>
     <class>org.bixbite.framework.behaviour.StatsCalculate</class>
     <class>org.bixbite.framework.behaviour.TriggerKey</class>
+    <class>org.bixbite.framework.behaviour.UIAppInit</class>
     <class>org.bixbite.framework.behaviour.UICloseWindow</class>
     <class>org.bixbite.framework.behaviour.UICreatePanel</class>
     <class>org.bixbite.framework.behaviour.UICreateWindow</class>
@@ -74,7 +76,6 @@
     <class>org.bixbite.framework.view.UIPanel</class>
     <class>org.bixbite.framework.view.UIWindow</class>
     <class>org.bixbite.framework.view.context.Canvas</class>
-    <class>org.bixbite.framework.view.context.Context</class>
     <class>org.bixbite.framework.view.context.OutputContext</class>
     <class>org.bixbite.framework.view.context.Panel</class>
     <class>org.bixbite.framework.view.context.StatsMonitor</class>

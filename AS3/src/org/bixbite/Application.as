@@ -86,6 +86,10 @@ package org.bixbite
 			mainCore.register(UIManager);
 			mainCore.emitSignal(UISignal.INIT);
 			
+			// or
+			
+			//mainCore.emitSignal(UISignal.INIT), {path:"uistyle.css"};
+			
 			//or
 			
 			/*

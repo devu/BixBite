@@ -18,10 +18,6 @@ package $(Package) $(CSLB){
 			$(EntryPoint)
 		}
 		
-		override public function draw():void $(CSLB){
-			trace(this, "draw");
-		}
-		
 		override public function destroy():void $(CSLB){
 			//clean up this class here and then:
 			super.destroy();

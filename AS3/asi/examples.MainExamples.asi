@@ -3,6 +3,7 @@
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
+	import starling.core.Starling;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;

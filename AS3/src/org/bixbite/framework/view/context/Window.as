@@ -5,6 +5,8 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.view.context 
 {
+	import org.bixbite.core.Context;
+	
 	/**
 	 * @langversion	3.0
 	 */
@@ -17,7 +19,7 @@ package org.bixbite.framework.view.context
 			mouseChildren = false;
 		}
 		
-		override public function draw():void 
+		public function draw():void 
 		{
 			graphics.clear();
 			graphics.beginFill(0xEAEAEA, 1);

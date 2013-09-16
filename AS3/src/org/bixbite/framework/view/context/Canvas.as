@@ -5,6 +5,8 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.view.context 
 {
+	import org.bixbite.core.Context;
+	
 	/**
 	 * @langversion	3.0
 	 */
@@ -13,12 +15,7 @@ package org.bixbite.framework.view.context
 		public var color	:uint = 0xFFFFFF;
 		public var opacity	:Number = 1;
 		
-		override public function init():void 
-		{
-			
-		}
-		
-		override public function draw():void 
+		public function draw():void 
 		{
 			graphics.clear();
 			graphics.beginFill(color, opacity);

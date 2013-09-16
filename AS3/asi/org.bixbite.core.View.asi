@@ -78,7 +78,7 @@
 		 * @param	contextId
 		 * @param	containerId
 		 */
-		public function addContext (contextId:String, containerId:String) : void;
+		public function addContext (id:String, containerId:String) : void;
 
 		public function onContextAdded () : void;
 

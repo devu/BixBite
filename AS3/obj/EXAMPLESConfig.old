@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'9/14/2013'</value>
+      <value>'9/16/2013'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -35,7 +35,9 @@
       <path-element>I:\BixBite\AS3\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
-    <library-path append="true" />
+    <library-path append="true">
+      <path-element>I:\BixBite\AS3\lib\starling_bixbite.swc</path-element>
+    </library-path>
   </compiler>
   <file-specs>
     <path-element>I:\BixBite\AS3\src\examples\MainExamples.as</path-element>

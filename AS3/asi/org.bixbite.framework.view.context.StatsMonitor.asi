@@ -1,6 +1,6 @@
 ﻿package org.bixbite.framework.view.context
 {
-	import org.bixbite.framework.view.context.Context;
+	import org.bixbite.core.Context;
 
 	/**
 	 *
@@ -10,8 +10,8 @@
 	{
 		public function init () : void;
 
-		public function draw () : void;
-
 		public function dispose () : void;
+
+		public function draw () : void;
 	}
 }

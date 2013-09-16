@@ -16,8 +16,6 @@
 
 		function init () : void;
 
-		function draw () : void;
-
 		function dispose () : void;
 	}
 }

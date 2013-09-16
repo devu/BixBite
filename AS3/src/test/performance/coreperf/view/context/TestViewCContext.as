@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package test.performance.coreperf.view.context 
 {
-	import org.bixbite.framework.view.Context;
+	import org.bixbite.core.Context;
 	
 	/**
 	 * @langversion	3.0

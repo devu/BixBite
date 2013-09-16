@@ -6,7 +6,7 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.framework.view.context 
 {
 	import flash.text.TextField;
-	import org.bixbite.framework.view.context.Context;
+	import org.bixbite.core.Context;
 	
 	/**
 	 * @langversion	3.0
@@ -21,11 +21,6 @@ package org.bixbite.framework.view.context
 			txt = new TextField(); 
 			txt.autoSize = "left";
 			addChild(txt);
-		}
-		
-		override public function draw():void
-		{
-			
 		}
 		
 		public function set text(value:String):void 

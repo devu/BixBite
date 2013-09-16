@@ -116,9 +116,9 @@ package org.bixbite.core
 		 * @param	contextId
 		 * @param	containerId
 		 */
-		public function addContext(contextId:String, containerId:String):void
+		public function addContext(id:String, containerId:String):void
 		{
-			emitter.bixbite.addCtx(contextId, containerId);
+			emitter.bixbite.addCtx(id, containerId);
 		}
 		
 		/*abstract*/ public function onContextAdded():void { }

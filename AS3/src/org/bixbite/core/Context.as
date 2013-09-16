@@ -3,7 +3,7 @@ Licensed under the Apache License, Version 2.0
 @copy (c) See LICENSE.txt
 */
 
-package org.bixbite.framework.view.context
+package org.bixbite.core
 {
 	import flash.display.Sprite;
 	import flash.display.Stage;
@@ -38,23 +38,9 @@ package org.bixbite.framework.view.context
 			_parrentView = value;
 		}
 		
-		/*abstract*/
-		public function init():void
-		{
-			
-		}
+		/*abstract*/ public function init():void {}
 		
-		/*abstract*/
-		public function draw():void
-		{
-			
-		}
-		
-		/*abstract*/ 
-		public function dispose():void
-		{
-			
-		}
+		/*abstract*/ public function dispose():void {}
 		
 	}
 

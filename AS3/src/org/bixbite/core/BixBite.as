@@ -93,7 +93,7 @@ package org.bixbite.core
 			ctx.parrentView = view;
 			ctx.id = id;
 			list[id] = ctx;
-			list[id].init();
+			ctx.init();
 			
 			return ctx
 		}

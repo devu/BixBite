@@ -6,9 +6,11 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.framework.view 
 {
 	
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.UISignal;
+	import org.bixbite.framework.view.context.Panel;
 	
 	/**
 	 * ...
@@ -28,8 +30,9 @@ package org.bixbite.framework.view
 		
 		private function onWindowCreated(s:Signal):void 
 		{
-			//addContext("panel", "canvas");
-			//ctx.draw();
+			var ctx:Panel = Panel(registerContext("panel", Panel));
+			addContext("panel", "app");
+			ctx.draw();
 		}
 		
 		private function onWindowClosed(s:Signal):void 

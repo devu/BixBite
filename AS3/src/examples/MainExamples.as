@@ -8,6 +8,7 @@ package examples
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
+	import starling.core.Starling;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -58,13 +59,12 @@ package examples
 			//Add some roots for display list, it can be any object that has addChild method implemented
 			//bb.addContextRoot("stage", stage); is there by default
 			bb.addContextRoot("root", this);
-			//bb.addContextRoot("stage2D", starling.stage);
-			
-			//Spawn some cores to work with and give it a name
 			core0 = bb.spawnCore("framework");
 			core1 = bb.spawnCore("performance");
-			//core2 = bb.spawnCore("starling");
-			
+			/*
+			bb.addContextRoot("stage2D", starling.stage);
+			core2 = bb.spawnCore("starling");
+			*/
 			//Register functional Compounds with the Core
 			/**
 			 * Little Compound for basic stage management
