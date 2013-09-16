@@ -11,6 +11,7 @@ package test
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
+	import org.bixbite.core.ContextContainer;
 	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
@@ -48,6 +49,10 @@ package test
 			//loadBixBiteFromFile();
 			
 			var bb:BixBite = new BixBite(stage);
+			
+			bb.addContainer("app", new ContextContainer());
+			bb.addContainer("debug", new ContextContainer());
+			
 			core1 = bb.spawnCore("stats");
 			
 			core1.register(DisplayManager);
@@ -62,15 +67,13 @@ package test
 			core2.register(SignalPerformance);
 			
 			//Core performance test
-			//core2.register(CorePerformance);
+			core2.register(CorePerformance);
 			
 			//Multicore communication test
 			/*
 			core3 = bb.spawnCore("test_core_1");
 			core3.register(CoreCompoundOne);
-			
-			core4 = bb.spawnCore("test_core_2");
-			core4.register(CoreCompoundTwo);
+			core2.register(CoreCompoundTwo);
 			*/
 		}
 		

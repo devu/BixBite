@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.9.3.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.9.4.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -270,6 +270,35 @@
     <string>src\test\performance\signalperf\behaviour\objecta.as</string>
     <string>src\test\performance\signalperf\behaviour\nativetest.as</string>
     <string>src\test\performance\signalperf\behaviour\callbacktest.as</string>
+    <string>src\org\bixbite\framework\transponder\displaytransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\uitransponder.as</string>
+    <string>src\org\bixbite\framework\view\context\canvas.as</string>
+    <string>src\org\bixbite\framework\view\context\panel.as</string>
+    <string>src\org\bixbite\framework\view\context\uicontext.as</string>
+    <string>src\org\bixbite\framework\view\context\window.as</string>
+    <string>src\org\bixbite\framework\view\uicanvas.as</string>
+    <string>src\org\bixbite\framework\view\uipanel.as</string>
+    <string>src\org\bixbite\framework\view\uiwindow.as</string>
+    <string>src\org\bixbite\framework\displaymanager.as</string>
+    <string>src\org\bixbite\framework\uimanager.as</string>
+    <string>src\org\bixbite\application.as</string>
+    <string>src\org\bixbite\framework\signal\uisignal.as</string>
+    <string>src\org\bixbite\framework\data\appdata.as</string>
+    <string>src\org\bixbite\framework\data\displaydata.as</string>
+    <string>src\org\bixbite\framework\data\uidata.as</string>
+    <string>src\org\bixbite\framework\data\uistyle.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayget.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayresize.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayset.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiappinit.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiclosewindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatepanel.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatewindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uidestroywindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiinitialise.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiopenwindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uishow.as</string>
+    <string>src\examples\userinterface\hellouiapp.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -530,6 +559,35 @@
     <string>src\test\performance\signalperf\behaviour\nativetest.as</string>
     <string>src\test\performance\signalperf\behaviour\callbacktest.as</string>
     <string>src\org\bixbite\framework\view\context2d.as</string>
+    <string>src\org\bixbite\framework\transponder\displaytransponder.as</string>
+    <string>src\org\bixbite\framework\transponder\uitransponder.as</string>
+    <string>src\org\bixbite\framework\view\context\canvas.as</string>
+    <string>src\org\bixbite\framework\view\context\panel.as</string>
+    <string>src\org\bixbite\framework\view\context\uicontext.as</string>
+    <string>src\org\bixbite\framework\view\context\window.as</string>
+    <string>src\org\bixbite\framework\view\uicanvas.as</string>
+    <string>src\org\bixbite\framework\view\uipanel.as</string>
+    <string>src\org\bixbite\framework\view\uiwindow.as</string>
+    <string>src\org\bixbite\framework\displaymanager.as</string>
+    <string>src\org\bixbite\framework\uimanager.as</string>
+    <string>src\org\bixbite\application.as</string>
+    <string>src\org\bixbite\framework\signal\uisignal.as</string>
+    <string>src\org\bixbite\framework\data\appdata.as</string>
+    <string>src\org\bixbite\framework\data\displaydata.as</string>
+    <string>src\org\bixbite\framework\data\uidata.as</string>
+    <string>src\org\bixbite\framework\data\uistyle.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayget.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayresize.as</string>
+    <string>src\org\bixbite\framework\behaviour\displayset.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiappinit.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiclosewindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatepanel.as</string>
+    <string>src\org\bixbite\framework\behaviour\uidestroywindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatewindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiinitialise.as</string>
+    <string>src\org\bixbite\framework\behaviour\uiopenwindow.as</string>
+    <string>src\org\bixbite\framework\behaviour\uishow.as</string>
+    <string>src\examples\userinterface\hellouiapp.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

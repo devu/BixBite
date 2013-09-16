@@ -6,6 +6,7 @@
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
 	import org.bixbite.framework.signal.DisplaySignal;

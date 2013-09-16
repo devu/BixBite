@@ -2,6 +2,7 @@
 {
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Transponder;
 
 	/**
@@ -11,6 +12,7 @@
 	public class StatsTransponder extends Transponder
 	{
 		private var panel : Sprite;
+		private var root : ContextContainer;
 
 		public function init () : void;
 

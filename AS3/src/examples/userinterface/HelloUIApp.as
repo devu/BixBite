@@ -23,7 +23,7 @@ package examples.userinterface
 		{
 			trace(this, "init");
 			
-			emitSignal(UISignal.CREATE_PANEL, { x:0, uy:0, w:100, h:100 } );
+			emitSignal(UISignal.CREATE_PANEL, { x:0, y:100, w:'100%', h:100 } );
 			
 			addBehaviour(HelloUIApp.INIT, UIAppInit);
 		}

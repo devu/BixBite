@@ -11,7 +11,7 @@
 	 */
 	public class BixBite
 	{
-		public static const VERSION : String = "BixBite v0.9.3";
+		public static const VERSION : String = "BixBite v0.9.4";
 		public static var stage : Stage;
 		private var cores : Dictionary;
 		public var list : Dictionary;
@@ -31,9 +31,9 @@
 		 */
 		public function destroyCore (id:String) : void;
 
-		public function addContextRoot (id:String, customRoot:*) : void;
+		public function addContainer (id:String, container:*) : void;
 
-		function getContainer (containerId:String) : *;
+		public function getContainer (id:String) : ContextContainer;
 
 		/**
 		 * Channel for multi-core communication
@@ -50,26 +50,12 @@
 		 * @param	context
 		 * @return	IContext
 		 */
-		function registerCtx (view:View, id:String, context:Class) : IContext;
+		function registerCtx (view:View, id:String, context:Class) : Context;
 
 		/**
 		 * Internal display list management method, to unregister a context from the system.
 		 * @param	id
 		 */
 		function unregisterCtx (id:String) : void;
-
-		/**
-		 * Internal display list management method. To add a context to any root container by id.
-		 * @param	contextId
-		 * @param	containerId
-		 */
-		function addCtx (contextId:String, containerId:String=null) : void;
-
-		/**
-		 * Internal display list management method. To remove a context by its id.
-		 * @param	contextId
-		 * @param	containerId
-		 */
-		function removeCtx (contextId:String) : void;
 	}
 }

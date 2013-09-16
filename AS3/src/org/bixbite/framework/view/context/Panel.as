@@ -12,6 +12,8 @@ package org.bixbite.framework.view.context
 	 */
 	public class Panel extends Context
 	{
+		private var w:Number = 100;
+		private var h:Number = 100;
 		
 		override public function init():void 
 		{
@@ -23,7 +25,19 @@ package org.bixbite.framework.view.context
 		{
 			graphics.clear();
 			graphics.beginFill(0xEAEAEA, 1);
-			graphics.drawRect(0, 0, 100, 100);
+			graphics.drawRect(0, 0, w, h);
+		}
+		
+		public function setPosition(x:Number, y:Number):void 
+		{
+			this.x = x;
+			this.y = y;
+		}
+		
+		public function setSize(w:Number, h:Number):void 
+		{
+			this.w = w;
+			this.h = h;
 		}
 		
 	}

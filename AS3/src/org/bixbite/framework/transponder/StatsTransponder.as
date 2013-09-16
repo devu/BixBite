@@ -7,6 +7,7 @@ package org.bixbite.framework.transponder
 {
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Transponder;
 	
 	
@@ -16,16 +17,19 @@ package org.bixbite.framework.transponder
 	public class StatsTransponder extends Transponder 
 	{
 		private var panel:Sprite;
+		private var root:ContextContainer;
 		
 		override public function init():void 
 		{
+			root = getContainer("debug");
+			
 			addSensor(MouseEvent.MOUSE_DOWN	, onMouseDown);
 			addSensor(MouseEvent.MOUSE_UP	, onMouseUp);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void
 		{
-			panel = Sprite(getContextById("statsPanel", "stage"));
+			panel = Sprite(root.getContextUnderPoint("statsPanel"));
 			if (panel) panel.startDrag();
 		}
 		

@@ -97,7 +97,7 @@ package org.bixbite.core
 		 * @param	context
 		 * @return  IContext instance of the created context as interface
 		 */
-		public function registerContext(id:String, context:Class):IContext
+		public function registerContext(id:String, context:Class):Context
 		{
 			return emitter.bixbite.registerCtx(this, id, context);
 		}
@@ -112,27 +112,13 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Add Context into any Container.
-		 * @param	contextId
-		 * @param	containerId
+		 * Get registered context container
+		 * @param	id
 		 */
-		public function addContext(id:String, containerId:String):void
+		public function getContainer(id:String):ContextContainer
 		{
-			emitter.bixbite.addCtx(id, containerId);
+			return emitter.bixbite.getContainer(id);
 		}
-		
-		/*abstract*/ public function onContextAdded():void { }
-		
-		/**
-		 * Remove Context from its Container
-		 * @param	contextId
-		 */
-		public function removeContext(contextId:String):void
-		{
-			emitter.bixbite.removeCtx(contextId);
-		}
-		
-		/*abstract*/ public function onContextRemoved():void { }
 		
 		/**
 		 * @inheritDoc

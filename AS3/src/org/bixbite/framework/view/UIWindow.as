@@ -6,6 +6,7 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.framework.view 
 {
 	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.interfaces.IContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.UISignal;
@@ -31,7 +32,8 @@ package org.bixbite.framework.view
 		
 		private function onWindowCreated(s:Signal):void 
 		{
-			addContext("window", "canvas");
+			//addContext("window", "canvas");
+			var root:IContextContainer = getContainer("app");
 			ctx.draw();
 		}
 		

@@ -1,7 +1,5 @@
 ﻿package org.bixbite.core
 {
-	import flash.geom.Point;
-	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 
@@ -13,8 +11,6 @@
 	 */
 	public class Transponder extends Component implements ITransponder
 	{
-		private var p : Point;
-
 		/**
 		 * Constructor - this class cannot be directly instantiated.
 		 */
@@ -85,17 +81,10 @@
 		public function removeSensor (type:String, callback:Function) : void;
 
 		/**
-		 * Get all display objects under the mouse point
-		 * @return
+		 * Get registered context container
+		 * @param	id
 		 */
-		private function getContextArray (containerId:String) : Array;
-
-		/**
-		 * Get 1st available display object under mouse point by its name
-		 * @param	name
-		 * @return
-		 */
-		public function getContextById (name:String, containerId:String) : IContext;
+		public function getContainer (id:String) : ContextContainer;
 
 		/**
 		 *

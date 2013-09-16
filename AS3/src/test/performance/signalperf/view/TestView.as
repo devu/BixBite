@@ -9,6 +9,7 @@ package test.performance.signalperf.view
 	import flash.text.TextField;
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Slot;
 	import org.bixbite.core.View;
@@ -22,6 +23,7 @@ package test.performance.signalperf.view
 	{
 		private var slot	:Slot;
 		private var output	:OutputContext;
+		private var root	:ContextContainer;
 		
 		public function TestView() 
 		{
@@ -30,9 +32,11 @@ package test.performance.signalperf.view
 		
 		override public function init():void 
 		{
+			root = getContainer("app");
 			output = OutputContext(registerContext("signalPerf", OutputContext));
 			output.y = 60;
-			addContext("signalPerf", "stage");
+			
+			root.add(output);
 			
 			addSlot(SignalPerformance.NATIVE_TEST_RESULTS, onNativeTest);
 			addSlot(SignalPerformance.CALLBACK_TEST_RESULTS, onCallbackTest);

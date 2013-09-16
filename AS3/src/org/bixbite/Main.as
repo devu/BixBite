@@ -32,6 +32,7 @@ package org.bixbite
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Core;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.DisplayManager;
@@ -58,6 +59,8 @@ package org.bixbite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var bb:BixBite = new BixBite(stage);
+			
+			bb.addContainer("debug", new ContextContainer());
 			
 			core1 = bb.spawnCore("1");
 			

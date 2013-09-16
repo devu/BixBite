@@ -20,7 +20,7 @@ package test.performance.coreperf.view
 		{
 			output = OutputContext(registerContext("outputText", OutputContext));
 			output.y = 110;
-			addContext("outputText", "stage");
+			getContainer("app").add(output);
 			
 			addSlot("traceOutput", onTraceOutput);
 		}

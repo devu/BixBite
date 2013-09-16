@@ -8,6 +8,7 @@ package org.bixbite.framework.view
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.text.TextField;
+	import org.bixbite.core.interfaces.IContextContainer;
 	
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
@@ -22,14 +23,15 @@ package org.bixbite.framework.view
 	 */
 	public class StatsMonitorView extends View 
 	{
+		private var root			:IContextContainer;
+		private var panel			:StatsMonitor;
+		
 		private var mem_graph		:Number = 0;
 		private var max_graph		:Number = 0;
 		private var fps_graph		:Number = 0;
 		
 		private var monitor			:Bitmap;
 		private var graph			:BitmapData;
-
-		private var panel			:StatsMonitor;
 		
 		private var info_fps		:TextField;
 		private var info_ms			:TextField;
@@ -41,7 +43,8 @@ package org.bixbite.framework.view
 		{
 			var tFactory:TextFactory = TextFactory.getInstance();
 			
-			panel = registerContext("statsPanel", StatsMonitor) as StatsMonitor;
+			root = getContainer("debug");
+			panel = StatsMonitor(registerContext("statsPanel", StatsMonitor));
 			
 			graph = new BitmapData(230, 56, true, 0x00000000);
 			monitor = new Bitmap(graph);
@@ -62,11 +65,8 @@ package org.bixbite.framework.view
 			
 			addSlot(DisplaySignal.ON_ORIENTATION_CHANGED, onOrietnationChanged);
 			
-			addContext("statsPanel", "stage");
-		}
-		
-		override public function onContextAdded():void 
-		{
+			root.add(panel);
+			
 			sendSignal(DisplaySignal.GET_DISPLAY);
 			panel.draw();
 		}

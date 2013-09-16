@@ -5,8 +5,6 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import flash.geom.Point;
-	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.interfaces.ITransponder;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -20,8 +18,6 @@ package org.bixbite.core
 	public class Transponder extends Component implements ITransponder 
 	{
 		use namespace BIXBITE
-		
-		private var p:Point = new Point(0, 0);
 		
 		/**
          * Constructor - this class cannot be directly instantiated.
@@ -129,31 +125,12 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Get all display objects under the mouse point
-		 * @return
+		 * Get registered context container
+		 * @param	id
 		 */
-		private function getContextArray(containerId:String):Array
+		public function getContainer(id:String):ContextContainer
 		{
-			var container:* = emitter.bixbite.getContainer(containerId);
-			if (!container) return null;
-			
-			p.x = stage.mouseX;
-			p.y = stage.mouseY;
-			return container.getObjectsUnderPoint(p);
-		}
-		
-		/**
-		 * Get 1st available display object under mouse point by its name
-		 * @param	name
-		 * @return
-		 */
-		public function getContextById(name:String, containerId:String):IContext
-		{
-			for each(var ctx:Object in getContextArray(containerId)){
-				if (ctx is IContext && ctx.id == name) return IContext(ctx);
-			}
-			
-			return null
+			return emitter.bixbite.getContainer(id);
 		}
 		
 		/**

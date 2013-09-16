@@ -8,6 +8,7 @@ package examples
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;
 	import examples.starling.HelloStarling;
+	import org.bixbite.core.ContextContainer;
 	import starling.core.Starling;
 	
 	import flash.display.Sprite;
@@ -56,9 +57,10 @@ package examples
 			//Instantiate BixBite
 			var bb:BixBite = new BixBite(stage);
 			
-			//Add some roots for display list, it can be any object that has addChild method implemented
-			//bb.addContextRoot("stage", stage); is there by default
-			bb.addContextRoot("root", this);
+			//Add some roots for display list.
+			bb.addContainer("app", new ContextContainer());
+			bb.addContainer("debug", new ContextContainer());
+			
 			core0 = bb.spawnCore("framework");
 			core1 = bb.spawnCore("performance");
 			/*

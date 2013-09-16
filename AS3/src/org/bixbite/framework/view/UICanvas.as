@@ -6,6 +6,7 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.framework.view 
 {
 	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.interfaces.IContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.data.UIStyle;
@@ -20,6 +21,7 @@ package org.bixbite.framework.view
 	{
 		private var canvas	:Canvas;
 		private var style	:UIStyle;
+		private var root	:IContextContainer;
 		
 		override public function init():void 
 		{
@@ -40,17 +42,9 @@ package org.bixbite.framework.view
 			canvas.color = style.canvasColor;
 			canvas.opacity = style.canvasOpacity;
 			
-			addContext("canvas", "app");
-		}
-		
-		override public function onContextAdded():void 
-		{
+			getContainer("app").add(canvas);
+			
 			canvas.draw();
-		}
-		
-		override public function onContextRemoved():void 
-		{
-			canvas.dispose();
 		}
 	}
 

@@ -33,7 +33,9 @@ package org.bixbite
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Core;
+	import org.bixbite.core.interfaces.IContextContainer;
 	import org.bixbite.framework.data.UIStyle;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.UIManager;
@@ -70,8 +72,9 @@ package org.bixbite
 			//instance of BixBite
 			var bb:BixBite = new BixBite(stage);
 			
-			//declare displayable root of your application. You can have multiple roots.
-			bb.addContextRoot("app", this);
+			//declare container(s) of your application.
+			bb.addContainer("app", new ContextContainer());
+			bb.addContainer("debug", new ContextContainer());
 			
 			//spawn a core
 			mainCore = bb.spawnCore("main");

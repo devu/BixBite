@@ -40,6 +40,7 @@ package org.bixbite.framework
 			addBehaviour(UISignal.DESTROY_WINDOW, UIDestroyWindow);
 			
 			addBehaviour(UISignal.CREATE_PANEL, UICreatePanel);
+			addBehaviour(UISignal.DESTROY_PANEL, UICreatePanel);
 			
 			addBehaviour(UISignal.INIT, UIInitialise, true);
 		}

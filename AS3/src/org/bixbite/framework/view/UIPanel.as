@@ -7,8 +7,10 @@ package org.bixbite.framework.view
 {
 	
 	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.core.interfaces.IContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Panel;
 	
@@ -18,24 +20,33 @@ package org.bixbite.framework.view
 	 */
 	public class UIPanel extends View 
 	{
+		private var root	:IContextContainer;
+		private var ctx		:Panel;
 		
 		override public function init():void 
 		{
 			addSlot(UISignal.SHOW, onShow);
 			addSlot(UISignal.HIDE, onHide);
 			
-			addSlot(UISignal.CREATE, onWindowCreated);
-			addSlot(UISignal.CLOSE, onWindowClosed);
+			addSlot(UISignal.CREATE, onCreated);
 		}
 		
-		private function onWindowCreated(s:Signal):void 
+		private function onCreated(s:Signal):void 
 		{
-			var ctx:Panel = Panel(registerContext("panel", Panel));
-			addContext("panel", "app");
+			trace(this, "created");
+			var p:Object = s.params;
+			
+			ctx = Panel(registerContext("panel", Panel));
+			ctx.setPosition(p.x, p.y);
+			//ctx.setSize(p.w, p.h);
+			
+			root = getContainer("app");
+			root.add(ctx);
+			
 			ctx.draw();
 		}
 		
-		private function onWindowClosed(s:Signal):void 
+		private function onPanelClosed(s:Signal):void 
 		{
 			trace(this, "closed");
 		}

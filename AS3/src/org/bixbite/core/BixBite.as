@@ -17,7 +17,7 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.9.3";
+		public static const VERSION	:String = "BixBite v0.9.4";
 		
 		public static var stage		:Stage;
 		
@@ -28,7 +28,7 @@ package org.bixbite.core
 		public function BixBite(stage:Stage) 
 		{
 			BixBite.stage = stage;
-			list["stage"] = stage;
+			list["stage"] = new ContextContainer();
 			trace(VERSION);
 		}
 		
@@ -57,14 +57,17 @@ package org.bixbite.core
 			}
 		}
 		
-		public function addContextRoot(id:String, customRoot:*):void 
+		public function addContainer(id:String, container:*):void 
 		{
-			list[id] = customRoot;
+			container.id = id;
+			stage.addChild(container);
+			list[id] = container;
+			container.init();
 		}
 		
-		internal function getContainer(containerId:String):* 
+		public function getContainer(id:String):ContextContainer 
 		{
-			return list[containerId];
+			return list[id];
 		}
 		
 		/**
@@ -85,7 +88,7 @@ package org.bixbite.core
 		 * @param	context
 		 * @return	IContext
 		 */
-		internal function registerCtx(view:View, id:String, context:Class):IContext
+		internal function registerCtx(view:View, id:String, context:Class):Context
 		{
 			if (list[id]) Error("Context " + id + "is already registered");
 			
@@ -95,7 +98,7 @@ package org.bixbite.core
 			list[id] = ctx;
 			ctx.init();
 			
-			return ctx
+			return Context(ctx)
 		}
 		
 		/**
@@ -106,41 +109,15 @@ package org.bixbite.core
 		{
 			if (!list[id]) Error("There is no such context: " + id + "registered within display list");
 			
-			removeCtx(id);
-			
-			list[id].dispose();
-			delete list[id];
-		}
-		
-		/**
-		 * Internal display list management method. To add a context to any root container by id.
-		 * @param	contextId
-		 * @param	containerId
-		 */
-		internal function addCtx(contextId:String, containerId:String = null):void 
-		{
-			var context:IContext = list[contextId];
-			if (!context) Error("There is no context " + contextId + " registered yet");
-			
-			var container:* = list[containerId];
-			if (!container) Error("Container " + containerId + "cannot be found");
-			
-			container.addChild(context);
-			context.parrentView.onContextAdded();
-		}
-		
-		/**
-		 * Internal display list management method. To remove a context by its id.
-		 * @param	contextId
-		 * @param	containerId
-		 */
-		internal function removeCtx(contextId:String):void 
-		{
-			var context:* = list[contextId];
+			//removeCtx(id);
+			var context:* = list[id];
 			if (context && context.parent){
 				context.parent.removeChild(context);
 				context.parrentView.onContextRemoved();
 			}
+			
+			list[id].dispose();
+			delete list[id];
 		}
 	}
 

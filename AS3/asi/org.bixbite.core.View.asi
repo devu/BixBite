@@ -65,7 +65,7 @@
 		 * @param	context
 		 * @return  IContext instance of the created context as interface
 		 */
-		public function registerContext (id:String, context:Class) : IContext;
+		public function registerContext (id:String, context:Class) : Context;
 
 		/**
 		 * Unregsiter Context within a view
@@ -74,21 +74,10 @@
 		public function unregisterContext (id:String) : void;
 
 		/**
-		 * Add Context into any Container.
-		 * @param	contextId
-		 * @param	containerId
+		 * Get registered context container
+		 * @param	id
 		 */
-		public function addContext (id:String, containerId:String) : void;
-
-		public function onContextAdded () : void;
-
-		/**
-		 * Remove Context from its Container
-		 * @param	contextId
-		 */
-		public function removeContext (contextId:String) : void;
-
-		public function onContextRemoved () : void;
+		public function getContainer (id:String) : ContextContainer;
 
 		/**
 		 *
