@@ -5,11 +5,9 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.view 
 {
-	import org.bixbite.core.interfaces.IContext;
-	import org.bixbite.core.interfaces.IContextContainer;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.data.UIStyle;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Canvas;
@@ -19,9 +17,13 @@ package org.bixbite.framework.view
 	 */
 	public class UICanvas extends View 
 	{
-		private var canvas	:Canvas;
-		private var style	:UIStyle;
-		private var root	:IContextContainer;
+		private var root	:ContextContainer;
+		private var ctx		:Canvas;
+		
+		private var width	:Number;
+		private var height	:Number;
+		private var x		:Number = 0;
+		private var y		:Number = 0;
 		
 		override public function init():void 
 		{
@@ -29,22 +31,44 @@ package org.bixbite.framework.view
 			addSlot(DisplaySignal.ON_RESIZE, onResize);
 		}
 		
+		override public function destroy():void 
+		{
+			super.destroy();
+		}
+		
 		private function onResize(s:Signal):void 
 		{
-			canvas.draw();
+			width = s.params.width;
+			height = s.params.height;
+			ctx.setSize(width, height);
+			ctx.draw();
+			
+			trace(this, "resize", width, height);
 		}
 		
 		private function onInit(s:Signal):void 
 		{
-			canvas = Canvas(registerContext("canvas", Canvas));
+			if (s.params) setParams(s.params);
 			
-			style = UIStyle(s.params);
-			canvas.color = style.canvasColor;
-			canvas.opacity = style.canvasOpacity;
+			ctx = Canvas(registerContext("canvas", Canvas));
+			root = getContainer("root");
 			
-			getContainer("app").add(canvas);
+			ctx.margin = [10, 10, 10, 10];
 			
-			canvas.draw();
+			width = root.stage.stageWidth;
+			height = root.stage.stageHeight;
+			ctx.setSize(width, height);
+			ctx.draw();
+			
+			ctx.setPosition(x, y);
+			
+			root.add(ctx);
+		}
+		
+		private function setParams(p:Object):void 
+		{
+			x = p.x || 0;
+			y = p.y || 0;
 		}
 	}
 

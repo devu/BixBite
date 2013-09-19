@@ -12,13 +12,16 @@ package org.bixbite.framework
 	import org.bixbite.framework.behaviour.UIDestroyWindow;
 	import org.bixbite.framework.behaviour.UIInitialise;
 	import org.bixbite.framework.behaviour.UIOpenWindow;
-	import org.bixbite.framework.data.UIData;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.transponder.UITransponder;
 	import org.bixbite.framework.view.UICanvas;
 	
 	/**
 	 * @langversion	3.0
+	 * UIManager is an functional module that will provide consistency for building blocks of your application.
+	 * By default it will create UICanvas as the root/fundation for any element added into it. 
+	 * The adventage of using UIManager is a style provider that is inherited by any children added into display list.
+	 * Upon this solution it is possible to achieve great consistency across AS3-Flash and HTML platforms.
 	 */
 	public class UIManager extends Compound 
 	{
@@ -30,9 +33,8 @@ package org.bixbite.framework
 		
 		override public function init():void 
 		{
-			register(UIData);
-			register(UITransponder);
 			register(UICanvas);
+			register(UITransponder);
 			
 			addBehaviour(UISignal.CREATE_WINDOW, UICreateWindow);
 			addBehaviour(UISignal.OPEN_WINDOW, UIOpenWindow);

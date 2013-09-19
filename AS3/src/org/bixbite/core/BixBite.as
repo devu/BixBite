@@ -28,7 +28,8 @@ package org.bixbite.core
 		public function BixBite(stage:Stage) 
 		{
 			BixBite.stage = stage;
-			list["stage"] = new ContextContainer();
+			addContainer("root", new ContextContainer());
+			
 			trace(VERSION);
 		}
 		
@@ -57,6 +58,10 @@ package org.bixbite.core
 			}
 		}
 		
+		/**
+		 * Add display container
+		 * @param	id
+		 */
 		public function addContainer(id:String, container:*):void 
 		{
 			container.id = id;
@@ -65,6 +70,11 @@ package org.bixbite.core
 			container.init();
 		}
 		
+		/**
+		 * Get any registered display container
+		 * @param	id
+		 * @return
+		 */
 		public function getContainer(id:String):ContextContainer 
 		{
 			return list[id];

@@ -33,7 +33,7 @@ package org.bixbite.framework.view
 		private function onWindowCreated(s:Signal):void 
 		{
 			//addContext("window", "canvas");
-			var root:IContextContainer = getContainer("app");
+			var root:IContextContainer = getContainer("canvas");
 			ctx.draw();
 		}
 		

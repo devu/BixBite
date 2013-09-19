@@ -6,13 +6,13 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.framework.view 
 {
 	
-	import org.bixbite.core.interfaces.IContext;
-	import org.bixbite.core.interfaces.IContextContainer;
+	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.context.Panel;
+	import org.bixbite.framework.view.context.UIContextContainer;
 	
 	/**
 	 * ...
@@ -20,45 +20,20 @@ package org.bixbite.framework.view
 	 */
 	public class UIPanel extends View 
 	{
-		private var root	:IContextContainer;
+		private var root	:UIContextContainer;
 		private var ctx		:Panel;
+		
+		private var width	:Number;
+		private var wp		:Boolean = false;
+		private var height	:Number;
+		private var hp		:Boolean = false;
+		private var x		:Number = 0;
+		private var y		:Number = 0;
 		
 		override public function init():void 
 		{
-			addSlot(UISignal.SHOW, onShow);
-			addSlot(UISignal.HIDE, onHide);
-			
 			addSlot(UISignal.CREATE, onCreated);
-		}
-		
-		private function onCreated(s:Signal):void 
-		{
-			trace(this, "created");
-			var p:Object = s.params;
-			
-			ctx = Panel(registerContext("panel", Panel));
-			ctx.setPosition(p.x, p.y);
-			//ctx.setSize(p.w, p.h);
-			
-			root = getContainer("app");
-			root.add(ctx);
-			
-			ctx.draw();
-		}
-		
-		private function onPanelClosed(s:Signal):void 
-		{
-			trace(this, "closed");
-		}
-		
-		private function onShow(s:Signal):void 
-		{
-			trace(this, "show");
-		}
-		
-		private function onHide(s:Signal):void 
-		{
-			trace(this, "hide");
+			addSlot(DisplaySignal.ON_RESIZE, onResize);
 		}
 		
 		override public function destroy():void 
@@ -67,6 +42,44 @@ package org.bixbite.framework.view
 			super.destroy();
 		}
 		
+		private function onResize(s:Signal):void 
+		{
+			var tw:Number = (wp) ? width * root.width / 100 : width;
+			var th:Number = (hp) ? height * root.height / 100 : height;
+			
+			ctx.setSize(Math.round(tw), Math.round(th));
+			ctx.draw();
+		}
+		
+		private function onCreated(s:Signal):void 
+		{
+			var p:Object = s.params;
+			
+			root = UIContextContainer(getContainer(p.container || "canvas"));
+			ctx = Panel(registerContext(p.name, Panel));
+			ctx.clone(root);
+			
+			ctx.color = 0xFFFFFF;
+			ctx.margin = p.margin || [0, 0, 0, 0];
+			
+			wp = (p.width is String) ? true : false;
+			width = parseFloat(p.width);
+			
+			hp = (p.height is String) ? true : false;
+			height = parseFloat(p.height);
+			
+			var tw:Number = (wp) ? width * root.width / 100 : width;
+			var th:Number = (hp) ? height * root.height / 100 : height;
+			
+			x = p.x || 0;
+			y = p.y || 0;
+			
+			ctx.setSize(Math.round(tw), Math.round(th));
+			ctx.setPosition(Math.round(x), Math.round(y));
+			ctx.draw();
+			
+			root.add(ctx);
+		}
 	}
 	
 }

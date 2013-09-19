@@ -7,8 +7,6 @@ package org.bixbite.framework.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.UIData;
-	import org.bixbite.framework.signal.UISignal;
 	
 	/**
 	 * ...
@@ -17,11 +15,6 @@ package org.bixbite.framework.behaviour
 	public class UIDestroyWindow extends Behaviour 
 	{
 		override public function init():void 
-		{
-			addResponder(UISignal.ON_DATA, onData);
-		}
-		
-		private function onData(data:UIData):void
 		{
 			
 		}

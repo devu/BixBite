@@ -7,7 +7,6 @@ package org.bixbite.framework.behaviour
 {
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
-	import org.bixbite.framework.data.UIData;
 	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.view.UIWindow;
 	
@@ -17,21 +16,14 @@ package org.bixbite.framework.behaviour
 	 */
 	public class UICreateWindow extends Behaviour 
 	{
-		private var uiData:UIData;
-		
 		override public function init():void 
 		{
-			addResponder(UISignal.ON_DATA, onData);
+			
 		}
 		
 		override public function execute(s:Signal):void
 		{
 			sendSignalTo(register(UIWindow).uid, UISignal.CREATE, s.params);
-		}
-		
-		private function onData(data:UIData):void
-		{
-			uiData = data;
 		}
 	}
 

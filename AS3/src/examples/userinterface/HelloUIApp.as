@@ -23,14 +23,17 @@ package examples.userinterface
 		{
 			trace(this, "init");
 			
-			emitSignal(UISignal.CREATE_PANEL, { x:0, y:100, w:'100%', h:100 } );
-			
+			emitSignal(UISignal.CREATE_PANEL, { name:"panel1", x:0, y:100, width:'100%', height:'50', margin:[10,10,10,10] } );
+			/*
+			emitSignal(UISignal.CREATE_PANEL, { name:"panel2", x:10, y:20, width:80, height:50, container:"panel1" } );
+			emitSignal(UISignal.CREATE_PANEL, { name:"panel3", x:100, y:250, width:10, height:50 } );
+			emitSignal(UISignal.CREATE_PANEL, { name:"panel4", x:20, y:300, width:40, height:50 } );
+			*/
 			addBehaviour(HelloUIApp.INIT, UIAppInit);
 		}
 		
 		override public function destroy():void
 		{
-			//clean up this class here and then:
 			super.destroy();
 		}
 		

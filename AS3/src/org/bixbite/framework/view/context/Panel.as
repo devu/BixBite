@@ -5,39 +5,35 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.framework.view.context 
 {
-	import org.bixbite.core.Context;
+	import org.bixbite.core.ContextContainer;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class Panel extends Context
+	public class Panel extends UIContextContainer
 	{
-		private var w:Number = 100;
-		private var h:Number = 100;
 		
 		override public function init():void 
 		{
-			mouseEnabled = false;
-			mouseChildren = false;
+			
 		}
 		
-		public function draw():void 
+		override public function dispose():void 
 		{
 			graphics.clear();
-			graphics.beginFill(0xEAEAEA, 1);
-			graphics.drawRect(0, 0, w, h);
 		}
 		
-		public function setPosition(x:Number, y:Number):void 
+		override public function draw():void
 		{
-			this.x = x;
-			this.y = y;
-		}
-		
-		public function setSize(w:Number, h:Number):void 
-		{
-			this.w = w;
-			this.h = h;
+			graphics.clear();
+			
+			if (border > 0){
+				graphics.beginFill(borderColor, opacity);
+				graphics.drawRect(margin[3], margin[0], width - (margin[1] + margin[3]), height - (margin[0] + margin[2]));
+			}
+			
+			graphics.beginFill(color, opacity);
+			graphics.drawRect(margin[3] + border, margin[0] + border, width - (border * 2) - (margin[1] + margin[3]), height - (border * 2) - (margin[0] + margin[2]));
 		}
 		
 	}

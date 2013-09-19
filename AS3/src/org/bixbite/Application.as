@@ -35,12 +35,9 @@ package org.bixbite
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Core;
-	import org.bixbite.core.interfaces.IContextContainer;
-	import org.bixbite.framework.data.UIStyle;
-	import org.bixbite.framework.signal.UISignal;
-	import org.bixbite.framework.UIManager;
-	import org.bixbite.framework.signal.DisplaySignal;
 	import org.bixbite.framework.DisplayManager;
+	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.signal.UISignal;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.UIManager;
 	

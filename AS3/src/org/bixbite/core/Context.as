@@ -18,6 +18,12 @@ package org.bixbite.core
 		private var _id				:String;
 		private var _parrentView	:View;
 		
+		public function Context() 
+		{
+			this.mouseEnabled = false;
+			this.mouseChildren = false;
+		}
+		
 		public function get id():String 
 		{
 			return _id;
@@ -36,6 +42,11 @@ package org.bixbite.core
 		public function set parrentView(value:View):void 
 		{
 			_parrentView = value;
+		}
+		
+		public function clone(context:Context):void
+		{
+			trace(this, 'clone');
 		}
 		
 		/*abstract*/ public function init():void {}
