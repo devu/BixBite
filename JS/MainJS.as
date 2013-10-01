@@ -32,7 +32,6 @@ package
 			var time:int = getTimer();
 		
 			var bixbite:BixBite = new BixBite(stage);
-			bixbite.addContextRoot("stage", stage);
 			
 			var core:Core = bixbite.spawnCore("main");
 			core.register(TestCompound);

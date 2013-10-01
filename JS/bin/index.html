@@ -6,8 +6,6 @@
 	<meta name="description" content="" />
 	
 	<script src="js/core/bixbite.js"></script>
-	<script src="js/examples/helloworld.js"></script>
-	<script src="js/examples/hellohtml.js"></script>
 	
 	<style>
 		html, body { height:100%; overflow:hidden; }
@@ -68,20 +66,20 @@
 		
 		For instance:
 		
-			MyView.extend(View);
-			function MyView(){
-				this.init=function(){
-					addSlot("test", onTest);
-				}
-				
-				onTest = function(signal){
-					trace(this);//output MyView
-				}
+		MyView.extend(View);
+		function MyView(){
+			this.init=function(){
+				addSlot("test", onTest);
 			}
+			
+			onTest = function(signal){
+				trace(this);//output MyView
+			}
+		}
 		*/
 		
 		// Here is some Compound(Functional Module) definition with internal Components
-		// In this example we testing View ablity to register, add, remove and unregister its Context
+		// In this example we testing View with an Context
 		MyCompound.extend(Compound);
 		function MyCompound(){
 			
@@ -89,49 +87,35 @@
 				this.register(MyView);
 			}
 			
-			//Every View Class has 2 abstract methods that can be overriden:
-			//this.onContextAdded();
-			//this.onContextRemoved();
-			//This is very convinient to control states and visibility of your graphical context
-			
 			MyView.extend(View);
 			function MyView(){
 				
 				this.init=function(){
-					//Lets create some context JS dynamic way
-					var style = "position:absolute; background:#ff0000; width:10px; height:10px; left:100px; top:10px; border-radius:5px;";
-					var context = document.createElement("div");
-					context.setAttribute("style", style);
-					//Then register it within BixBite virtual display list
+					
+					var root = this.getContainer("root");
+					
+					var context = new Context();
+					context.graphics.beginFill(0xFF0000,1);
+					context.graphics.drawRect(0,0,100,100);
 					this.registerContext("test", context);
-					//And add context into previously registered root container
-					this.addContext("test","stage");
-				}
-				
-				//If your context has been added method below will be invoked.
-				this.onContextAdded=function(){
-					trace("added");
-					this.removeContext("test");
-				}
-				
-				//Below method will be invoked as soon as context will be removed from virtual display list.
-				this.onContextRemoved=function(){
-					trace("removed");
-					this.unregisterContext("test");
+					root.addChild(context);
 				}
 			}
 		}
 		
 		//This is a typical code block to initialise BixBite:
 		//Create Instance of BixBite
+		var t = getTimer();
+		
 		var bb = new BixBite();
 		//Add a root for DOM displayable elements (it can be any div)
-		bb.addContextRoot("stage", document.body);
+		//bb.addContextRoot("stage", document.body);
 		//Spawn a core(You can spawn multiple cores and register diferent Compounds within them)
 		var core = bb.spawnCore("main");
 		//Register previusly created Compound
 		core.register(MyCompound);
 		
+		trace("time:", getTimer()-t);
 		//Compound can start itself if you have some auto executable Behaviours or you can always kick start them with some custom signal
 		//core.emitSignal("kick")
 		//It is usefull if you need to pass some initial parameters to your functional Module/Compound
