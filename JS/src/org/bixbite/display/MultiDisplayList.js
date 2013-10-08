@@ -146,13 +146,12 @@ var GL = {
 };
 
 function Graphics(ctx){
-	this._mode;
 	this.ctx = ctx; 
 	this.gl = GL.dom;
 }
 p = Graphics.prototype;
 p.setMode=function(v,w,h){
-	this._mode = v;
+	//this.mode = v;
 	if(v==GL.DOM){this.gl = GL.dom} 
 	else if(v==GL.SVG){this.gl = GL.svg;this.gl.init(this.ctx,w,h)} 
 	else if(v==GL.CANVAS){this.gl = GL.canvas;this.gl.init(this.ctx,w,h)}
