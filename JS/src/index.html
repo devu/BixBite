@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="org/bixbite/core/BixBite.js"></script>
+	<script src="org/bixbite/display/MultiDisplayList.js"></script>
+	
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<script>
+		//TODO consider root of virtual display list to be pass directly to the context rather trught BixBite.
+		
+		/*
+		BixBite framework exposes very few Classes/Components on the global scope ready to work with and extend your own classes from.
+		It is very shallow and strict structure, deal with it as a set of reserved words. From v0.9.5 we have additional tools to laverage cross-platform compatibility on display level.
+		
+		instances:
+		DisplayList - virtual display list as a root of your application grphical context.
+		BixBite 	- main Class, in order to initialise framework you need to create one instance of this Class.
+		
+		abstract classes:
+		Context		- every graphical context is wrapped up into this class to gain access to context.gl API
+		Behaviour	- executable component with an extra method execute() to leverage business logic;
+		Compound	- functional module
+		Data		- data component
+		Transponder	- transponder component
+		View		- view component
+		
+		There are also some helper methods available on the global scope:
+		
+		trace();
+		getTimer();
+		
+		From now on all classes you are going to write should extend those components above and have one method implemented within, init();
+		For instance:
+		
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			this.init=function(){
+				trace(MyCompound has been initialised);
+			}
+		}
+		
+		It is recomended that Behaviour,Data,Transponder and View class definitions are writen inside Compound body to prevent exposing them into global scope.
+		
+		For instance:
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			this.init=function(){
+				trace(MyCompound has been initialised);
+				this.register(MyView);
+			}
+			
+			MyView.extend(View);
+			function MyView(){
+				this.init=function(){
+					trace(MyView is up);
+				}
+			}
+		}
+		
+		In BixBite framework you don't have to worry about JS scope issues.
+		if you adding slots and recieving signals or dealing with native events 'this' always refers to the Class you are in.
+		
+		For instance:
+		
+		MyView.extend(View);
+		function MyView(){
+			this.init=function(){
+				this.addSlot("test", onTest);
+			}
+			
+			onTest = function(signal){
+				trace(this);//output MyView
+			}
+		}
+		*/
+		
+		// Here is some example Compound(Functional Module) definition with internal Components
+		// In this example we testing View with an Context
+		MyCompound.extend(Compound);
+		function MyCompound(){
+			
+			this.init=function(){
+				//register your view within Compound
+				this.register(MyView);
+			}
+			
+			MyView.extend(View);
+			function MyView(){
+				
+				this.init=function(){
+					//get already registered context as a container
+					var root = this.getContext("main");
+					//if you want your context to be available for the other views/transponders register it:
+					var ctx = this.registerContext("test", new MyContext());
+					//otherwise you can simply do this:
+					//var ctx = new MyContext();
+					root.addChild(ctx);
+					
+				}
+			}
+		}
+		
+		//now define what your custom context should do
+		MyContext.extend(Context);
+		function MyContext(){
+			
+			//This is important to remember than Context is the only part of the system that you constructing your object ahead.
+			//that's why you need to call super();
+			Context.call(this);
+			
+			this.init=function(){
+				gl.setMode(GL.DOM);
+				gl.beginFill(0xFF0000,1);
+				gl.drawRect(0,0,100,100);
+			}
+		}
+		
+		var t = getTimer();
+		//let's create instance of our virtual display list and pass the native anchor of display root
+		//in case of HTML its a document.body, but can be any div
+		var root = new MultiDisplayList(document.body);
+		
+		//This is a typical code block to initialise BixBite:
+		//Create Instance of BixBite
+		var bb = new BixBite(root);
+		//add some context into display list, so you can access it from the view
+		bb.addContext("main", new Context());
+		//Spawn a core(You can spawn multiple cores and register diferent Compounds within them)
+		var core = bb.spawnCore("main");
+		//Register our previusly created Compound
+		core.register(MyCompound);
+		//Compound can start itself if you have some auto executable Behaviours or you can always kick start them with some custom signal
+		core.emitSignal("kick");
+		//It is usefull if you need to pass some initial parameters to your functional Module/Compound
+		//core.emitSignal("kick", {delay:100});
+		
+		//let's see how much it took
+		trace("time:", getTimer()-t);
+		
+	</script>
+</body>
+
+</html>
