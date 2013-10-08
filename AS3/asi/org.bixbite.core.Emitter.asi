@@ -1,8 +1,8 @@
 ﻿package org.bixbite.core
 {
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IComponent;
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -124,7 +124,7 @@
 		 * @param	type
 		 * @param	data
 		 */
-		function dataBroadcast (channel:Channel, type:String, data:IData) : void;
+		function dataBroadcast (channel:Channel, type:String, data:IActor) : void;
 
 		/**
 		 *
@@ -146,7 +146,7 @@
 		 * @param	type
 		 * @param	data
 		 */
-		function dataResponse (channel:Channel, targetUID:String, type:String, data:IData) : void;
+		function dataResponse (channel:Channel, targetUID:String, type:String, data:IActor) : void;
 
 		/**
 		 *

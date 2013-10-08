@@ -10,8 +10,6 @@
 	{
 		public function init () : void;
 
-		public function dispose () : void;
-
 		public function draw () : void;
 	}
 }

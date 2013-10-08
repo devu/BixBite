@@ -1,7 +1,7 @@
 ﻿package org.bixbite.core
 {
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IContext;
-	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -11,7 +11,7 @@
 	 * <p>The View itself is just a subclass of Component to provide base abstract class ready to extend and work with.</p>
 	 * @langversion	3.0
 	 */
-	public class View extends Component implements IView
+	public class View extends Component implements IActor
 	{
 		/**
 		 * Constructor - this class cannot be directly instantiated.
@@ -77,7 +77,7 @@
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContainer (id:String) : ContextContainer;
+		public function getContext (id:String) : Context;
 
 		/**
 		 *

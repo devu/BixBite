@@ -2,7 +2,7 @@
 {
 	import flash.display.Stage;
 	import flash.utils.Dictionary;
-	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.display.IDisplayList;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -11,12 +11,12 @@
 	 */
 	public class BixBite
 	{
-		public static const VERSION : String = "BixBite v0.9.4";
-		public static var stage : Stage;
+		public static const VERSION : String = "BixBite v0.9.5";
 		private var cores : Dictionary;
+		private var root : IDisplayList;
 		public var list : Dictionary;
 
-		public function BixBite (stage:Stage);
+		public function BixBite (root:IDisplayList);
 
 		/**
 		 * Factory method to create a Core
@@ -31,10 +31,6 @@
 		 */
 		public function destroyCore (id:String) : void;
 
-		public function addContainer (id:String, container:*) : void;
-
-		public function getContainer (id:String) : ContextContainer;
-
 		/**
 		 * Channel for multi-core communication
 		 * @param	cid		core identifier
@@ -42,6 +38,19 @@
 		 * @param	signal	transmited signal
 		 */
 		private function incomingSignal (cid:String, type:String, signal:Signal) : void;
+
+		/**
+		 * Add display context
+		 * @param	id
+		 */
+		public function addContext (id:String, context:Context) : void;
+
+		/**
+		 * Get any registered display container
+		 * @param	id
+		 * @return
+		 */
+		public function getContext (id:String) : Context;
 
 		/**
 		 * Internal display list management method, to register a context within the system.

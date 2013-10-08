@@ -1,5 +1,6 @@
 ﻿package org.bixbite.core
 {
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;

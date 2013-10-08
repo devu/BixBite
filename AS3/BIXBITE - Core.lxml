@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_core_0.9.4.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_core_0.9.5.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Core.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -299,6 +299,78 @@
     <string>src\org\bixbite\framework\behaviour\uiopenwindow.as</string>
     <string>src\org\bixbite\framework\behaviour\uishow.as</string>
     <string>src\examples\userinterface\hellouiapp.as</string>
+    <string>src\org\bixbite\framework\view\uibox.as</string>
+    <string>src\org\bixbite\framework\view\context\box.as</string>
+    <string>src\org\bixbite\framework\view\context\uicontextcontainer.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatebox.as</string>
+    <string>src\com\bit101\utils\minimalconfigurator.as</string>
+    <string>src\com\bit101\components\accordion.as</string>
+    <string>src\com\bit101\components\calendar.as</string>
+    <string>src\com\bit101\components\checkbox.as</string>
+    <string>src\com\bit101\components\colorchooser.as</string>
+    <string>src\com\bit101\components\combobox.as</string>
+    <string>src\com\bit101\components\component.as</string>
+    <string>src\com\bit101\components\fpsmeter.as</string>
+    <string>src\com\bit101\components\hbox.as</string>
+    <string>src\com\bit101\components\hrangeslider.as</string>
+    <string>src\com\bit101\components\hscrollbar.as</string>
+    <string>src\com\bit101\components\hslider.as</string>
+    <string>src\com\bit101\components\huislider.as</string>
+    <string>src\com\bit101\components\indicatorlight.as</string>
+    <string>src\com\bit101\components\inputtext.as</string>
+    <string>src\com\bit101\components\knob.as</string>
+    <string>src\com\bit101\components\label.as</string>
+    <string>src\com\bit101\components\list.as</string>
+    <string>src\com\bit101\components\listitem.as</string>
+    <string>src\com\bit101\components\meter.as</string>
+    <string>src\com\bit101\components\numericstepper.as</string>
+    <string>src\com\bit101\components\panel.as</string>
+    <string>src\com\bit101\components\progressbar.as</string>
+    <string>src\com\bit101\components\pushbutton.as</string>
+    <string>src\com\bit101\components\radiobutton.as</string>
+    <string>src\com\bit101\components\rangeslider.as</string>
+    <string>src\com\bit101\components\rotaryselector.as</string>
+    <string>src\com\bit101\components\scrollbar.as</string>
+    <string>src\com\bit101\components\scrollpane.as</string>
+    <string>src\com\bit101\components\slider.as</string>
+    <string>src\com\bit101\components\style.as</string>
+    <string>src\com\bit101\components\text.as</string>
+    <string>src\com\bit101\components\textarea.as</string>
+    <string>src\com\bit101\components\uislider.as</string>
+    <string>src\com\bit101\components\vbox.as</string>
+    <string>src\com\bit101\components\vrangeslider.as</string>
+    <string>src\com\bit101\components\vscrollbar.as</string>
+    <string>src\com\bit101\components\vslider.as</string>
+    <string>src\com\bit101\components\vuislider.as</string>
+    <string>src\com\bit101\components\wheelmenu.as</string>
+    <string>src\com\bit101\components\window.as</string>
+    <string>src\com\bit101\charts\barchart.as</string>
+    <string>src\com\bit101\charts\chart.as</string>
+    <string>src\com\bit101\charts\linechart.as</string>
+    <string>src\com\bit101\charts\piechart.as</string>
+    <string>src\org\bixbite\framework\signal\display.as</string>
+    <string>src\main.as</string>
+    <string>src\application.as</string>
+    <string>src\org\bixbite\displaymanager.as</string>
+    <string>src\org\bixbite\keyboardcontroller.as</string>
+    <string>src\org\bixbite\stats.as</string>
+    <string>src\org\bixbite\behaviour\displayget.as</string>
+    <string>src\org\bixbite\behaviour\displayresize.as</string>
+    <string>src\org\bixbite\behaviour\displayset.as</string>
+    <string>src\org\bixbite\behaviour\statscalculate.as</string>
+    <string>src\org\bixbite\behaviour\triggerkey.as</string>
+    <string>src\org\bixbite\data\displaydata.as</string>
+    <string>src\org\bixbite\data\statsdata.as</string>
+    <string>src\org\bixbite\factories\graphicsfactory.as</string>
+    <string>src\org\bixbite\factories\textfactory.as</string>
+    <string>src\org\bixbite\signal\display.as</string>
+    <string>src\org\bixbite\signal\keysignal.as</string>
+    <string>src\org\bixbite\transponder\displaytransponder.as</string>
+    <string>src\org\bixbite\transponder\keyboardtransponder.as</string>
+    <string>src\org\bixbite\transponder\statstransponder.as</string>
+    <string>src\org\bixbite\view\statsmonitorview.as</string>
+    <string>src\org\bixbite\view\context\outputcontext.as</string>
+    <string>src\org\bixbite\view\context\statsmonitor.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\org\bixbite\main.as</string>
@@ -588,6 +660,78 @@
     <string>src\org\bixbite\framework\behaviour\uiopenwindow.as</string>
     <string>src\org\bixbite\framework\behaviour\uishow.as</string>
     <string>src\examples\userinterface\hellouiapp.as</string>
+    <string>src\org\bixbite\framework\view\uibox.as</string>
+    <string>src\org\bixbite\framework\view\context\box.as</string>
+    <string>src\org\bixbite\framework\view\context\uicontextcontainer.as</string>
+    <string>src\org\bixbite\framework\behaviour\uicreatebox.as</string>
+    <string>src\com\bit101\utils\minimalconfigurator.as</string>
+    <string>src\com\bit101\components\accordion.as</string>
+    <string>src\com\bit101\components\calendar.as</string>
+    <string>src\com\bit101\components\checkbox.as</string>
+    <string>src\com\bit101\components\colorchooser.as</string>
+    <string>src\com\bit101\components\combobox.as</string>
+    <string>src\com\bit101\components\component.as</string>
+    <string>src\com\bit101\components\fpsmeter.as</string>
+    <string>src\com\bit101\components\hbox.as</string>
+    <string>src\com\bit101\components\hrangeslider.as</string>
+    <string>src\com\bit101\components\hscrollbar.as</string>
+    <string>src\com\bit101\components\hslider.as</string>
+    <string>src\com\bit101\components\huislider.as</string>
+    <string>src\com\bit101\components\indicatorlight.as</string>
+    <string>src\com\bit101\components\inputtext.as</string>
+    <string>src\com\bit101\components\knob.as</string>
+    <string>src\com\bit101\components\label.as</string>
+    <string>src\com\bit101\components\list.as</string>
+    <string>src\com\bit101\components\listitem.as</string>
+    <string>src\com\bit101\components\meter.as</string>
+    <string>src\com\bit101\components\numericstepper.as</string>
+    <string>src\com\bit101\components\panel.as</string>
+    <string>src\com\bit101\components\progressbar.as</string>
+    <string>src\com\bit101\components\pushbutton.as</string>
+    <string>src\com\bit101\components\radiobutton.as</string>
+    <string>src\com\bit101\components\rangeslider.as</string>
+    <string>src\com\bit101\components\rotaryselector.as</string>
+    <string>src\com\bit101\components\scrollbar.as</string>
+    <string>src\com\bit101\components\scrollpane.as</string>
+    <string>src\com\bit101\components\slider.as</string>
+    <string>src\com\bit101\components\style.as</string>
+    <string>src\com\bit101\components\text.as</string>
+    <string>src\com\bit101\components\textarea.as</string>
+    <string>src\com\bit101\components\uislider.as</string>
+    <string>src\com\bit101\components\vbox.as</string>
+    <string>src\com\bit101\components\vrangeslider.as</string>
+    <string>src\com\bit101\components\vscrollbar.as</string>
+    <string>src\com\bit101\components\vslider.as</string>
+    <string>src\com\bit101\components\vuislider.as</string>
+    <string>src\com\bit101\components\wheelmenu.as</string>
+    <string>src\com\bit101\components\window.as</string>
+    <string>src\com\bit101\charts\barchart.as</string>
+    <string>src\com\bit101\charts\chart.as</string>
+    <string>src\com\bit101\charts\linechart.as</string>
+    <string>src\com\bit101\charts\piechart.as</string>
+    <string>src\org\bixbite\framework\signal\display.as</string>
+    <string>src\main.as</string>
+    <string>src\application.as</string>
+    <string>src\org\bixbite\displaymanager.as</string>
+    <string>src\org\bixbite\keyboardcontroller.as</string>
+    <string>src\org\bixbite\stats.as</string>
+    <string>src\org\bixbite\behaviour\displayget.as</string>
+    <string>src\org\bixbite\behaviour\displayresize.as</string>
+    <string>src\org\bixbite\behaviour\displayset.as</string>
+    <string>src\org\bixbite\behaviour\statscalculate.as</string>
+    <string>src\org\bixbite\behaviour\triggerkey.as</string>
+    <string>src\org\bixbite\data\displaydata.as</string>
+    <string>src\org\bixbite\data\statsdata.as</string>
+    <string>src\org\bixbite\factories\graphicsfactory.as</string>
+    <string>src\org\bixbite\factories\textfactory.as</string>
+    <string>src\org\bixbite\signal\display.as</string>
+    <string>src\org\bixbite\signal\keysignal.as</string>
+    <string>src\org\bixbite\transponder\displaytransponder.as</string>
+    <string>src\org\bixbite\transponder\keyboardtransponder.as</string>
+    <string>src\org\bixbite\transponder\statstransponder.as</string>
+    <string>src\org\bixbite\view\statsmonitorview.as</string>
+    <string>src\org\bixbite\view\context\outputcontext.as</string>
+    <string>src\org\bixbite\view\context\statsmonitor.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

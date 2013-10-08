@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SWCProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <FlexBinPath>.\lib\bixbite_framework_0.9.4.swc</FlexBinPath>
+  <FlexBinPath>.\lib\bixbite_framework_0.9.5.swc</FlexBinPath>
   <FlashBinPath>.\bin\BIXBITE - Framework.flash.swc</FlashBinPath>
   <FlexIncludeASI>true</FlexIncludeASI>
   <MakeCS3>false</MakeCS3>
@@ -180,6 +180,53 @@
     <string>src\test\performance\signalperf\behaviour\objecta.as</string>
     <string>src\test\performance\signalperf\behaviour\nativetest.as</string>
     <string>src\test\performance\signalperf\behaviour\callbacktest.as</string>
+    <string>src\com\bit101\utils\minimalconfigurator.as</string>
+    <string>src\com\bit101\components\accordion.as</string>
+    <string>src\com\bit101\components\calendar.as</string>
+    <string>src\com\bit101\components\checkbox.as</string>
+    <string>src\com\bit101\components\colorchooser.as</string>
+    <string>src\com\bit101\components\combobox.as</string>
+    <string>src\com\bit101\components\component.as</string>
+    <string>src\com\bit101\components\fpsmeter.as</string>
+    <string>src\com\bit101\components\hbox.as</string>
+    <string>src\com\bit101\components\hrangeslider.as</string>
+    <string>src\com\bit101\components\hscrollbar.as</string>
+    <string>src\com\bit101\components\hslider.as</string>
+    <string>src\com\bit101\components\huislider.as</string>
+    <string>src\com\bit101\components\indicatorlight.as</string>
+    <string>src\com\bit101\components\inputtext.as</string>
+    <string>src\com\bit101\components\knob.as</string>
+    <string>src\com\bit101\components\label.as</string>
+    <string>src\com\bit101\components\list.as</string>
+    <string>src\com\bit101\components\listitem.as</string>
+    <string>src\com\bit101\components\meter.as</string>
+    <string>src\com\bit101\components\numericstepper.as</string>
+    <string>src\com\bit101\components\panel.as</string>
+    <string>src\com\bit101\components\progressbar.as</string>
+    <string>src\com\bit101\components\pushbutton.as</string>
+    <string>src\com\bit101\components\radiobutton.as</string>
+    <string>src\com\bit101\components\rangeslider.as</string>
+    <string>src\com\bit101\components\rotaryselector.as</string>
+    <string>src\com\bit101\components\scrollbar.as</string>
+    <string>src\com\bit101\components\scrollpane.as</string>
+    <string>src\com\bit101\components\slider.as</string>
+    <string>src\com\bit101\components\style.as</string>
+    <string>src\com\bit101\components\text.as</string>
+    <string>src\com\bit101\components\textarea.as</string>
+    <string>src\com\bit101\components\uislider.as</string>
+    <string>src\com\bit101\components\vbox.as</string>
+    <string>src\com\bit101\components\vrangeslider.as</string>
+    <string>src\com\bit101\components\vscrollbar.as</string>
+    <string>src\com\bit101\components\vslider.as</string>
+    <string>src\com\bit101\components\vuislider.as</string>
+    <string>src\com\bit101\components\wheelmenu.as</string>
+    <string>src\com\bit101\components\window.as</string>
+    <string>src\com\bit101\charts\barchart.as</string>
+    <string>src\com\bit101\charts\chart.as</string>
+    <string>src\com\bit101\charts\linechart.as</string>
+    <string>src\com\bit101\charts\piechart.as</string>
+    <string>src\main.as</string>
+    <string>src\application.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -349,6 +396,53 @@
     <string>src\test\performance\signalperf\behaviour\objecta.as</string>
     <string>src\test\performance\signalperf\behaviour\nativetest.as</string>
     <string>src\test\performance\signalperf\behaviour\callbacktest.as</string>
+    <string>src\com\bit101\utils\minimalconfigurator.as</string>
+    <string>src\com\bit101\components\accordion.as</string>
+    <string>src\com\bit101\components\calendar.as</string>
+    <string>src\com\bit101\components\checkbox.as</string>
+    <string>src\com\bit101\components\colorchooser.as</string>
+    <string>src\com\bit101\components\combobox.as</string>
+    <string>src\com\bit101\components\component.as</string>
+    <string>src\com\bit101\components\fpsmeter.as</string>
+    <string>src\com\bit101\components\hbox.as</string>
+    <string>src\com\bit101\components\hrangeslider.as</string>
+    <string>src\com\bit101\components\hscrollbar.as</string>
+    <string>src\com\bit101\components\hslider.as</string>
+    <string>src\com\bit101\components\huislider.as</string>
+    <string>src\com\bit101\components\indicatorlight.as</string>
+    <string>src\com\bit101\components\inputtext.as</string>
+    <string>src\com\bit101\components\knob.as</string>
+    <string>src\com\bit101\components\label.as</string>
+    <string>src\com\bit101\components\list.as</string>
+    <string>src\com\bit101\components\listitem.as</string>
+    <string>src\com\bit101\components\meter.as</string>
+    <string>src\com\bit101\components\numericstepper.as</string>
+    <string>src\com\bit101\components\panel.as</string>
+    <string>src\com\bit101\components\progressbar.as</string>
+    <string>src\com\bit101\components\pushbutton.as</string>
+    <string>src\com\bit101\components\radiobutton.as</string>
+    <string>src\com\bit101\components\rangeslider.as</string>
+    <string>src\com\bit101\components\rotaryselector.as</string>
+    <string>src\com\bit101\components\scrollbar.as</string>
+    <string>src\com\bit101\components\scrollpane.as</string>
+    <string>src\com\bit101\components\slider.as</string>
+    <string>src\com\bit101\components\style.as</string>
+    <string>src\com\bit101\components\text.as</string>
+    <string>src\com\bit101\components\textarea.as</string>
+    <string>src\com\bit101\components\uislider.as</string>
+    <string>src\com\bit101\components\vbox.as</string>
+    <string>src\com\bit101\components\vrangeslider.as</string>
+    <string>src\com\bit101\components\vscrollbar.as</string>
+    <string>src\com\bit101\components\vslider.as</string>
+    <string>src\com\bit101\components\vuislider.as</string>
+    <string>src\com\bit101\components\wheelmenu.as</string>
+    <string>src\com\bit101\components\window.as</string>
+    <string>src\com\bit101\charts\barchart.as</string>
+    <string>src\com\bit101\charts\chart.as</string>
+    <string>src\com\bit101\charts\linechart.as</string>
+    <string>src\com\bit101\charts\piechart.as</string>
+    <string>src\main.as</string>
+    <string>src\application.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />

@@ -6,22 +6,31 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.core
 {
 	import flash.display.Sprite;
-	import flash.display.Stage;
 	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.View;
+	import org.bixbite.display.GraphicsLib;
+	import org.bixbite.display.IDisplayList;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class Context extends Sprite implements IContext
+	public class Context implements IContext, IDisplayList
 	{
-		private var _id				:String;
-		private var _parrentView	:View;
+		private var _id		:String;
+		private var _view	:View;
+		private var _body	:*;
+		
+		public var gl		:GraphicsLib;
 		
 		public function Context() 
 		{
-			this.mouseEnabled = false;
-			this.mouseChildren = false;
+			_body = new Sprite();
+			gl = new GraphicsLib(_body);
+		}
+		
+		public function get body():* 
+		{
+			return _body;
 		}
 		
 		public function get id():String 
@@ -34,25 +43,52 @@ package org.bixbite.core
 			_id = value;
 		}
 		
-		public function get parrentView():View 
+		public function get view():View 
 		{
-			return _parrentView;
+			return _view;
 		}
 		
-		public function set parrentView(value:View):void 
+		public function set view(value:View):void 
 		{
-			_parrentView = value;
+			_view = value;
 		}
 		
-		public function clone(context:Context):void
+		/*abstract*/ 
+		public function init():void {}
+		
+		/*abstract*/ 
+		public function draw():void {}
+		
+		public function dispose():void 
 		{
-			trace(this, 'clone');
+			gl.clear();
+			
+			while (_body.numChildren > 0) _body.removeChildAt(0);
+			_body.clear();
+			_body.parent.removeChild(_body);
 		}
 		
-		/*abstract*/ public function init():void {}
+		public function addSensor(type:String, callback:Function):void 
+		{
+			body.addEventListener(type, callback);
+		}
 		
-		/*abstract*/ public function dispose():void {}
+		public function removeSensor(type:String, callback:Function):void 
+		{
+			body.removeEventListener(type, callback);
+		}
 		
+		public function addChild(child:Context):Context 
+		{
+			this.body.addChild(child.body);
+			return child;
+		}
+		
+		public function removeChild(child:Context):Context 
+		{
+			this.body.removeChild(child.body);
+			return child;
+		}
 	}
 
 }

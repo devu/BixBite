@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -14,7 +14,7 @@ package org.bixbite.core
      * 
 	 * @langversion	3.0
      */
-	public class Data extends Component implements IData
+	public class Data extends Component implements IActor
 	{
 		use namespace BIXBITE
 		
@@ -51,9 +51,9 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseTo(targetUID:String, type:String, data:IData = null):void
+		public function responseTo(targetUID:String, type:String, data:IActor = null):void
 		{
-			var vo:IData = (data) ? data : this;
+			var vo:IActor = (data) ? data : this;
 			emitter.dataResponse(channelC, targetUID, type, vo);
 		}
 		
@@ -62,10 +62,20 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function responseToAll(type:String, data:IData = null):void 
+		public function responseToAll(type:String, data:IActor = null):void 
 		{
-			var vo:IData = (data) ? data : this;
+			var vo:IActor = (data) ? data : this;
 			emitter.dataBroadcast(channelC, type, vo);
+		}
+		
+		/**
+		 * Multi-cast method to broadcast one singal on entire Compound channel.
+		 * @param	type
+		 */
+		public function sendSignal(type:String, params:Object = null):void
+		{
+			signal.params = params;
+			emitter.broadcast(channelC, type, signal);
 		}
 		
 		/**

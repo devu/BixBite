@@ -5,6 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.core.interfaces.ICompound;
 	import org.bixbite.namespaces.BIXBITE;
@@ -101,8 +102,7 @@ package org.bixbite.core
 		public function emitSignal(type:String, params:Object = null, multicore:Boolean = false):void
 		{
 			signal.params = params;
-			if (!multicore) emitter.broadcast(channelC, type, signal);
-			else emitter.broadcastM("C", type, signal);
+			(!multicore) ? emitter.broadcast(channelC, type, signal) : emitter.broadcastM("C", type, signal);
 		}
 		
 		/**

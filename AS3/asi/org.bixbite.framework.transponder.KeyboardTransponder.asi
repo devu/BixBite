@@ -2,6 +2,7 @@
 {
 	import flash.events.KeyboardEvent;
 	import flash.utils.Dictionary;
+	import org.bixbite.core.Context;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.framework.signal.KeySignal;

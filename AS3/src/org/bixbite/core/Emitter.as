@@ -6,8 +6,8 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.core 
 {
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IComponent;
-	import org.bixbite.core.interfaces.IData;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -176,7 +176,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	data
 		 */
-		BIXBITE function dataBroadcast(channel:Channel, type:String, data:IData):void 
+		BIXBITE function dataBroadcast(channel:Channel, type:String, data:IActor):void 
 		{
 			if (!channel[type]) return;
 			Slots(channel[type]).broadcastData(data);
@@ -204,7 +204,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	data
 		 */
-		BIXBITE function dataResponse(channel:Channel, targetUID:String, type:String, data:IData):void 
+		BIXBITE function dataResponse(channel:Channel, targetUID:String, type:String, data:IActor):void 
 		{
 			if (!channel[type]) return;
 			Slots(channel[type]).getSlotByUID(targetUID).send(data);

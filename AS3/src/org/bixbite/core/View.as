@@ -5,8 +5,8 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IContext;
-	import org.bixbite.core.interfaces.IView;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -17,7 +17,7 @@ package org.bixbite.core
 	 * 
 	 * @langversion	3.0
 	 */
-	public class View extends Component implements IView
+	public class View extends Component implements IActor
 	{
 		use namespace BIXBITE
 		
@@ -115,9 +115,9 @@ package org.bixbite.core
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContainer(id:String):ContextContainer
+		public function getContext(id:String):Context
 		{
-			return emitter.bixbite.getContainer(id);
+			return emitter.bixbite.getContext(id);
 		}
 		
 		/**

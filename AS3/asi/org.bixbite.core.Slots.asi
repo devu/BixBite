@@ -1,6 +1,6 @@
 ﻿package org.bixbite.core
 {
-	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.core.interfaces.IActor;
 
 	/**
 	 * Very basic implementation of one directional linked-list to hold all registered Slot of certain type
@@ -20,7 +20,7 @@
 
 		public function broadcast (s:Signal) : void;
 
-		public function broadcastData (d:IData) : void;
+		public function broadcastData (d:IActor) : void;
 
 		public function removeAllSlots () : void;
 

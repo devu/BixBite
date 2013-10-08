@@ -3,11 +3,11 @@
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.text.TextField;
-	import org.bixbite.core.interfaces.IContextContainer;
+	import org.bixbite.core.Context;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	import org.bixbite.framework.factories.TextFactory;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.signal.Display;
 	import org.bixbite.framework.Stats;
 	import org.bixbite.framework.view.context.StatsMonitor;
 
@@ -17,8 +17,8 @@
 	 */
 	public class StatsMonitorView extends View
 	{
-		private var root : IContextContainer;
-		private var panel : StatsMonitor;
+		private var container : Context;
+		private var panel : Context;
 		private var mem_graph : Number;
 		private var max_graph : Number;
 		private var fps_graph : Number;
@@ -29,6 +29,7 @@
 		private var info_mem : TextField;
 		private var info_max : TextField;
 		private var info_orient : TextField;
+		private var info_size : TextField;
 
 		public function init () : void;
 
@@ -39,6 +40,8 @@
 		private function updateRealtime (s:Signal) : void;
 
 		private function onOrietnationChanged (s:Signal) : void;
+
+		private function onResize (s:Signal) : void;
 
 		public function destroy () : void;
 	}

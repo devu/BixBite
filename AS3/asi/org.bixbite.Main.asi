@@ -3,16 +3,15 @@
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.core.ContextContainer;
+	import org.bixbite.core.Context;
 	import org.bixbite.core.Core;
-	import org.bixbite.framework.signal.DisplaySignal;
-	import org.bixbite.framework.DisplayManager;
-	import org.bixbite.framework.Stats;
+	import org.bixbite.display.IDisplayList;
+	import org.bixbite.display.NativeDisplayList;
 
 	/**
 	 * Main BixBite framework document class for development purposes
 	 * 
-	 *   footprint 4.27kb (single core);
+	 *   footprint 4.88kb (single core + native display list);
 	 */
 	public class Main extends Sprite
 	{

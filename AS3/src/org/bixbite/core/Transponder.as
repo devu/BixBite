@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.ITransponder;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -15,7 +15,7 @@ package org.bixbite.core
      * 
 	 * @langversion	3.0
      */
-	public class Transponder extends Component implements ITransponder 
+	public class Transponder extends Component implements IActor 
 	{
 		use namespace BIXBITE
 		
@@ -51,7 +51,7 @@ package org.bixbite.core
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal(type:String, params:* = null):void 
+		public function sendSignal(type:String, params:Object = null):void 
 		{
 			signal.params = params;
 			emitter.broadcast(channelC, type, signal);
@@ -104,33 +104,12 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Add platform native listeners in oreder to gather user/system inputs.
-		 * For many platforms this feature may differ, to keep it consistent we call all native communication methods a Sensor.
-		 * @param	type
-		 * @param	callback
-		 */
-		public function addSensor(type:String, callback:Function):void
-		{
-			stage.addEventListener(type, callback);
-		}
-		
-		/**
-		 * Remove platform native listeners.
-		 * @param	type
-		 * @param	callback
-		 */
-		public function removeSensor(type:String, callback:Function):void
-		{
-			stage.removeEventListener(type, callback);
-		}
-		
-		/**
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContainer(id:String):ContextContainer
+		public function getContext(id:String):Context
 		{
-			return emitter.bixbite.getContainer(id);
+			return emitter.bixbite.getContext(id);
 		}
 		
 		/**

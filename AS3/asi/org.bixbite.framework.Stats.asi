@@ -3,7 +3,7 @@
 	import org.bixbite.core.Compound;
 	import org.bixbite.framework.behaviour.StatsCalculate;
 	import org.bixbite.framework.data.StatsData;
-	import org.bixbite.framework.signal.DisplaySignal;
+	import org.bixbite.framework.signal.Display;
 	import org.bixbite.framework.transponder.StatsTransponder;
 	import org.bixbite.framework.view.StatsMonitorView;
 
@@ -20,6 +20,7 @@
 		public static const UPDATE : String = "Stats.UPDATE";
 		public static const UPDATE_REALTIME : String = "Stats.UPDATE_REALTIME";
 		public static const START : String = "Stats.START";
+		public static const VIEW_READY : String = "Stats.VIEW_READY";
 
 		public function init () : void;
 

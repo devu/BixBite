@@ -1,8 +1,8 @@
 ﻿package org.bixbite.core.interfaces
 {
 	/**
-	 *
-	 * @langversion	3.0
+	 * ...
+	 * @author Daniel Wasilewski
 	 */
 	public interface IComponent
 	{

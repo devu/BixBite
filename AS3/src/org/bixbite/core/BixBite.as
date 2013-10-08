@@ -7,7 +7,7 @@ package org.bixbite.core
 {
 	import flash.display.Stage;
 	import flash.utils.Dictionary;
-	import org.bixbite.core.interfaces.IContext;
+	import org.bixbite.display.IDisplayList;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -17,20 +17,16 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.9.4";
+		public static const VERSION	:String = "BixBite v0.9.5";
 		
-		public static var stage		:Stage;
+		private var cores	:Dictionary = new Dictionary(true);
+		private var root	:IDisplayList;
+		public var list		:Dictionary = new Dictionary(true);
 		
-		private var cores			:Dictionary = new Dictionary(true);
-		
-		public var list				:Dictionary = new Dictionary(true);
-		
-		public function BixBite(stage:Stage) 
+		public function BixBite(root:IDisplayList) 
 		{
-			BixBite.stage = stage;
-			addContainer("root", new ContextContainer());
-			
 			trace(VERSION);
+			this.root = root;
 		}
 		
 		/**
@@ -59,28 +55,6 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Add display container
-		 * @param	id
-		 */
-		public function addContainer(id:String, container:*):void 
-		{
-			container.id = id;
-			stage.addChild(container);
-			list[id] = container;
-			container.init();
-		}
-		
-		/**
-		 * Get any registered display container
-		 * @param	id
-		 * @return
-		 */
-		public function getContainer(id:String):ContextContainer 
-		{
-			return list[id];
-		}
-		
-		/**
 		 * Channel for multi-core communication
 		 * @param	cid		core identifier
 		 * @param	type	transmited type of signal
@@ -89,6 +63,28 @@ package org.bixbite.core
 		private function incomingSignal(cid:String, type:String, signal:Signal):void 
 		{
 			for each(var c:Core in cores) c.broadcast(cid, type, signal);
+		}
+		
+		/**
+		 * Add display context
+		 * @param	id
+		 */
+		public function addContext(id:String, context:Context):void 
+		{
+			context.id = id;
+			root.addChild(context);
+			list[id] = context;
+			context.init();
+		}
+		
+		/**
+		 * Get any registered display container
+		 * @param	id
+		 * @return
+		 */
+		public function getContext(id:String):Context
+		{
+			return list[id];
 		}
 		
 		/**
@@ -102,9 +98,10 @@ package org.bixbite.core
 		{
 			if (list[id]) Error("Context " + id + "is already registered");
 			
-			var ctx:IContext = new context();
-			ctx.parrentView = view;
+			var ctx:Context = new context();
 			ctx.id = id;
+			ctx.view = view;
+			
 			list[id] = ctx;
 			ctx.init();
 			
@@ -123,7 +120,7 @@ package org.bixbite.core
 			var context:* = list[id];
 			if (context && context.parent){
 				context.parent.removeChild(context);
-				context.parrentView.onContextRemoved();
+				//context.view.onContextRemoved();
 			}
 			
 			list[id].dispose();

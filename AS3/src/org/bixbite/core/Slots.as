@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.IData;
+	import org.bixbite.core.interfaces.IActor;
 	
 	/**
 	 * Very basic implementation of one directional linked-list to hold all registered Slot of certain type
@@ -58,7 +58,7 @@ package org.bixbite.core
 			walker.send(s);
 		}
 		
-		public function broadcastData(d:IData):void
+		public function broadcastData(d:IActor):void
 		{
 			var walker:Slot = tail;
 			

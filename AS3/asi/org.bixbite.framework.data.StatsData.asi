@@ -15,7 +15,7 @@
 		public var fps : Number;
 		public var timer : int;
 		public var ms : int;
-		public var frameRate : Number;
+		public var frameRate : int;
 		public var infoFPS : String;
 		public var infoMEM : String;
 		public var infoMAX : String;

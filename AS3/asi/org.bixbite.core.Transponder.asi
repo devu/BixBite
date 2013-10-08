@@ -1,6 +1,6 @@
 ﻿package org.bixbite.core
 {
-	import org.bixbite.core.interfaces.ITransponder;
+	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.namespaces.BIXBITE;
 
 	/**
@@ -9,7 +9,7 @@
 	 * It handles mouse and keyboard inputs from the user, mediator between Views and Behaviours.</p>
 	 * @langversion	3.0
 	 */
-	public class Transponder extends Component implements ITransponder
+	public class Transponder extends Component implements IActor
 	{
 		/**
 		 * Constructor - this class cannot be directly instantiated.
@@ -34,7 +34,7 @@
 		 * @param	type
 		 * @param	params
 		 */
-		public function sendSignal (type:String, params:*=null) : void;
+		public function sendSignal (type:String, params:Object=null) : void;
 
 		/**
 		 * Helper method to transmit recieved signal from View to Compound communication channel directly, when no action is required by Transponder
@@ -66,25 +66,10 @@
 		public function getSlots (type:String) : Slots;
 
 		/**
-		 * Add platform native listeners in oreder to gather user/system inputs.
-		 * For many platforms this feature may differ, to keep it consistent we call all native communication methods a Sensor.
-		 * @param	type
-		 * @param	callback
-		 */
-		public function addSensor (type:String, callback:Function) : void;
-
-		/**
-		 * Remove platform native listeners.
-		 * @param	type
-		 * @param	callback
-		 */
-		public function removeSensor (type:String, callback:Function) : void;
-
-		/**
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContainer (id:String) : ContextContainer;
+		public function getContext (id:String) : Context;
 
 		/**
 		 *
