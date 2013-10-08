@@ -87,7 +87,7 @@ p.sendSignal=function(t,p){this.s.params=p;this.e.brc(this.chT,t,this.s)}
 p.emitSignal=function(t,p){this.s.params=p;this.e.brc(this.chV,t,this.s)}
 p.emitSignalTo=function(uid,t,p){this.s.params=p;this.e.snd(this.chV,uid,t,this.s)}
 p.getSlots=function(t){return this.chT[t]}
-p.registerContext=function(id,ctx){return this.e.bb.regCtx(this,id,ctx)}
+p.registerContext=function(id,ctx){return this.e.bb.regCtx(id,ctx,this)}
 p.unregisterContext=function(id){this.e.bb.unrCtx(id)}
 p.getContext=function(id){return this.e.bb.getCtx(id)}
 
@@ -108,16 +108,21 @@ p.getSlots=function(t){return this.chV[t]}
 //autoDispose
 
 //Context Class
-function Context(p){this.parent=p;this.body=document.createElement('div');gl=new Graphics(this.body);}
+function Context(p){
+	this.parent=p;
+	this.body=document.createElement('div');
+	gl=new Graphics(this.body);
+}
 p = Context.prototype;
 p.init = function(){};
 p.dispose = function(){};
 p.addChild = function(c){this.body.appendChild(c.body);return c}
 p.removeChild = function(c){this.body.removeChild(c.body);return c}
+p.setID = function(id){this.body.id = id}
 	
 //BixBite with all internal classes
-function BixBite(root){
-	this.root = root;
+function BixBite(dsp){
+	this.root = dsp;
 	//Signal Class
 	function Signal(uid){this.callerUID=uid}
 	//Slot Class
@@ -165,8 +170,8 @@ function BixBite(root){
 	this.spawnCore=function(id){var c=new Core(id);c.e.chE=function(cid,t,s){for (var c in cores)c.brc(cid,t,s)};c.e.bb=this;return cores[id]=c}
 	this.destroyCore=function(id){if(cores[id]){this.dispose(cores[id]);delete cores[id]}}
 	this.getCtx=function(id){return list[id]}
-	this.addContext=this.addCtx=function(id,ctx){ctx.id=id;root.addChild(ctx);list[id]=ctx;ctx.init()}
-	this.regCtx=function(v,id,ctx){if(list[id])alert("Context id:'" + id + "' is already registered.");ctx=new ctx();ctx.view=v;ctx.id=id;list[id]=ctx;ctx.init();return ctx}
+	this.addContext=function(id,ctx){this.regCtx(id,ctx,null);this.root.addChild(ctx);}
+	this.regCtx=function(id,ctx,v){if(list[id])alert("Context id:'" + id + "' is already registered.");list[id]=ctx;ctx.view=v;ctx.init();ctx.setID(id);return ctx}
 	this.unrCtx=function(id){if (!list[id]) alert("Context id:'" + id + "' doesn't exist.");var ctx = list[id];if (ctx && ctx.parentNode){ctx.parentNode.removeChild(ctx);ctx.view = null;ctx.dispose()}this.dispose(list[id]);delete list[id]}
 	//TODO cross core comminucation
 }
