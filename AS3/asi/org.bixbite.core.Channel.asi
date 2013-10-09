@@ -1,9 +1,0 @@
-﻿package org.bixbite.core
-{
-	/**
-	 * Emitter channel dynamic class as a Slots holder and root of hierarchy
-	 * @langversion	3.0
-	 */
-	public dynamic class Channel
-	{	}
-}

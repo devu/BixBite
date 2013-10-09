@@ -1,4 +1,4 @@
-
+*.asi
 /JS/bin/js/website
 /AS3/src/starling
 /AS3/src/com
@@ -8,4 +8,5 @@
 /AS3/asi/
 /AS3/obj/
 /www
-/AS3/asi
+/TS
+/BS

@@ -1,9 +1,0 @@
-﻿package org.bixbite.core.interfaces
-{
-	/**
-	 *
-	 * @langversion	3.0
-	 */
-	public interface IView extends IComponent
-	{	}
-}
