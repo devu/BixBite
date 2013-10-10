@@ -64,10 +64,10 @@ package
 			core2 = bb.spawnCore("test_cases");
 			
 			//Signal performance test
-			core2.register(SignalPerformance);
+			//core2.register(SignalPerformance);
 			
 			//Core performance test
-			//core2.register(CorePerformance);
+			core2.register(CorePerformance);
 			
 			//Multicore communication test
 			/*

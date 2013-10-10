@@ -31,66 +31,69 @@ package test.performance.coreperf
      * Also Emitter always checking if there is empty slot will destroy it. This is why removal is always much slower.
      *
      * Taking under consideration all that, results below are still very satisfactory.
-	 * 
+	 *  
 	 * Results: 
 	 
 		0.6.3	(Flash Player 11,1,102,63 - Chrome) max Mem 8.873 MB													
-		0.8.0 	(Flash PLayer 11,5,31,101 - Chrome) max Mem 4.615 MB
-		0.9.1 	(Flash PLayer 11,5,31,101 - Chrome) Mem min/max on test complete 20/9 MB
+		0.8.0 	(Flash Player 11,5,31,101 - Chrome) max Mem 4.615 MB
+		0.9.1 	(Flash Player 11,5,31,101 - Chrome) Mem min/max on test complete 9/20 MB
+			NOTE we intoduced Context management early implementation
+		0.9.5	(Flash Player 11,9,900,117 - Chrome) Mem min/max on test complete 4.2/4.8 MB
+			NOTE from this version have new abstract Context management system. Speed gain is masive! Memory consumption back to normal.
 		Android	Google Nexus S, 2 years old, single core, BixBite 0.9.1 browser-plugin ( No longer supported )
 		
 		footprint 13.7kb
 		All timing in ms
+																						  Android
+		versions									0.6.3	 0.8.0	   0.9.1 	0.9.5	    0.9.1
+		TASK:register	Views			10k			 1.00	  1.20		1.09	 1.81 		54.81
+		TASK:unregister	Views			10k			 2.00	  2.18	    2.00	 2.00 		73.90
+		TASK:register	Views			100k		17.00	 20.45	   19.00	19.18	   320.45
+		TASK:unregister	Views			100k		22.00	 26.90	   23.00	24.00 	   464.36
+		TASK:register	Views			1kk		   181.64	216.82	  197.55	202.55	  2999.40
+		TASK:unregister	Views			1kk		   235.45	271.55	  246.91	250.09	  4248.50
 		
-		versions									0.6.3	 0.8.0	   0.9.1 	Android
-		TASK:register	Views			10k			 1.00	  1.20		1.09	  54.81
-		TASK:unregister	Views			10k			 2.00	  2.18	    2.00	  73.90
-		TASK:register	Views			100k		17.00	 20.45	   19.00	 320.45
-		TASK:unregister	Views			100k		22.00	 26.90	   23.00	 464.36
-		TASK:register	Views			1kk		   181.64	216.82	  197.55	2999.40
-		TASK:unregister	Views			1kk		   235.45	271.55	  246.91	4248.50
+		TASK:register	Trans			10k			 1.01	  1.18 	    1.09	  1.09	    57.27
+		TASK:unregister	Trans			10k			 2.00	  2.00		2.00	  2.00		82.09
+		TASK:register	Trans			100k		18.00	 19.90	   19.00	 19.00	   344.09
+		TASK:unregister	Trans			100k		23.27	 26.00	   23.00	 23.27	   464.00
+		TASK:register	Trans			1kk		   198.91	207.82	  196.36	209.45	  3136.10
+		TASK:unregister	Trans			1kk		   259.00	269.55	  243.91	263.55	  4430.60
 		
-		TASK:register	Trans			10k			 1.01	  1.18 	    1.09	  57.27
-		TASK:unregister	Trans			10k			 2.00	  2.00		2.00	  82.09
-		TASK:register	Trans			100k		18.00	 19.90	   19.00	 344.09
-		TASK:unregister	Trans			100k		23.27	 26.00	   23.00	 464.00
-		TASK:register	Trans			1kk		   198.91	207.82	  196.36	3136.10
-		TASK:unregister	Trans			1kk		   259.00	269.55	  243.91	4430.60
+		TASK:register	Data			10k			 1.01	  1.09		1.09	  2.00	    63.81
+		TASK:unregister	Data			10k			 2.00	  2.00		2.00	  2.00	    72.81
+		TASK:register	Data			100k		19.00	 20.00	   19.00	 21.09	   345.09
+		TASK:unregister	Data			100k		25.00	 25.00	   23.81	 26.36	   489.09
+		TASK:register	Data			1kk		   197.91	208.91	  197.91	224.91	  3151.80
+		TASK:unregister	Data			1kk		   261.45	265.45 	  243.64	289.64	  4371.70
 		
-		TASK:register	Data			10k			 1.01	  1.09		1.09	  63.81
-		TASK:unregister	Data			10k			 2.00	  2.00		2.00	  72.81
-		TASK:register	Data			100k		19.00	 20.00	   19.00	 345.09
-		TASK:unregister	Data			100k		25.00	 25.00	   23.81	 489.09
-		TASK:register	Data			1kk		   197.91	208.91	  197.91	3151.80
-		TASK:unregister	Data			1kk		   261.45	265.45 	  243.64	4371.70
+		TASK:add/remove Behaviour		1k			 4.36	  3.09 	    3.18	  4.27 	    95.72
+		TASK:add/remove Behaviour		10k			54.91	 39.00 	   37.45	 44.63	   721.55
+		TASK:add/remove Behaviour		100k		766.91	402.18    387.82	453.45	  6939.80
 		
-		TASK:add/remove Behaviour		1k			 4.36	  3.09 	    3.18	  95.72
-		TASK:add/remove Behaviour		10k			54.91	 39.00 	   37.45	 721.55
-		TASK:add/remove Behaviour		100k		766.91	402.18    387.82	6939.80
+		TASK:add/exe/dispose Behaviour	1k			4.82	  4.27 		3.09	  4.54	   100.73
+		TASK:add/exe/dispose Behaviour	10k			69.00	 42.45 	   39.36	 47.54	   763.64
+		TASK:add/exe/dispose Behaviour	100k		831.09	417.91 	  403.45	472.73	  7854.50
 		
-		TASK:add/exe/dispose Behaviour	1k			4.82	  4.27 		3.09	 100.73
-		TASK:add/exe/dispose Behaviour	10k			69.00	 42.45 	   39.36	 763.64
-		TASK:add/exe/dispose Behaviour	100k		831.09	417.91 	  403.45	7854.50
-		
-		TASK:reg/unreg Views			1k			  9.90	  2.09	  	2.00	  61.81
-		TASK:reg/unreg Views			10k			107.55	 27.36	   24.54	 418.91
-		TASK:reg/unreg Views			100k		991.00	271.55 	  251.82 	3601.00
-		TASK:reg/unreg Trans			1k			  7.54	  2.90		2.09	  68.27
-		TASK:reg/unreg Trans			10k			 83.18	 28.90	   27.00	 413.18
-		TASK:reg/unreg Trans			100k		1175.0	297.09 	  276.27	4077.50
-		TASK:reg/unreg Data				1k			  7.09	  2.00		2.00	  60.18
-		TASK:reg/unreg Data				10k			 77.00	 21.72	   20.63	 377.18
-		TASK:reg/unreg Data				100k		916.55	219.91 	  208.36	 3001.9
+		TASK:reg/unreg Views			1k			  9.90	  2.09	  	2.00	  2.27  	61.81
+		TASK:reg/unreg Views			10k			107.55	 27.36	   24.54	 27.72	   418.91
+		TASK:reg/unreg Views			100k		991.00	271.55 	  251.82 	276.91	  3601.00
+		TASK:reg/unreg Trans			1k			  7.54	  2.90		2.09	  2.81  	68.27
+		TASK:reg/unreg Trans			10k			 83.18	 28.90	   27.00	 27.90     413.18
+		TASK:reg/unreg Trans			100k		1175.0	297.09 	  276.27	281.82	  4077.50
+		TASK:reg/unreg Data				1k			  7.09	  2.00		2.00	  2.09	 	60.18
+		TASK:reg/unreg Data				10k			 77.00	 21.72	   20.63	 25.54	   377.18
+		TASK:reg/unreg Data				100k		916.55	219.91 	  208.36	256.00	   3001.9
 		
 		//Overloaded with real tasks
-		TASK:reg/unreg Views+Ctx+Slot		1k						   15.54	 275.55
-		TASK:reg/unreg Views+Ctx+Slot		10k						  164.45	2531.40
-		TASK:reg/unreg Views+Ctx+Slot		100k				 	 1663.80   25854.00
+		TASK:reg/unreg Views+Ctx+Slot		1k						   15.54	0.00	   275.55
+		TASK:reg/unreg Views+Ctx+Slot		10k						  164.45	4.00	  2531.40
+		TASK:reg/unreg Views+Ctx+Slot		100k				 	 1663.80   45.27	 25854.00
 		
 		//Overloaded with real tasks and graphics
-		TASK:reg/unreg Views+Ctx+Gfx+Slot	1k						   19.91	 307.82
-		TASK:reg/unreg Views+Ctx+Gfx+Slot	10k						  202.00	2894.90
-		TASK:reg/unreg Views+Ctx+Gfx+Slot	100k					 2012.50   28350.00
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	1k						   19.91	0.00	   307.82
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	10k						  202.00	4.00	  2894.90
+		TASK:reg/unreg Views+Ctx+Gfx+Slot	100k					 2012.50   40.18	 28350.00
 	 */
 	
 	public class CorePerformance extends Compound
