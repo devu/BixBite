@@ -12,6 +12,9 @@ package examples.helloworld.behaviour
 	
 	/**
 	 * @langversion	3.0
+	 * This behaviour will deal with our copy. It is a business logic part of our little app.
+	 * It is a bridge between data we store our values in, and actual state of it.
+	 * So, on initialisation this behaviour will request access to data to get ready before any execution.
 	 */
 	public class CopyHandler extends Behaviour 
 	{
@@ -19,11 +22,6 @@ package examples.helloworld.behaviour
 		
 		private var languages	:Array;
 		private var lang		:int = 1;
-		
-		public function CopyHandler() 
-		{
-			
-		}
 		
 		override public function init():void 
 		{

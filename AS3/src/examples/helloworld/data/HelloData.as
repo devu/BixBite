@@ -5,14 +5,13 @@ Licensed under the Apache License, Version 2.0
 
 package examples.helloworld.data
 {
-	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Data;
 	import org.bixbite.core.Signal;
 	
 	/**
 	 * @langversion	3.0
 	 * 
-	 * This Data component is a copy holder that will reponse to Compound on request being sent from Behaviour.
+	 * This Data component is a copy holder that will reponse to Compound request being sent from Behaviour.
 	 * Data component doesn't care who is calling, will respond as soon as a signal has been recieved.
 	 *
 	 * The main purpose od the Data component is to react on specific signal from Behaviour and response with Data set that provides.
@@ -23,11 +22,6 @@ package examples.helloworld.data
 		public var polish	:String = "<font color='#000000'> Witaj świecie </font>";
 		public var french	:String = "<font color='#000000'> Bonjour tout le monde </font>";
 		public var german	:String = "<font color='#000000'> Hallo Welt </font>";
-		
-		public function HelloData()
-		{
-		
-		}
 		
 		override public function init():void
 		{

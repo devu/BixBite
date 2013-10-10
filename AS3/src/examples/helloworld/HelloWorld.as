@@ -14,6 +14,7 @@ package examples.helloworld
 	
 	/**
 	 * @langversion	3.0
+	 * Very simple example to demonstrate fully functional set of Actors to perform simple task.
 	 */
 	public class HelloWorld extends Compound 
 	{
@@ -31,6 +32,8 @@ package examples.helloworld
 			addBehaviour("HelloWorld.UPDATE_COPY", CopyHandler);
 			addBehaviour("HelloWorld.INIT", Initialise);
 			
+			//Kickstart inside compound, but you can also do it from Document Class from the Core. 
+			//But about concepts and good practises later.
 			emitSignal("HelloWorld.INIT", { max:1000 } );
 		}
 		
