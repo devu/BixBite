@@ -9,7 +9,8 @@ package examples
 	import examples.helloworld.HelloWorld;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import org.bixbite.core.Context;
+	import org.bixbite.display.Context;
+
 	import org.bixbite.signal.Display;
 	import org.bixbite.Stats;
 	
@@ -65,14 +66,14 @@ package examples
 			core0.emitSignal(Stats.START, { root:stage } );
 			
 			/**
-			* Basic BixBite example to show workflow
+			* Basic BixBite example to demonstrate the workflow
 			*/
 			core1.register(HelloWorld);
 			
 			/**
-			* Robot Legs Implementation of HelloFlash example whithin BixBite
+			* RobotLegs Implementation of HelloFlash example whithin BixBite
 			*/
-			//core1.register(HelloFlash);
+			core1.register(HelloFlash);
 		}
 	}
 

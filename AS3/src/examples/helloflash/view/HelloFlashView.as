@@ -7,7 +7,7 @@ package examples.helloflash.view
 {
 	import examples.helloflash.HelloFlash;
 	import examples.helloflash.view.context.HelloFlashOutput;
-	import org.bixbite.core.ContextContainer;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 	
@@ -16,18 +16,17 @@ package examples.helloflash.view
 	 */
 	public class HelloFlashView extends View 
 	{
-		private var root	:ContextContainer;
+		private var root	:IContext;
 		private var output	:HelloFlashOutput;
 		
 		override public function init():void 
 		{
-			root = getContainer("app");
+			root = getContext("app");
 			
-			output = HelloFlashOutput(registerContext("HelloFlashOutput", HelloFlashOutput));
-			output.x = 100;
-			output.y = 100;
+			output = HelloFlashOutput(registerContext("HelloFlashOutput", new HelloFlashOutput()));
+			output.gl.move(100, 100);
 			
-			root.add(output);
+			root.addChild(output);
 			
 			addSlot(HelloFlash.CREATE_BALL, onCreateBall);
 		}

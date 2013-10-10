@@ -7,8 +7,6 @@ package examples.helloflash.view
 {
 	import examples.helloflash.HelloFlash;
 	import examples.helloflash.view.context.BallContext;
-	import flash.display.Sprite;
-	import org.bixbite.core.ContextContainer;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
 
@@ -22,22 +20,12 @@ package examples.helloflash.view
 		
 		private var ball		:BallContext;
 		
-		/**
-		 * Constructor
-		 */
-		public function BallView() 
-		{
-			
-		}
-		
 		override public function init():void 
 		{
-			ball = BallContext(registerContext("ball", BallContext));
-			ball.name = "ball";
-			ball.x = 50 + Math.random() * 500;
-			ball.y = 50 + Math.random() * 375;
+			ball = BallContext(registerContext("ball", new BallContext()));
+			ball.gl.move(Math.random() * 500, Math.random() * 375);
 			
-			getContainer("app").add(ball);
+			getContext("app").addChild(ball);
 			
 			addSlot(HelloFlash.SHUFFLE, shuffle);
 			addSlot(HelloFlash.RED_BALL, onMakeBallRed);
@@ -45,12 +33,12 @@ package examples.helloflash.view
 		
 		private function onMakeBallRed(s:Signal):void
 		{
-			ball.drawCirlce(0xFF1100, radius++);
+			ball.drawCircle(0xFF1100, radius++);
 		}
 		
 		private function shuffle(s:Signal):void
 		{
-			ball.drawCirlce(Math.random() * uint.MAX_VALUE, radius++);
+			ball.drawCircle(Math.random() * uint.MAX_VALUE, radius++);
 		}
 	}
 

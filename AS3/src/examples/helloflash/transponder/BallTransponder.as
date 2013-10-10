@@ -7,8 +7,7 @@ package examples.helloflash.transponder
 {
 	import examples.helloflash.HelloFlash;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.ContextContainer;
-	import org.bixbite.core.Signal;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Transponder;
 	
 	/**
@@ -16,7 +15,7 @@ package examples.helloflash.transponder
 	 */
 	public class BallTransponder extends Transponder 
 	{
-		private var root:ContextContainer;
+		private var root:IContext;
 		
 		public function BallTransponder()
 		{
@@ -25,8 +24,8 @@ package examples.helloflash.transponder
 		
 		override public function init():void 
 		{
-			root = getContainer("app");
-			addSensor(MouseEvent.CLICK, onMouseClick);
+			root = getContext("app"); 
+			root.addSensor(MouseEvent.CLICK, onMouseClick);
 		}
 		
 		private function onMouseClick(e:MouseEvent):void 

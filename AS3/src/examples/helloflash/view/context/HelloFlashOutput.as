@@ -6,26 +6,26 @@ Licensed under the Apache License, Version 2.0
 package examples.helloflash.view.context 
 {
 	import flash.text.TextField;
-	import org.bixbite.core.Context;
+	import org.bixbite.display.Context;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class HelloFlashOutput extends Context 
 	{
-		private var textField:TextField;
+		private var tf:TextField;
 		
 		public function HelloFlashOutput() 
 		{
-			textField = new TextField();
-			textField.selectable = false;
-			textField.text = "Click count: 1";
-			addChild(textField);
+			tf = new TextField();
+			tf.selectable = false;
+			tf.text = "Click count: 1";
+			body.addChild(tf);
 		}
 		
 		public function set text(value:String):void 
 		{
-			textField.text = value;
+			tf.text = value;
 		}
 		
 	}

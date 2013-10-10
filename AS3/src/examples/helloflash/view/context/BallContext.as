@@ -5,31 +5,31 @@ Licensed under the Apache License, Version 2.0
 
 package examples.helloflash.view.context 
 {
-	import org.bixbite.core.Context;
+	import flash.display.Sprite;
+	import org.bixbite.display.Context;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class BallContext extends Context 
 	{
-		
 		override public function init():void 
 		{
-			this.alpha = 0.75;
-			this.useHandCursor = true;
-			this.buttonMode = true;
+			gl.alpha(0.75);
+			//body.useHandCursor = true;
+			//body.buttonMode = true;
 		}
 		
-		public function drawCirlce(color:uint, radius:int):void
+		override public function draw():void
 		{
-			graphics.clear();
-			graphics.beginFill(color);
-			graphics.drawCircle(0, 0, radius);
+			drawCircle(0x000000, 10);
 		}
 		
-		public function draw():void
+		public function drawCircle(color:uint, radius:int):void 
 		{
-			drawCirlce(0x000000, 10);
+			gl.clear();
+			gl.beginFill(color,1);
+			gl.drawCircle(0, 0, radius);
 		}
 		
 	}
