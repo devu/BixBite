@@ -6,6 +6,7 @@ Licensed under the Apache License, Version 2.0
 package examples.helloworld.view 
 {
 	import examples.helloworld.HelloWorld;
+	import org.bixbite.core.Context;
 	
 	import flash.display.Sprite;
 	import flash.text.TextField;
@@ -18,8 +19,9 @@ package examples.helloworld.view
 	 */
 	public class HelloView extends View 
 	{
-		private var textField	:TextField;
-		private var context		:Sprite;
+		private var root	:Context;
+		private var tf		:TextField;
+		private var ctx		:Context;
 		
 		public function HelloView() 
 		{
@@ -28,17 +30,17 @@ package examples.helloworld.view
 		
 		override public function init():void 
 		{
-			context = new Sprite();
+			root = getContext("app");
+			ctx = new Context();
 			
-			textField = new TextField();
-			textField.autoSize = "left";
-			textField.selectable = false;
+			tf = new TextField();
+			tf.autoSize = "left";
+			tf.selectable = false;
 			
-			context.x = 200 + Math.random() * 500;
-			context.y = 50 + Math.random() * 600;
+			ctx.body.addChild(tf);
+			ctx.gl.move(200 + Math.random() * 500, 50 + Math.random() * 600);
 			
-			context.addChild(textField);
-			stage.addChild(context);
+			root.addChild(ctx);
 			
 			addSlot("HelloWorld.SET_COPY", onSetCopy);
 		}
@@ -50,7 +52,7 @@ package examples.helloworld.view
 		
 		private function applyCopy(copy:String):void 
 		{
-			textField.htmlText = copy;
+			tf.htmlText = copy;
 		}
 	}
 

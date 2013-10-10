@@ -6,11 +6,9 @@ Licensed under the Apache License, Version 2.0
 package examples.helloworld.transponder 
 {
 
-	import examples.helloworld.HelloWorld;
 	import flash.events.MouseEvent;
-	import flash.text.TextField;
 	import flash.utils.getTimer;
-	import org.bixbite.core.Signal;
+	import org.bixbite.core.Context;
 	import org.bixbite.core.Transponder;
 	
 	/**
@@ -33,7 +31,8 @@ package examples.helloworld.transponder
 		 */
 		override public function init():void 
 		{
-			addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
+			var root:Context = getContext("app");
+			root.addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
 		}
 		
 		private function onMouseDown(e:MouseEvent):void 
