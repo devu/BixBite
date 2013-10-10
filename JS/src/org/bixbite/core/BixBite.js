@@ -170,7 +170,7 @@ function BixBite(dsp){
 	this.spawnCore=function(id){var c=new Core(id);c.e.chE=function(cid,t,s){for (var c in cores)c.brc(cid,t,s)};c.e.bb=this;return cores[id]=c}
 	this.destroyCore=function(id){if(cores[id]){this.dispose(cores[id]);delete cores[id]}}
 	this.getCtx=function(id){return list[id]}
-	this.addContext=function(id,ctx){this.regCtx(id,ctx,null);this.root.addChild(ctx);}
+	this.addContext=function(id,ctx){this.root.addChild(this.regCtx(id,ctx,null));}
 	this.regCtx=function(id,ctx,v){if(list[id])alert("Context id:'" + id + "' is already registered.");list[id]=ctx;ctx.view=v;ctx.init();ctx.setID(id);return ctx}
 	this.unrCtx=function(id){if (!list[id]) alert("Context id:'" + id + "' doesn't exist.");var ctx = list[id];if (ctx && ctx.parentNode){ctx.parentNode.removeChild(ctx);ctx.view = null;ctx.dispose()}this.dispose(list[id]);delete list[id]}
 	//TODO cross core comminucation
