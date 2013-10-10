@@ -227,6 +227,7 @@
     <string>src\com\bit101\charts\piechart.as</string>
     <string>src\main.as</string>
     <string>src\application.as</string>
+    <string>src\examples\helloworld\view\context\textcontext.as</string>
   </Flex_IgnoreClasses>
   <CS3_IgnoreClasses>
     <string>src\test\performance\signalperf\signals.as</string>
@@ -443,6 +444,7 @@
     <string>src\com\bit101\charts\piechart.as</string>
     <string>src\main.as</string>
     <string>src\application.as</string>
+    <string>src\examples\helloworld\view\context\textcontext.as</string>
   </CS3_IgnoreClasses>
   <CS3_ComponentClass />
   <CS3_ComponentName />
