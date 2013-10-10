@@ -11,16 +11,12 @@ package test
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
-	import org.bixbite.core.ContextContainer;
-	
 	import org.bixbite.core.BixBite;
+	import org.bixbite.core.Context;
 	import org.bixbite.core.Core;
-	import org.bixbite.framework.signal.DisplaySignal;
-	import org.bixbite.framework.DisplayManager;
-	import org.bixbite.framework.Stats;
-	
-	import test.integration.multicore.CoreCompoundOne;
-	import test.integration.multicore.CoreCompoundTwo;
+	import org.bixbite.DisplayManager;
+	import org.bixbite.signal.Display;
+	import org.bixbite.Stats;
 	import test.performance.coreperf.CorePerformance;
 	import test.performance.signalperf.SignalPerformance;
 	
@@ -50,13 +46,13 @@ package test
 			
 			var bb:BixBite = new BixBite(stage);
 			
-			bb.addContainer("app", new ContextContainer());
-			bb.addContainer("debug", new ContextContainer());
+			bb.addContext("app", new Context());
+			bb.addContext("debug", new Context());
 			
 			core1 = bb.spawnCore("stats");
 			
 			core1.register(DisplayManager);
-			core1.emitSignal(DisplaySignal.SET_DISPLAY, { frameRate:30 } );
+			core1.emitSignal(Display.SET_DISPLAY, { root:stage, frameRate:30 } );
 			
 			core1.register(Stats);
 			core1.emitSignal(Stats.START);

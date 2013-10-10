@@ -5,9 +5,8 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.transponder 
 {
-	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import org.bixbite.core.Context;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.Stats;
@@ -17,7 +16,7 @@ package org.bixbite.transponder
      */
 	public class StatsTransponder extends Transponder 
 	{
-		private var root:Context;
+		private var root:IContext;
 		
 		override public function init():void 
 		{

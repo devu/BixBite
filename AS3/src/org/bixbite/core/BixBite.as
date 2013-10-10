@@ -7,6 +7,7 @@ package org.bixbite.core
 {
 	import flash.display.Stage;
 	import flash.utils.Dictionary;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.display.IDisplayList;
 	import org.bixbite.namespaces.BIXBITE;
 	
@@ -69,12 +70,9 @@ package org.bixbite.core
 		 * Add display context
 		 * @param	id
 		 */
-		public function addContext(id:String, context:Context):void 
+		public function addContext(id:String, context:IContext):void 
 		{
-			context.id = id;
-			root.addChild(context);
-			list[id] = context;
-			context.init();
+			root.addChild(registerCtx(id, context));
 		}
 		
 		/**
@@ -82,7 +80,7 @@ package org.bixbite.core
 		 * @param	id
 		 * @return
 		 */
-		public function getContext(id:String):Context
+		public function getContext(id:String):IContext
 		{
 			return list[id];
 		}
@@ -94,18 +92,15 @@ package org.bixbite.core
 		 * @param	context
 		 * @return	IContext
 		 */
-		internal function registerCtx(view:View, id:String, context:Class):Context
+		internal function registerCtx(id:String, ctx:IContext, view:View = null):IContext
 		{
 			if (list[id]) Error("Context " + id + "is already registered");
-			
-			var ctx:Context = new context();
-			ctx.id = id;
-			ctx.view = view;
-			
 			list[id] = ctx;
+			ctx.view = view;
 			ctx.init();
+			ctx.id = id;
 			
-			return Context(ctx)
+			return ctx;
 		}
 		
 		/**

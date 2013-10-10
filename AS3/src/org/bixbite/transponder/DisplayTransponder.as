@@ -5,12 +5,8 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.transponder 
 {
-	import flash.events.Event;
-	import org.bixbite.core.Context;
-	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.signal.Display;
-	import org.bixbite.DisplayManager;
 	
 	/**
 	 * @langversion	3.0

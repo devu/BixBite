@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.view.context 
 {
-	import org.bixbite.core.Context;
+	import org.bixbite.display.Context;
 	
 	/**
 	 * @langversion	3.0

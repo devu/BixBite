@@ -97,9 +97,9 @@ package org.bixbite.core
 		 * @param	context
 		 * @return  IContext instance of the created context as interface
 		 */
-		public function registerContext(id:String, context:Class):Context
+		public function registerContext(id:String, context:IContext):IContext
 		{
-			return emitter.bixbite.registerCtx(this, id, context);
+			return emitter.bixbite.registerCtx(id, context, this);
 		}
 		
 		/**
@@ -115,7 +115,7 @@ package org.bixbite.core
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContext(id:String):Context
+		public function getContext(id:String):IContext
 		{
 			return emitter.bixbite.getContext(id);
 		}

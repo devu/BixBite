@@ -6,6 +6,7 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.core 
 {
 	import org.bixbite.core.interfaces.IActor;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -107,7 +108,7 @@ package org.bixbite.core
 		 * Get registered context container
 		 * @param	id
 		 */
-		public function getContext(id:String):Context
+		public function getContext(id:String):IContext
 		{
 			return emitter.bixbite.getContext(id);
 		}

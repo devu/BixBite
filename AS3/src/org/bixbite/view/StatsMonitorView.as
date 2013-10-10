@@ -8,9 +8,10 @@ package org.bixbite.view
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.text.TextField;
-	import org.bixbite.core.Context;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
+	import org.bixbite.display.Context;
 	import org.bixbite.factories.TextFactory;
 	import org.bixbite.signal.Display;
 	import org.bixbite.Stats;
@@ -21,8 +22,8 @@ package org.bixbite.view
 	 */
 	public class StatsMonitorView extends View 
 	{
-		private var container		:Context;
-		private var panel			:Context;
+		private var container		:IContext;
+		private var panel			:IContext;
 		
 		private var mem_graph		:Number = 0;
 		private var max_graph		:Number = 0;
@@ -43,7 +44,7 @@ package org.bixbite.view
 			var tFactory:TextFactory = TextFactory.getInstance();
 			
 			container = getContext("debug");
-			panel = registerContext("statsPanel", StatsMonitor);
+			panel = registerContext("statsPanel", new StatsMonitor());
 			container.addChild(panel);
 			
 			graph = new BitmapData(230, 56, true, 0x00000000);

@@ -1,7 +1,8 @@
 package org.bixbite.display 
 {
+	import flash.display.DisplayObject;
 	import flash.display.Stage;
-	import org.bixbite.core.Context;
+	import org.bixbite.core.interfaces.IContext;
 	/**
 	 * ...
 	 * @author Daniel Wasilewski
@@ -15,15 +16,15 @@ package org.bixbite.display
 			this.stage = stage;
 		}
 		
-		public function addChild(child:Context):Context
+		public function addChild(child:IContext):IContext
 		{
-			stage.addChild(child.body);
+			stage.addChild(DisplayObject(child.body));
 			return child
 		}
 		
-		public function removeChild(child:Context):Context
+		public function removeChild(child:IContext):IContext
 		{
-			stage.removeChild(child.body);
+			stage.removeChild(DisplayObject(child.body));
 			return child
 		}
 		

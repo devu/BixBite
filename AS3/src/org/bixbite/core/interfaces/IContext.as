@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core.interfaces 
 {
-	import org.bixbite.core.Context;
+	import examples.helloflash.view.context.HelloFlashOutput;
 	import org.bixbite.core.View;
 	
 	/**
@@ -22,6 +22,16 @@ package org.bixbite.core.interfaces
 		function init():void;
 		function draw():void;
 		function dispose():void;
+		
+		function getContextUnderPoint(name:String = null):IContext;
+		
+		function addSensor(type:String, callback:Function):void;
+		function removeSensor(type:String, callback:Function):void;
+		
+		function addChild(child:IContext):IContext;
+		function removeChild(child:IContext):IContext;
+		
+		function get body():*;
 	}
 	
 }

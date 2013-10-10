@@ -1,6 +1,6 @@
 package org.bixbite.display 
 {
-	import org.bixbite.core.Context;
+	import org.bixbite.core.interfaces.IContext;
 	
 	/**
 	 * ...
@@ -8,8 +8,8 @@ package org.bixbite.display
 	 */
 	public interface IDisplayList 
 	{
-		function addChild(child:Context):Context;
-		function removeChild(child:Context):Context;
+		function addChild(child:IContext):IContext;
+		function removeChild(child:IContext):IContext;
 	}
 	
 }

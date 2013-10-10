@@ -3,29 +3,30 @@ Licensed under the Apache License, Version 2.0
 @copy (c) See LICENSE.txt
 */
 
-package org.bixbite.core
+package org.bixbite.display
 {
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.geom.Point;
 	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.View;
 	import org.bixbite.display.GraphicsLib;
-	import org.bixbite.display.IDisplayList;
 	
 	/**
 	 * @langversion	3.0
 	 */
-	public class Context implements IContext, IDisplayList
+	public class Context implements IContext
 	{
+		private var p		:Point = new Point(0, 0);
 		private var _id		:String;
 		private var _view	:View;
-		private var _body	:*;
-		
-		public var gl		:GraphicsLib;
+		private var _body	:Sprite;
+		private var _gl		:GraphicsLib;
 		
 		public function Context() 
 		{
 			_body = new Sprite();
-			gl = new GraphicsLib(_body);
+			_gl = new GraphicsLib(_body);
 		}
 		
 		public function get body():* 
@@ -35,12 +36,12 @@ package org.bixbite.core
 		
 		public function get id():String 
 		{
-			return _id;
+			return _body.name;
 		}
 		
 		public function set id(value:String):void 
 		{
-			_id = value;
+			_body.name = value;
 		}
 		
 		public function get view():View 
@@ -53,6 +54,11 @@ package org.bixbite.core
 			_view = value;
 		}
 		
+		public function get gl():GraphicsLib 
+		{
+			return _gl;
+		}
+		
 		/*abstract*/ 
 		public function init():void {}
 		
@@ -62,32 +68,41 @@ package org.bixbite.core
 		public function dispose():void 
 		{
 			gl.clear();
-			
-			while (_body.numChildren > 0) _body.removeChildAt(0);
-			_body.clear();
-			_body.parent.removeChild(_body);
 		}
 		
 		public function addSensor(type:String, callback:Function):void 
 		{
-			body.addEventListener(type, callback);
+			_body.addEventListener(type, callback);
 		}
 		
 		public function removeSensor(type:String, callback:Function):void 
 		{
-			body.removeEventListener(type, callback);
+			_body.removeEventListener(type, callback);
 		}
 		
-		public function addChild(child:Context):Context 
+		public function addChild(child:IContext):IContext 
 		{
-			this.body.addChild(child.body);
+			_body.addChild(DisplayObject(child.body));
 			return child;
 		}
 		
-		public function removeChild(child:Context):Context 
+		public function removeChild(child:IContext):IContext 
 		{
-			this.body.removeChild(child.body);
+			_body.removeChild(child.body);
 			return child;
+		}
+		
+		public function getContextUnderPoint(name:String = null):IContext
+		{
+			p.x = _body.mouseX;
+			p.y = _body.mouseY;
+			
+			var a:Array = _body.getObjectsUnderPoint(p);
+			for each(var ctx:DisplayObject in a){
+				if (ctx.name== name) return IContext(this);
+			}
+			
+			return null;
 		}
 	}
 
