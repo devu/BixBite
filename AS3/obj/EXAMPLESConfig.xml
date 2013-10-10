@@ -40,7 +40,7 @@
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>I:\BixBite\AS3\src\examples\MainExamples.as</path-element>
+    <path-element>I:\BixBite\AS3\src\MainExamples.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

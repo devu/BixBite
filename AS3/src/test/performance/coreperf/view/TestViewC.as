@@ -23,7 +23,7 @@ package test.performance.coreperf.view
 		override public function init():void 
 		{
 			addSlot("testSignalC", onTestSignalC);
-			getContainer("app").add(registerContext("testContextC", TestViewCContext));
+			getContext("app").addChild(registerContext("testContextC", new TestViewCContext()));
 		}
 		
 		private function onTestSignalC(s:Signal):void 

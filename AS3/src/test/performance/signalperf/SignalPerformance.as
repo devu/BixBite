@@ -23,14 +23,30 @@ package test.performance.signalperf
 	 * Subject of this test is to check performance of the current BixBite signal flow implementation.
 	 * 
 	 * 1 Phase
-	 * On mouse click Transponder will send signal to Atom and Atom will respond to View.
+	 * On mouse click Transponder will send signal to Compound and Behaviour will respond to View.
 	 * This is just initial flow test. Making sure Components can talk to each other.
 	 * 
 	 * 2 Phase
 	 * Once 1 Phase is finished View will send X number of times signals going through full triade following the flow:
-	 * View -> Transponder -> Atom -> View. When finish will send signal to Stats to display results.
+	 * View -> Transponder -> Compound -> View. When finish will send signal to Stats to display results.
 	 * 
-	 * Signals traveling from View -> Transponder -> Atom -> View. (CDTV);
+	 * Signals traveling from View -> Transponder -> Compound -> View.
+	 * Data are ommited in this test
+	 * 
+	 * Results:
+	 * BixBite v0.9.5 milestone - full architecture implemented
+	 * 100.000 iterations, (300k signals in circulation) FP 11,9,900,117
+	 * 					(FF) 	(Chrome)	(IE Debug)
+		BB STANDARD: 	93ms 	103ms		172ms
+		BB SRS: 		11ms	12ms 		28ms 
+		NATIVE EVENT: 	301ms 	260ms		479ms 
+		CALLBACK: 		8ms		10ms 		21ms
+		
+		1.000.000 iterations, (3M signals in circulation) 
+		BB STANDARD: 	934ms 	1061ms 
+		BB SRS: 		111ms	126ms
+		NATIVE EVENT: 	3025ms 	2645ms 
+		CALLBACK: 		86ms	99ms 
 	 * 
 	 * Results 
 	 * (FP 11,5,31,101 - Chrome)		(FP 11,4,402,287 - FF)

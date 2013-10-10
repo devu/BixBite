@@ -5,16 +5,15 @@ Licensed under the Apache License, Version 2.0
 
 package test.performance.signalperf.view 
 {
-	import flash.display.Sprite;
-	import flash.text.TextField;
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
-	import org.bixbite.core.ContextContainer;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Slot;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.view.context.OutputContext;
+	import org.bixbite.view.context.OutputContext;
 	import test.performance.signalperf.SignalPerformance;
+	import test.performance.signalperf.view.context.ButtonContext;
 	
 	/**
 	 * @langversion	3.0
@@ -22,8 +21,9 @@ package test.performance.signalperf.view
 	public class TestView extends View
 	{
 		private var slot	:Slot;
+		
+		private var root	:IContext;
 		private var output	:OutputContext;
-		private var root	:ContextContainer;
 		
 		public function TestView() 
 		{
@@ -32,11 +32,15 @@ package test.performance.signalperf.view
 		
 		override public function init():void 
 		{
-			root = getContainer("app");
-			output = OutputContext(registerContext("signalPerf", OutputContext));
-			output.y = 60;
+			root = getContext("app");
+			output = OutputContext(registerContext("signalPerf", new OutputContext()));
+			output.gl.move(10, 60);
 			
-			root.add(output);
+			var button:ButtonContext = new ButtonContext("click to start");
+			button.gl.move(200, 60);
+			root.addChild(registerContext("startBtn", button));
+			
+			root.addChild(output);
 			
 			addSlot(SignalPerformance.NATIVE_TEST_RESULTS, onNativeTest);
 			addSlot(SignalPerformance.CALLBACK_TEST_RESULTS, onCallbackTest);
@@ -72,7 +76,7 @@ package test.performance.signalperf.view
 		
 		private function startTest():void
 		{
-			var max:int = 100000;
+			var max:int = 1000000;
 			output.text = max + " iterations, " + String(max * 3) + " signals\n";
 			
 			slot = getSlots(SignalPerformance.RUN_TEST_SRS).getSlotByIndex(0);

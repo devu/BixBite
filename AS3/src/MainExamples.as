@@ -3,7 +3,7 @@ Licensed under the Apache License, Version 2.0
 @copy (c) See LICENSE.txt
 */
 
-package examples 
+package  
 {
 	import examples.helloflash.HelloFlash;
 	import examples.helloworld.HelloWorld;

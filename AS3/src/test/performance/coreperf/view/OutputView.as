@@ -7,20 +7,20 @@ package test.performance.coreperf.view
 {
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.framework.view.context.OutputContext;
+	import org.bixbite.view.context.OutputContext;
 	
 	/**
 	 * @langversion	3.0
 	 */
 	public class OutputView extends View 
 	{
-		private var output		:OutputContext;
+		private var output:OutputContext;
 		
 		override public function init():void 
 		{
-			output = OutputContext(registerContext("outputText", OutputContext));
-			output.y = 110;
-			getContainer("app").add(output);
+			output = OutputContext(registerContext("outputText", new OutputContext()));
+			output.gl.move(110,0);
+			getContext("app").addChild(output);
 			
 			addSlot("traceOutput", onTraceOutput);
 		}

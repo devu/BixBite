@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package test.performance.coreperf.view.context 
 {
-	import org.bixbite.core.Context;
+	import org.bixbite.display.Context;
 	
 	/**
 	 * @langversion	3.0
@@ -15,13 +15,18 @@ package test.performance.coreperf.view.context
 		
 		public function TestViewCContext() 
 		{
-			graphics.beginFill(0x000FFF, 1);
-			graphics.drawRect(0, 0, 100, 100);
+			
+		}
+		
+		override public function init():void 
+		{
+			gl.beginFill(0x000FFF, 1);
+			gl.drawRect(0, 0, 100, 100);
 		}
 		
 		override public function dispose():void 
 		{
-			graphics.clear();
+			gl.clear();
 		}
 		
 	}
