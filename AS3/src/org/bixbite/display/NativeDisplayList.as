@@ -18,13 +18,13 @@ package org.bixbite.display
 		
 		public function addChild(child:IContext):IContext
 		{
-			stage.addChild(DisplayObject(child.body));
+			stage.addChild(child.body);
 			return child
 		}
 		
 		public function removeChild(child:IContext):IContext
 		{
-			stage.removeChild(DisplayObject(child.body));
+			stage.removeChild(child.body);
 			return child
 		}
 		

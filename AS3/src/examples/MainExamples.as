@@ -9,16 +9,14 @@ package examples
 	import examples.helloworld.HelloWorld;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import org.bixbite.display.Context;
-
-	import org.bixbite.signal.Display;
-	import org.bixbite.Stats;
-	
 	import org.bixbite.core.BixBite;
 	import org.bixbite.core.Core;
+	import org.bixbite.display.Context;
 	import org.bixbite.display.IDisplayList;
 	import org.bixbite.display.NativeDisplayList;
 	import org.bixbite.DisplayManager;
+	import org.bixbite.signal.Display;
+	import org.bixbite.Stats;
 	
 	/**
 	 * @langversion	3.0

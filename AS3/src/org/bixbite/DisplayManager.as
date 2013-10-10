@@ -5,13 +5,13 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite 
 {
-	import org.bixbite.core.Compound;
 	import org.bixbite.behaviour.DisplayGet;
 	import org.bixbite.behaviour.DisplayResize;
 	import org.bixbite.behaviour.DisplaySet;
+	import org.bixbite.core.Compound;
 	import org.bixbite.data.DisplayData;
-	import org.bixbite.transponder.DisplayTransponder;
 	import org.bixbite.signal.Display;
+	import org.bixbite.transponder.DisplayTransponder;
 	
 	/**
 	 * @langversion	3.0

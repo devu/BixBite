@@ -32,8 +32,8 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import org.bixbite.core.BixBite;
-	import org.bixbite.core.Context;
 	import org.bixbite.core.Core;
+	import org.bixbite.display.Context;
 	import org.bixbite.display.IDisplayList;
 	import org.bixbite.display.NativeDisplayList;
 	import org.bixbite.DisplayManager;

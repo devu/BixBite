@@ -5,7 +5,6 @@ Licensed under the Apache License, Version 2.0
 
 package examples.helloflash.view.context 
 {
-	import flash.display.Sprite;
 	import org.bixbite.display.Context;
 	
 	/**
@@ -16,8 +15,8 @@ package examples.helloflash.view.context
 		override public function init():void 
 		{
 			gl.alpha(0.75);
-			//body.useHandCursor = true;
-			//body.buttonMode = true;
+			body.useHandCursor = true;
+			body.buttonMode = true;
 		}
 		
 		override public function draw():void

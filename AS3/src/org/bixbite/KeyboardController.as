@@ -6,9 +6,8 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite 
 {
 	
-	import org.bixbite.core.Compound;
-	import org.bixbite.core.Signal;
 	import org.bixbite.behaviour.TriggerKey;
+	import org.bixbite.core.Compound;
 	import org.bixbite.signal.KeySignal;
 	import org.bixbite.transponder.KeyboardTransponder;
 	

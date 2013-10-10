@@ -5,13 +5,13 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.transponder 
 {
-	
 	import flash.events.KeyboardEvent;
 	import flash.utils.Dictionary;
-	import org.bixbite.core.Context;
+	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.Transponder;
 	import org.bixbite.signal.KeySignal;
+
 	
 	/**
 	 * ...
@@ -29,7 +29,7 @@ package org.bixbite.transponder
 		
 		override public function init():void 
 		{
-			var ctx:Context = getContext('stage');
+			var ctx:IContext = getContext("app");
 			ctx.addSensor(KeyboardEvent.KEY_DOWN, onKeyDown);
 			ctx.addSensor(KeyboardEvent.KEY_UP, onKeyUp);
 			

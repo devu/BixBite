@@ -6,7 +6,6 @@ Licensed under the Apache License, Version 2.0
 package examples.helloworld.behaviour 
 {
 	import examples.helloworld.data.HelloData;
-	import examples.helloworld.HelloWorld;
 	import org.bixbite.core.Behaviour;
 	import org.bixbite.core.Signal;
 	

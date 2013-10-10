@@ -5,10 +5,9 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite 
 {
-	import org.bixbite.core.Compound;
 	import org.bixbite.behaviour.StatsCalculate;
+	import org.bixbite.core.Compound;
 	import org.bixbite.data.StatsData;
-	import org.bixbite.signal.Display;
 	import org.bixbite.transponder.StatsTransponder;
 	import org.bixbite.view.StatsMonitorView;
 	

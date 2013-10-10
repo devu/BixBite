@@ -25,7 +25,7 @@ package org.bixbite.transponder
 		
 		private function onReady(s:Signal):void
 		{
-			root = getContext("statsPanel");
+			root = getContext("statsPanel");//TODO get the name of the panel from signal
 			root.addSensor(MouseEvent.MOUSE_DOWN, onMouseDown);
 			root.addSensor(MouseEvent.MOUSE_UP	, onMouseUp);
 		}

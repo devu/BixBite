@@ -11,7 +11,6 @@ package org.bixbite.view
 	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.core.Signal;
 	import org.bixbite.core.View;
-	import org.bixbite.display.Context;
 	import org.bixbite.factories.TextFactory;
 	import org.bixbite.signal.Display;
 	import org.bixbite.Stats;

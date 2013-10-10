@@ -5,7 +5,6 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import flash.display.Stage;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.display.IDisplayList;
