@@ -23,7 +23,7 @@ package test.performance.coreperf.view
 		override public function init():void 
 		{
 			addSlot("testSignalB", onTestSignalB);
-			getContext("app").addChild(registerContext("testContextB", new TestViewBContext()));
+			getContext("app").addChild(new TestViewBContext());
 		}
 		
 		private function onTestSignalB(s:Signal):void 
@@ -33,7 +33,8 @@ package test.performance.coreperf.view
 		
 		override public function destroy():void 
 		{
-			unregisterContext("testContextB");
+			getContext("app").removeChildren();
+			removeSlot("testSignalB");
 			super.destroy();
 		}
 		

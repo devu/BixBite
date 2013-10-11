@@ -92,6 +92,11 @@ package org.bixbite.display
 			return child;
 		}
 		
+		public function removeChildren():void 
+		{
+			while(_body.numChildren>0) _body.removeChildAt(0);
+		}
+		
 		public function getContextUnderPoint(name:String = null):IContext
 		{
 			p.x = _body.mouseX;

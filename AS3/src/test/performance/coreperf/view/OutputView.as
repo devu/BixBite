@@ -20,7 +20,7 @@ package test.performance.coreperf.view
 		{
 			output = OutputContext(registerContext("outputText", new OutputContext()));
 			output.gl.move(110,0);
-			getContext("app").addChild(output);
+			getContext("debug").addChild(output);
 			
 			addSlot("traceOutput", onTraceOutput);
 		}

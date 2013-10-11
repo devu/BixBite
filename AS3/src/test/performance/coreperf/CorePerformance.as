@@ -107,7 +107,7 @@ package test.performance.coreperf
 		
 		private var runner		:int;
 		
-		private var timeInterval:int = 2000;
+		private var timeInterval:int = 200;
 		
 		public function CorePerformance() 
 		{
@@ -311,6 +311,8 @@ package test.performance.coreperf
 				clearInterval(runner);
 				iterator = 0;
 				task++;
+				
+				timeInterval = parseInt(results[task]) / iterator + 100;
 				runner = setInterval(run, timeInterval);
 			}
 			

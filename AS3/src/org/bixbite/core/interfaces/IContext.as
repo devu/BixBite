@@ -29,6 +29,7 @@ package org.bixbite.core.interfaces
 		
 		function addChild(child:IContext):IContext;
 		function removeChild(child:IContext):IContext;
+		function removeChildren():void;
 		
 		function get body():*;
 	}
