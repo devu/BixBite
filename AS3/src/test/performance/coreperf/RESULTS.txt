@@ -1,0 +1,61 @@
+0.6.3	(Flash Player 11,1,102,63 - Chrome) max Mem 8.873 MB													
+0.8.0 	(Flash Player 11,5,31,101 - Chrome) max Mem 4.615 MB
+0.9.1 	(Flash Player 11,5,31,101 - Chrome) Mem min/max on test complete 9/20 MB
+	NOTE we intoduced Context management early implementation
+0.9.5	(Flash Player 11,9,900,117 - Chrome) Mem min/max on test complete 5.2/7.2 MB
+	NOTE from this version have new abstract Context management system. Speed gain! Memory consumption back to normal.
+Android	Google Nexus S, single core, BixBite 0.9.1 browser-plugin ( No longer supported )
+
+NOTE For JS target most of the iterations are skipped due to Out Of Memory problem (Yes, it can't handle large amount of objects :( )
+footprint 13.7kb
+All timing in ms							AS3												JS
+																				  Android	FireFox		 Chrome
+versions									0.6.3	 0.8.0	   0.9.1 	0.9.5	    0.9.1	  0.9.5		  0.9.5	
+TASK:register	Views			10k			 1.00	  1.20		1.09	 1.81 		54.81	  57.81		  21.36
+TASK:unregister	Views			10k			 2.00	  2.18	    2.00	 2.00 		73.90	  14.30		  12.81
+TASK:register	Views			100k		17.00	 20.45	   19.00	19.18	   320.45		-			-
+TASK:unregister	Views			100k		22.00	 26.90	   23.00	24.00 	   464.36		-			-
+TASK:register	Views			1kk		   181.64	216.82	  197.55	202.55	  2999.40		-			-
+TASK:unregister	Views			1kk		   235.45	271.55	  246.91	250.09	  4248.50		-			-
+
+TASK:register	Trans			10k			 1.01	  1.18 	    1.09	  1.09	    57.27	  50.40		  22.72
+TASK:unregister	Trans			10k			 2.00	  2.00		2.00	  2.00		82.09	  14.50		   9.90
+TASK:register	Trans			100k		18.00	 19.90	   19.00	 19.00	   344.09		-			-
+TASK:unregister	Trans			100k		23.27	 26.00	   23.00	 23.27	   464.00		-			-
+TASK:register	Trans			1kk		   198.91	207.82	  196.36	209.45	  3136.10		-			-
+TASK:unregister	Trans			1kk		   259.00	269.55	  243.91	263.55	  4430.60		-			-
+
+TASK:register	Data			10k			 1.01	  1.09		1.09	  2.00	    63.81	  53.00		  25.63
+TASK:unregister	Data			10k			 2.00	  2.00		2.00	  2.00	    72.81	  16.72		  15.63
+TASK:register	Data			100k		19.00	 20.00	   19.00	 21.09	   345.09		-			-
+TASK:unregister	Data			100k		25.00	 25.00	   23.81	 26.36	   489.09		-			-
+TASK:register	Data			1kk		   197.91	208.91	  197.91	224.91	  3151.80		-			-
+TASK:unregister	Data			1kk		   261.45	265.45 	  243.64	289.64	  4371.70		-			-
+
+TASK:add/remove Behaviour		1k			 4.36	  3.09 	    3.18	  4.27 	    95.72	   5.45		   8.45
+TASK:add/remove Behaviour		10k			54.91	 39.00 	   37.45	 44.63	   721.55	  46.00		  56.63
+TASK:add/remove Behaviour		100k		766.91	402.18    387.82	453.45	  6939.80		-			-
+
+TASK:add/exe/dispose Behaviour	1k			4.82	  4.27 		3.09	  4.54	   100.73	   1.72		   5.63
+TASK:add/exe/dispose Behaviour	10k			69.00	 42.45 	   39.36	 47.54	   763.64	  17.72		  43.81
+TASK:add/exe/dispose Behaviour	100k		831.09	417.91 	  403.45	472.73	  7854.50		-			-
+
+TASK:reg/unreg Views			1k			  9.90	  2.09	  	2.00	  2.27  	61.81	   8.18		   5.63
+TASK:reg/unreg Views			10k			107.55	 27.36	   24.54	 27.72	   418.91	  83.90		  59.45
+TASK:reg/unreg Views			100k		991.00	271.55 	  251.82 	276.91	  3601.00		-			-
+TASK:reg/unreg Trans			1k			  7.54	  2.90		2.09	  2.81  	68.27	   8.27		   1.45
+TASK:reg/unreg Trans			10k			 83.18	 28.90	   27.00	 27.90     413.18	  77.81		  52.45
+TASK:reg/unreg Trans			100k		1175.0	297.09 	  276.27	281.82	  4077.50		-			-
+TASK:reg/unreg Data				1k			  7.09	  2.00		2.00	  2.09	 	60.18	   7.90		   7.09
+TASK:reg/unreg Data				10k			 77.00	 21.72	   20.63	 25.54	   377.18	   87.2		  46.81
+TASK:reg/unreg Data				100k		916.55	219.91 	  208.36	256.00	   3001.9		-			-
+
+//Overloaded with real tasks
+TASK:reg/unreg Views+Ctx+Slot		1k						   15.54	14.63	   275.55	  17.00		109.09
+TASK:reg/unreg Views+Ctx+Slot		10k						  164.45   150.09	  2531.40	 204.45		 80.81
+TASK:reg/unreg Views+Ctx+Slot		100k				 	 1663.80  1513.40	 25854.00		-			-
+
+//Overloaded with real tasks and graphics
+TASK:reg/unreg Views+Ctx+Gfx+Slot	1k						   19.91    15.09	   307.82	  46.45		  7.09
+TASK:reg/unreg Views+Ctx+Gfx+Slot	10k						  202.00   150.45	  2894.90	 198.18		 83.63
+TASK:reg/unreg Views+Ctx+Gfx+Slot	100k					 2012.50  1504.70	 28350.00		-			-

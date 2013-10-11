@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BixBite</title>
+	<meta name="description" content="" />
+	
+	<script src="org/bixbite/core/BixBite.js"></script>
+	<script src="org/bixbite/display/MultiDisplayList.js"></script>
+	<script src="org/bixbite/DisplayManager.js"></script>
+	<script src="test/performance/coreperf/CorePerformance.js"></script>
+	
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+	</style>
+</head>
+
+<body>
+	<div id="max_mem"></div>
+	<script>
+		
+		var core1,core2,core3;
+		
+		var root = new MultiDisplayList(document.body);
+		
+		var bb = new BixBite(root);
+		bb.addContext("app", new Context());
+		bb.addContext("debug", new Context());
+		
+		core1 = bb.spawnCore("stats");
+		
+		core1.register(DisplayManager);
+		core1.emitSignal(Display.SET_DISPLAY, { root:root, frameRate:30 } );
+		
+		//!NIY
+		//core1.register(Stats);
+		//core1.emitSignal(Stats.START, { root:stage } );
+		
+		core2 = bb.spawnCore("test_cases");
+		
+		//!NIY Signal performance test
+		//core2.register(SignalPerformance);
+		
+		//Core performance test
+		core2.register(CorePerformance);
+		
+	</script>
+</body>
+
+</html>
