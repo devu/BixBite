@@ -43,7 +43,7 @@ package org.bixbite.core
 		 */
 		public function register(component:Class, singleton:Boolean = true):IComponent
 		{
-			return emitter.registerComponent(component, singleton);
+			return emitter.registerComponent(component, singleton, this);
 		}
 		
 		/**
@@ -76,9 +76,12 @@ package org.bixbite.core
 		 */
 		public function removeBehaviour(type:String):void
 		{
-			behaviours[type].dispose();
-			behaviours[type] = null;
-			delete behaviours[type]
+			trace(this, "removeBehaviour", type);
+			if(behaviours[type]){
+				behaviours[type].destroy();
+				behaviours[type] = null;
+				delete behaviours[type]
+			}
 		}
 		
 		/**
@@ -110,12 +113,25 @@ package org.bixbite.core
 		override public function destroy():void 
 		{
 			for each(var b:Behaviour in behaviours){
-				b.dispose();
+				b.destroy();
 				delete behaviours.b;
 			}
 			behaviours = null;
 			
 			super.destroy();
+		}
+		
+		override public function debug(node:XML):void
+		{
+			var cnode:XML = new XML("<behaviours></behaviours>");
+			node.appendChild(cnode);
+			
+			var b:XML;
+			for (var p:String in behaviours){
+				b = new XML("<behaviour type='" + p + "' class='" + behaviours[p] + "'></behaviour>");
+				cnode.appendChild(b);
+				behaviours[p].debug(b);
+			}
 		}
 		
 	}

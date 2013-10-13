@@ -24,6 +24,7 @@ package org.bixbite.core
 			
 			(head) ? head.next = current : tail = current;
 			head = current;
+			current = null;
 		}
 		
 		public function removeSlot(uid:String):void
@@ -39,7 +40,7 @@ package org.bixbite.core
 			if (prev && walker.next) prev.next = walker.next;
 			
 			prev = null;
-			walker.dispose();
+			walker.destroy();
 			walker = null;
 			index--;
 			
@@ -52,10 +53,12 @@ package org.bixbite.core
 			
 			while(walker.next){
 				walker.send(s);
+				s.params = null;
 				walker = walker.next;
 			}
 			
 			walker.send(s);
+			s.params = null;
 		}
 		
 		public function broadcastData(d:IActor):void
@@ -77,13 +80,13 @@ package org.bixbite.core
 			
 			while(walker.next){
 				next = walker.next;
-				walker.dispose();
+				walker.destroy();
 				walker = null;
 				index--;
 				walker = next;
 			}
 			
-			tail.dispose();
+			tail.destroy();
 			tail = head = null;
 			index--;
 		}

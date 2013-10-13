@@ -1,0 +1,26 @@
+<bixbite version="0.9.5" document="MainTest">
+  <context/>
+  <core uid="@0" id="test_cases" class="org.bixbite.core::Core">
+    <signal uid="@0"/>
+    <compounds>
+      <compound class="test.integration.leaktest::LeakTest" uid="@1::test_cases">
+        <behaviours>
+          <behaviour type="LeakTest.TERMINATE" class="[object LeakTestTerminate]">
+            <signal uid="@6::test_cases"/>
+          </behaviour>
+        </behaviours>
+        <components>
+          <component class="test.integration.leaktest.transponder::LeakTestTransponder" uid="@3::test_cases">
+            <signal uid="@3::test_cases"/>
+          </component>
+          <component class="test.integration.leaktest.data::LeakTestData" uid="@2::test_cases">
+            <signal uid="@2::test_cases"/>
+          </component>
+          <component class="test.integration.leaktest.view::LeakTestView" uid="@4::test_cases">
+            <signal uid="@4::test_cases"/>
+          </component>
+        </components>
+      </compound>
+    </compounds>
+  </core>
+</bixbite>

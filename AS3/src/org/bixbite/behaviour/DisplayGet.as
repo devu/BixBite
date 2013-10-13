@@ -34,10 +34,10 @@ package org.bixbite.behaviour
 			sendSignalTo(requestor, Display.SET_DISPLAY, data);
 		}
 		
-		override public function dispose():void 
+		override public function destroy():void 
 		{
 			requestor = null;
-			super.dispose();
+			super.destroy();
 		}
 		
 	}

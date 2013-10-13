@@ -125,7 +125,7 @@ package org.bixbite.view
 		
 		override public function destroy():void 
 		{
-			panel.dispose();
+			panel.destroy();
 			panel = null;
 			graph.dispose();
 			graph = null;

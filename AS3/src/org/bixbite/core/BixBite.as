@@ -5,6 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
+	import flash.system.System;
 	import flash.utils.Dictionary;
 	import org.bixbite.core.interfaces.IContext;
 	import org.bixbite.display.IDisplayList;
@@ -17,7 +18,7 @@ package org.bixbite.core
 	{
 		use namespace BIXBITE;
 		
-		public static const VERSION	:String = "BixBite v0.9.5";
+		public static const VERSION	:String = "0.9.5";
 		
 		private var cores	:Dictionary = new Dictionary(true);
 		private var root	:IDisplayList;
@@ -50,6 +51,7 @@ package org.bixbite.core
 		{
 			if(cores[id]){
 				cores[id].destroy();
+				cores[id] = null;
 				delete cores[id];
 			}
 		}
@@ -110,15 +112,31 @@ package org.bixbite.core
 		{
 			if (!list[id]) Error("There is no such context: " + id + "registered within display list");
 			
-			//removeCtx(id);
 			var context:* = list[id];
 			if (context && context.parent){
 				context.parent.removeChild(context);
-				//context.view.onContextRemoved();
 			}
 			
 			list[id].dispose();
 			delete list[id];
+		}
+		
+		public function debug(nms:String):void 
+		{
+			trace("=====================");
+			trace("BixBite DEBUG OUTPUT:");
+			trace("=====================");
+			
+			var xml:XML = new XML("<bixbite version='"+VERSION+"' document='"+nms+"'></bixbite>");
+			var ctx:XML = new XML("<context></context>");
+			xml.appendChild(ctx);
+			
+			root.debug(ctx);
+			
+			for each(var c:Core in cores)
+				c.debug(xml);
+			
+			trace(xml.toXMLString());
 		}
 	}
 
