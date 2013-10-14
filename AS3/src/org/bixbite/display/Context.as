@@ -6,6 +6,7 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.display
 {
 	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import org.bixbite.core.interfaces.IContext;
@@ -17,11 +18,14 @@ package org.bixbite.display
 	 */
 	public class Context implements IContext
 	{
-		private var p		:Point = new Point(0, 0);
-		private var _id		:String;
-		private var _view	:View;
-		private var _body	:Sprite;
-		private var _gl		:GraphicsLib;
+		private var children	:Vector.<IContext> = new Vector.<IContext>();
+		private var _parent		:IContext;
+		
+		private var p			:Point = new Point(0, 0);
+		private var _id			:String;
+		private var _view		:View;
+		private var _body		:Sprite;
+		private var _gl			:GraphicsLib;
 		
 		public function Context() 
 		{
@@ -59,14 +63,25 @@ package org.bixbite.display
 			return _gl;
 		}
 		
+		public function get parent():IContext 
+		{
+			return _parent;
+		}
+		
+		public function set parent(value:IContext):void 
+		{
+			_parent = value;
+		}
+		
 		/*abstract*/ 
 		public function init():void {}
 		
 		/*abstract*/ 
 		public function draw():void {}
 		
-		public function dispose():void 
+		public function destroy():void 
 		{
+			trace(this, "destroy");
 			gl.clear();
 		}
 		
@@ -80,21 +95,44 @@ package org.bixbite.display
 			_body.removeEventListener(type, callback);
 		}
 		
-		public function addChild(child:IContext):IContext 
+		public function addChild(child:IContext):IContext
 		{
-			_body.addChild(DisplayObject(child.body));
-			return child;
+			return addChildAt(child, children.length);
 		}
 		
-		public function removeChild(child:IContext):IContext 
+		public function addChildAt(child:IContext, index:int):IContext
 		{
-			_body.removeChild(child.body);
-			return child;
+			child.parent = this;
+			child.view = this.view;
+			_body.addChild(child.body);
+			
+			children.splice(index, 0, child);
+			return child
 		}
+		
+		public function removeChild(child:IContext):void 
+		{
+			removeChildAt(children.indexOf(child));
+        }
+		
+		public function removeChildAt(index:int):void 
+		{
+			if (index >= children.length) return;
+			
+			children[index].parent = null;
+			children[index].view = null;
+			//children[index].contextRemoved();
+			children.splice(index, 1)
+        }
 		
 		public function removeChildren():void 
 		{
 			while(_body.numChildren>0) _body.removeChildAt(0);
+		}
+		
+		public function destroyChildren():void 
+		{
+			while (children.length > 0) removeChildAt(0);
 		}
 		
 		public function getContextUnderPoint(name:String = null):IContext

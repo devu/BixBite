@@ -5,6 +5,7 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
+	import flash.utils.getQualifiedClassName;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -53,7 +54,7 @@ package org.bixbite.core
 			uid = "@" + emitter.uid;
 			signal = new Signal(uid);
 			
-			trace("core " + id);
+			trace("core " + id, uid);
 		}
 		
 		/**
@@ -64,25 +65,25 @@ package org.bixbite.core
 		 */
 		internal function broadcast(cid:String, type:String, signal:Signal):void
 		{
-			var c:Channel;
+			var ch:Channel;
 			
 			switch(cid)
 			{
 				case "C":
-					c = emitter.channelC;
+					ch = emitter.channelC;
 					break;
 				case "D":
-					c = emitter.channelD;
+					ch = emitter.channelD;
 					break;
 				case "T":
-					c = emitter.channelT;
+					ch = emitter.channelT;
 					break;
 				case "V":
-					c = emitter.channelV;
+					ch = emitter.channelV;
 					break;
 			}
 			
-			emitter.broadcast(c, type, signal);
+			emitter.broadcast(ch, type, signal);
 		}
 		
 		/**
@@ -104,18 +105,6 @@ package org.bixbite.core
 		}
 		
 		/**
-		 * Multi-cast method to broadcast one Singal on entire Transponder channel of this Core.
-		 * @param	type
-		 * @param	params
-		 */
-		/*
-		public function sendSignal(type:String, params:Object = null):void
-		{
-			signal.params = params;
-			emitter.broadcast(channelT, type, signal);
-		}*/
-		
-		/**
 		 * Multi-cast method to broadcast one Singal on entire Compound channel of this Core.
 		 * @param	type
 		 * @param	params
@@ -131,7 +120,7 @@ package org.bixbite.core
 		 */
 		public function destroy():void
 		{
-			signal.dispose();
+			signal.destroy();
 			signal = null;
 			
 			channelC = null;
@@ -139,6 +128,15 @@ package org.bixbite.core
 			
 			emitter.destroy();
 			emitter = null;
+		}
+		
+		internal function debug(node:XML):void
+		{
+			var cnode:XML = new XML("<core uid='" + uid + "' id='"+emitter.coreID+"' class='"+getQualifiedClassName(this)+"'></core>");
+			node.appendChild(cnode);
+			
+			signal.debug(cnode);
+			emitter.debug(cnode);
 		}
 		
 	}

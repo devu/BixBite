@@ -10,6 +10,8 @@ package org.bixbite.display
 	{
 		function addChild(child:IContext):IContext;
 		function removeChild(child:IContext):IContext;
+		
+		function debug(ctx:XML):void;
 	}
 	
 }

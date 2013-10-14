@@ -28,6 +28,11 @@ package org.bixbite.display
 			return child
 		}
 		
+		public function debug(node:XML):void
+		{
+			
+		}
+		
 	}
 
 }

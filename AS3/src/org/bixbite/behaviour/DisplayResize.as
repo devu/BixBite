@@ -58,14 +58,14 @@ package org.bixbite.behaviour
 			return (stage.stageWidth <= stage.stageHeight) ? Display.PORTRAIT : Display.LANDSCAPE;
 		}
 		
-		override public function dispose():void 
+		override public function destroy():void 
 		{
 			removeResponder(Display.DATA_REQUEST);
 			
 			displayData = null;
 			stage = null;
 			
-			super.dispose();
+			super.destroy();
 		}
 		
 	}

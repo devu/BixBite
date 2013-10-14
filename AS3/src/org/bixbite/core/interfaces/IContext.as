@@ -18,9 +18,12 @@ package org.bixbite.core.interfaces
 		function set view(value:View):void;
 		function get view():View
 		
+		function set parent(value:IContext):void;
+		function get parent():IContext;
+		
 		function init():void;
 		function draw():void;
-		function dispose():void;
+		function destroy():void;
 		
 		function getContextUnderPoint(name:String = null):IContext;
 		
@@ -28,8 +31,11 @@ package org.bixbite.core.interfaces
 		function removeSensor(type:String, callback:Function):void;
 		
 		function addChild(child:IContext):IContext;
-		function removeChild(child:IContext):IContext;
+		function addChildAt(child:IContext, index:int):IContext;
+		function removeChild(child:IContext):void;
+		function removeChildAt(index:int):void;
 		function removeChildren():void;
+		function destroyChildren():void;
 		
 		function get body():*;
 	}

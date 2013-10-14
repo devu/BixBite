@@ -54,7 +54,6 @@ package org.bixbite.core
 			this.channelV 		= emitter.channelV;
 			this.autoDispose 	= autoDispose;
 			this.compound 		= compound;
-			
 			emitter.addSlot(channelC, uid, type, exe);
 			init();
 		}
@@ -66,7 +65,9 @@ package org.bixbite.core
 		internal function exe(s:Signal):void
 		{
 			execute(s);
-			if (autoDispose) compound.removeBehaviour(type);
+			
+			if (autoDispose)
+				compound.removeBehaviour(type);
 		}
 		
 		/**
@@ -181,11 +182,11 @@ package org.bixbite.core
 		/**
 		 * Deconstructor of behaviour.
 		 */
-		public function dispose():void
+		public function destroy():void
 		{
 			emitter.removeSlot(channelC, uid, type);
 			
-			signal.dispose();
+			signal.destroy();
 			signal 		= null 
 			
 			compound 	= null 
@@ -202,6 +203,11 @@ package org.bixbite.core
 		public function get uid():String 
 		{
 			return _uid;
+		}
+		
+		internal function debug(node:XML):void 
+		{
+			signal.debug(node);
 		}
 		
 	}

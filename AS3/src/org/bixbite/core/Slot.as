@@ -23,10 +23,11 @@ package org.bixbite.core
 			this.send = callback;
 		}
 		
-		public function dispose():void
+		public function destroy():void
 		{
 			this.uid = null;
 			this.send = null;
+			this.next = null;
 		}
 	}
 

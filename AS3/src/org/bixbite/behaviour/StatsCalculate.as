@@ -88,7 +88,7 @@ package org.bixbite.behaviour
 			data.ms = timer;
 		}
 		
-		override public function dispose():void 
+		override public function destroy():void 
 		{
 			removeResponder(Stats.DATA_REQUEST);
 			
@@ -98,7 +98,7 @@ package org.bixbite.behaviour
 			updateSRS = null;
 			updateRealtimeSRS = null;
 			
-			super.dispose();
+			super.destroy();
 		}
 		
 	}

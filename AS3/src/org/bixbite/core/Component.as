@@ -25,25 +25,31 @@ package org.bixbite.core
 		 * Number of requests this Component has been registered within a core.
 		 * BixBite by default will keep your components as singletons and just need to know how many times is needed to keep it alive before destructor occures.
 		 */
-		BIXBITE var copies	:int = 0;
+		BIXBITE var copies		:int = 0;
 		
 		/**
 		 * @private
 		 * Every Component will invoke this assigment in order to get short reference to Emitter.
 		 */
-		BIXBITE var emitter	:Emitter
+		BIXBITE var emitter		:Emitter
 		
 		/**
 		 * @private
 		 * Based on Emitter short reference, every Component will get unique id from observer uid iterator.
 		 */
-		BIXBITE var _uid	:String
+		BIXBITE var _uid		:String
+		
+		/**
+		 * @private
+		 * Registar of the component
+		 */
+		BIXBITE var _reg		:Component;
 		
 		/**
 		 * @private
 		 * Default signal attached to this Component
 		 */
-		public var signal	:Signal
+		public var signal		:Signal
 		
 		/**
 		 * Set of CDTV channels asociated with Emitter
@@ -80,15 +86,21 @@ package org.bixbite.core
 		{
 			emitter = null;
 			
-			signal.dispose();
+			signal.destroy();
 			signal = null;
 			
 			_uid 	= null;
+			_reg	= null;
 			
 			channelC = null;
 			channelD = null;
 			channelT = null;
 			channelV = null;
+		}
+		
+		public function debug(node:XML):void
+		{
+			signal.debug(node);
 		}
 		
 		/**
