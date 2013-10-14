@@ -20,7 +20,7 @@ package test.integration.leaktest.view
 		override public function init():void 
 		{
 			addSlot("LeakTest.INIT", onInit);
-			//getContext("app").addChild(new LeakTestContext());
+			getContext("app").addChild(new LeakTestContext());
 		}
 		
 		private function onInit(s:Signal):void 
@@ -31,7 +31,8 @@ package test.integration.leaktest.view
 		override public function destroy():void 
 		{
 			removeSlot("LeakTest.INIT");
-			//getContext("app").destroyChildren();
+			getContext("app").destroyChildren();
+			
 			super.destroy();
 		}
 		

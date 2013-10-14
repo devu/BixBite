@@ -32,6 +32,7 @@ package org.bixbite.core.interfaces
 		
 		function addChild(child:IContext):IContext;
 		function addChildAt(child:IContext, index:int):IContext;
+		function getChildAt(index:int):IContext;
 		function removeChild(child:IContext):void;
 		function removeChildAt(index:int):void;
 		function removeChildren():void;

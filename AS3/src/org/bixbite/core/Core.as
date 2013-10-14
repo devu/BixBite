@@ -5,7 +5,6 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import flash.utils.getQualifiedClassName;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -128,15 +127,6 @@ package org.bixbite.core
 			
 			emitter.destroy();
 			emitter = null;
-		}
-		
-		internal function debug(node:XML):void
-		{
-			var cnode:XML = new XML("<core uid='" + uid + "' id='"+emitter.coreID+"' class='"+getQualifiedClassName(this)+"'></core>");
-			node.appendChild(cnode);
-			
-			signal.debug(cnode);
-			emitter.debug(cnode);
 		}
 		
 	}

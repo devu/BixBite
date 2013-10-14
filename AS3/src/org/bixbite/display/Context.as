@@ -79,12 +79,6 @@ package org.bixbite.display
 		/*abstract*/ 
 		public function draw():void {}
 		
-		public function destroy():void 
-		{
-			trace(this, "destroy");
-			gl.clear();
-		}
-		
 		public function addSensor(type:String, callback:Function):void 
 		{
 			_body.addEventListener(type, callback);
@@ -105,9 +99,15 @@ package org.bixbite.display
 			child.parent = this;
 			child.view = this.view;
 			_body.addChild(child.body);
-			
+			//child.contextAdded();
 			children.splice(index, 0, child);
 			return child
+		}
+		
+		public function getChildAt(index:int):IContext
+		{
+			if (index > children.length) RangeError("Index out of range");
+			return children[index];
 		}
 		
 		public function removeChild(child:IContext):void 
@@ -132,7 +132,12 @@ package org.bixbite.display
 		
 		public function destroyChildren():void 
 		{
-			while (children.length > 0) removeChildAt(0);
+			removeChildren();
+			
+			while (children.length > 0) {
+				children[0].destroy();
+				children.splice(0, 1);
+			}
 		}
 		
 		public function getContextUnderPoint(name:String = null):IContext
@@ -146,6 +151,20 @@ package org.bixbite.display
 			}
 			
 			return null;
+		}
+		
+		public function destroy():void 
+		{
+			_gl.clear();
+			_gl.ref = null;
+			_gl = null;
+			
+			_body = null;
+			_parent = null;
+			_view = null;
+			
+			children = null;
+			p = null;
 		}
 	}
 

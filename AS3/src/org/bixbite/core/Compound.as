@@ -76,10 +76,6 @@ package org.bixbite.core
 		 */
 		public function removeBehaviour(type:String):void
 		{
-<<<<<<< HEAD
-=======
-			trace(this, "removeBehaviour", type);
->>>>>>> origin/master
 			if(behaviours[type]){
 				behaviours[type].destroy();
 				behaviours[type] = null;
@@ -123,20 +119,6 @@ package org.bixbite.core
 			
 			super.destroy();
 		}
-		
-		override public function debug(node:XML):void
-		{
-			var cnode:XML = new XML("<behaviours></behaviours>");
-			node.appendChild(cnode);
-			
-			var b:XML;
-			for (var p:String in behaviours){
-				b = new XML("<behaviour type='" + p + "' class='" + behaviours[p] + "'></behaviour>");
-				cnode.appendChild(b);
-				behaviours[p].debug(b);
-			}
-		}
-		
 	}
 
 }

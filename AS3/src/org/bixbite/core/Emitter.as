@@ -6,7 +6,6 @@ Licensed under the Apache License, Version 2.0
 package org.bixbite.core 
 {
 	import flash.utils.Dictionary;
-	import flash.utils.getQualifiedClassName;
 	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.core.interfaces.IComponent;
 	import org.bixbite.namespaces.BIXBITE;
@@ -255,43 +254,6 @@ package org.bixbite.core
 		BIXBITE function get uid():int 
 		{
 			return ++_uid;
-		}
-		
-		/**
-		 * DEBUG
-		 * @param	node
-		 */
-		internal function debug(node:XML):void 
-		{
-			var cgnode:XML = new XML("<compounds></compounds>");
-			node.appendChild(cgnode);
-			
-			var c:XML;
-			for each(var cmp:Component in components){
-				if (cmp is Compound) {
-					c = new XML("<compound class='"+getQualifiedClassName(cmp)+"' uid='" + cmp.uid + "'></compound>");
-					cgnode.appendChild(c);
-					
-					cmp.debug(c);
-					debugComponents(cmp, c);
-				}
-			}
-		}
-		
-		private function debugComponents(ref:Component, node:XML):void 
-		{
-			var cgnode:XML = new XML("<components></components>");
-			node.appendChild(cgnode);
-			
-			var c:XML;
-			for each(var cmp:Component in components){
-				if (cmp != ref && cmp._reg == ref) {
-					c = new XML("<component class='"+getQualifiedClassName(cmp)+"' uid='" + cmp.uid + "'></component>");
-					cgnode.appendChild(c);
-					
-					cmp.debug(c);
-				}
-			}
 		}
 	}
 }

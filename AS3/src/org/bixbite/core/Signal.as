@@ -5,7 +5,6 @@ Licensed under the Apache License, Version 2.0
 
 package org.bixbite.core 
 {
-	import org.bixbite.core.interfaces.IActor;
 	import org.bixbite.namespaces.BIXBITE;
 	
 	/**
@@ -71,17 +70,6 @@ package org.bixbite.core
 				for (var p:String in _params) trace(_params[p]);
 				_params = null;
 			}
-		}
-		
-		public function debug(node:XML):void 
-		{
-			var snode:XML = new XML("<signal uid='"+_callerUID+"'></signal>");
-			if (_params){
-				var pnode:XML = new XML("<params></params>");
-				for (var p:String in _params) pnode.appendChild(new XML("<p name='" + p + "'>" + _params[p] + "</p>"));
-				snode.appendChild(pnode);
-			}
-			node.appendChild(snode);
 		}
 	}
 

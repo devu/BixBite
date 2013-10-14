@@ -53,12 +53,10 @@ package org.bixbite.core
 			
 			while(walker.next){
 				walker.send(s);
-				s.params = null;
 				walker = walker.next;
 			}
 			
 			walker.send(s);
-			s.params = null;
 		}
 		
 		public function broadcastData(d:IActor):void

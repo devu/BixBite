@@ -6,7 +6,7 @@ package org.bixbite.display
 	 */
 	public class GraphicsLib 
 	{
-		private var ref:*;
+		public var ref:*;
 		
 		public function GraphicsLib(ref:*) 
 		{

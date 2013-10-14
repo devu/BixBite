@@ -98,11 +98,6 @@ package org.bixbite.core
 			channelV = null;
 		}
 		
-		public function debug(node:XML):void
-		{
-			signal.debug(node);
-		}
-		
 		/**
 		 * Unique Component identifier
 		 */

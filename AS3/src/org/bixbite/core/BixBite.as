@@ -117,26 +117,8 @@ package org.bixbite.core
 				context.parent.removeChild(context);
 			}
 			
-			list[id].dispose();
+			list[id].destroy();
 			delete list[id];
-		}
-		
-		public function debug(nms:String):void 
-		{
-			trace("=====================");
-			trace("BixBite DEBUG OUTPUT:");
-			trace("=====================");
-			
-			var xml:XML = new XML("<bixbite version='"+VERSION+"' document='"+nms+"'></bixbite>");
-			var ctx:XML = new XML("<context></context>");
-			xml.appendChild(ctx);
-			
-			root.debug(ctx);
-			
-			for each(var c:Core in cores)
-				c.debug(xml);
-			
-			trace(xml.toXMLString());
 		}
 	}
 

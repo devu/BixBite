@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'10/13/2013'</value>
+      <value>'10/14/2013'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -41,7 +41,7 @@
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>I:\BixBite\AS3\src\MainTest.as</path-element>
+    <path-element>I:\BixBite\AS3\src\MainLeakTest.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

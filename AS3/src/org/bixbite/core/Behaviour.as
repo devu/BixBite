@@ -205,11 +205,6 @@ package org.bixbite.core
 			return _uid;
 		}
 		
-		internal function debug(node:XML):void 
-		{
-			signal.debug(node);
-		}
-		
 	}
 
 }
