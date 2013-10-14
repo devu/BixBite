@@ -76,6 +76,10 @@ package org.bixbite.core
 		 */
 		public function removeBehaviour(type:String):void
 		{
+<<<<<<< HEAD
+=======
+			trace(this, "removeBehaviour", type);
+>>>>>>> origin/master
 			if(behaviours[type]){
 				behaviours[type].destroy();
 				behaviours[type] = null;
